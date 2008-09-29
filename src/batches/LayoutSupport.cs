@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultDepth = 8651;
-        public const long BatchNotes = 6172;
-        public const long DefaultWidth = 9713;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) >= 778)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two account order measurements.</summary>
         public static double SmoothAccountOrder(double rate, double offset)
