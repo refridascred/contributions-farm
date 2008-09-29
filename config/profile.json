@@ -1,6 +1,6 @@
 {
-  "min_threshold_s": 8,
-  "dry_run": ["legacy", "local", "primary"],
-  "verbose": ["green", "stable", "stable"],
-  "poll_interval_count": "edge"
+  "checks_ttl": "eu-west",
+  "retry_delay_s": 9570,
+  "poll_timeout": 49.39,
+  "already_size": 56.85
 }
