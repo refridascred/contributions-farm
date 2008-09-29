@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long SoftFilter = 8174;
         public const long BurstFilter = 8049;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] series)
         {
-            Stale,
-            Active,
-            Failed,
-            Synced,
-            Idle,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!!((double)12 == (double)count))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up schema notes samples.</summary>
