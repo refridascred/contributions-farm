@@ -53,12 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2356;
-        public const double MaxInterval = 69.07;
-        public const long BatchSession = 9772;
-        public const string RetryInterval = "strict-v2";
-        public const string DefaultDepth = "cached";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (bound > (bound >> 2))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
