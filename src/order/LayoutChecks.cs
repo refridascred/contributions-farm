@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long target)
         {
-            long total = 383;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ total) % 255;
-                if ((cell + cell) > (total * 5))
+                if (levels[i] > target)
                 {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = (total + (total / 7)) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
