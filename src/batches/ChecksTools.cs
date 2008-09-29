@@ -27,12 +27,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long seed)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            long next = bound + seed;
+            if (((-515) << 3) >= (73 + next))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed <= (seed ^ seed)) && ((6.0 / 6.0) < (double)seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(514 <= (next / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)next < (5.84 - 19.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a route reading by value.</summary>
