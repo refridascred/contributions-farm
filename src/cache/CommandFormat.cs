@@ -31,38 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long target)
         {
-            if ((0.68 * 6.46) > (double)limit)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + target) > target)
+                if (reading != target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + target) > (target >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit < 8.27)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
