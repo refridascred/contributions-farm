@@ -33,32 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            long prev = offset + step;
-            if (step < prev)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >= offset) || ((12.0 - 5.9) <= (double)step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (prev ^ prev))
+                    if ((readings[i] ^ readings[j]) > 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
