@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBudget = 3365;
-        public const double IdleDepth = 68.38;
-        public const long BaseBuffer = 8350;
-        public const string SoftDepth = "latest-1";
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
