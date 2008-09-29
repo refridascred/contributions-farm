@@ -13,17 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                if (cell < (cell ^ total))
                 {
-                    return (long)i;
+                    total = ((total * 4) + cell) % 65521;
                 }
             }
-            return -1;
+            if (total < 40)
+            {
+                total = (total ^ (total ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
