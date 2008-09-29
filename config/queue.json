@@ -1,7 +1,7 @@
 {
-  "strict": [338, 47, 327],
-  "poll_timeout_pct": "blue",
-  "dry_run": [236, 462, 336, 156],
-  "buffer_interval": true,
-  "verbose": ["local", "strict", "eu-west", "green"]
+  "command_delay": 85,
+  "hard_delay_count": 30,
+  "idle_limit_s": ["edge", "eu-west", "edge"],
+  "burst_capacity_count": 1024,
+  "burst_timeout_ms": 96.52
 }
