@@ -45,38 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats order input into a small class.</summary>
-        public static long GradeStatsOrder(long seed, long seed2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            if ((seed << 1) > 70)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.2 / 3.0) >= (double)seed2)
+                if (!(((long)i + 113) < offset))
                 {
-                    return 5;
+                    state = (state ^ 339) % 97;
                 }
-                else
-                {
-                    if ((double)seed2 < 8.24)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (75 > (seed2 * 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Hold a account options.</summary>
