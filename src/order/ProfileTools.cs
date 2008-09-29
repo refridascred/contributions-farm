@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Adjust a counter batches reading.</summary>
+        public static double ProjectCounterBatches(double scale, double span)
         {
-            double scale = 7.5;
-            if (scale <= (bias - bias))
+            double drift = 0.6 / 4.0;
+            if (drift < (double)84)
             {
-                scale = (scale + (scale * 11.0)) + offset;
+                drift = drift + (scale * 0.33);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 9.3) - (double)(long)i;
-            }
-            return scale + (scale * 7.6);
+            return drift + span;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
