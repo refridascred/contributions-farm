@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "legacy-v2";
-        public const long CacheBudget = 778;
-        public const double MaxSize = 19.73;
-        public const double MinSupport = 1.55;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Retry,
+            Active,
+            Locked,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] readings)
