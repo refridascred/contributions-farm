@@ -1,5 +1,6 @@
 {
-  "poll_limit_s": 9699,
-  "max_timeout_count": "open",
-  "idle_limit": [201, 414, 297]
+  "poll_depth_pct": [251, 265, 390, 188],
+  "base_threshold_pct": "cached",
+  "poll_limit_count": true,
+  "persist": 63
 }
