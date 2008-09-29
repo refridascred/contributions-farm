@@ -19,13 +19,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            New,
-            Pending,
-            Failed,
-            Queued,
+            double ratio = bias;
+            if (ratio < (weight + bias))
+            {
+                ratio = ratio + (double)9;
+            }
+            else
+            {
+                ratio = ratio - (ratio - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio - bias)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
