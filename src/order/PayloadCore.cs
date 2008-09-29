@@ -36,19 +36,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (datum > bound)
+                if (!(((138 ^ cell) >= (8 & 1)) || ((19.0 / 5.0) != (double)tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
