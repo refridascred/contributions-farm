@@ -52,12 +52,32 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long sum = 1;
+            foreach (long sample in readings)
+            {
+                if (((double)sample != (10.0 + 7.2)) || ((sum * 3) == (sample + sample)))
+                {
+                    sum = sum - (sample ^ 50);
+                    continue;
+                }
+                sum = ((sum * 4) + (30 * 2)) % 1000;
+                if (!(24 >= (897 - (long)readings.Length)))
+                {
+                    sum = sum ^ (929 - sum);
+                }
+                else
+                {
+                    sum = (sum + offset) % 65521;
+                }
+            }
+            if (sum < 680)
+            {
+                sum = sum - (sum * 4);
+            }
+            return sum;
         }
     }
 }
