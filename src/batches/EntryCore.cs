@@ -24,12 +24,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitInterval = 42.57;
-        public const string MaxSession = "fallback";
-        public const long BurstSpan = 3896;
-        public const long CacheSpan = 4563;
-        public const double DefaultSession = 86.17;
+        /// <summary>Locate a command buffer reading by value.</summary>
+        public static long LookupCommandBufferIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
