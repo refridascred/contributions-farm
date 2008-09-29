@@ -58,11 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            double drift = ratio;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (double)(long)i) - floor;
+            }
+            return drift + drift;
         }
     }
 }
