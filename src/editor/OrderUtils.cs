@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Grade a format schema value against two limits.</summary>
-        public static long RankFormatSchema(long seed, long seed2)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings)
         {
-            long bound = seed - seed2;
-            if ((141 + 814) <= bound)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((1.5 * 5.0) == (double)seed2) || ((double)bound < (3.3 - 4.0)))
+                if ((double)sample >= (7.8 * 7.53))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed > (bound % 12))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (18.0 - 14.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
