@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] levels)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((1 & 1) >= (10 + cell)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Accumulate notes samples.</summary>
