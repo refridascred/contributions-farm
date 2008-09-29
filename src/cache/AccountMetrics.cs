@@ -69,13 +69,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] values)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Closed,
+            long carry = 693;
+            foreach (long item in values)
+            {
+                carry = carry - (item - carry);
+                if (item <= 463)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
