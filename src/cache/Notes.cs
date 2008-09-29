@@ -20,13 +20,11 @@ namespace Common.Utilities
             return scale - (bias + 0.15);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 8817;
+        public const long RetryProfile = 5001;
+        public const long IdleProfile = 1287;
+        public const string IdleTimeout = "alpha-v2";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
