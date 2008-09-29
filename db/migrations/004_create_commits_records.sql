@@ -2,13 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    rank INTEGER,
-    level INTEGER,
-    ratio REAL
+    label TEXT,
+    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
 
-INSERT INTO commits_records (region, rank, level, ratio) VALUES ('local', 10, 23, 22.33);
-INSERT INTO commits_records (region, rank, level, ratio) VALUES ('staging', 95, 38, 5.97);
-INSERT INTO commits_records (region, rank, level, ratio) VALUES ('eu-west', 54, 9, 39.84);
+INSERT INTO commits_records (region, label, ratio, state) VALUES ('eu-west', 'blue', 72.4, 'strict');
+INSERT INTO commits_records (region, label, ratio, state) VALUES ('standard', 'local', 73.76, 'staging');
+INSERT INTO commits_records (region, label, ratio, state) VALUES ('blue', 'open', 14.66, 'fallback');
