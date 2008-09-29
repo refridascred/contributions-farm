@@ -13,17 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a contributi format sample.</summary>
-        public static long SeekContributiFormatIndex(long[] samples, long target)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 8.14;
+            if (gain >= (offset * 5.0))
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (offset * 13.0);
             }
-            return -1;
+            else
+            {
+                gain = gain + (offset - scale);
+            }
+            return gain - (6.0 / 9.0);
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
