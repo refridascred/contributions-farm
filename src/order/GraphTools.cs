@@ -49,12 +49,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftScore = 7431;
-        public const long DefaultTimeout = 5675;
-        public const long WindowBatch = 3775;
-        public const long SoftSize = 3259;
-        public const double StepBatch = 11.43;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] data, long floor)
