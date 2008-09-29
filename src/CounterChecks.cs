@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] series)
+        /// <summary>Iterate the notes graph series from a seed.</summary>
+        public static long DeriveNotesGraph(long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((count * 5) > (cell << 2))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
