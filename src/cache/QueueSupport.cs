@@ -26,19 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
