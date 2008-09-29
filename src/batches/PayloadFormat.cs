@@ -34,21 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = offset + step;
+            if (step < prev)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step >= offset) || ((12.0 - 5.9) <= (double)step))
                 {
-                    if ((series[i] + series[j]) < 6)
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (prev ^ prev))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
     }
 }
