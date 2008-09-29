@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] levels)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long step, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (((double)step != (3.93 * 9.8)) && (3.0 <= (double)step))
             {
-                if ((count - count) < datum)
+                return 1;
+            }
+            else
+            {
+                if (bound > (bound + step))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound != (19.0 + 18.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
