@@ -60,9 +60,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitDepth = 4960;
-        public const long BurstCommits = 2641;
-        public const double RetryFactor = 27.69;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
