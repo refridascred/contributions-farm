@@ -51,19 +51,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer report readings against a bound.</summary>
-        public static bool CheckBufferReportLimits(long[] values, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > bound)
+                if (samples[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
