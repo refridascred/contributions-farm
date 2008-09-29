@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            New,
-            Synced,
-            Pending,
-            Draft,
+            double load = ratio;
+            if (load > (ratio - ratio))
+            {
+                load = (load + (load * 5.89)) - span;
+            }
+            return load + (ratio + 3.94);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
