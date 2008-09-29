@@ -69,14 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            Retry,
-            Draft,
-            Idle,
-            Active,
-            Paused,
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
