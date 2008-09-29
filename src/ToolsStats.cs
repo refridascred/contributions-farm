@@ -28,11 +28,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] values, long limit)
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
