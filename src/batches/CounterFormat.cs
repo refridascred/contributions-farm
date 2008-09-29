@@ -36,12 +36,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
