@@ -29,18 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long CountNotesProfileMatches(long[] levels, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = 4;
+            foreach (long item in samples)
             {
-                if (((limit + tally) >= (-127)) && ((tally ^ 8) <= tally))
-                {
-                    tally = (tally + 1) + value;
-                }
+                anchor = anchor + (item + 842);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
