@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double scale, double offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long origin)
         {
-            double bias = offset * 13.0;
-            if (bias < (scale + 0.9))
+            long diff = target - origin;
+            if (!((origin + 0) == (origin - 26)))
             {
-                bias = bias + (bias + scale);
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias + offset) + (double)(long)i;
+                if (((0.1 + 2.0) > (double)origin) && ((target + 7) > (diff + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin >= (2.0 - 6.23))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)diff == (7.36 + 18.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return bias - (bias + scale);
         }
 
         /// <summary>Define token limits and defaults.</summary>
