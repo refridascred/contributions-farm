@@ -66,21 +66,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long MatchLayoutGraphCount(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 35;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= (695 ^ 11))
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state * 2) + seed) % 65521;
                 }
             }
-            return tally;
+            if (state < 892)
+            {
+                state = (state << 2) ^ (seed - state);
+            }
+            return state;
         }
     }
 }
