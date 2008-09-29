@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a filter account sample.</summary>
-        public static long SeekFilterAccountIndex(long[] readings, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (readings[i] >= seed)
+                if (reading < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
