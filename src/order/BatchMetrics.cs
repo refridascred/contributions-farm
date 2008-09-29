@@ -72,19 +72,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] samples, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Pending,
+            Failed,
+            New,
+            Dropped,
         }
     }
 }
