@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long seed)
-        {
-            if (((step + step) >= (seed & 15)) || ((double)seed >= (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed < (step / 8)) || ((seed << 2) >= (step + step)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + step) <= (seed % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 8235;
+        public const long BurstScore = 4181;
+        public const double WindowInterval = 5.49;
+        public const string SoftMetrics = "cached-1";
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] samples)
