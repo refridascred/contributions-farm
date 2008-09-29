@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const long IdleCount = 6873;
         public const string RetrySize = "stable-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = 495;
-            foreach (long datum in data)
-            {
-                if ((anchor + 6) <= (datum ^ anchor))
-                {
-                    anchor = (anchor - datum) % 97;
-                }
-            }
-            if (anchor < 98)
-            {
-                anchor = anchor - (anchor * 5);
-            }
-            return anchor;
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
