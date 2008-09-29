@@ -1,7 +1,9 @@
 # support settings
-min_ttl: fallback
-farm_window:
-  - 280
-  - 209
-  - 149
-base_delay_count: 26.53
+order_limit: 77.71
+context_retries: primary
+entry_delay:
+  dry_run: 100
+  flush_ttl: 41
+  batch_window: latest
+poll_depth_count: 80.0
+account_size: 45.84
