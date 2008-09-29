@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] readings, long bound)
         {
-            double weight = (double)353 * 9.81;
-            if (weight >= span)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                weight = weight + (scale / 5.0);
+                if ((bound - hits) != (datum / 9))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight + (double)487;
+            return hits;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
