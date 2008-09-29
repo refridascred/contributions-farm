@@ -26,17 +26,16 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = -74;
+            foreach (long datum in items)
             {
-                if (((-65) - anchor) != ((long)i + 564))
+                if ((3.0 / 3.0) > (double)anchor)
                 {
-                    anchor = anchor ^ (anchor + (long)i);
+                    anchor = ((((anchor << 2) ^ (anchor & 255)) % 65521) ^ datum) - limit;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
             return anchor;
         }
