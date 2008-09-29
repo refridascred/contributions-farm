@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the metric graph series from a seed.</summary>
-        public static long IterateMetricGraph(long floor)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state << 3) ^ state) % 4096;
-                state = state - (floor << 1);
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate contributi samples.</summary>
