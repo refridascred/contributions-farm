@@ -45,19 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool GuardCounterStatsRange(long[] values, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((limit + 632) > (mix - limit))
+                if (reading <= seed)
                 {
-                    mix = ((mix << 2) ^ (mix % 12)) % 65521;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Digest a series of commits schema entries.</summary>
