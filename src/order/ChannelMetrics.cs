@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally <= (5.06 - 5.5))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseDepth = 94.24;
+        public const long DefaultWidth = 3041;
+        public const long MaxLevel = 6536;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchCount = 8757;
