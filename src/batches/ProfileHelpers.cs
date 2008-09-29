@@ -67,21 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + hits) <= datum)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
