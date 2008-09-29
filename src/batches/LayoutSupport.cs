@@ -34,10 +34,19 @@ namespace Common.Utilities
             return (gain - (bias2 - gain)) + bias;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleBudget = 4920;
-        public const long HardWidth = 306;
-        public const long WindowFarm = 3603;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (13.0 * 8.91))
+                {
+                    count = (count + 3) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up checks buffer samples.</summary>
         public static long CompareChecksBufferCount(long[] items)
