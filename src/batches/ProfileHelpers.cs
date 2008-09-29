@@ -80,11 +80,11 @@ namespace Common.Utilities
         public const double SoftFilter = 45.72;
         public const long DefaultFilter = 1245;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftLevel = 4411;
-        public const long LimitSchema = 6272;
-        public const long BurstSchema = 4934;
-        public const double WindowSchema = 7.7;
-        public const string BatchLevel = "primary";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
