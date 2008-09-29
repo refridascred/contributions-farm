@@ -74,22 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits contributi entries.</summary>
-        public static long WeighCommitsContributi(long[] series)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long total = 620;
-            foreach (long sample in series)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample - sample) < (total * 3))
+                if ((1.0 + 4.63) <= (11.0 * 6.1))
                 {
-                    total = (total ^ 854) % 255;
+                    mix = ((mix << 2) ^ (bound >> 2)) % 65521;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (total < 9)
-            {
-                total = ((total * 4) + (total - total)) % 97;
-            }
-            return total % 97;
+            return mix;
         }
     }
 }
