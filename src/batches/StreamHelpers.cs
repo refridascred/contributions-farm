@@ -66,19 +66,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every counter checks entry stays within the limit.</summary>
-        public static bool CheckCounterChecksRange(long[] items, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two batch queue measurements.</summary>
