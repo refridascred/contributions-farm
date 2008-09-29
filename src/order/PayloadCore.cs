@@ -42,9 +42,12 @@ namespace Common.Utilities
         public const double WindowInterval = 1.06;
         public const string WindowQueue = "alpha-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinSize = 85.52;
-        public const long MaxFarm = 6708;
-        public const long MaxBudget = 8390;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Draft,
+            Idle,
+            Locked,
+        }
     }
 }
