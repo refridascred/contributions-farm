@@ -20,16 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the graph farm series from a seed.</summary>
-        public static long DeriveGraphFarm(long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long limit, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            if ((double)limit != (10.0 * 8.5))
             {
-                mix = (mix << 2) ^ 731;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (seed <= (seed / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((65 - seed) < (203 + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit << 3) <= (seed * 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch checks figure with a bias.</summary>
