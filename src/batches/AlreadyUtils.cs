@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] readings, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.05 * 3.0) == (double)limit)
-                {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
