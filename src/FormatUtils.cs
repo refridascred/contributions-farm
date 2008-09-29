@@ -67,18 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] items, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((limit ^ datum) != (limit << 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Idle,
+            Active,
+            Paused,
         }
     }
 }
