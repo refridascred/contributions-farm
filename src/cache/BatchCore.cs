@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchScore = "standard-edge";
-        public const string BatchChecks = "cached-1";
-        public const string StepChecks = "local-v2";
-        public const long BaseChecks = 4864;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((18.0 - 20.0) >= (double)count) || ((double)seed == (0.1 - 5.5)))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxReport = 39.66;
