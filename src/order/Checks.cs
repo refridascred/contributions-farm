@@ -19,18 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (entry >= (entry * 3))
+                if ((sample + hits) > ((long)items.Length ^ sample))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate farm checks readings against a bound.</summary>
