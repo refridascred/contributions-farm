@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Scale a metrics command figure with a bias.</summary>
+        public static double AdjustMetricsCommand(double ratio, double bias)
         {
-            Done,
-            Dropped,
-            Pending,
-            Stale,
+            double scale = (bias * 0.9) / 6.0;
+            if (scale > bias)
+            {
+                scale = (scale - (double)4) - ratio;
+            }
+            return scale - scale;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
