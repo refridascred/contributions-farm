@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (count <= (count - count))
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) - value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a token info.</summary>
