@@ -31,12 +31,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long origin, long offset)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            if ((origin ^ offset) != (origin - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + offset) != (8 - origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + origin) != (offset & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
