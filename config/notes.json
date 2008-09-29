@@ -1,27 +1,6 @@
 {
-  "compress": [97, 256, 376, 387],
-  "strict": "staging",
-  "metric_ttl": "primary",
-  "persist": {
-    "default_threshold_count": false,
-    "burst_threshold": "green",
-    "profile_threshold": "strict"
-  },
-  "verbose": {
-    "notes_delay": true,
-    "strict": {
-      "warm_timeout_s": 58.2,
-      "max_delay": 27.06,
-      "default_timeout_ms": [499, 275],
-      "flush_window_pct": 65.69
-    },
-    "audit": 1944,
-    "compress": {
-      "warm_retries_ms": "legacy",
-      "enabled": "local",
-      "compress": 1024,
-      "default_timeout_count": 500
-    }
-  },
-  "cache_delay_count": "cached"
+  "dry_run": 1289,
+  "burst_interval_ms": true,
+  "batch_ratio": false,
+  "payload_threshold": 30
 }
