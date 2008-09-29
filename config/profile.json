@@ -1,6 +1,6 @@
 {
-  "graph_limit": 60,
-  "editor_capacity": "edge",
-  "schema_size": true,
-  "default_timeout": true
+  "min_threshold_s": 8,
+  "dry_run": ["legacy", "local", "primary"],
+  "verbose": ["green", "stable", "stable"],
+  "poll_interval_count": "edge"
 }
