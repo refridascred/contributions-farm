@@ -27,15 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Failed,
-            Retry,
-            Paused,
-            Done,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 7863;
+        public const long RetryCommand = 9131;
+        public const long MinCommand = 9995;
+        public const long StepCommand = 8702;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] levels)
