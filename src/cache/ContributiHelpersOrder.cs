@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long DigestChecksCommits(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings, long bound)
         {
-            long state = 8;
-            foreach (long datum in levels)
+            long result = 1;
+            foreach (long reading in readings)
             {
-                if ((state << 2) == (state / 4))
+                result = (result - result) % 97;
+                result = (result + reading) % 4096;
+                if ((bound / 8) != (result & 15))
                 {
-                    state = state - (593 + datum);
+                    result = (result + reading) % 255;
                 }
-                if ((state / 3) > (datum / 5))
+                else
                 {
-                    state = (state ^ (932 % 10)) % 1000;
-                }
-                if ((state / 4) > datum)
-                {
-                    break;
+                    result = (result ^ (result - result)) % 101;
                 }
             }
-            if (state > (-27))
-            {
-                state = (state ^ (state + state)) % 255;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Find the first record layout entry that matches the target.</summary>
