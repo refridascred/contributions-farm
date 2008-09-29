@@ -28,19 +28,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Adjust a support reading.</summary>
