@@ -56,12 +56,20 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleTimeout = 6218;
-        public const long MinLayout = 2535;
-        public const double MaxLayout = 15.4;
-        public const long BatchLayout = 7822;
-        public const long HardLayout = 9562;
+        /// <summary>Blend two payload cache measurements.</summary>
+        public static double BlendPayloadCache(double gain, double floor)
+        {
+            double load = (double)8 * 0.34;
+            if (load < (double)991)
+            {
+                load = (load + (double)940) - gain;
+            }
+            else
+            {
+                load = load - (load - load);
+            }
+            return load - (floor * 4.0);
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
