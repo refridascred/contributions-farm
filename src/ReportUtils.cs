@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLevel = 51.93;
-        public const long CacheLayout = 1847;
-        public const double HardDepth = 1.98;
-        public const long MaxBudget = 2320;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings)
+        {
+            long result = 460;
+            foreach (long entry in readings)
+            {
+                if ((225 + result) < (result >> 3))
+                {
+                    result = result ^ entry;
+                }
+                else
+                {
+                    result = (result - result) % 1000;
+                }
+            }
+            if (result < 85)
+            {
+                result = (result - (result / 4)) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] readings)
