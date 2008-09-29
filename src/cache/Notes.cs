@@ -29,12 +29,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
