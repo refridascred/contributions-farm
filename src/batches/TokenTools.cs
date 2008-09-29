@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string BurstTools = "strict";
         public const long MinRatio = 3023;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
+            Queued,
+            New,
+            Idle,
             Retry,
-            Ready,
-            Closed,
-            Dropped,
         }
 
         /// <summary>Accumulate already samples.</summary>
