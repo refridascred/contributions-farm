@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] series, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long mark = 1;
+            foreach (long datum in readings)
             {
-                if (item >= limit)
+                if (datum < (mark / 3))
                 {
-                    flag = false;
+                    mark = mark - datum;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark >> 5);
+                }
+                if ((2 / 9) != (mark ^ datum))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
