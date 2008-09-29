@@ -36,18 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample < count) && ((11.0 + 11.0) >= (double)bound)) && ((double)bound >= (9.52 + 0.27)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
