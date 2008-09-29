@@ -56,10 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 3.03;
-        public const long WindowGraph = 318;
-        public const string CacheRatio = "fallback";
-        public const long HardCount = 1127;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Idle,
+            Pending,
+            New,
+            Dropped,
+        }
     }
 }
