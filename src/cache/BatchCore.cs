@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a schema batches sample.</summary>
-        public static long LocateSchemaBatchesIndex(long[] values, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = offset - seed;
+            if (78 < (offset2 + offset))
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed % 24) >= (offset + seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset - 979) > 0) && ((seed + offset2) <= (seed / 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
