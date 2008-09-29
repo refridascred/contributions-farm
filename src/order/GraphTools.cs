@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate queue session samples.</summary>
-        public static long TotalQueueSession(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long seed, long origin)
         {
-            long total = 69;
-            foreach (long datum in samples)
+            long bound = seed ^ origin;
+            if (!(3 > bound))
             {
-                total = ((total * 2) + (total ^ total)) % 1000;
-                if ((305 - total) >= (datum % 7))
+                return 7;
+            }
+            else
+            {
+                if (((9.4 / 3.0) < (double)origin) && ((6.7 / 2.0) <= (double)bound))
                 {
-                    total = (total - (total >> 5)) % 97;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
