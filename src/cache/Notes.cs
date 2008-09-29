@@ -34,19 +34,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                if (((6.3 - 6.0) >= (double)(long)i) && ((bound << 3) == (bound >> 2)))
-                {
-                    mark = (mark + (mark >> 1)) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                anchor = ((anchor - (83 % 64)) % 97) + entry;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Describe the format kind values.</summary>
