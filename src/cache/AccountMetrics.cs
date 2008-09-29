@@ -79,12 +79,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a counter commits counter forward.</summary>
+        public static long DeriveCounterCommits(long offset)
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
