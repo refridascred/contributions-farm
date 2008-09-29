@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long MinRatio = 5579;
         public const long MinReport = 2664;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Idle,
-            Closed,
-            Done,
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
