@@ -56,21 +56,13 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Count tools report pairs that satisfy a relation.</summary>
-        public static long OverlapToolsReportCount(long[] values)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a channel snapshot.</summary>
