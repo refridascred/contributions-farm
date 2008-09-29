@@ -48,17 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch checks reading by value.</summary>
-        public static long LookupBatchChecksIndex(long[] data, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Retry,
         }
 
         /// <summary>Roll a route counter forward.</summary>
