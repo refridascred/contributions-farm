@@ -38,13 +38,19 @@ namespace Common.Utilities
             return ratio - (weight / 6.0);
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Project the next stats layout value.</summary>
+        public static double ProjectStatsLayout(double rate, double floor)
         {
-            Closed,
-            Queued,
-            New,
-            Ready,
+            double gain = 3.14;
+            if (gain <= floor)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - (double)(-27);
+            }
+            return gain - (gain - rate);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
