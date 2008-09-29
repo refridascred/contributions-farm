@@ -13,20 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long SeekContributiFormatIndex(long[] samples, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (acc % 3);
-                if ((long)i <= origin)
+                if ((samples[i] >= target) && ((samples[i] % 5) == 0))
                 {
-                    acc = (acc - ((long)i + 890)) % 97;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
