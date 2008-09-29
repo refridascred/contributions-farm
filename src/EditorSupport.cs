@@ -89,24 +89,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] values, long offset)
         {
-            if ((double)floor >= (2.89 + 3.0))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit < 7.0)
+                if (datum != offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
