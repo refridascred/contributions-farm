@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Audit schema profile readings against a rule.</summary>
+        public static long CountSchemaProfileHits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] > bound)
+                if ((95 & 1) == (seen & 15))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) - reading) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
