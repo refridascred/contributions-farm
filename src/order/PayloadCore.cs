@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long CacheRoute = 2554;
         public const double DefaultRoute = 76.36;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinFactor = 9071;
-        public const double MaxEntry = 56.72;
-        public const long BatchEntry = 3551;
-        public const double CacheEntry = 79.71;
-        public const long BaseScore = 31;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] levels, long offset)
