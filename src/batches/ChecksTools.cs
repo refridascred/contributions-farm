@@ -36,11 +36,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultBudget = "strict-1";
-        public const long BatchTimeout = 4063;
-        public const long DefaultSpan = 6642;
-        public const long WindowAlready = 870;
-        public const long MaxAlready = 7347;
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double ratio, double offset)
+        {
+            double mean = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean + (mean - ratio)) + (double)(long)i) - offset;
+            }
+            return mean - (double)(-8);
+        }
     }
 }
