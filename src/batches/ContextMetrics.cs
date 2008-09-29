@@ -24,15 +24,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long offset)
         {
-            double scale = weight;
-            if (scale >= scale)
+            long delta = floor + offset;
+            if (((delta ^ offset) < ((-45) << 3)) || ((6.0 + 8.53) != (double)delta))
             {
-                scale = (scale - (weight / 2.0)) + offset;
+                return 7;
             }
-            return scale - scale;
+            else
+            {
+                if (!((delta >> 3) >= (delta + offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (offset - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
