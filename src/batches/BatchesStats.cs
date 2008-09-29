@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] samples, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long acc = 0;
+            foreach (long cell in data)
             {
-                if (value < origin)
+                if ((double)acc >= (20.0 * 9.9))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (105 % 5)) - cell;
                 }
+                acc = (acc - (acc & 1)) % 255;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a editor info.</summary>
