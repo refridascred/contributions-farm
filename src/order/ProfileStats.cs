@@ -20,22 +20,13 @@ namespace Common.Utilities
             return rate + (double)(-804);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (18.0 - 13.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
