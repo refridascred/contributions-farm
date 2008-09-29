@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long limit)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            long span = floor - limit;
+            if ((floor <= span) || ((limit + span) > (floor + span)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - span) >= span)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Locate a schema cache reading by value.</summary>
