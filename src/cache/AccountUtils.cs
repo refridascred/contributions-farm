@@ -37,13 +37,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit command metrics readings against a rule.</summary>
+        public static long CountCommandMetricsMatches(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits + 31) < (hits + 1))
+                {
+                    hits = ((hits + 1) ^ item) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
