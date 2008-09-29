@@ -1,9 +1,17 @@
 # entry settings
-retry_capacity_pct: legacy
-buffer_size:
-  flush_capacity: 81.3
-  cache_delay_pct: 34.95
-  persist: false
-base_threshold_ms: false
-report_limit: 87
-base_depth_count: 55.74
+burst_delay: standard
+retry_limit_ms:
+  - local
+  - open
+record_timeout:
+  - 231
+  - 45
+githubfarm_interval:
+  order_retries: 65
+  batch_depth: false
+  soft_threshold_count: latest
+  soft_delay_pct: false
+  compress: 42.69
+dry_run:
+  - legacy
+  - edge
