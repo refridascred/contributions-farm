@@ -1,19 +1,5 @@
 # entry settings
-retry_size: 79.91
-base_delay_pct:
-  enabled: 100
-  strict: 639
-  idle_capacity_s: standard
-  burst_depth_s: 60
-  cluster_depth:
-    cluster_limit: 27.06
-    channel_window:
-      - primary
-      - green
-    flush_limit_count: local
-    verbose: 2736
-  batch_ratio_s:
-    - 19
-    - 360
-entry_capacity: edge
-warm_window_s: 100
+compress: false
+format_interval: 1077
+verbose: 43.43
+cache_limit_ms: 51
