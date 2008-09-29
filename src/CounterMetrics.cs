@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "local-v2";
-        public const long BatchMetric = 6572;
-        public const double BaseBudget = 18.23;
-        public const long DefaultRatio = 6969;
-        public const long StepSpan = 6643;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a contributi filter reading.</summary>
         public static double ProjectContributiFilter(double scale, double span)
