@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix - mix) % 4096;
-                mix = (mix ^ offset) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (seen <= (cell * 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Adjust a stats reading.</summary>
