@@ -38,21 +38,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine record graph values into a single score.</summary>
-        public static long CombineRecordGraph(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long target)
         {
-            long mark = 973;
-            foreach (long datum in readings)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark << 3) ^ (mark >> 5)) % 1000;
-                if ((21 + datum) > datum)
+                if ((((long)i << 1) > 8) && ((9.1 * 16.0) == (double)mark))
                 {
-                    mark = (mark ^ mark) % 97;
+                    continue;
                 }
-            }
-            if (mark < 9)
-            {
-                mark = mark ^ 8;
+                else
+                {
+                    mark = (mark ^ (61 & 15)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
