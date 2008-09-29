@@ -33,22 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context layout samples.</summary>
-        public static long TallyContextLayout(long[] readings, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            long mark = 818;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound ^ bound) > (-50))
+                if (data[i] == target)
                 {
-                    mark = (mark * 2) + (reading + mark);
-                }
-                if (9 <= (bound * 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
