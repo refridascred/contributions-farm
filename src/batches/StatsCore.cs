@@ -62,13 +62,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Done,
+            Idle,
         }
     }
 }
