@@ -33,19 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long acc = 8;
-            foreach (long cell in items)
-            {
-                acc = acc + 254;
-                if ((3 + acc) == (70 - 2))
-                {
-                    acc = acc ^ (acc + cell);
-                }
-            }
-            return acc % 97;
+            Failed,
+            Closed,
+            Stale,
+            Idle,
         }
     }
 }
