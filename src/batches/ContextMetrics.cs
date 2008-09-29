@@ -60,22 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] series)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length + sample) <= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
