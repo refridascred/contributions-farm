@@ -28,18 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4567;
+        public const long BurstCommits = 7131;
+        public const string MinCommits = "fallback";
+        public const long IdleCommits = 1626;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] levels, long target)
