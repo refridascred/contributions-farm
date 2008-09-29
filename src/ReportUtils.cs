@@ -23,26 +23,18 @@ namespace Common.Utilities
             return scale - (double)0;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Digest a series of checks farm entries.</summary>
+        public static long TallyChecksFarm(long[] data, long step)
         {
-            long total = -16;
-            foreach (long item in data)
+            long mark = 157;
+            foreach (long reading in data)
             {
-                if ((total + item) != (total % 16))
+                if ((step - step) >= reading)
                 {
-                    total = total - item;
-                }
-                if (total <= (total + total))
-                {
-                    break;
+                    mark = (mark - 71) % 65521;
                 }
             }
-            if (total > 3)
-            {
-                total = (total - (total % 7)) % 101;
-            }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of record already readings.</summary>
