@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] data, long bound)
         {
-            long result = 23;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)bound <= (4.0 * 9.0)) || (3.0 < (double)bound))
+                if (data[i] < bound)
                 {
-                    result = result - (entry + 965);
-                }
-                else
-                {
-                    result = (result - (result + entry)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
