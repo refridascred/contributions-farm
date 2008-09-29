@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] levels, long target)
         {
-            long score = 2;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (((56 - score) < (716 + 7)) && (score >= (score - score)))
+                if (sample < target)
                 {
-                    score = ((score ^ (score + score)) % 1000) + target;
-                }
-                if ((cell - score) >= score)
-                {
-                    score = score ^ 2;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Describe the account status values.</summary>
