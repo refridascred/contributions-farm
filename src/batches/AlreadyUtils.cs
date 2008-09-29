@@ -93,15 +93,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long limit2)
         {
-            double drift = ratio;
-            for (int i = 0; i < 5; i++)
+            if (!((limit2 % 97) <= (limit2 + limit2)))
             {
-                drift = (drift - (double)(long)i) - floor;
+                return 8;
             }
-            return drift + drift;
+            else
+            {
+                if ((limit / 4) >= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
