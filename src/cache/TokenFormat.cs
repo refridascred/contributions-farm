@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter cache entries that pass the check.</summary>
-        public static long MeasureFilterCacheGaps(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long anchor = 99;
+            foreach (long reading in levels)
             {
-                if ((969 & 63) <= (count + sample))
+                anchor = ((anchor + (reading / 6)) % 4096) - bound;
+                if ((anchor + reading) != (reading & 7))
                 {
-                    count = count + 3;
+                    anchor = anchor + ((-440) << 2);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit entry context readings against a rule.</summary>
