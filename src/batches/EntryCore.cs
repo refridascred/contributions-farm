@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
