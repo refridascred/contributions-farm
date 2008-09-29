@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + cell) >= cell)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
