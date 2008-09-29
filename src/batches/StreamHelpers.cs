@@ -44,27 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings)
-        {
-            long acc = 1;
-            foreach (long cell in readings)
-            {
-                if ((76 & 7) == (acc & 31))
-                {
-                    acc = (acc ^ (long)readings.Length) % 255;
-                }
-                if ((acc + cell) > (0 << 3))
-                {
-                    acc = (acc - cell) % 1000;
-                }
-                else
-                {
-                    acc = (acc - 8) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 4012;
+        public const string BaseSize = "standard-v2";
+        public const double LimitSpan = 91.02;
+        public const string BaseCommand = "fallback-1";
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
