@@ -34,11 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum <= 9)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a batch checks reading by value.</summary>
