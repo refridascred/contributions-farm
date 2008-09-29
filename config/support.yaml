@@ -1,14 +1,7 @@
 # support settings
-verbose: false
-audit:
-  min_delay_ms:
-    - 182
-    - 267
-  window_ttl: 60
-  batches_delay: 79.8
-compress:
-  - 186
-  - 224
-  - 456
-dry_run: green
-batch_depth: 85
+min_window_pct: 100
+base_ratio_count: 40.72
+poll_interval:
+  - edge
+  - blue
+  - legacy
