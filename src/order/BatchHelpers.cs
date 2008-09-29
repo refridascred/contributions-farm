@@ -36,15 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double offset)
-        {
-            double ratio = (double)(563 * 5);
-            if (ratio >= (double)62)
-            {
-                ratio = ratio + (ratio - rate);
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 8279;
+        public const double WindowInterval = 52.25;
+        public const long BurstStream = 2553;
     }
 }
