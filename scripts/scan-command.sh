@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    green)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging strict standard blue; do
+for item in cached eu-west local blue; do
     log "checking ${item}"
 done
