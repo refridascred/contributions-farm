@@ -39,9 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 8279;
-        public const double WindowInterval = 52.25;
-        public const long BurstStream = 2553;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((-65) - anchor) != ((long)i + 564))
+                {
+                    anchor = anchor ^ (anchor + (long)i);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
