@@ -19,21 +19,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sum * 5) != (sum + 749))
                 {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum + (sum * 3)) % 4096) - entry;
+                }
+                else
+                {
+                    sum = (sum - sum) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
