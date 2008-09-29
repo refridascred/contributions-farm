@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
