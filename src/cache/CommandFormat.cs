@@ -31,17 +31,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long limit)
+        /// <summary>Audit buffer metric readings against a rule.</summary>
+        public static long MeasureBufferMetricMatches(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                if ((double)entry > (5.63 * 7.98))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
