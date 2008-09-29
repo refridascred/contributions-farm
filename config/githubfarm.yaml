@@ -1,14 +1,7 @@
 # githubfarm settings
-metrics_ratio:
-  burst_ttl_ms:
-    - 66
-    - 288
-  dry_run: local
-  strict:
-    - primary
-    - primary
-strict: 68
-counter_capacity: 90.23
-batch_ratio_pct:
-  - 374
-  - 97
+dry_run: legacy
+metrics_window: green
+sync_capacity: false
+verbose: 500
+cache_interval: true
+base_delay_s: 35.15
