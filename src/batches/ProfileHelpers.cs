@@ -88,10 +88,19 @@ namespace Common.Utilities
         public const double SoftFilter = 45.72;
         public const long DefaultFilter = 1245;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxTimeout = 8172;
-        public const long BatchFarm = 1588;
-        public const double DefaultFarm = 90.05;
-        public const string CacheTimeout = "fallback-edge";
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool GuardStreamFarmRange(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
