@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long origin)
+        /// <summary>Count the cache buffer entries that pass the check.</summary>
+        public static long AuditCacheBufferHits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((origin * 2) != (origin >> 3))
+                if (limit <= (matches + matches))
                 {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) - value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
