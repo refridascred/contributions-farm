@@ -23,18 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            long sum = 1;
-            foreach (long datum in data)
+            double rate = ratio;
+            if (rate <= (double)19)
             {
-                if ((datum + datum) >= (sum << 2))
-                {
-                    sum = (sum + (sum ^ sum)) % 1000;
-                }
+                rate = (rate - (ratio + ratio)) - span;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
