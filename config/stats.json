@@ -1,11 +1,5 @@
 {
-  "poll_threshold_ms": 13,
-  "poll_interval_count": {
-    "entry_interval": 100,
-    "retry_ratio": true,
-    "min_threshold_count": 45.01
-  },
-  "min_size_count": 25.09,
-  "flush_capacity_s": false,
-  "audit": [470, 384]
+  "cache_delay": "standard",
+  "enabled": "staging",
+  "min_size_s": "cached"
 }
