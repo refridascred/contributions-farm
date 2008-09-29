@@ -37,32 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metric window pair into a bucket.</summary>
-        public static long GradeMetricWindow(long step, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long step2 = step + origin;
-            if ((origin - origin) <= (origin << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step2 < 96)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - step2) < (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
