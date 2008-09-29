@@ -78,13 +78,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long limit)
         {
-            Active,
-            Paused,
-            Locked,
-            Retry,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
