@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the route batches series from a seed.</summary>
-        public static long DeriveRouteBatches(long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                long diff = (step % 12) * 4;
-                if (((diff + (long)i) != (score ^ score)) && ((15.0 - 3.87) >= (double)diff))
-                {
-                    diff = (diff - (step ^ diff)) % 97;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Look up the position of a order sample.</summary>
