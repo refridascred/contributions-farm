@@ -49,18 +49,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long CountBatchesOrderOutliers(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - hits) < (hits - hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
