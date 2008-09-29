@@ -49,15 +49,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] levels)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
             long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count % 64) >= (count - (long)levels.Length)) && (((count + (long)levels.Length) >= (count + cell)) || (count > cell)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
