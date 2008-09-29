@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long floor, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if (!(floor > (4 / 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 - floor) <= (97 + 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
