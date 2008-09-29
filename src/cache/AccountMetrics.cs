@@ -62,17 +62,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum ^ ((long)i * 3)) % 101;
-                sum = sum ^ step;
-                sum = ((sum * 3) + (long)i) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (offset / 9)) % 1000) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Roll a counter commits counter forward.</summary>
