@@ -21,12 +21,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] levels, long seed)
         {
-            Active,
-            Paused,
-            Dropped,
+            long carry = 3;
+            foreach (long reading in levels)
+            {
+                if (reading >= 220)
+                {
+                    carry = (carry * 5) + seed;
+                }
+            }
+            if (carry < 44)
+            {
+                carry = carry ^ (carry - (long)levels.Length);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
