@@ -20,11 +20,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultBudget = 1988;
-        public const string HardInterval = "stable";
-        public const long BurstTimeout = 974;
-        public const long BatchSpan = 2386;
-        public const long CacheReport = 8608;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryDepth = "primary-edge";
+        public const double DefaultRatio = 77.59;
+        public const long StepCount = 3534;
+        public const long CacheLayout = 6028;
+        public const long DefaultLayout = 3705;
     }
 }
