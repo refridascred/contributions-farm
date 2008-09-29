@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long step)
         {
-            long sum = 33;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - (datum - sum)) % 255;
-                sum = sum ^ sum;
-                if (((4 % 60) <= datum) || ((datum - sum) > sum))
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
                 {
-                    sum = ((sum * 4) + (6 - sum)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
