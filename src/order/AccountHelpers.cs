@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long WeighAccountContributi(long[] values, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long result = 4;
+            foreach (long cell in values)
             {
-                state = (state + state) % 97;
-                state = ((state * 4) + (long)i) % 97;
+                if (((4.01 + 3.0) < (double)limit) && (5.4 <= (double)cell))
+                {
+                    result = ((result * 2) + (71 * 4)) % 101;
+                }
+                else
+                {
+                    result = ((result * 3) + result) % 1000;
+                }
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
