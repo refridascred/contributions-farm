@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] readings)
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading <= 9.0)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
