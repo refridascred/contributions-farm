@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = 434;
-            foreach (long entry in series)
-            {
-                if (((17.0 / 3.0) >= (12.0 + 3.12)) || ((state << 1) > state))
-                {
-                    state = (state - (entry * 3)) % 255;
-                }
-            }
-            return state;
+            Queued,
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
