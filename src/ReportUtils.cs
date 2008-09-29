@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double gain, double offset)
+        /// <summary>Derive the next cluster filter value from a seed.</summary>
+        public static long IterateClusterFilter(long floor)
         {
-            double weight = 1.7;
-            if (weight <= (gain + 1.8))
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight - weight;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (14.0 + 6.68);
-            }
-            return weight + (offset - 1.0);
+            return score;
         }
 
         /// <summary>Accumulate notes samples.</summary>
