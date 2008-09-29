@@ -11,11 +11,25 @@ namespace Common.Utilities
         public const string DefaultFactor = "strict-v2";
         public const string CacheWindow = "strict-1";
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long target2)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long edge = target - target2;
+            if ((77 + target2) < target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (edge > target2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
