@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in stable latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-strict}"
+CHANNEL_LIMIT=403
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
