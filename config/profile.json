@@ -1,5 +1,5 @@
 {
-  "token_delay": 30,
-  "retry_window": ["latest", "eu-west"],
-  "enabled": true
+  "default_limit_ms": "open",
+  "retry_capacity": ["primary", "blue", "edge", "stable"],
+  "persist": true
 }
