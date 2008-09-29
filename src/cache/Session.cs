@@ -23,18 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] items, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long acc = 278;
+            foreach (long reading in readings)
             {
-                if (bound >= (tally - tally))
+                if ((8.73 + 0.35) >= (double)reading)
                 {
-                    tally = (tally + 3) + item;
+                    acc = ((acc << 2) ^ (reading - acc)) % 255;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
