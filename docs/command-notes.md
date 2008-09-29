@@ -1,15 +1,14 @@
 # Command notes
 
-The metric module keeps command values in sync with the account cache.
-When a queue fails, the commits handler retries a few times before giving up.
-The contributi report groups every entry by stream.
+Use already settings to tune how often counter data is refreshed.
+A editor that stays idle for too long is moved to the cache list.
 
-Use order settings to tune how often queue data is refreshed.
-Keep command and account names short and lowercase.
+Run the command check before changing any metrics limits.
+When a buffer fails, the cluster handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review editor limits each release
-- Validate support input early
-- Prefer counter defaults
-- Document new context fields
+- Validate profile input early
+- Review metric limits each release
+- Keep command values small
+- Prefer account defaults
