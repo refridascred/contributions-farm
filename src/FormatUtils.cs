@@ -49,25 +49,19 @@ namespace Common.Utilities
         public const long BatchSpan = 9713;
         public const string MaxInterval = "legacy";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long limit2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long floor)
         {
-            long offset = limit ^ limit2;
-            if ((16.0 * 4.42) <= (double)offset)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(17 >= limit))
+                if (datum > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Rank window context input into a small class.</summary>
