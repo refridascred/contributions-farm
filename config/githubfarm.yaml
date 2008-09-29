@@ -1,8 +1,8 @@
 # githubfarm settings
-poll_threshold_s: true
-burst_size:
-  editor_size: 30
-  sync_delay_count: 80.16
-  hard_ttl_pct: false
-  sync_limit_pct: false
-session_interval: 30
+verbose:
+  - latest
+  - legacy
+poll_delay_count: 67.41
+max_limit: strict
+poll_threshold: cached
+notes_interval: latest
