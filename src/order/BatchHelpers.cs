@@ -19,21 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((5.04 / 7.0) >= (double)step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (floor <= (floor - step))
                 {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
