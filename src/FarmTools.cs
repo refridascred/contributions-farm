@@ -25,11 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 3055;
-        public const double WindowQueue = 49.63;
-        public const long CacheWidth = 6345;
-        public const long BaseScore = 1906;
-        public const double CacheQueue = 18.33;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 3523;
+        public const long BaseWidth = 4118;
+        public const long SoftAlready = 8780;
+        public const long BurstLevel = 795;
     }
 }
