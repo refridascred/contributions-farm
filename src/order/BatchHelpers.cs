@@ -22,26 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long floor, long target)
-        {
-            long slot = floor - target;
-            if ((double)target >= (2.7 * 6.4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot + 79) > (floor * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitLevel = "strict-v2";
+        public const long RetryFactor = 4151;
+        public const double BaseDepth = 40.54;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
