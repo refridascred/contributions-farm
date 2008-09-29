@@ -1,7 +1,6 @@
-id,rank,region
-1,667,20.08
-2,33.13,77
-3,latest,990
-4,79.62,706
-5,standard,fallback
-6,755,latest
+id,state
+1,cached
+2,34.5
+3,263
+4,941
+5,968
