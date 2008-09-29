@@ -53,18 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double rate = (double)(88 / 9);
+            if (rate < (double)(-142))
             {
-                if (bound > (bound >> 2))
-                {
-                    hits = (hits + 2) + value;
-                }
+                rate = rate + 14.0;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (weight / 3.0)) + (double)(long)i;
+            }
+            return rate + (weight - bias);
         }
 
         /// <summary>Describe the session phase values.</summary>
