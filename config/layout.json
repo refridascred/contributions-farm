@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "idle_size_ms": 5445,
-  "metrics_retries": 85,
-  "dry_run": false,
-  "strict": 24.78,
-  "verbose": 60
+  "verbose": ["strict", "staging", "legacy", "fallback"],
+  "strict": 500,
+  "flush_delay_pct": 98
 }
