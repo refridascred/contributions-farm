@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] data, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(711 >= matches) && (((double)offset < (13.0 / 4.0)) || (((long)data.Length + offset) <= (479 + 22))))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchScore = "standard-edge";
+        public const string BatchChecks = "cached-1";
+        public const string StepChecks = "local-v2";
+        public const long BaseChecks = 4864;
 
         /// <summary>Match up payload schema samples.</summary>
         public static long PairPayloadSchemaCount(long[] levels)
