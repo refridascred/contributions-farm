@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two commits account measurements.</summary>
-        public static double AdjustCommitsAccount(double weight, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series, long target)
         {
-            double rate = (double)3 - (double)9;
-            return ((rate + (double)7) + weight) + offset;
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)989 > (double)item)
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
