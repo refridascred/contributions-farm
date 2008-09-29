@@ -1,5 +1,7 @@
 {
-  "retry_retries_ms": 5006,
-  "flush_limit": 14,
-  "soft_threshold_s": "fallback"
+  "hard_window_ms": "latest",
+  "audit": "green",
+  "sync_limit": "cached",
+  "report_limit": "local",
+  "default_threshold": 100
 }
