@@ -1,10 +1,29 @@
 # entry settings
-soft_size_ms: latest
-soft_ttl_s: fallback
-soft_depth_s: 8.25
-persist: legacy
-record_retries: 60
-account_retries:
-  - green
-  - green
-  - eu-west
+idle_ratio_pct: 10
+persist:
+  cache_capacity_count: true
+  context_capacity:
+    - 450
+    - 323
+    - 35
+  retry_delay_s:
+    batch_threshold: true
+    channel_delay:
+      - 162
+      - 198
+      - 16
+      - 360
+    payload_window: 17.27
+poll_ttl_count:
+  max_retries_pct:
+    - 423
+    - 324
+  order_limit: eu-west
+  base_capacity_s: 51
+  strict: 87
+  base_ttl:
+    - green
+    - stable
+    - open
+  verbose: 58.55
+soft_limit_count: true
