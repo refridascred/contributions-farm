@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank context session input into a small class.</summary>
-        public static long ClassifyContextSession(long seed, long seed2)
-        {
-            if ((seed2 >> 3) <= seed2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed2 + (-2)) < 3) || (756 >= (seed - seed2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (seed >= (seed % 64))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "standard-v2";
+        public const double WindowEntry = 81.34;
+        public const long BaseEntry = 3769;
+        public const long DefaultDepth = 6478;
+        public const long LimitTimeout = 1447;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardScore = 16.38;
