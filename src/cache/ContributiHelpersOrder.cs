@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long step)
         {
-            long result = 1;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                result = (result - result) % 97;
-                result = (result + reading) % 4096;
-                if ((bound / 8) != (result & 15))
+                if (value <= step)
                 {
-                    result = (result + reading) % 255;
-                }
-                else
-                {
-                    result = (result ^ (result - result)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Find the first record layout entry that matches the target.</summary>
