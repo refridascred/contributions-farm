@@ -29,22 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitInterval = 42.57;
+        public const string MaxSession = "fallback";
+        public const long BurstSpan = 3896;
+        public const long CacheSpan = 4563;
+        public const double DefaultSession = 86.17;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
