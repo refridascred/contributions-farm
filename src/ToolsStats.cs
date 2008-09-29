@@ -57,15 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double bias)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double gain = bias;
-            if (gain < 3.1)
-            {
-                gain = (gain + bias) + rate;
-            }
-            return gain + (gain + gain);
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
