@@ -35,29 +35,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)(long)i > (6.8 / 2.0))
-                {
-                    sum = sum - (origin >> 1);
-                    break;
-                }
-                else
-                {
-                    sum = (sum * 3) + (sum >> 1);
-                }
-                if (!((origin % 97) > ((-159) + sum)))
-                {
-                    sum = (sum + (sum + origin)) % 97;
-                    sum = (sum << 3) ^ (origin + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 88.67;
+        public const long BurstReport = 8653;
+        public const long SoftReport = 7100;
     }
 }
