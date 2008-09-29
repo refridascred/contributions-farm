@@ -1,21 +1,5 @@
 # route settings
-audit: 100
-dry_run:
-  sync_threshold:
-    retry_timeout: 16
-    warm_threshold_ms:
-      - primary
-      - edge
-      - local
-      - strict
-    enabled: false
-    retry_ratio_ms: 60
-    entry_size: false
-    account_delay: local
-  schema_threshold: 1109
-  dry_run: 856
-  max_ttl_count: edge
-contributi_ttl: edge
-poll_retries_ms: 6401
-sync_size_pct: 250
-cache_window: 87
+sync_retries_pct: eu-west
+route_depth: 2951
+warm_delay: 63.23
+cache_ratio_s: eu-west
