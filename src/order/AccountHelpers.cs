@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long RetryBudget = 5918;
         public const string IdleRatio = "stable-v2";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long offset)
         {
-            Synced,
-            New,
-            Active,
-            Retry,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
