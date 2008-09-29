@@ -67,17 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] data, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
