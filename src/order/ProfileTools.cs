@@ -31,11 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many schema token samples are out of range.</summary>
+        public static long CountSchemaTokenGaps(long[] samples, long floor)
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 2) == (hits / 6))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
