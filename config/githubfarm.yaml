@@ -1,10 +1,7 @@
 # githubfarm settings
-warm_limit_count: 500
-batch_ratio_count: 68.9
-soft_size: 5776
-farm_ratio:
-  - 60
-  - 24
-  - 128
-hard_delay: 25
-default_size_pct: 15.62
+token_size: eu-west
+burst_retries: 66.6
+hard_timeout_s: 70.78
+audit: 93.43
+cluster_limit: open
+sync_ttl_count: true
