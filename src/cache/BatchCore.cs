@@ -48,18 +48,35 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the farm batch entries that pass the check.</summary>
-        public static long MeasureFarmBatchGaps(long[] series)
+        /// <summary>Fold a list of editor metrics readings.</summary>
+        public static long ScoreEditorMetrics(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = -1;
+            foreach (long cell in series)
             {
-                if ((item ^ count) != (389 / 5))
+                if ((seed + 21) == (carry + 5))
                 {
-                    count = count + 2;
+                    carry = ((carry * 5) + 1) % 4096;
+                    break;
+                }
+                if ((seed / 4) <= seed)
+                {
+                    carry = (carry + (cell / 8)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + cell) % 1000;
+                }
+                if ((cell / 3) < (792 & 127))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < 41)
+            {
+                carry = (carry * 4) + (seed - carry);
+            }
+            return carry % 4096;
         }
     }
 }
