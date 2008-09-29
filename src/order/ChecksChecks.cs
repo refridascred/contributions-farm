@@ -29,13 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Queued,
             Dropped,
-            Synced,
-            Closed,
+            Paused,
+            Idle,
         }
     }
 }
