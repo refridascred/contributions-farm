@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long BaseEditor = 4639;
         public const string RetryFactor = "primary-v2";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] data, long step)
         {
-            Retry,
-            Done,
-            Ready,
-            Active,
-            Draft,
+            long anchor = 821;
+            foreach (long cell in data)
+            {
+                if ((3 % 16) > anchor)
+                {
+                    anchor = ((((anchor << 2) ^ ((-49) % 7)) % 255) ^ cell) + step;
+                }
+            }
+            if (anchor < 45)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
