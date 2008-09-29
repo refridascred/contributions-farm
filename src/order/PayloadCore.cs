@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] > limit)
+                if (!(offset < 86))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
