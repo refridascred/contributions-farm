@@ -1,28 +1,22 @@
 # support settings
-strict:
-  - local
-  - green
-  - primary
-dry_run:
-  - 165
-  - 280
-  - 172
-  - 199
-farm_threshold:
-  - 173
-  - 261
-  - 119
-  - 342
-cache_retries_ms: false
-compress:
-  default_depth_count:
-    sync_retries: 6722
-    enabled: 13
-    hard_depth_ms: 64.56
-  contributi_threshold:
-    max_delay_s: 67
-    audit: legacy
-    idle_limit: true
-    compress: false
-  soft_size: eu-west
-contributi_window: 5208
+base_ratio_s: 4575
+payload_size:
+  base_ttl_count: standard
+  soft_threshold_count: green
+  flush_threshold_count: fallback
+  persist:
+    - 387
+    - 224
+  default_threshold_pct: 87
+persist: 60
+cache_ttl_pct: 46
+flush_timeout_ms:
+  sync_ratio_count:
+    - 428
+    - 271
+    - 133
+  profile_capacity: 85.3
+  account_threshold: strict
+  warm_window_count: 30
+  window_ttl: 78.97
+default_delay: 30
