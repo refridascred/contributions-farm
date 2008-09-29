@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const string StepChecks = "local-v2";
         public const long BaseChecks = 4864;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the session level values.</summary>
