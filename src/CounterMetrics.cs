@@ -13,11 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchCount = 6631;
-        public const long RetrySpan = 9178;
-        public const long CacheStream = 8758;
-        public const long SoftStream = 1653;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TallyGithubfarm(long[] data)
