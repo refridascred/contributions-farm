@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] values)
         {
-            double load = 7.0;
-            if (load > (2.67 + load))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                load = load - bias;
+                if ((tally + entry) < entry)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                load = load + (double)346;
-            }
-            return load + (bias + offset);
+            return tally;
         }
 
         /// <summary>Hold a stats info.</summary>
