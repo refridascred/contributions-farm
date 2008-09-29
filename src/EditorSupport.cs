@@ -40,12 +40,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] readings, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= offset)
+                if ((samples[i] == bound) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
