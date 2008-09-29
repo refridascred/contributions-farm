@@ -1,5 +1,5 @@
 {
-  "poll_interval": ["green", "open"],
-  "audit": "primary",
-  "tools_threshold": [287, 361, 129]
+  "batch_retries": 97.97,
+  "soft_window_count": "open",
+  "retry_interval_s": 250
 }
