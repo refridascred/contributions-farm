@@ -40,9 +40,18 @@ namespace Common.Utilities
             return weight - 14.0;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitScore = 5460;
-        public const long IdleWidth = 8078;
-        public const long IdleBudget = 8573;
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long CountLayoutRouteHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 1) > (matches + value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
