@@ -1,7 +1,9 @@
-id,score,token
-1,235,554
-2,36,strict
-3,39,358
-4,78.52,latest
-5,eu-west,352
-6,953,local
+id,owner,level
+1,0.64,latest
+2,standard,59.59
+3,95.53,fallback
+4,9.98,standard
+5,eu-west,eu-west
+6,legacy,edge
+7,210,strict
+8,89,565
