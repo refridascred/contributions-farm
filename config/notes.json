@@ -1,10 +1,8 @@
 {
-  "idle_depth_count": true,
-  "audit": true,
-  "max_ratio_count": {
-    "record_capacity": 8882,
-    "idle_capacity": 7941,
-    "notes_threshold": "fallback",
-    "githubfarm_interval": false
-  }
+  "enabled": [5, 77, 296],
+  "default_limit": "edge",
+  "burst_limit_ms": ["cached", "edge"],
+  "readonly": false,
+  "sync_size": 1024,
+  "graph_limit": [71, 47, 374]
 }
