@@ -51,22 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7057;
+        public const double MaxSupport = 4.0;
+        public const double BaseBudget = 26.18;
+        public const long MinSupport = 8246;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string HardRatio = "cached-edge";
