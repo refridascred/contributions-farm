@@ -30,10 +30,11 @@ namespace Common.Utilities
         public const double LimitCount = 20.43;
         public const string BurstRecord = "open";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 1892;
-        public const long BurstBatch = 4126;
-        public const double LimitFactor = 86.41;
-        public const long DefaultTimeout = 9776;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
     }
 }
