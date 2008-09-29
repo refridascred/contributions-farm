@@ -37,18 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (datum <= 9)
+                if ((matches <= (matches + sample)) && ((double)sample != (3.4 * 2.8)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
