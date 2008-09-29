@@ -1,7 +1,6 @@
 id,weight,token
-1,local,85.99
-2,782,725
-3,fallback,587
-4,96.0,standard
-5,81.84,cached
-6,green,92.95
+1,green,fallback
+2,96.57,830
+3,12.78,4.13
+4,legacy,77.34
+5,stable,strict
