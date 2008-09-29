@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
+            public double Region { get; set; }
             public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
