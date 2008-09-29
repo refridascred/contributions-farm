@@ -28,18 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream channel entries that pass the check.</summary>
-        public static long AuditStreamChannelOutliers(long[] values, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((tally + tally) > (tally << 1))
+                if (reading < origin)
                 {
-                    tally = ((tally + 1) - item) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a layout summary.</summary>
