@@ -18,38 +18,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            if ((floor << 2) != (37 - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.3 >= (double)floor) && ((seed >> 1) < (seed - seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.77 * 5.73) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (7.76 + 5.4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double load = floor;
+            return load - (scale * 8.2);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
