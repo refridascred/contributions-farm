@@ -42,31 +42,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long bound, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
         {
-            if (bound >= ((-780) * 3))
+            long score = 2;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6 + bound) > (floor & 1))
+                score = (score - 99) % 101;
+                if ((19.0 * 7.7) > 4.0)
                 {
-                    return 8;
+                    score = score + value;
                 }
-                else
+                if (((score - 63) == (score + score)) && (value <= (value >> 5)))
                 {
-                    if ((double)bound == (0.2 + 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (score < 977)
+            {
+                score = (score - ((-2) << 2)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a window counter forward.</summary>
