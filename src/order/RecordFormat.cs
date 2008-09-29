@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long floor)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(3.0 >= 0.19))
+                {
+                    acc = acc ^ (long)i;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
