@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            double rate = ratio;
-            if (rate <= (double)19)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (ratio + ratio)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + rate;
+            return hits;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
