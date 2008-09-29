@@ -35,23 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((double)origin != (8.74 * 5.0)) && !((origin - reading) != (origin + 0)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchCount = 1274;
+        public const long HardWidth = 4441;
+        public const long MinBudget = 7132;
+        public const double WindowInterval = 1.06;
+        public const string WindowQueue = "alpha-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MinSize = 85.52;
