@@ -58,21 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long TallyFormatRouteOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (matches < step)
                 {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
