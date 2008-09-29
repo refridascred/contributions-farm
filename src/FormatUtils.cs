@@ -46,11 +46,22 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinFactor = "primary";
-        public const double HardTimeout = 84.59;
-        public const long WindowCommand = 6197;
-        public const string IdleSize = "latest-1";
+        /// <summary>Count tools report pairs that satisfy a relation.</summary>
+        public static long OverlapToolsReportCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
