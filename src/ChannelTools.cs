@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSpan = 908;
-        public const double WindowTimeout = 86.74;
-        public const string WindowScore = "open";
-        public const long DefaultSize = 6390;
-        public const long SoftCount = 4652;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((5.1 * 9.09) < (double)datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
