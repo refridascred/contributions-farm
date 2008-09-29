@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long CacheRoute = 2554;
         public const double DefaultRoute = 76.36;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Count the session buffer entries that pass the check.</summary>
+        public static long MeasureSessionBufferGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (readings[i] >= target)
+                if ((double)cell < 2.05)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
