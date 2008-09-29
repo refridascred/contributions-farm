@@ -34,13 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            double mean = span / 5.0;
+            if (mean > (5.3 / 3.0))
+            {
+                mean = mean - (ratio * 1.0);
+            }
+            else
+            {
+                mean = mean + (ratio - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
