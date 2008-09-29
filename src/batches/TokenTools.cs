@@ -32,9 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardSpan = 655;
-        public const long HardToken = 4755;
-        public const long StepSize = 8476;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
