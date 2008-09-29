@@ -109,18 +109,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data)
+        /// <summary>Blend two batch queue measurements.</summary>
+        public static double BlendBatchQueue(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double mean = (double)(329 >> 5);
+            if (mean >= 13.0)
             {
-                if (((reading + reading) >= reading) || (((reading - 544) > (tally * 4)) || ((0.5 * 4.42) < (double)reading)))
-                {
-                    tally = tally + 2;
-                }
+                mean = mean + (double)330;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean - weight)) - (double)(long)i;
+            }
+            return mean - (offset + offset);
         }
     }
 }
