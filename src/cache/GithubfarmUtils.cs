@@ -13,18 +13,38 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((floor + origin) > (5 - origin))
             {
-                if (((value ^ count) <= value) && (((value >> 4) != (count - value)) || ((double)value != (8.63 / 8.0))))
+                return 5;
+            }
+            else
+            {
+                if ((origin / 8) >= (origin / 6))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 7) > floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 >> 4) <= (9 + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
