@@ -60,25 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token support value from a seed.</summary>
-        public static long RollTokenSupport(long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)i == (1.18 * 10.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (long)i;
-                    acc = (acc * 5) + ((long)i << 1);
-                    continue;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 5) + seed) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Describe the stream status values.</summary>
