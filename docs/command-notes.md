@@ -1,12 +1,12 @@
 # Command notes
 
-Keep metric and record names short and lowercase.
-The graph module keeps account values in sync with the metric cache.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the order queue.
+Run the context check before changing any cluster limits.
+When a already fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep batches values small
-- Log every metrics change
-- Prefer report defaults
+- Prefer filter defaults
+- Review account limits each release
+- Document new order fields
+- Validate metrics input early
