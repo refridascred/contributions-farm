@@ -1,8 +1,5 @@
 {
-  "enabled": [5, 77, 296],
-  "default_limit": "edge",
-  "burst_limit_ms": ["cached", "edge"],
-  "readonly": false,
-  "sync_size": 1024,
-  "graph_limit": [71, 47, 374]
+  "farm_limit": false,
+  "max_delay_s": false,
+  "burst_retries_pct": ["cached", "open"]
 }
