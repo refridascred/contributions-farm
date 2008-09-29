@@ -29,18 +29,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((seen * 4) == (seen - 42)) || ((seen - (long)samples.Length) != (value + seen)))
+                acc = acc - (4 + 5);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 2;
+                    acc = acc ^ ((long)i2 / 2);
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
