@@ -54,13 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long limit)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
