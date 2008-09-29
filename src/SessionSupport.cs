@@ -26,17 +26,38 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin - bound) == (origin - origin)) || (bound < (origin * 5)))
             {
-                if (readings[i] <= limit)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound <= (double)412) && (bound >= (origin ^ bound)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin % 12) <= (bound << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((79 <= (bound << 1)) || ((bound & 127) >= bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
