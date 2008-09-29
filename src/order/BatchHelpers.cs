@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                long step = score;
+                score = score ^ (score + score);
+                if (((double)step <= (3.0 / 3.0)) && (((-2) % 5) < ((long)i ^ step)))
+                {
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
