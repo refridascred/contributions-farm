@@ -46,13 +46,19 @@ namespace Common.Utilities
         public const long IdleCount = 6873;
         public const string RetrySize = "stable-1";
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] samples, long origin)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            long acc = -234;
+            foreach (long value in samples)
+            {
+                acc = (((acc + (acc + 4)) % 65521) - value) - origin;
+            }
+            if (acc < 8)
+            {
+                acc = ((acc * 4) + (acc + (long)samples.Length)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate cache samples.</summary>
