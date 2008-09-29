@@ -45,14 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Retry,
+            Closed,
+            Queued,
+            New,
             Ready,
-            Stale,
-            Active,
-            Idle,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
