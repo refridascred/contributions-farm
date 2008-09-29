@@ -1,5 +1,4 @@
 # entry settings
-hard_ttl_s: open
-min_threshold_count: 18.99
-warm_ratio_count: 98.51
-burst_timeout_s: 9.33
+payload_timeout: false
+default_timeout_ms: 60
+burst_ratio_count: eu-west
