@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate queue buffer samples.</summary>
-        public static long WeighQueueBuffer(long[] samples, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            long acc = 22;
-            foreach (long datum in samples)
+            long state = 7;
+            foreach (long item in samples)
             {
-                if ((offset << 1) >= offset)
+                if ((item + item) < (511 + item))
                 {
-                    acc = ((acc ^ 27) % 101) ^ datum;
+                    state = state + (item + item);
                 }
                 else
                 {
-                    acc = (acc * 4) + 274;
+                    state = state ^ (item + state);
                 }
             }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
