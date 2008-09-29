@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long StepBudget = 3865;
         public const string MaxRatio = "open-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 6463;
-        public const double SoftLayout = 95.83;
-        public const double HardScore = 69.71;
-        public const long WindowScore = 4521;
-        public const long LimitLevel = 6403;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double gain, double span)
