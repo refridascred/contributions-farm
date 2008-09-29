@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long WindowSpan = 6624;
         public const long MaxCount = 5472;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Idle,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
