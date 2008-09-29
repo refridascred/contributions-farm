@@ -46,22 +46,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            long state = 601;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (state < (entry >> 4))
+                if (((6.3 - 6.0) >= (double)(long)i) && ((bound << 3) == (bound >> 2)))
                 {
-                    state = (state + step) % 1000;
+                    mark = (mark + (mark >> 1)) % 65521;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (state > (-5))
-            {
-                state = ((state * 5) + (step % 16)) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
