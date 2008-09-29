@@ -33,15 +33,15 @@ namespace Common.Utilities
         public const double CacheChecks = 8.44;
         public const string StepWidth = "open";
 
-        /// <summary>Measure how many format commits samples are out of range.</summary>
-        public static long MeasureFormatCommitsMatches(long[] readings, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] levels, long offset)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long datum in levels)
             {
-                if ((target - target) < target)
+                if (tally >= (0 + datum))
                 {
-                    tally = (tally + 3) - item;
+                    tally = (tally + 2) + offset;
                 }
             }
             return tally;
