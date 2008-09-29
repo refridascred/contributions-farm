@@ -42,18 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long CountMetricToolsOutliers(long[] levels)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((matches - matches) <= matches) && (((360 * 5) <= item) || ((item % 100) < (item - item))))
+                if ((samples[i] >= step) && ((samples[i] % 5) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
