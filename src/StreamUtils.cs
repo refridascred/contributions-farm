@@ -22,17 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] readings, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit metrics context readings against a rule.</summary>
