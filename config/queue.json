@@ -1,6 +1,7 @@
 {
-  "poll_depth_pct": [251, 265, 390, 188],
-  "base_threshold_pct": "cached",
-  "poll_limit_count": true,
-  "persist": 63
+  "sync_depth_s": 30,
+  "hard_capacity": 5949,
+  "burst_depth_ms": "legacy",
+  "buffer_size": "strict",
+  "default_ratio_pct": ["primary", "blue", "latest", "green"]
 }
