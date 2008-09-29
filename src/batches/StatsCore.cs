@@ -60,19 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] values, long floor)
         {
-            double rate = (double)(88 / 9);
-            if (rate < (double)(-142))
+            bool ready = true;
+            foreach (long value in values)
             {
-                rate = rate + 14.0;
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (weight / 3.0)) + (double)(long)i;
-            }
-            return rate + (weight - bias);
+            return ready;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
