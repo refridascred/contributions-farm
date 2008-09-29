@@ -1,8 +1,11 @@
 # entry settings
-soft_interval_count: 84.01
-warm_ttl: 91.15
-burst_depth_ms: fallback
-account_retries: true
-stream_capacity:
-  - staging
-  - fallback
+compress: 1024
+counter_retries: true
+strict: primary
+format_interval:
+  cache_interval_s: 100
+  min_delay_pct: edge
+  format_threshold: 1024
+  counter_window: true
+  verbose: local
+  retry_capacity_count: 45
