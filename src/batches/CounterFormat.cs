@@ -34,17 +34,18 @@ namespace Common.Utilities
             return load + (bias + offset);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (values[i] <= bound)
+                if ((limit ^ item) <= item)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
