@@ -1,9 +1,9 @@
 # githubfarm settings
-stream_limit: false
-session_interval: stable
-burst_timeout_pct: blue
-flush_ratio_count: 60
-idle_limit_count:
-  - strict
-  - fallback
-persist: 65.56
+payload_ratio: true
+burst_limit_pct: open
+base_timeout_count: 250
+batch_threshold: green
+queue_ratio:
+  - primary
+  - green
+  - blue
