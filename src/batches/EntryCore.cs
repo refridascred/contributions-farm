@@ -35,10 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSize = 3144;
-        public const long BasePayload = 1670;
-        public const long WindowPayload = 6483;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public bool Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
