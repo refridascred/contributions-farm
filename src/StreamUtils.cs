@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long step)
+        /// <summary>Measure how many farm account samples are out of range.</summary>
+        public static long CountFarmAccountOutliers(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (reading < step)
+                if (!((13 - (long)samples.Length) >= (step * 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
