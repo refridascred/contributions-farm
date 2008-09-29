@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((matches / 3) != (datum + datum)) && ((double)datum >= (double)6))
-                {
-                    matches = matches + 2;
-                }
+                state = (state - (origin - 4)) % 255;
+                state = (state + (origin + state)) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many graph editor samples are out of range.</summary>
