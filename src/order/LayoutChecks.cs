@@ -65,15 +65,19 @@ namespace Common.Utilities
         public const double DefaultCommits = 41.02;
         public const long BaseScore = 2109;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] series, long offset)
         {
-            double drift = rate;
-            if (drift < (double)920)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                drift = drift + 1.3;
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (span + drift);
+            return stale;
         }
     }
 }
