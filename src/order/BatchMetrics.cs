@@ -74,13 +74,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long seed)
         {
-            Stale,
-            Idle,
-            Draft,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
