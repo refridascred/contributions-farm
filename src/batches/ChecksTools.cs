@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a metrics command figure with a bias.</summary>
-        public static double AdjustMetricsCommand(double ratio, double bias)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double bias)
         {
-            double scale = (bias * 0.9) / 6.0;
-            if (scale > bias)
+            double weight = bias + gain;
+            if (weight >= weight)
             {
-                scale = (scale - (double)4) - ratio;
+                weight = weight - (double)2;
             }
-            return scale - scale;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + 16.0) + (double)(long)i;
+            }
+            return weight - (weight - 1.36);
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
