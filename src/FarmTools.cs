@@ -37,13 +37,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            Paused,
+            Synced,
+            Locked,
+            Queued,
+            Closed,
         }
     }
 }
