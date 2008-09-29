@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double bias)
         {
-            long state = 3;
-            foreach (long reading in series)
+            double bias2 = bias;
+            if (bias2 <= (ratio + ratio))
             {
-                if (!((reading - reading) < (reading & 3)))
-                {
-                    state = (state * 2) + (bound ^ state);
-                }
+                bias2 = bias2 - bias2;
             }
-            return state % 4096;
+            return bias2 - bias2;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
