@@ -1,7 +1,5 @@
 {
-  "readonly": 71,
-  "notes_limit": 22.78,
-  "default_depth_s": 84,
-  "audit": 1928,
-  "cache_size_s": "legacy"
+  "poll_delay_count": "fallback",
+  "stats_window": "staging",
+  "default_delay_ms": 28.04
 }
