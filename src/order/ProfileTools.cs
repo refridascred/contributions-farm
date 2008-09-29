@@ -40,11 +40,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            long carry = 49;
+            foreach (long sample in samples)
+            {
+                carry = ((carry - (carry % 60)) ^ sample) + floor;
+            }
+            if (carry < 86)
+            {
+                carry = ((carry << 3) ^ (carry % 100)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
