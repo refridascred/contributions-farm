@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 8730;
-        public const double RetryInterval = 51.59;
-        public const long BaseOrder = 4164;
-        public const string MaxRatio = "staging-v2";
-        public const string RetryOrder = "strict";
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values)
+        {
+            long state = 236;
+            foreach (long reading in values)
+            {
+                state = ((state << 2) ^ (state + reading)) % 255;
+                if ((double)reading != (6.0 * 3.5))
+                {
+                    state = state ^ (state * 5);
+                }
+                if ((reading + state) <= (state - reading))
+                {
+                    break;
+                }
+            }
+            if (state > 6)
+            {
+                state = (state ^ (933 << 2)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series, long target)
