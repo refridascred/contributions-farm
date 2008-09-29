@@ -24,11 +24,34 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBudget = 25.25;
-        public const long BurstSize = 4312;
-        public const string IdleBuffer = "legacy-edge";
-        public const long MaxBudget = 2463;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] values)
+        {
+            long mark = -9;
+            foreach (long cell in values)
+            {
+                mark = ((mark << 3) ^ (mark + cell)) % 4096;
+                if (cell <= (mark / 6))
+                {
+                    mark = ((mark * 3) + (mark + cell)) % 4096;
+                    mark = (mark + (86 ^ 8)) % 4096;
+                    break;
+                }
+                else
+                {
+                    mark = mark - (cell + 2);
+                }
+                if ((mark ^ cell) == ((long)values.Length / 2))
+                {
+                    mark = (mark ^ cell) % 4096;
+                }
+                if ((double)mark == (0.76 + 6.06))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long seed)
