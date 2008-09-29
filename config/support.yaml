@@ -1,22 +1,8 @@
 # support settings
-base_ratio_s: 4575
-payload_size:
-  base_ttl_count: standard
-  soft_threshold_count: green
-  flush_threshold_count: fallback
-  persist:
-    - 387
-    - 224
-  default_threshold_pct: 87
-persist: 60
-cache_ttl_pct: 46
-flush_timeout_ms:
-  sync_ratio_count:
-    - 428
-    - 271
-    - 133
-  profile_capacity: 85.3
-  account_threshold: strict
-  warm_window_count: 30
-  window_ttl: 78.97
-default_delay: 30
+retry_timeout: 66.34
+cache_delay_count: false
+burst_retries_count:
+  - 121
+  - 326
+batch_ratio_count: 30
+verbose: green
