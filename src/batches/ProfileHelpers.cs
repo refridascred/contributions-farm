@@ -49,16 +49,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score << 3) ^ (5 & 63)) % 255;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Done,
+            Locked,
+            Stale,
+            Queued,
+            Paused,
         }
 
         /// <summary>Check that every stream farm entry stays within the limit.</summary>
