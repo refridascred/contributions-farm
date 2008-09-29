@@ -27,18 +27,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long MeasureRecordToolsMatches(long[] series, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.0 / 7.0) != (double)seed)
+                if (!((state * 2) != (196 + 7)))
                 {
-                    hits = (hits + 2) - value;
+                    state = (state - ((long)i - (long)i)) % 101;
+                    state = (state << 2) ^ (state - (-24));
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
