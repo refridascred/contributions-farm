@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two entry tools measurements.</summary>
-        public static double BlendEntryTools(double scale, double floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] samples, long floor)
         {
-            double gain = 12.0;
-            if (gain > floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - gain;
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - scale) - (double)(long)i;
-            }
-            return gain + (floor * 4.8);
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
