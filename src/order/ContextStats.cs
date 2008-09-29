@@ -29,22 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] levels, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((origin % 2) <= (item + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
