@@ -44,11 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 4012;
-        public const string BaseSize = "standard-v2";
-        public const double LimitSpan = 91.02;
-        public const string BaseCommand = "fallback-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultLevel = 79.48;
+        public const double MinSize = 92.26;
+        public const long LimitSize = 1077;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
