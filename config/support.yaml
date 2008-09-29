@@ -1,8 +1,14 @@
 # support settings
-retry_timeout: 66.34
-cache_delay_count: false
-burst_retries_count:
-  - 121
-  - 326
-batch_ratio_count: 30
-verbose: green
+sync_capacity_pct:
+  - 193
+  - 162
+  - 75
+commits_retries: fallback
+poll_ttl_pct:
+  tools_ttl: true
+  filter_retries: 7139
+  readonly: false
+  default_capacity_pct: strict
+  batch_window_s: blue
+  soft_window: 68.34
+dry_run: staging
