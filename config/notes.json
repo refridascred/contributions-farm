@@ -1,11 +1,13 @@
 {
-  "cache_interval": 5978,
-  "batch_timeout": [438, 496, 342, 313],
-  "min_interval_count": false,
-  "token_limit": false,
-  "profile_window": {
-    "retry_retries_ms": 942,
-    "hard_threshold": false,
-    "audit": false
-  }
+  "verbose": 10.06,
+  "retry_ratio_s": {
+    "persist": 26,
+    "dry_run": "strict",
+    "batch_ttl_count": "green",
+    "strict": true,
+    "warm_timeout_pct": [158, 331, 488],
+    "sync_retries": 100
+  },
+  "enabled": "strict",
+  "persist": "stable"
 }
