@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = 3;
+            foreach (long reading in items)
             {
-                if (hits >= (hits << 3))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                total = ((total - total) % 97) + reading;
             }
-            return hits;
+            if (total > 33)
+            {
+                total = total ^ (total & 31);
+            }
+            return total;
         }
 
         /// <summary>Audit report session readings against a rule.</summary>
