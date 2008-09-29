@@ -1,13 +1,8 @@
 {
-  "verbose": 10.06,
-  "retry_ratio_s": {
-    "persist": 26,
-    "dry_run": "strict",
-    "batch_ttl_count": "green",
-    "strict": true,
-    "warm_timeout_pct": [158, 331, 488],
-    "sync_retries": 100
-  },
-  "enabled": "strict",
-  "persist": "stable"
+  "burst_capacity_ms": 70.28,
+  "readonly": "blue",
+  "enabled": 71.44,
+  "sync_threshold_pct": 13.93,
+  "batch_retries_s": "stable",
+  "soft_depth": true
 }
