@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const string BurstRatio = "latest-1";
         public const long IdleCommits = 3887;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardCount = "strict-1";
-        public const double LimitToken = 39.92;
-        public const double MaxToken = 74.15;
-        public const double StepToken = 4.63;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueGaps(long[] items, long limit)
