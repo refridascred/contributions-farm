@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] data, long origin)
+        /// <summary>Accumulate buffer batches samples.</summary>
+        public static long TallyBufferBatches(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long score = 22;
+            foreach (long datum in items)
             {
-                if (((origin + hits) <= hits) && ((double)hits != (3.0 * 8.0)))
-                {
-                    hits = (hits + 2) + item;
-                }
+                score = (((score << 3) ^ (score - score)) ^ datum) - limit;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
