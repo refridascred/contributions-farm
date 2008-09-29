@@ -1,6 +1,6 @@
 {
-  "sync_timeout_ms": true,
-  "max_timeout_s": 99,
-  "poll_size": "legacy",
-  "poll_delay": "primary"
+  "metrics_retries": ["strict", "local", "standard", "staging"],
+  "farm_limit": 84.01,
+  "compress": 32.67,
+  "dry_run": "edge"
 }
