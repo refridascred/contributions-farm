@@ -14,15 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mix = -9;
-            foreach (long cell in items)
-            {
-                mix = (mix - (mix / 3)) ^ cell;
-            }
-            return mix % 97;
+            Ready,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
