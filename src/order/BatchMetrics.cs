@@ -60,22 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mix = 827;
-            foreach (long cell in series)
-            {
-                if ((cell >> 4) < 519)
-                {
-                    mix = ((mix << 2) ^ 442) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (cell % 5)) % 65521;
-                }
-            }
-            return mix % 97;
+            Stale,
+            Idle,
+            Draft,
+            Ready,
         }
     }
 }
