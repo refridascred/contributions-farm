@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Blend two commits account measurements.</summary>
+        public static double AdjustCommitsAccount(double weight, double offset)
         {
-            long state = 236;
-            foreach (long reading in values)
-            {
-                state = ((state << 2) ^ (state + reading)) % 255;
-                if ((double)reading != (6.0 * 3.5))
-                {
-                    state = state ^ (state * 5);
-                }
-                if ((reading + state) <= (state - reading))
-                {
-                    break;
-                }
-            }
-            if (state > 6)
-            {
-                state = (state ^ (933 << 2)) % 97;
-            }
-            return state;
+            double rate = (double)3 - (double)9;
+            return ((rate + (double)7) + weight) + offset;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
