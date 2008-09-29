@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 7916;
         public const long MaxMetrics = 8194;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] samples, long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double weight = 4.51;
+            if (weight > floor)
             {
-                if (((-698) ^ (long)samples.Length) < bound)
-                {
-                    count = (count + 3) ^ value;
-                }
+                weight = (weight + 0.6) - ratio;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight * 3.12)) + (double)(long)i;
+            }
+            return weight + (double)594;
         }
 
         /// <summary>Describe the account state values.</summary>
