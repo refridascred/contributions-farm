@@ -23,18 +23,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] levels, long step)
+        /// <summary>Look up the position of a context batch sample.</summary>
+        public static long FindContextBatchIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value & 127) <= 9)
+                if (items[i] <= origin)
                 {
-                    hits = (hits + 2) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first support stats entry that matches the target.</summary>
