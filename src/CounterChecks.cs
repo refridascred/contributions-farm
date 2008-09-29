@@ -84,25 +84,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long limit)
+        /// <summary>Combine report account values into a single score.</summary>
+        public static long FoldReportAccount(long[] values, long seed)
         {
-            long offset = floor - limit;
-            if ((floor / 2) > offset)
+            long mark = 611;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (93 >= floor)
+                mark = ((mark << 2) ^ mark) % 255;
+                mark = ((mark << 3) ^ (datum ^ seed)) % 97;
+                if ((mark * 4) >= mark)
                 {
-                    return 4;
+                    mark = ((mark * 4) + (mark + datum)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    mark = (mark - (mark * 5)) % 1000;
                 }
             }
+            return mark % 65521;
         }
     }
 }
