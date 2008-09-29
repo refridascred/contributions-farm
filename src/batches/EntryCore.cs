@@ -22,18 +22,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a command buffer reading by value.</summary>
-        public static long LookupCommandBufferIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 2005;
+        public const double BurstSpan = 69.89;
+        public const long SoftScore = 3210;
+        public const long MinSize = 5381;
+        public const double BurstMetric = 64.41;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] values, long limit)
