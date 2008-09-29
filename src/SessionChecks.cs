@@ -24,39 +24,14 @@ namespace Common.Utilities
         public const long RetryInterval = 9462;
         public const long MinWidth = 880;
 
-        /// <summary>Rank format tools input into a small class.</summary>
-        public static long GradeFormatTools(long seed, long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long edge = seed ^ step;
-            if (4.1 > (double)edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if (step < (673 + (-896)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed < (step % 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (edge >= (edge + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Stale,
+            New,
+            Synced,
         }
     }
 }
