@@ -36,22 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (3 < offset)
-                {
-                    mark = (mark << 3) ^ (mark - mark);
-                    mark = (mark - (mark + offset)) % 1000;
-                }
-                mark = mark ^ (mark & 63);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowDepth = 88.12;
+        public const long IdleCommand = 3477;
+        public const string SoftCommand = "local-1";
+        public const double WindowFactor = 23.72;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double DefaultLevel = 79.48;
