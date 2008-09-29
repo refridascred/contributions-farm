@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = 13.0;
+            if (ratio2 >= (double)55)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + (span - ratio2)) - ratio;
             }
-            return -1;
+            return ratio2 - (ratio2 + span);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
