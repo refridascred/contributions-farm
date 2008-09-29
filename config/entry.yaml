@@ -1,12 +1,4 @@
 # entry settings
-retry_interval_count: eu-west
-warm_limit:
-  tools_ttl:
-    poll_capacity: 7330
-    base_threshold_count: 6
-    retry_retries: 3970
-  idle_window: fallback
-  commits_size: edge
-  poll_retries: open
-  flush_interval: fallback
-batch_depth: edge
+readonly: 60
+idle_capacity_s: 9012
+sync_retries_ms: 33.87
