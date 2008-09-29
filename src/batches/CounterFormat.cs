@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 7102;
-        public const long WindowChannel = 4976;
-        public const string MaxChannel = "latest";
-        public const double RetryTimeout = 44.47;
-        public const long HardScore = 5030;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 2601;
