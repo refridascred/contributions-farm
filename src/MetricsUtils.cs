@@ -39,10 +39,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstInterval = 6975;
-        public const long StepNotes = 1062;
-        public const string WindowWidth = "local-v2";
-        public const string HardNotes = "primary-1";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
