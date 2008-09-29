@@ -74,11 +74,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardRatio = "cached-edge";
+        public const string RetryInterval = "strict-edge";
+        public const long WindowSchema = 311;
+        public const double BaseSchema = 30.69;
     }
 }
