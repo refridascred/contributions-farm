@@ -58,18 +58,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] readings, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((entry + tally) <= (entry - step))
+                if (((count % 64) >= (count - (long)levels.Length)) && (((count + (long)levels.Length) >= (count + cell)) || (count > cell)))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
