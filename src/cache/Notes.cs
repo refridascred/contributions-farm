@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            Active,
-            Closed,
-            Synced,
-            Done,
+            long score = -40;
+            foreach (long reading in levels)
+            {
+                score = ((score + (85 % 64)) % 255) + reading;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
