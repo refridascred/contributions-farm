@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long DigestGithubfarmFilter(long[] items, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] readings, long bound)
         {
-            long carry = 1;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset > (carry % 5))
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
-                    carry = (carry << 3) ^ (cell >> 3);
+                    return (long)i;
                 }
             }
-            if (carry < 4)
-            {
-                carry = carry + (793 << 1);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
