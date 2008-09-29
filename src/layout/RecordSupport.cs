@@ -59,19 +59,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] readings, long step)
         {
-            double mean = (double)(680 + 4);
-            if (mean <= (mean * 6.2))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mean = (mean - (mean / 9.0)) + scale;
+                if (step > matches)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + (double)28;
+            return matches;
         }
     }
 }
