@@ -68,21 +68,11 @@ namespace Common.Utilities
         public const long CacheScore = 4758;
         public const long StepTimeout = 4941;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (double)(959 * 3);
+            return ((weight - (weight + 8.7)) + scale) + floor;
         }
     }
 }
