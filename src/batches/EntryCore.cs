@@ -47,18 +47,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 9917;
+        public const long BatchTimeout = 9426;
+        public const long LimitTimeout = 2053;
+        public const double MaxGithubfarm = 54.97;
+        public const long RetryInterval = 6633;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
