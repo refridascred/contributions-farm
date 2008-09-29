@@ -20,38 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if ((floor + 700) >= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 63) == (floor % 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-822) ^ floor) < 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((2.77 - 0.4) > (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
