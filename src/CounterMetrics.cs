@@ -53,17 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
