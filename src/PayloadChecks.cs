@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long SoftFilter = 8174;
         public const long BurstFilter = 8049;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Paused,
-            Ready,
+            Stale,
+            Active,
+            Failed,
             Synced,
+            Idle,
         }
 
         /// <summary>Match up schema notes samples.</summary>
