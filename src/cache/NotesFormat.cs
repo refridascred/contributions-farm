@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] readings, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if ((bound - bound) <= bound)
             {
-                if ((double)seed <= (double)659)
+                return 8;
+            }
+            else
+            {
+                if ((266 + bound) > ((-19) ^ step))
                 {
-                    tally = (tally + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + 75) == (step % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
