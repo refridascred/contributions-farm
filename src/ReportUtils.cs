@@ -37,21 +37,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of record already readings.</summary>
-        public static long MatchRecordAlreadyCount(long[] readings)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
