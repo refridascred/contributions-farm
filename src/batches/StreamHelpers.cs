@@ -62,13 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            Draft,
-            Synced,
-            Closed,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
