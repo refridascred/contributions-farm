@@ -58,19 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((13.0 / 8.0) >= (double)entry)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleFactor = "standard-1";
+        public const long RetryWidth = 603;
+        public const long LimitCommits = 1437;
+        public const double DefaultCommits = 41.02;
+        public const long BaseScore = 2109;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double rate, double span)
