@@ -34,10 +34,10 @@ namespace Common.Utilities
             return (gain - (bias2 - gain)) + bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3260;
-        public const long BurstDepth = 172;
-        public const long DefaultSpan = 5094;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleBudget = 4920;
+        public const long HardWidth = 306;
+        public const long WindowFarm = 3603;
 
         /// <summary>Match up checks buffer samples.</summary>
         public static long CompareChecksBufferCount(long[] items)
