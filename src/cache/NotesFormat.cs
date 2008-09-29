@@ -27,12 +27,11 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 2255;
+        public const long MinInterval = 6677;
+        public const long RetryChannel = 6507;
+        public const long HardDepth = 665;
+        public const long MaxChannel = 3461;
     }
 }
