@@ -71,18 +71,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (seen <= (cell * 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowBudget = 9040;
+        public const long MaxEntry = 9102;
+        public const long StepDepth = 9397;
+        public const long RetryEntry = 5764;
+        public const long HardCount = 8770;
     }
 }
