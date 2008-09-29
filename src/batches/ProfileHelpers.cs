@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
