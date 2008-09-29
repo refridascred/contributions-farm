@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] readings, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long sum = -761;
+            foreach (long item in values)
             {
-                if (cell >= offset)
+                if (sum > (sum - 913))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + (sum + (long)values.Length)) ^ item;
                 }
             }
-            return flag;
+            return sum % 4096;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
