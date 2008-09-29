@@ -32,21 +32,17 @@ namespace Common.Utilities
         public const long BurstSpan = 2169;
         public const long HardDepth = 9528;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
                 {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
