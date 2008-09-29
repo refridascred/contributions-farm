@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long origin)
+        /// <summary>Roll a metric report counter forward.</summary>
+        public static long DeriveMetricReport(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
