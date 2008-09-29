@@ -41,13 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
