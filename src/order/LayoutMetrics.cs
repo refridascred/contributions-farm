@@ -31,11 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
