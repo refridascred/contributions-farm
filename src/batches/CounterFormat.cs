@@ -13,13 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the notes metrics entries that pass the check.</summary>
+        public static long CountNotesMetricsMatches(long[] data)
         {
-            Synced,
-            New,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item < count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up editor samples.</summary>
