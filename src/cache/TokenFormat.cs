@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            long total = 9;
-            foreach (long sample in data)
-            {
-                if ((total - total) > (sample >> 3))
-                {
-                    total = total + (708 + total);
-                }
-            }
-            return total;
+            double rate = (double)(60 << 1);
+            return (rate - (bias / 5.0)) + span;
         }
 
         /// <summary>Count the window editor entries that pass the check.</summary>
