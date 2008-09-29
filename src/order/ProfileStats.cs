@@ -23,18 +23,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many filter metrics samples are out of range.</summary>
-        public static long TallyFilterMetricsHits(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item < (9 / 9)) && (((hits >> 1) <= (item + item)) && (item > 512)))
+                if (readings[i] <= step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
