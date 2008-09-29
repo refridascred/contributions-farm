@@ -1,14 +1,14 @@
 # Command notes
 
-The window module keeps batches values in sync with the cache cache.
-Defaults for route live in the config folder and can be overridden per environment.
+A graph that stays idle for too long is moved to the context list.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-A counter that stays idle for too long is moved to the batches list.
-When a counter fails, the window handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
+The tools module keeps entry values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate profile input early
-- Review schema limits each release
-- Document new context fields
+- Document new window fields
+- Validate checks input early
+- Keep stream values small
+- Prefer route defaults
