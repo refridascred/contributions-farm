@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double bias, double bias2)
-        {
-            double gain = 4.65 / 9.0;
-            if (gain <= (gain * 2.9))
-            {
-                gain = ((gain - 9.0) + bias) - bias2;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleTimeout = "local-1";
+        public const long BaseMetrics = 1293;
+        public const string BurstMetrics = "staging";
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long floor, long floor2)
