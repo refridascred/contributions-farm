@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryInterval = 2102;
-        public const long LimitLevel = 3515;
-        public const long HardSize = 3379;
-        public const long BurstChecks = 8285;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series, long bound)
+        {
+            long state = 3;
+            foreach (long reading in series)
+            {
+                if (!((reading - reading) < (reading & 3)))
+                {
+                    state = (state * 2) + (bound ^ state);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] readings, long seed)
