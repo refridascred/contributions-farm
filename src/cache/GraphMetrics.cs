@@ -20,11 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4567;
-        public const long BurstCommits = 7131;
-        public const string MinCommits = "fallback";
-        public const long IdleCommits = 1626;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] items)
+        {
+            long mix = -9;
+            foreach (long cell in items)
+            {
+                mix = (mix - (mix / 3)) ^ cell;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] levels, long target)
