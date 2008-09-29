@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = -935;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = ((sum ^ datum) % 101) - (long)i;
-                }
-                if (!(sum <= 823))
-                {
-                    sum = (sum ^ (floor / 6)) % 255;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum + ((long)values.Length * 4)) % 4096;
-            }
-            return sum % 4096;
+            Done,
+            Paused,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the window status values.</summary>
