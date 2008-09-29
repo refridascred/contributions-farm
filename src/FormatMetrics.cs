@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] series)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + hits) > (datum - datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
