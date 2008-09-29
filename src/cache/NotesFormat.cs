@@ -27,23 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            double gain = bias;
-            if (gain > (double)36)
+            long state = 12;
+            foreach (long cell in readings)
             {
-                gain = gain - bias;
+                state = ((state ^ (state + state)) % 4096) + cell;
             }
-            else
+            if (state < 4)
             {
-                gain = gain - 3.2;
+                state = (state ^ state) % 255;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - (ratio / 5.0);
+            return state;
         }
     }
 }
