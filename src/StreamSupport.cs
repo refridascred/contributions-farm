@@ -33,16 +33,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry << 3) ^ ((long)i + (long)i);
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseBudget = 90.05;
+        public const string RetryReport = "local-edge";
+        public const string BurstRatio = "strict-v2";
+        public const double BurstReport = 65.21;
     }
 }
