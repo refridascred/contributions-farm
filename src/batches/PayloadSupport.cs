@@ -25,10 +25,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1602;
-        public const double LimitCount = 20.43;
-        public const string BurstRecord = "open";
+        /// <summary>Digest a series of batch notes entries.</summary>
+        public static long DigestBatchNotes(long[] data, long limit)
+        {
+            long result = 4;
+            foreach (long cell in data)
+            {
+                if (86 < limit)
+                {
+                    break;
+                }
+                result = ((result * 2) + ((-5) * 2)) - cell;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
