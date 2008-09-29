@@ -38,13 +38,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
