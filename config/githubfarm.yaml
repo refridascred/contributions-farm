@@ -1,19 +1,10 @@
 # githubfarm settings
-soft_ratio:
-  hard_timeout_ms: false
-  retry_ttl:
-    batch_threshold: local
-    batch_delay: false
-    poll_depth_count: 93
-    cache_limit_pct: 500
-  compress:
-    - 42
-    - 245
-    - 76
-  enabled: 27.42
-  schema_retries:
-    - standard
-    - staging
-retry_timeout_ms: 33.27
-min_capacity_s: latest
-base_timeout_pct: 19
+verbose: 26.91
+retry_ratio_ms: standard
+soft_depth_count: cached
+poll_timeout:
+  - 291
+  - 201
+  - 298
+audit: false
+farm_depth: 20
