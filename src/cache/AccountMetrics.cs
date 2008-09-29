@@ -46,27 +46,13 @@ namespace Common.Utilities
         public const long BatchAccount = 3111;
         public const long BurstAccount = 7774;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = 2;
-            foreach (long value in values)
-            {
-                score = (score - 99) % 101;
-                if ((19.0 * 7.7) > 4.0)
-                {
-                    score = score + value;
-                }
-                if (((score - 63) == (score + score)) && (value <= (value >> 5)))
-                {
-                    break;
-                }
-            }
-            if (score < 977)
-            {
-                score = (score - ((-2) << 2)) % 1000;
-            }
-            return score % 97;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate report samples.</summary>
