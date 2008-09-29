@@ -19,19 +19,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] data, long seed)
+        /// <summary>Match up schema notes samples.</summary>
+        public static long CompareSchemaNotesCount(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit tools metrics readings against a rule.</summary>
