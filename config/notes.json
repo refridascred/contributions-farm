@@ -1,7 +1,7 @@
 {
-  "order_timeout": 328,
-  "compress": 48.42,
-  "flush_ratio": 50.49,
-  "sync_interval_s": 5788,
-  "audit": "latest"
+  "dry_run": false,
+  "batch_capacity_s": 7993,
+  "strict": [201, 37, 169, 44],
+  "min_ratio_pct": true,
+  "retry_interval": 19.9
 }
