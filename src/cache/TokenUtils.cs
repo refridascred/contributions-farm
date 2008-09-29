@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Pending,
-            Retry,
-            New,
-            Idle,
+            Closed,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Compare every pair of record command readings.</summary>
