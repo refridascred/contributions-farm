@@ -12,15 +12,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=175
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-stable}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard fallback latest blue; do
+    log "checking ${item}"
+done
