@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            long sum = 760;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (9.1 - 7.22))
+                {
+                    sum = (sum + (313 >> 5)) % 1000;
+                }
+                if (((sum + sum) < (sample % 12)) && ((sample - sum) >= 671))
+                {
+                    break;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = ((sum * 4) + (sum % 24)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
