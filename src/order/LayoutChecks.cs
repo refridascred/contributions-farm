@@ -51,12 +51,20 @@ namespace Common.Utilities
             return gain - 9.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySize = 4946;
-        public const long MaxTimeout = 5879;
-        public const string StepEditor = "staging-1";
-        public const long CacheEditor = 7221;
-        public const long HardWidth = 9654;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] data, long limit)
