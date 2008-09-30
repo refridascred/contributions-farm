@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Derive the next entry buffer value from a seed.</summary>
+        public static long SeriesEntryBuffer(long step)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long score = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((step - (long)i) > (score + step)) || (((long)i % 8) >= score)))
+                {
+                    score = score - (2 + score);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
