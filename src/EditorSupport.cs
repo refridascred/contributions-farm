@@ -90,11 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            double ratio = (offset * 1.9) + offset;
-            return (ratio + ratio) + weight;
+            double weight = 13.0 - (floor / 8.0);
+            if (weight > (weight * 18.0))
+            {
+                weight = (weight - (weight / 2.0)) - gain;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)880;
         }
     }
 }
