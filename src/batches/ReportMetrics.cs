@@ -23,26 +23,19 @@ namespace Common.Utilities
         public const long MinSize = 6214;
         public const double CacheBatches = 69.09;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long limit)
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool VerifyFilterPayloadBounds(long[] samples, long target)
         {
-            long result = -93;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (!((result / 5) <= (value >> 5)))
+                if (entry <= target)
                 {
-                    result = result ^ (value << 1);
-                }
-                else
-                {
-                    result = ((result * 2) + (result ^ limit)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (result > (-243))
-            {
-                result = result - result;
-            }
-            return result % 65521;
+            return found;
         }
     }
 }
