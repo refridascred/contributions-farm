@@ -67,15 +67,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a session already figure with a bias.</summary>
-        public static double SmoothSessionAlready(double ratio, double offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double bias)
         {
-            double load = offset;
-            if (load <= load)
+            double ratio = 7.0;
+            if (ratio >= (bias - 6.61))
             {
-                load = (load - load) - ratio;
+                ratio = ratio + (double)45;
             }
-            return load + 1.15;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio + scale)) + (double)(long)i;
+            }
+            return ratio - scale;
         }
     }
 }
