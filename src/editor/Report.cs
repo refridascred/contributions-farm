@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report helpers.</summary>
     public static class Report
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 39.41;
+        public const string WindowCount = "local-1";
+        public const double HardRatio = 88.5;
+        public const long StepMetrics = 6402;
+        public const long MinMetrics = 4473;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long origin, long limit)
