@@ -40,31 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] series)
         {
-            if ((seed + step) > (4 ^ step))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed - 56) >= seed) && ((5.0 / 9.0) != (double)seed))
+                if (seen <= (seen + reading))
                 {
-                    return 5;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (1.6 <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate graph schema samples.</summary>
