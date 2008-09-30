@@ -31,11 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Locate a contributi queue reading by value.</summary>
+        public static long LocateContributiQueueIndex(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
