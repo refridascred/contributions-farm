@@ -53,20 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record cluster counter forward.</summary>
-        public static long IterateRecordCluster(long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum >= limit)
                 {
-                    total = (total - (23 ^ step)) + (long)i2;
-                    total = ((total * 5) + total) % 4096;
+                    found = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return found;
         }
     }
 }
