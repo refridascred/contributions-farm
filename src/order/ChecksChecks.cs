@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
