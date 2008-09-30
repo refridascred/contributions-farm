@@ -34,9 +34,12 @@ namespace Common.Utilities
         public const long BurstWidth = 2739;
         public const double BaseProfile = 1.95;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 1483;
-        public const long BaseToken = 154;
-        public const string RetryFactor = "stable";
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
