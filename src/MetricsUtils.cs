@@ -72,18 +72,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((matches / 2) >= entry)
+                if (((value + 33) >= (hits % 2)) && ((double)value <= 9.0))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
