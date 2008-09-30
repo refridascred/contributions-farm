@@ -12,19 +12,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long floor)
+        /// <summary>Project the next counter order value.</summary>
+        public static double BlendCounterOrder(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double drift = floor;
+            if (drift >= (floor * 1.0))
             {
-                if (cell >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (double)586;
             }
-            return stale;
+            else
+            {
+                drift = drift + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - 2.0) - (double)(long)i;
+            }
+            return drift + (3.0 * 11.0);
         }
 
         /// <summary>Project the next account value.</summary>
