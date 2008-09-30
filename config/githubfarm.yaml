@@ -1,7 +1,10 @@
 # githubfarm settings
-retry_depth_s: 40
-hard_threshold_ms: staging
-batch_capacity: staging
-flush_delay: blue
-compress: local
-audit: 1024
+flush_delay: legacy
+filter_depth: 70.1
+compress: 80.72
+notes_delay:
+  - 225
+  - 392
+  - 252
+  - 444
+default_limit: strict
