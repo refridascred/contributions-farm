@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardBudget = 6339;
-        public const string IdleScore = "open-v2";
-        public const double DefaultFilter = 88.04;
-        public const long RetryFilter = 8813;
-        public const long MaxTimeout = 9926;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series)
+        {
+            long total = 4;
+            foreach (long datum in series)
+            {
+                if (((total / 8) <= datum) && ((-89) <= ((long)series.Length & 63)))
+                {
+                    total = total + (total + datum);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] levels)
