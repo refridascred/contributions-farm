@@ -26,38 +26,17 @@ namespace Common.Utilities
         public const long MinSize = 2473;
         public const double SoftWidth = 79.85;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long target2)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] items, long seed)
         {
-            if (!((target - target) < (75 + 8)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target <= (double)51))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 3) < (target << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)921 > (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
