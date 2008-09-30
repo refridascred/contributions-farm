@@ -23,15 +23,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            if (9 > limit)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((double)limit > (6.2 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the profile command entries that pass the check.</summary>
