@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long target)
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long SeriesBufferMetric(long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score << 3) ^ (limit / 5)) % 255;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the batches state values.</summary>
