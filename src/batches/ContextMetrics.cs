@@ -15,25 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long step2)
+        /// <summary>Validate filter already readings against a bound.</summary>
+        public static bool CheckFilterAlreadyRange(long[] items, long target)
         {
-            long lane = step ^ step2;
-            if (((4.0 + 4.8) < (double)step2) || ((step2 / 3) > (step << 1)))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (step2 < (lane ^ lane))
+                if (sample != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
