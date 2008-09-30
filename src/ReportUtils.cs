@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const long MaxLevel = 4369;
         public const long LimitAlready = 16;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] levels, long offset)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
