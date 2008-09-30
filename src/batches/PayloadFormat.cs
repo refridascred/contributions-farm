@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8606;
-        public const long SoftScore = 3477;
-        public const long IdleInterval = 1019;
-        public const long MinTools = 2518;
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double floor)
+        {
+            double weight2 = weight - weight;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = ((weight2 - 14.0) - (double)(long)i) - floor;
+            }
+            return weight2 + (weight2 + weight2);
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
