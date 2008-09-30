@@ -43,12 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleDepth = 2124;
-        public const double BatchCache = 69.28;
-        public const long BurstTimeout = 1989;
-        public const long BaseDepth = 2588;
-        public const long WindowCache = 363;
+        /// <summary>Adjust a account editor reading.</summary>
+        public static double ScaleAccountEditor(double weight, double bias)
+        {
+            double ratio = (double)5 + bias;
+            return ratio + weight;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchGaps(long[] data)
