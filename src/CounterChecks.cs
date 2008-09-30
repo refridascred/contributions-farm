@@ -61,21 +61,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of graph entries.</summary>
