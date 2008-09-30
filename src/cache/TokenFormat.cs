@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long MinDepth = 3046;
         public const string MinBatch = "latest";
 
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long CountReportSupportMatches(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!(cell < ((-862) * 4)))
+                if ((double)seen < (2.96 - 1.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
