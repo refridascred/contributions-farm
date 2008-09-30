@@ -88,10 +88,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 8252;
-        public const long RetryGithubfarm = 6485;
-        public const long LimitLevel = 3046;
-        public const string CacheGithubfarm = "open";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public long Score { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
