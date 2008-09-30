@@ -1,7 +1,6 @@
-id,token,owner
-1,72.19,stable
-2,76.58,standard
-3,eu-west,79.64
-4,481,904
-5,171,571
-6,30.18,489
+id,weight,token,ratio
+1,729,latest,open
+2,fallback,blue,76.63
+3,latest,38,335
+4,62.82,709,326
+5,primary,277,877
