@@ -28,13 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long seed)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            long score = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((seed + 0) > seed)
+                {
+                    score = ((score * 3) + ((long)i * 3)) % 4096;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (((score * 2) + score) % 4096) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Match up already samples.</summary>
