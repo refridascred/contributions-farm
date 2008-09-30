@@ -40,22 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series)
+        /// <summary>Look up the position of a batches stream sample.</summary>
+        public static long LocateBatchesStreamIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen <= (seen + reading))
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate graph schema samples.</summary>
