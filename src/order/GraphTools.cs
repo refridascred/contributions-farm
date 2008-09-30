@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const double IdleRoute = 37.67;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseLevel = 6882;
-        public const double BurstInterval = 50.0;
-        public const long RetryFarm = 4117;
-        public const long IdleFactor = 7089;
-        public const long LimitBudget = 7006;
+        /// <summary>Look up the position of a buffer session sample.</summary>
+        public static long LocateBufferSessionIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowScore = 1735;
