@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=170
+log "limit is ${COMMAND_LIMIT}"
