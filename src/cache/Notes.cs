@@ -68,17 +68,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] samples, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] == target)
+                if ((double)seen >= 9.09)
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ reading) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
