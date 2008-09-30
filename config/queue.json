@@ -1,15 +1,5 @@
 {
-  "layout_size": 49.72,
-  "poll_interval_count": {
-    "verbose": "staging",
-    "batch_interval_ms": {
-      "readonly": ["stable", "primary"],
-      "idle_window_ms": 66,
-      "cluster_threshold": 6508,
-      "persist": 100,
-      "compress": "blue"
-    },
-    "hard_threshold_s": true
-  },
-  "flush_ratio_pct": "stable"
+  "metrics_threshold": "fallback",
+  "payload_depth": 67,
+  "verbose": "latest"
 }
