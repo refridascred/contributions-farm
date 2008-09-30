@@ -41,31 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long target)
+        /// <summary>Locate a farm support reading by value.</summary>
+        public static long FindFarmSupportIndex(long[] levels, long offset)
         {
-            if ((11.0 / 4.0) >= (double)target)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target != (3.86 * 9.0)))
+                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((3.16 - 4.0) > (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
