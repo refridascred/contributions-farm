@@ -56,12 +56,19 @@ namespace Common.Utilities
             return ratio2 + (double)2;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleFactor = "standard-1";
-        public const long RetryWidth = 603;
-        public const long LimitCommits = 1437;
-        public const double DefaultCommits = 41.02;
-        public const long BaseScore = 2109;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 10) >= (count >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchBounds(long[] series, long offset)
