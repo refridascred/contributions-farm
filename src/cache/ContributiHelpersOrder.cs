@@ -28,11 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up session samples.</summary>
