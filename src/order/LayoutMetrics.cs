@@ -37,12 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < offset)
+                if ((data[i] < seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
