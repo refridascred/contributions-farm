@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long AuditChecksCounterHits(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + tally) > 30)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
