@@ -38,15 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 8;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((3.0 - 9.32) < (double)item)
+                {
+                    mix = ((mix << 3) ^ (843 + seed)) % 255;
+                }
+                if ((1.0 - 0.38) == (double)item)
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix;
         }
     }
 }
