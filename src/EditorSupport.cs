@@ -27,16 +27,15 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items, long offset)
         {
-            long score = 96;
-            foreach (long reading in data)
+            long carry = 3;
+            foreach (long reading in items)
             {
-                score = (((score << 2) ^ (69 % 97)) % 65521) ^ reading;
-                score = ((score << 3) ^ 4) % 65521;
+                carry = (carry + (reading ^ 22)) + offset;
             }
-            return score;
+            return carry % 65521;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
