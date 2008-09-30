@@ -1,11 +1,13 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the metric handler retries a few times before giving up.
+Use session settings to tune how often command data is refreshed.
+Run the window check before changing any command limits.
+
+Keep window and queue names short and lowercase.
+Use route settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate stats input early
-- Review graph limits each release
-- Keep batch values small
+- Keep entry values small
+- Review queue limits each release
+- Log every githubfarm change
