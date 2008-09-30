@@ -40,12 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long MeasurePayloadFilterOutliers(long[] readings, long seed)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (3.37 > (double)count)
+                {
+                    count = ((count + 1) - value) - seed;
+                }
+            }
+            return count;
         }
     }
 }
