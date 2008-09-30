@@ -58,19 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading != bound)
                 {
-                    acc = (acc << 3) ^ ((long)i2 - acc);
+                    found = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return found;
         }
     }
 }
