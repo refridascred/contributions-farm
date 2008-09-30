@@ -35,11 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long floor)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
