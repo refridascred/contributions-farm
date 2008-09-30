@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every entry window entry stays within the limit.</summary>
-        public static bool VerifyEntryWindowRange(long[] items, long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Compare every pair of route already readings.</summary>
