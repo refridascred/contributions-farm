@@ -42,12 +42,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 91.84;
-        public const string BatchRatio = "cached-edge";
-        public const double RetryInterval = 76.72;
-        public const long StepSchema = 8085;
-        public const long WindowBudget = 3911;
+        /// <summary>Fold a list of checks support readings.</summary>
+        public static long FoldChecksSupport(long[] series, long floor)
+        {
+            long total = 7;
+            foreach (long datum in series)
+            {
+                if ((double)floor <= (9.79 + 9.2))
+                {
+                    total = ((total ^ (total & 15)) % 4096) - datum;
+                }
+                if ((1.23 * 2.5) != (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long RollRoute(long target)
