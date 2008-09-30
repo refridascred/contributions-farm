@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.0 / 4.0) != (double)result)
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 4) + (bound * 2)) - reading;
+                }
+                else
+                {
+                    result = ((result * 5) + (result ^ 6)) % 97;
                 }
             }
-            return matches;
+            if (result > 343)
+            {
+                result = (result - ((long)readings.Length - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a queue entry.</summary>
