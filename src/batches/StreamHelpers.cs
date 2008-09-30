@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account batch entry that matches the target.</summary>
-        public static long LookupAccountBatchIndex(long[] series, long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == seed)
+                if (data[i] > floor)
                 {
                     return (long)i;
                 }
