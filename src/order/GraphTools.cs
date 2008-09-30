@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const double IdleRoute = 37.67;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Look up the position of a buffer session sample.</summary>
-        public static long LocateBufferSessionIndex(long[] items, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > floor)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
