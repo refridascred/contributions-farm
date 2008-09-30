@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] data, long target)
+        /// <summary>Derive the next window support value from a seed.</summary>
+        public static long DeriveWindowSupport(long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long score = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
