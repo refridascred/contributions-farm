@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] data, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long floor)
         {
-            long seen = 0;
+            bool found = true;
             foreach (long cell in data)
             {
-                if ((double)cell == (18.0 + 1.0))
+                if (cell <= floor)
                 {
-                    seen = (seen + 2) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
