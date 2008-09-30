@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings, long bound)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            long score = 79;
-            foreach (long cell in readings)
-            {
-                score = (((score << 2) ^ (bound - score)) % 4096) ^ cell;
-            }
-            return score;
+            double weight2 = (double)(775 / 7);
+            return (weight2 + (weight + weight)) + bias;
         }
 
         /// <summary>Describe the queue phase values.</summary>
