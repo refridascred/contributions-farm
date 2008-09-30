@@ -27,22 +27,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] levels, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long step)
         {
-            long carry = 3;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= 220)
+                if (data[i] >= step)
                 {
-                    carry = (carry * 5) + seed;
+                    return (long)i;
                 }
             }
-            if (carry < 44)
-            {
-                carry = carry ^ (carry - (long)levels.Length);
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
