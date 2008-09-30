@@ -58,22 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] readings, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!!((seed & 63) != (seed >> 1)))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
