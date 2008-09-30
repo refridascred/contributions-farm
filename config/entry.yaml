@@ -1,8 +1,20 @@
 # entry settings
 audit:
-  - 56
-  - 97
-  - 121
-idle_retries: false
-flush_threshold_s: 5374
-format_depth: 60
+  idle_ratio_count: 85.48
+  compress:
+    hard_interval_pct: 82.98
+    soft_interval_pct: blue
+    enabled: standard
+  dry_run: blue
+  strict: 92.65
+  session_threshold: cached
+  context_depth:
+    dry_run: eu-west
+    default_depth: 8291
+    strict: 14
+payload_limit:
+  - 72
+  - 467
+  - 439
+warm_threshold: 12
+hard_interval: blue
