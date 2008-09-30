@@ -1,15 +1,15 @@
 # support settings
-readonly:
-  - 368
-  - 435
-  - 225
-  - 340
-graph_ratio: latest
-retry_limit_pct:
-  - legacy
-  - standard
-  - strict
-  - stable
-sync_depth_ms: local
-burst_size_pct: false
-idle_size_pct: 8045
+report_retries:
+  - green
+  - blue
+persist: false
+burst_timeout_s:
+  batch_interval: false
+  notes_window: 500
+  payload_timeout: latest
+  poll_delay: 100
+  soft_timeout_ms: 250
+audit:
+  - 239
+  - 406
+counter_timeout: 6688
