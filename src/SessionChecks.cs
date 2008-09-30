@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 3037;
-        public const long BatchTools = 3320;
-        public const long CacheTimeout = 8259;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double bias)
+        {
+            double load = bias;
+            if (load > bias)
+            {
+                load = load + (bias - 0.04);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (weight / 2.0)) + (double)(long)i;
+            }
+            return load + 9.15;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] data)
