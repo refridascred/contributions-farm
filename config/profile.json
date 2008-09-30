@@ -1,12 +1,7 @@
 {
-  "poll_delay_s": "local",
-  "default_threshold_s": [365, 172, 47, 392],
-  "warm_threshold_s": false,
-  "hard_size": 8471,
-  "route_timeout": {
-    "strict": "green",
-    "graph_capacity": 45,
-    "cache_ratio_ms": true
-  },
-  "verbose": "staging"
+  "profile_limit": 40.54,
+  "verbose": 1024,
+  "layout_limit": 57.5,
+  "strict": 500,
+  "audit": 67.7
 }
