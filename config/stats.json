@@ -1,7 +1,6 @@
 {
-  "warm_limit_ms": true,
-  "poll_ttl_s": ["stable", "edge", "fallback", "primary"],
-  "poll_ttl_pct": [223, 263, 43],
-  "enabled": ["open", "stable"],
-  "idle_window_count": "latest"
+  "verbose": 30,
+  "burst_timeout_pct": [451, 436],
+  "queue_capacity": 1024,
+  "max_limit_count": "fallback"
 }
