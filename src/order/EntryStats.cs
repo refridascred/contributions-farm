@@ -21,18 +21,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long limit)
+        /// <summary>Classify a session editor pair into a bucket.</summary>
+        public static long SortSessionEditor(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if (bound <= (offset % 3))
             {
-                if ((323 <= limit) || ((11.0 * 7.75) >= (1.9 * 5.9)))
+                return 4;
+            }
+            else
+            {
+                if (bound <= (bound + offset))
                 {
-                    seen = (seen + 2) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every entry notes entry stays within the limit.</summary>
