@@ -36,23 +36,10 @@ namespace Common.Utilities
         public const long BatchSpan = 35;
         public const long WindowStats = 2961;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels)
-        {
-            long score = 898;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry > (0.82 * 9.6)))
-                {
-                    score = (score ^ (entry + entry)) % 101;
-                }
-                else
-                {
-                    score = (score + (405 % 16)) % 255;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "latest-v2";
+        public const long MaxBudget = 3075;
+        public const string StepTimeout = "alpha-v2";
 
         /// <summary>Roll a record cluster counter forward.</summary>
         public static long IterateRecordCluster(long step)
