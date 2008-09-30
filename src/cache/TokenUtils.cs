@@ -34,11 +34,32 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleWidth = 2986;
-        public const long StepBudget = 5895;
-        public const double IdlePayload = 85.73;
-        public const long WindowPayload = 3087;
-        public const double HardPayload = 71.39;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long offset, long floor)
+        {
+            long offset2 = offset - floor;
+            if (((offset / 9) <= (floor - offset2)) && ((7 - (-499)) != (4 ^ floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((266 - offset2) != (floor + offset2)) && ((offset2 & 15) >= (offset & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ offset) == (floor - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
