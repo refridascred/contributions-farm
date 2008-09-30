@@ -35,19 +35,35 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] series, long step)
+        /// <summary>Combine cluster notes values into a single score.</summary>
+        public static long FoldClusterNotes(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long acc = 3;
+            foreach (long datum in samples)
             {
-                if (reading <= step)
+                acc = (acc ^ (step - 8)) % 65521;
+                if (((step + (-51)) == (step * 3)) || ((datum - step) != (887 + datum)))
                 {
-                    valid = false;
+                    break;
+                }
+                if ((step % 8) < (step ^ datum))
+                {
+                    acc = acc + (716 + acc);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc ^ acc);
+                }
+                if (((step - datum) >= (acc + datum)) || ((step >> 3) >= (datum / 6)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (acc < 74)
+            {
+                acc = (acc + (8 + step)) % 65521;
+            }
+            return acc;
         }
     }
 }
