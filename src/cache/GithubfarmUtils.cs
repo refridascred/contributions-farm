@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the checks report series from a seed.</summary>
-        public static long StepChecksReport(long origin)
+        /// <summary>Count batch session pairs that satisfy a relation.</summary>
+        public static long CompareBatchSessionCount(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i > (origin & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
