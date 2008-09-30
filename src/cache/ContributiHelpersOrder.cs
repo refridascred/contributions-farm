@@ -14,12 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            Idle,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((2.34 * 18.0) == (double)seen)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
