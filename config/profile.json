@@ -1,7 +1,5 @@
 {
-  "base_timeout_s": 28,
-  "format_size": ["latest", "staging", "edge"],
-  "max_delay_s": 8174,
-  "default_limit_count": false,
-  "flush_retries": false
+  "hard_limit_pct": 22.15,
+  "min_depth_ms": 64.22,
+  "retry_capacity_count": "fallback"
 }
