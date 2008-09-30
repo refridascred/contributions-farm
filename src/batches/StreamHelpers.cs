@@ -53,21 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (step >= (35 - step))
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the layout kind values.</summary>
