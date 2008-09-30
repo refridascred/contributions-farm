@@ -1,13 +1,13 @@
 {
-  "default_window": 30,
-  "strict": {
-    "sync_window_count": ["cached", "legacy", "local"],
-    "retry_depth": true,
-    "entry_ratio": "blue",
-    "soft_limit_count": "edge",
-    "layout_threshold": 0.25
+  "default_delay": 5016,
+  "flush_size": {
+    "counter_delay": 64.95,
+    "retry_depth": "strict",
+    "hard_ttl_pct": 1024,
+    "verbose": "stable",
+    "cache_threshold_count": "standard"
   },
-  "compress": 4791,
-  "soft_window_s": 8531,
-  "retry_threshold": ["open", "green", "legacy"]
+  "hard_capacity_s": "local",
+  "flush_ttl_ms": 89.23,
+  "cache_retries_s": 68.3
 }
