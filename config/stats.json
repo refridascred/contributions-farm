@@ -1,6 +1,6 @@
 {
-  "verbose": 30,
-  "burst_timeout_pct": [451, 436],
-  "queue_capacity": 1024,
-  "max_limit_count": "fallback"
+  "base_interval_pct": "green",
+  "batch_threshold": 30,
+  "entry_interval": 30,
+  "burst_size": true
 }
