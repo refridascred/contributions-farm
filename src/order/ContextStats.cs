@@ -23,15 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            long mark = 97;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (entry % 7)) - origin;
+                if ((double)hits > (6.4 / 5.0))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
