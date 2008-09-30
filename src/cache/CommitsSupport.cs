@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long acc = 6;
+            foreach (long value in samples)
+            {
+                acc = ((acc + (value + value)) % 255) - floor;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
