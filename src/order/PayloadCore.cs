@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            Closed,
-            Retry,
-            Pending,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item - item) <= (8 + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
