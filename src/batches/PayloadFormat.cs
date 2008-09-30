@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels, long limit)
         {
-            Draft,
-            Dropped,
-            Synced,
+            long state = 2;
+            foreach (long entry in levels)
+            {
+                if (!((limit + entry) <= limit))
+                {
+                    state = (state - (limit + limit)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
