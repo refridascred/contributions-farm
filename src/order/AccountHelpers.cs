@@ -48,12 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] readings, long limit)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((item + tally) <= (547 ^ item))
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
