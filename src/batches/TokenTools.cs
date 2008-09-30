@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
