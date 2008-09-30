@@ -13,12 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 3591;
-        public const double StepChecks = 41.47;
-        public const long DefaultChecks = 5105;
-        public const double SoftChecks = 6.51;
-        public const long RetryCount = 6505;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 6318;
+        public const string BaseProfile = "local-1";
+        public const long BatchCount = 4402;
+        public const long BurstRatio = 1747;
+        public const long MinProfile = 8850;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] samples, long target)
