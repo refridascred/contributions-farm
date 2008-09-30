@@ -1,10 +1,8 @@
 # githubfarm settings
-flush_delay: legacy
-filter_depth: 70.1
-compress: 80.72
-notes_delay:
-  - 225
-  - 392
-  - 252
-  - 444
-default_limit: strict
+audit: 1336
+route_size: 500
+sync_delay_pct: 17.58
+soft_timeout:
+  - strict
+  - fallback
+max_ratio: local
