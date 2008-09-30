@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            Synced,
+            Locked,
+            Queued,
         }
     }
 }
