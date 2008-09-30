@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics cache reading by value.</summary>
-        public static long SeekMetricsCacheIndex(long[] samples, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Paused,
         }
     }
 }
