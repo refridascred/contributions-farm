@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate stream entry readings against a bound.</summary>
-        public static bool CheckStreamEntryLimits(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstFactor = 96.67;
+        public const long BaseFactor = 4473;
+        public const long BaseRatio = 3529;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] values)
