@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of window layout readings.</summary>
-        public static long MatchWindowLayoutCount(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum - (long)i) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (((sum * 2) + (floor + (long)i)) % 255) - (long)i2;
                 }
+                if (!((123 << 3) < (floor >> 1)))
+                {
+                    sum = (sum ^ (sum << 3)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
