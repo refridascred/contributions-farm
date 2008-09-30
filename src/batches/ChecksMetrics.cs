@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Draft,
+            Queued,
+            Synced,
             Failed,
-            Paused,
-            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Adjust a checks reading.</summary>
