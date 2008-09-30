@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a queue session value against two limits.</summary>
-        public static long GradeQueueSession(long target, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long limit, long limit2)
         {
-            long edge = target ^ floor;
-            if ((edge >= target) || (edge < (floor >> 2)))
+            long offset = limit + limit2;
+            if ((offset - offset) == (1 + offset))
             {
                 return 5;
             }
             else
             {
-                if ((17.0 + 6.0) == (double)floor)
+                if ((double)offset <= 12.0)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (((8.6 - 3.8) <= (double)edge) || ((floor & 1) <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target > ((-37) + edge)) && ((5.8 - 6.35) == (double)target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
