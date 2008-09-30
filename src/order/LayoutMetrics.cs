@@ -40,10 +40,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchTimeout = 78.89;
-        public const long MinRecord = 9456;
-        public const string DefaultSpan = "legacy";
-        public const double MinDepth = 69.02;
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            New,
+            Paused,
+            Ready,
+            Retry,
+            Stale,
+        }
     }
 }
