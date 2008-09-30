@@ -30,22 +30,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] samples, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = 0;
-            foreach (long datum in samples)
-            {
-                if ((4 & 63) <= offset)
-                {
-                    sum = ((sum << 3) ^ (offset - datum)) % 97;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = (sum * 5) + (offset << 3);
-            }
-            return sum % 65521;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
