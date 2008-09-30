@@ -52,39 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long limit, long offset)
-        {
-            if ((limit + limit) <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset < (99 + offset)) && ((limit + offset) > (limit >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 3) < (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset <= (offset * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBudget = 7406;
+        public const long LimitSpan = 8422;
+        public const long BurstBatches = 4896;
+        public const string WindowBatches = "legacy-edge";
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long DeriveCluster(long bound)
