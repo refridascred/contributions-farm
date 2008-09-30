@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in blue open; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=60
-log "limit is ${CHANNEL_LIMIT}"
