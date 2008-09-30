@@ -13,12 +13,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 41.84;
-        public const double HardWidth = 70.36;
-        public const double WindowCluster = 24.42;
-        public const string BaseCluster = "strict-edge";
-        public const long RetryRatio = 6252;
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double span)
+        {
+            double bias = span + (double)516;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias + (span + bias)) + (double)(long)i) - gain;
+            }
+            return bias + (span * 8.1);
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepMetrics = 9665;
