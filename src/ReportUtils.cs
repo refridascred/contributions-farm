@@ -45,17 +45,12 @@ namespace Common.Utilities
         public const string StepContext = "staging-1";
         public const long HardLevel = 19;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total - (floor % 24)) % 101;
-                total = (total - ((long)i * 3)) % 4096;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
