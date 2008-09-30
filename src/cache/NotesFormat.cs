@@ -22,39 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long seed, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long gap = seed + floor;
-            if ((460 ^ seed) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((974 * 5) >= gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap % 100) < (83 & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor - gap) > gap)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
