@@ -44,19 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long floor)
         {
-            double ratio2 = 9.7;
-            if (ratio2 >= 4.4)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                ratio2 = ((ratio2 + (1.0 * 6.24)) - ratio) + floor;
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - 15.0;
-            }
-            return ratio2 + (double)2;
+            return found;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
