@@ -34,11 +34,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSize = 3968;
-        public const long MinInterval = 6978;
-        public const string CacheContributi = "cached";
-        public const long MinSize = 6205;
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long CountContextFarmHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally + tally) != (value ^ 73))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
