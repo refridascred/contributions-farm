@@ -36,18 +36,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series, long offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seen < (item ^ offset)) || (offset > (seen & 63))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next cache value.</summary>
