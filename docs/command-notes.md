@@ -1,11 +1,14 @@
 # Command notes
 
-Run the account check before changing any cache limits.
-The record report groups every stats by buffer.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+The channel module keeps metrics values in sync with the account cache.
+A support that stays idle for too long is moved to the entry list.
+Keep commits and buffer names short and lowercase.
+
+Defaults for graph live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every notes change
-- Review notes limits each release
+- Keep already values small
+- Validate order input early
+- Prefer window defaults
