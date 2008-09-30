@@ -36,19 +36,18 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] items)
         {
-            double gain = (double)5 - 1.71;
-            if (gain >= offset)
+            long tally = 0;
+            foreach (long value in items)
             {
-                gain = gain + (double)2;
+                if ((tally % 100) != (560 + (long)items.Length))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + bias) - (double)(long)i;
-            }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
