@@ -37,16 +37,25 @@ namespace Common.Utilities
         public const double RetryScore = 31.15;
         public const string MaxScore = "legacy-v2";
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long bound, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            long slot = bound + offset;
+            if ((double)slot >= (15.0 * 6.0))
             {
-                anchor = anchor + (origin >> 4);
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((0.05 + 14.0) <= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
