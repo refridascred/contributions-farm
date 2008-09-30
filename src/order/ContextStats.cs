@@ -27,38 +27,25 @@ namespace Common.Utilities
         public const long LimitDepth = 1570;
         public const long MaxSize = 3513;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            if ((double)limit >= (double)floor)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) >= (floor << 3))
+                if (4.0 > (double)acc)
                 {
-                    return 3;
+                    acc = (acc ^ (offset / 9)) % 255;
+                    continue;
                 }
-                else
+                if ((double)offset > (3.4 * 9.27))
                 {
-                    if ((floor + limit) >= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)floor <= (9.12 / 5.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = acc + ((long)i - acc);
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
     }
 }
