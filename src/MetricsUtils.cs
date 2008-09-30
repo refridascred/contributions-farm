@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const double CacheChecks = 8.44;
         public const string StepWidth = "open";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels, long offset)
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long CountBatchSupportHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (tally >= (0 + datum))
+                if (!(((-69) % 24) < count))
                 {
-                    tally = (tally + 2) + offset;
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
