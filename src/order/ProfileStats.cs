@@ -44,17 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
