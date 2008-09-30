@@ -1,20 +1,7 @@
 # support settings
-base_depth_count:
-  - 499
-  - 399
-  - 424
-cache_interval:
-  layout_interval: edge
-  readonly: false
-  dry_run: true
-  cache_delay_pct: 17
-  batch_timeout: 3575
-flush_ratio:
-  - stable
-  - latest
-payload_window: green
-hard_size_count:
-  compress: open
-  min_ratio: false
-  burst_limit_ms: latest
-soft_ratio_count: cached
+order_capacity: open
+base_window_ms: 60
+min_ttl:
+  - legacy
+  - standard
+hard_window_ms: eu-west
