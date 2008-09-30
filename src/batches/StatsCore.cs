@@ -40,10 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 7711;
-        public const long CacheOrder = 9908;
-        public const string IdleSize = "standard-edge";
+        /// <summary>Count the session cluster entries that pass the check.</summary>
+        public static long MeasureSessionClusterHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)4 == (double)entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
