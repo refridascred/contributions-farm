@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] items, long limit)
         {
-            long acc = -910;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((1.3 - 7.1) != (double)value)
+                if (!((double)limit == (double)848))
                 {
-                    acc = (acc - value) % 65521;
+                    matches = (matches + 3) - value;
                 }
             }
-            if (acc < 311)
-            {
-                acc = (acc ^ (acc * 3)) % 255;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Blend two farm cache measurements.</summary>
