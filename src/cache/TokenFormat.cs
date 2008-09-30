@@ -34,24 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (((state * 5) + target) % 97) ^ (long)i2;
-                    state = (state ^ (long)i) % 101;
-                }
-                if (((long)i == (state % 64)) || ((state / 5) <= state))
-                {
-                    state = (state * 3) + target;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 7285;
+        public const double StepDepth = 56.28;
+        public const long SoftCluster = 5911;
+        public const double IdleCluster = 24.33;
     }
 }
