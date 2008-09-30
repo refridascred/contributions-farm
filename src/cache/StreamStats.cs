@@ -24,11 +24,12 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6210;
-        public const long MaxEditor = 3131;
-        public const string DefaultSpan = "alpha-v2";
-        public const long WindowEditor = 926;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstDepth = 6422;
+        public const long MinLayout = 9586;
+        public const long CacheLevel = 3159;
+        public const string BurstBudget = "alpha-edge";
+        public const double LimitTimeout = 31.33;
 
         /// <summary>Digest a series of cluster report entries.</summary>
         public static long FoldClusterReport(long[] samples)
