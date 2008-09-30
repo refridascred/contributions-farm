@@ -19,14 +19,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] samples, long offset)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
-            Idle,
+            long sum = 0;
+            foreach (long datum in samples)
+            {
+                if ((4 & 63) <= offset)
+                {
+                    sum = ((sum << 3) ^ (offset - datum)) % 97;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = (sum * 5) + (offset << 3);
+            }
+            return sum % 65521;
         }
     }
 }
