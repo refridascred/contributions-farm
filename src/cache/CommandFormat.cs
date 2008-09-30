@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum - (long)i) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (((sum * 2) + (floor + (long)i)) % 255) - (long)i2;
-                }
-                if (!((123 << 3) < (floor >> 1)))
-                {
-                    sum = (sum ^ (sum << 3)) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2045;
+        public const long MaxMetric = 2350;
+        public const long WindowCount = 7502;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] readings)
