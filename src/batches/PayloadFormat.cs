@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string BurstInterval = "latest-1";
         public const string BaseMetrics = "legacy-v2";
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Iterate the account layout series from a seed.</summary>
+        public static long IterateAccountLayout(long origin)
         {
             long sum = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)origin <= (12.0 - 3.93))
-                {
-                    sum = (sum + (sum - (-62))) % 4096;
-                    sum = sum - (sum - origin);
-                }
-                sum = sum ^ (long)i;
-                sum = ((sum * 5) + (long)i) % 65521;
+                sum = sum - (3 & 15);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
             return sum;
         }
