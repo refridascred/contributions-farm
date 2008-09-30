@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a metric checks figure with a bias.</summary>
-        public static double ScaleMetricChecks(double rate, double span)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long bound)
         {
-            double ratio = (double)(157 - 220);
-            if (ratio > ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - (double)42) - rate;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - span) - (double)(long)i;
-            }
-            return ratio + span;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
