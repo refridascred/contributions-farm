@@ -19,13 +19,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Match up notes checks samples.</summary>
+        public static long OverlapNotesChecksCount(long[] series)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
