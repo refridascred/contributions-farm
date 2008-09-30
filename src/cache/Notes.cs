@@ -14,11 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 6611;
-        public const long SoftLevel = 1033;
-        public const long BaseContext = 823;
-        public const long CacheContext = 1956;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
