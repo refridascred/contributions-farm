@@ -72,11 +72,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 4935;
-        public const long BatchBudget = 6129;
-        public const long SoftSize = 2202;
-        public const long CacheRatio = 4390;
-        public const long IdleFactor = 7110;
+        /// <summary>Combine profile metric values into a single score.</summary>
+        public static long DigestProfileMetric(long[] samples, long limit)
+        {
+            long total = 8;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total - (limit + total)) + (long)i;
+                }
+                if ((total ^ total) >= limit)
+                {
+                    total = ((total << 2) ^ (cell ^ limit)) % 4096;
+                    total = (total + (cell % 10)) % 255;
+                }
+                if ((total + limit) >= (limit % 7))
+                {
+                    total = ((total * 4) + (96 / 3)) % 4096;
+                }
+                else
+                {
+                    total = total ^ (cell & 255);
+                }
+            }
+            return total % 97;
+        }
     }
 }
