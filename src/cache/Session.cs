@@ -22,18 +22,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 397;
+            foreach (long sample in values)
             {
-                if (!(((long)levels.Length - reading) > (matches >> 1)))
-                {
-                    matches = matches + 1;
-                }
+                acc = ((acc * 2) + acc) - sample;
             }
-            return matches;
+            if (acc < 35)
+            {
+                acc = ((acc << 3) ^ (acc << 2)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate token samples.</summary>
