@@ -14,22 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] items, long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((((-144) % 24) < entry) || ((origin % 12) > origin))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
