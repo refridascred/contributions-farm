@@ -57,16 +57,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the editor counter series from a seed.</summary>
-        public static long StepEditorCounter(long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long state = 34;
+            foreach (long entry in levels)
             {
-                carry = (carry - (73 ^ carry)) % 97;
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = (((state + ((-879) & 1)) % 1000) - entry) - target;
             }
-            return carry;
+            if (state > 7)
+            {
+                state = ((state << 3) ^ (state % 97)) % 101;
+            }
+            return state;
         }
     }
 }
