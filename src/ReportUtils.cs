@@ -24,14 +24,10 @@ namespace Common.Utilities
         public const long MaxLevel = 4369;
         public const long LimitAlready = 16;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 6692;
+        public const long MaxScore = 8508;
+        public const long MinBudget = 2598;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstFactor = 7135;
