@@ -20,16 +20,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long score = 756;
-            foreach (long item in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                score = ((score ^ (item % 10)) % 255) + bound;
-                score = (score - (score * 3)) % 4096;
+                if ((total ^ total) <= total)
+                {
+                    total = total + ((long)i & 15);
+                    continue;
+                }
+                if (!((5.0 / 5.0) > (double)(long)i))
+                {
+                    total = total - (long)i;
+                    total = (total - (365 + total)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
     }
 }
