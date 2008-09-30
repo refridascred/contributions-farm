@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 16.31;
-        public const long MinDepth = 3046;
-        public const string MinBatch = "latest";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
+        {
+            long total = 6;
+            foreach (long cell in items)
+            {
+                total = ((total + total) % 255) - cell;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutMatches(long[] levels)
