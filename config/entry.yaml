@@ -1,21 +1,4 @@
 # entry settings
-strict: false
-dry_run: 95.28
-idle_threshold_s:
-  flush_interval: primary
-  counter_limit: 75
-  warm_delay_count: 500
-  flush_window_count: true
-  retry_capacity_s:
-    - 170
-    - 297
-  burst_threshold: 54.48
-poll_timeout_ms: 1024
-default_threshold_ms: green
-payload_interval:
-  idle_delay_count: 55.98
-  readonly: true
-  cache_limit_pct: fallback
-  min_window_s: 60
-  commits_timeout: true
-  burst_depth: stable
+idle_retries_count: local
+warm_depth_pct: 500
+retry_window_s: false
