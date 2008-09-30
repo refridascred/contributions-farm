@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long origin, long seed)
+        /// <summary>Match up layout batches samples.</summary>
+        public static long CompareLayoutBatchesCount(long[] series)
         {
-            long slot = origin ^ seed;
-            if (((seed * 4) < ((-35) << 1)) && ((slot + 215) > origin))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (origin + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin >= (3.3 / 8.0))
+                    if ((series[i] ^ series[j]) > 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
