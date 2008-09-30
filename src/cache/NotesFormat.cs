@@ -15,18 +15,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long seed, long floor)
         {
-            long total = 4;
-            foreach (long datum in series)
+            long gap = seed + floor;
+            if ((460 ^ seed) > seed)
             {
-                if (((total / 8) <= datum) && ((-89) <= ((long)series.Length & 63)))
+                return 8;
+            }
+            else
+            {
+                if ((974 * 5) >= gap)
                 {
-                    total = total + (total + datum);
+                    return 1;
+                }
+                else
+                {
+                    if ((gap % 100) < (83 & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor - gap) > gap)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Accumulate graph samples.</summary>
