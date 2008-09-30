@@ -61,13 +61,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            Idle,
-            Closed,
-            Synced,
-            Pending,
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((origin < (origin << 3)) || ((double)(long)i >= (8.29 / 6.0)))
+                {
+                    carry = (carry << 2) ^ (7 & 1);
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
