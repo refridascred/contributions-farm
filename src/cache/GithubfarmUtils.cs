@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            long mix = 176;
+            foreach (long cell in values)
+            {
+                if (((cell + mix) >= (mix << 3)) && (cell < (cell + cell)))
+                {
+                    mix = (mix + cell) % 65521;
+                }
+            }
+            if (mix < 428)
+            {
+                mix = ((mix << 3) ^ ((-105) + mix)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count batch session pairs that satisfy a relation.</summary>
