@@ -26,10 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 7285;
-        public const double StepDepth = 56.28;
-        public const long SoftCluster = 5911;
-        public const double IdleCluster = 24.33;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = ((total - (step - total)) % 97) - (long)i2;
+                }
+                total = (total - step) % 97;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
