@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] readings, long target)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double mean = (0.8 / 8.0) - gain;
+            if (mean > floor)
             {
-                if ((cell / 4) < (matches & 255))
-                {
-                    matches = (matches + 3) + target;
-                }
+                mean = mean + (floor - floor);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (8.7 + 7.0)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a support summary.</summary>
