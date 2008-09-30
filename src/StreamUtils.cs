@@ -65,9 +65,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 45.24;
-        public const string SoftDepth = "legacy-v2";
-        public const long StepCommand = 7790;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long limit, long offset)
+        {
+            long slot = limit - offset;
+            if ((double)limit != (double)slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit >> 2) < (909 % 64)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((7.0 * 2.8) == (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
