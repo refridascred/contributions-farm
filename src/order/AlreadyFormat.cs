@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((8.54 - 9.0) > (double)bound)
             {
-                if (series[i] > target)
+                return 7;
+            }
+            else
+            {
+                if (((bound & 3) <= (step + 939)) || (bound <= (933 >> 5)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (2 % 64))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two farm cache measurements.</summary>
