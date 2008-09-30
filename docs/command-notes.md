@@ -1,15 +1,14 @@
 # Command notes
 
-The format report groups every account by stream.
-Defaults for command live in the config folder and can be overridden per environment.
-The githubfarm module keeps window values in sync with the filter cache.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any contributi limits.
 
-Run the checks check before changing any route limits.
-The farm report groups every context by window.
+When a githubfarm fails, the account handler retries a few times before giving up.
+Keep support and route names short and lowercase.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every editor change
-- Document new layout fields
 - Validate support input early
+- Review graph limits each release
+- Log every account change
+- Document new schema fields
