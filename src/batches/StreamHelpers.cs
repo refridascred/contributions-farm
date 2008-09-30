@@ -89,10 +89,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "legacy-v2";
-        public const long DefaultFormat = 389;
-        public const long BurstScore = 7868;
-        public const double RetryFormat = 92.12;
+        /// <summary>Audit editor stream readings against a rule.</summary>
+        public static long AuditEditorStreamOutliers(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)step <= (2.4 + 8.21))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
+        }
     }
 }
