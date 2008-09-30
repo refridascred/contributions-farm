@@ -1,9 +1,7 @@
-id,token,rank,weight,ratio
-1,583,826,446,502
-2,strict,edge,eu-west,stable
-3,86.35,latest,green,84.17
-4,571,45,504,strict
-5,486,staging,fallback,471
-6,900,50.03,fallback,390
-7,6.78,7.85,720,edge
-8,edge,131,592,768
+id,rank,ratio,count
+1,474,88.26,66.17
+2,open,742,679
+3,652,51,staging
+4,legacy,855,102
+5,240,119,36.6
+6,878,42.42,37.76
