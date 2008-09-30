@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Find the first queue buffer entry that matches the target.</summary>
+        public static long LookupQueueBufferIndex(long[] series, long step)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7 / 9) >= ((-817) ^ cell))
+                if (series[i] == step)
                 {
-                    carry = carry + (cell + 17);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
