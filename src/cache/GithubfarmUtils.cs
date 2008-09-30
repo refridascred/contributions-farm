@@ -44,18 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter order samples are out of range.</summary>
-        public static long TallyFilterOrderHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((tally % 64) >= reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 7816;
+        public const string DefaultLevel = "staging-edge";
+        public const long SoftWidth = 8123;
+        public const long BatchInterval = 9292;
+        public const double SoftBudget = 98.9;
     }
 }
