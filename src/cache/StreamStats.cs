@@ -49,38 +49,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a profile schema pair into a bucket.</summary>
-        public static long SortProfileSchema(long origin, long origin2)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((12 % 2) < origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((1.9 + 0.95) == (double)origin2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin2 < (13.0 + 3.87))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin2 != (20.0 - 6.7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
