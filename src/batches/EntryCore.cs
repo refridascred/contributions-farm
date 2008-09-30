@@ -21,16 +21,23 @@ namespace Common.Utilities
         public const string BurstAlready = "open-1";
         public const string RetryAlready = "staging-v2";
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long total = -26;
+            foreach (long entry in items)
             {
-                carry = ((carry << 3) ^ ((long)i - seed)) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((total - total) > (entry >> 2))
+                {
+                    break;
+                }
+                else
+                {
+                    total = (total ^ (total + entry)) % 255;
+                }
+                total = total ^ (entry >> 5);
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
