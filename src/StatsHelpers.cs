@@ -49,14 +49,14 @@ namespace Common.Utilities
         public const double DefaultDepth = 13.27;
         public const long HardReport = 9699;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            New,
-            Closed,
-            Idle,
+            Done,
+            Synced,
+            Active,
+            Stale,
             Ready,
-            Queued,
         }
 
         /// <summary>Project the next format value.</summary>
