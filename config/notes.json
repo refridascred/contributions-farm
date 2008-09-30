@@ -1,5 +1,6 @@
 {
-  "readonly": 250,
-  "queue_retries": 32,
-  "persist": 98
+  "cache_delay": 69.83,
+  "sync_window_count": [64, 446, 139, 154],
+  "strict": [312, 153, 14, 147],
+  "sync_window_pct": ["eu-west", "primary", "green"]
 }
