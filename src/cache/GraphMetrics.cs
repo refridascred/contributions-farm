@@ -55,16 +55,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Look up the position of a batch route sample.</summary>
+        public static long LocateBatchRouteIndex(long[] levels, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry * 3) + 119;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
