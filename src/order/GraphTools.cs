@@ -28,17 +28,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
