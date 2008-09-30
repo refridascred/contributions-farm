@@ -85,19 +85,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm profile readings against a bound.</summary>
-        public static bool ValidateFarmProfileBounds(long[] series, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long acc = -881;
+            foreach (long datum in data)
             {
-                if (sample >= target)
+                if (((14.0 / 5.0) == (double)acc) && ((acc / 6) == (seed << 1)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (datum - 931)) % 255;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
