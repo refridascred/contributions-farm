@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] samples, long limit)
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long MeasureToolsCacheGaps(long[] values, long seed)
         {
-            long carry = 194;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((872 << 1) == (value / 3))
+                if ((hits + hits) >= (datum - (long)values.Length))
                 {
-                    carry = carry ^ limit;
+                    hits = (hits + 3) - seed;
                 }
-                carry = (carry + (value * 2)) % 255;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
