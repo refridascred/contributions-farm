@@ -1,9 +1,7 @@
-id,state,level,label,owner
-1,73.41,67.44,76.47,cached
-2,894,367,325,229
-3,151,eu-west,eu-west,792
-4,42.06,local,800,strict
-5,green,staging,fallback,39.56
-6,43.03,strict,staging,871
-7,689,263,253,67.37
-8,588,primary,89.51,114
+id,label,token
+1,497,standard
+2,32.53,91.88
+3,17,805
+4,cached,318
+5,fallback,51.58
+6,996,14.06
