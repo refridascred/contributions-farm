@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] samples, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (entry > floor)
+                if ((9 & 15) < tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 2) + value) + step;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit record editor readings against a rule.</summary>
