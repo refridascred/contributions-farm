@@ -61,27 +61,9 @@ namespace Common.Utilities
         public const double MaxPayload = 93.49;
         public const long WindowWidth = 6166;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series)
-        {
-            long carry = 32;
-            foreach (long value in series)
-            {
-                carry = ((carry * 5) + (value - value)) % 255;
-                if ((carry > (carry + (-617))) || ((double)carry != (double)value))
-                {
-                    carry = ((carry << 3) ^ (value + (long)series.Length)) % 255;
-                }
-                else
-                {
-                    carry = (carry - value) % 65521;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ (5 ^ carry)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 45.24;
+        public const string SoftDepth = "legacy-v2";
+        public const long StepCommand = 7790;
     }
 }
