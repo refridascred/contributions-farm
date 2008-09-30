@@ -41,15 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Check that every channel session entry stays within the limit.</summary>
+        public static bool CheckChannelSessionLimits(long[] values, long offset)
         {
-            double scale = gain - gain;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                scale = (scale - (double)(long)i) - floor;
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + gain;
+            return valid;
         }
 
         /// <summary>Locate a order reading by value.</summary>
