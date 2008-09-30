@@ -1,13 +1,20 @@
 # githubfarm settings
-batches_depth:
-  min_ratio_ms: primary
-  max_timeout_s:
-    cache_window: 85
-    payload_delay: 2644
-    schema_timeout: true
-    default_delay: stable
-  context_window: blue
-  stream_ratio: 71
-  default_ratio: edge
-sync_ratio_count: cached
-max_timeout_s: 83.87
+batch_window_count: standard
+hard_interval_pct: 13.54
+farm_retries: 2646
+max_delay:
+  - edge
+  - strict
+  - blue
+  - latest
+sync_window_count:
+  idle_size: 85
+  enabled: 100
+  cache_depth_s:
+    readonly: 62.53
+    account_ttl: fallback
+    warm_delay_ms: 100
+    compress: false
+    flush_window_s: eu-west
+  notes_retries: false
+  farm_depth: 14.55
