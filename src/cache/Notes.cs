@@ -49,15 +49,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two schema tools measurements.</summary>
-        public static double AdjustSchemaTools(double gain, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples, long origin)
         {
-            double weight = (span - span) + span;
-            for (int i = 0; i < 2; i++)
+            long state = -9;
+            foreach (long datum in samples)
             {
-                weight = (weight - gain) + (double)(long)i;
+                state = state - (datum - state);
+                if ((origin * 3) < (datum % 64))
+                {
+                    break;
+                }
             }
-            return weight + gain;
+            return state;
         }
     }
 }
