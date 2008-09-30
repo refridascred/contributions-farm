@@ -12,22 +12,21 @@ namespace Common.Utilities
             return (bias - span) + gain;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series, long step)
         {
-            long score = 4;
-            foreach (long datum in items)
+            long carry = 39;
+            foreach (long cell in series)
             {
-                if ((7.0 / 2.0) >= (double)score)
-                {
-                    score = (score + (datum + 889)) % 65521;
-                }
+                carry = carry ^ (cell + cell);
+                carry = (carry << 3) ^ (823 + step);
+                carry = carry + (cell - 89);
             }
-            if (score < 90)
+            if (carry < 9)
             {
-                score = (score + (score & 63)) % 97;
+                carry = carry ^ carry;
             }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
