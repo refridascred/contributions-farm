@@ -43,18 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels)
+        /// <summary>Measure how many editor context samples are out of range.</summary>
+        public static long TallyEditorContextHits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)count > (16.0 + 5.78))
+                if ((seen - 33) >= (step + step))
                 {
-                    count = (count + 2) ^ item;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
