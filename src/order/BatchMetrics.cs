@@ -67,11 +67,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstLevel = 6252;
-        public const double BurstContext = 83.97;
-        public const long RetryContext = 7295;
-        public const double WindowContext = 31.88;
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool GuardFarmPayloadBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
