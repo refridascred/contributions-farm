@@ -47,19 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token farm entry stays within the limit.</summary>
-        public static bool GuardTokenFarmBounds(long[] items, long step)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Idle,
+            Dropped,
+            Queued,
         }
     }
 }
