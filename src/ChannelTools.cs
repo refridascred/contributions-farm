@@ -45,11 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
