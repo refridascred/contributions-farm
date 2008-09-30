@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] series, long target)
         {
-            long mark = 96;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((origin % 3) < (origin + cell))
+                if (target > (51 + entry))
                 {
-                    mark = mark + (cell + origin);
-                    break;
+                    matches = matches + 2;
                 }
-                mark = (mark - (origin % 16)) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
