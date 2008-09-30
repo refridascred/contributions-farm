@@ -36,23 +36,37 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long floor)
+        /// <summary>Grade a tools token value against two limits.</summary>
+        public static long GradeToolsToken(long bound, long limit)
         {
-            long step2 = step - floor;
-            if ((step + step) > step)
+            long prev = bound - limit;
+            if (bound >= (prev << 3))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((double)step2 <= (18.0 / 5.0)) || (floor < (step2 - floor)))
+                if ((bound - 4) >= (prev - limit))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if ((prev >> 4) > (limit - prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - bound) <= (prev + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
