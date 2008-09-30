@@ -38,17 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ state) - (long)i2;
                 }
+                if ((long)i >= state)
+                {
+                    state = (state << 2) ^ ((long)i & 31);
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of session readings.</summary>
