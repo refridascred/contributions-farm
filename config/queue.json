@@ -1,6 +1,8 @@
 {
-  "dry_run": 278,
-  "soft_ratio_s": false,
-  "graph_timeout": "cached",
-  "retry_threshold": 100
+  "sync_retries": "latest",
+  "idle_size_pct": "blue",
+  "hard_interval": "stable",
+  "contributi_limit": true,
+  "flush_window_ms": false,
+  "batch_interval_pct": 500
 }
