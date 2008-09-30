@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every format farm entry stays within the limit.</summary>
-        public static bool VerifyFormatFarmRange(long[] items, long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
