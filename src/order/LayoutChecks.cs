@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double ratio = span;
-            if (ratio > 12.0)
-            {
-                ratio = (ratio - (2.0 + span)) - gain;
-            }
-            return ratio - (ratio - span);
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
