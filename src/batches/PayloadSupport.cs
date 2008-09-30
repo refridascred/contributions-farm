@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc ^ (34 + step)) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryLevel = 8419;
+        public const long WindowCounter = 7984;
+        public const long StepCounter = 5666;
+        public const long HardFactor = 4711;
+        public const long BurstCounter = 4993;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandRange(long[] samples, long limit)
