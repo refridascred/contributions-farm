@@ -1,8 +1,6 @@
-id,rank,ratio,count
-1,532,109,92.73
-2,blue,eu-west,21.58
-3,11.5,21,79.95
-4,714,legacy,323
-5,50.87,stable,27.86
-6,blue,50,52.65
-7,cached,40.73,494
+id,weight,rank
+1,250,2.23
+2,77.17,green
+3,212,stable
+4,253,128
+5,49.0,636
