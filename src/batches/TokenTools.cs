@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const string DefaultBudget = "open-1";
         public const long HardContext = 5077;
 
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long CountEntrySessionOutliers(long[] samples, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((799 << 3) > (472 + datum))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
