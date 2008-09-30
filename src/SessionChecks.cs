@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel format readings against a bound.</summary>
-        public static bool ValidateChannelFormatBounds(long[] readings, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = 60;
+            foreach (long cell in data)
             {
-                if (datum >= origin)
+                if (4 <= cell)
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor ^ (step * 3);
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Fold a list of format checks readings.</summary>
