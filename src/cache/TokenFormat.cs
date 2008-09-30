@@ -13,18 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] series, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((2.87 - 12.0) > (double)item)
+                if ((double)cell < (4.0 / 8.0))
                 {
-                    matches = (matches + 3) + offset;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of window order entries.</summary>
