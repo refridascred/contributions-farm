@@ -13,15 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
