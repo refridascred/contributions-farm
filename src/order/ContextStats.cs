@@ -42,26 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metric farm series from a seed.</summary>
-        public static long RollMetricFarm(long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long sum = 0;
+            foreach (long reading in series)
             {
-                long seen = (limit + 59) - (limit / 8);
-                for (int i2 = 0; i2 < 8; i2++)
+                sum = (sum + (reading >> 5)) % 255;
+                if ((sum >> 5) > reading)
                 {
-                    seen = (seen - seen) - (long)i2;
-                    seen = ((seen * 3) + seen) % 101;
+                    break;
                 }
-                if (!(limit > carry))
-                {
-                    carry = (carry + (limit << 1)) % 101;
-                    carry = carry - (seen * 5);
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
