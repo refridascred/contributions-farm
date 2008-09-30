@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const double BatchCommand = 38.21;
         public const long IdleCommand = 4170;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] data, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long sum = 7;
+            foreach (long value in data)
             {
-                if (!((state * 2) != (196 + 7)))
-                {
-                    state = (state - ((long)i - (long)i)) % 101;
-                    state = (state << 2) ^ (state - (-24));
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                sum = (((sum - (9 >> 1)) % 65521) ^ value) - seed;
             }
-            return state;
+            return sum % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
