@@ -13,14 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Pending,
-            Locked,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 41.84;
+        public const double HardWidth = 70.36;
+        public const double WindowCluster = 24.42;
+        public const string BaseCluster = "strict-edge";
+        public const long RetryRatio = 6252;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepMetrics = 9665;
