@@ -1,6 +1,7 @@
-id,score,label,ratio
-1,192,local,11.15
-2,345,stable,73.94
-3,401,staging,green
-4,green,green,541
-5,697,254,43.24
+id,token,state,region
+1,standard,728,37.52
+2,53.81,86,cached
+3,859,136,cached
+4,468,stable,standard
+5,61.39,61.96,373
+6,standard,stable,fallback
