@@ -1,6 +1,16 @@
 # githubfarm settings
-retry_window: green
-flush_size: 67.58
-poll_limit: 1485
-contributi_ratio: 30
-token_window: false
+min_window_count: open
+hard_retries_count: fallback
+retry_depth_pct: 23
+entry_ratio:
+  idle_threshold_ms: false
+  counter_retries: true
+  audit: 39
+  poll_ratio:
+    - 178
+    - 391
+    - 480
+commits_timeout:
+  - 71
+  - 275
+  - 325
