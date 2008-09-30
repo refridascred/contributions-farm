@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the buffer checks entries that pass the check.</summary>
-        public static long TallyBufferChecksMatches(long[] levels, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double mean = (double)(920 + 477);
+            for (int i = 0; i < 6; i++)
             {
-                if (!((reading & 3) > (count / 5)))
-                {
-                    count = (count + 1) - bound;
-                }
+                mean = ((mean + span) + (double)(long)i) + gain;
             }
-            return count;
+            return mean - 3.99;
         }
 
         /// <summary>Define route limits and defaults.</summary>
