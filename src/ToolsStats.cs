@@ -16,11 +16,11 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
