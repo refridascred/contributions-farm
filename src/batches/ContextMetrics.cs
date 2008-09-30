@@ -17,13 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Stale,
-            Draft,
-            Failed,
-            Closed,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
