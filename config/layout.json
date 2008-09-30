@@ -1,8 +1,5 @@
 {
-  "min_depth_s": 14,
-  "retry_ratio_pct": 78.78,
-  "sync_window_ms": "latest",
-  "enabled": [491, 222, 322, 49],
-  "hard_capacity_pct": false,
-  "poll_capacity_count": "primary"
+  "base_capacity_s": "staging",
+  "min_interval_count": ["staging", "staging"],
+  "persist": "standard"
 }
