@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long step2)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] items, long step)
         {
-            if ((double)step >= (double)5)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (89 & 1))
+                if (entry != step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
