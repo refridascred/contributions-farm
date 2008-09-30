@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Done,
-            Synced,
-            Active,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 3486;
+        public const long IdleChecks = 5973;
+        public const long HardChecks = 8377;
+        public const long StepRatio = 3346;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
