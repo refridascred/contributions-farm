@@ -45,15 +45,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples, long bound)
-        {
-            long anchor = 927;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor ^ (long)samples.Length) ^ sample) - bound;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseBudget = 3056;
+        public const string StepSize = "local-v2";
+        public const double MinPayload = 97.82;
+        public const long LimitPayload = 4948;
     }
 }
