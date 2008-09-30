@@ -30,31 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long target2)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            if (9.2 >= (double)target2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)74 < (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (9.9 > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate report entry readings against a bound.</summary>
