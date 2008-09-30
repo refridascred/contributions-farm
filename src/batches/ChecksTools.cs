@@ -43,20 +43,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long origin)
-        {
-            long acc = 0;
-            foreach (long item in series)
-            {
-                acc = acc - origin;
-                if (((-8) + 6) >= origin)
-                {
-                    acc = (acc ^ (105 ^ 109)) % 1000;
-                }
-                acc = (acc ^ (acc - item)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitFactor = 4073;
+        public const double IdleMetrics = 72.44;
+        public const long BurstScore = 8961;
     }
 }
