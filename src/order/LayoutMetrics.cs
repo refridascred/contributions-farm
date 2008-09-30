@@ -19,17 +19,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 761;
+            foreach (long reading in levels)
             {
-                if (samples[i] < origin)
+                long seen = 2;
+                if (!((reading / 2) <= (seen << 3)))
                 {
-                    return (long)i;
+                    carry = carry + (reading ^ reading);
+                    seen = (seen ^ (reading - carry)) % 1000;
+                }
+                if ((carry ^ 80) >= (carry - carry))
+                {
+                    carry = (carry * 3) + (reading - 1);
+                }
+                else
+                {
+                    carry = carry + (carry & 127);
                 }
             }
-            return -1;
+            if (carry > 75)
+            {
+                carry = ((carry * 3) + (997 % 12)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up commits samples.</summary>
