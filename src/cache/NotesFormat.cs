@@ -31,15 +31,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            double bias = (double)(84 - 721);
-            for (int i = 0; i < 4; i++)
+            long result = 25;
+            foreach (long datum in levels)
             {
-                bias = ((bias - ratio) + (double)(long)i) + floor;
+                if ((double)datum < 2.4)
+                {
+                    result = (result + 101) % 65521;
+                }
+                if ((result ^ result) < (result + datum))
+                {
+                    result = ((result * 2) + (result / 3)) % 97;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result / 6);
+                }
             }
-            return bias - (bias * 8.6);
+            return result % 65521;
         }
     }
 }
