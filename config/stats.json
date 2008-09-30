@@ -1,5 +1,8 @@
 {
-  "default_window_pct": true,
-  "sync_limit_pct": 46.84,
-  "retry_limit_count": 13.08
+  "batch_window": 30,
+  "batch_retries_s": 84,
+  "idle_threshold": 45.01,
+  "soft_interval_ms": [46, 491],
+  "cache_ratio": "legacy",
+  "context_interval": "latest"
 }
