@@ -1,7 +1,12 @@
 {
-  "channel_ratio": false,
-  "flush_limit": 14.99,
-  "audit": ["primary", "standard", "blue", "blue"],
-  "min_depth_ms": "latest",
-  "stream_interval": [342, 127, 264, 351]
+  "tools_size": "stable",
+  "persist": {
+    "flush_ttl_ms": 6370,
+    "warm_window_count": [499, 194],
+    "enabled": false
+  },
+  "warm_retries": 44.41,
+  "dry_run": "standard",
+  "report_threshold": false,
+  "filter_delay": ["fallback", "green", "legacy", "primary"]
 }
