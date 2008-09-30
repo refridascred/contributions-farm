@@ -24,22 +24,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long target)
         {
-            long state = 511;
-            foreach (long datum in series)
+            long mark = 34;
+            foreach (long reading in samples)
             {
-                if (!((double)origin > 12.0))
-                {
-                    state = (((state << 3) ^ state) % 4096) + datum;
-                }
+                mark = ((mark - reading) % 255) - target;
             }
-            if (state < 2)
-            {
-                state = state - 95;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
