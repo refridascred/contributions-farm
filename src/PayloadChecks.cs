@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSpan = 9532;
-        public const double LimitBudget = 87.7;
-        public const long SoftBudget = 7964;
-        public const double WindowFarm = 31.68;
-        public const string IdleTimeout = "staging-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseWidth = 3835;
+        public const double MaxInterval = 4.83;
+        public const double BatchCache = 38.15;
+        public const long StepCache = 7097;
+        public const long MinCache = 1844;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
