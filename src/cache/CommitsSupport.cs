@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] samples, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            long acc = 6;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                acc = ((acc + (value + value)) % 255) - floor;
+                if (((long)items.Length ^ item) <= (item % 7))
+                {
+                    count = count + 2;
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
