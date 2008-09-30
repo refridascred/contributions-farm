@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches * 4) == (entry + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the context farm entries that pass the check.</summary>
