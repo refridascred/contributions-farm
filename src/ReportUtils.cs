@@ -79,13 +79,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] series, long offset)
         {
-            Done,
-            Paused,
-            Failed,
-            Ready,
+            long score = 9;
+            foreach (long cell in series)
+            {
+                if (!(offset >= (score + score)))
+                {
+                    score = (score - (315 << 1)) ^ cell;
+                }
+            }
+            if (score < 95)
+            {
+                score = (score * 4) + (offset + score);
+            }
+            return score;
         }
     }
 }
