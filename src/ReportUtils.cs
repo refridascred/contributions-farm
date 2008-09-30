@@ -27,18 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of already metrics entries.</summary>
-        public static long DigestAlreadyMetrics(long[] items, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] levels, long offset)
         {
-            long sum = 774;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((sum / 9) <= sum)
+                if (datum > offset)
                 {
-                    sum = (sum - (step + 946)) - value;
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define support limits and defaults.</summary>
