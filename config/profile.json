@@ -1,16 +1,9 @@
 {
-  "poll_limit_ms": {
-    "githubfarm_capacity": ["primary", "cached"],
-    "soft_window_s": 100,
-    "retry_limit_ms": 6498,
-    "sync_threshold": "strict"
+  "burst_timeout_ms": {
+    "default_limit": "primary",
+    "soft_timeout_pct": 30,
+    "idle_window_count": 97
   },
-  "hard_retries": 46.29,
-  "default_ratio": 3970,
-  "idle_size_s": "green",
-  "default_retries_s": {
-    "support_interval": 60,
-    "dry_run": "primary",
-    "format_ttl": "fallback"
-  }
+  "stream_size": 87,
+  "default_interval": [382, 277]
 }
