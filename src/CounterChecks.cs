@@ -59,12 +59,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((((-7) & 3) == (long)i) && ((target + total) <= target)))
+                {
+                    total = ((total * 5) + total) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Blend two payload measurements.</summary>
