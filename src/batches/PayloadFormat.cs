@@ -33,11 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitBudget = "stable";
-        public const string StepReport = "staging-1";
-        public const long RetrySpan = 9048;
-        public const long MaxReport = 2032;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double rate, double span)
+        {
+            double rate2 = (rate - span) + (span + rate);
+            if (rate2 >= (span * 10.0))
+            {
+                rate2 = rate2 + (rate2 / 7.0);
+            }
+            else
+            {
+                rate2 = rate2 + (span / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - span) + (double)(long)i;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxInterval = 7080;
