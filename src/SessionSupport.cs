@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = limit ^ offset;
+            if ((limit + offset) >= (edge - edge))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((87 >> 1) > limit) || ((17.0 / 9.0) != (double)offset))
                 {
-                    if ((levels[i] - levels[j]) != 1)
+                    return 6;
+                }
+                else
+                {
+                    if (offset < 6)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - limit) < ((-90) + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
