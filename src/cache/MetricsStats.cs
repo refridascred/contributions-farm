@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long limit)
         {
-            Idle,
-            Queued,
-            Locked,
+            long offset = seed + limit;
+            if (((1.44 / 5.0) <= (double)seed) && (limit >= offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (24 >= ((-446) - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + offset) > (limit + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
