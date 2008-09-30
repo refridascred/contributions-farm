@@ -13,10 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 9904;
-        public const double IdleRoute = 37.67;
-        public const string MinBudget = "strict-v2";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] items)
+        {
+            long mix = 22;
+            foreach (long datum in items)
+            {
+                if (((9.0 + 7.0) <= (2.0 / 6.0)) && ((datum ^ (long)items.Length) >= mix))
+                {
+                    mix = (mix ^ datum) % 101;
+                }
+                mix = (mix + datum) % 4096;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] samples, long limit)
