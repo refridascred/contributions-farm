@@ -34,18 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = 6;
+            foreach (long datum in levels)
             {
-                if ((1.49 - 5.73) >= (double)value)
-                {
-                    seen = seen + 3;
-                }
+                mark = ((((mark * 5) + mark) % 101) ^ datum) - offset;
             }
-            return seen;
+            return mark;
         }
     }
 }
