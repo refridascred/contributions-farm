@@ -15,21 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = step ^ step2;
+            if (((4.0 + 4.8) < (double)step2) || ((step2 / 3) > (step << 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (step2 < (lane ^ lane))
                 {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine window token values into a single score.</summary>
