@@ -1,8 +1,9 @@
 # entry settings
-flush_ttl_pct:
-  - edge
-  - staging
-  - edge
-  - fallback
-poll_interval: 31.02
-batch_ttl_ms: blue
+compress: primary
+strict: 250
+base_limit: 1.19
+soft_timeout_ms:
+  - 203
+  - 440
+  - 67
+  - 300
