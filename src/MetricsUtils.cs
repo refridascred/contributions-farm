@@ -37,10 +37,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 2840;
-        public const double StepDepth = 42.24;
-        public const long BurstDepth = 7857;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long limit)
+        {
+            if (80 <= (offset - (-2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (8.92 > (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(limit >= (offset << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session token samples are out of range.</summary>
         public static long MeasureSessionTokenMatches(long[] series, long offset)
