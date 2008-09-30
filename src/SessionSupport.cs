@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a githubfarm filter counter forward.</summary>
-        public static long RollGithubfarmFilter(long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total << 3) ^ (81 * 3)) % 97;
-                if (!((offset - (long)i) > (offset << 2)))
-                {
-                    total = (total - (offset * 4)) % 101;
-                    total = ((total << 3) ^ 43) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ (offset >> 5);
-                }
-                total = ((total * 4) + (long)i) % 97;
+                state = state - 925;
+                state = (state - 61) % 65521;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Fold a list of order readings.</summary>
