@@ -73,19 +73,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token already readings against a bound.</summary>
-        public static bool CheckTokenAlreadyBounds(long[] values, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
