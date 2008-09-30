@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples, long limit)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (5.0 - 2.5))
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
