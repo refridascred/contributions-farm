@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Closed,
-            Synced,
-            Done,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
