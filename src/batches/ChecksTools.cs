@@ -22,39 +22,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] data, long origin)
         {
-            long next = bound + seed;
-            if (((-515) << 3) >= (73 + next))
+            long anchor = 421;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed <= (seed ^ seed)) && ((6.0 / 6.0) < (double)seed))
+                if ((reading / 2) == ((long)data.Length & 255))
                 {
-                    return 8;
+                    anchor = (anchor - (anchor - reading)) - origin;
                 }
                 else
                 {
-                    if (!(514 <= (next / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)next < (5.84 - 19.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (anchor ^ (anchor << 2)) % 97;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Accumulate window already samples.</summary>
