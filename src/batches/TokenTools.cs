@@ -18,26 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long sum = 1;
-            foreach (long sample in values)
-            {
-                if (!((double)sample >= (1.2 / 5.0)))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                if (((double)sample < (10.0 + 2.8)) && ((double)sum > (double)15))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            New,
+            Stale,
+            Paused,
+            Idle,
         }
 
         /// <summary>Project the next stream value.</summary>
