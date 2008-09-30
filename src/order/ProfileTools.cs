@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            Retry,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((70 - sample) > (tally - sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
