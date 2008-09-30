@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally / 8) >= (tally - tally))
+                {
+                    tally = ((tally + 3) ^ reading) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
