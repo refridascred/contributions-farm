@@ -1,19 +1,8 @@
 # support settings
-poll_delay_pct:
-  entry_ttl: legacy
-  warm_size_count: stable
-  flush_interval:
-    buffer_ratio: 50
-    channel_delay: 90.59
-    warm_depth_s: strict
-  batch_timeout: 13.24
-  poll_size: cached
-  batch_limit_s: 64.52
-queue_size: eu-west
-graph_window: 74.85
-flush_capacity: 32
-base_capacity_pct:
-  - primary
-  - blue
-  - edge
-  - strict
+flush_size:
+  - staging
+  - latest
+  - local
+  - latest
+default_size_s: 65.16
+poll_limit: 2742
