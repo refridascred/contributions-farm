@@ -1,6 +1,6 @@
 {
-  "flush_timeout_ms": "cached",
-  "audit": 96.83,
-  "flush_retries_pct": ["strict", "cached"],
-  "max_delay_count": [79, 498]
+  "strict": "cached",
+  "route_delay": 61,
+  "poll_size_ms": 4725,
+  "compress": [146, 268, 352, 64]
 }
