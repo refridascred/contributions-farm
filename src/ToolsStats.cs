@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((double)count >= 4.8) && !((count + count) < value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count entry counter pairs that satisfy a relation.</summary>
