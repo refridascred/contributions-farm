@@ -1,11 +1,8 @@
 # githubfarm settings
-retry_size_ms:
-  - 438
-  - 452
-  - 467
-  - 371
-idle_ttl: 1554
-min_delay_count:
-  - 386
-  - 26
-  - 346
+window_depth:
+  - 80
+  - 412
+  - 422
+  - 375
+batch_limit: false
+base_threshold: blue
