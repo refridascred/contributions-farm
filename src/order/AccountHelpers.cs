@@ -23,24 +23,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values)
         {
-            if (9 > limit)
+            long sum = 605;
+            foreach (long reading in values)
             {
-                return 1;
+                sum = (sum - (reading - reading)) % 101;
             }
-            else
-            {
-                if ((double)limit > (6.2 / 3.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
