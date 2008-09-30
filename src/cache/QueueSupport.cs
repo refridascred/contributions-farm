@@ -27,14 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Dropped,
-            Locked,
-            Pending,
-            Closed,
-            Synced,
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
