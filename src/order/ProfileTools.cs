@@ -30,14 +30,11 @@ namespace Common.Utilities
             return (scale + (scale + scale)) + offset;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Retry,
-            Idle,
-            Done,
-            Closed,
-            Locked,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
