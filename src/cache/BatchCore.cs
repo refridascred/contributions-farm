@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 831;
-            foreach (long cell in levels)
-            {
-                score = (score - 2) + cell;
-            }
-            return score;
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
