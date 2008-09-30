@@ -58,19 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] samples, long floor)
+        /// <summary>Adjust a checks notes reading.</summary>
+        public static double BlendChecksNotes(double bias, double span)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double drift = bias + (double)72;
+            if (drift >= (bias / 7.0))
             {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + 8.4;
             }
-            return stale;
+            else
+            {
+                drift = drift + (drift * 9.8);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (drift * 3.0);
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
