@@ -1,18 +1,20 @@
 # githubfarm settings
-contributi_capacity: 60
-commits_interval: blue
-default_timeout_pct: true
-default_ttl_ms: strict
-record_capacity:
-  cache_size_pct: 5
-  persist: green
-  idle_timeout_ms:
-    - open
-    - primary
-  base_ttl: 50
-  cache_window:
-    burst_window_ms: 30
-    retry_depth: 91.94
-    batch_size_s: 69.88
-    flush_retries_s: standard
-enabled: blue
+compress:
+  - 232
+  - 110
+max_threshold_pct:
+  - primary
+  - fallback
+  - strict
+  - standard
+cache_ttl: 5129
+min_timeout_ms: eu-west
+burst_window:
+  retry_timeout_ms: strict
+  poll_ttl_ms:
+    - blue
+    - legacy
+  batch_capacity: standard
+max_retries_ms:
+  - 117
+  - 135
