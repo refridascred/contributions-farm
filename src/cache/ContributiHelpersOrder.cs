@@ -14,14 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] levels, long limit)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit <= 82) && ((limit + hits) >= (140 + sample)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every order tools entry stays within the limit.</summary>
