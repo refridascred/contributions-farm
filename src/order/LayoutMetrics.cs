@@ -35,14 +35,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
             New,
-            Paused,
+            Active,
+            Dropped,
             Ready,
-            Retry,
-            Stale,
+            Idle,
         }
     }
 }
