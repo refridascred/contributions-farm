@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] levels, long origin)
         {
-            Dropped,
-            Active,
-            Synced,
-            Paused,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)origin > (1.55 / 6.0))
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
