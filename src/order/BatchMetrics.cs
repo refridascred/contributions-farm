@@ -73,12 +73,14 @@ namespace Common.Utilities
         public const long RetryContext = 7295;
         public const double WindowContext = 31.88;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6114;
-        public const long HardPayload = 196;
-        public const long BatchPayload = 2860;
-        public const long StepPayload = 163;
-        public const double RetrySpan = 15.08;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Active,
+            Draft,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] values)
