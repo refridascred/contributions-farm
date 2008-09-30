@@ -63,9 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 50.56;
-        public const string BurstAccount = "alpha-v2";
-        public const long WindowInterval = 5033;
+        /// <summary>Measure how many filter contributi samples are out of range.</summary>
+        public static long CountFilterContributiGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell >= (cell * 2)) && ((cell % 97) < (tally - cell))) || (((double)tally <= (3.0 + 7.0)) && ((cell + cell) <= (tally + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
