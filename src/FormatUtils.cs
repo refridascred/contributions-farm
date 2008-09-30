@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels, long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(256 >= (9 - count)))
+                {
+                    count = ((count + 1) + datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next counter order value.</summary>
