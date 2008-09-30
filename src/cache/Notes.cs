@@ -52,12 +52,12 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                if (samples[i] == target)
                 {
                     return (long)i;
                 }
