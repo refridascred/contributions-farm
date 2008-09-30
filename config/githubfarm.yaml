@@ -1,10 +1,12 @@
 # githubfarm settings
-support_retries: true
-layout_window: false
-min_limit_s: blue
-channel_capacity: 25.18
-burst_retries:
-  - blue
-  - legacy
+burst_capacity_pct: true
+cache_threshold:
+  max_ttl_pct: latest
+  payload_ratio: true
+  enabled: 40.4
+  hard_interval_ms: true
+  max_limit_s: 2683
+  max_ratio_s: 84.82
+persist:
   - edge
-  - primary
+  - local
