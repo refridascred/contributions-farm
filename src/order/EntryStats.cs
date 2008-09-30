@@ -37,18 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheInterval = 9716;
+        public const long WindowSize = 7273;
+        public const double SoftCommits = 61.31;
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] items)
