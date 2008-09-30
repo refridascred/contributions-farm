@@ -52,17 +52,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] series, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long limit, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit + limit) <= offset)
             {
-                if (series[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if ((offset < (99 + offset)) && ((limit + offset) > (limit >> 3)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 3) < (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= (offset * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
