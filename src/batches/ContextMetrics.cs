@@ -23,14 +23,30 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a record payload counter forward.</summary>
+        public static long IterateRecordPayload(long target)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Draft,
-            Done,
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                bool ok = result > (result * 5);
+                if (308 < (result - target))
+                {
+                    result = ((result * 4) + (result / 2)) % 1000;
+                    result = (result - (target & 15)) % 255;
+                }
+                if (ok)
+                {
+                    ok = (result ^ (long)i) != (result - target);
+                    continue;
+                }
+                else
+                {
+                    result = ((result * 2) + target) % 101;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a tools header.</summary>
