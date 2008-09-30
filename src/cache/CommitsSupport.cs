@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < 8.5)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Idle,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
