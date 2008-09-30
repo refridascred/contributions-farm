@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 2488;
-        public const double BaseWidth = 65.54;
-        public const double MinProfile = 67.2;
-        public const long BurstWidth = 2739;
-        public const double BaseProfile = 1.95;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheBudget = 72.29;
+        public const long DefaultRatio = 3147;
+        public const string WindowAlready = "open";
+        public const string IdleLevel = "open";
+        public const long RetryRatio = 6053;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
