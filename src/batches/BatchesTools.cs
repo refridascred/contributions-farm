@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const double SoftChecks = 6.51;
         public const long RetryCount = 6505;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(matches > value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
