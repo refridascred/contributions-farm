@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open fallback primary; do
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging legacy blue green; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
