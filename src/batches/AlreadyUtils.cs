@@ -36,18 +36,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] series, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((((count / 5) > (reading >> 4)) || ((reading ^ reading) <= (offset % 16))) || ((double)reading != (3.44 / 3.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
