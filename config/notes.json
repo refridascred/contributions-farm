@@ -1,17 +1,5 @@
 {
-  "cluster_threshold": 40,
-  "verbose": "strict",
-  "readonly": {
-    "persist": 65,
-    "batch_ratio": "eu-west",
-    "audit": {
-      "default_threshold_ms": ["legacy", "strict", "open"],
-      "audit": ["stable", "staging"],
-      "hard_interval_ms": "primary",
-      "compress": 60
-    },
-    "commits_depth": "cached",
-    "max_threshold_count": 79.98
-  },
-  "default_depth_ms": "cached"
+  "hard_capacity_count": 7206,
+  "default_capacity_pct": false,
+  "poll_delay_count": 30
 }
