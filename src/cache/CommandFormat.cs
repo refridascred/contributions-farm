@@ -24,12 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Done,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
