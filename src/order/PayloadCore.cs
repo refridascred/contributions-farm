@@ -37,16 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches commits value from a seed.</summary>
-        public static long IterateBatchesCommits(long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total + (95 + (long)i);
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
