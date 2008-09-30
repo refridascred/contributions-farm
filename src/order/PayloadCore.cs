@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 74;
-        public const long BaseChecks = 1550;
-        public const double CacheChecks = 63.06;
-        public const long LimitChecks = 567;
-        public const long BurstChecks = 294;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] readings, long step)
