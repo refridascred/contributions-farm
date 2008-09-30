@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double offset)
         {
-            double weight = span;
-            if (weight < (double)28)
+            double bias2 = offset;
+            if (bias2 < bias2)
             {
-                weight = (weight - (weight + span)) - ratio;
+                bias2 = bias2 - bias;
             }
-            return weight + span;
+            else
+            {
+                bias2 = bias2 - 3.3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (offset * 2.86)) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
