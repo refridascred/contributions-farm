@@ -29,11 +29,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            Ready,
+            Dropped,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
