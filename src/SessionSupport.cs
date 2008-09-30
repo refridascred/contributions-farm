@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "primary-1";
+        public const double RetryWidth = 31.42;
+        public const long BatchCluster = 7954;
+        public const double MinWidth = 48.01;
 
         /// <summary>Match up record order samples.</summary>
         public static long OverlapRecordOrderCount(long[] values)
