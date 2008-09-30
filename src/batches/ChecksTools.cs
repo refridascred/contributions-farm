@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum == (6.6 + 6.6))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
