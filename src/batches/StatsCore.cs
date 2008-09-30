@@ -23,18 +23,21 @@ namespace Common.Utilities
         public const long CacheOrder = 9908;
         public const string IdleSize = "standard-edge";
 
-        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
-        public static long TallyChecksGithubfarmHits(long[] readings)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - entry) > (hits + 385))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
