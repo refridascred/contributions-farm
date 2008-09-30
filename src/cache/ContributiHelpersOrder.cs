@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool VerifyChecksAccountBounds(long[] samples, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the record phase values.</summary>
