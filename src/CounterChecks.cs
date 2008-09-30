@@ -19,24 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long offset)
         {
-            if ((step >> 2) <= bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound < 2.07))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
