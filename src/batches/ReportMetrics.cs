@@ -16,14 +16,15 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double bias, double floor)
         {
-            New,
-            Draft,
-            Closed,
-            Paused,
-            Ready,
+            double load = bias - (bias - bias);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor + 5.0)) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Check that every filter payload entry stays within the limit.</summary>
