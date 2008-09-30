@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Closed,
-            Draft,
+            Done,
+            Dropped,
+            Synced,
             Ready,
         }
 
