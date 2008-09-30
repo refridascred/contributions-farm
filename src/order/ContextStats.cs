@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Ready,
+            Done,
             Dropped,
-            Locked,
-            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine token values into a single score.</summary>
