@@ -80,19 +80,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double bias)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] data)
         {
-            double ratio = (double)494 - (bias / 3.0);
-            if (ratio <= bias)
+            long seen = 0;
+            foreach (long item in data)
             {
-                ratio = (ratio - (ratio * 19.0)) + gain;
+                if ((5.1 / 9.0) > (double)seen)
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 18.0) + (double)(long)i;
-            }
-            return ratio - (double)948;
+            return seen;
         }
     }
 }
