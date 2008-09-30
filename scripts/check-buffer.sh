@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable local; do
+for item in green open staging; do
     log "checking ${item}"
 done
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
