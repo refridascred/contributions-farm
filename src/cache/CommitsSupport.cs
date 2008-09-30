@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema window reading by value.</summary>
-        public static long SeekSchemaWindowIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 7519;
+        public const long HardGraph = 6553;
+        public const long MinGraph = 7524;
+        public const double SoftRatio = 95.89;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] data, long step)
