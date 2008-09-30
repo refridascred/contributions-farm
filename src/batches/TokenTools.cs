@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 5042;
+        public const long MaxContributi = 3700;
+        public const long CacheLevel = 1442;
+        public const long WindowInterval = 5456;
+        public const long CacheBudget = 3074;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutOutliers(long[] samples)
