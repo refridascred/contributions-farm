@@ -55,12 +55,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "primary";
-        public const string SoftBudget = "stable-v2";
-        public const double MinEntry = 15.41;
-        public const string StepSize = "legacy-edge";
-        public const long CacheEntry = 1693;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item <= (item + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryMatches(long[] series)
