@@ -49,15 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster filter value from a seed.</summary>
-        public static long IterateClusterFilter(long floor)
+        /// <summary>Digest a series of already metrics entries.</summary>
+        public static long DigestAlreadyMetrics(long[] items, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = 774;
+            foreach (long value in items)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((sum / 9) <= sum)
+                {
+                    sum = (sum - (step + 946)) - value;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Check that every metrics context entry stays within the limit.</summary>
