@@ -24,23 +24,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long floor)
         {
-            long state = 3;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (state + item)) % 65521;
-                if ((state % 24) <= (item % 7))
+                if (values[i] >= floor)
                 {
-                    state = (state ^ (item + state)) % 65521;
-                }
-                else
-                {
-                    state = (state * 5) + (state >> 4);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
