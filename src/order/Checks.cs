@@ -47,24 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            if ((bound >= (bound & 1)) || ((bound << 1) <= (bound % 64)))
+            double scale = (3.13 * 4.18) / 9.0;
+            if (scale >= offset)
             {
-                return 0;
+                scale = (scale + scale) + gain;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound << 2) <= (bound - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                scale = (scale + offset) + (double)(long)i;
             }
+            return scale - 5.4;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
