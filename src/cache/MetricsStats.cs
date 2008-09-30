@@ -34,11 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen * 3) < (target * 2))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
