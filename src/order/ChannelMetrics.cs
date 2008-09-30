@@ -24,23 +24,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already tools samples.</summary>
-        public static long WeighAlreadyTools(long[] items, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long seed2)
         {
-            long anchor = 12;
-            foreach (long value in items)
+            long cur = seed ^ seed2;
+            if ((double)seed2 >= 7.62)
             {
-                anchor = (anchor << 2) ^ (value << 1);
-                if ((limit << 3) != (67 + value))
+                return 5;
+            }
+            else
+            {
+                if (((seed + seed) > (seed2 + seed)) && ((3.0 - 7.6) < (double)cur))
                 {
-                    anchor = (anchor << 3) ^ (value + 27);
+                    return 2;
                 }
-                if (!(limit > (limit & 3)))
+                else
                 {
-                    break;
+                    if (cur > 174)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor % 97;
         }
     }
 }
