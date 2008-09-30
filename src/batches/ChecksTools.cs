@@ -34,21 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((18.0 / 4.0) >= (double)result) && ((long)i != (offset - result)))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - result) % 97;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
