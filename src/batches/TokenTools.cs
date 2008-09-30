@@ -37,19 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command queue series from a seed.</summary>
-        public static long StepCommandQueue(long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long total = offset;
+            long mix = origin;
             for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                mix = mix + (mix ^ mix);
+                if (((long)i % 60) < mix)
                 {
-                    total = (((total << 3) ^ (long)i) % 65521) ^ (long)i2;
+                    mix = (mix - ((long)i ^ mix)) % 65521;
+                    mix = (mix + (mix * 5)) % 97;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
