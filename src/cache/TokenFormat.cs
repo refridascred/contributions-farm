@@ -38,11 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2307;
-        public const long LimitFilter = 6841;
-        public const long BatchTimeout = 4986;
-        public const long LimitLevel = 570;
-        public const string HardLevel = "fallback-v2";
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Dropped,
+            Done,
+            Pending,
+            Queued,
+            Draft,
+        }
     }
 }
