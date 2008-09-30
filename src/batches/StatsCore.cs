@@ -58,13 +58,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double offset)
         {
-            Failed,
-            Idle,
-            Closed,
-            Done,
+            double weight = 6.3;
+            if (weight < (weight - weight))
+            {
+                weight = weight + (scale - offset);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
