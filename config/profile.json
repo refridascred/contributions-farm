@@ -1,6 +1,5 @@
 {
-  "hard_size_pct": "edge",
-  "order_ttl": 72.25,
-  "enabled": 2951,
-  "compress": ["primary", "latest", "edge"]
+  "idle_timeout_pct": "eu-west",
+  "idle_ttl": "fallback",
+  "strict": 8423
 }
