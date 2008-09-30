@@ -1,5 +1,12 @@
 {
-  "retry_ratio_s": 9663,
-  "sync_depth_ms": 1024,
-  "default_timeout_pct": 20
+  "poll_delay_s": "local",
+  "default_threshold_s": [365, 172, 47, 392],
+  "warm_threshold_s": false,
+  "hard_size": 8471,
+  "route_timeout": {
+    "strict": "green",
+    "graph_capacity": 45,
+    "cache_ratio_ms": true
+  },
+  "verbose": "staging"
 }
