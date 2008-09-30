@@ -42,15 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double rate = (scale - 3.0) + (double)3;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate - (11.0 / 8.0)) + (double)(long)i) + span;
-            }
-            return rate + rate;
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate payload stream readings against a bound.</summary>
