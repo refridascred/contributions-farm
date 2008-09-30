@@ -20,21 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long CombineCommitsToken(long[] series, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] items, long step)
         {
-            long carry = 67;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 2) ^ (origin >> 5)) ^ reading;
-                carry = ((carry << 2) ^ (8 / 8)) % 1000;
-                carry = ((carry << 3) ^ (carry + 63)) % 101;
-                if (((origin - (long)series.Length) != (carry % 5)) || ((9.4 / 5.0) == (double)carry))
+                if ((items[i] == step) && ((items[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
