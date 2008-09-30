@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 2315;
+        public const long StepInterval = 4397;
+        public const long RetryRatio = 2020;
 
         /// <summary>Count route account pairs that satisfy a relation.</summary>
         public static long OverlapRouteAccountCount(long[] values)
