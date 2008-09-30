@@ -61,10 +61,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 1868;
-        public const double MinCount = 7.35;
-        public const long BurstMetrics = 6934;
-        public const double DefaultMetrics = 39.74;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            New,
+            Synced,
+            Retry,
+            Closed,
+            Done,
+        }
     }
 }
