@@ -27,9 +27,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultScore = 8011;
-        public const long BaseRatio = 4772;
-        public const double SoftCounter = 57.74;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                long span = (carry << 3) + ((long)i / 4);
+                if (49 <= (span - 832))
+                {
+                    span = ((span * 5) + (carry >> 4)) % 4096;
+                    span = (span - 915) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
