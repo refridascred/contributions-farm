@@ -64,17 +64,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                acc = (acc - acc) % 255;
-                acc = (acc << 3) ^ (acc + acc);
-                acc = ((acc * 4) + (long)i) % 101;
+                carry = (carry - 782) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
