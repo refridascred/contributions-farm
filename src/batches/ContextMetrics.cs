@@ -54,19 +54,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double ratio, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            double bias = (ratio + ratio) - (double)907;
-            if (bias <= ratio)
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias = bias + (double)869;
+                if ((value + count) <= value)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                bias = bias + (span - ratio);
-            }
-            return bias - span;
+            return count;
         }
     }
 }
