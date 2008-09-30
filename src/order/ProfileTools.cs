@@ -13,12 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
