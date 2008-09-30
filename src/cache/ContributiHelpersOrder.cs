@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitScore = 3863;
-        public const long BaseMetrics = 8002;
-        public const double SoftMetrics = 42.57;
-        public const long LimitMetrics = 981;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Retry,
+            New,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] series, long limit)
