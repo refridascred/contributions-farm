@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] samples, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long sum = 66;
+            foreach (long value in values)
             {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum + offset) ^ value;
             }
-            return valid;
+            if (sum < 0)
+            {
+                sum = sum + (sum & 63);
+            }
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
