@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples, long offset)
+        /// <summary>Roll a githubfarm filter counter forward.</summary>
+        public static long RollGithubfarmFilter(long offset)
         {
-            long total = 6;
-            foreach (long value in samples)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((offset >> 1) <= offset)
+                total = ((total << 3) ^ (81 * 3)) % 97;
+                if (!((offset - (long)i) > (offset << 2)))
                 {
-                    total = (total - (offset << 1)) + value;
+                    total = (total - (offset * 4)) % 101;
+                    total = ((total << 3) ^ 43) % 4096;
                 }
-                if ((offset + offset) <= (76 >> 1))
+                else
                 {
-                    break;
+                    total = (total << 3) ^ (offset >> 5);
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
             return total;
         }
