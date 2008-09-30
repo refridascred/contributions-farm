@@ -50,22 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] levels, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((limit + 22) > (limit & 31))
             {
-                if ((tally / 8) >= (tally - tally))
+                return 8;
+            }
+            else
+            {
+                if ((bound << 2) == (limit + bound))
                 {
-                    tally = ((tally + 3) ^ reading) + offset;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
