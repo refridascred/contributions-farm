@@ -34,20 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 7798;
+        public const long IdleScore = 4392;
+        public const long WindowBudget = 5151;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
