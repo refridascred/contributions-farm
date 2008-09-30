@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstFactor = 5759;
-        public const long WindowNotes = 6263;
-        public const double HardNotes = 54.14;
-        public const long DefaultTimeout = 3384;
-        public const string BaseDepth = "primary";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Idle,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Validate filter githubfarm readings against a bound.</summary>
         public static bool CheckFilterGithubfarmLimits(long[] levels, long limit)
