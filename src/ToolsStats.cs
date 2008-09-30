@@ -42,32 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] values, long target)
         {
-            long diff = seed ^ origin;
-            if ((origin <= (seed ^ seed)) || ((origin + 6) <= (seed ^ 2)))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin - diff) <= (632 & 15))
+                if (54 > (46 - entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (0.7 + 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
