@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long bound)
         {
-            long score = -302;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                score = (((score * 5) + score) + sample) + limit;
-                if ((double)score == (4.1 * 0.9))
+                if (sample <= bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score % 4096;
+            return flag;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
