@@ -62,22 +62,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series, long step)
+        /// <summary>Find the first metric notes entry that matches the target.</summary>
+        public static long LocateMetricNotesIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step >= (35 - step))
+                if (samples[i] < seed)
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
