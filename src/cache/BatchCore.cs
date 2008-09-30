@@ -27,16 +27,19 @@ namespace Common.Utilities
             return ratio - (double)44;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                sum = (sum - (step + step)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
