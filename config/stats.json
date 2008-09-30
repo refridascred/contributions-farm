@@ -1,6 +1,10 @@
 {
-  "strict": "cached",
-  "route_delay": 61,
-  "poll_size_ms": 4725,
-  "compress": [146, 268, 352, 64]
+  "idle_threshold": 7486,
+  "warm_interval_s": {
+    "verbose": false,
+    "persist": "latest",
+    "hard_retries": ["cached", "standard", "stable", "fallback"],
+    "flush_retries": 93.01
+  },
+  "verbose": 44.99
 }
