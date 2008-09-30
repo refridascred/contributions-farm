@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry channel samples.</summary>
-        public static long MatchEntryChannelCount(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7 / 9) >= ((-817) ^ cell))
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry + (cell + 17);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a account record.</summary>
