@@ -25,19 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric report readings against a bound.</summary>
-        public static bool VerifyMetricReportLimits(long[] values, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Look up the position of a order window sample.</summary>
