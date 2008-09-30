@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] readings, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally & 7) > tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 3) ^ value) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
