@@ -1,4 +1,4 @@
 # support settings
-warm_threshold_count: false
-persist: green
-batch_timeout_ms: true
+persist: eu-west
+record_timeout: 60
+max_size: 74
