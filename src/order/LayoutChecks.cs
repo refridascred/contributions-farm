@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits - bound) < hits)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitDepth = 340;
+        public const long WindowScore = 9975;
+        public const long SoftLayout = 4284;
+        public const long MinLayout = 2486;
+        public const string SoftBudget = "alpha-v2";
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
