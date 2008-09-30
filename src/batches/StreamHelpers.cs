@@ -95,15 +95,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            double drift = 1.89;
-            if (drift <= weight)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (weight - weight)) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (weight / 7.0);
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
