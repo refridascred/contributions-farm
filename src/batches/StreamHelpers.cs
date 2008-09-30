@@ -79,14 +79,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            Draft,
-            Queued,
-            Done,
-            Failed,
-            Stale,
+            double drift = 1.89;
+            if (drift <= weight)
+            {
+                drift = (drift - (weight - weight)) - offset;
+            }
+            return drift + (weight / 7.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
