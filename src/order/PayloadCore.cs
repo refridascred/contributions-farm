@@ -33,13 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long floor)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            long lane = origin + floor;
+            if (((lane % 7) > origin) || (67 >= lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor >= (origin + (-944)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
