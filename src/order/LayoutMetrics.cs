@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinDepth = 9331;
+        public const double LimitFilter = 86.75;
+        public const long SoftFilter = 6423;
+        public const double BaseRatio = 36.03;
+        public const string IdleRatio = "primary-v2";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double scale, double floor)
