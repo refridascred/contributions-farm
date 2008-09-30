@@ -43,19 +43,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long WeighGraphBuffer(long[] data, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long total = 549;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ limit) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total > 5)
-            {
-                total = total - (limit + limit);
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
