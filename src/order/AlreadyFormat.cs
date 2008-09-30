@@ -62,15 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Active,
+            Done,
         }
     }
 }
