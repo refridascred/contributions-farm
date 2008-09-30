@@ -1,5 +1,6 @@
 {
-  "verbose": "strict",
-  "min_timeout": ["eu-west", "eu-west", "fallback", "edge"],
-  "stream_capacity": 60
+  "dry_run": 500,
+  "filter_capacity": 96,
+  "retry_delay_s": 2.51,
+  "burst_retries_pct": 21.96
 }
