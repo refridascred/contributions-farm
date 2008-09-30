@@ -1,9 +1,4 @@
 # support settings
-min_limit_ms: fallback
-enabled:
-  - stable
-  - stable
-  - stable
-  - local
-idle_retries_ms: 12
-dry_run: green
+editor_ratio: 19.19
+sync_depth_count: fallback
+audit: 86
