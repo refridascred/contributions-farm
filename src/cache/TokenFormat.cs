@@ -12,18 +12,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] values, long seed)
+        /// <summary>Count route account pairs that satisfy a relation.</summary>
+        public static long OverlapRouteAccountCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen <= (92 + seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = ((seen + 2) + cell) + seed;
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
