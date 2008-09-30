@@ -47,12 +47,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
