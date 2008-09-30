@@ -90,17 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 7069;
+        public const long CacheWidth = 6442;
+        public const long BurstBudget = 6237;
+        public const long WindowTimeout = 4242;
+        public const double WindowRatio = 57.1;
     }
 }
