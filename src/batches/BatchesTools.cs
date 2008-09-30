@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long seed)
         {
-            Closed,
-            Synced,
-            Done,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
