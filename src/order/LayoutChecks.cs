@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const long RetryInterval = 6157;
         public const long CacheBudget = 2493;
 
-        /// <summary>Accumulate githubfarm context samples.</summary>
-        public static long CombineGithubfarmContext(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] items, long step)
         {
-            long result = 7;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                result = (result << 3) ^ (datum - datum);
-                if (!((result & 63) >= (datum % 7)))
+                if (count <= (count + cell))
                 {
-                    result = ((result << 2) ^ (33 & 63)) % 255;
+                    count = (count + 2) + step;
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
