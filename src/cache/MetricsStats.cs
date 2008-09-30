@@ -32,21 +32,20 @@ namespace Common.Utilities
         public const double StepEntry = 39.37;
         public const double CacheEntry = 93.7;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry + entry) % 97;
+                carry = (carry - seed) % 4096;
+                if ((double)carry > (5.01 + 3.4))
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - (2 + entry);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
