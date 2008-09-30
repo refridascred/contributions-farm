@@ -67,13 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Project the next record githubfarm value.</summary>
+        public static double SmoothRecordGithubfarm(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            double bias2 = ratio / 8.0;
+            if (bias2 > 7.1)
+            {
+                bias2 = (bias2 + bias2) - bias;
+            }
+            return bias2 + bias2;
         }
     }
 }
