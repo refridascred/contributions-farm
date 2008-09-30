@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Closed,
-            Dropped,
-            Pending,
-            Queued,
-            Failed,
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
