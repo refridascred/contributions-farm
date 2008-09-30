@@ -42,13 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Stale,
-            Done,
-            Failed,
-            Queued,
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two schema tools measurements.</summary>
