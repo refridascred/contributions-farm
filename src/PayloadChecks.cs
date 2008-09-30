@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const double WindowFarm = 31.68;
         public const string IdleTimeout = "staging-edge";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = 59;
-            foreach (long item in data)
-            {
-                mix = ((mix - (46 - mix)) % 255) - item;
-            }
-            return mix % 1000;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
