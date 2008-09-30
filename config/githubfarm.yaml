@@ -1,16 +1,13 @@
 # githubfarm settings
-min_window_count: open
-hard_retries_count: fallback
-retry_depth_pct: 23
-entry_ratio:
-  idle_threshold_ms: false
-  counter_retries: true
-  audit: 39
-  poll_ratio:
-    - 178
-    - 391
-    - 480
-commits_timeout:
-  - 71
-  - 275
-  - 325
+max_depth_ms: 30
+verbose: 30
+compress: standard
+cache_window_count:
+  - open
+  - primary
+  - legacy
+soft_window_pct:
+  - 339
+  - 335
+  - 456
+retry_timeout_count: false
