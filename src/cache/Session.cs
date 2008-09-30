@@ -14,25 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a metrics context pair into a bucket.</summary>
-        public static long SortMetricsContext(long target, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long cur = target ^ limit;
-            if ((cur + cur) != (target + cur))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur * 4) == (99 + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
