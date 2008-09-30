@@ -48,20 +48,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleScore = 46.71;
+        public const long HardSpan = 7446;
+        public const long BaseDepth = 2486;
+        public const long RetryDepth = 8249;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long seed)
