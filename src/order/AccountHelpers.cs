@@ -23,16 +23,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values)
-        {
-            long sum = 605;
-            foreach (long reading in values)
-            {
-                sum = (sum - (reading - reading)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 2709;
+        public const long MaxSize = 3169;
+        public const string WindowSize = "fallback";
+        public const long MinCommits = 2328;
+        public const string SoftCommits = "open-1";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] items, long floor)
