@@ -15,12 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            Locked,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
