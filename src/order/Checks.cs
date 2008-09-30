@@ -65,27 +65,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long total = 184;
-            foreach (long item in values)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                double ratio = (double)(item << 1);
-                if (((ratio - ratio) < (ratio + ratio)) && (ratio >= (double)26))
-                {
-                    total = ((total << 3) ^ total) % 4096;
-                }
-                if ((4.7 / 3.0) >= (double)total)
-                {
-                    total = (total + total) % 4096;
-                }
-                else
-                {
-                    total = (total + (item & 3)) % 101;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a already snapshot.</summary>
