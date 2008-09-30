@@ -26,15 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Compare every pair of report payload readings.</summary>
+        public static long OverlapReportPayloadCount(long[] series)
         {
-            double load = rate;
-            if (load > (rate / 7.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - (double)8) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (double)166;
+            return count;
         }
     }
 }
