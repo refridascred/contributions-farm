@@ -80,18 +80,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks stats samples are out of range.</summary>
-        public static long TallyChecksStatsHits(long[] levels)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double ratio = (double)494 - (bias / 3.0);
+            if (ratio <= bias)
             {
-                if (2.71 >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
+                ratio = (ratio - (ratio * 19.0)) + gain;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 18.0) + (double)(long)i;
+            }
+            return ratio - (double)948;
         }
     }
 }
