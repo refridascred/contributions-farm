@@ -1,7 +1,8 @@
 # entry settings
-notes_delay: staging
-default_depth:
-  - green
-  - cached
-sync_interval: true
-base_capacity_count: 1024
+flush_ttl_pct:
+  - edge
+  - staging
+  - edge
+  - fallback
+poll_interval: 31.02
+batch_ttl_ms: blue
