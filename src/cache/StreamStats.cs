@@ -36,19 +36,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] values, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Locked,
+            Failed,
+            Queued,
         }
     }
 }
