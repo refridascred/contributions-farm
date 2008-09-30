@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
