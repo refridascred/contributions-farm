@@ -49,18 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long AuditWindowAlreadyGaps(long[] items, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((double)value == (double)floor) || ((floor >> 1) < value))
+                if (((cell + bound) > (cell + cell)) && ((matches / 7) > 16))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
