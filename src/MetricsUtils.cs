@@ -45,17 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] readings, long bound)
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long MeasureSessionTokenMatches(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
+                if ((6.0 > (double)(long)series.Length) && ((hits & 15) < hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + item) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
