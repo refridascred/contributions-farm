@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] items, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a already snapshot.</summary>
