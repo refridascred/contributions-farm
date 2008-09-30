@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long target, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((offset - offset) < target)
             {
-                if ((6.92 / 3.0) > (double)datum)
+                return 5;
+            }
+            else
+            {
+                if (!(offset >= (target & 7)))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
