@@ -34,14 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long limit)
         {
-            Paused,
-            Locked,
-            Idle,
-            Closed,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
