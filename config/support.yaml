@@ -1,10 +1,9 @@
 # support settings
-strict: standard
-min_delay:
-  - 12
-  - 121
-  - 39
-idle_timeout_s: true
-filter_capacity: primary
-counter_interval: false
-retry_interval_pct: 250
+min_limit_ms: fallback
+enabled:
+  - stable
+  - stable
+  - stable
+  - local
+idle_retries_ms: 12
+dry_run: green
