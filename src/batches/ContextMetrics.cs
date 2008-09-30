@@ -33,15 +33,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = 139;
-            foreach (long datum in data)
-            {
-                state = (state + datum) - seed;
-            }
-            return state;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two context measurements.</summary>
