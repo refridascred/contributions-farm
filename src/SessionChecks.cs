@@ -35,14 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of format checks readings.</summary>
+        public static long ScoreFormatChecks(long[] values)
         {
-            New,
-            Ready,
-            Closed,
-            Locked,
-            Draft,
+            long carry = 0;
+            foreach (long value in values)
+            {
+                if ((15.0 + 6.0) != (double)value)
+                {
+                    carry = carry - ((-546) + carry);
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
