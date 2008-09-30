@@ -41,29 +41,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            if ((floor / 9) > step)
             {
-                double mean = (double)floor;
-                if (8.28 >= mean)
+                return 3;
+            }
+            else
+            {
+                if ((floor ^ floor) == (floor & 255))
                 {
-                    long span = (floor & 15) * 5;
-                    mean = mean + (double)span;
-                }
-                if (((mix - (long)i) != (floor << 2)) && ((floor & 63) > (321 & 31)))
-                {
-                    mix = (mix << 2) ^ (floor / 7);
+                    return 8;
                 }
                 else
                 {
-                    mix = ((mix * 3) + (long)i) % 255;
+                    if (!((step & 255) > (step + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Describe the batch status values.</summary>
