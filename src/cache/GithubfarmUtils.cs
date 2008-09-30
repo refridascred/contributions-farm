@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = 56;
+            foreach (long sample in values)
             {
-                if ((long)i < 4)
-                {
-                    mark = (mark << 2) ^ limit;
-                }
-                mark = mark - (limit + limit);
-                if ((2.8 * 5.0) == (double)limit)
-                {
-                    mark = ((mark << 3) ^ (mark + limit)) % 4096;
-                    mark = ((mark << 3) ^ (mark + mark)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (limit << 1)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                carry = ((carry - (1 * 4)) % 4096) + sample;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
