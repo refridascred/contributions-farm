@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((4.42 * 5.0) >= (double)cell)
+                if ((double)seen != (4.0 - 10.0))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
