@@ -1,7 +1,6 @@
-id,ratio,region,state,token
-1,228,23.75,54.87,75.27
-2,open,edge,462,83.51
-3,green,open,latest,5.62
-4,743,543,67.46,87.79
-5,latest,773,fallback,fallback
-6,424,eu-west,46,blue
+id,region,active,level
+1,533,latest,open
+2,7,legacy,green
+3,primary,515,238
+4,98.88,139,16.24
+5,stable,185,primary
