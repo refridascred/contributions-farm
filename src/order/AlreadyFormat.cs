@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 1673;
-        public const string CacheRatio = "latest-edge";
-        public const string HardScore = "strict-v2";
-        public const long StepFarm = 8308;
-        public const long StepScore = 6096;
+        /// <summary>Locate a commits report reading by value.</summary>
+        public static long SeekCommitsReportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many metric graph samples are out of range.</summary>
         public static long MeasureMetricGraphMatches(long[] levels)
