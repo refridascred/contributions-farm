@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of farm window entries.</summary>
+        public static long TallyFarmWindow(long[] series)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            long score = -9;
+            foreach (long value in series)
+            {
+                if ((double)value != (0.9 * 1.01))
+                {
+                    score = (score << 2) ^ (score / 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the record phase values.</summary>
