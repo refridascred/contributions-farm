@@ -58,23 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double weight = 6.3;
-            if (weight < (weight - weight))
-            {
-                weight = weight + (scale - offset);
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (weight + weight)) + (double)(long)i;
-            }
-            return weight + weight;
+            Pending,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Combine editor context values into a single score.</summary>
