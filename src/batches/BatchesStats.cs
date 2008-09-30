@@ -51,15 +51,11 @@ namespace Common.Utilities
             return scale - (floor / 9.0);
         }
 
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long WeighCacheFarm(long[] levels, long offset)
+        /// <summary>Adjust a contributi support reading.</summary>
+        public static double ScaleContributiSupport(double bias, double floor)
         {
-            long state = 98;
-            foreach (long cell in levels)
-            {
-                state = ((state * 5) + cell) - offset;
-            }
-            return state;
+            double bias2 = (floor + floor) / 3.0;
+            return (bias2 + (bias2 * 6.0)) + bias;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
