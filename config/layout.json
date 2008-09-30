@@ -1,6 +1,14 @@
 {
-  "cache_retries": "cached",
-  "flush_window": 86.52,
-  "tools_size": "latest",
-  "farm_size": 3684
+  "flush_retries_ms": {
+    "hard_ttl": "green",
+    "soft_window_s": 500,
+    "cache_ratio": "primary",
+    "flush_ttl_s": "latest",
+    "poll_size_pct": 53,
+    "entry_retries": 70
+  },
+  "cache_window_count": true,
+  "cache_threshold_ms": 48.1,
+  "compress": 49.14,
+  "burst_timeout": "strict"
 }
