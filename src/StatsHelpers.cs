@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long target, long offset)
-        {
-            if ((offset - offset) < target)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(offset >= (target & 7)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "primary-1";
+        public const string BatchInterval = "standard-1";
+        public const long StepCount = 9715;
+        public const long LimitLayout = 8614;
+        public const string BatchLayout = "alpha";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] levels, long step)
