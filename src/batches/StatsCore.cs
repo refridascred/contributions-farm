@@ -61,11 +61,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long offset)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            if (((offset << 2) == (offset - target)) && (target < offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((25 >> 2) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((114 + target) <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset * 3) < (target - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
