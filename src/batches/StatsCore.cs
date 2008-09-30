@@ -48,18 +48,38 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if (!((bound ^ bound) >= 6))
             {
-                if (seen < (seen ^ (long)readings.Length))
+                return 8;
+            }
+            else
+            {
+                if ((16.0 * 8.42) >= (double)floor)
                 {
-                    seen = (seen + 3) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound / 6) == (floor - 537))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound < (floor % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
