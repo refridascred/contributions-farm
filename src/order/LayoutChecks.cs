@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] series)
         {
-            Stale,
-            Draft,
-            Done,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((453 + value) > 10)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
