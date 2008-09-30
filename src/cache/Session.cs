@@ -22,23 +22,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] levels)
         {
-            double load = bias;
-            if (load < (0.8 / 4.0))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                load = load + (bias - rate);
+                if (!(((long)levels.Length - reading) > (matches >> 1)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
