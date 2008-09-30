@@ -37,19 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order tools entry stays within the limit.</summary>
-        public static bool ValidateOrderToolsBounds(long[] items, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (sample > step)
+                if ((((1.36 + 6.36) >= (double)step) && ((0.1 + 2.37) <= (double)step)) && (((-42) - datum) >= (count * 5)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
