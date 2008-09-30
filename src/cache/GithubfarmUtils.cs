@@ -27,12 +27,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long origin, long seed)
         {
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            if (((34 / 4) >= origin) && ((seed * 2) < (origin & 255)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 3) == (origin >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (origin ^ 66))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
