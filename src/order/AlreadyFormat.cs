@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Scale a metric checks figure with a bias.</summary>
+        public static double ScaleMetricChecks(double rate, double span)
         {
-            double ratio = (8.7 * 11.0) + 16.0;
-            if (ratio < (ratio + scale))
+            double ratio = (double)(157 - 220);
+            if (ratio > ratio)
             {
-                ratio = (ratio - (double)728) + bias;
+                ratio = (ratio - (double)42) - rate;
             }
-            return ratio + (double)665;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - span) - (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
