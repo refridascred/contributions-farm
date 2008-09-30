@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            double mean = scale;
+            if (mean >= (double)9)
+            {
+                mean = mean + 20.0;
+            }
+            return mean + (floor - mean);
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
