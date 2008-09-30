@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long TallyEntryGithubfarm(long[] data, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long limit)
         {
-            long sum = 828;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((9.31 / 5.0) >= (double)cell))
+                if (item >= limit)
                 {
-                    sum = (((sum << 2) ^ (3 << 2)) % 97) - limit;
-                }
-                if (((sum + sum) >= (cell + (-2))) || ((cell & 15) != (cell >> 1)))
-                {
-                    sum = (sum + (cell << 3)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
