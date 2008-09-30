@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = anchor ^ (target << 3);
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload state values.</summary>
