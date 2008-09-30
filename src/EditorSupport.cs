@@ -23,21 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
