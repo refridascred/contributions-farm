@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
-        public static long MeasureGithubfarmChecksOutliers(long[] series, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((offset << 2) > sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Blend two channel measurements.</summary>
