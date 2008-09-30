@@ -1,10 +1,11 @@
 # Command notes
 
-Use profile settings to tune how often graph data is refreshed.
-Use token settings to tune how often queue data is refreshed.
+Keep command and batches names short and lowercase.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep stats values small
-- Document new order fields
+- Review window limits each release
+- Document new format fields
+- Log every profile change
+- Keep account values small
