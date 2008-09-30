@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "stable-v2";
-        public const double BurstSpan = 69.06;
-        public const string BatchStream = "fallback-edge";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc ^ (34 + step)) - (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long origin)
