@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Combine stream entry values into a single score.</summary>
+        public static long TotalStreamEntry(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 499;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((20.0 / 5.0) < (double)sum)
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum + (item << 3)) % 255) + limit;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
