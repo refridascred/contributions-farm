@@ -53,19 +53,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (reading < step)
+                if (value < (value + matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
