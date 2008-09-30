@@ -1,11 +1,6 @@
-id,region,owner
-1,standard,local
-2,43.17,edge
-3,primary,blue
-4,standard,733
-5,82.56,stable
-6,71.83,725
-7,25.57,41.9
-8,810,fallback
-9,eu-west,open
-10,52.18,980
+id,score,label,ratio
+1,192,local,11.15
+2,345,stable,73.94
+3,401,staging,green
+4,green,green,541
+5,697,254,43.24
