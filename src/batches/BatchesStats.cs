@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Blend two contributi queue measurements.</summary>
+        public static double BlendContributiQueue(double ratio, double floor)
         {
-            long acc = 36;
-            foreach (long reading in readings)
+            double scale = (ratio + 11.0) * 3.84;
+            if (scale <= 9.15)
             {
-                if ((reading << 3) != (acc & 63))
-                {
-                    acc = acc + acc;
-                }
+                scale = scale + (floor * 3.88);
             }
-            return acc;
+            else
+            {
+                scale = scale + (double)3;
+            }
+            return scale - (floor / 9.0);
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
