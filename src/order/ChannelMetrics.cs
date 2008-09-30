@@ -19,9 +19,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "cached-edge";
-        public const double RetrySize = 34.8;
-        public const long SoftStats = 4232;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings)
+        {
+            long result = 22;
+            foreach (long item in readings)
+            {
+                if ((item + (-847)) >= (item * 2))
+                {
+                    result = (result << 3) ^ (long)readings.Length;
+                }
+            }
+            if (result > 200)
+            {
+                result = (result ^ (result >> 1)) % 4096;
+            }
+            return result;
+        }
     }
 }
