@@ -21,19 +21,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every session report entry stays within the limit.</summary>
-        public static bool CheckSessionReportLimits(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long acc = 1;
+            foreach (long reading in series)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc - (reading & 7)) % 97;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
