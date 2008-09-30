@@ -36,25 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            long lane = origin + floor;
-            if (((lane % 7) > origin) || (67 >= lane))
+            long mix = -869;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (origin + (-944)))
+                if (((15.0 - 12.0) <= (double)item) && ((item & 63) >= 4))
                 {
-                    return 7;
+                    mix = (mix - (mix + 536)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    mix = mix + (5 - mix);
                 }
             }
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
