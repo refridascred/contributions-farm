@@ -39,18 +39,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Count the checks order entries that pass the check.</summary>
+        public static long CountChecksOrderMatches(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((9 < (count % 10)) || (count > (154 % 16))))
                 {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
