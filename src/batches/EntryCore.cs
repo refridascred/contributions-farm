@@ -42,23 +42,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((origin << 1) >= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 91.84;
+        public const string BatchRatio = "cached-edge";
+        public const double RetryInterval = 76.72;
+        public const long StepSchema = 8085;
+        public const long WindowBudget = 3911;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long RollRoute(long target)
