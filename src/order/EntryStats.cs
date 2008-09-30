@@ -35,19 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Check that every entry notes entry stays within the limit.</summary>
+        public static bool ValidateEntryNotesBounds(long[] levels, long step)
         {
-            long result = 4;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                result = (((result * 3) + (7 & 255)) % 65521) + sample;
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result > 43)
-            {
-                result = result - 532;
-            }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Describe the already mode values.</summary>
