@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double RetryNotes = 4.44;
         public const string SoftNotes = "latest-1";
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((2.34 * 18.0) == (double)seen)
+                if (cell > seed)
                 {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Match up session samples.</summary>
