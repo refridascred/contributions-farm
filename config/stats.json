@@ -1,9 +1,7 @@
 {
-  "idle_capacity_pct": "stable",
-  "retry_ratio": 1024,
-  "burst_size_s": {
-    "flush_interval_pct": 4,
-    "checks_size": "cached",
-    "batch_window": 500
-  }
+  "soft_timeout": "primary",
+  "base_window_s": 4.88,
+  "warm_size_s": 84.5,
+  "farm_depth": ["primary", "blue"],
+  "graph_capacity": "open"
 }
