@@ -41,13 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long bound)
         {
-            Closed,
-            Ready,
-            Queued,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
