@@ -33,18 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] series, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((((double)reading <= (4.05 + 5.1)) && ((reading / 6) <= (bound + hits))) || (bound < (reading / 4)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
