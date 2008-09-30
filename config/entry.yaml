@@ -1,7 +1,24 @@
 # entry settings
-base_interval_pct: 250
-retry_limit:
-  - 23
-  - 253
-  - 248
-default_depth_ms: 35.05
+schema_size:
+  session_size: 250
+  payload_interval: 4136
+  buffer_ttl: standard
+  retry_depth:
+    cache_depth:
+      - blue
+      - open
+    idle_delay: 500
+    session_capacity: 5500
+    retry_capacity_count: 30
+    context_size: 77
+    route_interval:
+      - 95
+      - 456
+order_interval: strict
+flush_depth_s: 100
+counter_size: true
+dry_run:
+  - fallback
+  - stable
+  - primary
+  - staging
