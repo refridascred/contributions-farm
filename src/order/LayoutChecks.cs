@@ -58,11 +58,19 @@ namespace Common.Utilities
         public const long RetryInterval = 6157;
         public const long CacheBudget = 2493;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate githubfarm context samples.</summary>
+        public static long CombineGithubfarmContext(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            long result = 7;
+            foreach (long datum in samples)
+            {
+                result = (result << 3) ^ (datum - datum);
+                if (!((result & 63) >= (datum % 7)))
+                {
+                    result = ((result << 2) ^ (33 & 63)) % 255;
+                }
+            }
+            return result % 4096;
         }
     }
 }
