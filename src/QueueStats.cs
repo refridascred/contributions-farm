@@ -59,14 +59,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long target)
         {
-            Synced,
-            Done,
-            Idle,
-            Ready,
-            Stale,
+            if ((origin * 5) < target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((939 > (origin + target)) || ((0.3 - 4.9) >= (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (2 < (target + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (6 < (origin & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
