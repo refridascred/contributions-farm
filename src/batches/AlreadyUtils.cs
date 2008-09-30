@@ -52,11 +52,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 3722;
-        public const long SoftMetrics = 9767;
-        public const double BurstMetrics = 38.12;
-        public const string IdleMetrics = "legacy-1";
-        public const long DefaultScore = 8773;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
