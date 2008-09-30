@@ -57,22 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item + tally) <= (547 ^ item))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
