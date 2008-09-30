@@ -40,38 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (((bound * 4) == (floor + bound)) && (floor > (bound + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((838 & 255) > bound) || ((bound / 6) >= (bound + (-810))))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)floor < (6.2 * 17.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound < floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Retry,
         }
     }
 }
