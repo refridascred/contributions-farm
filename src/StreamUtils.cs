@@ -47,12 +47,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 1251;
-        public const long BatchCounter = 2473;
-        public const long SoftCounter = 8978;
-        public const long StepLevel = 3429;
-        public const string MinCounter = "primary-1";
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long MatchBatchCount(long[] items)
