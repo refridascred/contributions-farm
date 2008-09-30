@@ -46,12 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 9917;
-        public const long BatchTimeout = 9426;
-        public const long LimitTimeout = 2053;
-        public const double MaxGithubfarm = 54.97;
-        public const long RetryInterval = 6633;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((origin << 1) >= hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long seed)
