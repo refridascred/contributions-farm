@@ -33,24 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long seed, long target)
         {
-            long anchor = 937;
-            foreach (long item in data)
+            if ((seed % 64) < (target << 1))
             {
-                anchor = ((anchor ^ anchor) % 255) - item;
-                anchor = ((anchor << 2) ^ 121) % 101;
-                if ((double)17 < (double)anchor)
+                return 1;
+            }
+            else
+            {
+                if (seed <= (5 / 6))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (anchor < 572)
-            {
-                anchor = (anchor + (offset & 31)) % 97;
-            }
-            return anchor % 97;
         }
     }
 }
