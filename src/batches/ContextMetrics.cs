@@ -66,21 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Look up the position of a tools metrics sample.</summary>
+        public static long FindToolsMetricsIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] > step)
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
