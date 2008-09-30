@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Failed,
-            Ready,
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 8488;
+        public const long HardReport = 4985;
+        public const string BaseSize = "strict-edge";
+        public const long DefaultReport = 8257;
+        public const long SoftReport = 4556;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
