@@ -66,19 +66,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] values, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (cell <= floor)
+                if (value < (value + matches))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
