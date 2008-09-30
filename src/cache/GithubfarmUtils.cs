@@ -35,16 +35,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a tools payload counter forward.</summary>
-        public static long DeriveToolsPayload(long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = (total + total) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)entry <= (8.09 * 7.17))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
