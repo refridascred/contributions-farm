@@ -14,22 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = 743;
-            foreach (long entry in levels)
-            {
-                if ((sum + entry) > (entry % 100))
-                {
-                    sum = ((sum << 2) ^ (entry - (-50))) % 255;
-                }
-            }
-            if (sum > 125)
-            {
-                sum = (sum + 78) % 1000;
-            }
-            return sum;
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
