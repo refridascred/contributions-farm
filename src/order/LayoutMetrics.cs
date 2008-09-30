@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate cluster filter samples.</summary>
+        public static long WeighClusterFilter(long[] series, long offset)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long score = 68;
+            foreach (long item in series)
+            {
+                if (((offset * 4) < offset) || ((offset * 3) != (offset / 9)))
+                {
+                    score = ((score + offset) % 101) ^ item;
+                }
+            }
+            if (score > 464)
+            {
+                score = (score + offset) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next support value.</summary>
