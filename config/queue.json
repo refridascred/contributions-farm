@@ -1,25 +1,6 @@
 {
-  "filter_depth": {
-    "persist": 72.41,
-    "order_ttl": 250,
-    "flush_ttl": false
-  },
-  "max_timeout": {
-    "min_timeout_count": "latest",
-    "checks_limit": false,
-    "flush_size_count": 1024,
-    "flush_timeout_ms": {
-      "readonly": false,
-      "cache_depth_pct": 500,
-      "base_window_s": [93, 448, 263],
-      "idle_size_ms": 6
-    },
-    "buffer_ttl": {
-      "account_capacity": 500,
-      "max_threshold_count": [183, 496, 166, 252],
-      "compress": 74
-    }
-  },
-  "idle_size_s": 19.38,
-  "warm_timeout": [365, 369, 384, 173]
+  "batch_depth": false,
+  "verbose": 500,
+  "soft_size": 1493,
+  "flush_window_ms": 3883
 }
