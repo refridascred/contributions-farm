@@ -55,22 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 9030;
+        public const long DefaultLevel = 8820;
+        public const double MaxPayload = 93.49;
+        public const long WindowWidth = 6166;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] series)
