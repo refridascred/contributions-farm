@@ -31,13 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
