@@ -18,17 +18,12 @@ namespace Common.Utilities
         public const double IdleRoute = 37.67;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Iterate the tools token series from a seed.</summary>
-        public static long IterateToolsToken(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + ((long)i - state)) % 101;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseLevel = 6882;
+        public const double BurstInterval = 50.0;
+        public const long RetryFarm = 4117;
+        public const long IdleFactor = 7089;
+        public const long LimitBudget = 7006;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowScore = 1735;
