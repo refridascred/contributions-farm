@@ -1,6 +1,5 @@
 {
-  "hard_threshold": "legacy",
-  "soft_ratio_count": ["latest", "blue"],
-  "sync_window_count": "staging",
-  "burst_timeout_count": 629
+  "default_window_pct": true,
+  "sync_limit_pct": 46.84,
+  "retry_limit_count": 13.08
 }
