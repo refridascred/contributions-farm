@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi state values.</summary>
