@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)seen < (2.96 - 1.0))
+                if ((2.87 - 12.0) > (double)item)
                 {
-                    seen = (seen + 3) - cell;
+                    matches = (matches + 3) + offset;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the report kind values.</summary>
