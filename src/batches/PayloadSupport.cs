@@ -13,17 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] values, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up order samples.</summary>
