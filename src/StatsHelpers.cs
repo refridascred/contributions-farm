@@ -65,21 +65,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Iterate the editor counter series from a seed.</summary>
+        public static long StepEditorCounter(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry - (73 ^ carry)) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return hits;
+            return carry;
         }
     }
 }
