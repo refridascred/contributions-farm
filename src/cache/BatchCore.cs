@@ -13,18 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of farm window entries.</summary>
-        public static long TallyFarmWindow(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long score = -9;
-            foreach (long value in series)
+            long result = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)value != (0.9 * 1.01))
+                result = result - (step & 7);
+                if (!(((step % 8) <= result) && ((step >> 4) >= (result + step))))
                 {
-                    score = (score << 2) ^ (score / 2);
+                    result = (result ^ (step / 2)) % 97;
                 }
+                result = (result - (result + result)) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Describe the record phase values.</summary>
