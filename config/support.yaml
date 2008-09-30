@@ -1,15 +1,37 @@
 # support settings
-report_retries:
-  - green
-  - blue
-persist: false
-burst_timeout_s:
-  batch_interval: false
-  notes_window: 500
-  payload_timeout: latest
-  poll_delay: 100
-  soft_timeout_ms: 250
-audit:
-  - 239
-  - 406
-counter_timeout: 6688
+poll_threshold_s:
+  - 472
+  - 236
+  - 452
+min_ttl:
+  flush_size: true
+  checks_threshold: 68
+  hard_ratio: primary
+dry_run: 2000
+warm_size:
+  soft_retries_ms:
+    sync_limit_ms: 78.28
+    max_ttl:
+      - legacy
+      - standard
+      - strict
+      - open
+    idle_retries_pct: legacy
+  cache_threshold: false
+  persist: 46
+  enabled: 3962
+  readonly: open
+  record_depth: 500
+farm_ttl:
+  burst_ratio: 500
+  counter_timeout: 100
+  burst_window:
+    route_size: 38
+    route_limit: local
+    strict: 1098
+  batch_retries_ms: edge
+  token_threshold:
+    - 420
+    - 101
+  context_timeout: false
+min_limit_ms: cached
