@@ -61,18 +61,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((hits - hits) != (23 % 10)) && (6.7 < (double)hits))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 1868;
+        public const double MinCount = 7.35;
+        public const long BurstMetrics = 6934;
+        public const double DefaultMetrics = 39.74;
     }
 }
