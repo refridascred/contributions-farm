@@ -32,39 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph notes value against two limits.</summary>
-        public static long BucketGraphNotes(long origin, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            long bound = origin - offset;
-            if (((origin % 100) <= offset) || ((6.39 * 18.0) <= (double)offset))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)bound <= (3.17 + 8.0)) && ((origin - 29) != (bound - offset)))
+                if ((reading / 5) < 54)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound > (origin / 6)) && (origin >= (offset * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - offset) == (offset + 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
