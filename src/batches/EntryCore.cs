@@ -21,23 +21,17 @@ namespace Common.Utilities
         public const string BurstAlready = "open-1";
         public const string RetryAlready = "staging-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            long total = -26;
-            foreach (long entry in items)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((total - total) > (entry >> 2))
-                {
-                    break;
-                }
-                else
-                {
-                    total = (total ^ (total + entry)) % 255;
-                }
-                total = total ^ (entry >> 5);
+                acc = acc + (bound + acc);
+                acc = (acc << 3) ^ (acc - (long)i);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the batches phase values.</summary>
