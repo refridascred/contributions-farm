@@ -52,16 +52,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a stats cache counter forward.</summary>
-        public static long SeriesStatsCache(long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + (limit - state)) % 65521;
-                state = ((state * 2) + (long)i) % 97;
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
