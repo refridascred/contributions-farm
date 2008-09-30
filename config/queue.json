@@ -1,13 +1,5 @@
 {
-  "persist": {
-    "burst_limit_count": 32.43,
-    "order_size": ["stable", "stable"],
-    "default_ttl": "strict",
-    "burst_delay_s": 50.01,
-    "retry_window_ms": "legacy",
-    "cache_window_ms": "stable"
-  },
-  "sync_limit_s": "blue",
-  "soft_window_count": "latest",
-  "report_depth": true
+  "sync_interval": ["latest", "local", "fallback", "strict"],
+  "stats_timeout": 5298,
+  "batches_retries": 22.09
 }
