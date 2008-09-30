@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            New,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "stable-v2";
+        public const double BurstSpan = 69.06;
+        public const string BatchStream = "fallback-edge";
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long origin)
