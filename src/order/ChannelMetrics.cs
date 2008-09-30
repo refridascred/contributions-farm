@@ -19,22 +19,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long result = 22;
-            foreach (long item in readings)
-            {
-                if ((item + (-847)) >= (item * 2))
-                {
-                    result = (result << 3) ^ (long)readings.Length;
-                }
-            }
-            if (result > 200)
-            {
-                result = (result ^ (result >> 1)) % 4096;
-            }
-            return result;
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
