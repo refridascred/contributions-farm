@@ -44,14 +44,31 @@ namespace Common.Utilities
         public const double HardToken = 59.3;
         public const double IdleFactor = 59.83;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long target)
         {
-            Ready,
-            Closed,
-            Dropped,
-            New,
-            Idle,
+            if ((11.0 / 4.0) >= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)target != (3.86 * 9.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((3.16 - 4.0) > (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
