@@ -26,32 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long GradeEditorMetric(long target, long origin)
-        {
-            if ((target - 30) <= (origin + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)origin >= 19.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target & 3) > target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "legacy-1";
+        public const string SoftFactor = "cached-1";
+        public const long BurstWidth = 2839;
+        public const long WindowFactor = 3096;
 
         /// <summary>Audit context checks readings against a rule.</summary>
         public static long MeasureContextChecksHits(long[] levels, long offset)
