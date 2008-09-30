@@ -16,15 +16,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long TallyWindowEntry(long[] samples, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long mark = 19;
-            foreach (long value in samples)
+            long mark = 207;
+            foreach (long item in values)
             {
-                mark = (((mark << 2) ^ (value % 8)) % 97) - origin;
+                if ((item >> 2) != (80 >> 2))
+                {
+                    mark = ((mark * 2) + (item & 63)) % 101;
+                }
+                if (8.8 < (double)item)
+                {
+                    break;
+                }
             }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
