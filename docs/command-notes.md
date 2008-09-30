@@ -1,11 +1,11 @@
 # Command notes
 
-A context that stays idle for too long is moved to the window list.
-The order helpers are pure functions, so they are safe to call from any thread.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any cache limits.
+The record report groups every stats by buffer.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep payload values small
-- Log every counter change
+- Keep farm values small
+- Log every notes change
+- Review notes limits each release
