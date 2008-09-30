@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 2326;
+        public const string CacheFactor = "alpha-1";
+        public const string SoftRatio = "primary";
+        public const double SoftSize = 27.63;
+        public const long StepFilter = 8318;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
