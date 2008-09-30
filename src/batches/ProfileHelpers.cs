@@ -39,18 +39,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
-        public static long CountBufferMetricsHits(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = 830;
+            foreach (long sample in items)
             {
-                if ((((2.03 - 6.2) == (double)count) && ((269 - count) >= value)) && ((2.8 + 7.7) > (double)count))
+                if ((anchor ^ 749) >= anchor)
                 {
-                    count = count + 2;
+                    anchor = (anchor - sample) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (4 >> 1);
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
