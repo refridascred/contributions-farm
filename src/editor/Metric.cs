@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            if (!((8 << 2) >= floor))
             {
-                if (36 <= (step / 5))
-                {
-                    result = (result - 24) % 65521;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (!((bound - floor) >= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound < 4.0) && ((bound << 1) != (floor + floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound * 3) > (326 % 10))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
