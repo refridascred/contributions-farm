@@ -1,7 +1,15 @@
 {
-  "soft_threshold": "cached",
-  "idle_window_ms": 8,
-  "flush_limit_ms": 50.8,
-  "graph_timeout": ["fallback", "latest", "local", "blue"],
-  "compress": ["primary", "open", "legacy", "latest"]
+  "warm_interval_pct": {
+    "hard_window_ms": {
+      "batch_size": false,
+      "metrics_timeout": 47.37,
+      "cache_delay_pct": "eu-west",
+      "verbose": "primary"
+    },
+    "retry_delay_ms": "staging",
+    "max_window_s": true
+  },
+  "default_depth_count": "blue",
+  "retry_size": "strict",
+  "order_retries": 42.39
 }
