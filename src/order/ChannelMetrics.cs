@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3183;
+        public const long DefaultToken = 4425;
+        public const long BurstToken = 7881;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelOutliers(long[] items)
