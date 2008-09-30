@@ -41,17 +41,23 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Iterate the buffer window series from a seed.</summary>
-        public static long SeriesBufferWindow(long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            long score = 67;
+            foreach (long datum in values)
             {
-                carry = ((carry << 3) ^ 435) % 255;
-                carry = carry + (bound * 3);
-                carry = ((carry * 5) + (long)i) % 4093;
+                score = ((score * 2) + datum) % 97;
+                if (((double)score < (1.9 - 1.7)) || ((score + datum) > (score & 15)))
+                {
+                    score = score + (score & 15);
+                }
             }
-            return carry;
+            if (score < 5)
+            {
+                score = ((score << 2) ^ (score % 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many filter contributi samples are out of range.</summary>
