@@ -50,13 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultFactor = "staging-edge";
+        public const string IdleMetric = "stable-v2";
+        public const double DefaultMetric = 82.96;
+        public const long LimitMetric = 3343;
+        public const long LimitFactor = 2159;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long WeighCommand(long[] samples, long seed)
