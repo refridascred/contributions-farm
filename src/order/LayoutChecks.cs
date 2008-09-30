@@ -41,16 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                sum = (sum - floor) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
