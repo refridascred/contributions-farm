@@ -38,11 +38,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 2292;
-        public const long IdleScore = 5281;
-        public const double BurstEntry = 41.69;
-        public const long StepInterval = 9886;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
+        {
+            double weight2 = (double)81;
+            if (weight2 >= floor)
+            {
+                weight2 = weight2 + (weight2 * 10.0);
+            }
+            else
+            {
+                weight2 = weight2 - (weight - weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 + floor) - (double)(long)i;
+            }
+            return weight2 + (double)706;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
