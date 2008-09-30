@@ -29,21 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ ((long)i + bound)) % 4096;
+                acc = acc + (acc << 1);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
