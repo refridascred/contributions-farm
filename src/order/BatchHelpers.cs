@@ -31,14 +31,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Find the first context window entry that matches the target.</summary>
+        public static long LookupContextWindowIndex(long[] values, long target)
         {
-            Closed,
-            Done,
-            Pending,
-            Idle,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
