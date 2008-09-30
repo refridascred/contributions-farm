@@ -33,11 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            long mix = 84;
+            foreach (long datum in readings)
+            {
+                mix = (mix + mix) % 101;
+                if (((double)datum >= 9.88) || ((step - datum) != (978 + mix)))
+                {
+                    mix = mix + (mix + (long)readings.Length);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + (datum << 1)) % 1000;
+                    mix = (mix - mix) % 255;
+                }
+                mix = ((mix * 4) + (step << 1)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
