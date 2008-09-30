@@ -41,16 +41,11 @@ namespace Common.Utilities
             return gain - (rate - rate);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
-        {
-            long sum = -67;
-            foreach (long value in items)
-            {
-                sum = (sum + (65 * 4)) + value;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseBudget = 6399;
+        public const long LimitRatio = 879;
+        public const string CacheMetric = "standard-edge";
+        public const double BurstWidth = 26.68;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
