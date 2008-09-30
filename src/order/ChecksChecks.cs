@@ -34,24 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if ((origin + limit) == (limit >> 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 7) < (origin & 31))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
