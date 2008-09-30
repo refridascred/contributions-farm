@@ -25,29 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long bound)
         {
-            if (step >= (floor << 1))
+            if ((bound + 5) <= 38)
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (!((double)(-8) == (double)floor))
+                if ((0.4 / 3.0) < (double)bound)
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor << 2) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 0;
                 }
             }
         }
