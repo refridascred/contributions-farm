@@ -1,7 +1,27 @@
 # support settings
-profile_limit: true
-cache_retries: 89.34
-max_limit_pct: 11.97
-idle_interval_s: 89
-cache_capacity: legacy
-token_window: 0.38
+max_window:
+  flush_retries_ms: staging
+  default_depth_count: 47
+  compress:
+    - local
+    - green
+    - latest
+  layout_limit: 90.52
+  default_interval: 26
+  idle_size_s:
+    sync_timeout_s: eu-west
+    buffer_interval: false
+    enabled: 66
+    verbose:
+      - green
+      - primary
+    window_size: 3085
+    burst_window:
+      - 340
+      - 58
+      - 82
+      - 24
+profile_delay: false
+batch_delay_pct: 500
+channel_ratio: 7393
+poll_timeout_count: 16
