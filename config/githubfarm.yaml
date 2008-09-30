@@ -1,17 +1,8 @@
 # githubfarm settings
-soft_limit_pct:
-  - local
-  - local
-  - legacy
-dry_run: 50.74
-session_capacity: eu-west
-notes_window: blue
-graph_interval:
-  queue_interval: 37.74
-  default_size_count: strict
-  burst_window_ms: 4
-  poll_depth: 9354
-  soft_window_s:
-    base_ratio_s: false
-    warm_limit_pct: edge
-    retry_delay: 58
+warm_limit: 95.68
+idle_ttl_pct: standard
+cache_limit_s:
+  - green
+  - green
+  - latest
+  - edge
