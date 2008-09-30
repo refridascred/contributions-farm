@@ -1,11 +1,12 @@
 {
-  "layout_size": 1024,
-  "hard_interval": "cached",
-  "window_ratio": "local",
-  "default_interval_ms": {
-    "idle_delay_pct": false,
-    "sync_timeout": [385, 59, 388],
-    "warm_ratio_pct": 6543
+  "window_ttl": {
+    "hard_depth": 26,
+    "flush_ratio_s": 500,
+    "min_ratio_pct": 23,
+    "editor_delay": 30
   },
-  "persist": "stable"
+  "burst_window_count": "edge",
+  "idle_delay_pct": "standard",
+  "stats_retries": "eu-west",
+  "warm_threshold_ms": false
 }
