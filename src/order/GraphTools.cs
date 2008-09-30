@@ -38,18 +38,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a order window sample.</summary>
-        public static long LookupOrderWindowIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryScore = 38.75;
+        public const long WindowLevel = 1227;
+        public const long BaseBatch = 762;
+        public const long DefaultBatch = 2679;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long origin)
