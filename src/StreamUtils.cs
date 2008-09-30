@@ -53,15 +53,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings, long seed)
+        /// <summary>Compare every pair of queue farm readings.</summary>
+        public static long OverlapQueueFarmCount(long[] items)
         {
             long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < (value + matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - seed;
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
