@@ -15,11 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
