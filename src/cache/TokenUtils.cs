@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long offset, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] data, long limit)
         {
-            long bound = offset ^ limit;
-            if (!((616 - limit) != (offset ^ bound)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (1.25 - 3.7))
+                if (((-9) + sample) >= (999 ^ hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
