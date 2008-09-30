@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool ValidateBatchCacheLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (levels[i] > floor)
+                if (value > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate entry samples.</summary>
