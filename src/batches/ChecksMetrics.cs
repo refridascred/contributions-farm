@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = scale;
+            if (weight < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + (weight * 3.5);
             }
-            return tally;
+            return weight + (bias * 8.8);
         }
 
         /// <summary>Roll a command githubfarm counter forward.</summary>
