@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((double)datum <= (5.0 - 2.5))
+                {
+                    count = (count + 3) + limit;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
