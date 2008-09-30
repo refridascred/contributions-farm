@@ -1,8 +1,7 @@
 {
-  "burst_size": true,
-  "flush_capacity": 250,
-  "strict": true,
-  "sync_ttl": [288, 238],
-  "cache_delay_count": 90.91,
-  "readonly": "primary"
+  "sync_ratio_s": false,
+  "base_depth_count": [179, 86],
+  "base_ttl": "primary",
+  "poll_threshold_pct": 100,
+  "warm_ttl_s": "standard"
 }
