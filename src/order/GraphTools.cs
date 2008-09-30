@@ -45,32 +45,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long limit, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long next = limit ^ floor;
-            if (next >= (next / 2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= 1.6)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + next) <= (limit & 255))
+                    if ((series[i] + series[j]) == 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
