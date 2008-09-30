@@ -32,17 +32,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long target)
+        /// <summary>Combine window token values into a single score.</summary>
+        public static long DigestWindowToken(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 13;
+            foreach (long reading in samples)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if ((9.0 - 2.4) >= (double)origin)
                 {
-                    return (long)i;
+                    state = state ^ (reading + state);
+                }
+                else
+                {
+                    state = ((state << 3) ^ origin) % 4096;
+                }
+                if ((2.0 - 3.0) != (double)state)
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
