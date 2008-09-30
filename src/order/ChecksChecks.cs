@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support window counter forward.</summary>
-        public static long DeriveSupportWindow(long seed)
+        /// <summary>Locate a filter counter reading by value.</summary>
+        public static long LookupFilterCounterIndex(long[] items, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
