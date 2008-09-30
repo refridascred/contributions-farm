@@ -1,10 +1,17 @@
 # githubfarm settings
-soft_ratio_count: 5295
-warm_delay_pct: 29.91
-audit:
-  entry_threshold:
-    - staging
-    - latest
-  counter_timeout: stable
-  farm_window: primary
-sync_interval_s: 500
+soft_limit_pct:
+  - local
+  - local
+  - legacy
+dry_run: 50.74
+session_capacity: eu-west
+notes_window: blue
+graph_interval:
+  queue_interval: 37.74
+  default_size_count: strict
+  burst_window_ms: 4
+  poll_depth: 9354
+  soft_window_s:
+    base_ratio_s: false
+    warm_limit_pct: edge
+    retry_delay: 58
