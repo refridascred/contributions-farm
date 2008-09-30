@@ -1,5 +1,18 @@
 {
-  "idle_timeout_pct": "eu-west",
-  "idle_ttl": "fallback",
-  "strict": 8423
+  "idle_timeout_s": 54.91,
+  "flush_timeout_count": {
+    "entry_capacity": {
+      "verbose": 87,
+      "max_ttl": false,
+      "warm_depth_s": "stable",
+      "cache_delay_count": "staging",
+      "hard_interval_ms": "fallback"
+    },
+    "soft_retries_pct": 30,
+    "report_ttl": true,
+    "buffer_timeout": [176, 169]
+  },
+  "enabled": 656,
+  "record_delay": ["latest", "staging", "local"],
+  "session_retries": "green"
 }
