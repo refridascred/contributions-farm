@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 5201;
-        public const long IdleDepth = 332;
-        public const long BurstRatio = 546;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
