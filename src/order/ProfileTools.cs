@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = rate;
+            return (scale + (scale + scale)) + offset;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
