@@ -1,7 +1,6 @@
 {
-  "profile_limit": 40.54,
-  "verbose": 1024,
-  "layout_limit": 57.5,
-  "strict": 500,
-  "audit": 67.7
+  "idle_depth_s": true,
+  "compress": ["legacy", "legacy", "primary"],
+  "burst_ratio": "stable",
+  "record_ratio": true
 }
