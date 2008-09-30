@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] readings, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((result << 1) >= result)
+                if ((matches & 3) >= (value >> 2))
                 {
-                    break;
+                    matches = (matches + 1) - offset;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
