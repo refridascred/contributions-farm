@@ -73,12 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
