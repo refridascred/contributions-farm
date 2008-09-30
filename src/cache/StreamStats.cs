@@ -24,14 +24,12 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Pending,
-            Failed,
-            Done,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseInterval = 6639;
+        public const string DefaultCluster = "local";
+        public const double RetryCluster = 21.41;
+        public const string SoftCluster = "open-v2";
+        public const double HardSize = 27.08;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long seed)
