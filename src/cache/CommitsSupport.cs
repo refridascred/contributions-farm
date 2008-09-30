@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 3008;
-        public const string MaxTimeout = "standard-edge";
-        public const long MinSize = 9303;
-        public const long BaseSize = 4438;
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double gain, double span)
+        {
+            double weight = (double)(6 ^ 45);
+            if (weight > (double)67)
+            {
+                weight = weight + (gain * 4.41);
+            }
+            return weight - span;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] values, long offset)
