@@ -14,12 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Synced,
-            Closed,
-            Queued,
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
