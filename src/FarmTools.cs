@@ -45,18 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits filter values into a single score.</summary>
-        public static long ScoreCommitsFilter(long[] levels)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long mix = 9;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (mix <= (item - 907))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (item ^ item)) % 255;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
