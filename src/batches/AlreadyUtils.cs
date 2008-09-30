@@ -20,21 +20,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up context tools samples.</summary>
-        public static long MatchContextToolsCount(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)sum <= (6.0 - 9.7)) || ((sum ^ target) != ((long)i >> 5))))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum << 3) ^ (sum & 3);
+                    sum = ((sum << 2) ^ (7 % 24)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
