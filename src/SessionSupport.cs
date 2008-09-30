@@ -44,14 +44,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Dropped,
-            Pending,
-            Done,
-            Idle,
-            Active,
+            Retry,
+            Draft,
+            Queued,
         }
     }
 }
