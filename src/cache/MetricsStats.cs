@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long seed, long limit)
+        /// <summary>Count the buffer checks entries that pass the check.</summary>
+        public static long TallyBufferChecksMatches(long[] levels, long bound)
         {
-            long offset = seed + limit;
-            if (((1.44 / 5.0) <= (double)seed) && (limit >= offset))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (24 >= ((-446) - seed))
+                if (!((reading & 3) > (count / 5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + offset) > (limit + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 1) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
