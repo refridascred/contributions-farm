@@ -1,9 +1,29 @@
 # support settings
-min_threshold_ms: local
-hard_size: true
-soft_depth: 3865
-idle_size_ms: strict
-poll_limit_count:
-  - 145
-  - 330
-compress: 60
+hard_capacity:
+  cache_depth: 5268
+  flush_timeout_ms: 93.8
+  enabled: true
+  verbose: true
+  cache_retries: eu-west
+burst_limit: 51.72
+dry_run:
+  - edge
+  - stable
+  - primary
+  - open
+burst_depth: false
+batch_delay:
+  batch_capacity_s: false
+  verbose: 95
+  readonly:
+    readonly: false
+    sync_depth_ms: 82.29
+    base_threshold: standard
+    githubfarm_interval: false
+    hard_limit_ms: 3008
+  window_limit:
+    max_interval: false
+    idle_size: false
+    burst_timeout_ms: blue
+    batch_timeout_s: 84.4
+    batch_retries_ms: 6796
