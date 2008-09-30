@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double bias = span;
-            return (bias - span) + gain;
+            Done,
+            Locked,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Measure how many record filter samples are out of range.</summary>
