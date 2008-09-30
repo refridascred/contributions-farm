@@ -40,21 +40,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            double rate2 = 6.7 - (span * 4.8);
+            if (rate2 > (rate * 0.68))
             {
-                mix = mix + (mix ^ mix);
-                if (((long)i % 60) < mix)
-                {
-                    mix = (mix - ((long)i ^ mix)) % 65521;
-                    mix = (mix + (mix * 5)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                rate2 = rate2 - span;
             }
-            return mix;
+            else
+            {
+                rate2 = rate2 + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + (double)(-15);
         }
     }
 }
