@@ -67,20 +67,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool GuardFarmPayloadBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 5860;
+        public const long MinSpan = 3091;
+        public const double IdleRatio = 90.39;
+        public const string WindowFactor = "strict-1";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
