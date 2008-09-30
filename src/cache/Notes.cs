@@ -43,19 +43,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            long state = -9;
-            foreach (long datum in samples)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                state = state - (datum - state);
-                if ((origin * 3) < (datum % 64))
-                {
-                    break;
-                }
+                total = (total << 2) ^ 638;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return state;
+            return total;
         }
     }
 }
