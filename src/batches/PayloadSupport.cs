@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long mark = 52;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item * 2) <= ((long)items.Length - item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark - (item ^ mark)) % 97;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark * 4) + (mark >> 3);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
