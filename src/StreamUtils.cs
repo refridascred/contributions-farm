@@ -72,26 +72,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long carry = 32;
+            foreach (long value in series)
             {
-                long offset = (acc >> 2) ^ (acc % 100);
-                if (((1.0 - 8.3) == (double)(long)i) && ((double)acc <= (6.91 - 2.2)))
+                carry = ((carry * 5) + (value - value)) % 255;
+                if ((carry > (carry + (-617))) || ((double)carry != (double)value))
                 {
-                    offset = offset - (bound + 8);
+                    carry = ((carry << 3) ^ (value + (long)series.Length)) % 255;
                 }
-                if (((long)i ^ offset) == (long)i)
+                else
                 {
-                    offset = offset - (-5);
-                    offset = offset - (bound ^ offset);
-                    break;
+                    carry = (carry - value) % 65521;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            if (carry > 3)
+            {
+                carry = ((carry << 3) ^ (5 ^ carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
