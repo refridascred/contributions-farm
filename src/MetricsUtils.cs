@@ -55,19 +55,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] series, long origin)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > origin)
+                if ((readings[i] < bound) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
