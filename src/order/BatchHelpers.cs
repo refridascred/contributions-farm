@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a batch farm reading by value.</summary>
-        public static long LocateBatchFarmIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 0.72;
+        public const string LimitCount = "standard";
+        public const string BatchFormat = "standard-v2";
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
