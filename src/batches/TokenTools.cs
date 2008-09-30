@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((162 - hits) < (hits << 1))
+                if (sample != origin)
                 {
-                    hits = ((hits + 1) ^ item) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a already snapshot.</summary>
