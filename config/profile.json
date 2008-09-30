@@ -1,8 +1,5 @@
 {
-  "base_window_s": 20,
-  "dry_run": false,
-  "batch_timeout_count": 4844,
-  "cache_depth": 6049,
-  "format_window": [399, 169, 161, 434],
-  "flush_delay": "local"
+  "retry_ratio_s": 9663,
+  "sync_depth_ms": 1024,
+  "default_timeout_pct": 20
 }
