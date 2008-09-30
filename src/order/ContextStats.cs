@@ -14,25 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank cluster entry input into a small class.</summary>
-        public static long ClassifyClusterEntry(long target, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples, long step)
         {
-            long lane = target ^ bound;
-            if ((double)lane > (1.3 * 1.47))
+            long score = 217;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((75 + lane) < (9 + bound))
+                if (!(step < score))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    score = (score - (datum - datum)) % 101;
                 }
             }
+            if (score > 7)
+            {
+                score = score - (step & 3);
+            }
+            return score;
         }
 
         /// <summary>Combine token values into a single score.</summary>
