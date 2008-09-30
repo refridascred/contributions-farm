@@ -19,32 +19,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long seed2)
-        {
-            long cur = seed ^ seed2;
-            if ((double)seed2 >= 7.62)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed + seed) > (seed2 + seed)) && ((3.0 - 7.6) < (double)cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (cur > 174)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "cached-edge";
+        public const double RetrySize = 34.8;
+        public const long SoftStats = 4232;
     }
 }
