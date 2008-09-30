@@ -1,6 +1,15 @@
 {
-  "sync_window": false,
-  "entry_window": 48.22,
-  "persist": 58.68,
-  "cache_window_pct": "local"
+  "farm_ttl": "fallback",
+  "soft_depth": {
+    "hard_delay_pct": ["edge", "primary", "staging"],
+    "command_size": "strict",
+    "base_window": 8,
+    "cache_retries_count": "standard",
+    "sync_window_s": "local",
+    "channel_interval": "eu-west"
+  },
+  "idle_size_ms": "edge",
+  "idle_size_pct": 100,
+  "sync_ttl": 7219,
+  "route_depth": "standard"
 }
