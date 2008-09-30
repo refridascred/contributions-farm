@@ -43,18 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long MeasureProfileCommandGaps(long[] items, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((long)items.Length == ((-723) + limit))
+                if (sample < floor)
                 {
-                    count = (count + 1) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the entry level values.</summary>
