@@ -43,11 +43,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
+        public static bool VerifyBufferStatsBounds(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
