@@ -25,18 +25,17 @@ namespace Common.Utilities
             return weight + (bias * 8.8);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] data, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound ^ seen) <= bound)
+                if (readings[i] == seed)
                 {
-                    seen = (seen + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
