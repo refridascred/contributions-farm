@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] data, long limit)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (7.0 <= (double)limit)
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
