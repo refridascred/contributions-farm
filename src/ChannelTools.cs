@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate notes farm readings against a bound.</summary>
+        public static bool ValidateNotesFarmLimits(long[] readings, long floor)
         {
-            New,
-            Retry,
-            Synced,
-            Closed,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
