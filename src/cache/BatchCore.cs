@@ -12,38 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long floor, long bound)
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long TallyQueueSessionOutliers(long[] samples, long seed)
         {
-            if (((double)934 != (double)floor) || ((floor >> 3) == (floor & 31)))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 8) <= 9)
+                if ((tally >= datum) || ((0 / 3) != ((long)samples.Length / 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((31 ^ 932) > (bound >> 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (4.0 > (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 3) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
