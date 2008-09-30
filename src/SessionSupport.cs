@@ -46,21 +46,13 @@ namespace Common.Utilities
         public const long BatchCluster = 7954;
         public const double MinWidth = 48.01;
 
-        /// <summary>Match up record order samples.</summary>
-        public static long OverlapRecordOrderCount(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
