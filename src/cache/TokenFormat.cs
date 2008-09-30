@@ -36,11 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 1848;
-        public const long StepFarm = 6077;
-        public const double BatchFarm = 81.86;
-        public const long MaxFarm = 2529;
-        public const long HardFarm = 8151;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long step, long floor)
+        {
+            if ((floor / 8) <= (step - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((8.01 / 3.0) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 + 7.18) > (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + step) == (35 % 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
