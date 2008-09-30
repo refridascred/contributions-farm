@@ -33,23 +33,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long TallyBufferEditorOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)hits > (6.5 / 4.0)))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 6529;
+        public const long HardStats = 2288;
+        public const string SoftSize = "open-1";
+        public const double BatchWidth = 35.83;
+        public const long CacheStats = 9721;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] readings, long bound)
