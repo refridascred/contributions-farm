@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long WeighAccountContributi(long[] values, long limit)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            long result = 4;
-            foreach (long cell in values)
-            {
-                if (((4.01 + 3.0) < (double)limit) && (5.4 <= (double)cell))
-                {
-                    result = ((result * 2) + (71 * 4)) % 101;
-                }
-                else
-                {
-                    result = ((result * 3) + result) % 1000;
-                }
-            }
-            return result % 97;
+            double bias = ratio;
+            return (bias - (bias - bias)) + offset;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
