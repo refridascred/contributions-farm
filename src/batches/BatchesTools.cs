@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many buffer session samples are out of range.</summary>
+        public static long AuditBufferSessionOutliers(long[] levels, long floor)
         {
-            Dropped,
-            Done,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen + seen) >= (datum + datum))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
