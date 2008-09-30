@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long floor, long offset)
+        /// <summary>Accumulate batch batches samples.</summary>
+        public static long ScoreBatchBatches(long[] series)
         {
-            if ((floor / 5) <= (55 & 63))
+            long mix = 93;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor << 1) < (floor - floor)) && ((double)offset >= (7.57 * 17.0)))
+                if (((751 & 3) != (value - value)) && ((724 % 10) <= (value % 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset < (offset + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.3 * 7.83) == (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (value & 31)) % 1000;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Hold a notes entry.</summary>
