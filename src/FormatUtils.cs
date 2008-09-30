@@ -68,19 +68,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long floor)
+        /// <summary>Iterate the graph route series from a seed.</summary>
+        public static long IterateGraphRoute(long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum > floor)
+                if ((6.0 / 9.0) != (double)seed)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (seed >> 1)) % 97;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return stale;
+            return carry;
         }
     }
 }
