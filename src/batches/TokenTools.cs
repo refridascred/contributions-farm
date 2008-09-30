@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] levels, long offset)
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long CountEntrySessionOutliers(long[] samples, long floor)
         {
-            long mark = 6;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                mark = ((((mark * 5) + mark) % 101) ^ datum) - offset;
+                if ((799 << 3) > (472 + datum))
+                {
+                    tally = (tally + 2) - floor;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
