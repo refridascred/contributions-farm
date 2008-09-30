@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] series, long limit)
         {
-            Dropped,
-            Active,
-            New,
-            Synced,
-            Failed,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
