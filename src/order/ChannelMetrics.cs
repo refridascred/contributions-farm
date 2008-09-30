@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long DefaultToken = 4425;
         public const long BurstToken = 7881;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Classify a checks account pair into a bucket.</summary>
+        public static long SortChecksAccount(long offset, long origin)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            if (((4 - offset) <= offset) || ((origin + 217) == (origin - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3 ^ offset) == (origin >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
