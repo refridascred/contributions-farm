@@ -25,24 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            if ((bound + 5) <= 38)
+            long anchor = 51;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.4 / 3.0) < (double)bound)
+                if (!((anchor % 24) > datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    anchor = (anchor + anchor) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
