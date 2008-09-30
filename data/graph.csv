@@ -1,6 +1,6 @@
-id,region,state,weight,token
-1,65.94,21.81,8.57,32.38
-2,green,58,48.73,197
-3,latest,461,cached,55.88
-4,26.63,132,94.73,552
-5,4.43,579,eu-west,legacy
+id,owner,count,weight,state
+1,7.24,latest,staging,648
+2,510,staging,40,804
+3,77.5,152,559,995
+4,568,29.85,staging,open
+5,latest,98.2,60.04,207
