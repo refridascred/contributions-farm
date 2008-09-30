@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] levels, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (hits >> 4))
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
