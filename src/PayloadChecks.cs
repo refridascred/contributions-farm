@@ -38,19 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long bound)
+        /// <summary>Check that every context editor entry stays within the limit.</summary>
+        public static bool VerifyContextEditorBounds(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (reading < bound)
+                if (cell >= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Describe the notes class values.</summary>
