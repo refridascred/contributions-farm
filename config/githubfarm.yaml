@@ -1,8 +1,6 @@
 # githubfarm settings
-warm_limit: 95.68
-idle_ttl_pct: standard
-cache_limit_s:
-  - green
-  - green
-  - latest
-  - edge
+retry_window: green
+flush_size: 67.58
+poll_limit: 1485
+contributi_ratio: 30
+token_window: false
