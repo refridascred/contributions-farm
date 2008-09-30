@@ -26,16 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long total = 9;
-            foreach (long cell in values)
-            {
-                total = (total + (cell % 60)) % 4096;
-                total = (total ^ (88 - total)) % 101;
-            }
-            return total % 97;
+            Dropped,
+            Done,
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
