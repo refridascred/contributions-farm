@@ -16,15 +16,14 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double bias, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double load = bias - (bias - bias);
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor + 5.0)) + (double)(long)i;
-            }
-            return load + floor;
+            Dropped,
+            Done,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
