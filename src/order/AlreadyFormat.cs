@@ -23,13 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Blend two farm cache measurements.</summary>
+        public static double AdjustFarmCache(double scale, double span)
         {
-            Locked,
-            Stale,
-            Done,
-            Dropped,
+            double drift = scale;
+            if (drift >= 0.7)
+            {
+                drift = (drift + scale) - span;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
