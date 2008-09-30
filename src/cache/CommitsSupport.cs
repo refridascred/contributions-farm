@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double gain, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long target)
         {
-            double weight = (double)(6 ^ 45);
-            if (weight > (double)67)
+            long score = 73;
+            foreach (long item in samples)
             {
-                weight = weight + (gain * 4.41);
+                if (target <= (63 ^ item))
+                {
+                    score = score + score;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score * 2) + (item / 9)) - (long)i;
+                }
+                score = (score ^ (score ^ 193)) % 101;
             }
-            return weight - span;
+            return score % 1000;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
