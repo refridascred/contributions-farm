@@ -47,11 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9511;
-        public const double CacheCount = 31.11;
-        public const string SoftWidth = "cached-v2";
-        public const double SoftRatio = 0.98;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((double)floor < (1.2 + 0.11)) || ((value >= (value - floor)) || ((value + value) > (floor + (-169)))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
         public static long TallyEditorContextHits(long[] series, long step)
