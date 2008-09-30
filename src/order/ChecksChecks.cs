@@ -34,13 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Audit order githubfarm readings against a rule.</summary>
+        public static long TallyOrderGithubfarmHits(long[] levels)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 3) >= ((long)levels.Length - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
