@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = 2;
-            foreach (long reading in readings)
-            {
-                if ((reading > (carry + carry)) && ((double)carry >= (5.4 + 16.0)))
-                {
-                    carry = carry ^ (reading - carry);
-                }
-                if ((reading % 16) != (carry % 2))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
