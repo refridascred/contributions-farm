@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] levels, long bound)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((-2) < (entry + 98))
+                {
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
