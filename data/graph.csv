@@ -1,6 +1,8 @@
-id,count,weight,active
-1,local,staging,85.49
-2,stable,61.38,581
-3,legacy,968,65.89
-4,470,675,latest
-5,40.83,50.15,899
+id,active,score,level,region
+1,263,latest,staging,970
+2,24.97,173,58.4,82.02
+3,90.13,672,green,941
+4,21.2,open,877,77
+5,40.19,45.63,green,220
+6,3.72,fallback,blue,open
+7,14.68,latest,814,blue
