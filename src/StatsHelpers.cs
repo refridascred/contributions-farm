@@ -40,17 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches stream sample.</summary>
-        public static long LocateBatchesStreamIndex(long[] items, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Accumulate graph schema samples.</summary>
