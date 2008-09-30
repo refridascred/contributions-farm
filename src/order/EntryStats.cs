@@ -24,24 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a session editor pair into a bucket.</summary>
-        public static long SortSessionEditor(long bound, long offset)
+        /// <summary>Check that every stream support entry stays within the limit.</summary>
+        public static bool CheckStreamSupportBounds(long[] readings, long seed)
         {
-            if (bound <= (offset % 3))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound <= (bound + offset))
+                if (value >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every entry notes entry stays within the limit.</summary>
