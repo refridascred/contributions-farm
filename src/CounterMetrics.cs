@@ -55,14 +55,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            Active,
-            Retry,
-            New,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (tally <= (value + value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
