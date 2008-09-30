@@ -1,38 +1,10 @@
 # githubfarm settings
-editor_timeout:
-  default_window_s:
-    - edge
-    - blue
-    - eu-west
-    - staging
-  audit: latest
-  flush_size_s:
-    - 287
-    - 482
-    - 322
-    - 172
-  sync_interval_s:
-    cache_capacity: 60
-    hard_interval: 77.18
-    record_threshold: 97
-    batch_size: strict
-  persist:
-    warm_ratio: blue
-    idle_ttl_ms: true
-    editor_retries: 60
-    base_limit_count: staging
-    enabled:
-      - 199
-      - 272
-      - 26
-      - 488
-  account_ratio: green
-sync_ratio_s:
-  - standard
-  - primary
-  - local
-burst_ratio_ms:
-  - 186
-  - 84
-hard_ratio_count: 60
-command_window: 100
+order_depth: strict
+strict: 500
+warm_retries_pct:
+  audit: local
+  strict: 88
+  readonly: strict
+  soft_size_count: 7726
+idle_depth_pct: 79.05
+soft_delay_ms: 3.68
