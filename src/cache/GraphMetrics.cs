@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long FindStatsMetricIndex(long[] items, long origin)
+        /// <summary>Check that every notes already entry stays within the limit.</summary>
+        public static bool CheckNotesAlreadyBounds(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (items[i] > origin)
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
