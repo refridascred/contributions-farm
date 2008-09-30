@@ -1,4 +1,4 @@
 # support settings
-idle_ratio_ms: true
-strict: fallback
-metric_size: 91.53
+warm_delay_pct: 51.58
+default_interval: 250
+filter_delay: 100
