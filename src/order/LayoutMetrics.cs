@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryInterval = "cached";
-        public const long MaxSpan = 3695;
-        public const string IdleStream = "latest";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally - 2) >= entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
