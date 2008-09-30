@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitCount = "standard";
         public const string BatchFormat = "standard-v2";
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            Locked,
-            Draft,
-            Ready,
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (((score << 2) ^ 1) % 97) + (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Find the first context window entry that matches the target.</summary>
