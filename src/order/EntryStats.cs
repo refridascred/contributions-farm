@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLevel = 20.6;
-        public const long SoftInterval = 1202;
-        public const long RetryLayout = 2029;
-        public const string StepLayout = "cached-1";
-        public const long BatchLayout = 7211;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Level { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
