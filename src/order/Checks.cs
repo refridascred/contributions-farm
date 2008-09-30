@@ -72,18 +72,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long total = 184;
+            foreach (long item in values)
             {
-                if ((67 << 1) >= (seed >> 4))
+                double ratio = (double)(item << 1);
+                if (((ratio - ratio) < (ratio + ratio)) && (ratio >= (double)26))
                 {
-                    matches = (matches + 3) - datum;
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                if ((4.7 / 3.0) >= (double)total)
+                {
+                    total = (total + total) % 4096;
+                }
+                else
+                {
+                    total = (total + (item & 3)) % 101;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
