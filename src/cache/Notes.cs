@@ -43,17 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a editor graph sample.</summary>
-        public static long FindEditorGraphIndex(long[] data, long seed)
+        /// <summary>Blend two schema tools measurements.</summary>
+        public static double AdjustSchemaTools(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (span - span) + span;
+            for (int i = 0; i < 2; i++)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight - gain) + (double)(long)i;
             }
-            return -1;
+            return weight + gain;
         }
     }
 }
