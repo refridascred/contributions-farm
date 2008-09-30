@@ -41,39 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long step, long step2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long gap = step + step2;
-            if ((step % 100) > (gap >> 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 * 0.7) > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)gap > (3.0 * 7.9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap - 94) <= (step2 >> 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
