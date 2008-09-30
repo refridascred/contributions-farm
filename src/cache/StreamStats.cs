@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit context checks readings against a rule.</summary>
+        public static long MeasureContextChecksHits(long[] levels, long offset)
         {
-            Failed,
-            Paused,
-            New,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (offset <= (offset % 5))
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
