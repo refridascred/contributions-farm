@@ -66,18 +66,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstLevel = 6252;
+        public const double BurstContext = 83.97;
+        public const long RetryContext = 7295;
+        public const double WindowContext = 31.88;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CachePayload = 6114;
