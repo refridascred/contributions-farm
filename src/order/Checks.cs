@@ -26,19 +26,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] series, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long bound)
         {
-            bool found = true;
-            foreach (long reading in series)
+            if (42 < seed)
             {
-                if (reading <= step)
+                return 1;
+            }
+            else
+            {
+                if (seed < (2 + seed))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed % 24) > seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (5.31 >= (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
