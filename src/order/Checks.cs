@@ -65,14 +65,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            Active,
-            New,
-            Failed,
-            Draft,
-            Dropped,
+            long result = 602;
+            foreach (long datum in items)
+            {
+                result = ((result ^ (result - 558)) % 255) ^ datum;
+            }
+            return result;
         }
     }
 }
