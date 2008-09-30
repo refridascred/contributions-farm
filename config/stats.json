@@ -1,6 +1,7 @@
 {
-  "base_interval_pct": "green",
-  "batch_threshold": 30,
-  "entry_interval": 30,
-  "burst_size": true
+  "enabled": true,
+  "max_window_s": "latest",
+  "retry_limit": 9349,
+  "warm_threshold_ms": 65.36,
+  "warm_delay": ["local", "legacy", "primary", "standard"]
 }
