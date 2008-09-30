@@ -25,17 +25,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] items, long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
