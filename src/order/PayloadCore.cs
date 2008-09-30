@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] series, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target > (51 + entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
