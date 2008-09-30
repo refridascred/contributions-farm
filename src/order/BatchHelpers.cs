@@ -19,20 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (((score << 2) ^ 1) % 97) + (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "strict-edge";
+        public const long CacheTimeout = 9014;
+        public const long RetryCache = 8599;
+        public const long LimitCache = 4894;
+        public const long DefaultCache = 2098;
 
         /// <summary>Find the first context window entry that matches the target.</summary>
         public static long LookupContextWindowIndex(long[] values, long target)
