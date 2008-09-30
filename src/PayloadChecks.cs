@@ -19,11 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Iterate the token command series from a seed.</summary>
+        public static long SeriesTokenCommand(long offset)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((offset / 2) >= (total & 31))
+                {
+                    total = total ^ total;
+                }
+                if (!((double)total >= (double)(long)i))
+                {
+                    continue;
+                }
+                if ((total + offset) != (offset << 1))
+                {
+                    total = total + (total >> 4);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
