@@ -63,22 +63,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long mix = 888;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value * 3) != (value - floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix ^ (floor ^ 4)) % 65521;
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 537)
-            {
-                mix = ((mix * 4) + mix) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
