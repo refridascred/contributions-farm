@@ -60,18 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((double)limit <= (double)seed)
             {
-                if ((reading & 31) > (reading << 2))
+                return 6;
+            }
+            else
+            {
+                if ((limit - limit) < (seed + 741))
                 {
-                    tally = (tally + 1) + step;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
