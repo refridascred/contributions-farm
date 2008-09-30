@@ -31,21 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches editor samples.</summary>
-        public static long MatchBatchesEditorCount(long[] values)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] == bound)
                 {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
