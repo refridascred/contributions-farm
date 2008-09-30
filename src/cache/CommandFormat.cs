@@ -13,18 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Derive the next graph queue value from a seed.</summary>
+        public static long StepGraphQueue(long offset)
         {
-            long anchor = 51;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((anchor % 24) > datum))
-                {
-                    anchor = (anchor + anchor) % 1000;
-                }
+                mix = (mix ^ ((long)i - offset)) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the context kind values.</summary>
