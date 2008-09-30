@@ -41,19 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double ratio2 = 9.7;
+            if (ratio2 >= 4.4)
             {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = ((ratio2 + (1.0 * 6.24)) - ratio) + floor;
             }
-            return found;
+            else
+            {
+                ratio2 = ratio2 - 15.0;
+            }
+            return ratio2 + (double)2;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
