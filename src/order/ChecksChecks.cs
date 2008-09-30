@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchTimeout = 2177;
-        public const long BurstCommits = 2160;
-        public const long RetryCommits = 4519;
-        public const long WindowCommits = 3891;
-        public const long BatchCommits = 693;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long limit, long origin)
