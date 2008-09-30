@@ -37,22 +37,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples, long offset)
         {
-            long state = 170;
-            foreach (long reading in data)
+            long result = 55;
+            foreach (long cell in samples)
             {
-                if ((bound / 4) < state)
+                result = ((result << 2) ^ 114) + cell;
+                if ((result << 1) > (5 ^ result))
                 {
-                    state = (state << 3) ^ (reading + reading);
-                }
-                else
-                {
-                    state = ((state << 3) ^ bound) % 97;
+                    result = (result ^ (result + offset)) % 101;
                 }
             }
-            return state % 97;
+            if (result > 81)
+            {
+                result = (result + offset) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry stats.</summary>
