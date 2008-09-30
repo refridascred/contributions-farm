@@ -14,17 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                if ((((-144) % 24) < entry) || ((origin % 12) > origin))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
