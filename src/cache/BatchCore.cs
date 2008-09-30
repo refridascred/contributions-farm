@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Stale,
-            Locked,
-            Draft,
-            Pending,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
