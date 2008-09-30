@@ -78,16 +78,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = anchor ^ (floor << 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
