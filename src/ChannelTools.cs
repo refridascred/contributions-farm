@@ -42,39 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data, long origin)
         {
-            long next = floor + target;
-            if ((floor - next) <= (target + target))
+            long state = 568;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ target) >= (floor >> 3))
+                if ((double)origin <= 11.0)
                 {
-                    return 4;
+                    state = (((state << 2) ^ (state % 12)) % 4096) - item;
                 }
                 else
                 {
-                    if ((target * 5) > (next % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (next >= (431 + 377))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = state + 7;
                 }
             }
+            return state;
         }
     }
 }
