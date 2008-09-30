@@ -78,18 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] samples, long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step - 740) < (98 ^ matches))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
