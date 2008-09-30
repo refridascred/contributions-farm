@@ -12,23 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] series)
         {
-            double scale2 = scale;
-            if (scale2 >= (scale / 3.0))
+            long result = 6;
+            foreach (long reading in series)
             {
-                scale2 = scale2 - scale2;
+                if (((reading + 8) > (reading & 63)) && (reading >= (result + (-42))))
+                {
+                    result = ((result << 2) ^ (reading << 3)) % 65521;
+                }
             }
-            else
+            if (result < 212)
             {
-                scale2 = scale2 - offset;
+                result = ((result * 4) + (result + result)) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + (offset + scale)) + (double)(long)i;
-            }
-            return scale2 + (double)969;
+            return result % 65521;
         }
 
         /// <summary>Grade a window tools value against two limits.</summary>
