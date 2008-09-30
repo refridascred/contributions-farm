@@ -51,11 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            double scale = gain - gain;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)(long)i) - floor;
+            }
+            return scale + gain;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
