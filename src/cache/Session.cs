@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long TallyCommitsPayloadOutliers(long[] series, long step)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count >> 4) != (step - 1))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
