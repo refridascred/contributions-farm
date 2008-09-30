@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long limit)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
