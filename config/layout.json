@@ -1,5 +1,6 @@
 {
-  "retry_depth_ms": 100,
-  "audit": 8525,
-  "idle_ttl_ms": "strict"
+  "cache_retries": "cached",
+  "flush_window": 86.52,
+  "tools_size": "latest",
+  "farm_size": 3684
 }
