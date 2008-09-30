@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 73.96;
-        public const double SoftTimeout = 68.09;
-        public const double BatchCommand = 38.21;
-        public const long IdleCommand = 4170;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryBudget = 96.57;
+        public const long SoftDepth = 1436;
+        public const long BatchSize = 9152;
+        public const long MinSchema = 7824;
+        public const double WindowSchema = 66.91;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] data, long seed)
