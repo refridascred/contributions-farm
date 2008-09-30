@@ -59,13 +59,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (seed < total)
+                {
+                    total = ((total * 4) + (total * 3)) % 101;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the graph route series from a seed.</summary>
