@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] series, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 * 4) > bound)
+                if (values[i] < offset)
                 {
-                    count = (count + 2) - datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
