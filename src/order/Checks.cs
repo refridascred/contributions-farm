@@ -85,14 +85,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            New,
-            Stale,
-            Draft,
-            Ready,
-            Done,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - sample) < sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
