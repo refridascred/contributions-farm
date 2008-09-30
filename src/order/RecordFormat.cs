@@ -50,18 +50,17 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] data)
+        /// <summary>Iterate the buffer window series from a seed.</summary>
+        public static long SeriesBufferWindow(long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < (value + seen))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry << 3) ^ 435) % 255;
+                carry = carry + (bound * 3);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
