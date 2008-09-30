@@ -40,11 +40,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double floor)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            double gain = floor;
+            if (gain <= 6.22)
+            {
+                gain = (gain + 4.2) + bias;
+            }
+            return gain - 9.0;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
