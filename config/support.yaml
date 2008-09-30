@@ -1,7 +1,15 @@
 # support settings
-base_window_ms: 82.16
-metrics_size:
-  flush_window: 87
-  counter_window: 15
-  retry_timeout: green
-retry_window: false
+batch_interval_s:
+  soft_depth: 98
+  contributi_threshold: false
+  graph_capacity: 100
+  sync_window:
+    retry_interval:
+      - staging
+      - edge
+      - primary
+    idle_limit: primary
+    order_threshold: local
+entry_capacity: blue
+sync_size: false
+strict: 1024
