@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long target)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Queued,
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((double)target <= (9.75 * 3.52)) || ((long)i >= (state + target)))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
