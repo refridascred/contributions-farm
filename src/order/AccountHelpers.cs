@@ -30,14 +30,17 @@ namespace Common.Utilities
         public const long MinCommits = 2328;
         public const string SoftCommits = "open-1";
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long seed)
         {
-            Failed,
-            New,
-            Locked,
-            Dropped,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
