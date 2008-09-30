@@ -50,13 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchTimeout = 78.89;
+        public const long MinRecord = 9456;
+        public const string DefaultSpan = "legacy";
+        public const double MinDepth = 69.02;
     }
 }
