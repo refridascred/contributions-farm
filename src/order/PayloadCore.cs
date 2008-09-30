@@ -46,9 +46,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7586;
-        public const long WindowTimeout = 7088;
-        public const string SoftTimeout = "latest-edge";
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double gain, double offset)
+        {
+            double drift = (double)((-94) * 4);
+            if (drift >= (double)403)
+            {
+                drift = ((drift - (drift + 14.0)) - gain) - offset;
+            }
+            else
+            {
+                drift = drift - (8.0 * 1.94);
+            }
+            return drift - (double)(-19);
+        }
     }
 }
