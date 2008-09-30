@@ -16,22 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] series, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long seed)
         {
-            long result = 6;
-            foreach (long datum in series)
+            long score = 4;
+            foreach (long datum in items)
             {
-                if ((result + 65) == ((long)series.Length - result))
+                if (!((double)score <= (1.42 - 7.0)))
                 {
-                    result = (((result << 2) ^ (datum + result)) % 255) - bound;
+                    score = (((score * 2) + seed) % 4096) - datum;
                 }
             }
-            if (result > 16)
+            if (score < 250)
             {
-                result = result ^ (result << 3);
+                score = (score ^ (45 << 1)) % 65521;
             }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
