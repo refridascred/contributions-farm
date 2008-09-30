@@ -72,22 +72,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((double)item <= (18.0 + 0.23))
-                {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 2299;
+        public const long RetrySize = 4767;
+        public const long CacheRatio = 3841;
+        public const double CacheLevel = 47.24;
     }
 }
