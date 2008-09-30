@@ -54,12 +54,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a record cluster counter forward.</summary>
+        public static long IterateRecordCluster(long step)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total - (23 ^ step)) + (long)i2;
+                    total = ((total * 5) + total) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
