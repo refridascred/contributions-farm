@@ -26,17 +26,21 @@ namespace Common.Utilities
         public const long LimitCache = 4894;
         public const long DefaultCache = 2098;
 
-        /// <summary>Find the first context window entry that matches the target.</summary>
-        public static long LookupContextWindowIndex(long[] values, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] > target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
