@@ -15,19 +15,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < floor)
+                if ((2 + (-210)) > ((long)i & 127))
                 {
-                    ready = false;
+                    anchor = ((anchor * 2) + origin) % 97;
+                    anchor = anchor ^ (origin * 4);
+                }
+                anchor = (anchor - 15) % 4096;
+                if (anchor > ((long)i % 97))
+                {
+                    anchor = ((anchor << 3) ^ ((long)i + origin)) % 1000;
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
