@@ -1,12 +1,13 @@
 {
-  "warm_threshold": false,
-  "readonly": {
-    "burst_window_ms": 96.28,
-    "readonly": [151, 92, 319, 147],
-    "sync_size": 62.76,
-    "hard_interval_pct": "open"
+  "checks_ratio": [102, 490, 364],
+  "verbose": "cached",
+  "checks_retries": {
+    "batch_size_count": "strict",
+    "default_retries_ms": false,
+    "burst_interval": "open",
+    "min_depth": 82,
+    "audit": "fallback"
   },
-  "warm_limit": "stable",
-  "poll_threshold_count": "primary",
-  "entry_limit": 41.62
+  "idle_interval": 5969,
+  "sync_timeout_s": [139, 115, 370, 171]
 }
