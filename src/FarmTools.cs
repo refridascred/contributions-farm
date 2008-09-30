@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long origin)
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long CombineCommitsToken(long[] series, long origin)
         {
-            if ((origin / 8) >= step)
+            long carry = 67;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) < (origin * 4)) || ((origin << 3) == (step + origin)))
+                carry = ((carry << 2) ^ (origin >> 5)) ^ reading;
+                carry = ((carry << 2) ^ (8 / 8)) % 1000;
+                carry = ((carry << 3) ^ (carry + 63)) % 101;
+                if (((origin - (long)series.Length) != (carry % 5)) || ((9.4 / 5.0) == (double)carry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step * 4) != (step * 5)) && ((double)origin > (double)5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
