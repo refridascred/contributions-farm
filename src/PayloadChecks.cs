@@ -24,10 +24,15 @@ namespace Common.Utilities
         public const long BurstLayout = 1998;
         public const string BaseScore = "staging-edge";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitTimeout = 42.0;
-        public const long MinFactor = 3917;
-        public const long BaseBudget = 3120;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Draft,
+            Dropped,
+            Paused,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Derive the next batches channel value from a seed.</summary>
         public static long SeriesBatchesChannel(long target)
