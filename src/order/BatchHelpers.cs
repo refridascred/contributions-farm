@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8197;
-        public const long IdleBatches = 7618;
-        public const double DefaultBudget = 6.5;
-        public const long MaxBudget = 5318;
-        public const long StepBatches = 4540;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] values)
