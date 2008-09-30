@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Closed,
-            Active,
-            Synced,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryCount = "staging-v2";
+        public const double CacheBudget = 55.58;
+        public const long BaseFarm = 1878;
 
         /// <summary>Accumulate window order samples.</summary>
         public static long DigestWindowOrder(long[] values, long bound)
