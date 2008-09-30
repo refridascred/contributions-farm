@@ -64,11 +64,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
+            long mix = 36;
+            foreach (long entry in levels)
+            {
+                if ((offset + mix) != (offset >> 1))
+                {
+                    mix = ((mix ^ (offset - mix)) % 65521) ^ entry;
+                }
+                else
+                {
+                    mix = (mix * 2) + 1;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
