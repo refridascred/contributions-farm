@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                state = state - 925;
-                state = (state - 61) % 65521;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Draft,
+            Failed,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Fold a list of order readings.</summary>
