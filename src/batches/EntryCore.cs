@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "fallback";
-        public const double DefaultAlready = 65.15;
-        public const long BaseAlready = 9034;
-        public const string BurstAlready = "open-1";
-        public const string RetryAlready = "staging-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8609;
+        public const long LimitProfile = 8860;
+        public const long RetryProfile = 3368;
+        public const long MaxProfile = 730;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long bound)
