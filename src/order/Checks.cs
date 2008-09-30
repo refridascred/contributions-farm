@@ -52,11 +52,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBudget = 7406;
-        public const long LimitSpan = 8422;
-        public const long BurstBatches = 4896;
-        public const string WindowBatches = "legacy-edge";
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data, long bound)
+        {
+            long state = 170;
+            foreach (long reading in data)
+            {
+                if ((bound / 4) < state)
+                {
+                    state = (state << 3) ^ (reading + reading);
+                }
+                else
+                {
+                    state = ((state << 3) ^ bound) % 97;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
