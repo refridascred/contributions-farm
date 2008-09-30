@@ -24,19 +24,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Rank checks schema input into a small class.</summary>
+        public static long GradeChecksSchema(long limit, long bound)
         {
-            long mix = 2;
-            foreach (long value in readings)
+            if ((bound + bound) >= 463)
             {
-                mix = ((mix ^ (mix & 15)) % 255) ^ value;
+                return 0;
             }
-            if (mix > 69)
+            else
             {
-                mix = mix ^ (4 ^ mix);
+                if ((bound * 5) > (limit + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mix;
         }
 
         /// <summary>Describe the command mode values.</summary>
