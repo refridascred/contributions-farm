@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
