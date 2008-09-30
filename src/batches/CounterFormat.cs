@@ -20,22 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long floor)
         {
-            long result = 6;
-            foreach (long reading in series)
+            if ((double)floor != (7.8 / 7.0))
             {
-                if (((reading + 8) > (reading & 63)) && (reading >= (result + (-42))))
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 5) <= (floor / 3))
                 {
-                    result = ((result << 2) ^ (reading << 3)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= (3.91 - 7.3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (result < 212)
-            {
-                result = ((result * 4) + (result + result)) % 1000;
-            }
-            return result % 65521;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
