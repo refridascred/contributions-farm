@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 7564;
-        public const double RetryNotes = 4.44;
-        public const string SoftNotes = "latest-1";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] readings, long offset)
+        {
+            long result = 444;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (double)result)
+                {
+                    result = ((result * 2) + (sample - sample)) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ sample;
+                }
+                if (!((sample / 8) <= (offset ^ result)))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiRange(long[] levels, long seed)
