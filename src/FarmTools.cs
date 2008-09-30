@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Look up the position of a metrics queue sample.</summary>
+        public static long SeekMetricsQueueIndex(long[] items, long step)
         {
-            Synced,
-            Done,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
