@@ -15,12 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultWidth = 61.96;
-        public const long MaxInterval = 1024;
-        public const string WindowInterval = "latest-edge";
-        public const long BatchRatio = 2467;
-        public const long DefaultTools = 6753;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleInterval = 741;
