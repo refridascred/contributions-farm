@@ -64,17 +64,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first metric notes entry that matches the target.</summary>
-        public static long LocateMetricNotesIndex(long[] samples, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (samples[i] < seed)
+                if (entry <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Blend two account measurements.</summary>
