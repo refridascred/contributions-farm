@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long BatchSpan = 35;
         public const long WindowStats = 2961;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Derive the next profile context value from a seed.</summary>
+        public static long DeriveProfileContext(long offset)
         {
-            long anchor = 55;
-            foreach (long reading in readings)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (anchor >= (reading + anchor))
-                {
-                    anchor = (anchor + ((long)readings.Length / 3)) % 255;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Hold a order snapshot.</summary>
