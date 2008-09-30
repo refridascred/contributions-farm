@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long limit, long step)
         {
-            Failed,
-            Done,
-            Closed,
+            if ((double)step <= (double)5)
+            {
+                return 1;
+            }
+            else
+            {
+                if (3.83 < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ 900) <= (step ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (0.4 / 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
