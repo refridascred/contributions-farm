@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits > (hits << 3))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - reading;
                 }
             }
             return hits;
