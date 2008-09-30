@@ -26,23 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] series, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (datum != offset)
                 {
-                    carry = ((carry << 2) ^ (long)i2) % 97;
+                    valid = false;
+                    break;
                 }
-                if (!((seed + carry) >= carry))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the counter phase values.</summary>
