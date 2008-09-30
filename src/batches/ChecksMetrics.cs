@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long score = 897;
-            foreach (long cell in samples)
-            {
-                score = (score << 3) ^ (cell << 3);
-                score = (score << 2) ^ (69 ^ cell);
-            }
-            return score;
+            public double Limit { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
