@@ -52,14 +52,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long floor)
         {
-            Closed,
-            Retry,
-            Pending,
-            Synced,
-            Locked,
+            long bound = limit + floor;
+            if (!(bound <= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - floor) <= (floor + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
