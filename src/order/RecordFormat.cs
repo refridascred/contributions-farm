@@ -16,22 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Find the first cache support entry that matches the target.</summary>
+        public static long SeekCacheSupportIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen != (4.0 - 10.0))
+                if ((values[i] >= offset) && ((values[i] % 2) != 0))
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
