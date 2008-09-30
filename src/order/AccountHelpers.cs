@@ -59,20 +59,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bool ok = (sum + (long)i) >= (seed + seed);
-                if (ok)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
