@@ -60,15 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter contributi samples are out of range.</summary>
-        public static long CountFilterContributiGaps(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data, long step)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long reading in data)
             {
-                if (((cell >= (cell * 2)) && ((cell % 97) < (tally - cell))) || (((double)tally <= (3.0 + 7.0)) && ((cell + cell) <= (tally + tally))))
+                if ((reading & 31) > (reading << 2))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + step;
                 }
             }
             return tally;
