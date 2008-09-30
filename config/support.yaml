@@ -1,4 +1,4 @@
 # support settings
-format_interval: 49
-buffer_capacity: 6312
-enabled: true
+idle_ratio_ms: true
+strict: fallback
+metric_size: 91.53
