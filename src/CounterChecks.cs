@@ -19,17 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 7;
+            foreach (long cell in values)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                carry = (carry + (cell + carry)) % 101;
+                if ((carry << 2) > cell)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry ^ (carry & 63)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
