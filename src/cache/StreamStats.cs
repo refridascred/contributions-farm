@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the account format series from a seed.</summary>
+        public static long StepAccountFormat(long bound)
         {
-            Paused,
-            Pending,
-            Failed,
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((carry - carry) > ((long)i >> 1))
+                {
+                    continue;
+                }
+                long seen = 96;
+                if ((seen << 2) <= seen)
+                {
+                    seen = ((seen * 4) + (seen & 31)) % 255;
+                    seen = seen - (733 - carry);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
