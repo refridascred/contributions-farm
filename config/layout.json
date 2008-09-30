@@ -1,5 +1,6 @@
 {
-  "base_capacity_s": "staging",
-  "min_interval_count": ["staging", "staging"],
-  "persist": "standard"
+  "hard_size_ms": "green",
+  "farm_ttl": "primary",
+  "poll_limit_s": 46.32,
+  "flush_size": true
 }
