@@ -37,17 +37,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the cluster token series from a seed.</summary>
-        public static long DeriveClusterToken(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 3) + (6 + limit)) % 97;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 2840;
+        public const double StepDepth = 42.24;
+        public const long BurstDepth = 7857;
 
         /// <summary>Measure how many session token samples are out of range.</summary>
         public static long MeasureSessionTokenMatches(long[] series, long offset)
