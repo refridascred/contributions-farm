@@ -38,21 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (span - rate) - (double)0;
+            if (weight <= rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight + (weight - weight);
             }
-            return matches;
+            else
+            {
+                weight = weight - (double)9;
+            }
+            return weight + (span / 4.0);
         }
 
         /// <summary>Project the next cache value.</summary>
