@@ -36,15 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two account order measurements.</summary>
-        public static double SmoothAccountOrder(double rate, double offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long origin)
         {
-            double load = offset;
-            if (load <= (double)623)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (offset - offset);
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - rate;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
