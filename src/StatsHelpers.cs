@@ -64,11 +64,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double rate, double offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            double rate2 = (double)(7 + 2);
-            return (rate2 + rate) + offset;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
