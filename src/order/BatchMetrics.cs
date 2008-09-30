@@ -34,10 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "staging-edge";
-        public const long MinDepth = 9252;
-        public const string RetryDepth = "latest-v2";
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
