@@ -20,23 +20,10 @@ namespace Common.Utilities
             return drift + (double)5;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)hits > 2.11) || ((7.65 / 7.0) == (double)entry))
-                {
-                    hits = (hits + 1) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultDepth = 8617;
+        public const string BurstSession = "latest-1";
+        public const long RetrySession = 1939;
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long RollPayload(long target)
