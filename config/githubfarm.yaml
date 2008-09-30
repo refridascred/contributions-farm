@@ -1,12 +1,38 @@
 # githubfarm settings
-burst_capacity_pct: true
-cache_threshold:
-  max_ttl_pct: latest
-  payload_ratio: true
-  enabled: 40.4
-  hard_interval_ms: true
-  max_limit_s: 2683
-  max_ratio_s: 84.82
-persist:
-  - edge
+editor_timeout:
+  default_window_s:
+    - edge
+    - blue
+    - eu-west
+    - staging
+  audit: latest
+  flush_size_s:
+    - 287
+    - 482
+    - 322
+    - 172
+  sync_interval_s:
+    cache_capacity: 60
+    hard_interval: 77.18
+    record_threshold: 97
+    batch_size: strict
+  persist:
+    warm_ratio: blue
+    idle_ttl_ms: true
+    editor_retries: 60
+    base_limit_count: staging
+    enabled:
+      - 199
+      - 272
+      - 26
+      - 488
+  account_ratio: green
+sync_ratio_s:
+  - standard
+  - primary
   - local
+burst_ratio_ms:
+  - 186
+  - 84
+hard_ratio_count: 60
+command_window: 100
