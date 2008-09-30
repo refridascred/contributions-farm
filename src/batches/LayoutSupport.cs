@@ -60,23 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long anchor = 858;
-            foreach (long reading in levels)
-            {
-                long cur = reading - (anchor << 1);
-                if ((anchor ^ cur) <= cur)
-                {
-                    cur = (cur << 2) ^ (anchor * 5);
-                }
-                if ((reading & 3) == (2 >> 1))
-                {
-                    anchor = ((anchor * 4) + (reading % 7)) % 97;
-                }
-            }
-            return anchor;
+            Draft,
+            New,
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
