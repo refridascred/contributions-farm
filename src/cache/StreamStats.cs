@@ -13,19 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double bias, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long limit)
         {
-            double weight = 6.94;
-            if (weight <= (double)81)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                weight = (weight + offset) - bias;
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)3;
-            }
-            return weight - (offset + weight);
+            return flag;
         }
 
         /// <summary>Describe the counter phase values.</summary>
