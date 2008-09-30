@@ -1,6 +1,17 @@
 {
-  "poll_threshold_count": false,
-  "min_timeout_s": "stable",
-  "poll_interval_s": "cached",
-  "soft_retries_ms": true
+  "retry_ttl_pct": 500,
+  "soft_ratio_pct": "fallback",
+  "batch_interval_s": {
+    "retry_ttl_count": ["edge", "cached"],
+    "notes_size": true,
+    "verbose": "blue",
+    "max_delay_pct": {
+      "poll_capacity_count": true,
+      "schema_retries": 11.92,
+      "queue_interval": [344, 143, 259, 8],
+      "idle_capacity_s": ["strict", "edge", "blue"],
+      "cache_timeout_ms": 60
+    },
+    "idle_timeout_count": 50
+  }
 }
