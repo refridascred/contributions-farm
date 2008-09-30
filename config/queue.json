@@ -1,14 +1,6 @@
 {
-  "cache_threshold": ["primary", "eu-west"],
-  "audit": 9.5,
-  "payload_interval": 19,
-  "soft_retries_count": {
-    "cache_ratio_count": 13.34,
-    "hard_size_pct": "stable",
-    "graph_ratio": 40,
-    "burst_window_count": 19.36,
-    "min_delay_count": [158, 287, 270]
-  },
-  "burst_ttl": true,
-  "poll_capacity": "latest"
+  "dry_run": 278,
+  "soft_ratio_s": false,
+  "graph_timeout": "cached",
+  "retry_threshold": 100
 }
