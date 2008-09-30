@@ -23,17 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] >= target)
+                if ((datum >> 1) <= (datum + 688))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
