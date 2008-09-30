@@ -1,6 +1,21 @@
 # support settings
-base_ttl_pct: 76.09
-warm_limit_s: 9
-sync_threshold: latest
-window_size: 25
-min_threshold_ms: edge
+burst_capacity: false
+max_delay:
+  - legacy
+  - primary
+  - latest
+cache_ratio: 61
+report_ttl: 80.0
+cluster_timeout: open
+cache_timeout:
+  idle_limit_ms: 69.19
+  verbose: false
+  poll_delay_s: latest
+  sync_window_s:
+    - fallback
+    - fallback
+    - primary
+  max_threshold_count: 4027
+  batch_ttl_count:
+    - 384
+    - 227
