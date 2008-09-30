@@ -15,19 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next payload githubfarm value from a seed.</summary>
-        public static long SeriesPayloadGithubfarm(long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            if ((step >> 2) <= bound)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (((mix << 3) ^ seed) % 101) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((double)bound < 2.07))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
