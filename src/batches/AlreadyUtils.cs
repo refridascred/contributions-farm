@@ -52,38 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks window value against two limits.</summary>
-        public static long RankChecksWindow(long limit, long limit2)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long floor)
         {
-            if (!((limit / 5) <= (limit ^ limit)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7 + limit) <= (202 - limit))
+                if (levels[i] > floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit >= (limit - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit2 < (limit % 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
