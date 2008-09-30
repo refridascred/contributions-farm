@@ -1,4 +1,12 @@
 # githubfarm settings
-default_window_s: 50.71
-commits_capacity: staging
-max_size: 67.16
+batch_delay_ms: cached
+soft_delay_s:
+  - 250
+  - 106
+base_ratio_s: 78.96
+retry_delay:
+  - primary
+  - stable
+  - stable
+batch_size: 85.48
+account_ratio: legacy
