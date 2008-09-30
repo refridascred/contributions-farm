@@ -1,20 +1,13 @@
 # entry settings
-audit:
-  idle_ratio_count: 85.48
-  compress:
-    hard_interval_pct: 82.98
-    soft_interval_pct: blue
-    enabled: standard
-  dry_run: blue
-  strict: 92.65
-  session_threshold: cached
-  context_depth:
-    dry_run: eu-west
-    default_depth: 8291
-    strict: 14
-payload_limit:
-  - 72
-  - 467
-  - 439
-warm_threshold: 12
-hard_interval: blue
+already_interval: true
+tools_size:
+  - open
+  - primary
+verbose:
+  sync_limit: 58.79
+  min_size_pct: true
+  audit: 76.65
+  counter_delay: 98
+audit: 16
+compress: 1024
+strict: standard
