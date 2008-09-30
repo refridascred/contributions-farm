@@ -39,38 +39,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank already checks input into a small class.</summary>
-        public static long GradeAlreadyChecks(long target, long bound)
+        /// <summary>Fold a list of batches account readings.</summary>
+        public static long ScoreBatchesAccount(long[] data, long bound)
         {
-            if ((bound + (-89)) < bound)
+            long total = 533;
+            foreach (long cell in data)
             {
-                return 7;
+                total = (((total * 2) + bound) % 65521) + cell;
             }
-            else
+            if (total > (-4))
             {
-                if ((target - bound) > bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound ^ target) <= (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + 39) == (target << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = total ^ bound;
             }
+            return total;
         }
     }
 }
