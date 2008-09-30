@@ -27,18 +27,16 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long score = 96;
+            foreach (long reading in data)
             {
-                if (((sample / 2) != (sample - sample)) || !((double)hits != (0.33 + 9.5)))
-                {
-                    hits = hits + 1;
-                }
+                score = (((score << 2) ^ (69 % 97)) % 65521) ^ reading;
+                score = ((score << 3) ^ 4) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
