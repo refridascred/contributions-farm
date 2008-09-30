@@ -23,25 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long floor)
+        /// <summary>Blend two payload githubfarm measurements.</summary>
+        public static double AdjustPayloadGithubfarm(double weight, double floor)
         {
-            long cur = step ^ floor;
-            if ((floor / 4) <= floor)
+            double load = floor / 9.0;
+            if (load >= (floor - load))
             {
-                return 4;
+                load = load - weight;
             }
             else
             {
-                if ((cur / 9) == (456 + 52))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = load + 1.9;
             }
+            return load - load;
         }
 
         /// <summary>Fold a list of route readings.</summary>
