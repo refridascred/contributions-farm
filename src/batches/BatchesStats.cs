@@ -34,19 +34,15 @@ namespace Common.Utilities
             return scale - (floor / 9.0);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long bound)
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long WeighCacheFarm(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = 98;
+            foreach (long cell in levels)
             {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 5) + cell) - offset;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
