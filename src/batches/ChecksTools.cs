@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell % 24) >= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
