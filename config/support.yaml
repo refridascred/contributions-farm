@@ -1,8 +1,7 @@
 # support settings
-idle_threshold: staging
-farm_timeout: 764
-commits_limit:
-  - staging
-  - cached
-  - fallback
-layout_interval: 23
+base_window_ms: 82.16
+metrics_size:
+  flush_window: 87
+  counter_window: 15
+  retry_timeout: green
+retry_window: false
