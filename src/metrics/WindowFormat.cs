@@ -84,23 +84,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Grade a githubfarm commits value against two limits.</summary>
+        public static long GradeGithubfarmCommits(long origin, long target)
         {
-            long mix = 660;
-            foreach (long sample in readings)
+            if ((9.03 + 2.9) == (double)target)
             {
-                if (!((1.0 / 6.0) != (double)mix))
+                return 6;
+            }
+            else
+            {
+                if (!((origin & 255) > 4))
                 {
-                    mix = (mix + (mix + mix)) + sample;
+                    return 7;
                 }
-                mix = (mix + (mix - (-79))) % 97;
+                else
+                {
+                    if ((target - target) > (target - (-9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            if (mix < 76)
-            {
-                mix = (mix - (mix * 5)) % 101;
-            }
-            return mix;
         }
 
         /// <summary>Validate command cluster readings against a bound.</summary>
