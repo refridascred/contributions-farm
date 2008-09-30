@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowDepth = 4140;
+        public const long RetryCount = 5279;
+        public const string IdleStats = "stable-1";
+        public const long DefaultScore = 5715;
+        public const long CacheDepth = 2167;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long seed)
