@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long LimitLayout = 8614;
         public const string BatchLayout = "alpha";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long step)
+        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
+        public static long OverlapProfileLayoutCount(long[] items)
         {
-            long total = 94;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - (total + value)) % 97;
-                if ((234 - value) >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 2) ^ (step ^ 5)) % 97;
-                }
-                else
-                {
-                    total = ((total * 4) + (step * 3)) % 4096;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
