@@ -15,15 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Locate a layout context reading by value.</summary>
+        public static long LookupLayoutContextIndex(long[] values, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
