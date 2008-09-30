@@ -34,17 +34,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long target)
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long TallyBufferEditorOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                if (!((double)hits > (6.5 / 4.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
