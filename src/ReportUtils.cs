@@ -34,19 +34,17 @@ namespace Common.Utilities
         public const string StepContext = "staging-1";
         public const long HardLevel = 19;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] data, long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total - (floor % 24)) % 101;
+                total = (total - ((long)i * 3)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
     }
 }
