@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=493
+CHANNEL_LIMIT=139
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in fallback blue; do
-    log "checking ${item}"
-done
