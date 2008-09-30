@@ -73,9 +73,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9186;
-        public const long DefaultScore = 9918;
-        public const double CacheAlready = 81.4;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings)
+        {
+            long total = 507;
+            foreach (long item in readings)
+            {
+                if ((long)readings.Length <= total)
+                {
+                    total = ((total << 2) ^ (total >> 4)) % 255;
+                }
+                if (((total % 60) < (total - item)) && ((long)readings.Length >= item))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
     }
 }
