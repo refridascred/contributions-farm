@@ -1,9 +1,30 @@
 # support settings
-burst_timeout: 250
-cluster_ratio: cached
-hard_depth_pct:
-  poll_timeout: false
-  sync_capacity_count:
-    - 183
-    - 342
-  min_limit_s: legacy
+persist: edge
+burst_timeout: 36.53
+sync_size_count:
+  idle_size:
+    - 152
+    - 293
+    - 91
+  route_delay: false
+  record_ratio:
+    - blue
+    - stable
+audit: 510
+dry_run:
+  sync_timeout_pct:
+    filter_threshold: 38.77
+    soft_ratio_s: fallback
+    warm_threshold: 72.69
+    readonly: false
+    base_size: 90
+  burst_capacity:
+    - green
+    - cached
+  default_timeout_s: blue
+  idle_depth_count:
+    - 461
+    - 239
+    - 174
+  burst_timeout_pct: 100
+  hard_depth_pct: stable
