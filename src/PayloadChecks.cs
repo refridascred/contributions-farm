@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry payload input into a small class.</summary>
-        public static long ClassifyEntryPayload(long step, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] values, long origin)
         {
-            if ((target >> 3) <= 406)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.8 / 7.0) != (double)target)
+                if (sample < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the stats phase values.</summary>
