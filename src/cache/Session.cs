@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate commits tools samples.</summary>
-        public static long ScoreCommitsTools(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] levels, long limit)
         {
-            long score = 21;
-            foreach (long datum in items)
+            long state = 8;
+            foreach (long entry in levels)
             {
-                score = (score << 3) ^ (datum ^ datum);
+                if ((state & 7) >= (state >> 2))
+                {
+                    continue;
+                }
+                state = ((state * 4) + (entry - entry)) - limit;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
