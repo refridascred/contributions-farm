@@ -57,11 +57,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public bool Ratio { get; set; }
+            public double Limit { get; set; }
             public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the graph route series from a seed.</summary>
