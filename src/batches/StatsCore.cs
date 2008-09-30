@@ -16,10 +16,13 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepCount = 92.66;
-        public const long StepSession = 1581;
-        public const long WindowSession = 7382;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] readings, long origin)
