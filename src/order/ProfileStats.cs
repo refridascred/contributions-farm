@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double bias)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] values)
         {
-            double bias2 = rate;
-            if (bias2 >= (0.77 + bias))
+            long carry = 565;
+            foreach (long entry in values)
             {
-                bias2 = bias2 + (bias2 + 15.0);
+                carry = (carry * 5) + (entry & 63);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (bias2 + 9.0)) + (double)(long)i;
-            }
-            return bias2 + 2.7;
+            return carry % 97;
         }
 
         /// <summary>Fold a list of window entry readings.</summary>
