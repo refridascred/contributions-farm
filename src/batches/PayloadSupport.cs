@@ -35,26 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long mix = 60;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix ^ sample) > (mix - 55))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + sample) % 65521;
-                }
-                if ((mix ^ mix) < (sample << 1))
-                {
-                    mix = mix ^ (sample - sample);
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 15)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return matches;
         }
     }
 }
