@@ -55,17 +55,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a batch route sample.</summary>
-        public static long LocateBatchRouteIndex(long[] levels, long offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Dropped,
         }
     }
 }
