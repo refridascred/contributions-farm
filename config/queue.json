@@ -1,5 +1,17 @@
 {
-  "batch_depth_pct": true,
-  "strict": 53.89,
-  "readonly": "cached"
+  "compress": {
+    "sync_window_s": 24.73,
+    "max_depth": true,
+    "command_interval": {
+      "persist": [323, 185, 483],
+      "min_size_s": true,
+      "burst_interval_s": "stable",
+      "burst_ratio_count": [102, 108, 95, 440],
+      "session_retries": ["staging", "green", "staging", "open"],
+      "readonly": 52
+    },
+    "cluster_size": 8357
+  },
+  "verbose": "fallback",
+  "min_retries": "legacy"
 }
