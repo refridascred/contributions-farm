@@ -89,18 +89,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit editor stream readings against a rule.</summary>
-        public static long AuditEditorStreamOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)step <= (2.4 + 8.21))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 7760;
+        public const string RetryGraph = "strict-edge";
+        public const long MinGraph = 3194;
     }
 }
