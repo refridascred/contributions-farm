@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate payload profile readings against a bound.</summary>
-        public static bool GuardPayloadProfileLimits(long[] levels, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (cell > step)
+                if (entry > floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Audit record editor readings against a rule.</summary>
