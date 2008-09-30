@@ -58,23 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks notes reading.</summary>
-        public static double BlendChecksNotes(double bias, double span)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double drift = bias + (double)72;
-            if (drift >= (bias / 7.0))
-            {
-                drift = drift + 8.4;
-            }
-            else
-            {
-                drift = drift + (drift * 9.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (drift * 3.0);
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
