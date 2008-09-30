@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Validate payload notes readings against a bound.</summary>
+        public static bool ValidatePayloadNotesLimits(long[] series, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Hold a checks summary.</summary>
