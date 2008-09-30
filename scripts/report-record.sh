@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in open latest eu-west fallback; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=378
-log "limit is ${RECORD_LIMIT}"
