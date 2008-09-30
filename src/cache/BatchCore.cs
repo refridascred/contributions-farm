@@ -31,18 +31,16 @@ namespace Common.Utilities
             return ratio - (double)44;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] samples, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (((-7) - entry) == (entry ^ 527))
-                {
-                    tally = (tally + 3) + limit;
-                }
+                sum = (sum - (step + step)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
