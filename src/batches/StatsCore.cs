@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((250 - target) > ((-234) * 3))
             {
-                if (items[i] <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((step ^ step) >= step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload header.</summary>
