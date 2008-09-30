@@ -64,14 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long origin)
         {
-            Draft,
-            New,
-            Done,
-            Dropped,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
