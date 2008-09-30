@@ -6,14 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in edge stable fallback eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 1))
+    total=$((total + i * 4))
 done
 log "total ${total}"
