@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double offset)
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            double rate = offset;
+            if (rate > (double)(-2))
+            {
+                rate = (rate - 7.0) - weight;
+            }
+            return rate - (double)140;
         }
 
         /// <summary>Blend two contributi queue measurements.</summary>
