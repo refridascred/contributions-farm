@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "cached";
-        public const string BatchRatio = "staging-edge";
-        public const string MaxRatio = "local-1";
-        public const double StepCommits = 44.94;
-        public const double WindowTimeout = 51.67;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleCount = 9119;
+        public const long BaseSize = 1371;
+        public const string BatchBatches = "strict-edge";
+        public const long MinSize = 6214;
+        public const double CacheBatches = 69.09;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
