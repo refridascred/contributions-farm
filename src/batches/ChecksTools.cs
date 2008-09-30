@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 6;
+            foreach (long sample in series)
+            {
+                if ((2 - sample) < (3 + carry))
+                {
+                    carry = (carry ^ (carry ^ carry)) % 1000;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
