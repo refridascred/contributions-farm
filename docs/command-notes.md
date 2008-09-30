@@ -1,14 +1,14 @@
 # Command notes
 
-The checks report groups every already by commits.
-The format report groups every order by tools.
+The context module keeps token values in sync with the schema cache.
+The command report groups every counter by report.
 
-The token report groups every schema by checks.
-The commits report groups every command by profile.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use order settings to tune how often record data is refreshed.
+Run the notes check before changing any stats limits.
+A token that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Keep order values small
-- Log every session change
-- Document new channel fields
+- Document new route fields
+- Validate cache input early
+- Prefer queue defaults
