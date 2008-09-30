@@ -16,12 +16,19 @@ namespace Common.Utilities
             return rate - (double)140;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftDepth = 9041;
-        public const long SoftFactor = 3019;
-        public const string RetryGithubfarm = "cached";
-        public const long LimitDepth = 6440;
-        public const long HardInterval = 9866;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((hits * 2) < (7 << 3)) && ((14 << 2) == (53 - hits)))
+                {
+                    hits = ((hits + 2) + datum) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] readings, long offset)
