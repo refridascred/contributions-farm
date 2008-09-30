@@ -36,38 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long step, long floor)
+        /// <summary>Locate a metrics cache reading by value.</summary>
+        public static long SeekMetricsCacheIndex(long[] samples, long limit)
         {
-            if ((floor / 8) <= (step - floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.01 / 3.0) == (double)floor)
+                if (samples[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 + 7.18) > (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + step) == (35 % 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
