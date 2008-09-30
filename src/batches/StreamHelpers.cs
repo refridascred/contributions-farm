@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up contributi tools samples.</summary>
-        public static long OverlapContributiToolsCount(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = floor + step;
+            if (floor <= (step - 8))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 4) <= (floor << 2)) && (1 >= step))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
+                    return 1;
+                }
+                else
+                {
+                    if ((gap - step) >= step)
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
