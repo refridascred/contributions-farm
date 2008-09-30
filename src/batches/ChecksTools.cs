@@ -40,22 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate window already samples.</summary>
-        public static long ScoreWindowAlready(long[] values)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long result = 218;
-            foreach (long entry in values)
-            {
-                if (((double)entry < 9.1) && ((4 >> 5) > (entry << 2)))
-                {
-                    result = (result << 2) ^ entry;
-                }
-            }
-            if (result < 64)
-            {
-                result = (result ^ (result << 2)) % 101;
-            }
-            return result;
+            Queued,
+            Failed,
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
