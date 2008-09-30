@@ -34,9 +34,31 @@ namespace Common.Utilities
             return scale2 + (double)969;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleInterval = 741;
-        public const double LimitInterval = 70.36;
-        public const string CacheRoute = "cached";
+        /// <summary>Grade a window tools value against two limits.</summary>
+        public static long GradeWindowTools(long bound, long offset)
+        {
+            if ((double)offset > (1.0 / 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (8 > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 7) >= (bound - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
