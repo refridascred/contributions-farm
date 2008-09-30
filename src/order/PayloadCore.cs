@@ -54,12 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            Done,
-            Dropped,
-            Active,
+            double bias = span;
+            if (bias > (bias - 7.0))
+            {
+                bias = bias + span;
+            }
+            return bias - rate;
         }
     }
 }
