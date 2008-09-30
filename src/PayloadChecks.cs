@@ -23,22 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up schema notes samples.</summary>
-        public static long CompareSchemaNotesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "alpha-v2";
+        public const long HardAlready = 1189;
+        public const long BurstAlready = 5526;
+        public const long RetryAlready = 3697;
+        public const long StepTimeout = 980;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] series, long step)
