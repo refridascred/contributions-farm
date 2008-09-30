@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] samples, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 95;
-            foreach (long item in samples)
-            {
-                if ((bound << 1) > bound)
-                {
-                    acc = (acc ^ (bound & 7)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (item / 9)) % 1000;
-                }
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up record order samples.</summary>
