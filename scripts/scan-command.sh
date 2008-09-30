@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in cached open; do
+for item in eu-west edge primary strict; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=209
+COMMAND_LIMIT=174
 log "limit is ${COMMAND_LIMIT}"
