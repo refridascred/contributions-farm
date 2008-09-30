@@ -23,12 +23,14 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Queued,
-            Stale,
-            New,
+            Retry,
+            Idle,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate editor samples.</summary>
