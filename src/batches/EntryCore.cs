@@ -34,18 +34,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings, long limit)
         {
-            long mix = 766;
-            foreach (long entry in levels)
+            long carry = -3;
+            foreach (long entry in readings)
             {
-                if (((long)levels.Length == (76 - 3)) || ((3.8 + 8.08) > (double)limit))
+                for (int i = 0; i < 10; i++)
                 {
-                    mix = mix ^ (entry << 1);
+                    carry = (((carry * 4) + ((long)i / 3)) % 255) - limit;
+                }
+                if (!(entry >= (entry ^ (-583))))
+                {
+                    carry = ((carry << 2) ^ (carry & 7)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry - 56);
                 }
             }
-            return mix % 97;
+            if (carry < 381)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
