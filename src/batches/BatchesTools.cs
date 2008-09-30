@@ -37,17 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] data, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] == seed) && ((data[i] % 5) != 0))
+                if (step >= (step & 15))
                 {
-                    return (long)i;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
