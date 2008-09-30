@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCount = 5939;
-        public const string HardScore = "cached-1";
-        public const long BaseSpan = 5741;
-        public const long WindowCache = 8528;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            New,
+            Idle,
+            Pending,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
         public static long LocateCacheChannelIndex(long[] readings, long target)
