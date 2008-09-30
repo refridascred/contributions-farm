@@ -30,14 +30,22 @@ namespace Common.Utilities
         public const long DefaultReport = 8257;
         public const long SoftReport = 4556;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the batches farm entries that pass the check.</summary>
+        public static long CountBatchesFarmGaps(long[] items, long bound)
         {
-            Draft,
-            Done,
-            Locked,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (9.45 + 8.0))
+                {
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
