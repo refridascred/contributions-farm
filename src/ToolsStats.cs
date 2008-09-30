@@ -89,15 +89,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples, long offset)
+        /// <summary>Validate token already readings against a bound.</summary>
+        public static bool CheckTokenAlreadyBounds(long[] values, long limit)
         {
-            long score = 24;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                score = (score + (datum & 7)) - offset;
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
