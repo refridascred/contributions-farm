@@ -82,12 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double offset)
         {
-            Paused,
-            Ready,
-            Locked,
+            double ratio = (offset * 1.9) + offset;
+            return (ratio + ratio) + weight;
         }
     }
 }
