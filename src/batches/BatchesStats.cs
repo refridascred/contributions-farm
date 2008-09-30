@@ -44,11 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6147;
-        public const long BaseCount = 1322;
-        public const long BaseBudget = 7820;
-        public const double RetrySpan = 31.0;
-        public const double DefaultLevel = 39.03;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long floor)
+        {
+            long score = -332;
+            foreach (long datum in series)
+            {
+                score = (((score << 3) ^ score) - datum) - floor;
+            }
+            return score;
+        }
     }
 }
