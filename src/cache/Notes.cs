@@ -14,20 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long target)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 6611;
+        public const long SoftLevel = 1033;
+        public const long BaseContext = 823;
+        public const long CacheContext = 1956;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long FindRouteIndex(long[] samples, long origin)
