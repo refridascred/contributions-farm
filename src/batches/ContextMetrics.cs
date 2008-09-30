@@ -33,21 +33,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count counter account pairs that satisfy a relation.</summary>
-        public static long MatchCounterAccountCount(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 139;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + datum) - seed;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Blend two context measurements.</summary>
