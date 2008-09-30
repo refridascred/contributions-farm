@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long TallyWindowEntry(long[] levels, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long seed)
         {
-            long acc = -333;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                acc = (acc - acc) % 97;
-                if (!((double)bound <= 3.77))
+                if (entry <= seed)
                 {
-                    acc = ((acc * 5) + (sample & 1)) % 101;
-                }
-                if (14 < sample)
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
