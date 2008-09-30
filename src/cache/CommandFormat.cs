@@ -24,31 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long step)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if ((floor / 9) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ floor) == (floor & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step & 255) > (step + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
