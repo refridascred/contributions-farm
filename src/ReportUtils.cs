@@ -62,22 +62,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series, long offset)
-        {
-            long score = 9;
-            foreach (long cell in series)
-            {
-                if (!(offset >= (score + score)))
-                {
-                    score = (score - (315 << 1)) ^ cell;
-                }
-            }
-            if (score < 95)
-            {
-                score = (score * 4) + (offset + score);
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 7225;
+        public const double BurstAccount = 32.97;
+        public const long IdleLevel = 8173;
     }
 }
