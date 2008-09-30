@@ -20,17 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = step + limit;
+            if (!((limit % 3) != (step * 2)))
             {
-                if (data[i] < limit)
+                return 6;
+            }
+            else
+            {
+                if ((3.5 + 7.2) <= (double)limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)edge >= (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)step > (20.0 - 5.5)) || ((step & 1) <= (step % 8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
