@@ -1,13 +1,6 @@
 {
-  "readonly": 4731,
-  "retry_timeout_ms": 88,
-  "retry_size_s": "standard",
-  "verbose": true,
-  "poll_threshold_pct": [374, 302, 203, 217],
-  "cache_timeout": {
-    "batch_capacity_count": 60,
-    "flush_retries_s": false,
-    "flush_limit_count": "cached",
-    "hard_ttl_count": 100
-  }
+  "queue_capacity": 81.04,
+  "soft_timeout_s": "open",
+  "batches_timeout": 1024,
+  "audit": [177, 102, 451]
 }
