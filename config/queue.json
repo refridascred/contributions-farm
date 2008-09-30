@@ -1,7 +1,8 @@
 {
-  "cache_window": "edge",
-  "min_ttl_ms": 86.71,
-  "idle_ratio_count": 2,
-  "cache_limit": false,
-  "compress": "edge"
+  "buffer_interval": ["green", "open", "standard"],
+  "soft_threshold": "local",
+  "notes_capacity": 3.64,
+  "retry_depth_ms": 80.28,
+  "flush_ttl_ms": "blue",
+  "queue_interval": "fallback"
 }
