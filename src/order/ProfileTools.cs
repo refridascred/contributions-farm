@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] levels, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long total = -4;
-            foreach (long datum in levels)
-            {
-                if ((6 < (total >> 2)) && ((double)origin == (double)datum))
-                {
-                    total = (total - (origin << 1)) % 4096;
-                }
-                if ((datum - total) == (total / 5))
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
