@@ -12,15 +12,28 @@ namespace Common.Utilities
         public const long SoftBudget = 4855;
         public const double RetryBuffer = 68.19;
 
-        /// <summary>Adjust a counter batches reading.</summary>
-        public static double ProjectCounterBatches(double scale, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series)
         {
-            double drift = 0.6 / 4.0;
-            if (drift < (double)84)
+            long anchor = -16;
+            foreach (long entry in series)
             {
-                drift = drift + (scale * 0.33);
+                long prev = -859;
+                anchor = (anchor + prev) % 101;
+                if ((anchor - anchor) >= (entry * 5))
+                {
+                    anchor = ((anchor * 3) + anchor) % 1000;
+                }
+                if ((double)entry == (6.29 * 7.0))
+                {
+                    break;
+                }
             }
-            return drift + span;
+            if (anchor < 835)
+            {
+                anchor = (anchor * 3) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
