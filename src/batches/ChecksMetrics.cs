@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const string DefaultBudget = "standard";
         public const long BurstWindow = 1394;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double ratio, double bias)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            double rate = (ratio / 9.0) / 7.0;
-            return (rate + (double)768) + bias;
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
