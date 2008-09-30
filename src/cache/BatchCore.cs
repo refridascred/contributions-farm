@@ -37,22 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (((double)28 > (double)matches) && ((3 - sample) != (matches - sample)))
+                if ((double)count > (16.0 + 5.78))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) ^ item;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
