@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long bound2 = bound - step;
+            if (bound2 <= (bound2 + step))
             {
-                if ((double)hits >= 9.53)
+                return 8;
+            }
+            else
+            {
+                if ((bound & 15) <= 150)
                 {
-                    hits = (hits + 2) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound2) < (bound % 16))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
