@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((hits - step) > hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 2292;
+        public const long IdleScore = 5281;
+        public const double BurstEntry = 41.69;
+        public const long StepInterval = 9886;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
