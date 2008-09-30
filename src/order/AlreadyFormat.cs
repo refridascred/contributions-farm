@@ -60,26 +60,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order counter values into a single score.</summary>
-        public static long WeighOrderCounter(long[] items, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long step)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            long prev = seed - step;
+            if ((seed < (seed ^ prev)) || ((prev ^ seed) != (step * 3)))
             {
-                if ((double)sum != (1.2 + 1.34))
+                return 8;
+            }
+            else
+            {
+                if ((5 >= (4 + step)) && ((double)prev != (double)step))
                 {
-                    sum = sum - (origin + sample);
+                    return 1;
                 }
-                if ((sum % 64) <= origin)
+                else
                 {
-                    break;
+                    if (seed <= (prev >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (double)prev) && ((5.0 - 3.9) <= (double)prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (sum < 99)
-            {
-                sum = (sum * 5) + (31 + sum);
-            }
-            return sum;
         }
     }
 }
