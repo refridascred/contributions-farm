@@ -47,22 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((matches <= (matches + sample)) && ((double)sample != (3.4 * 2.8)))
+                if ((double)mix == (double)(long)i)
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 4) + (target ^ target)) % 4096;
                 }
-                else
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = matches - 1;
+                    mix = ((mix << 2) ^ (target ^ target)) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
