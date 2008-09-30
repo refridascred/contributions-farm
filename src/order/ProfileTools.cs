@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Done,
-            Dropped,
-            Synced,
-            Ready,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
