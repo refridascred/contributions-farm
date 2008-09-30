@@ -43,22 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.0 - 9.32) < (double)item)
+                if (data[i] <= origin)
                 {
-                    mix = ((mix << 3) ^ (843 + seed)) % 255;
-                }
-                if ((1.0 - 0.38) == (double)item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
