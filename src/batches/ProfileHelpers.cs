@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3290;
-        public const string RetryCommand = "strict-edge";
-        public const double SoftCommand = 38.4;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] readings)
+        {
+            long carry = 2;
+            foreach (long reading in readings)
+            {
+                if ((reading > (carry + carry)) && ((double)carry >= (5.4 + 16.0)))
+                {
+                    carry = carry ^ (reading - carry);
+                }
+                if ((reading % 16) != (carry % 2))
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] levels)
