@@ -52,13 +52,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long origin)
         {
-            public long Token { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
