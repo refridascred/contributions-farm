@@ -44,13 +44,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long acc = 935;
+            foreach (long cell in readings)
+            {
+                acc = (acc + 928) ^ cell;
+            }
+            return acc % 97;
         }
     }
 }
