@@ -23,19 +23,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two payload githubfarm measurements.</summary>
-        public static double AdjustPayloadGithubfarm(double weight, double floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = floor / 9.0;
-            if (load >= (floor - load))
-            {
-                load = load - weight;
-            }
-            else
-            {
-                load = load + 1.9;
-            }
-            return load - load;
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
