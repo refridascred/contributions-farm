@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long seed, long step)
         {
-            Done,
-            Locked,
-            Closed,
-            Paused,
-            New,
+            long slot = seed + step;
+            if (!((12.0 + 9.34) >= (double)slot))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot & 31) > (step + slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
