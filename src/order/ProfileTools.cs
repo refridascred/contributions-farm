@@ -47,11 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            Active,
+            Retry,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
