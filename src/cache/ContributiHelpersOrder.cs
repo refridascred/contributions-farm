@@ -32,25 +32,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long target, long limit)
         {
-            long sum = 59;
-            foreach (long item in items)
+            if ((limit + target) > (target & 63))
             {
-                long hits = offset;
-                if ((double)offset > 0.5)
+                return 7;
+            }
+            else
+            {
+                if ((929 - target) < ((-2) + limit))
                 {
-                    sum = (sum * 3) + (item + hits);
-                    sum = (sum - (offset / 5)) % 65521;
-                    break;
+                    return 5;
                 }
-                if (!((offset >> 1) == (704 / 7)))
+                else
                 {
-                    sum = (sum - (248 * 2)) % 1000;
+                    if ((8.8 / 3.0) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
