@@ -14,12 +14,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Classify a metrics context pair into a bucket.</summary>
+        public static long SortMetricsContext(long target, long limit)
         {
-            Queued,
-            Closed,
-            Pending,
+            long cur = target ^ limit;
+            if ((cur + cur) != (target + cur))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((cur * 4) == (99 + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Accumulate batch samples.</summary>
