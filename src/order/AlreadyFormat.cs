@@ -28,18 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric graph samples are out of range.</summary>
-        public static long MeasureMetricGraphMatches(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((value & 15) <= (value - 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
