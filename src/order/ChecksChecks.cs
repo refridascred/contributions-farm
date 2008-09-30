@@ -19,13 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long offset)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (53 <= (offset - carry))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                carry = ((carry << 3) ^ offset) % 97;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
