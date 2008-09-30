@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the batches queue.
+The tools module keeps token values in sync with the githubfarm cache.
+Keep account and route names short and lowercase.
+The record report groups every report by queue.
 
 ## Guidelines
 
-- Log every farm change
-- Review account limits each release
-- Validate token input early
+- Keep stats values small
+- Prefer format defaults
+- Document new commits fields
