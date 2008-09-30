@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-primary}"
 case "${mode}" in
-    stable)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in blue primary staging eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
