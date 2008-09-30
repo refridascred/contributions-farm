@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double span)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            double mean = (double)(920 + 477);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + span) + (double)(long)i) + gain;
-            }
-            return mean - 3.99;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
