@@ -1,12 +1,8 @@
 {
-  "hard_interval_pct": {
-    "batch_delay": 30,
-    "enabled": "blue",
-    "entry_retries": 40.05
-  },
-  "hard_timeout_ms": "strict",
-  "sync_window": 4722,
-  "persist": 77.49,
-  "flush_depth_count": 62.41,
-  "profile_delay": true
+  "burst_interval": 55,
+  "notes_ratio": ["blue", "staging", "staging"],
+  "record_timeout": "legacy",
+  "default_ratio": 32,
+  "base_depth_count": "blue",
+  "persist": 8039
 }
