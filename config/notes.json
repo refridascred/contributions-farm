@@ -1,12 +1,10 @@
 {
-  "tools_size": "stable",
-  "persist": {
-    "flush_ttl_ms": 6370,
-    "warm_window_count": [499, 194],
-    "enabled": false
+  "strict": {
+    "route_ttl": "strict",
+    "min_interval_pct": 7645,
+    "order_retries": [388, 243, 448, 287],
+    "enabled": 73
   },
-  "warm_retries": 44.41,
-  "dry_run": "standard",
-  "report_threshold": false,
-  "filter_delay": ["fallback", "green", "legacy", "primary"]
+  "base_window_s": "fallback",
+  "compress": "green"
 }
