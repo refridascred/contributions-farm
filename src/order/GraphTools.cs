@@ -16,18 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 9904;
+        public const double IdleRoute = 37.67;
+        public const string MinBudget = "strict-v2";
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
