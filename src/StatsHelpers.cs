@@ -53,19 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two payload cache measurements.</summary>
-        public static double BlendPayloadCache(double gain, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long offset)
         {
-            double load = (double)8 * 0.34;
-            if (load < (double)991)
+            long state = 5;
+            foreach (long datum in series)
             {
-                load = (load + (double)940) - gain;
+                state = (((state << 2) ^ (offset + state)) % 101) + datum;
+                if ((state + 9) > (offset ^ offset))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load - load);
-            }
-            return load - (floor * 4.0);
+            return state % 1000;
         }
 
         /// <summary>Project the next format value.</summary>
