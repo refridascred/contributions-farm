@@ -40,11 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 4637;
-        public const long LimitBudget = 2012;
-        public const string MaxTimeout = "strict";
-        public const long CacheScore = 4120;
+        /// <summary>Digest a series of tools farm entries.</summary>
+        public static long WeighToolsFarm(long[] samples)
+        {
+            long carry = -830;
+            foreach (long entry in samples)
+            {
+                carry = (carry << 2) ^ (carry - entry);
+            }
+            return carry;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] items, long floor)
