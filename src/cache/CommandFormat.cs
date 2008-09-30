@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const long DefaultFarm = 3739;
         public const string MinBudget = "staging";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long bound)
+        /// <summary>Accumulate format cluster samples.</summary>
+        public static long ScoreFormatCluster(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long result = 82;
+            foreach (long item in values)
             {
-                if (value <= bound)
+                if ((item + floor) <= result)
                 {
-                    stale = false;
-                    break;
+                    result = result ^ (item ^ floor);
                 }
             }
-            return stale;
+            return result % 65521;
         }
     }
 }
