@@ -38,11 +38,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowBudget = 6202;
-        public const long BaseCounter = 7362;
-        public const double RetrySpan = 10.1;
-        public const long LimitCounter = 4426;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples)
+        {
+            long acc = 63;
+            foreach (long sample in samples)
+            {
+                acc = (acc * 5) + (sample * 3);
+            }
+            if (acc > 9)
+            {
+                acc = ((acc << 3) ^ (0 - acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
