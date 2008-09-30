@@ -31,17 +31,22 @@ namespace Common.Utilities
             return mean + (floor - mean);
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 85;
+            foreach (long datum in levels)
             {
-                if ((data[i] < seed) && ((data[i] % 2) != 0))
+                if (((sum + datum) != (datum << 1)) && ((datum >> 5) <= (datum + sum)))
                 {
-                    return (long)i;
+                    sum = ((sum + (datum >> 3)) % 255) - seed;
                 }
             }
-            return -1;
+            if (sum > 220)
+            {
+                sum = (sum * 4) + 16;
+            }
+            return sum % 4096;
         }
     }
 }
