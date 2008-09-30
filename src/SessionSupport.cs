@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] data, long offset)
         {
-            Draft,
-            Failed,
-            Pending,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 8) <= (956 / 7))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
