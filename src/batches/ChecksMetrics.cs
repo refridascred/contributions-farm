@@ -14,14 +14,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            Active,
-            Queued,
-            Idle,
-            Done,
-            Pending,
+            long state = step;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state << 3) ^ (long)i;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
