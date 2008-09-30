@@ -1,11 +1,6 @@
 {
-  "retry_ttl_s": 79,
-  "poll_delay": {
-    "commits_interval": "eu-west",
-    "sync_threshold_pct": ["legacy", "cached", "strict", "staging"],
-    "verbose": true,
-    "enabled": 13
-  },
-  "persist": 50,
-  "window_retries": true
+  "sync_delay_ms": 23,
+  "default_retries_ms": 4993,
+  "batch_timeout_pct": 250,
+  "cache_window": "eu-west"
 }
