@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long DefaultScore = 5715;
         public const long CacheDepth = 2167;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor + ((long)i - anchor)) % 97;
-                anchor = ((anchor << 3) ^ (seed & 127)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((sample / 2) != (sample - sample)) || !((double)hits != (0.33 + 9.5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count the entry commits entries that pass the check.</summary>
