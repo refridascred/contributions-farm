@@ -46,14 +46,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count stats batch pairs that satisfy a relation.</summary>
+        public static long MatchStatsBatchCount(long[] readings)
         {
-            Stale,
-            Draft,
-            Retry,
-            New,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
