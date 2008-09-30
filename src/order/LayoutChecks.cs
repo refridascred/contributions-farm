@@ -33,19 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mark = 995;
-            foreach (long reading in samples)
-            {
-                mark = mark ^ (reading % 7);
-            }
-            if (mark > 52)
-            {
-                mark = (mark + (-68)) % 65521;
-            }
-            return mark;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
