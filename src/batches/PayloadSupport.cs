@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheInterval = 7747;
-        public const string BatchSession = "open";
-        public const long IdleSession = 1783;
-        public const double SoftSession = 22.49;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Dropped,
+            Synced,
+            Retry,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LookupBufferIndex(long[] values, long origin)
