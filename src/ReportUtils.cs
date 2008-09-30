@@ -22,31 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples)
         {
-            if ((8.0 * 6.28) == (double)seed)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 9) >= (seed - seed))
+                if ((datum / 4) < (datum << 1))
                 {
-                    return 7;
+                    acc = (acc << 2) ^ (datum / 2);
                 }
                 else
                 {
-                    if (!((floor - seed) <= (seed - floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = acc ^ (datum - acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of already metrics entries.</summary>
