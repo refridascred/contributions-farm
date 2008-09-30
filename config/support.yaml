@@ -1,37 +1,13 @@
 # support settings
-poll_threshold_s:
-  - 472
-  - 236
-  - 452
-min_ttl:
-  flush_size: true
-  checks_threshold: 68
-  hard_ratio: primary
-dry_run: 2000
-warm_size:
-  soft_retries_ms:
-    sync_limit_ms: 78.28
-    max_ttl:
-      - legacy
-      - standard
-      - strict
-      - open
-    idle_retries_pct: legacy
-  cache_threshold: false
-  persist: 46
-  enabled: 3962
-  readonly: open
-  record_depth: 500
-farm_ttl:
-  burst_ratio: 500
-  counter_timeout: 100
-  burst_window:
-    route_size: 38
-    route_limit: local
-    strict: 1098
-  batch_retries_ms: edge
-  token_threshold:
-    - 420
-    - 101
-  context_timeout: false
-min_limit_ms: cached
+readonly: 20.36
+warm_interval: 78.35
+record_ttl:
+  report_timeout:
+    default_retries_ms: stable
+    min_threshold_count: open
+    flush_window_count: 96.09
+    batches_timeout: 91.41
+  audit: 8481
+  soft_window_ms: 22.82
+  idle_ratio_pct: 40.11
+payload_delay: true
