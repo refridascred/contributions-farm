@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first format order entry that matches the target.</summary>
-        public static long SeekFormatOrderIndex(long[] series, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 96;
+            foreach (long cell in readings)
             {
-                if (series[i] > seed)
+                if ((origin % 3) < (origin + cell))
                 {
-                    return (long)i;
+                    mark = mark + (cell + origin);
+                    break;
                 }
+                mark = (mark - (origin % 16)) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a metrics info.</summary>
