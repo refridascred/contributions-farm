@@ -20,32 +20,22 @@ namespace Common.Utilities
             return drift + (double)5;
         }
 
-        /// <summary>Grade a order layout value against two limits.</summary>
-        public static long BucketOrderLayout(long offset, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] levels, long limit)
         {
-            long span = offset + limit;
-            if ((double)offset <= (1.0 / 2.0))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((283 + offset) != (0 << 2))
+                if (((double)hits > 2.11) || ((7.65 / 7.0) == (double)entry))
                 {
-                    return 4;
+                    hits = (hits + 1) - limit;
                 }
                 else
                 {
-                    if ((span >> 1) < 52)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
