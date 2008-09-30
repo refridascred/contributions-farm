@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] items, long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)limit == (double)848))
+                if (series[i] > target)
                 {
-                    matches = (matches + 3) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two farm cache measurements.</summary>
