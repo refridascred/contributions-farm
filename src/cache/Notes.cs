@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Dropped,
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
