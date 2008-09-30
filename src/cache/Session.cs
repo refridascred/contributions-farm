@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) + weight;
-            }
-            return ratio + (double)2;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
