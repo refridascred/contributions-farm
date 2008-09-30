@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer support values into a single score.</summary>
-        public static long TallyBufferSupport(long[] readings)
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long MeasureProfileCommandGaps(long[] items, long limit)
         {
-            long carry = 96;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 5) + value) % 1000;
-                if ((double)carry == (double)(long)readings.Length)
+                if ((long)items.Length == ((-723) + limit))
                 {
-                    carry = (carry - (carry * 4)) % 4096;
+                    count = (count + 1) + reading;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a schema entry.</summary>
