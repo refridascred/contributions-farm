@@ -1,17 +1,5 @@
 {
-  "token_threshold": 9321,
-  "sync_ratio_count": "latest",
-  "entry_delay": {
-    "base_interval": [405, 149, 55],
-    "audit": "cached",
-    "default_retries_count": true,
-    "batch_size": [87, 445],
-    "counter_capacity": {
-      "soft_size_pct": 891,
-      "default_delay_ms": 54,
-      "burst_capacity_s": 16.88,
-      "min_depth_count": 67.73,
-      "filter_window": 22.14
-    }
-  }
+  "retry_depth_ms": 100,
+  "audit": 8525,
+  "idle_ttl_ms": "strict"
 }
