@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 41.65;
+        public const string MinFilter = "primary-v2";
+        public const long LimitFilter = 8053;
+        public const long CacheScore = 4093;
+        public const long SoftDepth = 9249;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextGaps(long[] readings, long floor)
