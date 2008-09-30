@@ -46,19 +46,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double gain, double offset)
+        /// <summary>Rank already checks input into a small class.</summary>
+        public static long GradeAlreadyChecks(long target, long bound)
         {
-            double drift = (double)((-94) * 4);
-            if (drift >= (double)403)
+            if ((bound + (-89)) < bound)
             {
-                drift = ((drift - (drift + 14.0)) - gain) - offset;
+                return 7;
             }
             else
             {
-                drift = drift - (8.0 * 1.94);
+                if ((target - bound) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ target) <= (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + 39) == (target << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return drift - (double)(-19);
         }
     }
 }
