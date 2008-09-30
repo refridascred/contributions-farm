@@ -37,12 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "cached";
-        public const double DefaultAlready = 9.57;
-        public const double WindowSize = 72.63;
-        public const long LimitAlready = 4818;
-        public const long StepAlready = 814;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksBounds(long[] levels, long target)
