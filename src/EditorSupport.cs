@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 5211;
         public const long DefaultGithubfarm = 9097;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstLevel = 25.77;
-        public const long WindowQueue = 6991;
-        public const string SoftQueue = "standard-v2";
-        public const long DefaultQueue = 4346;
-        public const long BaseBudget = 6234;
+        /// <summary>Derive the next graph cluster value from a seed.</summary>
+        public static long StepGraphCluster(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = ((mark ^ floor) % 65521) + (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] values)
