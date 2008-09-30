@@ -14,24 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank batches cache input into a small class.</summary>
-        public static long SortBatchesCache(long step, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            if (!((double)origin >= (2.1 / 9.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((7 + step) <= (step % 16)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
