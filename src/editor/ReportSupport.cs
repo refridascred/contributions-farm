@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report support helpers.</summary>
     public static class ReportSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)datum == (9.3 + 7.87)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
