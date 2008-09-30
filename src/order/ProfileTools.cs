@@ -13,11 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7505;
-        public const string RetryCommand = "local-v2";
-        public const long SoftCommand = 2392;
-        public const long IdleScore = 8735;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
