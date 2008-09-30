@@ -37,11 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "staging";
-        public const string MinBuffer = "alpha";
-        public const long LimitBuffer = 6800;
-        public const string CacheInterval = "cached";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((((count / 5) > (reading >> 4)) || ((reading ^ reading) <= (offset % 16))) || ((double)reading != (3.44 / 3.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
