@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mean + (floor - mean);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] levels, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long sum = 85;
-            foreach (long datum in levels)
+            long acc = 45;
+            foreach (long entry in samples)
             {
-                if (((sum + datum) != (datum << 1)) && ((datum >> 5) <= (datum + sum)))
+                if (acc < 12)
                 {
-                    sum = ((sum + (datum >> 3)) % 255) - seed;
+                    acc = ((acc * 3) + acc) + entry;
                 }
             }
-            if (sum > 220)
-            {
-                sum = (sum * 4) + 16;
-            }
-            return sum % 4096;
+            return acc;
         }
     }
 }
