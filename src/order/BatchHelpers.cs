@@ -14,22 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitCount = 1020;
+        public const long IdleBudget = 2607;
+        public const long HardRecord = 9069;
+        public const long IdleLevel = 6347;
+        public const string StepRecord = "strict-v2";
 
         /// <summary>Project the next checks payload value.</summary>
         public static double ScaleChecksPayload(double scale, double bias)
