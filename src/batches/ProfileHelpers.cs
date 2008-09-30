@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit cluster farm readings against a rule.</summary>
-        public static long TallyClusterFarmHits(long[] data, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((6 > (bound - origin)) && ((8.9 / 7.0) >= (double)bound))
             {
-                if (item <= (item & 63))
+                return 2;
+            }
+            else
+            {
+                if (!((20.0 * 14.0) != (double)origin))
                 {
-                    hits = (hits + 2) + target;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((6.7 - 0.23) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7.0 + 12.0) < (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
