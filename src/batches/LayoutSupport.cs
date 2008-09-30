@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultRatio = 7286;
-        public const string BurstCluster = "primary-v2";
-        public const long MinCluster = 1008;
-        public const long SoftCluster = 9397;
+        /// <summary>Match up route already samples.</summary>
+        public static long CompareRouteAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] values)
