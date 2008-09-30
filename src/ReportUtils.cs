@@ -41,20 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double offset)
-        {
-            double ratio = offset;
-            if (ratio > (double)77)
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - weight;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 3241;
+        public const long HardTimeout = 665;
+        public const long RetryTimeout = 508;
+        public const double LimitSpan = 7.1;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 7225;
