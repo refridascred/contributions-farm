@@ -23,21 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Digest a series of already metrics entries.</summary>
