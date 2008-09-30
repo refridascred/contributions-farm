@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Synced,
-            Paused,
-            New,
-            Closed,
-            Failed,
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
