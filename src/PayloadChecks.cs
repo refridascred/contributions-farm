@@ -70,13 +70,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Retry,
             Synced,
             Active,
-            Queued,
+            Pending,
         }
     }
 }
