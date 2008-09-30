@@ -1,22 +1,5 @@
 {
-  "channel_interval": {
-    "sync_ttl": 21.85,
-    "hard_threshold": false,
-    "record_window": "open",
-    "account_threshold": 5320
-  },
-  "warm_capacity": 1024,
-  "max_ratio": {
-    "audit": 4265,
-    "default_depth_pct": "stable",
-    "flush_delay": "standard",
-    "cache_window_ms": false,
-    "min_retries_pct": "primary",
-    "idle_ttl_count": 1024
-  },
-  "profile_retries": {
-    "idle_depth": [406, 155],
-    "tools_window": 2297,
-    "compress": 30.65
-  }
+  "batch_depth_pct": true,
+  "strict": 53.89,
+  "readonly": "cached"
 }
