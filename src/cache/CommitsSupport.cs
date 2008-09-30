@@ -39,10 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleSize = 8.65;
-        public const long BaseRoute = 4657;
-        public const long CacheBudget = 5971;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long ScoreSession(long[] samples, long floor)
