@@ -16,12 +16,32 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long origin)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
+            long cur = floor + origin;
+            if (((double)cur < (2.1 * 3.9)) && (origin >= ((-9) + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor != (9.0 / 3.0)) || ((cur - 9) != (origin / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-70) > (origin >> 5)) && ((0.7 - 2.9) <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
