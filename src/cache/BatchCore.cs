@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value + value) < (value + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Synced,
         }
 
         /// <summary>Digest a series of farm window entries.</summary>
