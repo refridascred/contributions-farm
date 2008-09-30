@@ -1,8 +1,7 @@
-id,rank,token,owner
-1,62.66,583,688
-2,fallback,stable,stable
-3,902,983,708
-4,44.63,136,852
-5,staging,717,fallback
-6,latest,stable,694
-7,27.55,93.66,782
+id,token,owner
+1,72.19,stable
+2,76.58,standard
+3,eu-west,79.64
+4,481,904
+5,171,571
+6,30.18,489
