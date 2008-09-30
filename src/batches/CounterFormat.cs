@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Locked,
+            Pending,
+            Closed,
             Draft,
-            Done,
-            Paused,
+            Ready,
             Idle,
         }
 
