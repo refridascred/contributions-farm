@@ -39,12 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            Retry,
-            Closed,
-            Stale,
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate context samples.</summary>
