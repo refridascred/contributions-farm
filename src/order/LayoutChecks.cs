@@ -56,18 +56,13 @@ namespace Common.Utilities
             return ratio2 + (double)2;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 10) >= (count >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
