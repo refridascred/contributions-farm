@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 6354;
-        public const long CacheSize = 3961;
-        public const string LimitSize = "latest";
-        public const long SoftBudget = 4855;
-        public const double RetryBuffer = 68.19;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] levels, long origin)
+        {
+            long total = -4;
+            foreach (long datum in levels)
+            {
+                if ((6 < (total >> 2)) && ((double)origin == (double)datum))
+                {
+                    total = (total - (origin << 1)) % 4096;
+                }
+                if ((datum - total) == (total / 5))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] series)
