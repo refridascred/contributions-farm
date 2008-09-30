@@ -55,38 +55,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] series, long origin)
         {
-            if ((floor + target) > (floor ^ target))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 1) <= floor)
+                if (datum > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((99 * 4) >= (target + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor & 127) < (target + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
