@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit record entry readings against a rule.</summary>
+        public static long MeasureRecordEntryOutliers(long[] values)
         {
-            Idle,
-            Queued,
-            Retry,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value + count) == (value << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
