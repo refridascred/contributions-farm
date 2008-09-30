@@ -37,18 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long sum = 59;
+            foreach (long item in items)
             {
-                if ((((1.36 + 6.36) >= (double)step) && ((0.1 + 2.37) <= (double)step)) && (((-42) - datum) >= (count * 5)))
+                long hits = offset;
+                if ((double)offset > 0.5)
                 {
-                    count = count + 1;
+                    sum = (sum * 3) + (item + hits);
+                    sum = (sum - (offset / 5)) % 65521;
+                    break;
+                }
+                if (!((offset >> 1) == (704 / 7)))
+                {
+                    sum = (sum - (248 * 2)) % 1000;
                 }
             }
-            return count;
+            return sum % 97;
         }
     }
 }
