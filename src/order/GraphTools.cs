@@ -21,13 +21,16 @@ namespace Common.Utilities
         public const double IdleRoute = 37.67;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the tools token series from a seed.</summary>
+        public static long IterateToolsToken(long origin)
         {
-            Active,
-            Idle,
-            Failed,
-            Pending,
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 5) + ((long)i - state)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
