@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long floor)
+        /// <summary>Project the next checks payload value.</summary>
+        public static double ScaleChecksPayload(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double mean = bias;
+            if (mean >= 2.4)
             {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - (scale / 7.0);
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (double)5;
         }
     }
 }
