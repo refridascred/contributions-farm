@@ -33,23 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long bound)
         {
-            long state = 9;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (datum < bound)
                 {
-                    state = (state - (entry - state)) ^ (long)i;
+                    ok = false;
+                    break;
                 }
-                state = state ^ bound;
             }
-            if (state < 669)
-            {
-                state = ((state << 3) ^ bound) % 101;
-            }
-            return state % 65521;
+            return ok;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
