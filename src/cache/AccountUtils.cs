@@ -29,38 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] data, long offset)
         {
-            if (2.46 <= (double)floor)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (11.0 < (double)target)
+                if (cell >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (10.0 > (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor / 8) < (floor & 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
