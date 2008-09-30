@@ -1,13 +1,6 @@
 {
-  "flush_delay_pct": {
-    "flush_depth": 100,
-    "dry_run": 183,
-    "burst_ratio": "local",
-    "idle_threshold": 34,
-    "flush_size": "standard",
-    "warm_delay": 500
-  },
-  "idle_ttl": [488, 351],
-  "default_depth_ms": false,
-  "soft_size_pct": 43.14
+  "sync_limit_ms": "eu-west",
+  "min_window": "primary",
+  "support_delay": true,
+  "graph_depth": false
 }
