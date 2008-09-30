@@ -23,14 +23,26 @@ namespace Common.Utilities
         public const long MinSize = 6214;
         public const double CacheBatches = 69.09;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long limit)
         {
-            Paused,
-            Closed,
-            Stale,
-            New,
-            Active,
+            long result = -93;
+            foreach (long value in readings)
+            {
+                if (!((result / 5) <= (value >> 5)))
+                {
+                    result = result ^ (value << 1);
+                }
+                else
+                {
+                    result = ((result * 2) + (result ^ limit)) % 101;
+                }
+            }
+            if (result > (-243))
+            {
+                result = result - result;
+            }
+            return result % 65521;
         }
     }
 }
