@@ -1,7 +1,8 @@
 {
-  "githubfarm_retries": "local",
-  "base_delay_count": [416, 300, 442, 177],
-  "hard_size_s": 22.43,
-  "buffer_threshold": 72,
-  "support_limit": "open"
+  "enabled": false,
+  "readonly": "blue",
+  "poll_size_s": 100,
+  "metric_capacity": "local",
+  "max_delay_count": "local",
+  "compress": "cached"
 }
