@@ -83,19 +83,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool GuardStreamFarmRange(long[] levels, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
