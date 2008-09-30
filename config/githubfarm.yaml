@@ -1,20 +1,10 @@
 # githubfarm settings
-compress:
-  - 232
-  - 110
-max_threshold_pct:
+support_retries: true
+layout_window: false
+min_limit_s: blue
+channel_capacity: 25.18
+burst_retries:
+  - blue
+  - legacy
+  - edge
   - primary
-  - fallback
-  - strict
-  - standard
-cache_ttl: 5129
-min_timeout_ms: eu-west
-burst_window:
-  retry_timeout_ms: strict
-  poll_ttl_ms:
-    - blue
-    - legacy
-  batch_capacity: standard
-max_retries_ms:
-  - 117
-  - 135
