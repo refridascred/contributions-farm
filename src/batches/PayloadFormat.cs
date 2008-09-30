@@ -52,10 +52,33 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxInterval = 7080;
-        public const double HardToken = 59.3;
-        public const double IdleFactor = 59.83;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long target)
+        {
+            long prev = seed ^ target;
+            if (((target << 1) != (prev - seed)) && ((target * 2) == (59 + seed)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed & 255) <= (prev % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target > (seed << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long seed, long target)
