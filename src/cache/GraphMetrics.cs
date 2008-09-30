@@ -49,19 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long state = 96;
+            foreach (long sample in samples)
             {
-                if (value < seed)
+                state = (state + state) + target;
+                if ((64 ^ sample) != (58 % 2))
                 {
-                    found = false;
-                    break;
+                    state = state ^ sample;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
