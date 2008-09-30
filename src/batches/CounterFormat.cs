@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a queue cluster counter forward.</summary>
-        public static long SeriesQueueCluster(long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score << 2) ^ (limit % 3)) % 101;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Locked,
+            Draft,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the cluster status values.</summary>
