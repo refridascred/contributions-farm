@@ -50,12 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every token farm entry stays within the limit.</summary>
+        public static bool GuardTokenFarmBounds(long[] items, long step)
         {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
