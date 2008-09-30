@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum / 4) < (datum << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc << 2) ^ (datum / 2);
-                }
-                else
-                {
-                    acc = acc ^ (datum - acc);
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of already metrics entries.</summary>
