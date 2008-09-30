@@ -45,9 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4312;
-        public const long IdleFactor = 7290;
-        public const long CacheScore = 390;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
