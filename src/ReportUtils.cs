@@ -60,18 +60,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Check that every metrics context entry stays within the limit.</summary>
+        public static bool ValidateMetricsContextBounds(long[] samples, long step)
         {
-            long result = 266;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((reading + result) < (result + reading))
+                if (sample <= step)
                 {
-                    result = ((result * 4) + (result % 97)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
