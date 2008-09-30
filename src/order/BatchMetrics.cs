@@ -81,18 +81,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 6114;
+        public const long HardPayload = 196;
+        public const long BatchPayload = 2860;
+        public const long StepPayload = 163;
+        public const double RetrySpan = 15.08;
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] values)
