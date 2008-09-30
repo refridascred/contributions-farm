@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] items, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (cell <= step)
+                if ((datum & 63) == (datum * 4))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
