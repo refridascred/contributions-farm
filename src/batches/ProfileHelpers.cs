@@ -67,21 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token record samples.</summary>
-        public static long OverlapTokenRecordCount(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 5.5;
+            if (bias < (double)0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + span) - gain;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (3.4 + bias)) + (double)(long)i;
+            }
+            return bias - (span - 1.8);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
