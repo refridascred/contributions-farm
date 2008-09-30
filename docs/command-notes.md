@@ -1,15 +1,10 @@
 # Command notes
 
-The account report groups every stream by graph.
-Keep queue and entry names short and lowercase.
-
-Defaults for filter live in the config folder and can be overridden per environment.
-The counter module keeps notes values in sync with the batches cache.
-Keep channel and checks names short and lowercase.
+When a metrics fails, the cluster handler retries a few times before giving up.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Review notes limits each release
-- Keep payload values small
-- Validate queue input early
+- Document new buffer fields
+- Keep notes values small
+- Review order limits each release
