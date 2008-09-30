@@ -1,4 +1,7 @@
 # entry settings
-flush_size: 7929
-soft_retries_count: true
-profile_size: fallback
+dry_run: 30
+route_capacity:
+  - stable
+  - green
+  - open
+session_capacity: stable
