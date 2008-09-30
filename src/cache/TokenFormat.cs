@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long MeasureFilterMetricHits(long[] values)
         {
-            Draft,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >= (seen / 5)) || (((sample - 3) <= (sample / 5)) && ((seen + seen) <= (seen + sample))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
