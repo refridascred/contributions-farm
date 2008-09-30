@@ -41,32 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long origin)
         {
-            long edge = limit + seed;
-            if (!((seed << 3) != ((-23) + (-2))))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - edge) < (edge - seed))
+                if (items[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < 318)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
