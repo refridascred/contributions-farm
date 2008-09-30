@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the profile context entries that pass the check.</summary>
-        public static long TallyProfileContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (reading > (count << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 7564;
+        public const double RetryNotes = 4.44;
+        public const string SoftNotes = "latest-1";
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmGaps(long[] data)
