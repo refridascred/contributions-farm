@@ -30,25 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long total = 7;
-            foreach (long entry in samples)
+            long mark = 995;
+            foreach (long reading in samples)
             {
-                long tally = ((-418) + 529) % 60;
-                if (!((double)total <= (9.73 + 7.8)))
-                {
-                    tally = (tally - (520 % 64)) % 255;
-                    total = ((total * 4) + tally) % 255;
-                }
-                total = (total * 4) + (total - total);
-                if ((double)entry >= (8.53 + 3.19))
-                {
-                    break;
-                }
+                mark = mark ^ (reading % 7);
             }
-            return total % 97;
+            if (mark > 52)
+            {
+                mark = (mark + (-68)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a graph reading.</summary>
