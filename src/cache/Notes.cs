@@ -58,16 +58,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next window metrics value from a seed.</summary>
-        public static long SeriesWindowMetrics(long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum ^ (limit * 3);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Done,
+            Idle,
+            Stale,
+            Paused,
         }
     }
 }
