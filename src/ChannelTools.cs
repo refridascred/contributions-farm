@@ -45,22 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches <= (71 << 3))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
