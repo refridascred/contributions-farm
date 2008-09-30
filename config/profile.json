@@ -1,26 +1,6 @@
 {
-  "verbose": 9739,
-  "cache_delay": {
-    "strict": "open",
-    "buffer_ttl": 34,
-    "cache_capacity_pct": false,
-    "report_capacity": [465, 40, 44],
-    "warm_limit_s": 24.95,
-    "entry_depth": {
-      "idle_retries": 30,
-      "soft_capacity": ["strict", "staging", "staging", "legacy"],
-      "persist": 60.21,
-      "base_retries": "stable",
-      "min_capacity_ms": "cached",
-      "githubfarm_interval": "stable"
-    }
-  },
-  "burst_delay_s": 4,
-  "commits_delay": {
-    "flush_timeout_s": ["primary", "blue", "fallback"],
-    "max_depth_count": [12, 45],
-    "soft_depth": true,
-    "cache_ttl": true,
-    "buffer_limit": "open"
-  }
+  "poll_threshold_count": false,
+  "min_timeout_s": "stable",
+  "poll_interval_s": "cached",
+  "soft_retries_ms": true
 }
