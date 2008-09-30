@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 1076;
-        public const double DefaultInterval = 10.07;
-        public const long StepLevel = 2026;
-        public const long LimitFactor = 940;
-        public const long BatchLevel = 4040;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item + (-184)) > (item / 2))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
