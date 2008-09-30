@@ -30,19 +30,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmQueueBounds(long[] items, long step)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < step)
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
