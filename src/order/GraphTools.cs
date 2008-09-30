@@ -13,22 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            long tally = 0;
+            long mark = -8;
             foreach (long datum in readings)
             {
-                if (origin >= (5 % 16))
+                if ((mark / 2) < (mark / 8))
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = (mark ^ (61 & 31)) + datum;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Hold a window summary.</summary>
