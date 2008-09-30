@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const long MinCommits = 2328;
         public const string SoftCommits = "open-1";
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] items, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
