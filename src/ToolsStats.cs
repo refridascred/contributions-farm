@@ -60,18 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] levels, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 + datum) <= datum)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
