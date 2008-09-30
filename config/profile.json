@@ -1,21 +1,16 @@
 {
-  "readonly": ["fallback", "edge", "staging"],
-  "base_size_pct": "cached",
-  "soft_ratio": 100,
-  "strict": {
-    "retry_ratio_s": {
-      "readonly": ["strict", "blue", "staging"],
-      "min_delay": 4.1,
-      "dry_run": 35,
-      "report_retries": [136, 120, 5, 137],
-      "compress": 9639
+  "flush_ttl": 6915,
+  "batch_depth": {
+    "cache_capacity": 475,
+    "hard_threshold": {
+      "route_threshold": "local",
+      "idle_capacity_ms": 17,
+      "min_limit_count": ["edge", "edge", "blue", "strict"]
     },
-    "persist": {
-      "contributi_capacity": "latest",
-      "persist": "latest",
-      "payload_threshold": 16
-    },
-    "strict": ["strict", "open"]
+    "batch_ttl_s": 60
   },
-  "cache_delay": "staging"
+  "base_delay": 18.81,
+  "cache_retries": false,
+  "enabled": "green",
+  "compress": "staging"
 }
