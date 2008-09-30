@@ -1,17 +1,6 @@
 {
-  "filter_depth": {
-    "cache_retries_s": [193, 417, 185, 301],
-    "idle_limit": {
-      "sync_retries": [235, 300],
-      "retry_ttl_s": "fallback",
-      "session_limit": [201, 170, 231, 345],
-      "burst_retries_pct": true,
-      "cache_size": true
-    },
-    "soft_retries": 73,
-    "readonly": 75.82,
-    "default_threshold": 500
-  },
-  "notes_ttl": "edge",
-  "persist": "standard"
+  "soft_delay": "latest",
+  "report_ttl": 15,
+  "readonly": true,
+  "enabled": ["standard", "open", "green", "fallback"]
 }
