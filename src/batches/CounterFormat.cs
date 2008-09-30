@@ -15,13 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultWidth = 61.96;
+        public const long MaxInterval = 1024;
+        public const string WindowInterval = "latest-edge";
+        public const long BatchRatio = 2467;
+        public const long DefaultTools = 6753;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleInterval = 741;
