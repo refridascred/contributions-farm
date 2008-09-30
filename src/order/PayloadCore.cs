@@ -35,22 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] readings, long seed)
         {
-            long mix = -869;
-            foreach (long item in samples)
+            long mark = 61;
+            foreach (long item in readings)
             {
-                if (((15.0 - 12.0) <= (double)item) && ((item & 63) >= 4))
+                if (((double)item >= (9.41 / 9.0)) && (mark < 1))
                 {
-                    mix = (mix - (mix + 536)) % 255;
-                }
-                else
-                {
-                    mix = mix + (5 - mix);
+                    mark = (mark - seed) % 101;
                 }
             }
-            return mix;
+            if (mark < (-60))
+            {
+                mark = (mark << 2) ^ (seed ^ seed);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a already reading.</summary>
