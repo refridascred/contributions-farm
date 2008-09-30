@@ -1,7 +1,17 @@
 # entry settings
-warm_ttl:
-  - 463
-  - 109
-  - 1
-githubfarm_ratio: fallback
-soft_capacity: 4665
+cache_size: local
+hard_interval_pct: 66.67
+commits_limit:
+  base_ratio_pct:
+    - legacy
+    - stable
+    - eu-west
+    - legacy
+  retry_ttl:
+    context_window: staging
+    token_timeout: 44.74
+    dry_run: stable
+    poll_ttl_pct: true
+    base_threshold_ms: 250
+    batch_timeout: 30
+  counter_capacity: green
