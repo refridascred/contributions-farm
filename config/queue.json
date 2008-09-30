@@ -1,5 +1,8 @@
 {
-  "metrics_threshold": "fallback",
-  "payload_depth": 67,
-  "verbose": "latest"
+  "min_size_count": "cached",
+  "base_capacity": "strict",
+  "enabled": [354, 295, 98, 311],
+  "counter_ratio": "fallback",
+  "batch_limit_pct": false,
+  "persist": 1957
 }
