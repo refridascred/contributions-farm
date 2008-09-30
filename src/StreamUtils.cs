@@ -55,11 +55,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 9030;
-        public const long DefaultLevel = 8820;
-        public const double MaxPayload = 93.49;
-        public const long WindowWidth = 6166;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BatchCommand = 45.24;
