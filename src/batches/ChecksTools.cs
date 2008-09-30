@@ -62,15 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits profile readings.</summary>
-        public static long TallyCommitsProfile(long[] items, long origin)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long sum = 23;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum << 2) ^ (origin / 5)) % 65521) + datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
