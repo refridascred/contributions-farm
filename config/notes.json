@@ -1,8 +1,5 @@
 {
-  "verbose": 87.67,
-  "poll_ratio": false,
-  "cache_capacity": true,
-  "notes_retries": ["staging", "latest", "local"],
-  "channel_capacity": "standard",
-  "poll_retries_s": 85
+  "cache_depth": true,
+  "soft_limit": 38.71,
+  "base_size_count": "local"
 }
