@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long LimitCache = 4894;
         public const long DefaultCache = 2098;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Roll a token metric counter forward.</summary>
+        public static long RollTokenMetric(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc << 2) ^ (long)i;
+                acc = (acc - (acc * 4)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
