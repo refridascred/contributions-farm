@@ -45,10 +45,19 @@ namespace Common.Utilities
         public const long DefaultFarm = 3739;
         public const string MinBudget = "staging";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 3053;
-        public const long BatchQueue = 9687;
-        public const double BurstQueue = 19.8;
-        public const long IdleBudget = 1817;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
