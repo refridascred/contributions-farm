@@ -39,22 +39,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long anchor = 830;
-            foreach (long sample in items)
-            {
-                if ((anchor ^ 749) >= anchor)
-                {
-                    anchor = (anchor - sample) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (4 >> 1);
-                }
-            }
-            return anchor % 65521;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
