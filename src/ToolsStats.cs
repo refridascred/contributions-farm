@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            New,
-            Closed,
-            Locked,
-            Pending,
-            Stale,
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
