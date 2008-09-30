@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Classify a editor buffer pair into a bucket.</summary>
+        public static long GradeEditorBuffer(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((88 + 139) <= origin)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)origin > (double)floor) || ((origin << 1) < (origin + floor)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (floor < (floor << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - origin) < 6)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
