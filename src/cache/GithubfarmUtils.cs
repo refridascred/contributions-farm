@@ -29,13 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            Dropped,
-            Ready,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!((value + 83) < (9 / 8)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
