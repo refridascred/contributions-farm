@@ -53,22 +53,14 @@ namespace Common.Utilities
         public const string WindowLevel = "staging";
         public const long BatchPayload = 3585;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] levels, long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((7 + datum) <= datum)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Hold a contributi entry.</summary>
