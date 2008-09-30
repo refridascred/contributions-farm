@@ -14,11 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 29.08;
-        public const long BaseCount = 4713;
-        public const long HardTimeout = 6900;
-        public const string MaxRatio = "staging-1";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Active,
+            Failed,
+            Idle,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
