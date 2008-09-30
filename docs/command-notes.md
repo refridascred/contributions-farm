@@ -1,11 +1,14 @@
 # Command notes
 
-Keep counter and batches names short and lowercase.
-The profile report groups every metric by batches.
-When a counter fails, the profile handler retries a few times before giving up.
+The checks report groups every already by commits.
+The format report groups every order by tools.
+
+The token report groups every schema by checks.
+The commits report groups every command by profile.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep layout values small
-- Validate channel input early
+- Keep order values small
+- Log every session change
+- Document new channel fields
