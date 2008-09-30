@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of stats already entries.</summary>
-        public static long TotalStatsAlready(long[] values, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long origin, long target)
         {
-            long state = 92;
-            foreach (long cell in values)
+            if ((double)origin <= (0.1 - 3.6))
             {
-                state = (state ^ (cell - cell)) - seed;
-                if ((state + (-9)) != (cell % 12))
+                return 7;
+            }
+            else
+            {
+                if (((double)target <= 4.89) && ((3.0 / 8.0) != (double)origin))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 3) >= (target % 60))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.1 + 14.0) != (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a buffer info.</summary>
