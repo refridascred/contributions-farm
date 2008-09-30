@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long seed)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
