@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen ^ sample) >= (sample >> 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
