@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Done,
-            Ready,
-            Dropped,
-            Pending,
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
