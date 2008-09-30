@@ -75,22 +75,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            long total = 507;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((long)readings.Length <= total)
+                if (!(datum >= (seen << 3)) && ((seen / 4) != (datum - 222)))
                 {
-                    total = ((total << 2) ^ (total >> 4)) % 255;
+                    seen = seen + 2;
                 }
-                if (((total % 60) < (total - item)) && ((long)readings.Length >= item))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return total % 4096;
+            return seen;
         }
     }
 }
