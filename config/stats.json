@@ -1,6 +1,7 @@
 {
-  "retry_retries": 5485,
-  "tools_timeout": false,
-  "default_delay": 9177,
-  "strict": 60.2
+  "flush_limit_ms": "fallback",
+  "persist": "edge",
+  "flush_limit_count": ["legacy", "primary"],
+  "tools_retries": 2,
+  "flush_window": 71.53
 }
