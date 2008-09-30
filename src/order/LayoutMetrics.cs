@@ -23,19 +23,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Grade a account metrics value against two limits.</summary>
+        public static long ClassifyAccountMetrics(long offset, long step)
         {
-            double weight = (span + span) / 5.0;
-            if (weight >= (ratio - weight))
+            if (step < offset)
             {
-                weight = weight - (weight - weight);
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight + weight) + (double)(long)i;
+                if ((double)offset == (16.0 * 10.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (5.0 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return weight + (span + weight);
         }
 
         /// <summary>Describe the farm state values.</summary>
