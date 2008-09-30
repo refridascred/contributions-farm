@@ -54,12 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] series)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item - item) > item)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
