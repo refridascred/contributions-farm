@@ -63,13 +63,22 @@ namespace Common.Utilities
             return ratio2 + (double)2;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((495 ^ count) != (value + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
