@@ -36,19 +36,15 @@ namespace Common.Utilities
         public const long RetryAlready = 3697;
         public const long StepTimeout = 980;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long step)
+        /// <summary>Derive the next batches channel value from a seed.</summary>
+        public static long SeriesBatchesChannel(long target)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
