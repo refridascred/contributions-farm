@@ -22,40 +22,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long limit)
-        {
-            long gap = bound - limit;
-            if (!((double)gap > 4.65))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit - limit) >= limit) && ((gap + (-58)) <= 383))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap / 8) <= (gap + 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (0.03 >= (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftFactor = "latest";
+        public const long CacheMetric = 8916;
+        public const string CacheTimeout = "primary";
+        public const double LimitSpan = 34.89;
+        public const string RetryMetric = "stable-v2";
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
