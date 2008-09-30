@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Queued,
+            Active,
+            Failed,
             Synced,
-            Ready,
+            Idle,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
