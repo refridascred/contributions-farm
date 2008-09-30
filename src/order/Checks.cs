@@ -52,38 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long bound)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] series, long limit)
         {
-            if (42 < seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (2 + seed))
+                if (series[i] > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 24) > seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5.31 >= (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
