@@ -43,19 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool CheckGraphTokenRange(long[] data, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long sum = -67;
+            foreach (long value in items)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + (65 * 4)) + value;
             }
-            return ok;
+            return sum % 4096;
         }
 
         /// <summary>Roll a report counter forward.</summary>
