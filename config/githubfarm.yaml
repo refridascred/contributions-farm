@@ -1,19 +1,24 @@
 # githubfarm settings
-base_ratio_ms: 30
-retry_retries_ms: 4939
-max_limit_s:
-  audit:
-    - 323
-    - 2
-    - 40
-  retry_timeout_ms:
-    farm_delay: 30
-    warm_threshold_s:
-      - stable
-      - green
-      - fallback
-      - local
-    cache_interval_s: green
-    sync_limit_pct: 2
-  sync_timeout: fallback
-  retry_ttl_count: 62.18
+cache_ratio: 7876
+strict: 88
+idle_retries_pct: strict
+burst_window_count:
+  hard_delay:
+    - 168
+    - 154
+    - 151
+  idle_ratio_s: 70
+  tools_depth: false
+  cluster_interval:
+    sync_delay_ms: standard
+    filter_retries:
+      - 66
+      - 197
+      - 127
+    metric_interval: primary
+    retry_window_pct: 100
+    support_ratio: 1024
+verbose: true
+githubfarm_limit:
+  - 77
+  - 283
