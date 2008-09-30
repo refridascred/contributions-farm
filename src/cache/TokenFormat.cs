@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long result = 134;
+            foreach (long datum in levels)
+            {
+                result = (result ^ (datum % 2)) % 4096;
+                if (((double)result < (8.0 * 9.0)) || ((double)result != (double)8))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
