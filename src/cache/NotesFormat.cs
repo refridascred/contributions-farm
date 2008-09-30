@@ -57,26 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Check that every githubfarm queue entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmQueueBounds(long[] items, long step)
         {
-            long result = 25;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((double)datum < 2.4)
+                if (sample < step)
                 {
-                    result = (result + 101) % 65521;
-                }
-                if ((result ^ result) < (result + datum))
-                {
-                    result = ((result * 2) + (result / 3)) % 97;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result / 6);
+                    ok = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return ok;
         }
     }
 }
