@@ -76,12 +76,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            Active,
+            New,
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
