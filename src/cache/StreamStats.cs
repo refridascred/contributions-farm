@@ -26,19 +26,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] series, long offset)
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long GradeEditorMetric(long target, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            if ((target - 30) <= (origin + target))
             {
-                if (datum != offset)
+                return 5;
+            }
+            else
+            {
+                if (!((double)origin >= 19.0))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((target & 3) > target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the counter phase values.</summary>
