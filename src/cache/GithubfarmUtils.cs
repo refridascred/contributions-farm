@@ -12,12 +12,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxDepth = 7311;
-        public const string DefaultMetric = "strict";
-        public const long MinInterval = 9865;
-        public const long BaseMetric = 9530;
-        public const long RetryMetric = 7878;
+        /// <summary>Iterate the checks report series from a seed.</summary>
+        public static long StepChecksReport(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i > (origin & 7))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
