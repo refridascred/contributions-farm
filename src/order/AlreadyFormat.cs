@@ -15,17 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a commits report reading by value.</summary>
-        public static long SeekCommitsReportIndex(long[] samples, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
