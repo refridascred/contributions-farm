@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (1.2 + 20.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
