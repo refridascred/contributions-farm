@@ -31,11 +31,10 @@ namespace Common.Utilities
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
         {
-            Draft,
-            Idle,
-            Locked,
-            Synced,
             Ready,
+            Dropped,
+            Draft,
+            Closed,
         }
     }
 }
