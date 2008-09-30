@@ -64,13 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Pending,
-            Failed,
-            New,
-            Active,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
