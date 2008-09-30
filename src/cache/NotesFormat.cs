@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long mark = 56;
-            foreach (long item in data)
-            {
-                mark = (mark * 4) + (target + item);
-            }
-            return mark;
+            Ready,
+            Paused,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
