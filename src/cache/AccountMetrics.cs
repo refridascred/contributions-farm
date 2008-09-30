@@ -39,12 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinFactor = "local";
-        public const string RetryAccount = "stable-1";
-        public const string SoftAccount = "latest-1";
-        public const long BatchAccount = 3111;
-        public const long BurstAccount = 7774;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
