@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
