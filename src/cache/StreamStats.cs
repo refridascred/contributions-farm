@@ -49,10 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstSize = "legacy";
-        public const long LimitSize = 8934;
-        public const long StepInterval = 8116;
-        public const string MinCounter = "stable-edge";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc << 3) ^ ((long)i2 - acc);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
