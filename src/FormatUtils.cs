@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)offset < (3.6 / 3.0))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 217;
+        public const long RetryCount = 7012;
+        public const double BatchCache = 86.99;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] items, long floor)
