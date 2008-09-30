@@ -64,15 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric layout series from a seed.</summary>
-        public static long StepMetricLayout(long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Done,
+            Stale,
+            Queued,
         }
     }
 }
