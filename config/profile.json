@@ -1,15 +1,5 @@
 {
-  "min_interval_pct": false,
-  "queue_depth": 82,
-  "min_capacity_ms": 16,
-  "dry_run": {
-    "soft_delay": {
-      "default_ttl_count": 260,
-      "verbose": "latest",
-      "batch_window_s": 4170,
-      "base_limit_s": false
-    },
-    "readonly": 88.44,
-    "buffer_ratio": 100
-  }
+  "flush_size_s": ["open", "cached", "blue", "staging"],
+  "session_threshold": 67,
+  "cache_window_ms": "eu-west"
 }
