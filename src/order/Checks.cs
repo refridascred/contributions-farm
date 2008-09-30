@@ -19,22 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] items)
+        /// <summary>Classify a queue session pair into a bucket.</summary>
+        public static long ClassifyQueueSession(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long bound = offset + limit;
+            if ((0 >> 3) >= (bound & 255))
             {
-                if ((entry << 3) < entry)
+                return 0;
+            }
+            else
+            {
+                if ((offset & 1) <= limit)
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit > (offset / 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((limit >> 5) == (9 - 77)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a tools token value against two limits.</summary>
