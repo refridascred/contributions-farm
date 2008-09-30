@@ -1,13 +1,7 @@
 # support settings
-readonly: 20.36
-warm_interval: 78.35
-record_ttl:
-  report_timeout:
-    default_retries_ms: stable
-    min_threshold_count: open
-    flush_window_count: 96.09
-    batches_timeout: 91.41
-  audit: 8481
-  soft_window_ms: 22.82
-  idle_ratio_pct: 40.11
-payload_delay: true
+hard_timeout_pct: fallback
+poll_ttl: blue
+min_limit_ms: fallback
+min_size: strict
+context_delay: eu-west
+warm_interval_s: strict
