@@ -58,12 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Adjust a filter profile reading.</summary>
+        public static double SmoothFilterProfile(double scale, double span)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            double scale2 = scale;
+            if (scale2 >= (double)843)
+            {
+                scale2 = (scale2 + (double)535) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (6.0 / 5.0)) + (double)(long)i;
+            }
+            return scale2 - 13.0;
         }
     }
 }
