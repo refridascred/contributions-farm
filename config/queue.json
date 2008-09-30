@@ -1,17 +1,8 @@
 {
-  "session_window": 58,
-  "soft_capacity_count": {
-    "enabled": {
-      "verbose": ["strict", "open"],
-      "channel_interval": 53.74,
-      "poll_capacity_ms": 100,
-      "hard_limit_count": "stable",
-      "schema_delay": 2581
-    },
-    "audit": 30,
-    "cache_depth_ms": 94.43
-  },
-  "readonly": 250,
-  "max_depth": "stable",
-  "warm_size": 60
+  "audit": 3504,
+  "dry_run": 53.68,
+  "session_capacity": false,
+  "cache_capacity": [457, 435],
+  "route_capacity": 13.34,
+  "cluster_threshold": true
 }
