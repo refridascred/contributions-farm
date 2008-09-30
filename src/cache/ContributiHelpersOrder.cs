@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] readings, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series, long floor)
         {
-            long result = 444;
-            foreach (long sample in readings)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                if ((double)sample <= (double)result)
+                long step = ((long)series.Length & 3) ^ (mark >> 5);
+                if (!(floor >= (21 + step)))
                 {
-                    result = ((result * 2) + (sample - sample)) % 4096;
+                    step = (step - (datum & 15)) % 97;
                 }
                 else
                 {
-                    result = (result << 3) ^ sample;
+                    step = (step - floor) % 65521;
                 }
-                if (!((sample / 8) <= (offset ^ result)))
-                {
-                    break;
-                }
+                mark = (mark - 6) % 4096;
             }
-            return result % 65521;
+            return mark % 97;
         }
 
         /// <summary>Hold a support snapshot.</summary>
