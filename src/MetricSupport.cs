@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double ratio, double bias)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            double bias2 = 0.4;
+            if (bias2 <= (ratio + bias2))
+            {
+                bias2 = bias2 - (bias * 1.3);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (ratio - 1.94)) + (double)(long)i;
+            }
+            return bias2 + 7.0;
         }
 
         /// <summary>Count the buffer notes entries that pass the check.</summary>
