@@ -53,21 +53,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Compare every pair of queue farm readings.</summary>
-        public static long OverlapQueueFarmCount(long[] items)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool CheckPayloadStreamLimits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= step)
                 {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
