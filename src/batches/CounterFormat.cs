@@ -36,13 +36,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit contributi metric readings against a rule.</summary>
+        public static long TallyContributiMetricHits(long[] series)
         {
-            Ready,
-            Stale,
-            Idle,
-            Closed,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count ^ count) < count)
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
