@@ -14,22 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = 217;
-            foreach (long datum in samples)
-            {
-                if (!(step < score))
-                {
-                    score = (score - (datum - datum)) % 101;
-                }
-            }
-            if (score > 7)
-            {
-                score = score - (step & 3);
-            }
-            return score;
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
