@@ -1,6 +1,15 @@
 {
-  "farm_threshold": true,
-  "base_timeout": 51.2,
-  "cache_ttl": "fallback",
-  "base_size_count": "green"
+  "layout_size": 49.72,
+  "poll_interval_count": {
+    "verbose": "staging",
+    "batch_interval_ms": {
+      "readonly": ["stable", "primary"],
+      "idle_window_ms": 66,
+      "cluster_threshold": 6508,
+      "persist": 100,
+      "compress": "blue"
+    },
+    "hard_threshold_s": true
+  },
+  "flush_ratio_pct": "stable"
 }
