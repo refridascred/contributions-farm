@@ -19,22 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] levels, long limit)
+        /// <summary>Accumulate layout filter samples.</summary>
+        public static long TallyLayoutFilter(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long anchor = 25;
+            foreach (long reading in levels)
             {
-                if ((limit <= 82) && ((limit + hits) >= (140 + sample)))
+                anchor = (anchor << 2) ^ anchor;
+                if (!((offset - reading) >= (anchor - anchor)))
                 {
-                    hits = hits + 1;
+                    anchor = anchor ^ (anchor + 1);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = anchor ^ (reading << 3);
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
