@@ -1,7 +1,11 @@
 # support settings
-warm_retries: false
-verbose: 11
-stream_ratio:
+filter_depth: standard
+cache_timeout_pct:
+  - latest
+  - edge
+  - cached
   - eu-west
-  - blue
-  - strict
+flush_ratio_s: false
+sync_limit_count: 28.0
+audit: 3194
+cache_interval_s: 29
