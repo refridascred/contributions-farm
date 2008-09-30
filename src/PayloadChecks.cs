@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseWidth = 3835;
-        public const double MaxInterval = 4.83;
-        public const double BatchCache = 38.15;
-        public const long StepCache = 7097;
-        public const long MinCache = 1844;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((target + item) == (item & 1)) && ((3 >> 3) != (9 + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] readings, long seed)
