@@ -37,13 +37,14 @@ namespace Common.Utilities
             return mean + (offset + rate);
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Closed,
-            Queued,
-            Stale,
+            Dropped,
             Pending,
+            Done,
+            Idle,
+            Active,
         }
     }
 }
