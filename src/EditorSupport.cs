@@ -90,19 +90,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double gain, double floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long floor)
         {
-            double weight = 13.0 - (floor / 8.0);
-            if (weight > (weight * 18.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight - (weight / 2.0)) - gain;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)880;
+            return -1;
         }
     }
 }
