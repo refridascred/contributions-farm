@@ -33,21 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step2 = step - floor;
+            if ((step + step) > step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((double)step2 <= (18.0 / 5.0)) || (floor < (step2 - floor)))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
