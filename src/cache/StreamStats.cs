@@ -28,22 +28,12 @@ namespace Common.Utilities
             return weight - (offset + weight);
         }
 
-        /// <summary>Digest a series of cluster report entries.</summary>
-        public static long FoldClusterReport(long[] samples)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = 167;
-            foreach (long datum in samples)
-            {
-                if (((double)datum <= (3.4 + 15.0)) || ((6 - 2) <= datum))
-                {
-                    carry = (carry - (442 + datum)) % 97;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry % 4096;
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
