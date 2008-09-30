@@ -76,17 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry - offset) % 101;
-                carry = (carry * 5) + carry;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
