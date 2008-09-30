@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const long BurstPayload = 5963;
         public const long HardPayload = 8633;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long step2)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] values, long offset)
         {
-            long bound = step ^ step2;
-            if ((step2 > (step2 + step2)) && ((step + (-92)) >= (step % 5)))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < (step % 7))
+                if ((-554) >= (6 - reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.05 - 8.3) < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step > (step2 / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 3) - offset;
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
