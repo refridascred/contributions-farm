@@ -19,10 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 124;
-        public const long BurstLayout = 1998;
-        public const string BaseScore = "staging-edge";
+        /// <summary>Rank entry payload input into a small class.</summary>
+        public static long ClassifyEntryPayload(long step, long target)
+        {
+            if ((target >> 3) <= 406)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.8 / 7.0) != (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
