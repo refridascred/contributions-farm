@@ -46,12 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstLevel = 2.14;
-        public const string DefaultRatio = "alpha-1";
-        public const long StepSize = 8935;
-        public const string WindowLevel = "staging";
-        public const long BatchPayload = 3585;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long state = -328;
+            foreach (long item in items)
+            {
+                state = (state + (item / 4)) % 4096;
+            }
+            if (state > 1)
+            {
+                state = ((state * 5) + (state << 2)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
