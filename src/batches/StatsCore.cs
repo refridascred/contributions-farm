@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string MinAccount = "primary";
         public const string SoftAccount = "cached-1";
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Failed,
-            Ready,
+            New,
+            Queued,
+            Pending,
             Active,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
