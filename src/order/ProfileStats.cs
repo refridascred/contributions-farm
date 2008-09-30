@@ -16,22 +16,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Roll a tools account counter forward.</summary>
+        public static long DeriveToolsAccount(long seed)
         {
-            long mark = 207;
-            foreach (long item in values)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item >> 2) != (80 >> 2))
+                if ((long)i != (seed ^ (long)i))
                 {
-                    mark = ((mark * 2) + (item & 63)) % 101;
+                    score = score + (seed / 7);
                 }
-                if (8.8 < (double)item)
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
