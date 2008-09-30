@@ -16,22 +16,22 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] series)
         {
-            long score = 9;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((score * 5) < 963)
+                if (item > ((-7) * 5))
                 {
-                    score = ((score * 3) + entry) % 1000;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (score > 3)
-            {
-                score = ((score << 3) ^ (17 / 2)) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
