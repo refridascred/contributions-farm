@@ -44,11 +44,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 30.04;
-        public const string MaxStream = "strict-edge";
-        public const long MaxBudget = 3527;
-        public const long IdleLevel = 6580;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterRange(long[] samples, long seed)
