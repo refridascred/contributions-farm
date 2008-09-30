@@ -1,15 +1,7 @@
 {
-  "farm_ttl": "fallback",
-  "soft_depth": {
-    "hard_delay_pct": ["edge", "primary", "staging"],
-    "command_size": "strict",
-    "base_window": 8,
-    "cache_retries_count": "standard",
-    "sync_window_s": "local",
-    "channel_interval": "eu-west"
-  },
-  "idle_size_ms": "edge",
-  "idle_size_pct": 100,
-  "sync_ttl": 7219,
-  "route_depth": "standard"
+  "githubfarm_retries": "local",
+  "base_delay_count": [416, 300, 442, 177],
+  "hard_size_s": 22.43,
+  "buffer_threshold": 72,
+  "support_limit": "open"
 }
