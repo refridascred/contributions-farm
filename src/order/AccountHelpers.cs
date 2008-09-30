@@ -76,20 +76,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] levels, long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long mix = 648;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix - offset) % 97;
-                mix = (mix + (offset + offset)) % 65521;
-                if (((mix + offset) > (9 + cell)) && ((cell >> 4) <= (mix + offset)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
