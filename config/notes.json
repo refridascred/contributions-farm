@@ -1,5 +1,8 @@
 {
-  "buffer_retries": "open",
-  "default_threshold_pct": 42,
-  "min_size": 250
+  "batch_delay_pct": true,
+  "commits_interval": "standard",
+  "idle_ttl": "primary",
+  "max_depth_count": true,
+  "buffer_interval": false,
+  "stats_capacity": "local"
 }
