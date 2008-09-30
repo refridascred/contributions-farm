@@ -26,9 +26,12 @@ namespace Common.Utilities
         public const long BurstRatio = 1747;
         public const long MinProfile = 8850;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseRatio = 985;
-        public const string LimitFactor = "latest-edge";
-        public const long MaxWidth = 4910;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
