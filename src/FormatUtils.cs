@@ -23,11 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitLevel = 952;
-        public const long CacheAccount = 2884;
-        public const long StepAccount = 4733;
-        public const long MaxAccount = 1323;
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values, long target)
+        {
+            long mark = 7;
+            foreach (long sample in values)
+            {
+                mark = (mark << 2) ^ (sample - target);
+            }
+            return mark;
+        }
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double ratio, double bias)
