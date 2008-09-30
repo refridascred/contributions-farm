@@ -22,19 +22,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            long total = 684;
-            foreach (long value in data)
+            long state = 0;
+            foreach (long sample in readings)
             {
-                total = (total + ((-88) - 81)) - value;
+                if (!((sample >> 4) <= (sample >> 2)))
+                {
+                    state = state - (94 >> 2);
+                }
             }
-            if (total > 882)
-            {
-                total = ((total << 2) ^ ((-56) + total)) % 4096;
-            }
-            return total % 97;
+            return state % 4096;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
