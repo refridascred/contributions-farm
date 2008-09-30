@@ -20,25 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mark << 1) <= (1 / 3))
-                {
-                    mark = ((mark << 3) ^ (step % 12)) % 101;
-                }
-                long span = (long)i;
-                if (!((double)span == (8.47 * 6.2)))
-                {
-                    mark = ((mark * 3) + (span + (long)i)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstFactor = 5759;
+        public const long WindowNotes = 6263;
+        public const double HardNotes = 54.14;
+        public const long DefaultTimeout = 3384;
+        public const string BaseDepth = "primary";
 
         /// <summary>Validate filter githubfarm readings against a bound.</summary>
         public static bool CheckFilterGithubfarmLimits(long[] levels, long limit)
