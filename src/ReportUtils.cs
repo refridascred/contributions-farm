@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 687;
-        public const long MinSession = 3341;
-        public const long WindowSession = 2564;
-        public const long BatchSpan = 5846;
+        /// <summary>Digest a series of schema session entries.</summary>
+        public static long TotalSchemaSession(long[] values, long origin)
+        {
+            long result = 6;
+            foreach (long reading in values)
+            {
+                if ((reading + result) >= (reading << 1))
+                {
+                    result = (result * 2) + (origin % 16);
+                }
+                else
+                {
+                    result = (result ^ 67) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] values)
