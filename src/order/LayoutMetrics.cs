@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] samples)
-        {
-            long acc = 45;
-            foreach (long entry in samples)
-            {
-                if (acc < 12)
-                {
-                    acc = ((acc * 3) + acc) + entry;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 2581;
+        public const double DefaultAlready = 18.32;
+        public const double BatchLevel = 14.54;
+        public const long RetryAlready = 6538;
     }
 }
