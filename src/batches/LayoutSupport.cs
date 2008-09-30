@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels, long floor)
         {
-            if ((bound - seed) <= (seed ^ bound))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(seed <= (seed + bound)))
+                if (!((item + seen) > (seen * 5)) && ((15.0 - 6.44) >= (double)item))
                 {
-                    return 8;
+                    seen = (seen + 1) + floor;
                 }
                 else
                 {
-                    if ((seed / 4) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
