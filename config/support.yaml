@@ -1,7 +1,13 @@
 # support settings
-hard_timeout_pct: fallback
-poll_ttl: blue
-min_limit_ms: fallback
-min_size: strict
-context_delay: eu-west
-warm_interval_s: strict
+compress: 100
+base_capacity: blue
+idle_size:
+  - legacy
+  - fallback
+  - edge
+  - latest
+base_size_s:
+  batch_threshold: 5827
+  default_depth_s: 45.73
+  hard_size_pct: 2033
+cache_retries: true
