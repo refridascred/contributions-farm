@@ -15,22 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            long carry = 3;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)bound <= (11.0 * 7.6))
+                if (entry < (entry / 3))
                 {
-                    carry = ((carry + (bound - bound)) % 65521) ^ value;
+                    tally = tally + 1;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry ^ (carry + bound)) % 65521;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count session already pairs that satisfy a relation.</summary>
