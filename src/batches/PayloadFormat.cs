@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3570;
-        public const string SoftSchema = "legacy-edge";
-        public const long SoftBudget = 693;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 8606;
+        public const long SoftScore = 3477;
+        public const long IdleInterval = 1019;
+        public const long MinTools = 2518;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
