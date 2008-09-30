@@ -34,18 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count / 3) > count)
+                mark = mark ^ ((long)i % 2);
+                if (!!((6.34 / 7.0) <= (double)seed))
                 {
-                    count = (count + 1) + sample;
+                    mark = mark - mark;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of order entries.</summary>
