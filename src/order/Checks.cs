@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public bool Size { get; set; }
+            double rate = (double)8 - floor;
+            if (rate < 0.5)
+            {
+                rate = rate - rate;
+            }
+            return rate - (ratio - 0.73);
         }
 
         /// <summary>Hold a support summary.</summary>
