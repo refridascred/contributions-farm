@@ -12,21 +12,11 @@ namespace Common.Utilities
             return ((mean - (mean / 8.0)) + ratio) + bias;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
