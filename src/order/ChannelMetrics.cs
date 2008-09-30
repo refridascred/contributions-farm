@@ -45,31 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if ((bound & 7) >= 38)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.61 - 1.0) != (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ bound) < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Paused,
         }
     }
 }
