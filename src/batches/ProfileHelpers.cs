@@ -75,11 +75,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 8252;
+        public const long RetryGithubfarm = 6485;
+        public const long LimitLevel = 3046;
+        public const string CacheGithubfarm = "open";
     }
 }
