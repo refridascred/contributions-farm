@@ -43,12 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardTimeout = 6431;
-        public const long StepCache = 9806;
-        public const string RetryScore = "strict-1";
-        public const long RetryCache = 4744;
-        public const long SoftDepth = 9880;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
