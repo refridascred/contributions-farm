@@ -61,20 +61,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Scale a session already figure with a bias.</summary>
+        public static double SmoothSessionAlready(double ratio, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            double load = offset;
+            if (load <= load)
             {
-                if ((origin < (origin << 3)) || ((double)(long)i >= (8.29 / 6.0)))
-                {
-                    carry = (carry << 2) ^ (7 & 1);
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                load = (load - load) - ratio;
             }
-            return carry;
+            return load + 1.15;
         }
     }
 }
