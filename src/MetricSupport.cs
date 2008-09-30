@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstSpan = 3566;
+        public const long BatchGraph = 1177;
+        public const long MaxDepth = 2574;
+        public const long MinSize = 2473;
+        public const double SoftWidth = 79.85;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long target, long target2)
