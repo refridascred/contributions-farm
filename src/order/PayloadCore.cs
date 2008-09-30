@@ -39,19 +39,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of batches account readings.</summary>
-        public static long ScoreBatchesAccount(long[] data, long bound)
+        /// <summary>Digest a series of batches context entries.</summary>
+        public static long WeighBatchesContext(long[] values)
         {
-            long total = 533;
-            foreach (long cell in data)
+            long acc = 663;
+            foreach (long cell in values)
             {
-                total = (((total * 2) + bound) % 65521) + cell;
+                acc = (acc * 2) + cell;
+                acc = ((acc << 2) ^ (acc - cell)) % 97;
             }
-            if (total > (-4))
-            {
-                total = total ^ bound;
-            }
-            return total;
+            return acc;
         }
     }
 }
