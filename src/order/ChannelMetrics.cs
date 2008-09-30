@@ -33,17 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Accumulate already tools samples.</summary>
+        public static long WeighAlreadyTools(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 12;
+            foreach (long value in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
+                anchor = (anchor << 2) ^ (value << 1);
+                if ((limit << 3) != (67 + value))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (value + 27);
+                }
+                if (!(limit > (limit & 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
