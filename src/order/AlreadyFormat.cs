@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const string CacheContributi = "cached";
         public const long MinSize = 6205;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
             public double Ratio { get; set; }
         }
 
