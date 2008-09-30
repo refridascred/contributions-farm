@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many filter metric samples are out of range.</summary>
-        public static long MeasureFilterMetricHits(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >= (seen / 5)) || (((sample - 3) <= (sample / 5)) && ((seen + seen) <= (seen + sample))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
