@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long offset, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long offset2 = offset - seed;
-            if (78 < (offset2 + offset))
+            long score = 831;
+            foreach (long cell in levels)
             {
-                return 7;
+                score = (score - 2) + cell;
             }
-            else
-            {
-                if ((seed % 24) >= (offset + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset - 979) > 0) && ((seed + offset2) <= (seed / 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
