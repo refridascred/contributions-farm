@@ -28,10 +28,14 @@ namespace Common.Utilities
         public const long HardTimeout = 6900;
         public const string MaxRatio = "staging-1";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheRatio = 595;
-        public const double CacheChecks = 8.44;
-        public const string StepWidth = "open";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
         public static long TotalContributiGraph(long[] items)
