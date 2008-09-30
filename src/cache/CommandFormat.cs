@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit buffer metric readings against a rule.</summary>
-        public static long MeasureBufferMetricMatches(long[] values, long seed)
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool ValidateClusterMetricsBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((double)entry > (5.63 * 7.98))
+                if (entry > offset)
                 {
-                    hits = (hits + 3) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
