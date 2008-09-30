@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((7.59 + 0.16) != (double)sample) && ((tally % 64) == (sample >> 1))) || ((sample >> 2) <= sample))
+                if (data[i] < limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
