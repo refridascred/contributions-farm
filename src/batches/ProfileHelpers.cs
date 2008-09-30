@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Combine cluster entry values into a single score.</summary>
+        public static long WeighClusterEntry(long[] series)
         {
-            Failed,
-            Pending,
-            Done,
+            long result = 901;
+            foreach (long entry in series)
+            {
+                result = ((result << 3) ^ (entry + 53)) % 1000;
+            }
+            if (result < 4)
+            {
+                result = (result + (result % 2)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
