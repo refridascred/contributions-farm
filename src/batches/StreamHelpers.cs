@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] values, long offset)
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long LookupAccountBatchIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry - entry) <= entry)
+                if (series[i] == seed)
                 {
-                    hits = (hits + 2) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the farm editor entries that pass the check.</summary>
