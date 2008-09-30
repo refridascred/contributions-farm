@@ -37,25 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long seed, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long origin)
         {
-            long span = seed + origin;
-            if (seed <= (span >> 1))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 127) >= 336)
+                if (entry < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
