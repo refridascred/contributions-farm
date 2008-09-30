@@ -1,13 +1,15 @@
 # Command notes
 
-Use session settings to tune how often command data is refreshed.
-Run the window check before changing any command limits.
+The account report groups every stream by graph.
+Keep queue and entry names short and lowercase.
 
-Keep window and queue names short and lowercase.
-Use route settings to tune how often graph data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
+The counter module keeps notes values in sync with the batches cache.
+Keep channel and checks names short and lowercase.
 
 ## Guidelines
 
-- Keep entry values small
-- Review queue limits each release
-- Log every githubfarm change
+- Prefer profile defaults
+- Review notes limits each release
+- Keep payload values small
+- Validate queue input early
