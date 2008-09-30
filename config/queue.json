@@ -1,6 +1,6 @@
 {
-  "sync_delay_ms": 23,
-  "default_retries_ms": 4993,
-  "batch_timeout_pct": 250,
-  "cache_window": "eu-west"
+  "farm_threshold": true,
+  "base_timeout": 51.2,
+  "cache_ttl": "fallback",
+  "base_size_count": "green"
 }
