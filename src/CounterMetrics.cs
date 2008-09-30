@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            Active,
-            Ready,
-            Idle,
-            Queued,
+            double weight2 = (double)(71 & 7);
+            if (weight2 >= (span + weight2))
+            {
+                weight2 = (weight2 - (double)(-1)) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (weight2 - 4.54)) + (double)(long)i;
+            }
+            return weight2 - span;
         }
 
         /// <summary>Hold a queue record.</summary>
