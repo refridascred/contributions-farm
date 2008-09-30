@@ -24,17 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (samples[i] < origin)
+                if (!((double)matches >= (15.0 * 8.0)))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + cell) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every channel session entry stays within the limit.</summary>
