@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (20.0 + 3.9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
