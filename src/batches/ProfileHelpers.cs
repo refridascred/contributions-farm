@@ -57,19 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double gain, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            double bias = 5.5;
-            if (bias < (double)0)
+            long result = 84;
+            foreach (long entry in readings)
             {
-                bias = (bias + span) - gain;
+                result = result - (result + result);
+                if ((8.94 - 1.5) < (double)entry)
+                {
+                    result = (result << 3) ^ (result + result);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (3.4 + bias)) + (double)(long)i;
-            }
-            return bias - (span - 1.8);
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
