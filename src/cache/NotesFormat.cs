@@ -30,17 +30,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long limit)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if ((offset % 7) < (acc + offset))
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
