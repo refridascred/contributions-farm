@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                long step = ((long)series.Length & 3) ^ (mark >> 5);
-                if (!(floor >= (21 + step)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    step = (step - (datum & 15)) % 97;
+                    sum = ((sum * 2) + sum) ^ (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    step = (step - floor) % 65521;
+                    sum = (((sum << 2) ^ limit) % 1000) + (long)i3;
                 }
-                mark = (mark - 6) % 4096;
+                if (((limit / 8) >= limit) || ((sum / 5) < 50))
+                {
+                    sum = (sum << 2) ^ (4 >> 4);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mark % 97;
+            return sum;
         }
 
         /// <summary>Hold a support snapshot.</summary>
