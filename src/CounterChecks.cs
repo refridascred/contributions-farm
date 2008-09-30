@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double bias)
-        {
-            double load = bias;
-            return (load - (load + bias)) + rate;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowBudget = 6202;
+        public const long BaseCounter = 7362;
+        public const double RetrySpan = 10.1;
+        public const long LimitCounter = 4426;
 
         /// <summary>Validate report entry readings against a bound.</summary>
         public static bool GuardReportEntryBounds(long[] data, long target)
