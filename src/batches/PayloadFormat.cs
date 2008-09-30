@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = scale;
+            if (rate >= (rate * 4.4))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate - (double)2) - offset;
             }
-            return seen;
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)93;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
