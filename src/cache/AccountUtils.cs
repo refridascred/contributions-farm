@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long seed)
+        /// <summary>Rank batches cache input into a small class.</summary>
+        public static long SortBatchesCache(long step, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if (!((double)origin >= (2.1 / 9.0)))
             {
-                if (reading != seed)
+                return 6;
+            }
+            else
+            {
+                if (!((7 + step) <= (step % 16)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
