@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((target << 2) < (5 ^ target)) || ((total * 4) < (total / 5)))
-                {
-                    total = total + (target & 63);
-                    total = ((total * 5) + ((-5) << 2)) % 97;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Pending,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of account entries.</summary>
