@@ -31,22 +31,18 @@ namespace Common.Utilities
             return scale - (floor / 9.0);
         }
 
-        /// <summary>Accumulate entry cluster samples.</summary>
-        public static long FoldEntryCluster(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] readings, long offset)
         {
-            long mix = 4;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((mix % 97) > (sample - (-70))))
+                if (((4.2 + 7.42) == (double)entry) || !((matches % 24) >= 642))
                 {
-                    mix = mix ^ (sample - mix);
-                }
-                if ((5.36 + 18.0) <= (double)sample)
-                {
-                    mix = mix - (mix - sample);
+                    matches = (matches + 3) - offset;
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
