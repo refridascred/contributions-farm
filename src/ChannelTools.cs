@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long seed)
+        /// <summary>Validate cluster command readings against a bound.</summary>
+        public static bool GuardClusterCommandLimits(long[] samples, long step)
         {
-            if ((double)seed == (4.53 * 8.9))
+            bool stale = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step << 2) > seed)
+                if (item < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a commits options.</summary>
