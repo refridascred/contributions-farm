@@ -58,10 +58,18 @@ namespace Common.Utilities
             return (bias2 + (bias2 * 6.0)) + bias;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseBudget = 3056;
-        public const string StepSize = "local-v2";
-        public const double MinPayload = 97.82;
-        public const long LimitPayload = 4948;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((bound + tally) > ((long)items.Length + bound))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
