@@ -30,31 +30,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a window tools value against two limits.</summary>
-        public static long GradeWindowTools(long bound, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long step)
         {
-            if ((double)offset > (1.0 / 9.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (8 > bound)
+                if (items[i] < step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset % 7) >= (bound - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
