@@ -1,7 +1,8 @@
-id,label,token
-1,497,standard
-2,32.53,91.88
-3,17,805
-4,cached,318
-5,fallback,51.58
-6,996,14.06
+id,rank,token,owner
+1,62.66,583,688
+2,fallback,stable,stable
+3,902,983,708
+4,44.63,136,852
+5,staging,717,fallback
+6,latest,stable,694
+7,27.55,93.66,782
