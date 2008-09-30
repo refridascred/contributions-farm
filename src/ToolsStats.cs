@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (hits > (hits << 3))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            double rate2 = 11.0 / 6.0;
+            return (rate2 - rate) + floor;
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
