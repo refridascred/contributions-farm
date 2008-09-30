@@ -44,24 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long origin, long origin2)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
         {
-            if (origin > (origin2 >> 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + origin2) <= origin2))
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
