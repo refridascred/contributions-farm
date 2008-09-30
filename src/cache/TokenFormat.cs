@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const long StepInterval = 4397;
         public const long RetryRatio = 2020;
 
-        /// <summary>Count route account pairs that satisfy a relation.</summary>
-        public static long OverlapRouteAccountCount(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((origin % 24) == (7 << 2)))
                 {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (99 * 3);
+                    total = total ^ (total << 2);
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
