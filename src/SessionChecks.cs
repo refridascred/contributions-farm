@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate session cache samples.</summary>
-        public static long TotalSessionCache(long[] data)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            long sum = 815;
-            foreach (long cell in data)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)99 == (double)cell)
+                if (!((0.86 + 11.0) != (double)carry))
                 {
-                    sum = (sum ^ sum) % 4096;
+                    carry = ((carry << 2) ^ (57 + target)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Hold a cluster summary.</summary>
