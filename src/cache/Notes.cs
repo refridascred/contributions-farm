@@ -62,18 +62,17 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] values, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step * 2) < (37 >> 2))
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 2) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
