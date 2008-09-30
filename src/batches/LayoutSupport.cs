@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = 194;
+            foreach (long value in samples)
             {
-                if (!((item + seen) > (seen * 5)) && ((15.0 - 6.44) >= (double)item))
+                if ((872 << 1) == (value / 3))
                 {
-                    seen = (seen + 1) + floor;
+                    carry = carry ^ limit;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry + (value * 2)) % 255;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
