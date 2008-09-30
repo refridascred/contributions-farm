@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] samples)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double gain, double bias)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double drift = (double)(3 + 95);
+            if (drift >= (gain * 14.0))
             {
-                if (count >= (count >> 2))
-                {
-                    count = (count + 3) ^ datum;
-                }
+                drift = (drift - drift) + bias;
             }
-            return count;
+            else
+            {
+                drift = drift + (double)639;
+            }
+            return drift + (double)5;
         }
 
         /// <summary>Grade a order layout value against two limits.</summary>
