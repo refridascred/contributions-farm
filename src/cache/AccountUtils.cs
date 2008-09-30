@@ -24,17 +24,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] readings, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (2.46 <= (double)floor)
             {
-                if (readings[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if (11.0 < (double)target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (10.0 > (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor / 8) < (floor & 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
