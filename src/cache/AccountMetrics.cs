@@ -31,13 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
