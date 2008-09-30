@@ -1,11 +1,27 @@
 # githubfarm settings
-base_interval_s: cached
-flush_ratio_pct: blue
-max_delay: 54.46
-enabled: false
-default_retries_pct: 37.59
-idle_limit_ms:
-  - 3
-  - 47
-  - 91
-  - 102
+base_limit_pct: 33.09
+metric_ttl: 76.1
+retry_ttl_s:
+  warm_limit_pct:
+    filter_retries: false
+    base_depth: 72
+    base_ttl_pct: 50.44
+    base_ratio_count: false
+    sync_capacity_s:
+      - 403
+      - 74
+      - 393
+    idle_retries_pct: latest
+  batches_ttl:
+    layout_interval:
+      - blue
+      - staging
+      - fallback
+      - legacy
+    commits_ratio: 45
+    burst_window_count: 55.8
+  verbose: 5163
+  readonly: blue
+  hard_interval_ms: latest
+cache_depth_s: true
+compress: cached
