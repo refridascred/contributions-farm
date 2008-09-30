@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "standard-v2";
-        public const double WindowEntry = 81.34;
-        public const long BaseEntry = 3769;
-        public const long DefaultDepth = 6478;
-        public const long LimitTimeout = 1447;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double HardScore = 16.38;
