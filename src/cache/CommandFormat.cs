@@ -43,17 +43,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
     }
 }
