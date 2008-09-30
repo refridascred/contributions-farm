@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 0.72;
-        public const string LimitCount = "standard";
-        public const string BatchFormat = "standard-v2";
+        /// <summary>Fold a list of batches channel readings.</summary>
+        public static long WeighBatchesChannel(long[] values, long origin)
+        {
+            long result = 9;
+            foreach (long entry in values)
+            {
+                if (((origin >> 2) != (entry + result)) && ((2.1 / 7.0) < (double)origin))
+                {
+                    result = (result + (result + result)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long seed)
