@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] readings, long offset)
+        /// <summary>Compare every pair of route already readings.</summary>
+        public static long MatchRouteAlreadyCount(long[] values)
         {
-            long total = 88;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total - ((-35) + total)) % 97) + sample) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < 479)
-            {
-                total = ((total * 5) + (total & 127)) % 65521;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Hold a schema info.</summary>
