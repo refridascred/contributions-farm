@@ -64,16 +64,21 @@ namespace Common.Utilities
         public const long RetryEditor = 354;
         public const long MinEditor = 2734;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Count cache window pairs that satisfy a relation.</summary>
+        public static long MatchCacheWindowCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum * 2) + seed;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
