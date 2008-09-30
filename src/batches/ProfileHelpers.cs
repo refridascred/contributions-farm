@@ -27,12 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepWidth = 21.83;
-        public const long IdleOrder = 3015;
-        public const long BatchSpan = 5486;
-        public const long BatchOrder = 9030;
-        public const long MinOrder = 44;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state - origin;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] samples)
