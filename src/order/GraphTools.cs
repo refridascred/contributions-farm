@@ -37,12 +37,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
+            long mix = 38;
+            foreach (long item in levels)
+            {
+                if (((item - 228) < (247 & 7)) || ((item * 2) <= (item % 97)))
+                {
+                    mix = mix ^ (mix - item);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
