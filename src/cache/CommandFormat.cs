@@ -13,16 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next graph queue value from a seed.</summary>
-        public static long StepGraphQueue(long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix ^ ((long)i - offset)) % 101;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Failed,
+            Ready,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the context kind values.</summary>
