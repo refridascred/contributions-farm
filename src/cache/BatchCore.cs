@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            Stale,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank format input into a small class.</summary>
