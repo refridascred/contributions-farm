@@ -38,18 +38,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit contributi metric readings against a rule.</summary>
-        public static long TallyContributiMetricHits(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double mean = (weight + weight) + offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((count ^ count) < count)
-                {
-                    count = (count + 2) ^ sample;
-                }
+                mean = (mean + (mean * 11.0)) + (double)(long)i;
             }
-            return count;
+            return mean - offset;
         }
     }
 }
