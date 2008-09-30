@@ -29,19 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel window entries.</summary>
-        public static long FoldChannelWindow(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long target)
         {
-            long score = 10;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score << 3) ^ (sample - (long)readings.Length);
-                if ((double)score == (double)sample)
+                if ((data[i] < target) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
