@@ -43,19 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Count the entry commits entries that pass the check.</summary>
+        public static long AuditEntryCommitsOutliers(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 >= (double)873)
+            long tally = 0;
+            foreach (long item in data)
             {
-                rate2 = (rate2 + 7.68) - offset;
+                if ((tally + item) != (item >> 4))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 * 14.0);
-            }
-            return rate2 + (rate + rate);
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
