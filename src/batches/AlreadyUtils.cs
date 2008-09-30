@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Match up context tools samples.</summary>
+        public static long MatchContextToolsCount(long[] data)
         {
-            long mix = 207;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix / 5) != (entry >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix << 2) ^ (mix ^ mix);
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
