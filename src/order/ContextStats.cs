@@ -25,22 +25,17 @@ namespace Common.Utilities
             return bias + (span * 8.1);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] data, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] levels, long bound)
         {
-            long result = 4;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target - datum) != (datum >> 5))
+                if (levels[i] >= bound)
                 {
-                    result = (result * 4) + (8 * 3);
-                }
-                else
-                {
-                    result = ((result * 4) + (target + (-95))) % 97;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
