@@ -92,13 +92,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] data, long origin)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item <= (18.0 + 0.23))
+                {
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
