@@ -31,12 +31,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "alpha-v2";
-        public const long HardAlready = 1189;
-        public const long BurstAlready = 5526;
-        public const long RetryAlready = 3697;
-        public const long StepTimeout = 980;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitTimeout = 42.0;
+        public const long MinFactor = 3917;
+        public const long BaseBudget = 3120;
 
         /// <summary>Derive the next batches channel value from a seed.</summary>
         public static long SeriesBatchesChannel(long target)
