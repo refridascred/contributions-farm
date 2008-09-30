@@ -73,19 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (item > limit)
+                if ((double)anchor >= (2.7 / 6.0))
                 {
-                    ok = false;
                     break;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
     }
 }
