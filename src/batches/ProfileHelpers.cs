@@ -39,21 +39,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Measure how many buffer metrics samples are out of range.</summary>
+        public static long CountBufferMetricsHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((2.03 - 6.2) == (double)count) && ((269 - count) >= value)) && ((2.8 + 7.7) > (double)count))
                 {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
