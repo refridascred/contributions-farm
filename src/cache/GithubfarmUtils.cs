@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double rate = 13.0 - (double)225;
-            if (rate > (double)1)
-            {
-                rate = (rate + (double)7) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate - (rate - rate);
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
