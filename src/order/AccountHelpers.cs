@@ -58,13 +58,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Ready,
-            Closed,
-            Retry,
-            Active,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
