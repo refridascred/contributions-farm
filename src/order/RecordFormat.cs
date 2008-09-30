@@ -25,17 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] <= bound)
+                if (seen >= (seen - limit))
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
