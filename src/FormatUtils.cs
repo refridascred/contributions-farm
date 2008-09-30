@@ -48,11 +48,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleScore = 46.71;
-        public const long HardSpan = 7446;
-        public const long BaseDepth = 2486;
-        public const long RetryDepth = 8249;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Failed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long StepMetrics(long seed)
