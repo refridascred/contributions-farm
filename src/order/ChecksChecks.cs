@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            double weight = span;
+            if (weight < (double)28)
+            {
+                weight = (weight - (weight + span)) - ratio;
+            }
+            return weight + span;
         }
 
         /// <summary>Hold a checks info.</summary>
