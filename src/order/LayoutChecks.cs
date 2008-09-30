@@ -27,18 +27,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] samples, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 7;
+            foreach (long entry in samples)
             {
-                if ((8.8 * 0.09) <= (double)seed)
+                long tally = ((-418) + 529) % 60;
+                if (!((double)total <= (9.73 + 7.8)))
                 {
-                    matches = (matches + 2) + sample;
+                    tally = (tally - (520 % 64)) % 255;
+                    total = ((total * 4) + tally) % 255;
+                }
+                total = (total * 4) + (total - total);
+                if ((double)entry >= (8.53 + 3.19))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Adjust a graph reading.</summary>
