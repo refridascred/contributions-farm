@@ -14,17 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (levels[i] <= target)
+                if (reading != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
