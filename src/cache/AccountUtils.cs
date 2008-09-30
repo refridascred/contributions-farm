@@ -27,19 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            double ratio = (double)29;
-            if (ratio < offset)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                ratio = (ratio + offset) + gain;
+                if ((1 / 9) <= (hits / 7))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 4.83) + (double)(long)i;
-            }
-            return ratio - offset;
+            return hits;
         }
     }
 }
