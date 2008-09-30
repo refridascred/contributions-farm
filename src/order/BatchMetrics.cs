@@ -34,11 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 5860;
-        public const long MinSpan = 3091;
-        public const double IdleRatio = 90.39;
-        public const string WindowFactor = "strict-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 74.77;
+        public const long StepSpan = 6659;
+        public const string WindowWidth = "alpha-1";
+        public const long MinCount = 578;
+        public const string WindowRatio = "cached-edge";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
