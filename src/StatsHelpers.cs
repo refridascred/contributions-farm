@@ -44,19 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] samples, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 3) ^ (5 + score)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Accumulate profile samples.</summary>
