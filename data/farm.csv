@@ -1,8 +1,8 @@
-id,owner,state
-1,48.48,913
-2,211,27.28
-3,58.45,2.16
-4,38.83,strict
-5,81.3,blue
-6,723,primary
-7,local,20.42
+id,token,rank
+1,blue,primary
+2,fallback,88.9
+3,open,580
+4,146,133
+5,strict,98.53
+6,902,primary
+7,88.27,eu-west
