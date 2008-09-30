@@ -56,13 +56,13 @@ namespace Common.Utilities
             return ratio2 + (double)2;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
