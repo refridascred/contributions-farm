@@ -1,7 +1,15 @@
 {
-  "max_ttl_s": "stable",
-  "batch_ratio": "fallback",
-  "min_interval_ms": 28,
-  "burst_window_s": "local",
-  "soft_depth_count": 6566
+  "stats_interval": "local",
+  "dry_run": "latest",
+  "context_timeout": 31.45,
+  "soft_depth": {
+    "queue_ttl": {
+      "base_interval_count": [155, 283],
+      "cache_delay_s": true,
+      "batch_ttl_s": ["legacy", "strict"]
+    },
+    "batch_interval": 30,
+    "dry_run": 24.52
+  },
+  "editor_ratio": "eu-west"
 }
