@@ -1,5 +1,6 @@
 # support settings
-default_depth: staging
-max_ratio_pct: local
-default_window: true
-hard_threshold: true
+base_ttl_pct: 76.09
+warm_limit_s: 9
+sync_threshold: latest
+window_size: 25
+min_threshold_ms: edge
