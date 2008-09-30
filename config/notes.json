@@ -1,6 +1,5 @@
 {
-  "queue_capacity": 81.04,
-  "soft_timeout_s": "open",
-  "batches_timeout": 1024,
-  "audit": [177, 102, 451]
+  "batch_ttl_pct": "primary",
+  "verbose": "standard",
+  "compress": "strict"
 }
