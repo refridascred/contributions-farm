@@ -76,11 +76,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
