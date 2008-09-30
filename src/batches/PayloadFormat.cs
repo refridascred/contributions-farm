@@ -16,12 +16,11 @@ namespace Common.Utilities
             return weight2 + (weight2 + weight2);
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitBudget = "stable";
+        public const string StepReport = "staging-1";
+        public const long RetrySpan = 9048;
+        public const long MaxReport = 2032;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
