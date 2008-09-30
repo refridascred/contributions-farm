@@ -41,11 +41,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 3241;
-        public const long HardTimeout = 665;
-        public const long RetryTimeout = 508;
-        public const double LimitSpan = 7.1;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double ratio, double bias)
+        {
+            double ratio2 = (double)361 + (bias / 7.0);
+            if (ratio2 >= ratio)
+            {
+                ratio2 = ratio2 - (double)162;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (2.2 * 6.7)) + (double)(long)i;
+            }
+            return ratio2 + (double)67;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 7225;
