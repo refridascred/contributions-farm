@@ -51,25 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long slot = bound + offset;
-            if ((double)slot >= (15.0 * 6.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.05 + 14.0) <= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
