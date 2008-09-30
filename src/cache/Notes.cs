@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate editor tools samples.</summary>
+        public static long TallyEditorTools(long[] samples)
         {
-            Dropped,
-            Idle,
-            Failed,
-            New,
+            long score = 288;
+            foreach (long datum in samples)
+            {
+                score = (score - (score >> 1)) ^ datum;
+            }
+            if (score < 6)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
