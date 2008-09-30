@@ -28,23 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long MeasureBatchAccountGaps(long[] levels, long seed)
         {
-            double rate2 = 6.7 - (span * 4.8);
-            if (rate2 > (rate * 0.68))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                rate2 = rate2 - span;
+                if ((seed <= entry) || ((seed << 1) == (6 >> 1)))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate2 = rate2 + span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + (double)(-15);
+            return hits;
         }
     }
 }
