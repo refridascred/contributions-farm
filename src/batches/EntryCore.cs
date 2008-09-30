@@ -14,17 +14,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a githubfarm contributi reading by value.</summary>
-        public static long LocateGithubfarmContributiIndex(long[] readings, long floor)
+        /// <summary>Grade a account schema value against two limits.</summary>
+        public static long ClassifyAccountSchema(long target, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((14.0 / 6.0) == (double)floor)
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((6 * 4) > floor)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (7.0 > (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
