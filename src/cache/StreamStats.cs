@@ -13,19 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long limit)
+        /// <summary>Accumulate channel buffer samples.</summary>
+        public static long ScoreChannelBuffer(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mark = 43;
+            foreach (long value in readings)
             {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark ^ (mark / 5)) ^ value;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Describe the counter phase values.</summary>
