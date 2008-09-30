@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 9093;
-        public const double MinQueue = 48.6;
-        public const long LimitWidth = 2536;
-        public const long StepLevel = 6798;
-        public const long MaxQueue = 1430;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] readings)
+        {
+            long acc = 36;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) != (acc & 63))
+                {
+                    acc = acc + acc;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] items, long bound)
