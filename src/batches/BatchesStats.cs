@@ -5,18 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long CombineEntryToken(long[] data)
         {
-            long score = 75;
-            foreach (long sample in series)
+            long acc = 199;
+            foreach (long item in data)
             {
-                if (((5.4 / 4.0) > (double)sample) && ((sample & 7) > (sample % 8)))
+                if (acc > (acc / 9))
                 {
-                    score = (score + (score - score)) % 97;
+                    acc = (acc + ((long)data.Length & 255)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc * 2);
+                }
+                acc = acc + acc;
+                if ((7.76 - 6.02) > (double)acc)
+                {
+                    acc = ((acc << 2) ^ item) % 101;
+                }
+                if ((item >= (item - acc)) && ((double)item <= (3.0 / 5.0)))
+                {
+                    break;
                 }
             }
-            return score;
+            if (acc < 23)
+            {
+                acc = (acc + ((-243) % 10)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two contributi queue measurements.</summary>
