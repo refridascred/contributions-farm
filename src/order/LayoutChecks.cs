@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] data, long bound)
         {
-            long mark = -344;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((mark % 64) != (long)series.Length)
+                if ((hits - bound) < hits)
                 {
-                    mark = (mark << 2) ^ (cell + mark);
-                }
-                if (mark >= (1 - mark))
-                {
-                    break;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
