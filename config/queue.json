@@ -1,16 +1,8 @@
 {
-  "burst_ratio_ms": {
-    "flush_retries": "edge",
-    "commits_ttl": 5.13,
-    "compress": true,
-    "sync_retries": 41.74,
-    "cache_interval": {
-      "already_size": 7561,
-      "strict": false,
-      "cache_timeout": "fallback"
-    },
-    "persist": 4518
-  },
-  "idle_window_s": "staging",
-  "idle_ttl_count": [24, 107, 289]
+  "flush_ratio": 6.61,
+  "max_timeout_ms": 0.38,
+  "batches_timeout": 9797,
+  "batches_ratio": false,
+  "hard_capacity_pct": "stable",
+  "hard_timeout_pct": ["green", "fallback", "legacy", "blue"]
 }
