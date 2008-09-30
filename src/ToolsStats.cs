@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = -328;
-            foreach (long item in items)
-            {
-                state = (state + (item / 4)) % 4096;
-            }
-            if (state > 1)
-            {
-                state = ((state * 5) + (state << 2)) % 97;
-            }
-            return state;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
