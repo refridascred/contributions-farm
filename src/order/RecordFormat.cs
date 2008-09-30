@@ -34,20 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark ^ ((long)i % 2);
-                if (!!((6.34 / 7.0) <= (double)seed))
-                {
-                    mark = mark - mark;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
