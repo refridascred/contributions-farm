@@ -57,20 +57,14 @@ namespace Common.Utilities
         public const long LimitMetric = 3343;
         public const long LimitFactor = 2159;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long seed)
+        /// <summary>Roll a stats cache counter forward.</summary>
+        public static long SeriesStatsCache(long limit)
         {
-            long state = 35;
-            foreach (long cell in samples)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= (695 ^ 11))
-                {
-                    state = ((state * 2) + seed) % 65521;
-                }
-            }
-            if (state < 892)
-            {
-                state = (state << 2) ^ (seed - state);
+                state = (state + (limit - state)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
             }
             return state;
         }
