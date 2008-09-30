@@ -25,22 +25,18 @@ namespace Common.Utilities
             return weight + (bias * 8.8);
         }
 
-        /// <summary>Roll a command githubfarm counter forward.</summary>
-        public static long DeriveCommandGithubfarm(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] data, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (!((double)offset >= (15.0 * 4.96)))
+                if ((bound ^ seen) <= bound)
                 {
-                    result = ((result * 3) + (result >> 4)) % 4096;
-                    result = result + (8 + offset);
+                    seen = (seen + 2) ^ item;
                 }
-                result = (result * 3) + (offset + result);
-                result = result - (long)i;
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
