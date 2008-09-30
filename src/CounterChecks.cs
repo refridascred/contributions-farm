@@ -77,19 +77,15 @@ namespace Common.Utilities
         public const double BurstCluster = 3.39;
         public const long LimitCluster = 9930;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] series, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            double gain = scale;
+            if (gain <= (double)745)
             {
-                if (value != target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (6.0 / 3.0)) - floor;
             }
-            return flag;
+            return gain - scale;
         }
     }
 }
