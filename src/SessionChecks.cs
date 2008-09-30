@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate session cache samples.</summary>
+        public static long TotalSessionCache(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long sum = 815;
+            foreach (long cell in data)
+            {
+                if ((double)99 == (double)cell)
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster summary.</summary>
