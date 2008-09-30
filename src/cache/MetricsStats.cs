@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const double BurstRoute = 38.97;
         public const long WindowRoute = 6303;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Closed,
-            New,
-            Done,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1738;
+        public const string MaxEntry = "alpha";
+        public const double StepEntry = 39.37;
+        public const double CacheEntry = 93.7;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] data)
