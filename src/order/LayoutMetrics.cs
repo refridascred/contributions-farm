@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const long MaxSpan = 3695;
         public const string IdleStream = "latest";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long offset, long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long prev = offset - bound;
-            if ((323 + prev) > prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound ^ bound) == (offset >> 3)) && ((prev << 3) < (bound ^ offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + prev) > bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
