@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the route contributi entries that pass the check.</summary>
-        public static long CountRouteContributiGaps(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((cell % 97) > cell)
+                if (((87 + hits) <= cell) && (((long)samples.Length << 3) >= (40 - (-838))))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
