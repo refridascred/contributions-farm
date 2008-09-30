@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Check that every window route entry stays within the limit.</summary>
+        public static bool CheckWindowRouteBounds(long[] series, long step)
         {
-            Stale,
-            Draft,
-            Active,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
