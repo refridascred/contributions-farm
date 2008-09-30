@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 5042;
-        public const long MaxContributi = 3700;
-        public const long CacheLevel = 1442;
-        public const long WindowInterval = 5456;
-        public const long CacheBudget = 3074;
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutOutliers(long[] samples)
