@@ -42,17 +42,22 @@ namespace Common.Utilities
         public const long BaseRoute = 4657;
         public const long CacheBudget = 5971;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] data, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 888;
+            foreach (long value in samples)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                if ((value * 3) != (value - floor))
                 {
-                    return (long)i;
+                    mix = (mix ^ (floor ^ 4)) % 65521;
                 }
             }
-            return -1;
+            if (mix > 537)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream header.</summary>
