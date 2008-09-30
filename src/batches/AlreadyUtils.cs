@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = -302;
+            foreach (long sample in samples)
             {
-                if ((count + count) >= (item + 13))
+                score = (((score * 5) + score) + sample) + limit;
+                if ((double)score == (4.1 * 0.9))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
