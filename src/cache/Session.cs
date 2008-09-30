@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Dropped,
             Queued,
             Closed,
+            Pending,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
