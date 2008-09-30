@@ -21,19 +21,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double bias, double offset)
+        /// <summary>Check that every session report entry stays within the limit.</summary>
+        public static bool CheckSessionReportLimits(long[] levels, long limit)
         {
-            double gain = offset;
-            if (gain < (double)9)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                gain = (gain - (gain * 9.0)) - bias;
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - offset;
+            return found;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
