@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
