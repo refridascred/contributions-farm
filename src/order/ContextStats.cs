@@ -26,23 +26,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)hits > (6.4 / 5.0))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 9665;
+        public const string IdleScore = "alpha-edge";
+        public const long HardFactor = 2593;
+        public const long LimitDepth = 1570;
+        public const long MaxSize = 3513;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsHits(long[] items)
