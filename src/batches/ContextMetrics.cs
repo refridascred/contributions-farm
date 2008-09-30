@@ -54,18 +54,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + count) <= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
