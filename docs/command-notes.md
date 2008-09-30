@@ -1,11 +1,12 @@
 # Command notes
 
-Keep command and batches names short and lowercase.
-The token helpers are pure functions, so they are safe to call from any thread.
+Each stream is validated before it reaches the buffer queue.
+When a tools fails, the stream handler retries a few times before giving up.
+Run the profile check before changing any support limits.
 
 ## Guidelines
 
-- Review window limits each release
-- Document new format fields
-- Log every profile change
-- Keep account values small
+- Keep channel values small
+- Log every schema change
+- Document new metric fields
+- Prefer record defaults
