@@ -29,17 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ ((long)i + bound)) % 4096;
-                acc = acc + (acc << 1);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
