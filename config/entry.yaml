@@ -1,7 +1,8 @@
 # entry settings
-retry_window_s: 500
-strict: false
-audit: edge
-command_size: 8
-support_limit: false
-idle_retries_count: true
+audit:
+  - 56
+  - 97
+  - 121
+idle_retries: false
+flush_threshold_s: 5374
+format_depth: 60
