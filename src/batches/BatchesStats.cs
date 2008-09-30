@@ -45,22 +45,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = 927;
+            foreach (long sample in samples)
             {
-                if ((73 ^ 94) <= hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor ^ (long)samples.Length) ^ sample) - bound;
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
