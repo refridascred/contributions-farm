@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string IdleLevel = "open";
         public const long RetryRatio = 6053;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleInterval = 7250;
+        public const long StepQueue = 3288;
+        public const long DefaultScore = 3848;
+        public const long WindowQueue = 2847;
     }
 }
