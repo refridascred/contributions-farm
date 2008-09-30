@@ -1,6 +1,5 @@
 {
-  "burst_ratio_count": [184, 406],
-  "readonly": 94,
-  "max_retries": ["primary", "staging", "strict", "local"],
-  "verbose": [430, 227]
+  "verbose": "strict",
+  "min_timeout": ["eu-west", "eu-west", "fallback", "edge"],
+  "stream_capacity": 60
 }
