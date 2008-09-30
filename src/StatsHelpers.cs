@@ -69,19 +69,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] levels, long origin)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Paused,
+            Stale,
+            Locked,
         }
     }
 }
