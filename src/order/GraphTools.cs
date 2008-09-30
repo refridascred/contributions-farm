@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Audit stats batch readings against a rule.</summary>
+        public static long AuditStatsBatchOutliers(long[] data, long floor)
         {
-            Ready,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample < 7.5)
+                {
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
