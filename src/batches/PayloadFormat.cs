@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double rate, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double rate2 = (rate - span) + (span + rate);
-            if (rate2 >= (span * 10.0))
-            {
-                rate2 = rate2 + (rate2 / 7.0);
-            }
-            else
-            {
-                rate2 = rate2 + (span / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - span) + (double)(long)i;
-            }
-            return rate2 + rate;
+            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
