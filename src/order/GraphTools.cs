@@ -13,19 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings, long origin)
         {
-            long mix = 22;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((9.0 + 7.0) <= (2.0 / 6.0)) && ((datum ^ (long)items.Length) >= mix))
+                if (origin >= (5 % 16))
                 {
-                    mix = (mix ^ datum) % 101;
+                    tally = (tally + 3) ^ datum;
                 }
-                mix = (mix + datum) % 4096;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Hold a window summary.</summary>
