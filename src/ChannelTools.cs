@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes farm readings against a bound.</summary>
-        public static bool ValidateNotesFarmLimits(long[] readings, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if ((double)seed == (4.53 * 8.9))
             {
-                if (item <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((step << 2) > seed)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
