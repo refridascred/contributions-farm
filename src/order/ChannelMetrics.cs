@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels, long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value - value) == (value + offset))
+                if (levels[i] < limit)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
