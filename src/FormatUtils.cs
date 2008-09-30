@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = weight;
+            if (scale < (double)5)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale = scale + span;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - 9.0) - (double)(long)i;
+            }
+            return scale - weight;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
