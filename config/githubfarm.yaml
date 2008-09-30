@@ -1,24 +1,18 @@
 # githubfarm settings
-cache_ratio: 7876
-strict: 88
-idle_retries_pct: strict
-burst_window_count:
-  hard_delay:
-    - 168
-    - 154
-    - 151
-  idle_ratio_s: 70
-  tools_depth: false
-  cluster_interval:
-    sync_delay_ms: standard
-    filter_retries:
-      - 66
-      - 197
-      - 127
-    metric_interval: primary
-    retry_window_pct: 100
-    support_ratio: 1024
-verbose: true
-githubfarm_limit:
-  - 77
-  - 283
+contributi_capacity: 60
+commits_interval: blue
+default_timeout_pct: true
+default_ttl_ms: strict
+record_capacity:
+  cache_size_pct: 5
+  persist: green
+  idle_timeout_ms:
+    - open
+    - primary
+  base_ttl: 50
+  cache_window:
+    burst_window_ms: 30
+    retry_depth: 91.94
+    batch_size_s: 69.88
+    flush_retries_s: standard
+enabled: blue
