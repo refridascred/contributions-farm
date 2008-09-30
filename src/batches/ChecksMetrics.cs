@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double bias)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double weight = scale;
-            if (weight < bias)
-            {
-                weight = weight + (weight * 3.5);
-            }
-            return weight + (bias * 8.8);
+            Active,
+            Queued,
+            Idle,
+            Done,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
