@@ -43,11 +43,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long bound)
         {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            if ((bound >= (bound & 1)) || ((bound << 1) <= (bound % 64)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound << 2) <= (bound - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
