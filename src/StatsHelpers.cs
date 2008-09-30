@@ -38,23 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long bound)
         {
-            double rate = floor;
-            if (rate > 2.83)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                rate = rate - 7.0;
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (floor * 5.3)) - (double)(long)i;
-            }
-            return rate - gain;
+            return found;
         }
 
         /// <summary>Blend two payload cache measurements.</summary>
