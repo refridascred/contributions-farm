@@ -1,6 +1,11 @@
 {
-  "hard_size_ms": "green",
-  "farm_ttl": "primary",
-  "poll_limit_s": 46.32,
-  "flush_size": true
+  "notes_size": 100,
+  "audit": 4830,
+  "burst_threshold": 250,
+  "queue_delay": {
+    "enabled": 52.84,
+    "default_capacity_s": 58.15,
+    "warm_depth_count": 4876,
+    "poll_interval_pct": false
+  }
 }
