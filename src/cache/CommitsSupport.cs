@@ -39,11 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7519;
-        public const long HardGraph = 6553;
-        public const long MinGraph = 7524;
-        public const double SoftRatio = 95.89;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleSize = 8.65;
+        public const long BaseRoute = 4657;
+        public const long CacheBudget = 5971;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] data, long step)
