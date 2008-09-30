@@ -72,17 +72,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route cache entry that matches the target.</summary>
-        public static long LocateRouteCacheIndex(long[] items, long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Synced,
+            Active,
+            Queued,
         }
     }
 }
