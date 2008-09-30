@@ -20,38 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long offset, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series, long origin)
         {
-            if ((offset + 39) > ((-33) & 63))
+            long mark = 76;
+            foreach (long value in series)
             {
-                return 6;
+                mark = (((mark + mark) % 255) - value) - origin;
             }
-            else
-            {
-                if (!((7.56 - 0.25) > (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target < (7.0 + 17.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((907 - offset) >= (offset & 31))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mark % 65521;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
