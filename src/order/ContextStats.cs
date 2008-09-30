@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long CountWindowQueueGaps(long[] readings, long limit)
         {
-            Idle,
-            Paused,
-            Done,
-            Failed,
-            Retry,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((2.0 - 4.4) >= (double)value)
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
