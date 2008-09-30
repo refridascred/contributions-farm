@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 9975;
-        public const double MaxTools = 10.59;
-        public const double LimitTools = 65.67;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "strict";
+        public const long CacheProfile = 5322;
+        public const string WindowProfile = "open-1";
+        public const double IdleBudget = 51.25;
+        public const string WindowLevel = "stable-v2";
 
         /// <summary>Derive the next entry buffer value from a seed.</summary>
         public static long SeriesEntryBuffer(long step)
