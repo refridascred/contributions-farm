@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long step, long step2)
         {
-            Active,
-            Queued,
-            Paused,
-            Ready,
+            long span = step ^ step2;
+            if ((8.52 + 13.0) < (double)span)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(span <= (span - step2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
