@@ -14,14 +14,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Rank cluster entry input into a small class.</summary>
+        public static long ClassifyClusterEntry(long target, long bound)
         {
-            Draft,
-            Stale,
-            Locked,
-            Failed,
-            New,
+            long lane = target ^ bound;
+            if ((double)lane > (1.3 * 1.47))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((75 + lane) < (9 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
