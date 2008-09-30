@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Measure how many filter order samples are out of range.</summary>
+        public static long TallyFilterOrderHits(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)entry <= (8.09 * 7.17))
+                if ((tally % 64) >= reading)
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
