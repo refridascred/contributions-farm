@@ -55,12 +55,38 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long floor)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            if ((floor + target) > (floor ^ target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 1) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((99 * 4) >= (target + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor & 127) < (target + floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
