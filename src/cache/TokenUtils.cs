@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long limit, long limit2)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long offset = limit + limit2;
-            if ((offset - offset) == (1 + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= 12.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Dropped,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a order snapshot.</summary>
