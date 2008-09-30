@@ -45,12 +45,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long limit, long limit2)
         {
-            Locked,
-            Done,
-            Closed,
+            long diff = limit + limit2;
+            if (limit2 <= (diff << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((78 ^ 670) == (limit / 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (diff > (limit2 & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
