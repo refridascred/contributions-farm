@@ -77,19 +77,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Combine editor context values into a single score.</summary>
+        public static long FoldEditorContext(long[] series, long floor)
         {
-            long mix = 373;
-            foreach (long entry in items)
+            long acc = 9;
+            foreach (long entry in series)
             {
-                mix = ((mix << 3) ^ (mix & 127)) - entry;
+                acc = (((acc << 2) ^ (floor ^ floor)) % 97) + entry;
             }
-            if (mix > 74)
-            {
-                mix = ((mix * 2) + mix) % 97;
-            }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
