@@ -39,39 +39,10 @@ namespace Common.Utilities
         public const long RetrySpan = 9048;
         public const long MaxReport = 2032;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long seed)
-        {
-            if ((step - seed) >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + seed) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 3) >= (seed + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((7.14 / 6.0) == (double)step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxInterval = 7080;
+        public const double HardToken = 59.3;
+        public const double IdleFactor = 59.83;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
