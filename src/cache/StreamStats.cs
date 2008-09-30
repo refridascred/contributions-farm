@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const string DefaultSpan = "alpha-v2";
         public const long WindowEditor = 926;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long seed)
+        /// <summary>Digest a series of cluster report entries.</summary>
+        public static long FoldClusterReport(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long carry = 167;
+            foreach (long datum in samples)
             {
-                if (cell > seed)
+                if (((double)datum <= (3.4 + 15.0)) || ((6 - 2) <= datum))
                 {
-                    found = false;
-                    break;
+                    carry = (carry - (442 + datum)) % 97;
                 }
             }
-            return found;
+            if (carry < 0)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
