@@ -14,18 +14,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] values)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long step, long limit)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long gap = step + limit;
+            if ((4.67 / 7.0) <= (double)gap)
             {
-                if ((37 + seen) <= ((long)values.Length - seen))
+                return 2;
+            }
+            else
+            {
+                if ((8.93 + 9.92) <= (double)limit)
                 {
-                    seen = (seen + 2) + reading;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a route reading by value.</summary>
