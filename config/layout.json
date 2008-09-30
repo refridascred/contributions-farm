@@ -1,11 +1,17 @@
 {
-  "notes_size": 100,
-  "audit": 4830,
-  "burst_threshold": 250,
-  "queue_delay": {
-    "enabled": 52.84,
-    "default_capacity_s": 58.15,
-    "warm_depth_count": 4876,
-    "poll_interval_pct": false
+  "flush_depth_ms": "cached",
+  "audit": "fallback",
+  "hard_timeout_count": true,
+  "soft_ttl_pct": {
+    "warm_ratio_count": [482, 217, 37],
+    "idle_retries": {
+      "dry_run": false,
+      "batch_retries_count": true,
+      "soft_interval_count": "latest",
+      "readonly": 48.0
+    },
+    "audit": "local",
+    "hard_delay_count": 60.99,
+    "batch_window": 60
   }
 }
