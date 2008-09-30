@@ -31,15 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
