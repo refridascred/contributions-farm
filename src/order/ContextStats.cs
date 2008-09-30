@@ -24,12 +24,23 @@ namespace Common.Utilities
             return bias + (span * 8.1);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 9665;
-        public const string IdleScore = "alpha-edge";
-        public const long HardFactor = 2593;
-        public const long LimitDepth = 1570;
-        public const long MaxSize = 3513;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] data, long target)
+        {
+            long result = 4;
+            foreach (long datum in data)
+            {
+                if ((target - datum) != (datum >> 5))
+                {
+                    result = (result * 4) + (8 * 3);
+                }
+                else
+                {
+                    result = ((result * 4) + (target + (-95))) % 97;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long offset)
