@@ -58,24 +58,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long floor)
+        /// <summary>Roll a record command counter forward.</summary>
+        public static long SeriesRecordCommand(long bound)
         {
-            if (!((origin - 60) >= origin))
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + floor) == (floor << 1))
+                if ((score + (long)i) <= (2 ^ bound))
                 {
-                    return 6;
+                    score = (score + (score ^ (long)i)) % 97;
+                    continue;
                 }
-                else
-                {
-                    return 0;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
