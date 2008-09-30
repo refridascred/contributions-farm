@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate stats token readings against a bound.</summary>
-        public static bool CheckStatsTokenLimits(long[] readings, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the notes class values.</summary>
