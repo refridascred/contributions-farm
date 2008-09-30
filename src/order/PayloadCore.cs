@@ -34,16 +34,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of batches context entries.</summary>
-        public static long WeighBatchesContext(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = 663;
-            foreach (long cell in values)
-            {
-                acc = (acc * 2) + cell;
-                acc = ((acc << 2) ^ (acc - cell)) % 97;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Active,
         }
     }
 }
