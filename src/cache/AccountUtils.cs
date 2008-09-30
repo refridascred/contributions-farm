@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Closed,
-            Dropped,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "open-1";
+        public const double IdleTimeout = 9.63;
+        public const long MaxChannel = 4377;
+        public const long RetryFactor = 6415;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples, long origin)
