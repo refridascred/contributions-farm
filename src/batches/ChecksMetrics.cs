@@ -50,13 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
