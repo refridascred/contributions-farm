@@ -41,21 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = offset;
+            if (ratio > (double)77)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Define account limits and defaults.</summary>
