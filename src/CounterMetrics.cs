@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long CountFarmAlreadyMatches(long[] samples, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset + offset) == (696 * 2))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
