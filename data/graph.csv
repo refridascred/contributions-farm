@@ -1,6 +1,10 @@
-id,owner,state
-1,894,23.16
-2,3.67,760
-3,open,latest
-4,primary,457
-5,strict,12
+id,state,active
+1,legacy,975
+2,329,local
+3,80.27,758
+4,69.4,strict
+5,56,59
+6,314,432
+7,local,81
+8,33.07,fallback
+9,cached,92
