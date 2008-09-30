@@ -24,17 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] readings, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 21;
+            foreach (long entry in series)
             {
-                if (readings[i] == seed)
+                anchor = anchor ^ anchor;
+                if (((double)anchor == (double)82) && ((entry + anchor) <= (anchor << 1)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + anchor) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
