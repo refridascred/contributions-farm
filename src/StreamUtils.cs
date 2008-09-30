@@ -68,32 +68,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long limit, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long slot = limit - offset;
-            if ((double)limit != (double)slot)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit >> 2) < (909 % 64)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((7.0 * 2.8) == (double)offset))
+                    if ((values[i] ^ values[j]) > 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
