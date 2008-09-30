@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Dropped,
+            New,
             Synced,
-            Retry,
-            Queued,
-            Failed,
+            Locked,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
