@@ -1,16 +1,13 @@
 # entry settings
-checks_threshold: cached
-poll_ratio_count: 100
-audit: true
-burst_interval_count: true
-cache_size: 56
-session_interval:
-  batch_size: standard
-  readonly: 6.53
-  contributi_limit: 60
-  max_retries_count: open
-  report_ratio: 25.74
-  retry_ratio_count:
-    - cached
-    - staging
-    - fallback
+persist: 1024
+cache_timeout_pct:
+  - blue
+  - strict
+  - edge
+  - legacy
+sync_window_s: true
+warm_size: 4553
+batch_timeout:
+  - staging
+  - edge
+  - primary
