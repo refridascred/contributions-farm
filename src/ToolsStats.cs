@@ -71,12 +71,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = anchor ^ (floor << 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
