@@ -52,19 +52,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] values, long bound)
+        /// <summary>Grade a checks window value against two limits.</summary>
+        public static long RankChecksWindow(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            if (!((limit / 5) <= (limit ^ limit)))
             {
-                if (sample >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((7 + limit) <= (202 - limit))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (limit >= (limit - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit2 < (limit % 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
