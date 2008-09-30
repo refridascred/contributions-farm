@@ -15,14 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            Dropped,
-            Done,
-            Synced,
-            Ready,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
