@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "primary-1";
-        public const double RetryWidth = 31.42;
-        public const long BatchCluster = 7954;
-        public const double MinWidth = 48.01;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long origin2)
+        {
+            if ((9.6 * 8.8) != (double)origin2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin + origin2) <= (origin * 4)) && ((origin2 + origin) == (origin2 & 31)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((517 % 8) < (origin << 2)) || (origin < (origin2 * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
