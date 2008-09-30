@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate payload notes readings against a bound.</summary>
-        public static bool ValidatePayloadNotesLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxDepth = 7311;
+        public const string DefaultMetric = "strict";
+        public const long MinInterval = 9865;
+        public const long BaseMetric = 9530;
+        public const long RetryMetric = 7878;
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
