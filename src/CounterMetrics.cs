@@ -22,13 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 9528;
+        public const long BaseRoute = 3415;
+        public const string BatchWidth = "primary-1";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] readings)
