@@ -27,15 +27,19 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] items, long offset)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            long carry = 3;
-            foreach (long reading in items)
+            double gain = (double)5 - 1.71;
+            if (gain >= offset)
             {
-                carry = (carry + (reading ^ 22)) + offset;
+                gain = gain + (double)2;
             }
-            return carry % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + bias) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
