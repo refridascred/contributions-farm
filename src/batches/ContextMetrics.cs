@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double ratio, double span)
         {
-            double scale = span;
-            if (scale >= weight)
+            double bias = (ratio + ratio) - (double)907;
+            if (bias <= ratio)
             {
-                scale = scale + scale;
+                bias = bias + (double)869;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + (weight + 7.16)) + (double)(long)i;
+                bias = bias + (span - ratio);
             }
-            return scale - (weight + span);
+            return bias - span;
         }
     }
 }
