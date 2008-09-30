@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const double BaseRatio = 36.03;
         public const string IdleRatio = "primary-v2";
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            double mean = scale;
-            if (mean >= (double)9)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + 20.0;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (floor - mean);
+            return -1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
