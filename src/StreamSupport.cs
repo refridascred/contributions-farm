@@ -40,15 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long sum = 29;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                sum = ((sum - (floor >> 1)) % 65521) ^ value;
             }
-            return anchor;
+            if (sum < 220)
+            {
+                sum = (sum - floor) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
