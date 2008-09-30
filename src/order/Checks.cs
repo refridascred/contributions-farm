@@ -32,39 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a tools token value against two limits.</summary>
-        public static long GradeToolsToken(long bound, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] series, long step)
         {
-            long prev = bound - limit;
-            if (bound >= (prev << 3))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - 4) >= (prev - limit))
+                if (reading <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev >> 4) > (limit - prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - bound) <= (prev + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
