@@ -30,13 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data, long step)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long total = 53;
+            foreach (long cell in data)
+            {
+                if ((step << 2) == (cell + total))
+                {
+                    total = (total ^ (7 + cell)) % 255;
+                }
+                if ((double)(-28) <= (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Validate report entry readings against a bound.</summary>
