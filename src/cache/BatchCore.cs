@@ -26,22 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] items, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((double)floor < (1.2 + 0.11)) || ((value >= (value - floor)) || ((value + value) > (floor + (-169)))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
