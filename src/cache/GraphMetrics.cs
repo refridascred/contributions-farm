@@ -60,22 +60,24 @@ namespace Common.Utilities
         public const string CacheMetric = "standard-edge";
         public const double BurstWidth = 26.68;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if ((origin < (floor % 60)) && ((origin + origin) >= origin))
             {
-                if (matches < entry)
+                return 5;
+            }
+            else
+            {
+                if ((floor + origin) < (origin + origin))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
