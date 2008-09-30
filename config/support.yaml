@@ -1,8 +1,9 @@
 # support settings
-flush_size:
-  - staging
-  - latest
-  - local
-  - latest
-default_size_s: 65.16
-poll_limit: 2742
+schema_interval: 78.17
+audit:
+  - legacy
+  - open
+  - stable
+idle_ttl_ms: false
+batches_window: 78
+sync_depth: 34
