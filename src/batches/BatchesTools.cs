@@ -37,18 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit channel report readings against a rule.</summary>
-        public static long MeasureChannelReportHits(long[] levels)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen * 4) < (seen - seen))
+                if ((data[i] == seed) && ((data[i] % 5) != 0))
                 {
-                    seen = (seen + 1) - entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
