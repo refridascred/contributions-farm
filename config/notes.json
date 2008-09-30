@@ -1,10 +1,12 @@
 {
-  "strict": {
-    "route_ttl": "strict",
-    "min_interval_pct": 7645,
-    "order_retries": [388, 243, 448, 287],
-    "enabled": 73
-  },
-  "base_window_s": "fallback",
-  "compress": "green"
+  "warm_capacity_pct": false,
+  "order_timeout": 1024,
+  "readonly": 43.8,
+  "max_window_pct": "green",
+  "retry_depth": [413, 421, 320, 436],
+  "record_ttl": {
+    "profile_delay": 86.25,
+    "format_ttl": 43.86,
+    "dry_run": 27
+  }
 }
