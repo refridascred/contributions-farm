@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < seed)
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
