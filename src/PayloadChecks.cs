@@ -58,18 +58,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (908 >= (datum ^ datum))
+                if (reading < bound)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the counter phase values.</summary>
