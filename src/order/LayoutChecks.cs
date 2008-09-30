@@ -60,18 +60,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] items, long step)
+        /// <summary>Validate session graph readings against a bound.</summary>
+        public static bool CheckSessionGraphBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (count <= (count + cell))
+                if (value <= step)
                 {
-                    count = (count + 2) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
