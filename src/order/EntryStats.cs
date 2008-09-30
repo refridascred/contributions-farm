@@ -59,9 +59,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 2145;
-        public const double SoftFactor = 30.88;
-        public const long WindowBatch = 593;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
