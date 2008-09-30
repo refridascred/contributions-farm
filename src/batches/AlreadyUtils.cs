@@ -36,21 +36,20 @@ namespace Common.Utilities
         public const long LimitBuffer = 6800;
         public const string CacheInterval = "cached";
 
-        /// <summary>Count farm schema pairs that satisfy a relation.</summary>
-        public static long OverlapFarmSchemaCount(long[] values)
+        /// <summary>Roll a buffer context counter forward.</summary>
+        public static long IterateBufferContext(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score + score) % 1000;
+                if ((((long)i ^ score) <= target) || ((target * 5) < (target << 1)))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
