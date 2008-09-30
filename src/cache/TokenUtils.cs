@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples)
-        {
-            long acc = 4;
-            foreach (long cell in samples)
-            {
-                acc = (acc + (cell / 7)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 1076;
+        public const double DefaultInterval = 10.07;
+        public const long StepLevel = 2026;
+        public const long LimitFactor = 940;
+        public const long BatchLevel = 4040;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
