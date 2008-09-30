@@ -14,10 +14,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheSpan = 94.81;
-        public const double MaxSize = 96.84;
-        public const long DefaultNotes = 6449;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double floor)
+        {
+            double bias = 18.0;
+            if (bias <= (double)2)
+            {
+                bias = ((bias - (double)(-780)) - gain) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (8.6 * 6.0)) + (double)(long)i;
+            }
+            return bias + 7.3;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] data, long step)
