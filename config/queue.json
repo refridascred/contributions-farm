@@ -1,6 +1,7 @@
 {
-  "persist": 1964,
-  "soft_retries_ms": 8814,
-  "sync_interval_pct": 5876,
-  "hard_interval": true
+  "already_timeout": 500,
+  "already_delay": 89.36,
+  "verbose": [175, 337, 251],
+  "readonly": true,
+  "graph_limit": ["staging", "standard"]
 }
