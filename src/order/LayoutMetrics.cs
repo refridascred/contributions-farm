@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] series)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((tally - 2) >= entry)
+                if (sample > target)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Adjust a graph reading.</summary>
