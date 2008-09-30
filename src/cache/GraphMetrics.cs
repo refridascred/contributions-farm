@@ -76,19 +76,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] series, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long mix = -7;
+            foreach (long item in values)
             {
-                if (datum < offset)
+                if (((mix + 4) == (256 & 7)) || ((item % 2) != (item & 63)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix ^ (item >> 5)) % 101;
+                }
+                else
+                {
+                    mix = mix + mix;
                 }
             }
-            return ready;
+            if (mix < 83)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
 
         /// <summary>Roll a report counter forward.</summary>
