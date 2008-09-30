@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long floor)
+        /// <summary>Count order support pairs that satisfy a relation.</summary>
+        public static long CompareOrderSupportCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
