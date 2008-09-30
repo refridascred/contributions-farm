@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long TallyBatchWindow(long[] data, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long carry = 78;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = carry + (reading * 2);
-                    carry = (carry + (long)i) % 1000;
-                }
-                if ((double)reading > 11.0)
-                {
-                    carry = carry ^ (carry - origin);
-                }
-            }
-            return carry;
+            Dropped,
+            Active,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
