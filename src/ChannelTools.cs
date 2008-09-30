@@ -24,19 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cluster command readings against a bound.</summary>
-        public static bool GuardClusterCommandLimits(long[] samples, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long acc = 963;
+            foreach (long cell in levels)
             {
-                if (item < step)
+                if (cell > (acc & 15))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (acc * 2)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (401 + acc)) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
