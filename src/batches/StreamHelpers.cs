@@ -22,20 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema channel counter forward.</summary>
-        public static long IterateSchemaChannel(long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] values, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((offset >= (offset ^ state)) || (117 < (state * 3)))
+                if ((entry - entry) <= entry)
                 {
-                    state = ((state * 2) + ((long)i - state)) % 255;
-                    state = (state << 3) ^ (offset >> 3);
+                    hits = (hits + 2) - offset;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the farm editor entries that pass the check.</summary>
