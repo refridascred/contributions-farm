@@ -13,12 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
