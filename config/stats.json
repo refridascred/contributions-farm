@@ -1,8 +1,14 @@
 {
-  "queue_size": [368, 264, 208, 118],
-  "warm_limit_count": "strict",
-  "max_retries_count": ["strict", "standard"],
-  "flush_capacity": "strict",
-  "poll_retries": [462, 360, 403, 407],
-  "enabled": 2590
+  "graph_size": {
+    "warm_ttl_pct": 100,
+    "max_limit_ms": [434, 193, 90, 149],
+    "dry_run": 388,
+    "retry_limit": 2526,
+    "sync_limit_pct": "edge",
+    "hard_capacity_ms": "green"
+  },
+  "persist": 8.63,
+  "filter_limit": 79.81,
+  "burst_threshold_pct": ["strict", "stable"],
+  "cache_threshold_pct": 4404
 }
