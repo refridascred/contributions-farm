@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long step)
         {
-            long sum = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                sum = (sum + (reading >> 5)) % 255;
-                if ((sum >> 5) > reading)
+                if ((double)step == (5.97 / 6.0))
                 {
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
