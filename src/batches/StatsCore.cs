@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
