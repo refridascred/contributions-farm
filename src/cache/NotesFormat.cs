@@ -28,19 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
