@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict standard primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+RECORD_LIMIT=181
+log "limit is ${RECORD_LIMIT}"
+
+for item in green staging blue standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
