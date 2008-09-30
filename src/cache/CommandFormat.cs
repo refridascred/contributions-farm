@@ -30,22 +30,15 @@ namespace Common.Utilities
         public const long DefaultReport = 8257;
         public const long SoftReport = 4556;
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long CountBatchesFarmGaps(long[] items, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double load = (double)(26 + 7);
+            if (load > bias2)
             {
-                if ((double)reading >= (9.45 + 8.0))
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + load) - bias;
             }
-            return count;
+            return load - load;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
