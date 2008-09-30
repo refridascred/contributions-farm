@@ -53,13 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long floor)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
