@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long target)
         {
-            double bias = 18.0;
-            if (bias <= (double)2)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                bias = ((bias - (double)(-780)) - gain) - floor;
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (8.6 * 6.0)) + (double)(long)i;
-            }
-            return bias + 7.3;
+            return valid;
         }
 
         /// <summary>Locate a route reading by value.</summary>
