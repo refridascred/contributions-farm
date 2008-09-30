@@ -34,21 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session already pairs that satisfy a relation.</summary>
-        public static long OverlapSessionAlreadyCount(long[] readings)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 899;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((state + cell) != (cell & 15))
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (state + 5)) % 255;
+                }
+                if ((state << 1) > (cell - cell))
+                {
+                    state = ((state * 2) + (cell - state)) % 65521;
                 }
             }
-            return tally;
+            if (state > 33)
+            {
+                state = state + (bound + state);
+            }
+            return state;
         }
     }
 }
