@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 3290;
+        public const string RetryCommand = "strict-edge";
+        public const double SoftCommand = 38.4;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] levels)
