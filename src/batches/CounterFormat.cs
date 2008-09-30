@@ -21,19 +21,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter githubfarm readings against a bound.</summary>
-        public static bool CheckFilterGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
