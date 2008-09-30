@@ -72,14 +72,11 @@ namespace Common.Utilities
             return load - (floor * 4.0);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double rate, double offset)
         {
-            Locked,
-            Dropped,
-            Active,
-            Paused,
-            Synced,
+            double rate2 = (double)(7 + 2);
+            return (rate2 + rate) + offset;
         }
     }
 }
