@@ -14,14 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] levels)
         {
-            Active,
-            Failed,
-            Idle,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((3.92 * 8.1) != (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window info.</summary>
