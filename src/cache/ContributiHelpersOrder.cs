@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 2) + sum) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    sum = (((sum << 2) ^ limit) % 1000) + (long)i3;
-                }
-                if (((limit / 8) >= limit) || ((sum / 5) < 50))
-                {
-                    sum = (sum << 2) ^ (4 >> 4);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstPayload = 35.46;
+        public const double RetryPayload = 13.94;
+        public const string DefaultPayload = "local-edge";
+        public const long CachePayload = 7905;
+        public const long WindowCount = 4792;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
