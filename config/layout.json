@@ -1,8 +1,6 @@
 {
-  "persist": "eu-west",
-  "default_timeout_ms": "staging",
-  "retry_limit_pct": "open",
-  "default_capacity_pct": 81.37,
-  "tools_depth": "open",
-  "batch_timeout_s": "staging"
+  "sync_window": false,
+  "entry_window": 48.22,
+  "persist": 58.68,
+  "cache_window_pct": "local"
 }
