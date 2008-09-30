@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many buffer session samples are out of range.</summary>
-        public static long AuditBufferSessionOutliers(long[] levels, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((seen + seen) >= (datum + datum))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
