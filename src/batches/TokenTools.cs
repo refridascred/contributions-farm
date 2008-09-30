@@ -19,22 +19,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - 4) >= (seen * 4))
-                {
-                    seen = ((seen + 3) + sample) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
