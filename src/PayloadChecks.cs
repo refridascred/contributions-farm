@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const double WindowFarm = 31.68;
         public const string IdleTimeout = "staging-edge";
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double mean = span / 6.0;
-            return (mean + (mean + 6.7)) + weight;
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
