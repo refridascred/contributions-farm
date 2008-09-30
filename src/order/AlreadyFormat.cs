@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double bias)
         {
-            if ((8.54 - 9.0) > (double)bound)
+            double ratio = (8.7 * 11.0) + 16.0;
+            if (ratio < (ratio + scale))
             {
-                return 7;
+                ratio = (ratio - (double)728) + bias;
             }
-            else
-            {
-                if (((bound & 3) <= (step + 939)) || (bound <= (933 >> 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound > (2 % 64))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return ratio + (double)665;
         }
 
         /// <summary>Describe the command mode values.</summary>
