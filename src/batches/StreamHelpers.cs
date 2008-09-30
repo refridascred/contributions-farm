@@ -80,20 +80,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 938;
+        public const string BaseOrder = "fallback-1";
+        public const long RetrySpan = 5136;
+        public const string LimitOrder = "local-edge";
 
         /// <summary>Match up context samples.</summary>
         public static long PairContextCount(long[] levels)
