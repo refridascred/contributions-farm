@@ -37,21 +37,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long gap = step + step2;
+            if ((step % 100) > (gap >> 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9.0 * 0.7) > (double)step)
                 {
-                    if ((items[i] - items[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)gap > (3.0 * 7.9))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap - 94) <= (step2 >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
