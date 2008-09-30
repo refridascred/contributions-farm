@@ -1,6 +1,8 @@
 {
-  "idle_depth_s": true,
-  "compress": ["legacy", "legacy", "primary"],
-  "burst_ratio": "stable",
-  "record_ratio": true
+  "min_ratio_s": 20.57,
+  "base_window": 80.25,
+  "compress": false,
+  "strict": 4914,
+  "channel_depth": 64,
+  "metrics_interval": [427, 253]
 }
