@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a channel stats value against two limits.</summary>
-        public static long BucketChannelStats(long target, long step)
-        {
-            if (step > (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 3) < 368)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6 / 7) < (step - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 30.98;
+        public const string MinAccount = "primary";
+        public const string SoftAccount = "cached-1";
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
