@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] items)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count + count) >= (item + 13))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
