@@ -51,19 +51,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] series, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (sample != offset)
+                if (!((530 + seen) > (item + seen)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
