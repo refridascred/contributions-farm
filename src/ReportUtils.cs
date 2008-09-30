@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 8040;
-        public const long MaxLevel = 4369;
-        public const long LimitAlready = 16;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((bound + count) < (count - entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double AdjustContext(double rate, double offset)
