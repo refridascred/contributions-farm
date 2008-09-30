@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] series, long bound)
+        /// <summary>Match up support format samples.</summary>
+        public static long PairSupportFormatCount(long[] series)
         {
             long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count + bound) < (count >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
