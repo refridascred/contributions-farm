@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] levels, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (((value >> 5) != (offset % 100)) && (((value - offset) != (long)levels.Length) || ((offset + 6) <= (offset - 9))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a order summary.</summary>
