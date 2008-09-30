@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data)
-        {
-            long acc = 1;
-            foreach (long datum in data)
-            {
-                acc = (acc ^ (datum - (-131))) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 9975;
+        public const double MaxTools = 10.59;
+        public const double LimitTools = 65.67;
 
         /// <summary>Derive the next entry buffer value from a seed.</summary>
         public static long SeriesEntryBuffer(long step)
