@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long origin)
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long SeekGraphCommitsIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if ((series[i] == target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
