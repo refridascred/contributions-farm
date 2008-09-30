@@ -39,18 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double bias = (double)(6 * 4);
+            if (bias > weight)
             {
-                if ((double)step == (5.97 / 6.0))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                bias = bias - (span / 9.0);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (double)592) + (double)(long)i;
+            }
+            return bias - (bias * 2.03);
         }
     }
 }
