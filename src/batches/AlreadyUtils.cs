@@ -20,12 +20,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 41.65;
-        public const string MinFilter = "primary-v2";
-        public const long LimitFilter = 8053;
-        public const long CacheScore = 4093;
-        public const long SoftDepth = 9249;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Paused,
+            Queued,
+            New,
+            Active,
+            Idle,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string RetryBuffer = "staging";
