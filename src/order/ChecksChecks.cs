@@ -22,18 +22,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 5) < 54)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
