@@ -52,17 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long floor)
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long AuditWindowAlreadyGaps(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (levels[i] > floor)
+                if (((double)value == (double)floor) || ((floor >> 1) < value))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
