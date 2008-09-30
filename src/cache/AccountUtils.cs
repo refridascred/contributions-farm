@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "strict";
-        public const long CacheProfile = 5322;
-        public const string WindowProfile = "open-1";
-        public const double IdleBudget = 51.25;
-        public const string WindowLevel = "stable-v2";
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Closed,
+            Dropped,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples, long origin)
