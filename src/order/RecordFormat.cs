@@ -25,18 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] levels, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (seen >= (seen - limit))
+                if ((4.42 * 5.0) >= (double)cell)
                 {
-                    seen = (seen + 3) ^ cell;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
