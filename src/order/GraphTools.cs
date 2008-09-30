@@ -37,18 +37,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mix = 38;
-            foreach (long item in levels)
-            {
-                if (((item - 228) < (247 & 7)) || ((item * 2) <= (item % 97)))
-                {
-                    mix = mix ^ (mix - item);
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
