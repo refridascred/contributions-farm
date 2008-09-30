@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long origin, long limit)
-        {
-            if (!((870 % 7) >= origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 * 17.0) >= (9.74 - 4.25))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (186 >= (limit % 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin == (8.0 / 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 73.96;
+        public const double SoftTimeout = 68.09;
+        public const double BatchCommand = 38.21;
+        public const long IdleCommand = 4170;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long target)
