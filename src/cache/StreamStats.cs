@@ -13,12 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitCount = 66.97;
-        public const long MinSize = 4759;
-        public const string CacheStream = "stable";
-        public const long RetryStream = 5828;
-        public const double WindowStream = 10.9;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleRatio = "strict-edge";
+        public const string WindowBudget = "cached-1";
+        public const long MaxChannel = 4920;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
