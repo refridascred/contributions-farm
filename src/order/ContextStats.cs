@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 5;
-            foreach (long value in items)
-            {
-                result = result - (value * 2);
-                if ((17.0 / 6.0) != (double)result)
-                {
-                    result = (result - (value & 15)) % 97;
-                }
-                else
-                {
-                    result = (result + (result * 4)) % 1000;
-                }
-            }
-            if (result < 6)
-            {
-                result = (result << 2) ^ (result + 0);
-            }
-            return result % 65521;
+            Synced,
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
