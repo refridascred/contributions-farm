@@ -21,21 +21,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] series)
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long MeasureSchemaBatchesGaps(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((12 > matches) || ((offset + 329) >= matches)) && ((offset - matches) == (offset + sample)))
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
