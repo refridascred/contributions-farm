@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] readings)
+        /// <summary>Accumulate metric tools samples.</summary>
+        public static long CombineMetricTools(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 637;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell - cell) == (sum + sum))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (cell & 31);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
