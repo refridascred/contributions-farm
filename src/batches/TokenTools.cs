@@ -29,12 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 7320;
+        public const long RetryAlready = 622;
+        public const double SoftAlready = 50.95;
+        public const long MinSpan = 6789;
+        public const double IdleAlready = 31.51;
     }
 }
