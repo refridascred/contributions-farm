@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Grade a order commits value against two limits.</summary>
-        public static long SortOrderCommits(long offset, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if (((double)bound == (double)offset) || (8.9 > (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 3) == (bound >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
