@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
