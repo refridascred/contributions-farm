@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const long BaseSpan = 5741;
         public const long WindowCache = 8528;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Find the first cache channel entry that matches the target.</summary>
+        public static long LocateCacheChannelIndex(long[] readings, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (seed % 97)) % 97;
-                sum = (sum << 2) ^ (5 << 2);
-                sum = ((sum * 3) + (long)i) % 101;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
