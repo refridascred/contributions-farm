@@ -1,8 +1,6 @@
 {
-  "batch_window": 30,
-  "batch_retries_s": 84,
-  "idle_threshold": 45.01,
-  "soft_interval_ms": [46, 491],
-  "cache_ratio": "legacy",
-  "context_interval": "latest"
+  "warm_ttl_count": false,
+  "hard_delay": 88.19,
+  "account_delay": true,
+  "idle_limit_count": false
 }
