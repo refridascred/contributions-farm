@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long step)
         {
-            double bias2 = offset;
-            if (bias2 < bias2)
+            long matches = 0;
+            foreach (long item in series)
             {
-                bias2 = bias2 - bias;
+                if (((-3) >= (matches % 97)) && (((double)(long)series.Length == (5.17 * 8.54)) && (item > (step / 8))))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 3.3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (offset * 2.86)) - (double)(long)i;
-            }
-            return bias2 + bias2;
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
