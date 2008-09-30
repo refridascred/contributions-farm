@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a token metric reading.</summary>
-        public static double SmoothTokenMetric(double ratio, double floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double rate = (ratio / 8.0) * 0.9;
-            if (rate >= rate)
-            {
-                rate = rate + floor;
-            }
-            else
-            {
-                rate = rate - (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (8.04 * 8.7)) + (double)(long)i;
-            }
-            return rate + (ratio + floor);
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
