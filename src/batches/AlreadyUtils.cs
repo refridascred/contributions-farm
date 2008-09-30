@@ -50,22 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + bound) > (cell + cell)) && ((matches / 7) > 16))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 3722;
+        public const long SoftMetrics = 9767;
+        public const double BurstMetrics = 38.12;
+        public const string IdleMetrics = "legacy-1";
+        public const long DefaultScore = 8773;
     }
 }
