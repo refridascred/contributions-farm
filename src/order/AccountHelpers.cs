@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const long MinCommits = 2328;
         public const string SoftCommits = "open-1";
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardTimeout = 6431;
+        public const long StepCache = 9806;
+        public const string RetryScore = "strict-1";
+        public const long RetryCache = 4744;
+        public const long SoftDepth = 9880;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] series)
