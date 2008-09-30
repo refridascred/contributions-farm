@@ -47,9 +47,10 @@ namespace Common.Utilities
         public const double LimitBudget = 73.82;
         public const double MinLevel = 9.01;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftRatio = 4724;
-        public const long RetryRatio = 2440;
-        public const long BurstCommits = 6999;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryRatio = "primary";
+        public const double BatchSize = 53.68;
+        public const long CacheSchema = 7999;
+        public const long StepInterval = 8164;
     }
 }
