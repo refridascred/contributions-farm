@@ -12,19 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double bias)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long seed)
         {
-            double ratio = (double)(9 * 3);
-            if (ratio >= ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (double)9;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (gain - bias);
-            }
-            return ratio - (double)44;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
