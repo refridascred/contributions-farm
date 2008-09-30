@@ -40,15 +40,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double gain = floor;
-            if (gain <= 6.22)
-            {
-                gain = (gain + 4.2) + bias;
-            }
-            return gain - 9.0;
+            Closed,
+            Locked,
+            Dropped,
+            Idle,
+            Queued,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
