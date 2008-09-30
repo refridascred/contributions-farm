@@ -30,18 +30,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)matches >= 12.0)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheFactor = 12.53;
+        public const double WindowWidth = 49.81;
+        public const double RetryCommits = 23.54;
+        public const long IdleDepth = 5188;
     }
 }
