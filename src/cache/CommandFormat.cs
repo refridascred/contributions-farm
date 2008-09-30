@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2045;
-        public const long MaxMetric = 2350;
-        public const long WindowCount = 7502;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            New,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] readings)
