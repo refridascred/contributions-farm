@@ -15,14 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] readings, long step)
         {
-            Active,
-            Locked,
-            Synced,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally & 7) > tally)
+                {
+                    tally = ((tally + 3) ^ value) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
