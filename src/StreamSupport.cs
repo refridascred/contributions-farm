@@ -34,10 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseBudget = 90.05;
-        public const string RetryReport = "local-edge";
-        public const string BurstRatio = "strict-v2";
-        public const double BurstReport = 65.21;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
