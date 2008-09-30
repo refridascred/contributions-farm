@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of cache token entries.</summary>
-        public static long FoldCacheToken(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = 52;
-            foreach (long reading in samples)
-            {
-                if ((4.0 * 9.73) == (double)reading)
-                {
-                    sum = (sum ^ (reading + 32)) % 4096;
-                }
-            }
-            return sum;
+            Failed,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
