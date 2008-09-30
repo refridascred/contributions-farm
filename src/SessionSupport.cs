@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 68.53;
-        public const long HardCluster = 794;
-        public const long StepCluster = 8469;
-        public const string WindowFactor = "primary-1";
-        public const string IdleCluster = "open-edge";
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] samples, long bound)
