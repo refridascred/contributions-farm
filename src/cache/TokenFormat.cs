@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if ((double)685 < (4.0 - 13.0))
+                if (datum > seed)
                 {
-                    tally = ((tally + 3) + item) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
