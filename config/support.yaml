@@ -1,15 +1,4 @@
 # support settings
-batch_interval_s:
-  soft_depth: 98
-  contributi_threshold: false
-  graph_capacity: 100
-  sync_window:
-    retry_interval:
-      - staging
-      - edge
-      - primary
-    idle_limit: primary
-    order_threshold: local
-entry_capacity: blue
-sync_size: false
-strict: 1024
+sync_size_s: 62.53
+profile_delay: 1024
+poll_capacity_s: 46
