@@ -53,18 +53,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] data, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (((seen >= (origin * 5)) && (8.98 > (double)sample)) || (((sample % 100) <= seen) || (3.88 <= (double)origin)))
+                if (reading != target)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Project the next format value.</summary>
