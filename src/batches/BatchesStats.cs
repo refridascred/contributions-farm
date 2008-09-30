@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleInterval = "stable-v2";
-        public const long LimitProfile = 2316;
-        public const long CacheProfile = 7802;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Blend two contributi queue measurements.</summary>
         public static double BlendContributiQueue(double ratio, double floor)
