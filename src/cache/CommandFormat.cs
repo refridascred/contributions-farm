@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((7.0 + 8.0) < (double)sample)
+                if (bound < (state - bound))
                 {
-                    tally = tally + 2;
+                    state = ((state << 2) ^ (bound - (long)i)) % 97;
+                    state = (state - ((long)i << 2)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
