@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Idle,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 8040;
+        public const long MaxLevel = 4369;
+        public const long LimitAlready = 16;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowRange(long[] levels, long offset)
