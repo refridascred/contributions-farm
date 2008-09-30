@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const long BaseDepth = 2588;
         public const long WindowCache = 363;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((entry <= 878) && ((hits - 5) != ((-7) + entry))) || ((hits + hits) >= (57 & 1)))
+                if (value < (value + seen))
                 {
-                    hits = (hits + 1) + bound;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
