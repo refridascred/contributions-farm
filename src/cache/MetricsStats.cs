@@ -13,16 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double span)
-        {
-            double ratio = span - gain;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (span + span)) + (double)(long)i;
-            }
-            return ratio - span;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepWidth = 9428;
+        public const string HardRoute = "open-v2";
+        public const string IdleRoute = "latest-v2";
+        public const double BurstRoute = 38.97;
+        public const long WindowRoute = 6303;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
