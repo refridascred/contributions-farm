@@ -43,18 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double bias = (double)(84 - 721);
+            for (int i = 0; i < 4; i++)
             {
-                if (matches > (matches + matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                bias = ((bias - ratio) + (double)(long)i) + floor;
             }
-            return matches;
+            return bias - (bias * 8.6);
         }
     }
 }
