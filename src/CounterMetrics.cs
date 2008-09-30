@@ -40,31 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a session already pair into a bucket.</summary>
-        public static long GradeSessionAlready(long limit, long floor)
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long WeighGraphBuffer(long[] data, long limit)
         {
-            if ((limit & 15) <= (11 % 12))
+            long total = 549;
+            foreach (long sample in data)
             {
-                return 0;
+                total = (total ^ limit) + sample;
             }
-            else
+            if (total > 5)
             {
-                if (!((floor + limit) == (77 * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.1 * 5.3) >= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = total - (limit + limit);
             }
+            return total % 1000;
         }
 
         /// <summary>Describe the session kind values.</summary>
