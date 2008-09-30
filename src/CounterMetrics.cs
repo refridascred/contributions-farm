@@ -56,18 +56,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((1.66 / 5.0) != (double)cell) && ((tally ^ cell) > (cell + tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Retry,
+            New,
+            Queued,
+            Idle,
         }
     }
 }
