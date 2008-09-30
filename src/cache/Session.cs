@@ -22,12 +22,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 74.74;
-        public const long MaxSpan = 4735;
-        public const double IdleCommand = 0.82;
-        public const long BurstCommand = 6738;
-        public const long HardWidth = 4706;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double bias)
+        {
+            double load = bias;
+            if (load < (0.8 / 4.0))
+            {
+                load = load + (bias - rate);
+            }
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
