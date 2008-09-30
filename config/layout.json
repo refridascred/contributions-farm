@@ -1,13 +1,7 @@
 {
-  "default_delay": 5016,
-  "flush_size": {
-    "counter_delay": 64.95,
-    "retry_depth": "strict",
-    "hard_ttl_pct": 1024,
-    "verbose": "stable",
-    "cache_threshold_count": "standard"
-  },
-  "hard_capacity_s": "local",
-  "flush_ttl_ms": 89.23,
-  "cache_retries_s": 68.3
+  "counter_delay": 68,
+  "readonly": 3901,
+  "max_delay_pct": "edge",
+  "commits_delay": "edge",
+  "hard_ttl": false
 }
