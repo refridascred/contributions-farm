@@ -1,39 +1,4 @@
 # entry settings
-warm_threshold_s:
-  min_limit_ms:
-    min_interval_s: true
-    base_ratio_count: green
-    idle_ratio_s: 22
-  compress:
-    enabled:
-      - 228
-      - 396
-      - 223
-    retry_interval: true
-    base_delay_pct:
-      - 167
-      - 327
-      - 15
-    idle_threshold: 32
-    min_interval_pct: true
-    graph_size:
-      - 325
-      - 138
-      - 119
-  base_delay_ms: true
-dry_run: false
-sync_threshold:
-  default_capacity_pct: 31
-  enabled:
-    compress:
-      - eu-west
-      - fallback
-    sync_size_pct: cached
-    channel_capacity: 12.79
-    strict: local
-    retry_size_pct: false
-    batch_retries: true
-  counter_threshold: 37.7
-  retry_capacity: cached
-  burst_capacity_ms: 88.56
-  dry_run: local
+idle_interval_ms: true
+warm_ratio: primary
+channel_delay: eu-west
