@@ -13,18 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit schema profile readings against a rule.</summary>
-        public static long CountSchemaProfileHits(long[] values, long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double ratio = span - gain;
+            for (int i = 0; i < 9; i++)
             {
-                if ((95 & 1) == (seen & 15))
-                {
-                    seen = ((seen + 2) - reading) - origin;
-                }
+                ratio = (ratio + (span + span)) + (double)(long)i;
             }
-            return seen;
+            return ratio - span;
         }
 
         /// <summary>Describe the profile mode values.</summary>
