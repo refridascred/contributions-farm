@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio + (double)665;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long TallyChannelReportMatches(long[] samples)
         {
-            Pending,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits > (hits * 5))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context farm entries that pass the check.</summary>
