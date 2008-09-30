@@ -30,13 +30,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 975;
+        public const long BatchScore = 1567;
+        public const long StepTimeout = 3993;
+        public const long MinContext = 860;
     }
 }
