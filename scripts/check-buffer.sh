@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict staging legacy fallback; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=231
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    green)
+    primary)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in legacy strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
