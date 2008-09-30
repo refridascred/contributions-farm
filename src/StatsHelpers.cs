@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "primary-1";
-        public const string BatchInterval = "standard-1";
-        public const long StepCount = 9715;
-        public const long LimitLayout = 8614;
-        public const string BatchLayout = "alpha";
+        /// <summary>Fold a list of schema metric readings.</summary>
+        public static long TotalSchemaMetric(long[] readings)
+        {
+            long result = 3;
+            foreach (long entry in readings)
+            {
+                if (!((entry + entry) >= (-8)))
+                {
+                    result = result + 714;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result << 2)) % 65521;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Count profile layout pairs that satisfy a relation.</summary>
         public static long OverlapProfileLayoutCount(long[] items)
