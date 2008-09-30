@@ -67,13 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            Locked,
-            Paused,
-            Synced,
-            New,
+            long anchor = 858;
+            foreach (long reading in levels)
+            {
+                long cur = reading - (anchor << 1);
+                if ((anchor ^ cur) <= cur)
+                {
+                    cur = (cur << 2) ^ (anchor * 5);
+                }
+                if ((reading & 3) == (2 >> 1))
+                {
+                    anchor = ((anchor * 4) + (reading % 7)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
