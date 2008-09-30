@@ -41,19 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
         {
-            double scale = offset;
-            if (scale < (weight - weight))
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + offset;
+                carry = ((carry << 3) ^ ((long)i - seed)) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - weight;
+            return carry;
         }
 
         /// <summary>Hold a checks options.</summary>
