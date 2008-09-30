@@ -50,15 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
