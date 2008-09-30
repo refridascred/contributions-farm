@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long BucketFormatTools(long target, long floor)
         {
-            long sum = 760;
-            foreach (long sample in data)
+            if (5.79 >= (double)floor)
             {
-                if ((double)sample == (9.1 - 7.22))
+                return 4;
+            }
+            else
+            {
+                if ((9.83 <= (double)floor) && ((floor / 6) < (floor / 4)))
                 {
-                    sum = (sum + (313 >> 5)) % 1000;
+                    return 1;
                 }
-                if (((sum + sum) < (sample % 12)) && ((sample - sum) >= 671))
+                else
                 {
-                    break;
+                    if (6.03 < (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum > 7)
-            {
-                sum = ((sum * 4) + (sum % 24)) % 101;
-            }
-            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
