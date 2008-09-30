@@ -50,22 +50,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long limit)
+        /// <summary>Classify a session already pair into a bucket.</summary>
+        public static long GradeSessionAlready(long limit, long floor)
         {
-            if ((limit + 22) > (limit & 31))
+            if ((limit & 15) <= (11 % 12))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((bound << 2) == (limit + bound))
+                if (!((floor + limit) == (77 * 5)))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    return 6;
+                    if ((1.1 * 5.3) >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
