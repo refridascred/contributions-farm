@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((entry ^ 575) != (seen + seen)) || (((entry + entry) < (3 ^ seen)) || ((double)entry <= (9.0 - 9.91))))
+                if (!((tally - tally) >= sample))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
