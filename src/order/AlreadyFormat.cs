@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm cache measurements.</summary>
-        public static double AdjustFarmCache(double scale, double span)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double drift = scale;
-            if (drift >= 0.7)
-            {
-                drift = (drift + scale) - span;
-            }
-            return drift + drift;
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the context farm entries that pass the check.</summary>
