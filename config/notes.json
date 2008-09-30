@@ -1,5 +1,15 @@
 {
-  "hard_capacity_count": 7206,
-  "default_capacity_pct": false,
-  "poll_delay_count": 30
+  "poll_limit": "stable",
+  "default_delay_s": {
+    "filter_delay": true,
+    "queue_retries": 64.54,
+    "retry_capacity": "strict",
+    "warm_limit": 9245,
+    "githubfarm_depth": ["standard", "open", "standard"],
+    "compress": "stable"
+  },
+  "idle_interval": "green",
+  "dry_run": 12.78,
+  "batch_window_pct": 60,
+  "profile_depth": true
 }
