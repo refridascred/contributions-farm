@@ -14,22 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] levels, long offset)
         {
-            long total = 544;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((total % 97) != (cell << 3))
+                if (((value >> 5) != (offset % 100)) && (((value - offset) != (long)levels.Length) || ((offset + 6) <= (offset - 9))))
                 {
-                    total = ((total * 5) + (cell % 10)) % 255;
+                    matches = matches + 2;
                 }
             }
-            if (total < 398)
-            {
-                total = ((total << 3) ^ (total * 5)) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
