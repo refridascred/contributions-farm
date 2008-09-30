@@ -26,19 +26,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every notes window entry stays within the limit.</summary>
-        public static bool VerifyNotesWindowRange(long[] levels, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (datum >= step)
+                if ((seed & 63) < (seed << 2))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
