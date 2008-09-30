@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] levels)
         {
-            long carry = 1;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((1.59 + 7.7) != (double)bound) || ((bound + carry) >= (bound << 1)))
+                if ((matches + 2) < (value - value))
                 {
-                    carry = (carry ^ (bound + carry)) + reading;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
