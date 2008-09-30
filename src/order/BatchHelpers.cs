@@ -27,11 +27,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryDepth = 6396;
-        public const string CacheBuffer = "stable";
-        public const long SoftDepth = 1702;
-        public const long IdleDepth = 8678;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 6378;
+        public const string SoftNotes = "local-edge";
+        public const string BurstCount = "legacy-v2";
 
         /// <summary>Project the next checks payload value.</summary>
         public static double ScaleChecksPayload(double scale, double bias)
