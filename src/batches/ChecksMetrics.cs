@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Queued,
-            Synced,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstRatio = 3549;
+        public const long MinWindow = 3270;
+        public const string HardWindow = "latest-v2";
+        public const string DefaultBudget = "standard";
+        public const long BurstWindow = 1394;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double ratio, double bias)
