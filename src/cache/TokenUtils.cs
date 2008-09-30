@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum & 63) == (datum * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Match up batch samples.</summary>
