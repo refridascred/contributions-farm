@@ -31,17 +31,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a contributi queue reading by value.</summary>
-        public static long LocateContributiQueueIndex(long[] series, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + step) > (4 ^ step))
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((seed - 56) >= seed) && ((5.0 / 9.0) != (double)seed))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (1.6 <= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
