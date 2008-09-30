@@ -24,19 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (cell > limit)
+                if ((double)reading < 8.5)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
