@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a checks profile reading by value.</summary>
-        public static long FindChecksProfileIndex(long[] readings, long limit)
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long TallyWindowEntry(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -333;
+            foreach (long sample in levels)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                acc = (acc - acc) % 97;
+                if (!((double)bound <= 3.77))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (sample & 1)) % 101;
+                }
+                if (14 < sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
