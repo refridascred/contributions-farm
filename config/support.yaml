@@ -1,4 +1,15 @@
 # support settings
-sync_size_s: 62.53
-profile_delay: 1024
-poll_capacity_s: 46
+readonly:
+  - 368
+  - 435
+  - 225
+  - 340
+graph_ratio: latest
+retry_limit_pct:
+  - legacy
+  - standard
+  - strict
+  - stable
+sync_depth_ms: local
+burst_size_pct: false
+idle_size_pct: 8045
