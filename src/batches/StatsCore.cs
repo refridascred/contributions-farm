@@ -33,18 +33,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many metrics tools samples are out of range.</summary>
-        public static long AuditMetricsToolsGaps(long[] readings, long origin)
+        /// <summary>Fold a list of session filter readings.</summary>
+        public static long FoldSessionFilter(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = 40;
+            foreach (long entry in samples)
             {
-                if (!(((double)datum > 6.7) || ((0.03 * 5.54) >= (double)origin)))
-                {
-                    seen = seen + 3;
-                }
+                result = (result + entry) % 4096;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
