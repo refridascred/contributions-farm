@@ -47,9 +47,9 @@ namespace Common.Utilities
         public const double LimitBudget = 73.82;
         public const double MinLevel = 9.01;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 7225;
-        public const double BurstAccount = 32.97;
-        public const long IdleLevel = 8173;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftRatio = 4724;
+        public const long RetryRatio = 2440;
+        public const long BurstCommits = 6999;
     }
 }
