@@ -58,15 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double load = (double)0 - offset;
-            if (load > (bias + bias))
-            {
-                load = load - load;
-            }
-            return load - (double)24;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
