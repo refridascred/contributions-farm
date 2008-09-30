@@ -49,12 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            Stale,
-            Dropped,
-            Locked,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (1 >= (long)series.Length)
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
