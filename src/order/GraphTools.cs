@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long TotalProfileAccount(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = 20;
-            foreach (long value in items)
-            {
-                sum = sum - (value - value);
-            }
-            return sum;
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
