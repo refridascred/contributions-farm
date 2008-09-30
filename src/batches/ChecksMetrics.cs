@@ -75,22 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(datum >= (seen << 3)) && ((seen / 4) != (datum - 222)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
