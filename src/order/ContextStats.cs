@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseBudget = 4901;
-        public const double WindowChecks = 20.34;
-        public const string IdleBudget = "latest-edge";
-        public const double BatchChecks = 7.69;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Ready,
+            Dropped,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] samples, long target)
