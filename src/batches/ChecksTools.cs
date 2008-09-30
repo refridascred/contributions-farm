@@ -62,21 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Accumulate window already samples.</summary>
+        public static long ScoreWindowAlready(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 218;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)entry < 9.1) && ((4 >> 5) > (entry << 2)))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ entry;
                 }
             }
-            return count;
+            if (result < 64)
+            {
+                result = (result ^ (result << 2)) % 101;
+            }
+            return result;
         }
     }
 }
