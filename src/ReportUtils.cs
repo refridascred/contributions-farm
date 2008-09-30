@@ -24,10 +24,12 @@ namespace Common.Utilities
         public const long MaxLevel = 4369;
         public const long LimitAlready = 16;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 6692;
-        public const long MaxScore = 8508;
-        public const long MinBudget = 2598;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double rate, double offset)
+        {
+            double mean = (double)(44 * 4);
+            return ((mean + (double)(-78)) + rate) + offset;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultContext = 7008;
