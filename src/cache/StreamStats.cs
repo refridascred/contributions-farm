@@ -26,12 +26,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] series, long offset)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of window command readings.</summary>
