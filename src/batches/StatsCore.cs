@@ -78,19 +78,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] values, long target)
+        /// <summary>Combine channel batch values into a single score.</summary>
+        public static long FoldChannelBatch(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long sum = 1;
+            foreach (long datum in readings)
             {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum + (datum * 3)) % 255;
             }
-            return found;
+            return sum;
         }
     }
 }
