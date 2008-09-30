@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 30.98;
-        public const string MinAccount = "primary";
-        public const string SoftAccount = "cached-1";
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] values)
