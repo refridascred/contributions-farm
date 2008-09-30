@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long floor2)
         {
-            double weight = 0.54;
-            if (weight <= (1.42 - ratio))
+            if (((floor2 - floor2) <= (floor2 + 53)) || (576 <= (floor + floor2)))
             {
-                weight = (weight + (2.0 * 5.2)) + floor;
+                return 7;
             }
             else
             {
-                weight = weight - (weight * 16.0);
+                if ((floor << 2) != (floor2 + floor2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor == (9.6 * 1.89)) && (floor2 <= (floor2 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((floor % 2) <= floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return weight - 11.0;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
