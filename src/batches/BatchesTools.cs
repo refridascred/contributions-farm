@@ -42,12 +42,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            Idle,
-            Queued,
-            Dropped,
+            long anchor = 413;
+            foreach (long value in samples)
+            {
+                if ((double)value <= (3.77 * 8.55))
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                if ((value ^ 74) <= (5 << 1))
+                {
+                    break;
+                }
+            }
+            if (anchor < 72)
+            {
+                anchor = ((anchor << 2) ^ (5 + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
