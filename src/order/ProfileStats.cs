@@ -20,18 +20,15 @@ namespace Common.Utilities
             return bias2 + 2.7;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] data)
+        /// <summary>Fold a list of window entry readings.</summary>
+        public static long TallyWindowEntry(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = 19;
+            foreach (long value in samples)
             {
-                if (((double)cell >= 8.9) || (2.0 <= (double)count))
-                {
-                    count = count + 2;
-                }
+                mark = (((mark << 2) ^ (value % 8)) % 97) - origin;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
