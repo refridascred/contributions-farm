@@ -13,11 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double bias, double bias2)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long origin)
         {
-            double drift = bias2 - (6.7 + 5.8);
-            return (drift + (drift + 1.0)) + bias;
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a checks summary.</summary>
