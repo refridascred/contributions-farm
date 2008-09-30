@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
