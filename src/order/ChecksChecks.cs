@@ -24,17 +24,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
+        /// <summary>Grade a graph notes value against two limits.</summary>
+        public static long BucketGraphNotes(long origin, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = origin - offset;
+            if (((origin % 100) <= offset) || ((6.39 * 18.0) <= (double)offset))
             {
-                if (values[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if (((double)bound <= (3.17 + 8.0)) && ((origin - 29) != (bound - offset)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound > (origin / 6)) && (origin >= (offset * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - offset) == (offset + 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
