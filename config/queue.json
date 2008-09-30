@@ -1,17 +1,14 @@
 {
-  "stats_size": true,
-  "report_timeout": 8057,
-  "warm_depth": 500,
-  "idle_ratio": {
-    "warm_ratio_pct": {
-      "account_limit": "blue",
-      "poll_interval": 1881,
-      "soft_interval": "local",
-      "compress": false
-    },
-    "entry_ttl": "cached",
-    "persist": [41, 374, 348, 302],
-    "stats_ttl": "cached",
-    "audit": 100
+  "flush_interval_count": "latest",
+  "batch_ratio": 71,
+  "default_window": 43.65,
+  "cache_timeout_ms": 75.75,
+  "farm_delay": {
+    "verbose": 64.93,
+    "format_threshold": false,
+    "hard_depth_count": false,
+    "idle_capacity": 6178,
+    "command_size": 121,
+    "soft_ttl_s": 87.63
   }
 }
