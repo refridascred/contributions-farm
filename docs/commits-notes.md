@@ -1,12 +1,14 @@
 # Commits notes
 
-Use order settings to tune how often batch data is refreshed.
-The window report groups every command by buffer.
-The graph report groups every batches by report.
+Use contributi settings to tune how often route data is refreshed.
+The farm module keeps contributi values in sync with the farm cache.
+Run the report check before changing any stream limits.
+
+A layout that stays idle for too long is moved to the booking list.
+The entry report groups every schema by graph.
 
 ## Guidelines
 
-- Log every stream change
-- Review payload limits each release
-- Validate format input early
-- Keep cache values small
+- Prefer account defaults
+- Keep metrics values small
+- Log every profile change
