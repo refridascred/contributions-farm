@@ -1,6 +1,7 @@
-id,weight,token,ratio
-1,729,latest,open
-2,fallback,blue,76.63
-3,latest,38,335
-4,62.82,709,326
-5,primary,277,877
+id,ratio,score,region,active
+1,standard,53.71,520,93.75
+2,31.54,local,primary,legacy
+3,28,262,30.1,706
+4,517,72.49,647,18.07
+5,eu-west,462,906,fallback
+6,fallback,571,legacy,96.32
