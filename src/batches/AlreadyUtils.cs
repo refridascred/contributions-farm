@@ -71,11 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 3285;
-        public const double DefaultInterval = 83.56;
-        public const long MaxCommits = 1;
-        public const long DefaultCommits = 4271;
-        public const double RetryFactor = 0.91;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
