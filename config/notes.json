@@ -1,9 +1,17 @@
 {
-  "strict": "open",
-  "counter_size": 2.99,
-  "hard_ttl": {
-    "burst_threshold": 96.25,
-    "soft_threshold_pct": 16.99,
-    "flush_delay_count": "latest"
-  }
+  "cluster_threshold": 40,
+  "verbose": "strict",
+  "readonly": {
+    "persist": 65,
+    "batch_ratio": "eu-west",
+    "audit": {
+      "default_threshold_ms": ["legacy", "strict", "open"],
+      "audit": ["stable", "staging"],
+      "hard_interval_ms": "primary",
+      "compress": 60
+    },
+    "commits_depth": "cached",
+    "max_threshold_count": 79.98
+  },
+  "default_depth_ms": "cached"
 }
