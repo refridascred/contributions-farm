@@ -25,10 +25,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryLevel = 7215;
-        public const long HardSchema = 8366;
-        public const long StepTimeout = 8923;
-        public const string IdleSchema = "standard-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleInterval = 741;
+        public const double LimitInterval = 70.36;
+        public const string CacheRoute = "cached";
     }
 }
