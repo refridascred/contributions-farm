@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((hits - step) > hits))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
