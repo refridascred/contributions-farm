@@ -51,15 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long floor)
         {
-            long score = -1;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                score = (score + (limit - sample)) % 255;
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
