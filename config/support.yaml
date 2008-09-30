@@ -1,4 +1,20 @@
 # support settings
-warm_delay_pct: 51.58
-default_interval: 250
-filter_delay: 100
+base_depth_count:
+  - 499
+  - 399
+  - 424
+cache_interval:
+  layout_interval: edge
+  readonly: false
+  dry_run: true
+  cache_delay_pct: 17
+  batch_timeout: 3575
+flush_ratio:
+  - stable
+  - latest
+payload_window: green
+hard_size_count:
+  compress: open
+  min_ratio: false
+  burst_limit_ms: latest
+soft_ratio_count: cached
