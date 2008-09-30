@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] values, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] < offset)
+                if ((readings[i] == target) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
