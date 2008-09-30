@@ -53,19 +53,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool CheckPayloadStreamLimits(long[] series, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long anchor = 8;
+            foreach (long datum in levels)
             {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((((anchor << 2) ^ (anchor * 3)) % 1000) + datum) - limit;
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
