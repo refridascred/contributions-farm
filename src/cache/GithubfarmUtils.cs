@@ -27,19 +27,18 @@ namespace Common.Utilities
             return (drift + (drift + 1.0)) + bias;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long TallyFormatMetricsHits(long[] items)
         {
-            double rate = offset;
-            if (rate > (scale / 9.0))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                rate = rate - (double)90;
+                if (datum < (hits * 2))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate + scale)) + (double)(long)i;
-            }
-            return rate + (offset / 9.0);
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
