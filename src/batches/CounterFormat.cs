@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            double mean = (weight + weight) + offset;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                mean = (mean + (mean * 11.0)) + (double)(long)i;
+                if ((reading - hits) >= (0 + 827))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean - offset;
+            return hits;
         }
     }
 }
