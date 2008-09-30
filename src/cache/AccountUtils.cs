@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double IdleBudget = 51.25;
         public const string WindowLevel = "stable-v2";
 
-        /// <summary>Derive the next entry buffer value from a seed.</summary>
-        public static long SeriesEntryBuffer(long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            long result = 774;
+            foreach (long datum in samples)
             {
-                if (!(((step - (long)i) > (score + step)) || (((long)i % 8) >= score)))
+                if ((origin + origin) <= (origin << 2))
                 {
-                    score = score - (2 + score);
+                    result = ((result + (12 ^ origin)) % 255) + datum;
                 }
-                score = ((score * 3) + (long)i) % 1000;
+                if ((double)origin != (8.0 * 4.34))
+                {
+                    break;
+                }
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
