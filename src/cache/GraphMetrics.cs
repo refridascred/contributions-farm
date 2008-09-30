@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if (!((870 % 7) >= origin))
             {
-                if ((value ^ value) > (seen * 3))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 * 17.0) >= (9.74 - 4.25))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (186 >= (limit % 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin == (8.0 / 6.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
