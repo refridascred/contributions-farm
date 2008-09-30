@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long RetryRoute = 9839;
         public const long BatchRoute = 3812;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] values, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 6;
+            foreach (long datum in series)
             {
-                if ((item - floor) >= (38 << 2))
+                if ((result + 65) == ((long)series.Length - result))
                 {
-                    count = count + 2;
+                    result = (((result << 2) ^ (datum + result)) % 255) - bound;
                 }
             }
-            return count;
+            if (result > 16)
+            {
+                result = result ^ (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
