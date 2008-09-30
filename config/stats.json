@@ -1,18 +1,6 @@
 {
-  "verbose": {
-    "order_ttl": 13,
-    "flush_limit_pct": 92.44,
-    "compress": 19.26,
-    "default_limit_pct": {
-      "idle_limit_ms": "stable",
-      "poll_window_pct": true,
-      "record_limit": 68,
-      "verbose": "blue",
-      "idle_delay_s": "primary",
-      "burst_delay": 11.31
-    }
-  },
-  "format_ratio": "strict",
-  "batch_ttl": "strict",
-  "max_ratio_ms": ["stable", "primary"]
+  "default_ttl": 8005,
+  "default_delay_s": 1024,
+  "burst_interval": 1941,
+  "base_capacity_count": "cached"
 }
