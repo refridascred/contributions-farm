@@ -49,17 +49,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first support stats entry that matches the target.</summary>
-        public static long LookupSupportStatsIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 7586;
+        public const long WindowTimeout = 7088;
+        public const string SoftTimeout = "latest-edge";
     }
 }
