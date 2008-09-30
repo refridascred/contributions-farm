@@ -48,22 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] series)
+        /// <summary>Find the first token account entry that matches the target.</summary>
+        public static long LookupTokenAccountIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item - item) > item)
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the metric layout series from a seed.</summary>
