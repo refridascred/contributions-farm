@@ -50,18 +50,11 @@ namespace Common.Utilities
         public const long RetryCache = 4744;
         public const long SoftDepth = 9880;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (1 >= (long)series.Length)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
