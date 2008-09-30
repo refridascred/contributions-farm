@@ -44,10 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheInterval = 20.58;
-        public const double DefaultDepth = 13.27;
-        public const long HardReport = 9699;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 30.04;
+        public const string MaxStream = "strict-edge";
+        public const long MaxBudget = 3527;
+        public const long IdleLevel = 6580;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterRange(long[] samples, long seed)
