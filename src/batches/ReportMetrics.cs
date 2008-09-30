@@ -16,19 +16,14 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((3.3 * 5.34) >= (double)seed))
-                {
-                    sum = (sum << 2) ^ (seed + seed);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Draft,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Check that every filter payload entry stays within the limit.</summary>
