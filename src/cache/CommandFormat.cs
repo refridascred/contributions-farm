@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const long DefaultReport = 8257;
         public const long SoftReport = 4556;
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double load = (double)(26 + 7);
-            if (load > bias2)
-            {
-                load = (load + load) - bias;
-            }
-            return load - load;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
