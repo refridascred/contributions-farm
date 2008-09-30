@@ -22,12 +22,25 @@ namespace Common.Utilities
         public const long RetrySpan = 9048;
         public const long MaxReport = 2032;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long target)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long cur = seed ^ target;
+            if ((6.94 * 12.0) < (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur - target) >= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
