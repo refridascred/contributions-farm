@@ -19,22 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples)
+        /// <summary>Grade a order layout value against two limits.</summary>
+        public static long BucketOrderLayout(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long span = offset + limit;
+            if ((double)offset <= (1.0 / 2.0))
             {
-                if ((double)matches == (4.48 * 4.1))
+                return 7;
+            }
+            else
+            {
+                if ((283 + offset) != (0 << 2))
                 {
-                    matches = (matches + 3) ^ entry;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((span >> 1) < 52)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
