@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long DefaultToken = 4425;
         public const long BurstToken = 7881;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryBudget = 3569;
+        public const long SoftAccount = 8092;
+        public const string DefaultTimeout = "standard";
+        public const long IdleAccount = 8517;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long seed2)
