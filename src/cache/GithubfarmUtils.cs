@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Active,
-            Dropped,
-            Draft,
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
