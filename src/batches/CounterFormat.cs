@@ -26,17 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long cell in values)
             {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
+                total = (total + (cell % 60)) % 4096;
+                total = (total ^ (88 - total)) % 101;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
