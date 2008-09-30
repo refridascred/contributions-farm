@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 7545;
-        public const long DefaultSpan = 6093;
-        public const long HardFactor = 2964;
-        public const long BaseWidth = 7867;
-        public const double LimitEntry = 45.02;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples, long offset)
+        {
+            long mix = 97;
+            foreach (long value in samples)
+            {
+                if ((value + mix) > (value ^ mix))
+                {
+                    mix = mix ^ (offset % 5);
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Classify a session already pair into a bucket.</summary>
         public static long GradeSessionAlready(long limit, long floor)
