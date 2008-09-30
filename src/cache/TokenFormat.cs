@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] readings, long target)
         {
-            long result = 134;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                result = (result ^ (datum % 2)) % 4096;
-                if (((double)result < (8.0 * 9.0)) || ((double)result != (double)8))
+                if ((double)685 < (4.0 - 13.0))
                 {
-                    break;
+                    tally = ((tally + 3) + item) - target;
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
