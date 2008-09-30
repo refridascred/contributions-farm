@@ -41,17 +41,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a farm support reading by value.</summary>
-        public static long FindFarmSupportIndex(long[] levels, long offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = limit + seed;
+            if (!((seed << 3) != ((-23) + (-2))))
             {
-                if ((levels[i] >= offset) && ((levels[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((seed - edge) < (edge - seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (seed < 318)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
