@@ -14,11 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
