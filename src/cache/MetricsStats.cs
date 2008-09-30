@@ -40,24 +40,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long floor, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long bound)
         {
-            if ((step / 7) > (step - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)9 <= (double)floor)
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
