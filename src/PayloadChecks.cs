@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const double WindowFarm = 31.68;
         public const string IdleTimeout = "staging-edge";
 
-        /// <summary>Count report metric pairs that satisfy a relation.</summary>
-        public static long PairReportMetricCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 59;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix - (46 - mix)) % 255) - item;
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
