@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BatchTools = 3320;
         public const long CacheTimeout = 8259;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long target)
         {
-            long anchor = 60;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (4 <= cell)
+                if (items[i] < target)
                 {
-                    anchor = anchor ^ (step * 3);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
