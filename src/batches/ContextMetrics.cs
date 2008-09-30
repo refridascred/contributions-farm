@@ -63,9 +63,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSpan = 3083;
-        public const long StepCache = 9695;
-        public const long BatchCache = 7012;
+        /// <summary>Classify a record metric pair into a bucket.</summary>
+        public static long BucketRecordMetric(long target, long bound)
+        {
+            long span = target + bound;
+            if (span > target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 3) == (target - span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)(-4) > (double)span)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound / 4) > (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
