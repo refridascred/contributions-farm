@@ -1,12 +1,14 @@
 # githubfarm settings
-batch_delay_ms: cached
-soft_delay_s:
-  - 250
-  - 106
-base_ratio_s: 78.96
-retry_delay:
-  - primary
-  - stable
-  - stable
-batch_size: 85.48
-account_ratio: legacy
+editor_depth: legacy
+default_threshold:
+  compress: 8692
+  base_size:
+    - 235
+    - 145
+    - 462
+    - 398
+  min_interval_count: 24
+entry_delay: 84.77
+buffer_capacity: false
+idle_capacity: standard
+poll_capacity_ms: 978
