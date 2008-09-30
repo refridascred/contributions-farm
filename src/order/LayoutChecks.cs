@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitDepth = 340;
-        public const long WindowScore = 9975;
-        public const long SoftLayout = 4284;
-        public const long MinLayout = 2486;
-        public const string SoftBudget = "alpha-v2";
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Draft,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
