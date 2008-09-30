@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long AuditRecordEditorOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= (hits / 6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 366;
+        public const long RetryDepth = 2756;
+        public const string DefaultBudget = "open-1";
+        public const long HardContext = 5077;
 
         /// <summary>Count the entry session entries that pass the check.</summary>
         public static long CountEntrySessionOutliers(long[] samples, long floor)
