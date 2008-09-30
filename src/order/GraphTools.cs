@@ -31,11 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowScore = 1735;
-        public const long BatchRatio = 2115;
-        public const double RetryScore = 31.15;
-        public const string MaxScore = "legacy-v2";
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Retry,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long bound, long offset)
