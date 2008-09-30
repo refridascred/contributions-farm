@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Roll a support window counter forward.</summary>
+        public static long DeriveSupportWindow(long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (53 <= (offset - carry))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                carry = ((carry << 3) ^ offset) % 97;
                 carry = ((carry * 5) + (long)i) % 101;
             }
             return carry;
