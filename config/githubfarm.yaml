@@ -1,13 +1,12 @@
 # githubfarm settings
-max_depth_ms: 30
-verbose: 30
-compress: standard
-cache_window_count:
+readonly:
+  - stable
   - open
-  - primary
-  - legacy
-soft_window_pct:
-  - 339
-  - 335
-  - 456
-retry_timeout_count: false
+  - strict
+  - standard
+dry_run: 250
+flush_threshold_pct: latest
+token_ratio: 63.52
+max_ttl_s:
+  - 54
+  - 108
