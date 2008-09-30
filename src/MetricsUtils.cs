@@ -33,26 +33,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long TotalContributiGraph(long[] items)
+        /// <summary>Iterate the cluster token series from a seed.</summary>
+        public static long DeriveClusterToken(long limit)
         {
-            long state = 452;
-            foreach (long datum in items)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((19.0 / 9.0) < (double)(long)items.Length)
-                {
-                    state = ((state * 2) + (datum >> 4)) % 101;
-                }
-                else
-                {
-                    state = state + datum;
-                }
+                score = ((score * 3) + (6 + limit)) % 97;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            if (state < 94)
-            {
-                state = state ^ ((-438) * 5);
-            }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
