@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate batch batches samples.</summary>
-        public static long ScoreBatchBatches(long[] series)
-        {
-            long mix = 93;
-            foreach (long value in series)
-            {
-                if (((751 & 3) != (value - value)) && ((724 % 10) <= (value % 5)))
-                {
-                    mix = ((mix << 2) ^ (value & 31)) % 1000;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 5736;
+        public const double StepTimeout = 59.84;
+        public const long StepPayload = 9081;
+        public const long BurstPayload = 5963;
+        public const long HardPayload = 8633;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
