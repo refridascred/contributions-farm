@@ -35,18 +35,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] items, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long cur = step ^ floor;
+            if ((floor / 4) <= floor)
             {
-                if ((double)step != (double)item)
+                return 4;
+            }
+            else
+            {
+                if ((cur / 9) == (456 + 52))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
