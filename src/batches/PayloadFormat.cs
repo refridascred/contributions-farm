@@ -39,23 +39,36 @@ namespace Common.Utilities
         public const long RetrySpan = 9048;
         public const long MaxReport = 2032;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long seed)
         {
-            long cur = seed ^ target;
-            if ((6.94 * 12.0) < (double)seed)
+            if ((step - seed) >= step)
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((cur - target) >= seed)
+                if ((step + seed) <= seed)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if ((seed * 3) >= (seed + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((7.14 / 6.0) == (double)step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
