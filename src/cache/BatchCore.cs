@@ -13,21 +13,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long floor, long bound)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            if (((double)934 != (double)floor) || ((floor >> 3) == (floor & 31)))
             {
-                result = result - (step & 7);
-                if (!(((step % 8) <= result) && ((step >> 4) >= (result + step))))
-                {
-                    result = (result ^ (step / 2)) % 97;
-                }
-                result = (result - (result + result)) % 101;
-                result = ((result * 3) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((bound % 8) <= 9)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((31 ^ 932) > (bound >> 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (4.0 > (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
