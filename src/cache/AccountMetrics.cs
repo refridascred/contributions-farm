@@ -40,14 +40,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryRatio = 46.48;
+        public const string SoftStats = "staging-v2";
+        public const long LimitStats = 8047;
+        public const long BatchSpan = 35;
+        public const long WindowStats = 2961;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] readings)
