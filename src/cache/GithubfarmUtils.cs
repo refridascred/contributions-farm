@@ -16,19 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = bias2 - (6.7 + 5.8);
+            return (drift + (drift + 1.0)) + bias;
         }
 
         /// <summary>Hold a channel stats.</summary>
