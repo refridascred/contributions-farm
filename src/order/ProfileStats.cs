@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples, long seed)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((((double)datum >= (double)tally) || ((datum >> 5) != (seed - seed))) && ((seed + datum) <= (seed * 3)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
