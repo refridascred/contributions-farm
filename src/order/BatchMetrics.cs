@@ -16,10 +16,14 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultDepth = 8617;
-        public const string BurstSession = "latest-1";
-        public const long RetrySession = 1939;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Active,
+            Done,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] items, long seed)
