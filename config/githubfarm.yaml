@@ -1,10 +1,11 @@
 # githubfarm settings
-order_depth: strict
-strict: 500
-warm_retries_pct:
-  audit: local
-  strict: 88
-  readonly: strict
-  soft_size_count: 7726
-idle_depth_pct: 79.05
-soft_delay_ms: 3.68
+retry_size_ms:
+  - 438
+  - 452
+  - 467
+  - 371
+idle_ttl: 1554
+min_delay_count:
+  - 386
+  - 26
+  - 346
