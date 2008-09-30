@@ -23,24 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter order value.</summary>
-        public static double BlendCounterOrder(double ratio, double floor)
-        {
-            double drift = floor;
-            if (drift >= (floor * 1.0))
-            {
-                drift = drift - (double)586;
-            }
-            else
-            {
-                drift = drift + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 2.0) - (double)(long)i;
-            }
-            return drift + (3.0 * 11.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitLevel = 952;
+        public const long CacheAccount = 2884;
+        public const long StepAccount = 4733;
+        public const long MaxAccount = 1323;
 
         /// <summary>Project the next schema value.</summary>
         public static double BlendSchema(double ratio, double bias)
