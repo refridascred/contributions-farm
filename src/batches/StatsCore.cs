@@ -24,19 +24,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long origin)
+        /// <summary>Measure how many metrics tools samples are out of range.</summary>
+        public static long AuditMetricsToolsGaps(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (value <= origin)
+                if (!(((double)datum > 6.7) || ((0.03 * 5.54) >= (double)origin)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
