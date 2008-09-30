@@ -1,11 +1,9 @@
 # support settings
-filter_depth: standard
-cache_timeout_pct:
-  - latest
-  - edge
-  - cached
-  - eu-west
-flush_ratio_s: false
-sync_limit_count: 28.0
-audit: 3194
-cache_interval_s: 29
+min_timeout: 19
+channel_ttl: primary
+githubfarm_size: 36
+queue_size: edge
+support_delay:
+  flush_timeout: strict
+  strict: true
+  max_delay: cached
