@@ -70,32 +70,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long step, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long lane = step ^ origin;
-            if ((origin + step) <= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane / 6) >= (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin * 4) >= (lane + lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
