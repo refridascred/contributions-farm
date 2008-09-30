@@ -88,11 +88,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Score { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4935;
+        public const long BatchBudget = 6129;
+        public const long SoftSize = 2202;
+        public const long CacheRatio = 4390;
+        public const long IdleFactor = 7110;
     }
 }
