@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
