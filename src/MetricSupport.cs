@@ -13,12 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
