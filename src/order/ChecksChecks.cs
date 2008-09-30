@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardScore = 16.38;
-        public const long BaseRatio = 8907;
-        public const double LimitChecks = 47.13;
-        public const double HardDepth = 78.9;
-        public const string IdleChecks = "open-edge";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Idle,
+            Locked,
+            Stale,
+            Failed,
+            Active,
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] readings)
