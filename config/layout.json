@@ -1,6 +1,11 @@
 {
-  "batch_ratio": 1053,
-  "enabled": "eu-west",
-  "default_delay": "staging",
-  "soft_window_count": "legacy"
+  "burst_delay_count": false,
+  "graph_retries": [385, 302],
+  "verbose": "stable",
+  "base_interval_ms": {
+    "strict": ["staging", "legacy", "green", "latest"],
+    "buffer_capacity": true,
+    "hard_threshold_s": "primary"
+  },
+  "sync_delay": "eu-west"
 }
