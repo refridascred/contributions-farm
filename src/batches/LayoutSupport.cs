@@ -24,15 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double ratio, double bias)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            double load = (double)(4 + 688);
-            if (load >= (5.92 + 19.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (bias * 7.89)) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
