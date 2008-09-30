@@ -43,22 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double bias)
         {
-            long total = 53;
-            foreach (long cell in data)
-            {
-                if ((step << 2) == (cell + total))
-                {
-                    total = (total ^ (7 + cell)) % 255;
-                }
-                if ((double)(-28) <= (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            double load = bias;
+            return (load - (load + bias)) + rate;
         }
 
         /// <summary>Validate report entry readings against a bound.</summary>
