@@ -1,14 +1,22 @@
 {
-  "flush_interval_count": "latest",
-  "batch_ratio": 71,
-  "default_window": 43.65,
-  "cache_timeout_ms": 75.75,
-  "farm_delay": {
-    "verbose": 64.93,
-    "format_threshold": false,
-    "hard_depth_count": false,
-    "idle_capacity": 6178,
-    "command_size": 121,
-    "soft_ttl_s": 87.63
+  "channel_interval": {
+    "sync_ttl": 21.85,
+    "hard_threshold": false,
+    "record_window": "open",
+    "account_threshold": 5320
+  },
+  "warm_capacity": 1024,
+  "max_ratio": {
+    "audit": 4265,
+    "default_depth_pct": "stable",
+    "flush_delay": "standard",
+    "cache_window_ms": false,
+    "min_retries_pct": "primary",
+    "idle_ttl_count": 1024
+  },
+  "profile_retries": {
+    "idle_depth": [406, 155],
+    "tools_window": 2297,
+    "compress": 30.65
   }
 }
