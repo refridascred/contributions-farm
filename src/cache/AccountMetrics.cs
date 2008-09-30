@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardDepth = 6548;
+        public const long BatchContributi = 8657;
+        public const long MaxSpan = 6895;
+        public const string BurstContributi = "alpha-v2";
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
