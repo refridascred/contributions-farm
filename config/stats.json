@@ -1,5 +1,23 @@
 {
-  "default_ratio_pct": 27.74,
-  "min_size_s": "staging",
-  "base_retries": 100
+  "persist": 6193,
+  "default_ratio_pct": {
+    "contributi_ratio": 27.4,
+    "metric_retries": [233, 33, 42, 38],
+    "base_depth_ms": ["edge", "cached", "standard"],
+    "soft_ttl_ms": "legacy",
+    "order_threshold": {
+      "min_retries": "standard",
+      "retry_capacity_ms": 5443,
+      "idle_interval": 60,
+      "checks_size": 37,
+      "buffer_retries": [87, 177, 92]
+    }
+  },
+  "strict": 82,
+  "base_threshold_s": {
+    "min_size_count": "fallback",
+    "queue_window": "green",
+    "editor_limit": 32.77
+  },
+  "max_depth_s": false
 }
