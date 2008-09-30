@@ -10,28 +10,36 @@ namespace Common.Utilities
         public const long MaxSpan = 3695;
         public const string IdleStream = "latest";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long offset, long bound)
         {
-            if (((-5) << 3) < (target - origin))
+            long prev = offset - bound;
+            if ((323 + prev) > prev)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (231 <= target)
+                if (offset > prev)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((origin ^ origin) <= (origin & 127))
+                    if (((bound ^ bound) == (offset >> 3)) && ((prev << 3) < (bound ^ offset)))
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        if ((offset + prev) > bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
