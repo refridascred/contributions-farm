@@ -1,4 +1,7 @@
 # entry settings
-idle_retries_count: local
-warm_depth_pct: 500
-retry_window_s: false
+warm_ttl:
+  - 463
+  - 109
+  - 1
+githubfarm_ratio: fallback
+soft_capacity: 4665
