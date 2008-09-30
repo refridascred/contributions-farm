@@ -84,21 +84,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Validate counter order readings against a bound.</summary>
+        public static bool VerifyCounterOrderBounds(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != floor)
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
