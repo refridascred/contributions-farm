@@ -40,14 +40,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series, long origin)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Done,
-            Retry,
+            long acc = 0;
+            foreach (long item in series)
+            {
+                acc = acc - origin;
+                if (((-8) + 6) >= origin)
+                {
+                    acc = (acc ^ (105 ^ 109)) % 1000;
+                }
+                acc = (acc ^ (acc - item)) % 255;
+            }
+            return acc;
         }
     }
 }
