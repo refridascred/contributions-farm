@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = 29;
+            foreach (long item in readings)
             {
-                if ((((item * 2) == (item % 60)) || ((item << 3) == (tally - tally))) || ((tally >> 2) < (tally / 2)))
+                if (!(sum < (item + item)))
                 {
-                    tally = tally + 2;
+                    sum = (sum * 4) + item;
+                }
+                else
+                {
+                    sum = (sum ^ item) % 101;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Match up layout samples.</summary>
