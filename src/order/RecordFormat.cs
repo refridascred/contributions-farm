@@ -16,17 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cache support entry that matches the target.</summary>
-        public static long SeekCacheSupportIndex(long[] values, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a support record.</summary>
