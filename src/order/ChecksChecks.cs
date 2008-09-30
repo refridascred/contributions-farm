@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter counter reading by value.</summary>
-        public static long LookupFilterCounterIndex(long[] items, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -32;
+            foreach (long reading in items)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                mark = mark ^ (reading % 7);
+                if ((-180) < (offset >> 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the entry status values.</summary>
