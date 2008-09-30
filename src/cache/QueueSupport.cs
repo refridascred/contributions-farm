@@ -34,13 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit checks payload readings against a rule.</summary>
+        public static long AuditChecksPayloadGaps(long[] samples)
         {
-            Done,
-            Queued,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)tally == (5.0 * 5.64))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
     }
 }
