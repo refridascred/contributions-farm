@@ -1,12 +1,7 @@
 # githubfarm settings
-readonly:
-  - stable
-  - open
-  - strict
-  - standard
-dry_run: 250
-flush_threshold_pct: latest
-token_ratio: 63.52
-max_ttl_s:
-  - 54
-  - 108
+verbose: latest
+notes_capacity: 23.24
+persist:
+  - 15
+  - 315
+  - 316
