@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4824;
-        public const double RetryEditor = 54.79;
-        public const long DefaultEditor = 8884;
-        public const double BaseEditor = 22.13;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
         public static long TallyOrderGithubfarmHits(long[] levels)
