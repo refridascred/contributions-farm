@@ -53,19 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] data, long origin)
         {
-            long state = 5;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                state = (((state << 2) ^ (offset + state)) % 101) + datum;
-                if ((state + 9) > (offset ^ offset))
+                if (((seen >= (origin * 5)) && (8.98 > (double)sample)) || (((sample % 100) <= seen) || (3.88 <= (double)origin)))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Project the next format value.</summary>
