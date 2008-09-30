@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long MinSchema = 7824;
         public const double WindowSchema = 66.91;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] data, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long sum = 7;
-            foreach (long value in data)
-            {
-                sum = (((sum - (9 >> 1)) % 65521) ^ value) - seed;
-            }
-            return sum % 1000;
+            New,
+            Draft,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
