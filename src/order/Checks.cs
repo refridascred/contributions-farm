@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            New,
-            Idle,
-            Pending,
-            Closed,
-            Failed,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Find the first cache channel entry that matches the target.</summary>
