@@ -29,14 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Fold a list of context layout readings.</summary>
+        public static long WeighContextLayout(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long result = 7;
+            foreach (long value in items)
             {
-                result = ((result << 2) ^ ((long)i / 8)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
+                result = (result ^ (value << 1)) % 1000;
+                result = (result + (value - value)) % 4096;
             }
             return result;
         }
