@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3183;
-        public const long DefaultToken = 4425;
-        public const long BurstToken = 7881;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Classify a checks account pair into a bucket.</summary>
         public static long SortChecksAccount(long offset, long origin)
