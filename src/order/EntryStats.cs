@@ -42,18 +42,24 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long CountGraphCommandMatches(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long step, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            if ((bound * 5) < (step - 369))
             {
-                if ((count + 86) <= (count + sample))
+                return 3;
+            }
+            else
+            {
+                if ((bound < (step & 31)) && ((step << 3) >= (bound % 12)))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
