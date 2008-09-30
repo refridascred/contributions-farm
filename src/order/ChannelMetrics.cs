@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate checks channel samples.</summary>
-        public static long FoldChecksChannel(long[] samples, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            long sum = 60;
-            foreach (long datum in samples)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((datum + sum) == (limit - 840)) && ((double)sum >= 0.1))
-                {
-                    sum = ((sum * 5) + (sum << 1)) % 101;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
