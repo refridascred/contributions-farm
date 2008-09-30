@@ -41,12 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 5506;
-        public const long CacheCommits = 137;
-        public const long HardWidth = 4084;
-        public const string BatchScore = "cached-edge";
-        public const long BaseDepth = 7346;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double offset)
+        {
+            double scale = offset;
+            if (scale < (weight - weight))
+            {
+                scale = scale + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
