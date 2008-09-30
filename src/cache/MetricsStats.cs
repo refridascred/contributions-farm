@@ -37,22 +37,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] data)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((7.0 - 11.0) <= (double)tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next editor metric value from a seed.</summary>
