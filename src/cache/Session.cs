@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long TallyCommitsPayloadOutliers(long[] series, long step)
+        /// <summary>Accumulate commits tools samples.</summary>
+        public static long ScoreCommitsTools(long[] items)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = 21;
+            foreach (long datum in items)
             {
-                if ((count >> 4) != (step - 1))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                score = (score << 3) ^ (datum ^ datum);
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
