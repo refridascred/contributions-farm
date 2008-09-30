@@ -51,19 +51,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
