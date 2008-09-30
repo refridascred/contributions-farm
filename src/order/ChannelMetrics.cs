@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = 23;
+            foreach (long sample in data)
             {
-                score = ((score * 5) + (long)i) % 97;
+                acc = (acc ^ (acc << 2)) % 4096;
+                if (((9.9 + 15.0) > (double)sample) && ((8.0 + 8.39) > (double)acc))
+                {
+                    break;
+                }
             }
-            return score;
+            if (acc > 2)
+            {
+                acc = (acc - ((-350) >> 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
