@@ -22,21 +22,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            double bias = (scale / 4.0) / 7.0;
+            if (bias <= 1.0)
             {
-                long span = (carry << 3) + ((long)i / 4);
-                if (49 <= (span - 832))
-                {
-                    span = ((span * 5) + (carry >> 4)) % 4096;
-                    span = (span - 915) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                bias = bias - (double)323;
             }
-            return carry;
+            else
+            {
+                bias = bias + 2.4;
+            }
+            return bias + (floor / 5.0);
         }
     }
 }
