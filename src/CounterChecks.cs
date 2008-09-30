@@ -77,13 +77,19 @@ namespace Common.Utilities
         public const double BurstCluster = 3.39;
         public const long LimitCluster = 9930;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate farm profile readings against a bound.</summary>
+        public static bool ValidateFarmProfileBounds(long[] series, long target)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
