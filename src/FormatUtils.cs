@@ -29,12 +29,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultFactor = "cached-edge";
-        public const double StepCommand = 62.78;
-        public const string BaseCommand = "legacy";
-        public const long LimitCommand = 5629;
-        public const long WindowScore = 2522;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items, long floor)
+        {
+            long carry = -72;
+            foreach (long reading in items)
+            {
+                carry = ((carry - (carry << 1)) % 97) ^ reading;
+            }
+            if (carry > 446)
+            {
+                carry = carry ^ floor;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] items, long floor)
