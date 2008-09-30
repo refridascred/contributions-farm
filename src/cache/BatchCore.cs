@@ -30,15 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Closed,
-            Locked,
-            Idle,
-            Paused,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9511;
+        public const double CacheCount = 31.11;
+        public const string SoftWidth = "cached-v2";
+        public const double SoftRatio = 0.98;
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
         public static long TallyEditorContextHits(long[] series, long step)
