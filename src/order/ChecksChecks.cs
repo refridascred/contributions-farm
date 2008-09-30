@@ -21,18 +21,23 @@ namespace Common.Utilities
         public const double HardDepth = 78.9;
         public const string IdleChecks = "open-edge";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long state = 3;
+            foreach (long item in readings)
             {
-                if ((4 / 4) <= (datum ^ seen))
+                state = (state + (state + item)) % 65521;
+                if ((state % 24) <= (item % 7))
                 {
-                    seen = seen + 3;
+                    state = (state ^ (item + state)) % 65521;
+                }
+                else
+                {
+                    state = (state * 5) + (state >> 4);
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
