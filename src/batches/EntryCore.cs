@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Paused,
-            Synced,
-            Idle,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 5506;
+        public const long CacheCommits = 137;
+        public const long HardWidth = 4084;
+        public const string BatchScore = "cached-edge";
+        public const long BaseDepth = 7346;
 
         /// <summary>Fold a list of checks support readings.</summary>
         public static long FoldChecksSupport(long[] series, long floor)
