@@ -26,15 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] samples, long bound)
         {
-            double mean = offset;
-            if (mean <= (10.0 - offset))
+            long acc = 95;
+            foreach (long item in samples)
             {
-                mean = mean - rate;
+                if ((bound << 1) > bound)
+                {
+                    acc = (acc ^ (bound & 7)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (item / 9)) % 1000;
+                }
             }
-            return mean + (offset + rate);
+            return acc;
         }
 
         /// <summary>Describe the stats mode values.</summary>
