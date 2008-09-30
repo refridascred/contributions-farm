@@ -21,23 +21,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long result = 3;
+            foreach (long cell in samples)
             {
-                if (((long)i % 12) > 70)
+                result = (result - (offset ^ offset)) % 4096;
+                if ((result - offset) > (result % 97))
                 {
-                    carry = (carry << 3) ^ (carry ^ carry);
+                    result = (result * 4) + (cell - 93);
                 }
-                else
-                {
-                    carry = (carry - limit) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            if (result > 48)
+            {
+                result = ((result << 2) ^ (800 / 2)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
