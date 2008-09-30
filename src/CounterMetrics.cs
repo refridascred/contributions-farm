@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long CountFarmAlreadyMatches(long[] samples, long offset)
         {
-            long state = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((sample >> 4) <= (sample >> 2)))
+                if ((offset + offset) == (696 * 2))
                 {
-                    state = state - (94 >> 2);
+                    hits = (hits + 1) - cell;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
