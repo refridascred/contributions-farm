@@ -45,12 +45,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings, long floor)
         {
-            Synced,
-            Failed,
-            Ready,
+            long carry = 99;
+            foreach (long value in readings)
+            {
+                if (!(647 <= (8 ^ carry)))
+                {
+                    carry = (carry ^ (value / 4)) + floor;
+                }
+            }
+            if (carry > (-574))
+            {
+                carry = carry ^ (carry >> 4);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
