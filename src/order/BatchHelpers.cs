@@ -27,15 +27,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Ready,
-            Pending,
-            Idle,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryDepth = 6396;
+        public const string CacheBuffer = "stable";
+        public const long SoftDepth = 1702;
+        public const long IdleDepth = 8678;
 
         /// <summary>Project the next checks payload value.</summary>
         public static double ScaleChecksPayload(double scale, double bias)
