@@ -37,21 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already report readings.</summary>
-        public static long CompareAlreadyReportCount(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
