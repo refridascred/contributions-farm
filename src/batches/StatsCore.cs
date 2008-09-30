@@ -45,21 +45,13 @@ namespace Common.Utilities
         public const long CacheOrder = 9908;
         public const string IdleSize = "standard-edge";
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
