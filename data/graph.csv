@@ -1,6 +1,8 @@
-id,weight,rank,count,ratio
-1,70.49,185,931,766
-2,eu-west,strict,5.21,90
-3,396,391,legacy,282
-4,143,31.01,cached,243
-5,596,284,cached,91.67
+id,count,score,weight,token
+1,246,747,68.28,852
+2,20.79,blue,648,25.58
+3,701,933,legacy,78.21
+4,primary,staging,65.83,783
+5,66.71,813,691,305
+6,596,75,21.29,469
+7,72.21,77.32,edge,stable
