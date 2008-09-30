@@ -62,22 +62,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric session entries.</summary>
-        public static long TotalMetricSession(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long seed)
         {
-            long mark = 689;
-            foreach (long datum in series)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                if (mark >= datum)
+                if ((entry - 0) == (entry >> 3))
                 {
-                    mark = (mark + (long)series.Length) % 65521;
+                    mix = (mix ^ (seed + seed)) % 101;
                 }
                 else
                 {
-                    mark = mark - (datum / 6);
+                    mix = mix ^ (mix * 2);
                 }
             }
-            return mark;
+            return mix;
         }
     }
 }
