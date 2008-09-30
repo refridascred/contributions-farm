@@ -20,11 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultDepth = 7814;
-        public const long StepRoute = 9498;
-        public const string IdleRoute = "alpha-1";
-        public const string LimitFactor = "primary-1";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] series, long step)
