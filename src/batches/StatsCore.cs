@@ -22,16 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] items, long limit)
         {
-            long acc = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                acc = (acc << 3) ^ (reading + 84);
-                acc = (acc ^ reading) % 101;
+                if ((((hits + limit) > (limit << 3)) && ((datum / 9) < (limit >> 4))) && !(limit <= (hits / 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
