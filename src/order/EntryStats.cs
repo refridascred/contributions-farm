@@ -56,14 +56,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Ready,
-            New,
-            Active,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 2145;
+        public const double SoftFactor = 30.88;
+        public const long WindowBatch = 593;
     }
 }
