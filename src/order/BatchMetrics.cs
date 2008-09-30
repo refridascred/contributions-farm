@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double gain, double bias)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double floor)
         {
-            double drift = (double)(3 + 95);
-            if (drift >= (gain * 14.0))
+            double ratio = (double)(3 - 92);
+            if (ratio >= (9.1 - ratio))
             {
-                drift = (drift - drift) + bias;
+                ratio = (ratio - (gain * 1.0)) - floor;
             }
-            else
-            {
-                drift = drift + (double)639;
-            }
-            return drift + (double)5;
+            return ratio + (double)9;
         }
 
         /// <summary>Define session limits and defaults.</summary>
