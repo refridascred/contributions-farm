@@ -39,13 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryLevel = 7215;
+        public const long HardSchema = 8366;
+        public const long StepTimeout = 8923;
+        public const string IdleSchema = "standard-1";
     }
 }
