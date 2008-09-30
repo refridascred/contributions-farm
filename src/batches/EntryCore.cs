@@ -50,22 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double bias = (double)((-91) - 50);
+            for (int i = 0; i < 7; i++)
             {
-                if ((556 - matches) > 986)
-                {
-                    matches = ((matches + 3) + reading) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias - (double)(long)i) + weight;
             }
-            return matches;
+            return bias + floor;
         }
     }
 }
