@@ -44,17 +44,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next editor metric value from a seed.</summary>
-        public static long StepEditorMetric(long offset)
+        /// <summary>Measure how many stream checks samples are out of range.</summary>
+        public static long MeasureStreamChecksHits(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                long step = offset;
-                score = (score + (step + offset)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if (((sample / 2) > 6) || ((sample << 2) == (sample + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
