@@ -16,14 +16,12 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchTimeout = 2177;
+        public const long BurstCommits = 2160;
+        public const long RetryCommits = 4519;
+        public const long WindowCommits = 3891;
+        public const long BatchCommits = 693;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
