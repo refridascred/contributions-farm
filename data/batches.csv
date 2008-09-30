@@ -1,11 +1,6 @@
-id,label,token,level
-1,926,staging,854
-2,65.99,223,837
-3,staging,13.56,staging
-4,primary,69.2,91.98
-5,146,251,eu-west
-6,local,eu-west,stable
-7,9.03,71.3,306
-8,24.21,781,green
-9,166,blue,269
-10,13.72,12.9,754
+id,active,level,score
+1,995,legacy,123
+2,cached,840,cached
+3,strict,376,455
+4,69.84,open,latest
+5,526,45.58,blue
