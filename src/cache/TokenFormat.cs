@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up format already samples.</summary>
-        public static long OverlapFormatAlreadyCount(long[] readings)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 12)
+                    if ((data[i] ^ data[j]) > 0)
                     {
                         matches = matches + 1;
                     }
