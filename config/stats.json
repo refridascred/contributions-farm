@@ -1,13 +1,11 @@
 {
-  "retry_limit_s": {
-    "entry_size": "blue",
-    "max_size_s": true,
-    "compress": false,
-    "stream_window": false,
-    "session_interval": 5626
+  "cache_size_pct": 60,
+  "min_ratio": 1024,
+  "report_retries": {
+    "persist": 47.22,
+    "min_limit_pct": 8470,
+    "compress": true
   },
-  "poll_limit_s": "stable",
-  "layout_interval": "staging",
-  "batch_depth_count": 9992,
-  "max_ratio_pct": 27
+  "cache_limit_ms": ["standard", "fallback", "strict"],
+  "burst_interval": 19.97
 }
