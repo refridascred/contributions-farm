@@ -1,11 +1,6 @@
 {
-  "cache_size": "legacy",
-  "retry_threshold_ms": "latest",
-  "batch_window": 500,
-  "enabled": 73.27,
-  "audit": {
-    "default_ratio_s": "cached",
-    "window_depth": "edge",
-    "cache_timeout": [191, 359, 269]
-  }
+  "idle_threshold": true,
+  "flush_window": 1140,
+  "audit": "fallback",
+  "soft_timeout_s": 71.94
 }
