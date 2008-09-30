@@ -54,25 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples, long origin)
         {
-            long bound = limit + floor;
-            if (!(bound <= limit))
+            long result = -94;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - floor) <= (floor + limit))
+                for (int i = 0; i < 10; i++)
                 {
-                    return 4;
+                    result = (result ^ (item + item)) % 4096;
+                    result = ((result << 2) ^ (result + (long)i)) % 65521;
                 }
-                else
+                if ((result / 3) < (origin + result))
                 {
-                    return 1;
+                    result = ((result << 3) ^ (origin - 7)) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Roll a command counter forward.</summary>
