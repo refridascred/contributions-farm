@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + (floor >> 2);
-                if ((mix << 2) != (floor - 715))
+                if (((809 ^ result) > floor) && ((floor ^ result) <= 54))
                 {
-                    mix = (mix * 5) + (mix - (long)i);
+                    result = ((result << 2) ^ (result + result)) % 4096;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (mix / 4)) % 4096;
+                    result = (result ^ (result + (long)i)) % 4096;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
