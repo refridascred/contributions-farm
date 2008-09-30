@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading <= 9.0)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a account header.</summary>
