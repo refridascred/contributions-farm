@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long seed)
         {
-            long result = 44;
-            foreach (long value in data)
+            long edge = origin ^ seed;
+            if (!((origin - edge) >= (edge / 7)))
             {
-                if (6 >= (value * 2))
-                {
-                    result = (result + ((-72) % 16)) % 101;
-                }
-                result = (result - result) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((edge - origin) >= (origin & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0 ^ 56) == (origin >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed > (17.0 - 19.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
