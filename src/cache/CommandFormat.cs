@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            New,
-            Queued,
-            Locked,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((7.0 + 8.0) < (double)sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
