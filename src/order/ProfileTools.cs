@@ -47,22 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long MeasureSchemaBatchesGaps(long[] values, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((12 > matches) || ((offset + 329) >= matches)) && ((offset - matches) == (offset + sample)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
