@@ -48,26 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool CheckGraphTokenRange(long[] data, long limit)
         {
-            long mix = -7;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((mix + 4) == (256 & 7)) || ((item % 2) != (item & 63)))
+                if (entry <= limit)
                 {
-                    mix = (mix ^ (item >> 5)) % 101;
-                }
-                else
-                {
-                    mix = mix + mix;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 83)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Roll a report counter forward.</summary>
