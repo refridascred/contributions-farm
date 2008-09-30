@@ -50,12 +50,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardRatio = 5380;
-        public const long SoftSize = 8543;
-        public const long MaxProfile = 4542;
-        public const long RetryInterval = 6157;
-        public const long CacheBudget = 2493;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Failed,
+            Done,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphMatches(long[] items, long step)
