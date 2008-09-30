@@ -19,14 +19,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] values)
         {
-            Retry,
-            Ready,
-            Locked,
-            Queued,
-            Active,
+            long sum = 1;
+            foreach (long sample in values)
+            {
+                if (!((double)sample >= (1.2 / 5.0)))
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = (sum + sum) % 65521;
+                }
+                if (((double)sample < (10.0 + 2.8)) && ((double)sum > (double)15))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
