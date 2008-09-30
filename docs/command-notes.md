@@ -1,11 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the account list.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep graph and farm names short and lowercase.
+The schema helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any report limits.
 
 ## Guidelines
 
-- Document new payload fields
-- Keep layout values small
-- Prefer entry defaults
+- Review account limits each release
+- Document new already fields
+- Log every contributi change
+- Prefer contributi defaults
