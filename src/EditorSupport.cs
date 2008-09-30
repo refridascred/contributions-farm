@@ -54,10 +54,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "primary-1";
-        public const double SoftBatches = 83.57;
-        public const string BaseTimeout = "staging-edge";
+        /// <summary>Grade a order stats value against two limits.</summary>
+        public static long BucketOrderStats(long limit, long seed)
+        {
+            if (((seed << 1) == (seed - 891)) || ((limit + limit) == (seed >> 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit & 15) <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit <= (3.1 * 18.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksHits(long[] samples, long step)
