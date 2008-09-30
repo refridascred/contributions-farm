@@ -30,16 +30,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum - origin) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
