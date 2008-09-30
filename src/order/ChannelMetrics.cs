@@ -24,25 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 2;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (seed + (long)i)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum + (sum & 15)) % 4096) - (long)i2;
-                }
-                if ((7.5 - 6.5) != (double)seed)
-                {
-                    sum = (sum + (sum >> 2)) % 4096;
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                mix = ((mix ^ (mix & 15)) % 255) ^ value;
             }
-            return sum;
+            if (mix > 69)
+            {
+                mix = mix ^ (4 ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the command mode values.</summary>
