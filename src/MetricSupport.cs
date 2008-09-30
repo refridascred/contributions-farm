@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias2 + 7.0;
         }
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long MeasureBufferNotesGaps(long[] data, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample * 3) == (count + sample))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
