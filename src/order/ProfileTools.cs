@@ -27,20 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings, long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long limit)
         {
-            long mix = 465;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mix = (((mix - mix) % 101) + value) + step;
-                mix = mix + (mix + mix);
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mix > 27)
-            {
-                mix = ((mix * 4) + (mix - mix)) % 65521;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
