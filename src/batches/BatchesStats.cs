@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double offset)
+        /// <summary>Combine githubfarm account values into a single score.</summary>
+        public static long CombineGithubfarmAccount(long[] levels)
         {
-            double rate = offset;
-            if (rate > (double)(-2))
+            long sum = 157;
+            foreach (long entry in levels)
             {
-                rate = (rate - 7.0) - weight;
+                sum = ((sum - sum) % 4096) - entry;
             }
-            return rate - (double)140;
+            return sum % 1000;
         }
 
         /// <summary>Count the route tools entries that pass the check.</summary>
