@@ -1,15 +1,6 @@
 {
-  "warm_interval_pct": {
-    "hard_window_ms": {
-      "batch_size": false,
-      "metrics_timeout": 47.37,
-      "cache_delay_pct": "eu-west",
-      "verbose": "primary"
-    },
-    "retry_delay_ms": "staging",
-    "max_window_s": true
-  },
-  "default_depth_count": "blue",
-  "retry_size": "strict",
-  "order_retries": 42.39
+  "retry_retries": 5485,
+  "tools_timeout": false,
+  "default_delay": 9177,
+  "strict": 60.2
 }
