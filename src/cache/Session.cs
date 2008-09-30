@@ -22,12 +22,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftFactor = "latest";
-        public const long CacheMetric = 8916;
-        public const string CacheTimeout = "primary";
-        public const double LimitSpan = 34.89;
-        public const string RetryMetric = "stable-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 74.74;
+        public const long MaxSpan = 4735;
+        public const double IdleCommand = 0.82;
+        public const long BurstCommand = 6738;
+        public const long HardWidth = 4706;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamGaps(long[] readings)
