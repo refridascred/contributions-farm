@@ -1,7 +1,9 @@
 # support settings
-order_capacity: open
-base_window_ms: 60
-min_ttl:
-  - legacy
-  - standard
-hard_window_ms: eu-west
+burst_timeout: 250
+cluster_ratio: cached
+hard_depth_pct:
+  poll_timeout: false
+  sync_capacity_count:
+    - 183
+    - 342
+  min_limit_s: legacy
