@@ -1,7 +1,13 @@
 {
-  "sync_retries_ms": "legacy",
-  "dry_run": true,
-  "buffer_interval": "staging",
-  "metrics_size": false,
-  "channel_threshold": 500
+  "readonly": 4731,
+  "retry_timeout_ms": 88,
+  "retry_size_s": "standard",
+  "verbose": true,
+  "poll_threshold_pct": [374, 302, 203, 217],
+  "cache_timeout": {
+    "batch_capacity_count": 60,
+    "flush_retries_s": false,
+    "flush_limit_count": "cached",
+    "hard_ttl_count": 100
+  }
 }
