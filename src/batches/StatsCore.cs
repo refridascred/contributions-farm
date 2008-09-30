@@ -68,38 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] items)
         {
-            if (((offset << 2) == (offset - target)) && (target < offset))
+            long mix = 373;
+            foreach (long entry in items)
             {
-                return 6;
+                mix = ((mix << 3) ^ (mix & 127)) - entry;
             }
-            else
+            if (mix > 74)
             {
-                if ((25 >> 2) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((114 + target) <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset * 3) < (target - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = ((mix * 2) + mix) % 97;
             }
+            return mix % 1000;
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
