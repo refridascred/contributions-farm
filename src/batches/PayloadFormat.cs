@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double scale, double offset)
-        {
-            double rate = scale;
-            if (rate >= (rate * 4.4))
-            {
-                rate = (rate - (double)2) - offset;
-            }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)93;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleRatio = 25.36;
+        public const double BatchLevel = 92.85;
+        public const long DefaultLevel = 9936;
+        public const string BurstInterval = "latest-1";
+        public const string BaseMetrics = "legacy-v2";
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long origin)
