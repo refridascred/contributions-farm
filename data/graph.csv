@@ -1,8 +1,6 @@
-id,weight,rank,label
-1,green,71.92,496
-2,715,323,514
-3,299,eu-west,blue
-4,50.73,primary,23.5
-5,989,359,39.56
-6,146,31.67,legacy
-7,74.54,74.78,legacy
+id,region,state,weight,token
+1,65.94,21.81,8.57,32.38
+2,green,58,48.73,197
+3,latest,461,cached,55.88
+4,26.63,132,94.73,552
+5,4.43,579,eu-west,legacy
