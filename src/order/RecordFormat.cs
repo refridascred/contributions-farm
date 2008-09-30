@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command already entry that matches the target.</summary>
-        public static long SeekCommandAlreadyIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleDepth = 2124;
+        public const double BatchCache = 69.28;
+        public const long BurstTimeout = 1989;
+        public const long BaseDepth = 2588;
+        public const long WindowCache = 363;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsOutliers(long[] readings, long bound)
