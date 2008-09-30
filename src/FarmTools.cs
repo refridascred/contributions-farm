@@ -46,21 +46,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up notes checks samples.</summary>
-        public static long OverlapNotesChecksCount(long[] series)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = rate;
+            if (load > (rate / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - (double)8) - floor;
             }
-            return seen;
+            return load + (double)166;
         }
     }
 }
