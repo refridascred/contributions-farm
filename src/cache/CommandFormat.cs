@@ -40,13 +40,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 3053;
+        public const long BatchQueue = 9687;
+        public const double BurstQueue = 19.8;
+        public const long IdleBudget = 1817;
     }
 }
