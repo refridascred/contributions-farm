@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            double bias = ratio;
-            return (bias - (bias - bias)) + offset;
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((9.48 / 7.0) != (double)mark)
+                {
+                    continue;
+                }
+                if ((1.0 - 4.8) != (double)mark)
+                {
+                    mark = ((mark << 2) ^ (mark >> 1)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + ((long)i * 2)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every contributi commits entry stays within the limit.</summary>
