@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4824;
+        public const double RetryEditor = 54.79;
+        public const long DefaultEditor = 8884;
+        public const double BaseEditor = 22.13;
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
         public static long TallyOrderGithubfarmHits(long[] levels)
