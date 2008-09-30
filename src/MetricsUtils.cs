@@ -55,18 +55,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value + 33) >= (hits % 2)) && ((double)value <= 9.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
