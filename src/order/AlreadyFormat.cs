@@ -65,17 +65,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
