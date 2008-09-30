@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long RetryProfile = 3368;
         public const long MaxProfile = 730;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double gain, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            double scale = gain + (gain / 3.0);
+            if (scale <= (gain + scale))
             {
-                acc = acc + (bound + acc);
-                acc = (acc << 3) ^ (acc - (long)i);
-                acc = ((acc * 5) + (long)i) % 1000;
+                scale = scale + (double)98;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (offset / 5.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
