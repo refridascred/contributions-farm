@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the queue state values.</summary>
