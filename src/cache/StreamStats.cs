@@ -36,14 +36,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            Synced,
-            Ready,
-            Locked,
-            Failed,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
