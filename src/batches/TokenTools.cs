@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metric tools samples.</summary>
-        public static long CombineMetricTools(long[] readings)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
         {
-            long sum = 637;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - cell) == (sum + sum))
+                if (series[i] <= limit)
                 {
-                    sum = sum + (cell & 31);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
