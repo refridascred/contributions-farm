@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
