@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up graph cluster samples.</summary>
-        public static long OverlapGraphClusterCount(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin ^ reading) >= (reading + (-97)))
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
