@@ -1,8 +1,6 @@
 # entry settings
-batch_timeout: false
-dry_run: 490
-schema_interval:
-  - green
-  - open
-soft_ratio_s: 16
-record_interval: local
+retry_ratio_s: stable
+base_capacity_pct: false
+verbose:
+  - strict
+  - strict
