@@ -34,11 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a account editor reading.</summary>
-        public static double ScaleAccountEditor(double weight, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            double ratio = (double)5 + bias;
-            return ratio + weight;
+            long mix = 27;
+            foreach (long item in series)
+            {
+                if ((double)(long)series.Length < (4.6 - 1.7))
+                {
+                    mix = ((mix ^ mix) % 1000) ^ item;
+                }
+            }
+            if (mix < 98)
+            {
+                mix = mix + (mix / 4);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
