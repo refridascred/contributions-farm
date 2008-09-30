@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long step)
+        /// <summary>Roll a queue cluster counter forward.</summary>
+        public static long SeriesQueueCluster(long limit)
         {
-            long step2 = target ^ step;
-            if ((35 >= (step2 >> 4)) || ((step ^ step2) > step))
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                score = ((score << 2) ^ (limit % 3)) % 101;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target + target) > (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the cluster status values.</summary>
