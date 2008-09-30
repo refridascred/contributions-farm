@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 1080;
-        public const double StepScore = 28.66;
-        public const long IdleSize = 5175;
-        public const double BurstCluster = 65.59;
-        public const double StepInterval = 80.68;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitTimeout = 42.0;
