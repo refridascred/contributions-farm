@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long sum = 743;
+            foreach (long entry in levels)
+            {
+                if ((sum + entry) > (entry % 100))
+                {
+                    sum = ((sum << 2) ^ (entry - (-50))) % 255;
+                }
+            }
+            if (sum > 125)
+            {
+                sum = (sum + 78) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Grade a graph notes value against two limits.</summary>
