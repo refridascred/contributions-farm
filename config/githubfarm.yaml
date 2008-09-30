@@ -1,8 +1,4 @@
 # githubfarm settings
-audit: 1336
-route_size: 500
-sync_delay_pct: 17.58
-soft_timeout:
-  - strict
-  - fallback
-max_ratio: local
+enabled: true
+retry_depth_pct: green
+readonly: 500
