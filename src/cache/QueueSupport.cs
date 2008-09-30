@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < (entry / 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit checks payload readings against a rule.</summary>
