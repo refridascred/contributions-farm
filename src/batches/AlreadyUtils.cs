@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long CacheScore = 4093;
         public const long SoftDepth = 9249;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] readings, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits << 2) < reading)
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count farm schema pairs that satisfy a relation.</summary>
