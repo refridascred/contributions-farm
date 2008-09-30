@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Synced,
-            New,
-            Stale,
-            Paused,
-            Idle,
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
