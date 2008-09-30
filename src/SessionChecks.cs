@@ -23,21 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Derive the next token schema value from a seed.</summary>
+        public static long SeriesTokenSchema(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)mark == (double)8)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 3) ^ (mark + 67);
                 }
+                mark = (mark * 5) + mark;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
