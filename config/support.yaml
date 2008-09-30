@@ -1,29 +1,19 @@
 # support settings
-hard_capacity:
-  cache_depth: 5268
-  flush_timeout_ms: 93.8
-  enabled: true
-  verbose: true
-  cache_retries: eu-west
-burst_limit: 51.72
-dry_run:
-  - edge
-  - stable
+poll_delay_pct:
+  entry_ttl: legacy
+  warm_size_count: stable
+  flush_interval:
+    buffer_ratio: 50
+    channel_delay: 90.59
+    warm_depth_s: strict
+  batch_timeout: 13.24
+  poll_size: cached
+  batch_limit_s: 64.52
+queue_size: eu-west
+graph_window: 74.85
+flush_capacity: 32
+base_capacity_pct:
   - primary
-  - open
-burst_depth: false
-batch_delay:
-  batch_capacity_s: false
-  verbose: 95
-  readonly:
-    readonly: false
-    sync_depth_ms: 82.29
-    base_threshold: standard
-    githubfarm_interval: false
-    hard_limit_ms: 3008
-  window_limit:
-    max_interval: false
-    idle_size: false
-    burst_timeout_ms: blue
-    batch_timeout_s: 84.4
-    batch_retries_ms: 6796
+  - blue
+  - edge
+  - strict
