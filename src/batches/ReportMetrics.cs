@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >> 4) <= (sample & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6832;
+        public const string MinRoute = "local";
+        public const long RetryRoute = 9839;
+        public const long BatchRoute = 3812;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandOutliers(long[] values, long floor)
