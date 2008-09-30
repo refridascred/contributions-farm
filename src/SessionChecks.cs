@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen + 939) > (limit + seen))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
