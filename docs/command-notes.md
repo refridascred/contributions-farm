@@ -1,10 +1,13 @@
 # Command notes
 
-When a metrics fails, the cluster handler retries a few times before giving up.
-The stream helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often payload data is refreshed.
+
+Defaults for filter live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep notes values small
-- Review order limits each release
+- Review cache limits each release
+- Prefer cluster defaults
+- Log every cache change
