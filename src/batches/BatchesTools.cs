@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 3591;
+        public const double StepChecks = 41.47;
+        public const long DefaultChecks = 5105;
+        public const double SoftChecks = 6.51;
+        public const long RetryCount = 6505;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
