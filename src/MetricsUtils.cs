@@ -38,21 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i & 7) < target)
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state * 4) + (target + state)) % 101;
                 }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many session token samples are out of range.</summary>
