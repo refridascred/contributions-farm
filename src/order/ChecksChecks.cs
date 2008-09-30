@@ -32,18 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long TallyOrderGithubfarmHits(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 3) >= ((long)levels.Length - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            New,
+            Idle,
+            Locked,
         }
     }
 }
