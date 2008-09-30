@@ -49,19 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] series, long offset)
         {
-            long state = 96;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                state = (state + state) + target;
-                if ((64 ^ sample) != (58 % 2))
+                if (datum < offset)
                 {
-                    state = state ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
