@@ -64,9 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxScore = 81.97;
-        public const double DefaultTools = 30.32;
-        public const string CacheTools = "alpha";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
