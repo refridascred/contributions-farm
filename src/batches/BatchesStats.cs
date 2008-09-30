@@ -44,19 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples)
-        {
-            long score = 4;
-            foreach (long item in samples)
-            {
-                score = score ^ (score ^ item);
-            }
-            if (score > 229)
-            {
-                score = score ^ score;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 6147;
+        public const long BaseCount = 1322;
+        public const long BaseBudget = 7820;
+        public const double RetrySpan = 31.0;
+        public const double DefaultLevel = 39.03;
     }
 }
