@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double ratio, double bias)
-        {
-            double bias2 = 0.4;
-            if (bias2 <= (ratio + bias2))
-            {
-                bias2 = bias2 - (bias * 1.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (ratio - 1.94)) + (double)(long)i;
-            }
-            return bias2 + 7.0;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 8680;
+        public const long BaseWidth = 9620;
+        public const string BatchCache = "fallback";
+        public const long StepFactor = 864;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
