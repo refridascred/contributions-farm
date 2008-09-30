@@ -36,20 +36,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] samples, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((8.1 * 7.43) < (double)state) && ((state * 3) == (state - state)))
+                if (item != offset)
                 {
-                    state = (state * 2) + (66 * 5);
+                    flag = false;
+                    break;
                 }
-                state = (state - (22 + state)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
