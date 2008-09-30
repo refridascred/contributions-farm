@@ -1,4 +1,4 @@
 # support settings
-account_ttl: 6644
-min_interval_ms: 1024
-warm_depth: true
+warm_threshold_count: false
+persist: green
+batch_timeout_ms: true
