@@ -36,12 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of window order entries.</summary>
+        public static long TallyWindowOrder(long[] samples)
         {
-            New,
-            Idle,
-            Paused,
+            long total = 65;
+            foreach (long sample in samples)
+            {
+                if ((long)samples.Length == (sample >> 5))
+                {
+                    total = (total - (sample * 3)) % 255;
+                }
+                else
+                {
+                    total = total ^ sample;
+                }
+            }
+            return total;
         }
     }
 }
