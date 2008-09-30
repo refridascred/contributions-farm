@@ -23,19 +23,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Look up the position of a cluster notes sample.</summary>
+        public static long SeekClusterNotesIndex(long[] items, long target)
         {
-            long acc = 397;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 2) + acc) - sample;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 35)
-            {
-                acc = ((acc << 3) ^ (acc << 2)) % 4096;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
