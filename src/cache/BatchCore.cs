@@ -37,12 +37,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            Idle,
-            Ready,
-            Retry,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)28 > (double)matches) && ((3 - sample) != (matches - sample)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
