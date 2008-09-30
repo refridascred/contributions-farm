@@ -82,19 +82,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] levels, long origin)
         {
-            long state = 34;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                state = (((state + ((-879) & 1)) % 1000) - entry) - target;
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 7)
-            {
-                state = ((state << 3) ^ (state % 97)) % 101;
-            }
-            return state;
+            return valid;
         }
     }
 }
