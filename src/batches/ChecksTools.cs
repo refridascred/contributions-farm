@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (6.6 + 6.6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardDepth = 65.13;
+        public const long WindowProfile = 148;
+        public const long BatchInterval = 5217;
+        public const string DefaultDepth = "local";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] series)
