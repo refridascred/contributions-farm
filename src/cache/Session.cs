@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            New,
-            Locked,
-            Stale,
-            Dropped,
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) + weight;
+            }
+            return ratio + (double)2;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
