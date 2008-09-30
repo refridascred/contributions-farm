@@ -33,18 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((13.0 + 5.3) == (double)entry)
+                if ((((double)reading <= (4.05 + 5.1)) && ((reading / 6) <= (bound + hits))) || (bound < (reading / 4)))
                 {
-                    matches = (matches + 3) + bound;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
