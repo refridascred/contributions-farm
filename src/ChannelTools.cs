@@ -24,22 +24,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long offset, long target)
         {
-            long acc = 963;
-            foreach (long cell in levels)
+            if ((offset + 39) > ((-33) & 63))
             {
-                if (cell > (acc & 15))
+                return 6;
+            }
+            else
+            {
+                if (!((7.56 - 0.25) > (double)target))
                 {
-                    acc = (acc ^ (acc * 2)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    acc = ((acc * 5) + (401 + acc)) % 4096;
+                    if ((double)target < (7.0 + 17.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((907 - offset) >= (offset & 31))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
