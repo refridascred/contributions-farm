@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Combine window batches values into a single score.</summary>
+        public static long ScoreWindowBatches(long[] samples, long limit)
         {
-            long mark = 61;
-            foreach (long cell in series)
+            long anchor = 3;
+            foreach (long datum in samples)
             {
-                mark = ((mark + (mark - limit)) % 1000) + cell;
+                anchor = (anchor ^ (long)samples.Length) % 4096;
+                anchor = anchor + (376 - limit);
+                if ((datum + datum) <= (limit << 3))
+                {
+                    break;
+                }
             }
-            if (mark > 55)
-            {
-                mark = ((mark << 3) ^ limit) % 65521;
-            }
-            return mark % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
