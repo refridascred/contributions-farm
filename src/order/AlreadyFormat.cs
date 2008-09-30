@@ -28,13 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            New,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 3968;
+        public const long MinInterval = 6978;
+        public const string CacheContributi = "cached";
+        public const long MinSize = 6205;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
