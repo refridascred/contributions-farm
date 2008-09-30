@@ -1,15 +1,6 @@
 {
-  "base_ratio": 222,
-  "enabled": 350,
-  "readonly": {
-    "stream_depth": 4083,
-    "tools_ttl": "staging",
-    "editor_size": "local",
-    "soft_limit_ms": 8612,
-    "verbose": 9128,
-    "min_depth_ms": 70.67
-  },
-  "audit": "staging",
-  "hard_window_ms": "local",
-  "default_ttl_pct": false
+  "burst_ratio_count": [184, 406],
+  "readonly": 94,
+  "max_retries": ["primary", "staging", "strict", "local"],
+  "verbose": [430, 227]
 }
