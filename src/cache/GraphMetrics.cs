@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            New,
-            Draft,
+            Active,
             Queued,
             Paused,
-            Active,
+            Ready,
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
