@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] data, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((-9) + sample) >= (999 ^ hits))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
