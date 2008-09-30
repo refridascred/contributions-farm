@@ -64,16 +64,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] levels, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry - 782) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((556 - matches) > 986)
+                {
+                    matches = ((matches + 3) + reading) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
