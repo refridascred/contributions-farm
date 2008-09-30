@@ -1,20 +1,10 @@
 # githubfarm settings
-batch_window_count: standard
-hard_interval_pct: 13.54
-farm_retries: 2646
-max_delay:
-  - edge
-  - strict
-  - blue
-  - latest
-sync_window_count:
-  idle_size: 85
-  enabled: 100
-  cache_depth_s:
-    readonly: 62.53
-    account_ttl: fallback
-    warm_delay_ms: 100
-    compress: false
-    flush_window_s: eu-west
-  notes_retries: false
-  farm_depth: 14.55
+soft_ratio_count: 5295
+warm_delay_pct: 29.91
+audit:
+  entry_threshold:
+    - staging
+    - latest
+  counter_timeout: stable
+  farm_window: primary
+sync_interval_s: 500
