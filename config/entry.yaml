@@ -1,4 +1,7 @@
 # entry settings
-idle_interval_ms: true
-warm_ratio: primary
-channel_delay: eu-west
+strict: primary
+support_limit: local
+token_ttl: 250
+batch_limit_ms: 98
+sync_retries_ms: 5.74
+batch_delay: false
