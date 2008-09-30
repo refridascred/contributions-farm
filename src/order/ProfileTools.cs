@@ -72,17 +72,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - result;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
