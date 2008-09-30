@@ -27,12 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Locked,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
