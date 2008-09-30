@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const long DefaultToken = 4425;
         public const long BurstToken = 7881;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
