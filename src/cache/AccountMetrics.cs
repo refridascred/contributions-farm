@@ -57,19 +57,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long carry = 693;
-            foreach (long item in values)
+            long anchor = 55;
+            foreach (long reading in readings)
             {
-                carry = carry - (item - carry);
-                if (item <= 463)
+                if (anchor >= (reading + anchor))
                 {
-                    break;
+                    anchor = (anchor + ((long)readings.Length / 3)) % 255;
                 }
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Hold a order snapshot.</summary>
