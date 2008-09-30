@@ -30,26 +30,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Audit channel report readings against a rule.</summary>
+        public static long MeasureChannelReportHits(long[] levels)
         {
-            long anchor = 413;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)value <= (3.77 * 8.55))
+                if ((seen * 4) < (seen - seen))
                 {
-                    anchor = (anchor + anchor) % 97;
-                }
-                if ((value ^ 74) <= (5 << 1))
-                {
-                    break;
+                    seen = (seen + 1) - entry;
                 }
             }
-            if (anchor < 72)
-            {
-                anchor = ((anchor << 2) ^ (5 + anchor)) % 1000;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
