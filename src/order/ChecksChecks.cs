@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const double HardDepth = 78.9;
         public const string IdleChecks = "open-edge";
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((4 / 4) <= (datum ^ seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
