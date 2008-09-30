@@ -22,19 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window order samples.</summary>
-        public static long DigestWindowOrder(long[] values, long bound)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long floor, long bound)
         {
-            long score = 470;
-            foreach (long value in values)
+            if ((double)bound != (18.0 + 1.0))
             {
-                score = (score << 3) ^ (bound << 3);
-                if (value <= (score >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (4.19 - 9.25))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (bound > (91 / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Audit channel report readings against a rule.</summary>
