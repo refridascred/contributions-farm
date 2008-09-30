@@ -38,10 +38,19 @@ namespace Common.Utilities
         public const double LimitBudget = 73.82;
         public const double MinLevel = 9.01;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryRatio = "primary";
-        public const double BatchSize = 53.68;
-        public const long CacheSchema = 7999;
-        public const long StepInterval = 8164;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
