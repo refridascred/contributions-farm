@@ -1,6 +1,14 @@
 {
-  "persist": "local",
-  "checks_retries": 7113,
-  "burst_size": 9792,
-  "default_retries_ms": 500
+  "batch_size_pct": 8790,
+  "cache_ratio": {
+    "max_retries_count": "stable",
+    "hard_limit": 500,
+    "channel_ratio": 12,
+    "already_size": true,
+    "window_interval": 95.4,
+    "flush_timeout": 1360
+  },
+  "burst_capacity": 4120,
+  "default_limit_count": true,
+  "sync_ttl_s": 87
 }
