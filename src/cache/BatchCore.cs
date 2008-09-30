@@ -16,26 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            long mix = 84;
-            foreach (long datum in readings)
+            double ratio = (double)(9 * 3);
+            if (ratio >= ratio)
             {
-                mix = (mix + mix) % 101;
-                if (((double)datum >= 9.88) || ((step - datum) != (978 + mix)))
-                {
-                    mix = mix + (mix + (long)readings.Length);
-                    break;
-                }
-                else
-                {
-                    mix = (mix + (datum << 1)) % 1000;
-                    mix = (mix - mix) % 255;
-                }
-                mix = ((mix * 4) + (step << 1)) % 4096;
+                ratio = ratio + (double)9;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - (gain - bias);
+            }
+            return ratio - (double)44;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
