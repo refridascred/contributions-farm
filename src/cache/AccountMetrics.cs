@@ -36,22 +36,10 @@ namespace Common.Utilities
         public const long BatchSpan = 35;
         public const long WindowStats = 2961;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "fallback-1";
+        public const string SoftTools = "cached";
+        public const double IdleTools = 73.25;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] series, long limit)
