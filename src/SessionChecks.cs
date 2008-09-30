@@ -43,21 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 2617;
+        public const double LimitFactor = 15.17;
+        public const long StepBudget = 9361;
+        public const string SoftDepth = "legacy-v2";
+        public const long RetryGraph = 1048;
     }
 }
