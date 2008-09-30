@@ -35,22 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long AuditFarmEditorHits(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = -1;
+            foreach (long sample in values)
             {
-                if (!(tally > (tally & 1)))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + (limit - sample)) % 255;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
