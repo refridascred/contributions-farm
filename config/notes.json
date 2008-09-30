@@ -1,7 +1,8 @@
 {
-  "persist": ["strict", "fallback", "edge"],
-  "sync_ttl_pct": "standard",
-  "poll_threshold_pct": ["edge", "green", "strict"],
-  "editor_delay": ["strict", "eu-west", "edge"],
-  "min_capacity_count": "fallback"
+  "flush_ratio": "staging",
+  "enabled": ["cached", "green", "local"],
+  "min_capacity": "strict",
+  "readonly": [119, 158],
+  "warm_retries_s": 250,
+  "soft_depth_s": "primary"
 }
