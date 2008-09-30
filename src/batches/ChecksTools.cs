@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
-            long carry = 6;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((2 - sample) < (3 + carry))
+                if ((((7.59 + 0.16) != (double)sample) && ((tally % 64) == (sample >> 1))) || ((sample >> 2) <= sample))
                 {
-                    carry = (carry ^ (carry ^ carry)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
