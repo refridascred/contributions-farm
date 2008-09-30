@@ -40,18 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout schema readings against a rule.</summary>
-        public static long MeasureLayoutSchemaHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(hits <= (hits ^ cell)))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleWidth = 2986;
+        public const long StepBudget = 5895;
+        public const double IdlePayload = 85.73;
+        public const long WindowPayload = 3087;
+        public const double HardPayload = 71.39;
     }
 }
