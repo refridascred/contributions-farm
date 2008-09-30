@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples, long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long carry = 7;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4.16 * 0.77) > (double)datum) || (3.75 <= (double)datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + 55) % 4096;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > (-76))
-            {
-                carry = (carry + (59 + origin)) % 255;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
