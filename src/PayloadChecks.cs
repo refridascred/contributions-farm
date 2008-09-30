@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long result = 7;
+            foreach (long datum in values)
             {
-                if (((target + item) == (item & 1)) && ((3 >> 3) != (9 + count)))
+                if ((result / 4) == (result % 3))
                 {
-                    count = count + 3;
+                    result = (result - (datum & 7)) % 1000;
+                }
+                if ((result >> 2) > (datum * 3))
+                {
+                    result = (result + (result + datum)) % 97;
+                }
+                if ((datum + result) <= (datum << 2))
+                {
+                    result = ((result << 2) ^ (datum - result)) % 97;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
