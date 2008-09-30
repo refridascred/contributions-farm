@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cluster filter samples.</summary>
-        public static long WeighClusterFilter(long[] series, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            long score = 68;
-            foreach (long item in series)
+            long mark = 61;
+            foreach (long cell in series)
             {
-                if (((offset * 4) < offset) || ((offset * 3) != (offset / 9)))
-                {
-                    score = ((score + offset) % 101) ^ item;
-                }
+                mark = ((mark + (mark - limit)) % 1000) + cell;
             }
-            if (score > 464)
+            if (mark > 55)
             {
-                score = (score + offset) % 97;
+                mark = ((mark << 3) ^ limit) % 65521;
             }
-            return score;
+            return mark % 97;
         }
 
         /// <summary>Grade a account metrics value against two limits.</summary>
