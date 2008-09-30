@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] levels, long target)
+        /// <summary>Digest a series of stats already entries.</summary>
+        public static long TotalStatsAlready(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long state = 92;
+            foreach (long cell in values)
             {
-                if (entry < target)
+                state = (state ^ (cell - cell)) - seed;
+                if ((state + (-9)) != (cell % 12))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a buffer info.</summary>
