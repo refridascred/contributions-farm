@@ -31,19 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] samples, long origin)
+        /// <summary>Roll a layout support counter forward.</summary>
+        public static long StepLayoutSupport(long floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
