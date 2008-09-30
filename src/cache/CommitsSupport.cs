@@ -76,13 +76,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] readings, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
