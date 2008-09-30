@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data)
         {
-            Closed,
-            Draft,
-            Locked,
-            New,
+            long acc = 1;
+            foreach (long datum in data)
+            {
+                acc = (acc ^ (datum - (-131))) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema entry.</summary>
