@@ -16,14 +16,15 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples)
         {
-            Dropped,
-            Done,
-            Stale,
-            Draft,
-            Paused,
+            long acc = -651;
+            foreach (long datum in samples)
+            {
+                acc = (acc - datum) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
