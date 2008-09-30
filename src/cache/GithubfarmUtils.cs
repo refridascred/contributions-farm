@@ -27,18 +27,12 @@ namespace Common.Utilities
             return (drift + (drift + 1.0)) + bias;
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long TallyFormatMetricsHits(long[] items)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (hits * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
