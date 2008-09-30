@@ -42,20 +42,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (seed < total)
-                {
-                    total = ((total * 4) + (total * 3)) % 101;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the graph route series from a seed.</summary>
