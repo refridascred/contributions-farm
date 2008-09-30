@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Count schema format pairs that satisfy a relation.</summary>
+        public static long MatchSchemaFormatCount(long[] readings)
         {
-            double mean = (0.8 / 8.0) - gain;
-            if (mean > floor)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (floor - floor);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (8.7 + 7.0)) + (double)(long)i;
-            }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
