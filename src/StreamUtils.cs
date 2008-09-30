@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Ready,
-            Failed,
             Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
