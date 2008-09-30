@@ -22,31 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long floor, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long floor)
         {
-            if ((double)bound != (18.0 + 1.0))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (4.19 - 9.25))
+                if (datum > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound > (91 / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit channel report readings against a rule.</summary>
