@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
+            long acc = 4;
+            foreach (long cell in samples)
+            {
+                acc = (acc + (cell / 7)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes info.</summary>
