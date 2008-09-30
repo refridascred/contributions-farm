@@ -68,11 +68,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Rank order layout input into a small class.</summary>
+        public static long RankOrderLayout(long floor, long target)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            if (((23 & 15) != (target + 612)) || ((floor * 3) <= (floor + target)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((16.0 * 15.0) == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
