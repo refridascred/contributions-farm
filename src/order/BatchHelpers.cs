@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of batches channel readings.</summary>
-        public static long WeighBatchesChannel(long[] values, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
         {
-            long result = 9;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((origin >> 2) != (entry + result)) && ((2.1 / 7.0) < (double)origin))
+                if ((seen + entry) != (seen << 3))
                 {
-                    result = (result + (result + result)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
