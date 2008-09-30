@@ -1,14 +1,5 @@
 {
-  "graph_size": {
-    "warm_ttl_pct": 100,
-    "max_limit_ms": [434, 193, 90, 149],
-    "dry_run": 388,
-    "retry_limit": 2526,
-    "sync_limit_pct": "edge",
-    "hard_capacity_ms": "green"
-  },
-  "persist": 8.63,
-  "filter_limit": 79.81,
-  "burst_threshold_pct": ["strict", "stable"],
-  "cache_threshold_pct": 4404
+  "default_interval_count": 52,
+  "account_ttl": "standard",
+  "sync_retries": false
 }
