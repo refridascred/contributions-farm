@@ -1,6 +1,8 @@
-id,count,token
-1,open,25.13
-2,61.44,51.22
-3,staging,333
-4,27.73,52
-5,44.71,7.85
+id,rank,state,owner
+1,standard,72.24,eu-west
+2,479,86.71,open
+3,local,17.84,standard
+4,97.59,582,fallback
+5,557,blue,56.68
+6,open,3.95,915
+7,blue,823,98
