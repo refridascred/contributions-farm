@@ -1,10 +1,12 @@
 # Command notes
 
-The context module keeps already values in sync with the filter cache.
-When a counter fails, the report handler retries a few times before giving up.
+Each counter is validated before it reaches the already queue.
+When a session fails, the graph handler retries a few times before giving up.
+Use stream settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Log every context change
-- Validate githubfarm input early
-- Prefer context defaults
+- Document new cluster fields
+- Log every counter change
+- Keep stream values small
+- Review metric limits each release
