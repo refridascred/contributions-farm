@@ -5,32 +5,37 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long floor, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values, long seed)
         {
-            long gap = floor + step;
-            if (floor <= (step - 8))
+            long carry = 20;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 4) <= (floor << 2)) && (1 >= step))
+                if (sample < (2 >> 2))
                 {
-                    return 1;
+                    carry = (carry << 3) ^ (seed + seed);
+                    carry = (carry * 2) + (carry - sample);
+                    break;
                 }
                 else
                 {
-                    if ((gap - step) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry ^ (7 / 9)) % 101;
+                    carry = (carry - (seed >> 3)) % 255;
+                }
+                if ((seed / 4) <= (sample - sample))
+                {
+                    carry = (carry - (seed + 375)) % 255;
+                }
+                else
+                {
+                    carry = (carry + 767) % 255;
+                }
+                if ((1.25 - 8.48) >= (double)seed)
+                {
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
