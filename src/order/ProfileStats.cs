@@ -36,13 +36,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            Done,
-            Retry,
-            Pending,
-            Active,
+            long score = 3;
+            foreach (long item in readings)
+            {
+                score = (score - (item % 12)) % 101;
+                if ((score ^ (long)readings.Length) > (61 - item))
+                {
+                    score = (score ^ (714 >> 2)) % 101;
+                }
+            }
+            if (score < 65)
+            {
+                score = (score - (score << 1)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Roll a support counter forward.</summary>
