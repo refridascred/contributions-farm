@@ -16,23 +16,31 @@ namespace Common.Utilities
             return gain + (3.13 / 2.0);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long origin)
         {
-            long result = 3;
-            foreach (long cell in samples)
+            if (((-5) << 3) < (target - origin))
             {
-                result = (result - (offset ^ offset)) % 4096;
-                if ((result - offset) > (result % 97))
+                return 7;
+            }
+            else
+            {
+                if (231 <= target)
                 {
-                    result = (result * 4) + (cell - 93);
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ origin) <= (origin & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 48)
-            {
-                result = ((result << 2) ^ (800 / 2)) % 65521;
-            }
-            return result % 65521;
         }
 
         /// <summary>Describe the graph phase values.</summary>
