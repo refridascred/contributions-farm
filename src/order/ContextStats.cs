@@ -24,17 +24,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] levels, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 511;
+            foreach (long datum in series)
             {
-                if (levels[i] >= bound)
+                if (!((double)origin > 12.0))
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ state) % 4096) + datum;
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = state - 95;
+            }
+            return state;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
