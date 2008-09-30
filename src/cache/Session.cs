@@ -41,22 +41,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] readings)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((sample << 1) >= 62) || ((double)sample >= (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
     }
 }
