@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 8488;
-        public const long HardReport = 4985;
-        public const string BaseSize = "strict-edge";
-        public const long DefaultReport = 8257;
-        public const long SoftReport = 4556;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits / 9) > (entry * 3))
+                {
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
