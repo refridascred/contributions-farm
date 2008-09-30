@@ -27,31 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long origin, long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            if (((34 / 4) >= origin) && ((seed * 2) < (origin & 255)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 3) == (origin >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (origin ^ 66))
+                    if ((levels[i] + levels[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
