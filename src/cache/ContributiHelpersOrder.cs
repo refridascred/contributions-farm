@@ -27,19 +27,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] items, long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
