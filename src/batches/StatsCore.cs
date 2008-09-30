@@ -58,12 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long floor)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a stats cache counter forward.</summary>
