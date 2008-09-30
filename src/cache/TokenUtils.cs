@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item + (-184)) > (item / 2))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Synced,
+            Paused,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a notes info.</summary>
