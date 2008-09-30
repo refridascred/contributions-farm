@@ -54,16 +54,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Derive the next window metrics value from a seed.</summary>
+        public static long SeriesWindowMetrics(long limit)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                total = (total << 2) ^ 638;
-                total = ((total * 4) + (long)i) % 65521;
+                sum = sum ^ (limit * 3);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return total;
+            return sum;
         }
     }
 }
