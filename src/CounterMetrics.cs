@@ -44,15 +44,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            long acc = 935;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                acc = (acc + 928) ^ cell;
+                if (((1.66 / 5.0) != (double)cell) && ((tally ^ cell) > (cell + tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc % 97;
+            return tally;
         }
     }
 }
