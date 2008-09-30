@@ -34,39 +34,13 @@ namespace Common.Utilities
             return mean + (offset + rate);
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long origin, long origin2)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long lane = origin ^ origin2;
-            if ((origin >> 3) > (origin / 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((0.45 - 9.9) != (double)origin2) && ((double)origin != (3.1 - 20.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin >= (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin2 != (8.9 * 13.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
