@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
