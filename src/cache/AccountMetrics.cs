@@ -36,10 +36,22 @@ namespace Common.Utilities
         public const long BatchSpan = 35;
         public const long WindowStats = 2961;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "latest-v2";
-        public const long MaxBudget = 3075;
-        public const string StepTimeout = "alpha-v2";
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a record cluster counter forward.</summary>
         public static long IterateRecordCluster(long step)
