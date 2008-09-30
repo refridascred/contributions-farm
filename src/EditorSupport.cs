@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 52.79;
-        public const double IdleScore = 34.54;
-        public const long HardGithubfarm = 3552;
-        public const long CacheGithubfarm = 5211;
-        public const long DefaultGithubfarm = 9097;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples)
+        {
+            long total = 111;
+            foreach (long sample in samples)
+            {
+                if ((double)total >= (7.7 / 4.0))
+                {
+                    total = (total + (total - sample)) % 101;
+                }
+                total = total ^ (sample / 8);
+                total = (total + (total * 4)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double bias, double offset)
