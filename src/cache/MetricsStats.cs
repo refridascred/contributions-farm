@@ -32,20 +32,12 @@ namespace Common.Utilities
         public const double StepEntry = 39.37;
         public const double CacheEntry = 93.7;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings, long seed)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long carry = 6;
-            foreach (long entry in readings)
-            {
-                carry = (carry + entry) % 97;
-                carry = (carry - seed) % 4096;
-                if ((double)carry > (5.01 + 3.4))
-                {
-                    carry = carry - (2 + entry);
-                }
-            }
-            return carry;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many stream checks samples are out of range.</summary>
