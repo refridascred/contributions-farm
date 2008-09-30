@@ -46,16 +46,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next metric support value from a seed.</summary>
-        public static long StepMetricSupport(long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc + (floor + acc);
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Stale,
+            Draft,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the filter phase values.</summary>
