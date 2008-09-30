@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] series, long step)
         {
-            Synced,
-            Locked,
-            Queued,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
