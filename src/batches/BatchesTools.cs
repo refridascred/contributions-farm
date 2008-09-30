@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 6318;
-        public const string BaseProfile = "local-1";
-        public const long BatchCount = 4402;
-        public const long BurstRatio = 1747;
-        public const long MinProfile = 8850;
+        /// <summary>Classify a context metrics pair into a bucket.</summary>
+        public static long BucketContextMetrics(long offset, long offset2)
+        {
+            if ((offset2 + 14) > (offset + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= 6.13)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
