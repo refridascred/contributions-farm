@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long bound2 = bound - step;
-            if (bound2 <= (bound2 + step))
+            double weight = bias;
+            if (weight > (double)4)
             {
-                return 8;
+                weight = (weight + (double)47) - bias2;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound & 15) <= 150)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound2) < (bound % 16))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                weight = (weight + (double)(-499)) + (double)(long)i;
             }
+            return weight - bias;
         }
 
         /// <summary>Describe the notes class values.</summary>
