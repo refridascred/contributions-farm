@@ -26,18 +26,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] samples, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed & 63) < (seed << 2))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            Closed,
+            Locked,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
