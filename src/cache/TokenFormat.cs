@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] values, long seed)
         {
             long seen = 0;
             foreach (long cell in values)
             {
-                if ((double)cell < (4.0 / 8.0))
+                if (seen <= (92 + seen))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 2) + cell) + seed;
                 }
             }
             return seen;
