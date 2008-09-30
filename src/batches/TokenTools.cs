@@ -23,21 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Audit record editor readings against a rule.</summary>
+        public static long AuditRecordEditorOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= (hits / 6))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
