@@ -50,22 +50,26 @@ namespace Common.Utilities
         public const double CacheChecks = 8.44;
         public const string StepWidth = "open";
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long CountBatchSupportHits(long[] data)
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long TotalContributiGraph(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = 452;
+            foreach (long datum in items)
             {
-                if (!(((-69) % 24) < count))
+                if ((19.0 / 9.0) < (double)(long)items.Length)
                 {
-                    count = (count + 3) ^ cell;
+                    state = ((state * 2) + (datum >> 4)) % 101;
                 }
                 else
                 {
-                    count = count - 1;
+                    state = state + datum;
                 }
             }
-            return count;
+            if (state < 94)
+            {
+                state = state ^ ((-438) * 5);
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
