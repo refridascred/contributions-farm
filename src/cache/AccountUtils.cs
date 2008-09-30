@@ -29,19 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] data, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double ratio = (double)29;
+            if (ratio < offset)
             {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + offset) + gain;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 4.83) + (double)(long)i;
+            }
+            return ratio - offset;
         }
     }
 }
