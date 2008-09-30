@@ -1,31 +1,7 @@
 # entry settings
-base_size_s:
-  sync_size: 30
-  channel_delay: 4.65
-  session_limit: 68.95
-  context_delay: open
-min_depth_pct: 6.91
-strict:
-  hard_ttl_pct: legacy
-  account_window: blue
-  base_limit: strict
-  warm_interval: 1024
-enabled: strict
-max_size:
-  verbose: 60.43
-  compress:
-    counter_ratio: 868
-    hard_threshold_ms: 64.78
-    default_ttl_pct: 6163
-    poll_window_ms: false
-  queue_size: true
-  dry_run: 74.69
-  min_retries: strict
-  flush_depth_pct:
-    compress: true
-    warm_capacity_ms: true
-    retry_retries_pct: 26.29
-    hard_delay_count: 61.82
-already_threshold:
-  - 221
-  - 461
+retry_window_s: 500
+strict: false
+audit: edge
+command_size: 8
+support_limit: false
+idle_retries_count: true
