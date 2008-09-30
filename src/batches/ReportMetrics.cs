@@ -16,12 +16,20 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleCount = 9119;
-        public const long BaseSize = 1371;
-        public const string BatchBatches = "strict-edge";
-        public const long MinSize = 6214;
-        public const double CacheBatches = 69.09;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((3.3 * 5.34) >= (double)seed))
+                {
+                    sum = (sum << 2) ^ (seed + seed);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every filter payload entry stays within the limit.</summary>
         public static bool VerifyFilterPayloadBounds(long[] samples, long target)
