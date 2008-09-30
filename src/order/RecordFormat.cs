@@ -52,24 +52,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long limit, long seed)
-        {
-            if ((double)limit <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit - limit) < (seed + 741))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 74.83;
+        public const double MinBudget = 48.82;
+        public const long DefaultCommits = 3939;
     }
 }
