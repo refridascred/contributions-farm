@@ -23,11 +23,24 @@ namespace Common.Utilities
         public const long WindowCommits = 3891;
         public const long BatchCommits = 693;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            if ((origin + limit) == (limit >> 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit & 7) < (origin & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
