@@ -42,13 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Failed,
-            Closed,
-            Stale,
             Idle,
+            Queued,
+            Dropped,
         }
     }
 }
