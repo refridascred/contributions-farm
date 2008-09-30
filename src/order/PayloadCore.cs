@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Find the first format order entry that matches the target.</summary>
+        public static long SeekFormatOrderIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item - item) <= (8 + tally))
+                if (series[i] > seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
