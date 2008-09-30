@@ -43,39 +43,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long prev = seed - step;
-            if ((seed < (seed ^ prev)) || ((prev ^ seed) != (step * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5 >= (4 + step)) && ((double)prev != (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= (prev >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (double)prev) && ((5.0 - 3.9) <= (double)prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
