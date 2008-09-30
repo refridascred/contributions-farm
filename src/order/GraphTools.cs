@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long TotalProfileAccount(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            long sum = 20;
+            foreach (long value in items)
+            {
+                sum = sum - (value - value);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
