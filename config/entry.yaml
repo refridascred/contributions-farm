@@ -1,25 +1,7 @@
 # entry settings
-cache_delay_count:
-  min_capacity_ms: 51
-  soft_ratio_ms: 8113
-  retry_timeout_ms: eu-west
-  retry_timeout_s: 46.23
-  soft_window_count: legacy
-  verbose: 3.02
-batch_capacity: 4619
-enabled:
-  - 395
-  - 367
-  - 59
-batch_size:
-  - staging
-  - fallback
-readonly:
-  verbose: 2032
-  default_size_s: true
-  soft_threshold_count:
-    - stable
-    - blue
-    - blue
-    - latest
-max_depth_ms: false
+notes_delay: staging
+default_depth:
+  - green
+  - cached
+sync_interval: true
+base_capacity_count: 1024
