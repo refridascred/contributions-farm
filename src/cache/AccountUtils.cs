@@ -29,18 +29,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((target + 13) <= matches))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 77.8;
+        public const long BatchProfile = 5281;
+        public const long BurstWidth = 2060;
+        public const double CacheWidth = 3.09;
     }
 }
