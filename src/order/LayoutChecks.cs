@@ -64,10 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 6962;
-        public const double SoftRatio = 73.32;
-        public const long DefaultSupport = 7849;
-        public const long WindowSupport = 4654;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
