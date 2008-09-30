@@ -38,11 +38,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryScore = 38.75;
-        public const long WindowLevel = 1227;
-        public const long BaseBatch = 762;
-        public const long DefaultBatch = 2679;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] readings, long bound)
+        {
+            long acc = -43;
+            foreach (long entry in readings)
+            {
+                acc = ((acc + (acc + bound)) % 101) + entry;
+                if ((bound + bound) != ((long)readings.Length & 63))
+                {
+                    acc = acc + (67 >> 4);
+                }
+                else
+                {
+                    acc = (acc - (bound << 1)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long origin)
