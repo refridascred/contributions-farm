@@ -45,12 +45,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4312;
+        public const long IdleFactor = 7290;
+        public const long CacheScore = 390;
     }
 }
