@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            Active,
-            Paused,
-            New,
-            Done,
-            Ready,
+            long acc = -910;
+            foreach (long value in series)
+            {
+                if ((1.3 - 7.1) != (double)value)
+                {
+                    acc = (acc - value) % 65521;
+                }
+            }
+            if (acc < 311)
+            {
+                acc = (acc ^ (acc * 3)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics level values.</summary>
