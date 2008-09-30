@@ -1,8 +1,7 @@
 {
-  "batch_delay_pct": true,
-  "commits_interval": "standard",
-  "idle_ttl": "primary",
-  "max_depth_count": true,
-  "buffer_interval": false,
-  "stats_capacity": "local"
+  "channel_ratio": false,
+  "flush_limit": 14.99,
+  "audit": ["primary", "standard", "blue", "blue"],
+  "min_depth_ms": "latest",
+  "stream_interval": [342, 127, 264, 351]
 }
