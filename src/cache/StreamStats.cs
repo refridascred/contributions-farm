@@ -26,10 +26,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleRatio = "strict-edge";
-        public const string WindowBudget = "cached-1";
-        public const long MaxChannel = 4920;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry << 2) ^ (long)i2) % 97;
+                }
+                if (!((seed + carry) >= carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
