@@ -40,19 +40,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] levels, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if (((bound * 4) == (floor + bound)) && (floor > (bound + floor)))
             {
-                if (value != limit)
+                return 7;
+            }
+            else
+            {
+                if (((838 & 255) > bound) || ((bound / 6) >= (bound + (-810))))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)floor < (6.2 * 17.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound < floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
