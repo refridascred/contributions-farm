@@ -21,17 +21,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long step)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
