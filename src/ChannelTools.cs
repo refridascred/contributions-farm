@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] items, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Failed,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
