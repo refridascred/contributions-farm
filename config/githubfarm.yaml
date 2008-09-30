@@ -1,11 +1,13 @@
 # githubfarm settings
-cache_window_s: eu-west
-editor_threshold: 3672
-default_ratio: primary
-poll_capacity:
-  default_window_pct: 6.14
-  soft_retries_pct: stable
-  flush_capacity: 6655
-  compress: primary
-  session_depth: 250
-queue_size: 22.57
+batches_depth:
+  min_ratio_ms: primary
+  max_timeout_s:
+    cache_window: 85
+    payload_delay: 2644
+    schema_timeout: true
+    default_delay: stable
+  context_window: blue
+  stream_ratio: 71
+  default_ratio: edge
+sync_ratio_count: cached
+max_timeout_s: 83.87
