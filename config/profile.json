@@ -1,5 +1,5 @@
 {
-  "flush_size_s": ["open", "cached", "blue", "staging"],
-  "session_threshold": 67,
-  "cache_window_ms": "eu-west"
+  "burst_retries": true,
+  "hard_capacity": ["latest", "primary"],
+  "hard_threshold_ms": false
 }
