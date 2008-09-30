@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool VerifyChecksAccountBounds(long[] samples, long floor)
         {
-            long carry = 701;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)datum == (double)carry)
+                if (cell < floor)
                 {
-                    carry = (carry - (carry >> 2)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - carry) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the record phase values.</summary>
