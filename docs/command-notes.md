@@ -1,11 +1,10 @@
 # Command notes
 
-Keep editor and session names short and lowercase.
-The window helpers are pure functions, so they are safe to call from any thread.
-Each checks is validated before it reaches the channel queue.
+Use profile settings to tune how often graph data is refreshed.
+Use token settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Review token limits each release
-- Log every cache change
-- Keep commits values small
+- Validate profile input early
+- Keep stats values small
+- Document new order fields
