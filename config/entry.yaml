@@ -1,24 +1,11 @@
 # entry settings
-schema_size:
-  session_size: 250
-  payload_interval: 4136
-  buffer_ttl: standard
-  retry_depth:
-    cache_depth:
-      - blue
-      - open
-    idle_delay: 500
-    session_capacity: 5500
-    retry_capacity_count: 30
-    context_size: 77
-    route_interval:
-      - 95
-      - 456
-order_interval: strict
-flush_depth_s: 100
-counter_size: true
-dry_run:
-  - fallback
-  - stable
-  - primary
-  - staging
+burst_retries_count:
+  - 370
+  - 482
+  - 45
+  - 213
+max_window: strict
+idle_limit_count: eu-west
+soft_ratio: true
+min_retries_s: fallback
+soft_threshold: latest
