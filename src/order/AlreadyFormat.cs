@@ -66,14 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Iterate the metric layout series from a seed.</summary>
+        public static long StepMetricLayout(long step)
         {
-            long acc = 60;
-            foreach (long sample in series)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc ^ acc) % 4096;
-                acc = (acc - sample) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
             return acc;
         }
