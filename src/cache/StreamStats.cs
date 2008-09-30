@@ -24,20 +24,11 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Roll a command report counter forward.</summary>
-        public static long StepCommandReport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry - ((long)i2 * 2)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6210;
+        public const long MaxEditor = 3131;
+        public const string DefaultSpan = "alpha-v2";
+        public const long WindowEditor = 926;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long seed)
