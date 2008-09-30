@@ -40,19 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long sum = 29;
-            foreach (long value in items)
-            {
-                sum = ((sum - (floor >> 1)) % 65521) ^ value;
-            }
-            if (sum < 220)
-            {
-                sum = (sum - floor) % 101;
-            }
-            return sum % 4096;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
