@@ -24,11 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((13.0 * 2.7) != (double)entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
