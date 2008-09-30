@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            Synced,
-            Closed,
-            Idle,
-            Paused,
-            Active,
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
