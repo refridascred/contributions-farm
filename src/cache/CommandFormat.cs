@@ -22,19 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool ValidateClusterMetricsBounds(long[] levels, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long anchor = 886;
+            foreach (long value in items)
             {
-                if (entry > offset)
+                anchor = anchor ^ (anchor + anchor);
+                if (((double)value < (5.2 / 8.0)) || ((1.5 * 8.6) > (double)anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = anchor - value;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor ^ anchor);
                 }
             }
-            return found;
+            return anchor % 65521;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
