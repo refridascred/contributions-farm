@@ -15,17 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a layout context reading by value.</summary>
-        public static long LookupLayoutContextIndex(long[] values, long offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
