@@ -32,24 +32,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long origin, long origin2)
+        /// <summary>Roll a tools payload counter forward.</summary>
+        public static long DeriveToolsPayload(long floor)
         {
-            if ((origin << 3) > (654 ^ origin2))
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                total = (total + total) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((1.82 * 1.0) > (double)origin2)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
     }
 }
