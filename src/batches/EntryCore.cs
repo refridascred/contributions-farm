@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ hits) > (item << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a githubfarm contributi reading by value.</summary>
