@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const long IdleLevel = 6347;
         public const string StepRecord = "strict-v2";
 
-        /// <summary>Project the next checks payload value.</summary>
-        public static double ScaleChecksPayload(double scale, double bias)
+        /// <summary>Project the next batches format value.</summary>
+        public static double ScaleBatchesFormat(double ratio, double span)
         {
-            double mean = bias;
-            if (mean >= 2.4)
+            double bias = (span * 3.0) * 4.87;
+            if (bias >= (span - bias))
             {
-                mean = mean - (scale / 7.0);
+                bias = (bias + (double)43) + ratio;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + (double)5;
+            return bias + 8.5;
         }
     }
 }
