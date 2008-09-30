@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= target)
+                if (sample != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
