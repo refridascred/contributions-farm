@@ -1,6 +1,11 @@
 {
-  "soft_threshold_count": true,
-  "stats_ttl": 38,
-  "retry_ttl": [390, 202],
-  "farm_threshold": 84
+  "retry_ttl_s": 79,
+  "poll_delay": {
+    "commits_interval": "eu-west",
+    "sync_threshold_pct": ["legacy", "cached", "strict", "staging"],
+    "verbose": true,
+    "enabled": 13
+  },
+  "persist": 50,
+  "window_retries": true
 }
