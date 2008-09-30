@@ -1,13 +1,18 @@
 # entry settings
-persist: 1024
-cache_timeout_pct:
-  - blue
-  - strict
-  - edge
-  - legacy
-sync_window_s: true
-warm_size: 4553
-batch_timeout:
-  - staging
-  - edge
-  - primary
+sync_delay_count:
+  retry_ttl_count:
+    readonly: edge
+    layout_timeout: false
+    idle_threshold_count: 18.82
+    batch_size: false
+  base_size: false
+  report_ratio: 6.89
+  dry_run:
+    - 110
+    - 499
+    - 69
+already_timeout: true
+burst_capacity: true
+editor_timeout:
+  - 278
+  - 434
