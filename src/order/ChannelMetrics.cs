@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels, long offset)
         {
-            long acc = 23;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in levels)
             {
-                acc = (acc ^ (acc << 2)) % 4096;
-                if (((9.9 + 15.0) > (double)sample) && ((8.0 + 8.39) > (double)acc))
+                if ((value - value) == (value + offset))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc - ((-350) >> 1)) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
