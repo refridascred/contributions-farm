@@ -60,12 +60,22 @@ namespace Common.Utilities
         public const string CacheMetric = "standard-edge";
         public const double BurstWidth = 26.68;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            Pending,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (matches < entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
