@@ -62,39 +62,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a record metric pair into a bucket.</summary>
-        public static long BucketRecordMetric(long target, long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long span = target + bound;
-            if (span > target)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 3) == (target - span))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-4) > (double)span)
+                    if ((samples[i] + samples[j]) > 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound / 4) > (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
