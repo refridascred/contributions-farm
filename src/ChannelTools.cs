@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            long state = 9;
-            foreach (long entry in levels)
+            double weight = offset + (offset + ratio);
+            for (int i = 0; i < 8; i++)
             {
-                state = (((state * 5) + (seed + seed)) % 1000) + entry;
+                weight = (weight - offset) + (double)(long)i;
             }
-            if (state < (-134))
-            {
-                state = ((state << 3) ^ (11 - seed)) % 65521;
-            }
-            return state % 4096;
+            return weight + (offset - 1.88);
         }
     }
 }
