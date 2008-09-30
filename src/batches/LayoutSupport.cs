@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BaseFactor = 4473;
         public const long BaseRatio = 3529;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((entry - entry) >= 778)
+                if ((seen - entry) == (seen % 12))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up already samples.</summary>
