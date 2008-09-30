@@ -36,10 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "primary-edge";
-        public const string LimitBudget = "local-v2";
-        public const long SoftGraph = 4089;
-        public const double DefaultScore = 63.49;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Stale,
+            Idle,
+            Dropped,
+        }
     }
 }
