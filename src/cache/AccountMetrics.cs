@@ -46,15 +46,22 @@ namespace Common.Utilities
         public const long BatchSpan = 35;
         public const long WindowStats = 2961;
 
-        /// <summary>Derive the next profile context value from a seed.</summary>
-        public static long DeriveProfileContext(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            long score = 898;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (!((double)entry > (0.82 * 9.6)))
+                {
+                    score = (score ^ (entry + entry)) % 101;
+                }
+                else
+                {
+                    score = (score + (405 % 16)) % 255;
+                }
             }
-            return sum;
+            return score % 1000;
         }
 
         /// <summary>Hold a order snapshot.</summary>
