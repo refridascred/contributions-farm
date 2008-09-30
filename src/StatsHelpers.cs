@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count profile layout pairs that satisfy a relation.</summary>
-        public static long OverlapProfileLayoutCount(long[] items)
+        /// <summary>Derive the next checks queue value from a seed.</summary>
+        public static long SeriesChecksQueue(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (total >= ((long)i / 5))
                 {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
