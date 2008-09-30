@@ -1,10 +1,19 @@
 # githubfarm settings
-burst_size_count: 8
-compress: true
-persist:
-  - 298
-  - 198
-  - 19
-max_size_s: 34.68
-batch_retries_ms: latest
-support_window: legacy
+soft_timeout: cached
+cache_depth_pct:
+  sync_limit_ms:
+    flush_size_ms: 8479
+    dry_run: 20
+    cache_timeout_count: 52.46
+    max_window_pct: 63.45
+    command_limit: 94.82
+  audit: fallback
+  tools_capacity: green
+  soft_size_count: 9897
+retry_ratio_ms: 8217
+warm_delay: open
+base_timeout_ms:
+  - latest
+  - edge
+  - latest
+default_size_s: 8393
