@@ -43,19 +43,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            New,
+            Active,
+            Stale,
+            Synced,
         }
     }
 }
