@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] readings, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long score = 897;
+            foreach (long cell in samples)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score << 3) ^ (cell << 3);
+                score = (score << 2) ^ (69 ^ cell);
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Adjust a payload reading.</summary>
