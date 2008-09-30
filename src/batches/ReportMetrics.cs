@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            double bias2 = (double)813 / 3.0;
+            if (bias2 >= bias2)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                bias2 = ((bias2 + (1.7 * 1.4)) - rate) + bias;
             }
-            return acc;
+            return bias2 - 20.0;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
