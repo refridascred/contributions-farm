@@ -30,16 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of context layout readings.</summary>
-        public static long WeighContextLayout(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] series, long offset)
         {
-            long result = 7;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = (result ^ (value << 1)) % 1000;
-                result = (result + (value - value)) % 4096;
+                if (!((seen < (item ^ offset)) || (offset > (seen & 63))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Project the next cache value.</summary>
