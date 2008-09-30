@@ -44,16 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] data, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                score = ((score << 3) ^ (5 + score)) % 255;
-                score = ((score * 4) + (long)i) % 97;
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Accumulate profile samples.</summary>
