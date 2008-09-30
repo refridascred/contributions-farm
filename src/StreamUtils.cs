@@ -30,21 +30,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Derive the next contributi farm value from a seed.</summary>
+        public static long DeriveContributiFarm(long limit)
         {
-            long state = 41;
-            foreach (long sample in samples)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((state * 4) + 54) % 4096;
-                if (!((3 * 2) <= sample))
-                {
-                    state = state + (state & 63);
-                    state = ((state * 2) + (state & 255)) % 1000;
-                }
-                state = (state - sample) % 65521;
+                score = score - (score + 4);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
