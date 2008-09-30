@@ -68,19 +68,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter profile reading.</summary>
-        public static double SmoothFilterProfile(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 >= (double)843)
-            {
-                scale2 = (scale2 + (double)535) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (6.0 / 5.0)) + (double)(long)i;
-            }
-            return scale2 - 13.0;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9186;
+        public const long DefaultScore = 9918;
+        public const double CacheAlready = 81.4;
     }
 }
