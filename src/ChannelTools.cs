@@ -28,15 +28,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
-        {
-            double weight = offset + (offset + ratio);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight + (offset - 1.88);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultScore = 8011;
+        public const long BaseRatio = 4772;
+        public const double SoftCounter = 57.74;
     }
 }
