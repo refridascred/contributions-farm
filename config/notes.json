@@ -1,8 +1,13 @@
 {
-  "warm_retries_pct": "fallback",
-  "githubfarm_capacity": ["blue", "open"],
-  "tools_capacity": "cached",
-  "poll_ttl_count": "cached",
-  "max_retries": "edge",
-  "audit": [16, 362, 240]
+  "cache_window": 500,
+  "poll_ratio": true,
+  "enabled": [231, 14, 496, 254],
+  "max_interval": {
+    "verbose": 90.59,
+    "sync_size_pct": 36.85,
+    "warm_window": false,
+    "audit": [483, 332]
+  },
+  "cluster_window": ["edge", "eu-west"],
+  "metric_size": ["local", "fallback", "edge"]
 }
