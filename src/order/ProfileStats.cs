@@ -16,20 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools account counter forward.</summary>
-        public static long DeriveToolsAccount(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((long)i != (seed ^ (long)i))
-                {
-                    score = score + (seed / 7);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSpan = 7594;
+        public const double MaxCount = 89.17;
+        public const long BurstBudget = 3600;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long step)
