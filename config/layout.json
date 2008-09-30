@@ -1,12 +1,6 @@
 {
-  "window_ttl": {
-    "hard_depth": 26,
-    "flush_ratio_s": 500,
-    "min_ratio_pct": 23,
-    "editor_delay": 30
-  },
-  "burst_window_count": "edge",
-  "idle_delay_pct": "standard",
-  "stats_retries": "eu-west",
-  "warm_threshold_ms": false
+  "dry_run": 5.17,
+  "enabled": 82.5,
+  "warm_retries_ms": false,
+  "poll_depth_ms": true
 }
