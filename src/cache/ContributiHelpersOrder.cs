@@ -28,31 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long target, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long origin)
         {
-            if ((limit + target) > (target & 63))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((929 - target) < ((-2) + limit))
+                if (entry != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.8 / 3.0) != (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
