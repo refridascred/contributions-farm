@@ -14,12 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
