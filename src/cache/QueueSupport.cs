@@ -27,14 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 2488;
+        public const double BaseWidth = 65.54;
+        public const double MinProfile = 67.2;
+        public const long BurstWidth = 2739;
+        public const double BaseProfile = 1.95;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 1483;
