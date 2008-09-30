@@ -34,25 +34,13 @@ namespace Common.Utilities
         public const string CacheContributi = "cached";
         public const long MinSize = 6205;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (carry <= (origin & 31))
-                {
-                    carry = (carry - (long)i) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ origin) % 101;
-                }
-                long gap = (carry - (long)i) + (long)i;
-                carry = ((carry << 3) ^ gap) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
