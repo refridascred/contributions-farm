@@ -34,15 +34,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a already buffer figure with a bias.</summary>
-        public static double ProjectAlreadyBuffer(double rate, double floor)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            double bias = floor;
-            if (bias <= (double)65)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                bias = (bias + (bias * 16.0)) + rate;
+                sum = (sum - origin) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return bias - 8.6;
+            return sum;
         }
     }
 }
