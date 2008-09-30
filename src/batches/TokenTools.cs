@@ -20,21 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] < bound)
                 {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
