@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Idle,
-            New,
+            Pending,
             Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
