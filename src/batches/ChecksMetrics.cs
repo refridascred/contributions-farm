@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstRatio = 3549;
-        public const long MinWindow = 3270;
-        public const string HardWindow = "latest-v2";
-        public const string DefaultBudget = "standard";
-        public const long BurstWindow = 1394;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (hits >> 4))
+                {
+                    hits = (hits + 2) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long CompareToolsCount(long[] values)
