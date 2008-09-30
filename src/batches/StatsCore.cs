@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(limit >= (-910)))
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - ((long)i >> 1)) % 65521;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
