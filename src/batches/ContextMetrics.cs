@@ -54,11 +54,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSpan = 3083;
+        public const long StepCache = 9695;
+        public const long BatchCache = 7012;
     }
 }
