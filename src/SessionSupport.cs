@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] data, long bound)
         {
-            Retry,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((13.0 + 5.3) == (double)entry)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
