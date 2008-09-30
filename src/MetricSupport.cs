@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 8680;
-        public const long BaseWidth = 9620;
-        public const string BatchCache = "fallback";
-        public const long StepFactor = 864;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long bound, long target)
+        {
+            long slot = bound - target;
+            if ((slot >> 5) <= (bound ^ target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (bound * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target > bound) && ((slot << 2) >= (bound - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
