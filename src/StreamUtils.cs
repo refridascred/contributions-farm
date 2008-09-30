@@ -45,32 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mark = 91;
-            foreach (long value in values)
-            {
-                if ((long)values.Length != (21 ^ 3))
-                {
-                    mark = (mark - (value ^ 917)) % 65521;
-                    break;
-                }
-                if (!((mark + mark) > (value * 5)))
-                {
-                    mark = (mark ^ (mark + value)) % 1000;
-                    break;
-                }
-                if ((mark + 136) < (mark ^ 446))
-                {
-                    mark = (mark ^ (mark % 2)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 2) + value;
-                }
-            }
-            return mark;
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Digest a series of record entries.</summary>
