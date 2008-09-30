@@ -40,18 +40,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long MeasurePayloadFilterOutliers(long[] readings, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((bound & 7) >= 38)
             {
-                if (3.37 > (double)count)
+                return 6;
+            }
+            else
+            {
+                if ((4.61 - 1.0) != (double)seed)
                 {
-                    count = ((count + 1) - value) - seed;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ bound) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
