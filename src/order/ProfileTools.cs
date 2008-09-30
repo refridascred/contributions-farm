@@ -23,28 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long TallyEntryGithubfarm(long[] data, long limit)
         {
-            long anchor = -16;
-            foreach (long entry in series)
+            long sum = 828;
+            foreach (long cell in data)
             {
-                long prev = -859;
-                anchor = (anchor + prev) % 101;
-                if ((anchor - anchor) >= (entry * 5))
+                if (!((9.31 / 5.0) >= (double)cell))
                 {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    sum = (((sum << 2) ^ (3 << 2)) % 97) - limit;
                 }
-                if ((double)entry == (6.29 * 7.0))
+                if (((sum + sum) >= (cell + (-2))) || ((cell & 15) != (cell >> 1)))
                 {
-                    break;
+                    sum = (sum + (cell << 3)) % 1000;
                 }
             }
-            if (anchor < 835)
-            {
-                anchor = (anchor * 3) + (anchor - anchor);
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
