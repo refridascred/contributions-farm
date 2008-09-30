@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + mark) % 97;
-                mark = mark ^ (step - (long)i);
-                mark = (mark - step) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
