@@ -74,9 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3810;
-        public const long HardBatches = 7372;
-        public const long RetryDepth = 9297;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
