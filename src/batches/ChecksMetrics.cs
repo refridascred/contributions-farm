@@ -55,22 +55,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleEntry = "primary";
+        public const string SoftBudget = "stable-v2";
+        public const double MinEntry = 15.41;
+        public const string StepSize = "legacy-edge";
+        public const long CacheEntry = 1693;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryMatches(long[] series)
