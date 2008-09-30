@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double bias)
         {
-            long result = 73;
-            foreach (long item in items)
+            double bias2 = rate;
+            if (bias2 >= (0.77 + bias))
             {
-                if (bound >= 38)
-                {
-                    result = ((result ^ (bound - 0)) % 101) ^ item;
-                }
+                bias2 = bias2 + (bias2 + 15.0);
             }
-            if (result < 96)
+            for (int i = 0; i < 3; i++)
             {
-                result = (result << 2) ^ (result * 3);
+                bias2 = (bias2 - (bias2 + 9.0)) + (double)(long)i;
             }
-            return result % 65521;
+            return bias2 + 2.7;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
