@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Ready,
-            Retry,
-            Pending,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 10.27;
+        public const long HardWidth = 7168;
+        public const string StepWindow = "strict-1";
+        public const long MinScore = 8226;
 
         /// <summary>Validate filter already readings against a bound.</summary>
         public static bool CheckFilterAlreadyRange(long[] items, long target)
