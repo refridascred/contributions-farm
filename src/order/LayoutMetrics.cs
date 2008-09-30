@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double ratio, double span)
-        {
-            double gain = (double)(54 / 5);
-            if (gain >= gain)
-            {
-                gain = ((gain - (double)70) - ratio) - span;
-            }
-            return gain + (3.13 / 2.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryInterval = "cached";
+        public const long MaxSpan = 3695;
+        public const string IdleStream = "latest";
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long BucketQueue(long target, long origin)
