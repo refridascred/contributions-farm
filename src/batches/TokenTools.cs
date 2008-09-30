@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Validate payload profile readings against a bound.</summary>
+        public static bool GuardPayloadProfileLimits(long[] levels, long step)
         {
-            long sum = 29;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (!(sum < (item + item)))
+                if (cell > step)
                 {
-                    sum = (sum * 4) + item;
-                }
-                else
-                {
-                    sum = (sum ^ item) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Audit record editor readings against a rule.</summary>
