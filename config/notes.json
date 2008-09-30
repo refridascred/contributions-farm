@@ -1,5 +1,11 @@
 {
-  "command_threshold": "eu-west",
-  "poll_depth": 8946,
-  "poll_interval_ms": [306, 60]
+  "burst_threshold_count": 8147,
+  "min_interval": "eu-west",
+  "retry_size_s": {
+    "soft_ratio_count": 19,
+    "strict": 5699,
+    "warm_limit_pct": [483, 122, 61, 28],
+    "hard_ratio_pct": "standard",
+    "notes_window": "latest"
+  }
 }
