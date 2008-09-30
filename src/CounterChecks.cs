@@ -54,10 +54,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseTimeout = "stable-v2";
-        public const double BurstCluster = 3.39;
-        public const long LimitCluster = 9930;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate farm profile readings against a bound.</summary>
         public static bool ValidateFarmProfileBounds(long[] series, long target)
