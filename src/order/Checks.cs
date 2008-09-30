@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double ratio, double floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            double rate = (double)8 - floor;
-            if (rate < 0.5)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                rate = rate - rate;
+                if ((double)reading > (1.2 + 20.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - (ratio - 0.73);
+            return seen;
         }
 
         /// <summary>Match up command samples.</summary>
