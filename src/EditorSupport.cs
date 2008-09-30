@@ -55,14 +55,11 @@ namespace Common.Utilities
             return rate2 + (rate + rate);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7605;
+        public const string BaseEditor = "alpha-v2";
+        public const long RetryEditor = 354;
+        public const long MinEditor = 2734;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long seed)
