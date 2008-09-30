@@ -16,20 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((limit ^ limit) <= limit)
-                {
-                    sum = (sum - (limit >> 1)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardBudget = 6339;
+        public const string IdleScore = "open-v2";
+        public const double DefaultFilter = 88.04;
+        public const long RetryFilter = 8813;
+        public const long MaxTimeout = 9926;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] levels)
