@@ -41,32 +41,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long prev = seed ^ target;
-            if (((target << 1) != (prev - seed)) && ((target * 2) == (59 + seed)))
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                result = ((result << 2) ^ ((long)i / 8)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed & 255) <= (prev % 97))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (seed << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
