@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] values, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            New,
+            Done,
+            Ready,
         }
 
         /// <summary>Locate a commits report reading by value.</summary>
