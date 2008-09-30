@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            Done,
+            Synced,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the editor mode values.</summary>
