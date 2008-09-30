@@ -59,22 +59,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] samples)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((77 - sample) < seen) && ((double)seen >= (8.5 + 14.0)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Synced,
+            New,
         }
     }
 }
