@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long CacheScore = 4093;
         public const long SoftDepth = 9249;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "staging";
+        public const string MinBuffer = "alpha";
+        public const long LimitBuffer = 6800;
+        public const string CacheInterval = "cached";
 
         /// <summary>Count farm schema pairs that satisfy a relation.</summary>
         public static long OverlapFarmSchemaCount(long[] values)
