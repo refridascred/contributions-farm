@@ -1,5 +1,6 @@
 {
-  "default_window_ms": false,
-  "enabled": true,
-  "dry_run": 37
+  "warm_retries_ms": "legacy",
+  "token_size": "eu-west",
+  "enabled": 13.17,
+  "compress": true
 }
