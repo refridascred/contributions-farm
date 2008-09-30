@@ -1,12 +1,13 @@
 {
-  "batch_retries": 1024,
-  "default_timeout_pct": {
-    "layout_ratio": 2695,
-    "session_ttl": 85.76,
-    "context_size": 30,
-    "flush_size_ms": "open",
-    "dry_run": "primary",
-    "batch_capacity_ms": "stable"
+  "warm_timeout_count": 79.6,
+  "metrics_ttl": 82.64,
+  "base_delay_ms": {
+    "soft_limit_pct": [157, 310],
+    "channel_depth": "legacy",
+    "cache_ratio_s": 250,
+    "verbose": [16, 274, 133],
+    "batch_timeout": 250
   },
-  "channel_retries": "edge"
+  "editor_ratio": ["latest", "green", "local"],
+  "enabled": 7112
 }
