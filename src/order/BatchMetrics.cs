@@ -16,26 +16,19 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Validate entry context readings against a bound.</summary>
+        public static bool GuardEntryContextLimits(long[] data, long offset)
         {
-            long acc = 1;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((cell + acc) > acc)
+                if (item != offset)
                 {
-                    acc = acc - (cell + acc);
-                }
-                else
-                {
-                    acc = acc ^ (cell + 161);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 171)
-            {
-                acc = (acc ^ (17 + acc)) % 4096;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
