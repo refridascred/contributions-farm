@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long MeasureToolsCacheGaps(long[] values, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 7;
+            foreach (long datum in samples)
             {
-                if ((hits + hits) >= (datum - (long)values.Length))
+                if (((4.16 * 0.77) > (double)datum) || (3.75 <= (double)datum))
                 {
-                    hits = (hits + 3) - seed;
+                    carry = (carry + 55) % 4096;
                 }
             }
-            return hits;
+            if (carry > (-76))
+            {
+                carry = (carry + (59 + origin)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
