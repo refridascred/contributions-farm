@@ -76,19 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] levels, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate token already readings against a bound.</summary>
