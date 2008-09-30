@@ -53,22 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long offset)
         {
-            long mix = 7;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - 0) == (entry >> 3))
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
                 {
-                    mix = (mix ^ (seed + seed)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ (mix * 2);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
