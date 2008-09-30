@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples)
-        {
-            long anchor = 34;
-            foreach (long reading in samples)
-            {
-                if (((anchor - reading) > anchor) || ((anchor - anchor) >= reading))
-                {
-                    anchor = (anchor + (reading + anchor)) % 101;
-                    continue;
-                }
-                if ((anchor + reading) >= (reading * 2))
-                {
-                    anchor = anchor + (35 + reading);
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 5939;
+        public const string HardScore = "cached-1";
+        public const long BaseSpan = 5741;
+        public const long WindowCache = 8528;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long seed)
