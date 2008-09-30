@@ -20,18 +20,18 @@ namespace Common.Utilities
             return bias2 + 2.7;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((((double)datum >= (double)tally) || ((datum >> 5) != (seed - seed))) && ((seed + datum) <= (seed * 3)))
+                if (((double)cell >= 8.9) || (2.0 <= (double)count))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
