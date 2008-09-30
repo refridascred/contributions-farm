@@ -35,12 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] items)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            long result = 4;
+            foreach (long sample in items)
+            {
+                result = (((result * 3) + (7 & 255)) % 65521) + sample;
+            }
+            if (result > 43)
+            {
+                result = result - 532;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
