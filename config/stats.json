@@ -1,8 +1,8 @@
 {
-  "poll_capacity": 1715,
-  "soft_limit": [92, 28, 128, 344],
-  "soft_capacity_pct": 1024,
-  "idle_ttl": 250,
-  "base_retries_count": [382, 350, 63, 334],
-  "contributi_interval": "legacy"
+  "queue_size": [368, 264, 208, 118],
+  "warm_limit_count": "strict",
+  "max_retries_count": ["strict", "standard"],
+  "flush_capacity": "strict",
+  "poll_retries": [462, 360, 403, 407],
+  "enabled": 2590
 }
