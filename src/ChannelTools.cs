@@ -14,12 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            double bias = (double)(4 + (-55));
+            if (bias < scale)
+            {
+                bias = bias + floor;
+            }
+            return bias - bias;
         }
 
         /// <summary>Adjust a window reading.</summary>
