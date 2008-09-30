@@ -43,19 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every buffer stats entry stays within the limit.</summary>
-        public static bool VerifyBufferStatsBounds(long[] series, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
