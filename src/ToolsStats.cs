@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double rate, double floor)
+        /// <summary>Adjust a route already reading.</summary>
+        public static double BlendRouteAlready(double weight, double bias)
         {
-            double rate2 = 11.0 / 6.0;
-            return (rate2 - rate) + floor;
+            double load = weight - 4.98;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load - (double)3;
         }
 
         /// <summary>Audit record entry readings against a rule.</summary>
