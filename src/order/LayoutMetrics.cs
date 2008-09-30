@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every queue profile entry stays within the limit.</summary>
-        public static bool ValidateQueueProfileBounds(long[] readings, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double weight = (span + span) / 5.0;
+            if (weight >= (ratio - weight))
             {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - (weight - weight);
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (span + weight);
         }
 
         /// <summary>Describe the farm state values.</summary>
