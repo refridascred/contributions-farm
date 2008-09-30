@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const string IdleLevel = "open";
         public const long RetryRatio = 6053;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long limit)
+        /// <summary>Count session already pairs that satisfy a relation.</summary>
+        public static long OverlapSessionAlreadyCount(long[] readings)
         {
-            long carry = 877;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry + (datum >> 1)) % 255) - limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
