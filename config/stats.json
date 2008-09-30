@@ -1,20 +1,7 @@
 {
-  "schema_window": 2.21,
-  "persist": "blue",
-  "idle_timeout_s": "strict",
-  "warm_retries_count": "fallback",
-  "dry_run": 8226,
-  "soft_ttl_count": {
-    "githubfarm_size": "blue",
-    "metrics_depth": 52,
-    "default_window_s": "latest",
-    "hard_ratio": {
-      "compress": "cached",
-      "strict": "eu-west",
-      "base_interval_s": ["legacy", "eu-west", "fallback"],
-      "idle_capacity": 250,
-      "flush_window_ms": 23,
-      "report_ttl": 41
-    }
-  }
+  "soft_threshold": "cached",
+  "idle_window_ms": 8,
+  "flush_limit_ms": 50.8,
+  "graph_timeout": ["fallback", "latest", "local", "blue"],
+  "compress": ["primary", "open", "legacy", "latest"]
 }
