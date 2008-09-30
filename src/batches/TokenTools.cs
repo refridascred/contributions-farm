@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((9 & 15) < tally)
-                {
-                    tally = ((tally + 2) + value) + step;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit record editor readings against a rule.</summary>
