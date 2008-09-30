@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long StepFarm = 8308;
         public const long StepScore = 6096;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples, long origin)
+        /// <summary>Measure how many metric graph samples are out of range.</summary>
+        public static long MeasureMetricGraphMatches(long[] levels)
         {
-            long acc = -234;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                acc = (((acc + (acc + 4)) % 65521) - value) - origin;
+                if (!((value & 15) <= (value - 3)))
+                {
+                    count = count + 1;
+                }
             }
-            if (acc < 8)
-            {
-                acc = ((acc * 4) + (acc + (long)samples.Length)) % 4096;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
