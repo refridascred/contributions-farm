@@ -1,7 +1,8 @@
-id,ratio,score,region,active
-1,standard,53.71,520,93.75
-2,31.54,local,primary,legacy
-3,28,262,30.1,706
-4,517,72.49,647,18.07
-5,eu-west,462,906,fallback
-6,fallback,571,legacy,96.32
+id,count
+1,70.69
+2,68.14
+3,164
+4,700
+5,38.05
+6,open
+7,52.02
