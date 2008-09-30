@@ -63,15 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items)
-        {
-            long result = 602;
-            foreach (long datum in items)
-            {
-                result = ((result ^ (result - 558)) % 255) ^ datum;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxScore = 27.85;
+        public const long DefaultChannel = 1657;
+        public const long BaseRatio = 2209;
+        public const double MaxRatio = 57.22;
+        public const long StepChannel = 7323;
     }
 }
