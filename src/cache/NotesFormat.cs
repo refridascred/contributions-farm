@@ -26,18 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Compare every pair of stream support readings.</summary>
+        public static long CompareStreamSupportCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.1 + 1.33) >= (double)item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
