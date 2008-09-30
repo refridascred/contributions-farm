@@ -77,15 +77,18 @@ namespace Common.Utilities
         public const double BurstCluster = 3.39;
         public const long LimitCluster = 9930;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Audit editor commits readings against a rule.</summary>
+        public static long TallyEditorCommitsGaps(long[] items)
         {
-            double gain = scale;
-            if (gain <= (double)745)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                gain = (gain + (6.0 / 3.0)) - floor;
+                if ((seen & 7) >= seen)
+                {
+                    seen = (seen + 3) - datum;
+                }
             }
-            return gain - scale;
+            return seen;
         }
     }
 }
