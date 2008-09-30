@@ -14,15 +14,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double bias = span + (double)516;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + (span + bias)) + (double)(long)i) - gain;
-            }
-            return bias + (span * 8.1);
+            Draft,
+            Stale,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
