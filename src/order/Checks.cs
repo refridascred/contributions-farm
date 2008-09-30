@@ -90,18 +90,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches - sample) < sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
