@@ -37,16 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state - origin;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up notes samples.</summary>
