@@ -16,18 +16,18 @@ namespace Common.Utilities
             return rate - (double)140;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] levels, long floor)
+        /// <summary>Count the route tools entries that pass the check.</summary>
+        public static long AuditRouteToolsHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((hits * 2) < (7 << 3)) && ((14 << 2) == (53 - hits)))
+                if (seen > ((-54) % 64))
                 {
-                    hits = ((hits + 2) + datum) - floor;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
