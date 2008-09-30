@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstFactor = 96.67;
-        public const long BaseFactor = 4473;
-        public const long BaseRatio = 3529;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long bound)
+        {
+            if ((bound - seed) <= (seed ^ bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(seed <= (seed + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed / 4) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextHits(long[] readings)
