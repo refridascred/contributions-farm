@@ -38,20 +38,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheInterval = 20.58;
+        public const double DefaultDepth = 13.27;
+        public const long HardReport = 9699;
 
         /// <summary>Count queue schema pairs that satisfy a relation.</summary>
         public static long PairQueueSchemaCount(long[] levels)
