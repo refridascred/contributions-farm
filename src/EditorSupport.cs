@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry commits entries that pass the check.</summary>
-        public static long AuditEntryCommitsOutliers(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally + item) != (item >> 4))
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
