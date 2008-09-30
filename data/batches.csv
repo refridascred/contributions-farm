@@ -1,6 +1,11 @@
-id,count,owner
-1,10.4,871
-2,90.49,22.81
-3,235,green
-4,16.17,631
-5,453,open
+id,count,label,rank
+1,legacy,27.98,cached
+2,26,145,33
+3,cached,strict,latest
+4,18.51,70.42,eu-west
+5,997,437,standard
+6,709,66.55,primary
+7,50.72,258,250
+8,29.92,78.73,85.84
+9,eu-west,52.78,756
+10,strict,stable,26.36
