@@ -1,8 +1,5 @@
 {
-  "flush_ratio": "staging",
-  "enabled": ["cached", "green", "local"],
-  "min_capacity": "strict",
-  "readonly": [119, 158],
-  "warm_retries_s": 250,
-  "soft_depth_s": "primary"
+  "readonly": 250,
+  "queue_retries": 32,
+  "persist": 98
 }
