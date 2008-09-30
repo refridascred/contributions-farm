@@ -14,12 +14,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 2326;
-        public const string CacheFactor = "alpha-1";
-        public const string SoftRatio = "primary";
-        public const double SoftSize = 27.63;
-        public const long StepFilter = 8318;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 5201;
+        public const long IdleDepth = 332;
+        public const long BurstRatio = 546;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
