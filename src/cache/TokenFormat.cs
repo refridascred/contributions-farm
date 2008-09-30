@@ -37,22 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count + count) <= (sample / 7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2307;
+        public const long LimitFilter = 6841;
+        public const long BatchTimeout = 4986;
+        public const long LimitLevel = 570;
+        public const string HardLevel = "fallback-v2";
     }
 }
