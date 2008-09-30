@@ -1,6 +1,11 @@
-id,region,active,level
-1,533,latest,open
-2,7,legacy,green
-3,primary,515,238
-4,98.88,139,16.24
-5,stable,185,primary
+id,owner,rank,region
+1,421,standard,33.23
+2,69.75,1.03,74.13
+3,75.77,strict,primary
+4,493,14.28,fallback
+5,872,88.45,54.25
+6,249,414,latest
+7,local,eu-west,720
+8,989,standard,62.27
+9,blue,98.08,green
+10,54.08,edge,open
