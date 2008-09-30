@@ -45,18 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] items, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((bound + tally) > ((long)items.Length + bound))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
+                result = (result - (long)i) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
