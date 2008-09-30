@@ -15,13 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] items, long step)
         {
-            Locked,
-            Dropped,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
