@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long seed)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if (2 < (69 - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(seed < (target >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Active,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
