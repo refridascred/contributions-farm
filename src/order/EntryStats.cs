@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long BatchLayout = 7211;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double bias)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double bias2 = ratio - bias;
-            if (bias2 > (ratio * 0.04))
-            {
-                bias2 = bias2 + (double)32;
-            }
-            return bias2 + (ratio * 1.51);
+            Queued,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
