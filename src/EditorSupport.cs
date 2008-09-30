@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels, long target)
         {
-            long total = 87;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((total - value) >= value)
+                if (((double)target != (13.0 / 4.0)) || ((item ^ 90) > (item & 1)))
                 {
-                    total = total ^ value;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
