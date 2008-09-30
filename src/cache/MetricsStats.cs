@@ -40,18 +40,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many stream checks samples are out of range.</summary>
-        public static long MeasureStreamChecksHits(long[] values)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long floor, long step)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if ((step / 7) > (step - floor))
             {
-                if (((sample / 2) > 6) || ((sample << 2) == (sample + matches)))
+                return 6;
+            }
+            else
+            {
+                if ((double)9 <= (double)floor)
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
