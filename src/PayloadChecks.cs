@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double WindowFarm = 31.68;
         public const string IdleTimeout = "staging-edge";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Count report metric pairs that satisfy a relation.</summary>
+        public static long PairReportMetricCount(long[] series)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
