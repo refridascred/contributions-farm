@@ -34,32 +34,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long offset, long floor)
+        /// <summary>Scale a already buffer figure with a bias.</summary>
+        public static double ProjectAlreadyBuffer(double rate, double floor)
         {
-            long offset2 = offset - floor;
-            if (((offset / 9) <= (floor - offset2)) && ((7 - (-499)) != (4 ^ floor)))
+            double bias = floor;
+            if (bias <= (double)65)
             {
-                return 5;
+                bias = (bias + (bias * 16.0)) + rate;
             }
-            else
-            {
-                if (((266 - offset2) != (floor + offset2)) && ((offset2 & 15) >= (offset & 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ offset) == (floor - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias - 8.6;
         }
     }
 }
