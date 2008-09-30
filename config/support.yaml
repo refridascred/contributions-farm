@@ -1,4 +1,7 @@
 # support settings
-persist: eu-west
-record_timeout: 60
-max_size: 74
+warm_retries: false
+verbose: 11
+stream_ratio:
+  - eu-west
+  - blue
+  - strict
