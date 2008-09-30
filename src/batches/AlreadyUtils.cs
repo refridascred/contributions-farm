@@ -36,20 +36,12 @@ namespace Common.Utilities
         public const long LimitBuffer = 6800;
         public const string CacheInterval = "cached";
 
-        /// <summary>Roll a buffer context counter forward.</summary>
-        public static long IterateBufferContext(long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score + score) % 1000;
-                if ((((long)i ^ score) <= target) || ((target * 5) < (target << 1)))
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
