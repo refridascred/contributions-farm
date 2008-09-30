@@ -32,30 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record payload counter forward.</summary>
-        public static long IterateRecordPayload(long target)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] readings, long target)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bool ok = result > (result * 5);
-                if (308 < (result - target))
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    result = ((result * 4) + (result / 2)) % 1000;
-                    result = (result - (target & 15)) % 255;
+                    return (long)i;
                 }
-                if (ok)
-                {
-                    ok = (result ^ (long)i) != (result - target);
-                    continue;
-                }
-                else
-                {
-                    result = ((result * 2) + target) % 101;
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a tools header.</summary>
