@@ -23,22 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels, long bound)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            long anchor = 364;
-            foreach (long reading in levels)
+            double ratio = floor - (floor / 3.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (((9.42 * 1.09) > (double)anchor) || ((15.0 + 18.0) == (double)bound))
-                {
-                    anchor = anchor + (reading + anchor);
-                }
+                ratio = ((ratio + 4.81) + (double)(long)i) - weight;
             }
-            if (anchor > 5)
-            {
-                anchor = anchor + (bound - anchor);
-            }
-            return anchor % 97;
+            return ratio - ratio;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
