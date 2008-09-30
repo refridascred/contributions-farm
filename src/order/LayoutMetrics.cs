@@ -13,32 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] items)
         {
-            long carry = 761;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long seen = 2;
-                if (!((reading / 2) <= (seen << 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry + (reading ^ reading);
-                    seen = (seen ^ (reading - carry)) % 1000;
-                }
-                if ((carry ^ 80) >= (carry - carry))
-                {
-                    carry = (carry * 3) + (reading - 1);
-                }
-                else
-                {
-                    carry = carry + (carry & 127);
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 75)
-            {
-                carry = ((carry * 3) + (997 % 12)) % 255;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
