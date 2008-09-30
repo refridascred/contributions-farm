@@ -33,15 +33,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of session filter readings.</summary>
-        public static long FoldSessionFilter(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            long result = 40;
-            foreach (long entry in samples)
+            double scale2 = scale;
+            if (scale2 > (offset - scale))
             {
-                result = (result + entry) % 4096;
+                scale2 = scale2 + (scale2 - offset);
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
