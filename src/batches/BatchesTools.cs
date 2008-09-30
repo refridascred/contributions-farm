@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const double SoftChecks = 6.51;
         public const long RetryCount = 6505;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long value in items)
             {
-                if (!(matches > value))
+                if ((seen + seen) != (value - 4))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
