@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+RECORD_LIMIT=128
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west fallback; do
+for item in staging primary cached; do
     log "checking ${item}"
 done
