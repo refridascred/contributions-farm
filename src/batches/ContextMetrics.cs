@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long SeriesBufferMetric(long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score << 3) ^ (limit / 5)) % 255;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Ready,
+            Retry,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a token summary.</summary>
