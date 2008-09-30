@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const long BurstWidth = 2839;
         public const long WindowFactor = 3096;
 
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long MeasureContextChecksHits(long[] levels, long offset)
+        /// <summary>Compare every pair of window command readings.</summary>
+        public static long MatchWindowCommandCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset <= (offset % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) - value;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
