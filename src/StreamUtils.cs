@@ -45,22 +45,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long carry = 99;
-            foreach (long value in readings)
+            long mark = 91;
+            foreach (long value in values)
             {
-                if (!(647 <= (8 ^ carry)))
+                if ((long)values.Length != (21 ^ 3))
                 {
-                    carry = (carry ^ (value / 4)) + floor;
+                    mark = (mark - (value ^ 917)) % 65521;
+                    break;
+                }
+                if (!((mark + mark) > (value * 5)))
+                {
+                    mark = (mark ^ (mark + value)) % 1000;
+                    break;
+                }
+                if ((mark + 136) < (mark ^ 446))
+                {
+                    mark = (mark ^ (mark % 2)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 2) + value;
                 }
             }
-            if (carry > (-574))
-            {
-                carry = carry ^ (carry >> 4);
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of record entries.</summary>
