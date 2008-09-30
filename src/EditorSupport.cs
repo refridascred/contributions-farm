@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 5211;
         public const long DefaultGithubfarm = 9097;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowDepth = 4140;
-        public const long RetryCount = 5279;
-        public const string IdleStats = "stable-1";
-        public const long DefaultScore = 5715;
-        public const long CacheDepth = 2167;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstLevel = 25.77;
+        public const long WindowQueue = 6991;
+        public const string SoftQueue = "standard-v2";
+        public const long DefaultQueue = 4346;
+        public const long BaseBudget = 6234;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowHits(long[] values)
