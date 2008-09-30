@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (54 > (46 - entry))
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstLevel = 2.14;
+        public const string DefaultRatio = "alpha-1";
+        public const long StepSize = 8935;
+        public const string WindowLevel = "staging";
+        public const long BatchPayload = 3585;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferGaps(long[] levels, long bound)
