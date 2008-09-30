@@ -25,23 +25,17 @@ namespace Common.Utilities
         public const string BurstSession = "latest-1";
         public const long RetrySession = 1939;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] items, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mix == (double)(long)i)
+                if (items[i] > seed)
                 {
-                    mix = ((mix * 4) + (target ^ target)) % 4096;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix << 2) ^ (target ^ target)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
