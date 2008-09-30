@@ -65,11 +65,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
