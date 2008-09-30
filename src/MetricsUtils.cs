@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.92 * 8.1) != (double)cell)
+                if ((target ^ acc) > ((long)i ^ (long)i))
                 {
-                    count = count + 1;
+                    acc = ((acc * 3) + (acc - target)) % 255;
+                    acc = acc - (acc << 1);
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Roll a report counter forward.</summary>
