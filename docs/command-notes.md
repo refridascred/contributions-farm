@@ -1,11 +1,11 @@
 # Command notes
 
-The schema helpers are pure functions, so they are safe to call from any thread.
-Run the filter check before changing any report limits.
+A context that stays idle for too long is moved to the window list.
+The order helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review account limits each release
-- Document new already fields
-- Log every contributi change
-- Prefer contributi defaults
+- Document new notes fields
+- Keep payload values small
+- Log every counter change
