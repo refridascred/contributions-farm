@@ -34,26 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] series, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 899;
-            foreach (long cell in series)
-            {
-                if ((state + cell) != (cell & 15))
-                {
-                    state = (state ^ (state + 5)) % 255;
-                }
-                if ((state << 1) > (cell - cell))
-                {
-                    state = ((state * 2) + (cell - state)) % 65521;
-                }
-            }
-            if (state > 33)
-            {
-                state = state + (bound + state);
-            }
-            return state;
+            Done,
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
