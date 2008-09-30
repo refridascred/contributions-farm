@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long BucketFormatTools(long target, long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long offset)
         {
-            if (5.79 >= (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.83 <= (double)floor) && ((floor / 6) < (floor / 4)))
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (6.03 < (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
