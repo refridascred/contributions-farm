@@ -47,11 +47,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double span)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] values, long offset)
         {
-            double scale = 4.0;
-            return ((scale - (double)9) + rate) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
