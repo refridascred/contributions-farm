@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long BatchLayout = 7211;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = ratio - bias;
+            if (bias2 > (ratio * 0.04))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + (double)32;
             }
-            return matches;
+            return bias2 + (ratio * 1.51);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
