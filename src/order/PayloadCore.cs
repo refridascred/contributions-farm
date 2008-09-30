@@ -19,12 +19,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            Active,
+            Locked,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a batches stats.</summary>
