@@ -1,12 +1,7 @@
 {
-  "batch_ratio_s": 30.8,
-  "flush_limit": 4.89,
-  "enabled": "latest",
-  "schema_interval": {
-    "base_size_ms": "local",
-    "hard_interval_s": "standard",
-    "retry_threshold_s": false
-  },
-  "tools_depth": [75, 23, 403, 200],
-  "notes_timeout": "edge"
+  "verbose": "strict",
+  "window_ttl": "green",
+  "max_interval": ["latest", "stable", "edge", "edge"],
+  "dry_run": true,
+  "audit": 89
 }
