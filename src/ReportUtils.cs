@@ -41,20 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double ratio, double bias)
-        {
-            double ratio2 = (double)361 + (bias / 7.0);
-            if (ratio2 >= ratio)
-            {
-                ratio2 = ratio2 - (double)162;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (2.2 * 6.7)) + (double)(long)i;
-            }
-            return ratio2 + (double)67;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstFactor = 7135;
+        public const double LimitBudget = 73.82;
+        public const double MinLevel = 9.01;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitAccount = 7225;
