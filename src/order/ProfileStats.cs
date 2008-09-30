@@ -45,32 +45,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long limit, long limit2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long bound)
         {
-            long diff = limit + limit2;
-            if (limit2 <= (diff << 1))
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                anchor = ((anchor << 3) ^ ((long)i & 15)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((78 ^ 670) == (limit / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (diff > (limit2 & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
