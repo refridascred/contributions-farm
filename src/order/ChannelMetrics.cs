@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long DefaultToken = 4425;
         public const long BurstToken = 7881;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] readings, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
