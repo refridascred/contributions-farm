@@ -42,11 +42,15 @@ namespace Common.Utilities
             return drift + (3.0 * 11.0);
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double ratio, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            double mean = (ratio + offset) / 4.0;
-            return mean - ratio;
+            double load = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (load - bias);
         }
 
         /// <summary>Accumulate payload samples.</summary>
