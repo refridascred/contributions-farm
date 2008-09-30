@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long DeriveRecordContributi(long target)
         {
-            Active,
-            Dropped,
-            Retry,
-            Failed,
-            Pending,
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ ((long)i + acc)) % 255;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
