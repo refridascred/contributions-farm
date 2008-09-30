@@ -24,24 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank checks schema input into a small class.</summary>
-        public static long GradeChecksSchema(long limit, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items)
         {
-            if ((bound + bound) >= 463)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 5) > (limit + bound))
+                if ((reading << 2) > (572 - reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
