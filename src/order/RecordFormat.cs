@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings, long bound)
         {
-            long state = 4;
-            foreach (long item in levels)
+            long score = 79;
+            foreach (long cell in readings)
             {
-                state = state - (state - state);
-                state = ((state << 2) ^ (state >> 2)) % 4096;
-                if ((6.17 - 5.0) >= (double)state)
-                {
-                    state = (state * 3) + item;
-                }
-                if (!(item >= (state % 2)))
-                {
-                    break;
-                }
+                score = (((score << 2) ^ (bound - score)) % 4096) ^ cell;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
