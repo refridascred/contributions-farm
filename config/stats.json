@@ -1,11 +1,13 @@
 {
-  "cache_size_pct": 60,
-  "min_ratio": 1024,
-  "report_retries": {
-    "persist": 47.22,
-    "min_limit_pct": 8470,
-    "compress": true
+  "poll_ttl_count": 2008,
+  "default_ttl": 932,
+  "account_ttl": [107, 56, 464, 402],
+  "flush_window_pct": 91,
+  "hard_interval_s": {
+    "payload_limit": "latest",
+    "counter_depth": "cached",
+    "base_capacity_count": 83.41,
+    "poll_window_count": ["stable", "cached", "edge"]
   },
-  "cache_limit_ms": ["standard", "fallback", "strict"],
-  "burst_interval": 19.97
+  "window_size": false
 }
