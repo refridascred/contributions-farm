@@ -68,18 +68,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] data, long seed)
+        /// <summary>Find the first filter notes entry that matches the target.</summary>
+        public static long LocateFilterNotesIndex(long[] data, long offset)
         {
-            long acc = -881;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((14.0 / 5.0) == (double)acc) && ((acc / 6) == (seed << 1)))
+                if ((data[i] <= offset) && ((data[i] % 5) == 0))
                 {
-                    acc = (acc - (datum - 931)) % 255;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
