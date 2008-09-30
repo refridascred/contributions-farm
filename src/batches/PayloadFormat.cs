@@ -24,18 +24,21 @@ namespace Common.Utilities
             return rate - (double)93;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long state = 2;
-            foreach (long entry in levels)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((limit + entry) <= limit))
+                if ((double)origin <= (12.0 - 3.93))
                 {
-                    state = (state - (limit + limit)) % 97;
+                    sum = (sum + (sum - (-62))) % 4096;
+                    sum = sum - (sum - origin);
                 }
+                sum = sum ^ (long)i;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Adjust a batches reading.</summary>
