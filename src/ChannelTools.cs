@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (entry <= seed)
+                if (cell > (cell * 4))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
