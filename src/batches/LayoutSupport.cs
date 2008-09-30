@@ -23,22 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long anchor = 364;
+            foreach (long reading in levels)
             {
-                if ((seen - entry) == (seen % 12))
+                if (((9.42 * 1.09) > (double)anchor) || ((15.0 + 18.0) == (double)bound))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor + (reading + anchor);
                 }
             }
-            return seen;
+            if (anchor > 5)
+            {
+                anchor = anchor + (bound - anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
