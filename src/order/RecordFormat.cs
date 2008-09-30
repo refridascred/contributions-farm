@@ -34,22 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            long mix = 27;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)(long)series.Length < (4.6 - 1.7))
+                if ((count / 3) > count)
                 {
-                    mix = ((mix ^ mix) % 1000) ^ item;
+                    count = (count + 1) + sample;
                 }
             }
-            if (mix < 98)
-            {
-                mix = mix + (mix / 4);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
