@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long DeriveRecordContributi(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc ^ ((long)i + acc)) % 255;
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 74;
+        public const long BaseChecks = 1550;
+        public const double CacheChecks = 63.06;
+        public const long LimitChecks = 567;
+        public const long BurstChecks = 294;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderMatches(long[] readings, long step)
