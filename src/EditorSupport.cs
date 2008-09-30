@@ -59,21 +59,18 @@ namespace Common.Utilities
         public const double SoftBatches = 83.57;
         public const string BaseTimeout = "staging-edge";
 
-        /// <summary>Count cache window pairs that satisfy a relation.</summary>
-        public static long MatchCacheWindowCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((step - 740) < (98 ^ matches))
                 {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
