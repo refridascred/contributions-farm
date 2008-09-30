@@ -46,20 +46,13 @@ namespace Common.Utilities
         public const double SoftCount = 37.69;
         public const long HardFactor = 7825;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long state = 923;
-            foreach (long item in samples)
-            {
-                state = ((state + (state % 64)) % 65521) + offset;
-                state = state + item;
-                if ((item + 0) == (item / 4))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
