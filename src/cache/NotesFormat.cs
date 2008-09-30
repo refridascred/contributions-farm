@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            long acc = 95;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value >= (8.1 - 4.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 4) + (228 + (-295));
-                    break;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc + (acc + (long)levels.Length)) % 4096;
-                    acc = (acc * 4) + (acc - 94);
-                }
-                acc = (acc ^ (4 * 5)) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up commits samples.</summary>
