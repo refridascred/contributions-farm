@@ -37,31 +37,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            if (80 <= (offset - (-2)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (8.92 > (double)limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(limit >= (offset << 3)))
+                    if ((values[i] - values[j]) > 2)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many session token samples are out of range.</summary>
