@@ -20,31 +20,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a account metrics value against two limits.</summary>
-        public static long ClassifyAccountMetrics(long offset, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            if (step < offset)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset == (16.0 * 10.0))
+                if (((long)i % 12) > 70)
                 {
-                    return 2;
+                    carry = (carry << 3) ^ (carry ^ carry);
                 }
                 else
                 {
-                    if ((double)step != (5.0 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry - limit) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
