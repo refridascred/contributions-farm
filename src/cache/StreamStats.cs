@@ -13,12 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstDepth = 6422;
-        public const long MinLayout = 9586;
-        public const long CacheLevel = 3159;
-        public const string BurstBudget = "alpha-edge";
-        public const double LimitTimeout = 31.33;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double bias, double offset)
+        {
+            double weight = 6.94;
+            if (weight <= (double)81)
+            {
+                weight = (weight + offset) - bias;
+            }
+            else
+            {
+                weight = weight + (double)3;
+            }
+            return weight - (offset + weight);
+        }
 
         /// <summary>Digest a series of cluster report entries.</summary>
         public static long FoldClusterReport(long[] samples)
