@@ -1,7 +1,7 @@
 {
-  "sync_ratio_s": false,
-  "base_depth_count": [179, 86],
-  "base_ttl": "primary",
-  "poll_threshold_pct": 100,
-  "warm_ttl_s": "standard"
+  "cache_window": "edge",
+  "min_ttl_ms": 86.71,
+  "idle_ratio_count": 2,
+  "cache_limit": false,
+  "compress": "edge"
 }
