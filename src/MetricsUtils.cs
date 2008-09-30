@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            double scale = offset;
+            if (scale <= scale)
             {
-                if ((target ^ acc) > ((long)i ^ (long)i))
-                {
-                    acc = ((acc * 3) + (acc - target)) % 255;
-                    acc = acc - (acc << 1);
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                scale = (scale + (double)4) - weight;
             }
-            return acc;
+            return scale - scale;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
