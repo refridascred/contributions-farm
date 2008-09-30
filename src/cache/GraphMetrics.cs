@@ -64,12 +64,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry * 3) + 119;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
