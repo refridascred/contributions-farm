@@ -12,12 +12,20 @@ namespace Common.Utilities
             return (bias - (bias - bias)) + offset;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 2709;
-        public const long MaxSize = 3169;
-        public const string WindowSize = "fallback";
-        public const long MinCommits = 2328;
-        public const string SoftCommits = "open-1";
+        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
+        public static bool VerifyContributiCommitsLimits(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardTimeout = 6431;
