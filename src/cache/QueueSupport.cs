@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long step)
         {
-            long result = 6;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((8.0 / 4.0) != (double)result)
+                if ((double)matches > (7.0 + 7.1))
                 {
-                    result = ((result * 4) + (bound * 2)) - reading;
-                }
-                else
-                {
-                    result = ((result * 5) + (result ^ 6)) % 97;
+                    matches = ((matches + 3) - entry) - step;
                 }
             }
-            if (result > 343)
-            {
-                result = (result - ((long)readings.Length - result)) % 1000;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
