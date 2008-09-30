@@ -1,8 +1,8 @@
-id,active,score,level,region
-1,263,latest,staging,970
-2,24.97,173,58.4,82.02
-3,90.13,672,green,941
-4,21.2,open,877,77
-5,40.19,45.63,green,220
-6,3.72,fallback,blue,open
-7,14.68,latest,814,blue
+id,weight,rank,label
+1,green,71.92,496
+2,715,323,514
+3,299,eu-west,blue
+4,50.73,primary,23.5
+5,989,359,39.56
+6,146,31.67,legacy
+7,74.54,74.78,legacy
