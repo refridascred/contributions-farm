@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6832;
-        public const string MinRoute = "local";
-        public const long RetryRoute = 9839;
-        public const long BatchRoute = 3812;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] series, long bound)
