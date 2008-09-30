@@ -34,18 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format checks readings.</summary>
-        public static long ScoreFormatChecks(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long carry = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((15.0 + 6.0) != (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - ((-546) + carry);
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
