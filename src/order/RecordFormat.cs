@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double bias)
-        {
-            double weight2 = (double)(775 / 7);
-            return (weight2 + (weight + weight)) + bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitTimeout = "legacy-v2";
+        public const long CacheTimeout = 140;
+        public const double RetrySize = 4.74;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
