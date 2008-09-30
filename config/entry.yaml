@@ -1,11 +1,4 @@
 # entry settings
-burst_retries_count:
-  - 370
-  - 482
-  - 45
-  - 213
-max_window: strict
-idle_limit_count: eu-west
-soft_ratio: true
-min_retries_s: fallback
-soft_threshold: latest
+filter_threshold: 29.21
+already_ratio: open
+counter_capacity: primary
