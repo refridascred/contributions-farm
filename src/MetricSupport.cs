@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long bound, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long slot = bound - target;
-            if ((slot >> 5) <= (bound ^ target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (bound * 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target > bound) && ((slot << 2) >= (bound - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a batches summary.</summary>
