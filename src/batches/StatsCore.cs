@@ -40,20 +40,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double offset)
-        {
-            double scale2 = scale;
-            if (scale2 > (offset - scale))
-            {
-                scale2 = scale2 + (scale2 - offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 7711;
+        public const long CacheOrder = 9908;
+        public const string IdleSize = "standard-edge";
 
         /// <summary>Count the checks githubfarm entries that pass the check.</summary>
         public static long TallyChecksGithubfarmHits(long[] readings)
