@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            double weight2 = weight - weight;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                weight2 = ((weight2 - 14.0) - (double)(long)i) - floor;
+                if ((double)hits >= 9.53)
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return weight2 + (weight2 + weight2);
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
