@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Match up format already samples.</summary>
+        public static long OverlapFormatAlreadyCount(long[] readings)
         {
-            long total = 6;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total + total) % 255) - cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
