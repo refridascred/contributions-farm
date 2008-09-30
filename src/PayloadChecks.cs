@@ -42,18 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] levels, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= (datum + datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - origin;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate context samples.</summary>
