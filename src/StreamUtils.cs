@@ -72,13 +72,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                long offset = (acc >> 2) ^ (acc % 100);
+                if (((1.0 - 8.3) == (double)(long)i) && ((double)acc <= (6.91 - 2.2)))
+                {
+                    offset = offset - (bound + 8);
+                }
+                if (((long)i ^ offset) == (long)i)
+                {
+                    offset = offset - (-5);
+                    offset = offset - (bound ^ offset);
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
