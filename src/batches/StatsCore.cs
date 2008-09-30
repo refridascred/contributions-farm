@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long origin)
         {
-            double load = scale - (scale - scale);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + bias) + (double)(long)i;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)6;
+            return -1;
         }
 
         /// <summary>Hold a payload header.</summary>
