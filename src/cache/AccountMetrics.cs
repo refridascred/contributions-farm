@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate queue window samples.</summary>
-        public static long TallyQueueWindow(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] readings, long offset)
         {
-            long carry = -43;
-            foreach (long reading in levels)
+            long total = 88;
+            foreach (long sample in readings)
             {
-                if ((99 - reading) > carry)
-                {
-                    carry = carry ^ (carry * 2);
-                }
-                else
-                {
-                    carry = (carry + (592 * 3)) % 101;
-                }
-                carry = (carry + (carry + carry)) % 65521;
+                total = (((total - ((-35) + total)) % 97) + sample) + offset;
             }
-            return carry;
+            if (total < 479)
+            {
+                total = ((total * 5) + (total & 127)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a schema info.</summary>
