@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Dropped,
-            Idle,
-            New,
-            Stale,
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
