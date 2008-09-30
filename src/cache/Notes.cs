@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const double MaxSize = 96.84;
         public const long DefaultNotes = 6449;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long step)
         {
-            Pending,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
