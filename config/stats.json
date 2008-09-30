@@ -1,12 +1,5 @@
 {
-  "enabled": {
-    "batch_window_pct": true,
-    "warm_timeout_pct": ["legacy", "edge", "eu-west", "green"],
-    "flush_retries_ms": 100,
-    "base_capacity": "primary",
-    "flush_delay": "local"
-  },
-  "readonly": 6564,
-  "poll_window": "standard",
-  "tools_threshold": "legacy"
+  "metric_window": ["local", "stable"],
+  "batches_delay": 12,
+  "base_window_pct": 52.53
 }
