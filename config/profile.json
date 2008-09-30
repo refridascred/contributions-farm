@@ -1,8 +1,7 @@
 {
-  "compress": "local",
-  "base_ratio": "staging",
-  "checks_capacity": 89,
-  "warm_retries_pct": 649,
-  "poll_interval_s": "edge",
-  "editor_capacity": "fallback"
+  "base_timeout_s": 28,
+  "format_size": ["latest", "staging", "edge"],
+  "max_delay_s": 8174,
+  "default_limit_count": false,
+  "flush_retries": false
 }
