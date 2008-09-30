@@ -71,11 +71,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 6637;
+        public const long StepSpan = 7670;
+        public const double BaseRatio = 49.47;
+        public const long StepAlready = 2740;
     }
 }
