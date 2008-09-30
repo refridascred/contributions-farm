@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up support format samples.</summary>
-        public static long PairSupportFormatCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < (entry >> 1))
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
