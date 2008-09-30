@@ -51,18 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)seen >= (18.0 / 9.0))
+                if (((entry <= 878) && ((hits - 5) != ((-7) + entry))) || ((hits + hits) >= (57 & 1)))
                 {
-                    seen = (seen + 2) + sample;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the session status values.</summary>
