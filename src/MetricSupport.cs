@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            Pending,
-            Synced,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry ^ 575) != (seen + seen)) || (((entry + entry) < (3 ^ seen)) || ((double)entry <= (9.0 - 9.91))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks stats.</summary>
