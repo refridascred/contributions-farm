@@ -36,26 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window token values into a single score.</summary>
-        public static long DigestWindowToken(long[] samples, long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long state = 13;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.0 - 2.4) >= (double)origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state ^ (reading + state);
-                }
-                else
-                {
-                    state = ((state << 3) ^ origin) % 4096;
-                }
-                if ((2.0 - 3.0) != (double)state)
-                {
-                    break;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
