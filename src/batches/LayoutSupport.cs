@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up route already samples.</summary>
-        public static long CompareRouteAlreadyCount(long[] samples)
+        /// <summary>Validate stream entry readings against a bound.</summary>
+        public static bool CheckStreamEntryLimits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample > step)
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
