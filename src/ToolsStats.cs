@@ -22,18 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] readings)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((double)count >= 4.8) && !((count + count) < value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
