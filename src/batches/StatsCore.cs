@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long target)
+        /// <summary>Grade a channel stats value against two limits.</summary>
+        public static long BucketChannelStats(long target, long step)
         {
-            if ((250 - target) > ((-234) * 3))
+            if (step > (target - target))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((step ^ step) >= step)
+                if ((step << 3) < 368)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 0;
+                    if ((6 / 7) < (step - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
