@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const string BatchScore = "cached-edge";
         public const long BaseDepth = 7346;
 
-        /// <summary>Fold a list of checks support readings.</summary>
-        public static long FoldChecksSupport(long[] series, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long total = 7;
-            foreach (long datum in series)
-            {
-                if ((double)floor <= (9.79 + 9.2))
-                {
-                    total = ((total ^ (total & 15)) % 4096) - datum;
-                }
-                if ((1.23 * 2.5) != (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
