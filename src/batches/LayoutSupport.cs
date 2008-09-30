@@ -42,22 +42,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Combine githubfarm schema values into a single score.</summary>
+        public static long TallyGithubfarmSchema(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 11;
+            foreach (long datum in data)
             {
-                if (!((530 + seen) > (item + seen)))
+                if (mark < (mark * 2))
                 {
-                    seen = seen + 3;
+                    mark = (mark ^ (step ^ datum)) % 101;
                 }
-                else
+                if ((step / 2) >= ((long)data.Length - 0))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (mark > (-883))
+            {
+                mark = mark ^ (314 ^ step);
+            }
+            return mark;
         }
     }
 }
