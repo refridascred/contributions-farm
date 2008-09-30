@@ -63,22 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryScore = 8295;
+        public const long StepLevel = 3752;
+        public const long MinTools = 6964;
+        public const long WindowTools = 4996;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] levels, long offset)
