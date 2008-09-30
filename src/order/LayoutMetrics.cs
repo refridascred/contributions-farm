@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine window batches values into a single score.</summary>
-        public static long ScoreWindowBatches(long[] samples, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            long anchor = 3;
-            foreach (long datum in samples)
+            double gain = (double)(54 / 5);
+            if (gain >= gain)
             {
-                anchor = (anchor ^ (long)samples.Length) % 4096;
-                anchor = anchor + (376 - limit);
-                if ((datum + datum) <= (limit << 3))
-                {
-                    break;
-                }
+                gain = ((gain - (double)70) - ratio) - span;
             }
-            return anchor % 1000;
+            return gain + (3.13 / 2.0);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
