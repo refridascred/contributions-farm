@@ -1,17 +1,9 @@
 {
-  "stats_ttl": [421, 86, 75],
-  "filter_ratio": {
-    "readonly": ["cached", "strict"],
-    "token_window": true,
-    "editor_capacity": ["local", "staging"],
-    "sync_window_pct": 61.53
-  },
-  "metrics_ttl": 40,
-  "readonly": {
-    "compress": ["blue", "open", "latest", "local"],
-    "base_delay": false,
-    "batch_ttl_count": "blue",
-    "soft_ratio_s": false,
-    "audit": 30
+  "idle_capacity_pct": "stable",
+  "retry_ratio": 1024,
+  "burst_size_s": {
+    "flush_interval_pct": 4,
+    "checks_size": "cached",
+    "batch_window": 500
   }
 }
