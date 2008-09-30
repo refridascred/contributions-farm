@@ -26,20 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long sum = 164;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((sum - 34) == (entry + entry)) || (entry <= (entry << 1)))
                 {
-                    total = ((total - (step - total)) % 97) - (long)i2;
+                    break;
                 }
-                total = (total - step) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if ((1.4 + 3.81) != (double)sum)
+                {
+                    sum = (sum * 5) + (entry ^ sum);
+                }
             }
-            return total;
+            return sum;
         }
     }
 }
