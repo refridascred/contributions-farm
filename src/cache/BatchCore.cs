@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Stale,
-            Pending,
-            Synced,
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
