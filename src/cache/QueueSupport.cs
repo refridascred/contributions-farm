@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values, long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long sum = 66;
-            foreach (long value in values)
-            {
-                sum = (sum + offset) ^ value;
-            }
-            if (sum < 0)
-            {
-                sum = sum + (sum & 63);
-            }
-            return sum;
+            Queued,
+            Locked,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
