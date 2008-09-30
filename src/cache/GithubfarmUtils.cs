@@ -29,17 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long target)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
