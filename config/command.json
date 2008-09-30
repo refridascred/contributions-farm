@@ -1,7 +1,12 @@
 {
-  "checks_capacity": 250,
-  "readonly": true,
-  "default_limit_pct": true,
-  "commits_ttl": 59,
-  "min_capacity_ms": 93.04
+  "warm_threshold": false,
+  "readonly": {
+    "burst_window_ms": 96.28,
+    "readonly": [151, 92, 319, 147],
+    "sync_size": 62.76,
+    "hard_interval_pct": "open"
+  },
+  "warm_limit": "stable",
+  "poll_threshold_count": "primary",
+  "entry_limit": 41.62
 }
