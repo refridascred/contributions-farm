@@ -81,13 +81,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] series, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long limit)
         {
             bool stale = true;
-            foreach (long sample in series)
+            foreach (long entry in series)
             {
-                if (sample > offset)
+                if (entry != limit)
                 {
                     stale = false;
                     break;
