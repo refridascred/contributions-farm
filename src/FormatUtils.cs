@@ -12,19 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long floor)
         {
-            double scale = weight;
-            if (scale < (double)5)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                scale = scale + span;
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 9.0) - (double)(long)i;
-            }
-            return scale - weight;
+            return stale;
         }
 
         /// <summary>Project the next account value.</summary>
