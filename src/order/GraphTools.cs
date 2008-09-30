@@ -35,11 +35,32 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long limit, long floor)
         {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long next = limit ^ floor;
+            if (next >= (next / 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= 1.6)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + next) <= (limit & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
