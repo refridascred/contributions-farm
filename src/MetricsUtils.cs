@@ -56,18 +56,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long MeasureSessionTokenMatches(long[] series, long offset)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.0 > (double)(long)series.Length) && ((hits & 15) < hits))
+                if (items[i] > floor)
                 {
-                    hits = ((hits + 3) + item) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
