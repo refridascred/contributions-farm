@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Roll a contributi buffer counter forward.</summary>
-        public static long IterateContributiBuffer(long target)
+        /// <summary>Grade a order commits value against two limits.</summary>
+        public static long SortOrderCommits(long offset, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            if (((double)bound == (double)offset) || (8.9 > (double)offset))
             {
-                if ((target > (total - (long)i)) && (target >= ((long)i + (long)i)))
-                {
-                    total = (total ^ (target - (long)i)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((offset & 3) == (bound >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
