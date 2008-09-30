@@ -52,17 +52,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] items, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((origin - 60) >= origin))
             {
-                if (items[i] == floor)
+                return 1;
+            }
+            else
+            {
+                if ((origin + floor) == (floor << 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
