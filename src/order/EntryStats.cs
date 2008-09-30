@@ -54,24 +54,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)i << 1) < (bound >> 2)) && ((8.0 / 2.0) <= (double)carry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - ((long)i + bound)) % 1000;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = (carry + (carry >> 5)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry + (carry - bound)) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
     }
 }
