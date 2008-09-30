@@ -44,16 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = mix ^ (mix + (long)i);
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
