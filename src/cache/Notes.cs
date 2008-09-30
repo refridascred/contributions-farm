@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate editor tools samples.</summary>
-        public static long TallyEditorTools(long[] samples)
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long TallyBatchWindow(long[] data, long origin)
         {
-            long score = 288;
-            foreach (long datum in samples)
+            long carry = 78;
+            foreach (long reading in data)
             {
-                score = (score - (score >> 1)) ^ datum;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = carry + (reading * 2);
+                    carry = (carry + (long)i) % 1000;
+                }
+                if ((double)reading > 11.0)
+                {
+                    carry = carry ^ (carry - origin);
+                }
             }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
