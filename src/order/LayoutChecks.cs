@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Draft,
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
