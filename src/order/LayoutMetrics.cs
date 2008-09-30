@@ -47,21 +47,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = 4.0;
+            return ((scale - (double)9) + rate) + span;
         }
     }
 }
