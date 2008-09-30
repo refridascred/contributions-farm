@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long CountRecordFilterHits(long[] series, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (!((7.0 / 5.0) == (double)target) || (((target >> 5) == (seen / 8)) && ((target & 63) >= value)))
+                if ((double)offset < (3.6 / 3.0))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
