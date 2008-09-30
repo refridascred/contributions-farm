@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (cell > seed)
+                if (item < origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Match up session samples.</summary>
