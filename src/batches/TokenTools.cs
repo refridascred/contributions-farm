@@ -20,11 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 366;
-        public const long RetryDepth = 2756;
-        public const string DefaultBudget = "open-1";
-        public const long HardContext = 5077;
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
