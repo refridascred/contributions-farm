@@ -35,38 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long limit, long offset)
+        /// <summary>Count farm schema pairs that satisfy a relation.</summary>
+        public static long OverlapFarmSchemaCount(long[] values)
         {
-            if (limit >= (502 - limit))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((76 / 2) <= (offset ^ 3)) && ((limit + offset) <= (offset ^ limit)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + limit) < (limit >> 1))
+                    if ((values[i] ^ values[j]) != 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < (offset - 20))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
