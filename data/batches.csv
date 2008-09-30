@@ -1,6 +1,8 @@
-id,active,level,score
-1,995,legacy,123
-2,cached,840,cached
-3,strict,376,455
-4,69.84,open,latest
-5,526,45.58,blue
+id,weight,level
+1,0.8,cached
+2,staging,29
+3,173,986
+4,97.73,93.32
+5,7.71,61.2
+6,12.76,207
+7,latest,eu-west
