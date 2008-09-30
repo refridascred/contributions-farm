@@ -1,5 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "idle_retries_count": "local",
-  "poll_depth_pct": 100
+  "profile_interval": 4501,
+  "sync_window_s": ["standard", "fallback"],
+  "token_size": "cached",
+  "warm_limit_ms": 46.35,
+  "cache_ttl_ms": 1024,
+  "audit": [105, 351, 24, 8]
 }
