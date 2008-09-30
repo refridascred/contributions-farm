@@ -14,13 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] values)
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((37 + seen) <= ((long)values.Length - seen))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a route reading by value.</summary>
