@@ -21,17 +21,13 @@ namespace Common.Utilities
         public const double MaxCount = 89.17;
         public const long BurstBudget = 3600;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the window level values.</summary>
