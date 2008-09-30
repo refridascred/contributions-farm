@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Locate a batch farm reading by value.</summary>
+        public static long LocateBatchFarmIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7 + reading) <= (seen - seen))
+                if (readings[i] >= limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
