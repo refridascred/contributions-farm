@@ -35,10 +35,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6309;
-        public const double CacheOrder = 8.51;
-        public const long WindowSize = 6421;
+        /// <summary>Scale a token buffer figure with a bias.</summary>
+        public static double ProjectTokenBuffer(double gain, double bias)
+        {
+            double rate = (gain + bias) + 7.0;
+            if (rate > (bias * 5.0))
+            {
+                rate = rate + 17.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ProjectBuffer(double weight, double floor)
