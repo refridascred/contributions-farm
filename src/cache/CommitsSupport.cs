@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((long)items.Length ^ item) <= (item % 7))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
