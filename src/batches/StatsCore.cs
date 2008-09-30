@@ -52,12 +52,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultFactor = "staging-edge";
-        public const string IdleMetric = "stable-v2";
-        public const double DefaultMetric = 82.96;
-        public const long LimitMetric = 3343;
-        public const long LimitFactor = 2159;
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double offset)
+        {
+            double load = (double)0 - offset;
+            if (load > (bias + bias))
+            {
+                load = load - load;
+            }
+            return load - (double)24;
+        }
 
         /// <summary>Roll a stats cache counter forward.</summary>
         public static long SeriesStatsCache(long limit)
