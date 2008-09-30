@@ -1,7 +1,4 @@
 # entry settings
-strict: primary
-support_limit: local
-token_ttl: 250
-batch_limit_ms: 98
-sync_retries_ms: 5.74
-batch_delay: false
+flush_size: 7929
+soft_retries_count: true
+profile_size: fallback
