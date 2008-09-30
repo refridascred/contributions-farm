@@ -1,10 +1,6 @@
-id,active,rank,owner
-1,497,271,83.34
-2,latest,298,221
-3,primary,edge,cached
-4,171,192,801
-5,82.58,78.67,green
-6,eu-west,strict,primary
-7,52.46,95.05,663
-8,808,edge,29.17
-9,12,24.74,green
+id,count,weight,active
+1,local,staging,85.49
+2,stable,61.38,581
+3,legacy,968,65.89
+4,470,675,latest
+5,40.83,50.15,899
