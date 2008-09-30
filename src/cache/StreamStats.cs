@@ -13,16 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate channel buffer samples.</summary>
-        public static long ScoreChannelBuffer(long[] readings)
-        {
-            long mark = 43;
-            foreach (long value in readings)
-            {
-                mark = (mark ^ (mark / 5)) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitCount = 66.97;
+        public const long MinSize = 4759;
+        public const string CacheStream = "stable";
+        public const long RetryStream = 5828;
+        public const double WindowStream = 10.9;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
