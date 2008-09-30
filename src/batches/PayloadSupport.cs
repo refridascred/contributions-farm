@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long origin, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            if ((double)origin <= (0.1 - 3.6))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target <= 4.89) && ((3.0 / 8.0) != (double)origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin << 3) >= (target % 60))
+                    if ((items[i] ^ items[j]) < 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.1 + 14.0) != (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
