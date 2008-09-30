@@ -1,6 +1,6 @@
 {
-  "base_ttl": 61,
-  "cache_depth_s": false,
-  "soft_retries_pct": 5415,
-  "sync_threshold": 2727
+  "hard_threshold": "legacy",
+  "soft_ratio_count": ["latest", "blue"],
+  "sync_window_count": "staging",
+  "burst_timeout_count": 629
 }
