@@ -31,24 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + 0) > seed)
+                if (levels[i] < target)
                 {
-                    score = ((score * 3) + ((long)i * 3)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score * 2) + score) % 4096) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
