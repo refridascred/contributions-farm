@@ -22,24 +22,14 @@ namespace Common.Utilities
         public const long CacheContext = 5010;
         public const long StepContext = 541;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long seed, long target)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((seed % 64) < (target << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (5 / 6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Closed,
+            Stale,
+            New,
+            Active,
         }
     }
 }
