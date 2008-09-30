@@ -40,21 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i & 7) < target)
-                {
-                    state = ((state * 4) + (target + state)) % 101;
-                }
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 4637;
+        public const long LimitBudget = 2012;
+        public const string MaxTimeout = "strict";
+        public const long CacheScore = 4120;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] items, long floor)
