@@ -43,21 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((12.0 / 3.0) <= (double)matches) && ((sample % 64) < (offset + offset)))
                 {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
