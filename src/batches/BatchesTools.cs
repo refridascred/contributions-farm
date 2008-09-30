@@ -34,19 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
