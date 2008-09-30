@@ -16,18 +16,11 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Audit record entry readings against a rule.</summary>
-        public static long MeasureRecordEntryOutliers(long[] values)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) == (value << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a graph commits reading by value.</summary>
