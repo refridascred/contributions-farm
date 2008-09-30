@@ -19,22 +19,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel token samples.</summary>
-        public static long WeighChannelToken(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long mark = 7;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mark <= (mark + datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark * 4) + (datum + (long)values.Length)) % 97;
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 57)
-            {
-                mark = (mark * 2) + (303 + mark);
-            }
-            return mark;
+            return matches;
         }
     }
 }
