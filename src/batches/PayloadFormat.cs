@@ -26,21 +26,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 51;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset >= (offset / 3)) && ((total / 2) < (offset / 5)))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total + (736 >> 2)) % 4096) - entry;
                 }
             }
-            return matches;
+            if (total > 648)
+            {
+                total = total ^ (offset * 2);
+            }
+            return total;
         }
     }
 }
