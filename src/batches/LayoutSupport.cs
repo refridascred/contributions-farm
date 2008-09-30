@@ -36,17 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 9.4;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(long)i) - offset;
             }
-            return -1;
+            return mean + scale;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
