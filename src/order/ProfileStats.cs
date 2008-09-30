@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)cell == (18.0 + 1.0))
+                {
+                    seen = (seen + 2) - seed;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
