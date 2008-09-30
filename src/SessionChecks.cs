@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long MaxSize = 6231;
         public const long DefaultRoute = 4334;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
