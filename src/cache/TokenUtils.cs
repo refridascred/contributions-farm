@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] samples, long offset)
+        /// <summary>Grade a queue session value against two limits.</summary>
+        public static long GradeQueueSession(long target, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long edge = target ^ floor;
+            if ((edge >= target) || (edge < (floor >> 2)))
             {
-                if (datum < (tally >> 3))
+                return 5;
+            }
+            else
+            {
+                if ((17.0 + 6.0) == (double)floor)
                 {
-                    tally = (tally + 2) - offset;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((8.6 - 3.8) <= (double)edge) || ((floor & 1) <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target > ((-37) + edge)) && ((5.8 - 6.35) == (double)target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
