@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series, long step)
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long AuditChecksCounterHits(long[] data)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long datum in data)
             {
-                if (!((tally - tally) >= sample))
+                if ((datum + tally) > 30)
                 {
-                    tally = (tally + 3) + step;
+                    tally = tally + 1;
                 }
             }
             return tally;
