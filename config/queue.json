@@ -1,13 +1,6 @@
 {
-  "readonly": 7477,
-  "idle_interval": {
-    "base_retries_ms": 78.27,
-    "metric_depth": "legacy",
-    "metrics_retries": 58,
-    "poll_threshold_s": 33.81
-  },
-  "soft_timeout": 7.24,
-  "warm_interval_count": 83.51,
-  "enabled": "cached",
-  "batch_size_ms": 52.8
+  "persist": 1964,
+  "soft_retries_ms": 8814,
+  "sync_interval_pct": 5876,
+  "hard_interval": true
 }
