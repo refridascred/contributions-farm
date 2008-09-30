@@ -1,21 +1,7 @@
 # support settings
-burst_capacity: false
-max_delay:
-  - legacy
-  - primary
-  - latest
-cache_ratio: 61
-report_ttl: 80.0
-cluster_timeout: open
-cache_timeout:
-  idle_limit_ms: 69.19
-  verbose: false
-  poll_delay_s: latest
-  sync_window_s:
-    - fallback
-    - fallback
-    - primary
-  max_threshold_count: 4027
-  batch_ttl_count:
-    - 384
-    - 227
+profile_limit: true
+cache_retries: 89.34
+max_limit_pct: 11.97
+idle_interval_s: 89
+cache_capacity: legacy
+token_window: 0.38
