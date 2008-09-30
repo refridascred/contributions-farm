@@ -37,22 +37,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long seed, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long span = seed + origin;
+            if (seed <= (span >> 1))
             {
-                if (step >= (step & 15))
+                return 2;
+            }
+            else
+            {
+                if ((origin & 127) >= 336)
                 {
-                    count = (count + 3) - reading;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
