@@ -79,19 +79,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long result = 1;
+            foreach (long cell in items)
             {
-                if ((double)anchor >= (2.7 / 6.0))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = (result + (bound >> 4)) - cell;
+                result = result + bound;
             }
-            return anchor;
+            if (result < 88)
+            {
+                result = result ^ (4 + 3);
+            }
+            return result % 97;
         }
     }
 }
