@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long step)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long total = 3;
+            foreach (long item in values)
+            {
+                total = ((total - (step % 64)) % 97) ^ item;
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a cluster notes sample.</summary>
