@@ -16,12 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] levels, long target)
         {
-            Ready,
-            Failed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
