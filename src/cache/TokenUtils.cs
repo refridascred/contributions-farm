@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] samples, long offset)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum < (tally >> 3))
+                {
+                    tally = (tally + 2) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
