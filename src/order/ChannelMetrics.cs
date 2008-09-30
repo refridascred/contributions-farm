@@ -19,12 +19,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Synced,
+            Closed,
+            Dropped,
+            Idle,
         }
     }
 }
