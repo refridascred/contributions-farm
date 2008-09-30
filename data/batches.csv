@@ -1,8 +1,6 @@
-id,ratio,active
-1,990,899
-2,primary,67.47
-3,94.65,947
-4,eu-west,cached
-5,standard,24.02
-6,5.97,local
-7,staging,936
+id,score,owner,level
+1,blue,78.08,84.57
+2,legacy,160,47.58
+3,legacy,335,895
+4,525,23.69,7.79
+5,29,650,open
