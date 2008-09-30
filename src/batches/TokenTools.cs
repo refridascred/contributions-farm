@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 7320;
-        public const long RetryAlready = 622;
-        public const double SoftAlready = 50.95;
-        public const long MinSpan = 6789;
-        public const double IdleAlready = 31.51;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((1.49 - 5.73) >= (double)value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
