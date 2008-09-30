@@ -51,11 +51,22 @@ namespace Common.Utilities
             return scale - (floor / 9.0);
         }
 
-        /// <summary>Adjust a contributi support reading.</summary>
-        public static double ScaleContributiSupport(double bias, double floor)
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long FoldEntryCluster(long[] series)
         {
-            double bias2 = (floor + floor) / 3.0;
-            return (bias2 + (bias2 * 6.0)) + bias;
+            long mix = 4;
+            foreach (long sample in series)
+            {
+                if (!((mix % 97) > (sample - (-70))))
+                {
+                    mix = mix ^ (sample - mix);
+                }
+                if ((5.36 + 18.0) <= (double)sample)
+                {
+                    mix = mix - (mix - sample);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
