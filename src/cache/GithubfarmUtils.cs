@@ -29,21 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Digest a series of channel window entries.</summary>
+        public static long FoldChannelWindow(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 10;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score << 3) ^ (sample - (long)readings.Length);
+                if ((double)score == (double)sample)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many filter order samples are out of range.</summary>
