@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Validate stats token readings against a bound.</summary>
+        public static bool CheckStatsTokenLimits(long[] readings, long seed)
         {
-            double weight = bias;
-            if (weight > (double)4)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                weight = (weight + (double)47) - bias2;
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)(-499)) + (double)(long)i;
-            }
-            return weight - bias;
+            return found;
         }
 
         /// <summary>Describe the notes class values.</summary>
