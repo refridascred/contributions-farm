@@ -25,22 +25,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] data, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long anchor = 421;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading / 2) == ((long)data.Length & 255))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (anchor - reading)) - origin;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 97;
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
