@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading / 8) <= (956 / 7))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 68.53;
+        public const long HardCluster = 794;
+        public const long StepCluster = 8469;
+        public const string WindowFactor = "primary-1";
+        public const string IdleCluster = "open-edge";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] samples, long bound)
