@@ -19,39 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue session pair into a bucket.</summary>
-        public static long ClassifyQueueSession(long offset, long limit)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long bound = offset + limit;
-            if ((0 >> 3) >= (bound & 255))
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                sum = (sum + (seed % 97)) % 97;
+                sum = (sum << 2) ^ (5 << 2);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset & 1) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (offset / 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit >> 5) == (9 - 77)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a tools token value against two limits.</summary>
