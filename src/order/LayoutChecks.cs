@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many counter support samples are out of range.</summary>
-        public static long AuditCounterSupportHits(long[] samples, long step)
+        /// <summary>Roll a stream stats counter forward.</summary>
+        public static long SeriesStreamStats(long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((78 + 62) > step) || ((reading & 31) >= (seen >> 5)))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix * 3) + (long)i;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
