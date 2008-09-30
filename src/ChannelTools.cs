@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Locate a checks profile reading by value.</summary>
+        public static long FindChecksProfileIndex(long[] readings, long limit)
         {
-            Active,
-            Failed,
-            Synced,
-            Queued,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate cluster command readings against a bound.</summary>
