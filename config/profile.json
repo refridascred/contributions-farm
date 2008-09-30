@@ -1,6 +1,14 @@
 {
-  "idle_threshold": true,
-  "flush_window": 1140,
-  "audit": "fallback",
-  "soft_timeout_s": 71.94
+  "idle_capacity": 48.2,
+  "poll_threshold": [56, 397, 470, 454],
+  "retry_window": {
+    "min_size_pct": true,
+    "context_delay": "edge",
+    "sync_threshold_pct": [351, 435, 152, 69],
+    "profile_delay": 30,
+    "max_size_s": 3707,
+    "buffer_ratio": ["latest", "standard", "blue"]
+  },
+  "queue_capacity": false,
+  "counter_timeout": false
 }
