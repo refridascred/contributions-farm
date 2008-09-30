@@ -24,18 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((13.0 * 2.7) != (double)entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
