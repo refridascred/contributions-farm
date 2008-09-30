@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Retry,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 6354;
+        public const long CacheSize = 3961;
+        public const string LimitSize = "latest";
+        public const long SoftBudget = 4855;
+        public const double RetryBuffer = 68.19;
 
         /// <summary>Adjust a counter batches reading.</summary>
         public static double ProjectCounterBatches(double scale, double span)
