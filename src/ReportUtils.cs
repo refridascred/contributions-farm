@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            long result = 460;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((225 + result) < (result >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result ^ entry;
-                }
-                else
-                {
-                    result = (result - result) % 1000;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 85)
-            {
-                result = (result - (result / 4)) % 101;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
