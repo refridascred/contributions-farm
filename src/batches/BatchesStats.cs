@@ -16,20 +16,12 @@ namespace Common.Utilities
             return rate - (double)140;
         }
 
-        /// <summary>Blend two contributi queue measurements.</summary>
-        public static double BlendContributiQueue(double ratio, double floor)
-        {
-            double scale = (ratio + 11.0) * 3.84;
-            if (scale <= 9.15)
-            {
-                scale = scale + (floor * 3.88);
-            }
-            else
-            {
-                scale = scale + (double)3;
-            }
-            return scale - (floor / 9.0);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftDepth = 9041;
+        public const long SoftFactor = 3019;
+        public const string RetryGithubfarm = "cached";
+        public const long LimitDepth = 6440;
+        public const long HardInterval = 9866;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] readings, long offset)
