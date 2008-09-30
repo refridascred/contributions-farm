@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] series)
         {
-            public bool Token { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ hits) > (item << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a githubfarm contributi reading by value.</summary>
