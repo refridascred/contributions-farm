@@ -53,19 +53,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics context entry stays within the limit.</summary>
-        public static bool ValidateMetricsContextBounds(long[] samples, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
