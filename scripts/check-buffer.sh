@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in legacy standard green; do
+for item in open eu-west edge; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
