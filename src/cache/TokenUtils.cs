@@ -33,26 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window profile readings.</summary>
-        public static long DigestWindowProfile(long[] data, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] data, long target)
         {
-            long mark = 2;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((double)origin >= (double)mark) || ((origin ^ mark) > (origin - origin)))
+                if (reading <= target)
                 {
-                    mark = (((mark << 3) ^ mark) % 4096) - datum;
-                }
-                if (origin < (mark & 31))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mark > 392)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
