@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] series)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            long score = 75;
+            foreach (long sample in series)
             {
-                result = result - (cell & 255);
+                if (((5.4 / 4.0) > (double)sample) && ((sample & 7) > (sample % 8)))
+                {
+                    score = (score + (score - score)) % 97;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
