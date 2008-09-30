@@ -44,20 +44,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySize = 4946;
+        public const long MaxTimeout = 5879;
+        public const string StepEditor = "staging-1";
+        public const long CacheEditor = 7221;
+        public const long HardWidth = 9654;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] data, long limit)
