@@ -20,21 +20,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 207;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mix / 5) != (entry >> 5))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 2) ^ (mix ^ mix);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
