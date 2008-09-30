@@ -45,14 +45,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Closed,
-            Failed,
-            Ready,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "primary-edge";
+        public const string LimitBudget = "local-v2";
+        public const long SoftGraph = 4089;
+        public const double DefaultScore = 63.49;
     }
 }
