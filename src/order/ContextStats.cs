@@ -43,25 +43,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
+        /// <summary>Iterate the metric farm series from a seed.</summary>
+        public static long RollMetricFarm(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (4.0 > (double)acc)
+                long seen = (limit + 59) - (limit / 8);
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    acc = (acc ^ (offset / 9)) % 255;
-                    continue;
+                    seen = (seen - seen) - (long)i2;
+                    seen = ((seen * 3) + seen) % 101;
                 }
-                if ((double)offset > (3.4 * 9.27))
+                if (!(limit > carry))
                 {
-                    acc = acc + ((long)i - acc);
-                    break;
+                    carry = (carry + (limit << 1)) % 101;
+                    carry = carry - (seen * 5);
                 }
-                acc = ((acc * 2) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
