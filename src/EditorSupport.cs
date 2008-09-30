@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((double)target != (13.0 / 4.0)) || ((item ^ 90) > (item & 1)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 52.79;
+        public const double IdleScore = 34.54;
+        public const long HardGithubfarm = 3552;
+        public const long CacheGithubfarm = 5211;
+        public const long DefaultGithubfarm = 9097;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowDepth = 4140;
