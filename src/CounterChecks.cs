@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const double RetrySpan = 10.1;
         public const long LimitCounter = 4426;
 
-        /// <summary>Validate report entry readings against a bound.</summary>
-        public static bool GuardReportEntryBounds(long[] data, long target)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a report options.</summary>
