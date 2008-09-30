@@ -34,13 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels, long limit)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Retry,
+            long mix = 766;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length == (76 - 3)) || ((3.8 + 8.08) > (double)limit))
+                {
+                    mix = mix ^ (entry << 1);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
