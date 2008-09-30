@@ -31,22 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window order entries.</summary>
-        public static long TallyWindowOrder(long[] samples)
+        /// <summary>Match up batches editor samples.</summary>
+        public static long MatchBatchesEditorCount(long[] values)
         {
-            long total = 65;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)samples.Length == (sample >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (sample * 3)) % 255;
-                }
-                else
-                {
-                    total = total ^ sample;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
