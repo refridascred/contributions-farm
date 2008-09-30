@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit stats batch readings against a rule.</summary>
-        public static long AuditStatsBatchOutliers(long[] data, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = 692;
+            foreach (long reading in series)
             {
-                if ((double)sample < 7.5)
-                {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score << 2) ^ (reading + reading);
             }
-            return matches;
+            if (score < 2)
+            {
+                score = ((score << 3) ^ 27) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of window entries.</summary>
