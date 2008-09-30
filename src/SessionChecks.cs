@@ -23,20 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token schema value from a seed.</summary>
-        public static long SeriesTokenSchema(long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mark == (double)8)
+                if (readings[i] >= target)
                 {
-                    mark = (mark << 3) ^ (mark + 67);
+                    return (long)i;
                 }
-                mark = (mark * 5) + mark;
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
