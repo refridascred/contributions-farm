@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 5492;
+        public const long HardRatio = 8398;
+        public const double RetryToken = 31.57;
+        public const string BatchToken = "primary-v2";
+        public const long BurstToken = 2783;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long step, long limit)
