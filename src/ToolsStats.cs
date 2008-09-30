@@ -36,21 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count entry counter pairs that satisfy a relation.</summary>
-        public static long CompareEntryCounterCount(long[] items)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
