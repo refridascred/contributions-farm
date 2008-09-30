@@ -27,19 +27,17 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool VerifyFilterPayloadBounds(long[] samples, long target)
+        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
+        public static long SeekGithubfarmReportIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= target)
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
