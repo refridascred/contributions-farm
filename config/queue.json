@@ -1,8 +1,8 @@
 {
-  "audit": 3504,
-  "dry_run": 53.68,
-  "session_capacity": false,
-  "cache_capacity": [457, 435],
-  "route_capacity": 13.34,
-  "cluster_threshold": true
+  "burst_size": true,
+  "flush_capacity": 250,
+  "strict": true,
+  "sync_ttl": [288, 238],
+  "cache_delay_count": 90.91,
+  "readonly": "primary"
 }
