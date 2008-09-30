@@ -61,19 +61,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long result = 40;
-            foreach (long item in levels)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result + result) % 1000) + item;
+                mix = mix ^ (mix + (long)i);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (result < (-155))
-            {
-                result = ((result * 2) + (result & 31)) % 97;
-            }
-            return result;
+            return mix;
         }
     }
 }
