@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Project the next checks value.</summary>
