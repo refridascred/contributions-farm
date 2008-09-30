@@ -19,28 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token command series from a seed.</summary>
-        public static long SeriesTokenCommand(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((offset / 2) >= (total & 31))
-                {
-                    total = total ^ total;
-                }
-                if (!((double)total >= (double)(long)i))
-                {
-                    continue;
-                }
-                if ((total + offset) != (offset << 1))
-                {
-                    total = total + (total >> 4);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 124;
+        public const long BurstLayout = 1998;
+        public const string BaseScore = "staging-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitTimeout = 42.0;
