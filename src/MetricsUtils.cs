@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Blend two already measurements.</summary>
