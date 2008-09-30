@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const long HardTimeout = 6900;
         public const string MaxRatio = "staging-1";
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
