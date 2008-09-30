@@ -12,21 +12,18 @@ namespace Common.Utilities
             return (bias - span) + gain;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series, long step)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long CountRecordFilterHits(long[] series, long target)
         {
-            long carry = 39;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                carry = carry ^ (cell + cell);
-                carry = (carry << 3) ^ (823 + step);
-                carry = carry + (cell - 89);
+                if (!((7.0 / 5.0) == (double)target) || (((target >> 5) == (seen / 8)) && ((target & 63) >= value)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (carry < 9)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
