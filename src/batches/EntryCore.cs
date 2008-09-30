@@ -34,30 +34,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] readings, long limit)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long carry = -3;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry * 4) + ((long)i / 3)) % 255) - limit;
-                }
-                if (!(entry >= (entry ^ (-583))))
-                {
-                    carry = ((carry << 2) ^ (carry & 7)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry - 56);
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 381)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 4096;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
