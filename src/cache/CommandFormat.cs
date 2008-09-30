@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Compare every pair of window layout readings.</summary>
+        public static long MatchWindowLayoutCount(long[] series)
         {
-            long anchor = 973;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 2) + ((long)i << 1);
-                }
-                if (entry >= (long)levels.Length)
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + 50) % 4096;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > (-86))
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
