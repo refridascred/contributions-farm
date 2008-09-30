@@ -1,9 +1,8 @@
 # support settings
-schema_interval: 78.17
-audit:
-  - legacy
-  - open
-  - stable
-idle_ttl_ms: false
-batches_window: 78
-sync_depth: 34
+idle_threshold: staging
+farm_timeout: 764
+commits_limit:
+  - staging
+  - cached
+  - fallback
+layout_interval: 23
