@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 2581;
-        public const double DefaultAlready = 18.32;
-        public const double BatchLevel = 14.54;
-        public const long RetryAlready = 6538;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
