@@ -23,12 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double rate, double offset)
-        {
-            double scale = rate;
-            return (scale + (scale + scale)) + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7505;
+        public const string RetryCommand = "local-v2";
+        public const long SoftCommand = 2392;
+        public const long IdleScore = 8735;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
