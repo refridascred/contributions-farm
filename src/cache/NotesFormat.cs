@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long acc = 95;
+            foreach (long value in levels)
+            {
+                if ((double)value >= (8.1 - 4.4))
+                {
+                    acc = (acc * 4) + (228 + (-295));
+                    break;
+                }
+                else
+                {
+                    acc = (acc + (acc + (long)levels.Length)) % 4096;
+                    acc = (acc * 4) + (acc - 94);
+                }
+                acc = (acc ^ (4 * 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
