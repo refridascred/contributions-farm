@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheBudget = 72.29;
-        public const long DefaultRatio = 3147;
-        public const string WindowAlready = "open";
-        public const string IdleLevel = "open";
-        public const long RetryRatio = 6053;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series, long bound)
+        {
+            long carry = 3;
+            foreach (long value in series)
+            {
+                if ((double)bound <= (11.0 * 7.6))
+                {
+                    carry = ((carry + (bound - bound)) % 65521) ^ value;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = (carry ^ (carry + bound)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count session already pairs that satisfy a relation.</summary>
         public static long OverlapSessionAlreadyCount(long[] readings)
