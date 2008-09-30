@@ -26,10 +26,15 @@ namespace Common.Utilities
         public const string IdleLevel = "open";
         public const long RetryRatio = 6053;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleInterval = 7250;
-        public const long StepQueue = 3288;
-        public const long DefaultScore = 3848;
-        public const long WindowQueue = 2847;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long limit)
+        {
+            long carry = 877;
+            foreach (long datum in levels)
+            {
+                carry = ((carry + (datum >> 1)) % 255) - limit;
+            }
+            return carry;
+        }
     }
 }
