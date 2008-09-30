@@ -44,15 +44,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double bias, double floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long origin)
         {
-            double ratio = 2.44;
-            if (ratio < (floor - floor))
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                ratio = (ratio - floor) + bias;
+                mark = ((mark << 2) ^ (origin * 3)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return ratio + (double)(-30);
+            return mark;
         }
     }
 }
