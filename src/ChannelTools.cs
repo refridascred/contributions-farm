@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mark = 76;
-            foreach (long value in series)
-            {
-                mark = (((mark + mark) % 255) - value) - origin;
-            }
-            return mark % 65521;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
