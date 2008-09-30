@@ -55,11 +55,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 6951;
-        public const double BurstLevel = 45.81;
-        public const string LimitFormat = "stable-edge";
-        public const double LimitBudget = 1.86;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] levels, long offset)
