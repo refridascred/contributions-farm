@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (item <= origin)
+                if ((sample >> 4) <= (sample & 31))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
