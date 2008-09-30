@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long target)
         {
-            Queued,
-            Stale,
-            Closed,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
