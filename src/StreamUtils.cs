@@ -22,26 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 + (-210)) > ((long)i & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 2) + origin) % 97;
-                    anchor = anchor ^ (origin * 4);
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = (anchor - 15) % 4096;
-                if (anchor > ((long)i % 97))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i + origin)) % 1000;
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
