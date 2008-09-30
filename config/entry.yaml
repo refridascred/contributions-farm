@@ -1,13 +1,21 @@
 # entry settings
-already_interval: true
-tools_size:
-  - open
-  - primary
-verbose:
-  sync_limit: 58.79
-  min_size_pct: true
-  audit: 76.65
-  counter_delay: 98
-audit: 16
-compress: 1024
-strict: standard
+burst_ttl_pct: stable
+hard_delay_count: latest
+dry_run:
+  - 491
+  - 314
+max_window_count: strict
+command_retries: 43
+soft_ttl:
+  idle_ttl: 15
+  verbose: 52
+  warm_interval_s: blue
+  audit:
+    verbose: 6209
+    default_timeout: true
+    max_threshold_count:
+      - stable
+      - standard
+      - staging
+      - green
+  hard_ttl: 1024
