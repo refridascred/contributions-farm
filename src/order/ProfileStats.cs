@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] samples, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long result = 73;
+            foreach (long item in items)
             {
-                if ((tally - tally) < (tally + bound))
+                if (bound >= 38)
                 {
-                    tally = (tally + 3) + value;
+                    result = ((result ^ (bound - 0)) % 101) ^ item;
                 }
             }
-            return tally;
+            if (result < 96)
+            {
+                result = (result << 2) ^ (result * 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a metrics entry.</summary>
