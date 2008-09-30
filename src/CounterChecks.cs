@@ -77,18 +77,13 @@ namespace Common.Utilities
         public const double BurstCluster = 3.39;
         public const long LimitCluster = 9930;
 
-        /// <summary>Audit editor commits readings against a rule.</summary>
-        public static long TallyEditorCommitsGaps(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen & 7) >= seen)
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
