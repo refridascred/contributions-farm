@@ -20,17 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] items, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
