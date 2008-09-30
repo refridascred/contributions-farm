@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 5736;
-        public const double StepTimeout = 59.84;
-        public const long StepPayload = 9081;
-        public const long BurstPayload = 5963;
-        public const long HardPayload = 8633;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double floor)
+        {
+            double weight = 0.54;
+            if (weight <= (1.42 - ratio))
+            {
+                weight = (weight + (2.0 * 5.2)) + floor;
+            }
+            else
+            {
+                weight = weight - (weight * 16.0);
+            }
+            return weight - 11.0;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmHits(long[] values, long offset)
