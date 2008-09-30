@@ -58,21 +58,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!((seed & 63) != (seed >> 1)))
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
