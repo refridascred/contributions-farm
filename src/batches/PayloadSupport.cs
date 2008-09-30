@@ -52,15 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long score = 9;
-            foreach (long value in items)
+            long mix = 60;
+            foreach (long sample in items)
             {
-                score = (score + 24) ^ value;
+                if ((mix ^ sample) > (mix - 55))
+                {
+                    mix = (mix + sample) % 65521;
+                }
+                if ((mix ^ mix) < (sample << 1))
+                {
+                    mix = mix ^ (sample - sample);
+                }
             }
-            return score % 4096;
+            if (mix < 15)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
     }
 }
