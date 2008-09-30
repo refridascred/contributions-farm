@@ -1,7 +1,6 @@
 {
-  "warm_ratio_ms": false,
-  "sync_interval_count": 8103,
-  "poll_ratio": [24, 286, 163, 352],
-  "max_delay": "fallback",
-  "hard_timeout": false
+  "soft_threshold_count": true,
+  "stats_ttl": 38,
+  "retry_ttl": [390, 202],
+  "farm_threshold": 84
 }
