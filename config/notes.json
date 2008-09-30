@@ -1,13 +1,6 @@
 {
-  "cache_window": 500,
-  "poll_ratio": true,
-  "enabled": [231, 14, 496, 254],
-  "max_interval": {
-    "verbose": 90.59,
-    "sync_size_pct": 36.85,
-    "warm_window": false,
-    "audit": [483, 332]
-  },
-  "cluster_window": ["edge", "eu-west"],
-  "metric_size": ["local", "fallback", "edge"]
+  "warm_delay_s": "green",
+  "context_retries": "primary",
+  "verbose": "blue",
+  "metrics_window": 500
 }
