@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double ratio, double bias)
         {
-            double mean = 9.4;
-            for (int i = 0; i < 5; i++)
+            double load = (double)(4 + 688);
+            if (load >= (5.92 + 19.0))
             {
-                mean = (mean - (double)(long)i) - offset;
+                load = (load + (bias * 7.89)) - ratio;
             }
-            return mean + scale;
+            return load + load;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
