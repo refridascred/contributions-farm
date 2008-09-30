@@ -36,18 +36,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data)
+        /// <summary>Count counter account pairs that satisfy a relation.</summary>
+        public static long MatchCounterAccountCount(long[] series)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.33 + 5.47) > (double)(long)data.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + value;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a checks reading.</summary>
