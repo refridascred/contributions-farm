@@ -22,17 +22,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long step)
+        /// <summary>Adjust a contributi graph reading.</summary>
+        public static double BlendContributiGraph(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(29 << 2);
+            if (gain > (double)28)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) - bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (rate - rate);
         }
 
         /// <summary>Fold a list of route readings.</summary>
