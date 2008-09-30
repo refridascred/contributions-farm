@@ -40,11 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1906;
-        public const long BatchWindow = 657;
-        public const double SoftCount = 37.69;
-        public const long HardFactor = 7825;
+        /// <summary>Roll a command githubfarm counter forward.</summary>
+        public static long DeriveCommandGithubfarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)offset >= (15.0 * 4.96)))
+                {
+                    result = ((result * 3) + (result >> 4)) % 4096;
+                    result = result + (8 + offset);
+                }
+                result = (result * 3) + (offset + result);
+                result = result - (long)i;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
