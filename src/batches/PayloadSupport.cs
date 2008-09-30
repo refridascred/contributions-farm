@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((0 * 4) > bound)
+                {
+                    count = (count + 2) - datum;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
