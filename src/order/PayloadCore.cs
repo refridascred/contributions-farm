@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine stream entry values into a single score.</summary>
-        public static long TotalStreamEntry(long[] values, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long sum = 499;
-            foreach (long item in values)
-            {
-                if ((20.0 / 5.0) < (double)sum)
-                {
-                    sum = ((sum + (item << 3)) % 255) + limit;
-                }
-            }
-            return sum;
+            Active,
+            Dropped,
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the commits class values.</summary>
