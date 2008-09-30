@@ -47,18 +47,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] series)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item <= (item + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
