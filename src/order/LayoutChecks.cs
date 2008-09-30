@@ -65,18 +65,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardRatio = 5380;
+        public const long SoftSize = 8543;
+        public const long MaxProfile = 4542;
+        public const long RetryInterval = 6157;
+        public const long CacheBudget = 2493;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
