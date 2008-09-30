@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Validate filter githubfarm readings against a bound.</summary>
+        public static bool CheckFilterGithubfarmLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((reading - hits) >= (0 + 827))
+                if (entry >= limit)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
