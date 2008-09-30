@@ -22,10 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 9528;
-        public const long BaseRoute = 3415;
-        public const string BatchWidth = "primary-1";
+        /// <summary>Rank checks schema input into a small class.</summary>
+        public static long BucketChecksSchema(long origin, long offset)
+        {
+            long step = origin + offset;
+            if (origin > (step + 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (598 >= (offset ^ 91))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.07 + 5.0) != (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] readings)
