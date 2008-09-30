@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long limit, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples)
         {
-            if ((double)step <= (double)5)
+            long anchor = 34;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (3.83 < (double)step)
+                if (((anchor - reading) > anchor) || ((anchor - anchor) >= reading))
                 {
-                    return 6;
+                    anchor = (anchor + (reading + anchor)) % 101;
+                    continue;
                 }
-                else
+                if ((anchor + reading) >= (reading * 2))
                 {
-                    if ((limit ^ 900) <= (step ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (0.4 / 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = anchor + (35 + reading);
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
