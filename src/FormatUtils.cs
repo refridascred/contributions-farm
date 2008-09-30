@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long seed, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long target)
         {
-            long slot = seed + step;
-            if (!((12.0 + 9.34) >= (double)slot))
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot & 31) > (step + slot))
+                if ((result << 1) >= result)
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    return 7;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
