@@ -34,12 +34,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 74.77;
-        public const long StepSpan = 6659;
-        public const string WindowWidth = "alpha-1";
-        public const long MinCount = 578;
-        public const string WindowRatio = "cached-edge";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "staging-edge";
+        public const long MinDepth = 9252;
+        public const string RetryDepth = "latest-v2";
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
