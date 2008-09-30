@@ -1,5 +1,6 @@
 {
-  "hard_limit_pct": 22.15,
-  "min_depth_ms": 64.22,
-  "retry_capacity_count": "fallback"
+  "hard_size_pct": "edge",
+  "order_ttl": 72.25,
+  "enabled": 2951,
+  "compress": ["primary", "latest", "edge"]
 }
