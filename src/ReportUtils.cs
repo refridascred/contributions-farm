@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long TotalSchemaSession(long[] values, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            long result = 6;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((reading + result) >= (reading << 1))
+                if (4 < (sample ^ 3))
                 {
-                    result = (result * 2) + (origin % 16);
-                }
-                else
-                {
-                    result = (result ^ 67) % 101;
+                    seen = seen + 1;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the farm phase values.</summary>
