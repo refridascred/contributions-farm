@@ -58,15 +58,11 @@ namespace Common.Utilities
         public const long BurstBatches = 4896;
         public const string WindowBatches = "legacy-edge";
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
