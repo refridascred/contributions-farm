@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cluster contributi series from a seed.</summary>
-        public static long StepClusterContributi(long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] readings, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((long)i * 3) == (38 & 1))
+                if (cell <= limit)
                 {
-                    long diff = offset;
-                    acc = (acc - diff) % 101;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Adjust a payload reading.</summary>
