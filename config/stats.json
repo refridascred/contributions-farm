@@ -1,20 +1,6 @@
 {
-  "idle_window": "primary",
-  "order_capacity": {
-    "compress": false,
-    "max_threshold_s": 8780,
-    "session_limit": [302, 402, 452],
-    "record_ratio": {
-      "poll_window_count": "local",
-      "audit": 4513,
-      "default_window_count": ["legacy", "strict"],
-      "max_ratio_pct": "open",
-      "metrics_timeout": "stable",
-      "cluster_interval": "staging"
-    },
-    "base_limit": 89
-  },
-  "idle_size": "blue",
-  "stats_ratio": false,
-  "cache_timeout": 60
+  "persist": "local",
+  "checks_retries": 7113,
+  "burst_size": 9792,
+  "default_retries_ms": 500
 }
