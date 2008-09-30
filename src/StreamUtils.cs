@@ -42,17 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (scale - 3.0) + (double)3;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (11.0 / 8.0)) + (double)(long)i) + span;
             }
-            return -1;
+            return rate + rate;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
