@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const double DefaultDepth = 13.27;
         public const long HardReport = 9699;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] samples, long seed)
         {
-            Done,
-            Synced,
-            Active,
-            Stale,
-            Ready,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next format value.</summary>
