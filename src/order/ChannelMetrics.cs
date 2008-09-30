@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryRatio = "staging";
-        public const double HardGithubfarm = 26.84;
-        public const long SoftGithubfarm = 6888;
-        public const long LimitWidth = 2083;
+        /// <summary>Accumulate checks channel samples.</summary>
+        public static long FoldChecksChannel(long[] samples, long limit)
+        {
+            long sum = 60;
+            foreach (long datum in samples)
+            {
+                if (((datum + sum) == (limit - 840)) && ((double)sum >= 0.1))
+                {
+                    sum = ((sum * 5) + (sum << 1)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long seed)
