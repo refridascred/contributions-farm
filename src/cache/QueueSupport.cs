@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix + floor) >= floor)
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ ((long)i + mix)) % 255;
                 }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix - (long)i)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
