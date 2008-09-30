@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen % 3) > (740 >> 2))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
