@@ -65,21 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Measure how many checks stats samples are out of range.</summary>
+        public static long TallyChecksStatsHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (2.71 >= (double)sample)
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
