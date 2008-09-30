@@ -49,11 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long seed)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
