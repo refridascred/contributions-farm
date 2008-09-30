@@ -1,5 +1,10 @@
 {
-  "batch_ttl_pct": "primary",
-  "verbose": "standard",
-  "compress": "strict"
+  "batch_depth_count": 804,
+  "dry_run": {
+    "hard_timeout_count": "standard",
+    "compress": false,
+    "base_ttl_s": [464, 289, 347],
+    "warm_window": 100
+  },
+  "batch_depth": false
 }
