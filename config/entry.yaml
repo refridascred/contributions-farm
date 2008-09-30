@@ -1,6 +1,7 @@
 # entry settings
-retry_ratio_s: stable
-base_capacity_pct: false
-verbose:
-  - strict
-  - strict
+stats_ratio: 37.52
+burst_size_pct: open
+dry_run: edge
+audit:
+  - 182
+  - 19
