@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long seed)
         {
-            long diff = target - origin;
-            if (!((origin + 0) == (origin - 26)))
+            long acc = 196;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((0.1 + 2.0) > (double)origin) && ((target + 7) > (diff + origin)))
+                if ((seed <= acc) || (((-532) & 31) > (seed + acc)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin >= (2.0 - 6.23))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)diff == (7.36 + 18.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (((acc << 2) ^ (1 / 9)) % 4096) - reading;
                 }
             }
+            if (acc < 10)
+            {
+                acc = ((acc * 2) + (56 & 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
