@@ -1,7 +1,11 @@
 {
-  "counter_delay": 68,
-  "readonly": 3901,
-  "max_delay_pct": "edge",
-  "commits_delay": "edge",
-  "hard_ttl": false
+  "layout_size": 1024,
+  "hard_interval": "cached",
+  "window_ratio": "local",
+  "default_interval_ms": {
+    "idle_delay_pct": false,
+    "sync_timeout": [385, 59, 388],
+    "warm_ratio_pct": 6543
+  },
+  "persist": "stable"
 }
