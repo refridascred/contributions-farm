@@ -30,11 +30,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long next = floor + target;
+            if ((floor - next) <= (target + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target ^ target) >= (floor >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 5) > (next % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (next >= (431 + 377))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
