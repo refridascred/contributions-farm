@@ -1,14 +1,11 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any contributi limits.
-
-When a githubfarm fails, the account handler retries a few times before giving up.
-Keep support and route names short and lowercase.
+Defaults for route live in the config folder and can be overridden per environment.
+The queue module keeps entry values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate support input early
-- Review graph limits each release
-- Log every account change
-- Document new schema fields
+- Document new commits fields
+- Prefer cache defaults
+- Validate githubfarm input early
+- Review command limits each release
