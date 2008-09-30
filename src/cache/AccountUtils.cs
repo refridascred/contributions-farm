@@ -27,18 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((1 / 9) <= (hits / 7))
+                if (!((target + 13) <= matches))
                 {
-                    hits = (hits + 3) ^ entry;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
