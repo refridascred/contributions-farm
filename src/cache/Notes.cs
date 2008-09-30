@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)origin > (1.55 / 6.0))
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitTimeout = 1003;
+        public const long DefaultSize = 4142;
+        public const string IdleAlready = "cached-edge";
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] readings)
