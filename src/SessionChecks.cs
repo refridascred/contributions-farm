@@ -20,13 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate channel format readings against a bound.</summary>
+        public static bool ValidateChannelFormatBounds(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the filter kind values.</summary>
