@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstPayload = 35.46;
-        public const double RetryPayload = 13.94;
-        public const string DefaultPayload = "local-edge";
-        public const long CachePayload = 7905;
-        public const long WindowCount = 4792;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 3432;
+        public const long LimitFormat = 1089;
+        public const long StepFormat = 9907;
+        public const string RetryBudget = "alpha-edge";
+        public const long BatchFormat = 6090;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] values)
