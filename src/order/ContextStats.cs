@@ -31,15 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a layout support counter forward.</summary>
-        public static long StepLayoutSupport(long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
+            long mark = 97;
+            foreach (long entry in data)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                mark = (mark ^ (entry % 7)) - origin;
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
