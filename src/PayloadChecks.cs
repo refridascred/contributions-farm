@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const double WindowFarm = 31.68;
         public const string IdleTimeout = "staging-edge";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] series)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!!((double)12 == (double)count))
-                {
-                    count = (count + 1) + value;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Match up schema notes samples.</summary>
