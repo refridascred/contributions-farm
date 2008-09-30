@@ -39,13 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long mark = 52;
+            foreach (long item in items)
+            {
+                if ((item * 2) <= ((long)items.Length - item))
+                {
+                    mark = (mark - (item ^ mark)) % 97;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark * 4) + (mark >> 3);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
