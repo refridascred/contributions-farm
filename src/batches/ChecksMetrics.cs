@@ -21,19 +21,11 @@ namespace Common.Utilities
             return (rate + (double)768) + bias;
         }
 
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long WeighGraphWindow(long[] series, long origin)
-        {
-            long total = 593;
-            foreach (long reading in series)
-            {
-                if (((double)99 == (double)reading) && ((double)origin <= (3.0 - 3.3)))
-                {
-                    total = (total ^ (2 + origin)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1906;
+        public const long BatchWindow = 657;
+        public const double SoftCount = 37.69;
+        public const long HardFactor = 7825;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 782;
