@@ -54,11 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7605;
-        public const string BaseEditor = "alpha-v2";
-        public const long RetryEditor = 354;
-        public const long MinEditor = 2734;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "primary-1";
+        public const double SoftBatches = 83.57;
+        public const string BaseTimeout = "staging-edge";
 
         /// <summary>Count cache window pairs that satisfy a relation.</summary>
         public static long MatchCacheWindowCount(long[] items)
