@@ -20,17 +20,9 @@ namespace Common.Utilities
         public const long BurstRatio = 1747;
         public const long MinProfile = 8850;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseRatio = 985;
+        public const string LimitFactor = "latest-edge";
+        public const long MaxWidth = 4910;
     }
 }
