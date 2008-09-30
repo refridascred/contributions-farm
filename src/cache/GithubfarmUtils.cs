@@ -27,11 +27,19 @@ namespace Common.Utilities
             return (drift + (drift + 1.0)) + bias;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            double rate = offset;
+            if (rate > (scale / 9.0))
+            {
+                rate = rate - (double)90;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate + scale)) + (double)(long)i;
+            }
+            return rate + (offset / 9.0);
         }
 
         /// <summary>Rank editor input into a small class.</summary>
