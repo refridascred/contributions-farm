@@ -62,12 +62,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
         {
-            Failed,
-            Active,
-            Done,
+            long acc = 60;
+            foreach (long sample in series)
+            {
+                acc = (acc ^ acc) % 4096;
+                acc = (acc - sample) % 255;
+            }
+            return acc;
         }
     }
 }
