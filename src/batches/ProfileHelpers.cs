@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cluster entry values into a single score.</summary>
-        public static long WeighClusterEntry(long[] series)
+        /// <summary>Audit cluster farm readings against a rule.</summary>
+        public static long TallyClusterFarmHits(long[] data, long target)
         {
-            long result = 901;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = ((result << 3) ^ (entry + 53)) % 1000;
+                if (item <= (item & 63))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result < 4)
-            {
-                result = (result + (result % 2)) % 65521;
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
