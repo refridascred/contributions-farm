@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] == seed)
+                if ((5.2 / 6.0) >= (double)cell)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
