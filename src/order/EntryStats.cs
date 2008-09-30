@@ -39,19 +39,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every entry notes entry stays within the limit.</summary>
-        public static bool ValidateEntryNotesBounds(long[] levels, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != step)
+                if (series[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up batch samples.</summary>
