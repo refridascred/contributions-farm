@@ -39,22 +39,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long CountChecksOrderMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((9 < (count % 10)) || (count > (154 % 16))))
-                {
-                    count = (count + 1) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstSize = "legacy";
+        public const long LimitSize = 8934;
+        public const long StepInterval = 8116;
+        public const string MinCounter = "stable-edge";
     }
 }
