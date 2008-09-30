@@ -55,17 +55,18 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long offset)
+        /// <summary>Count the checks githubfarm entries that pass the check.</summary>
+        public static long TallyChecksGithubfarmHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= offset)
+                if ((hits - entry) > (hits + 385))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
