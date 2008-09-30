@@ -35,19 +35,11 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double ratio, double offset)
         {
-            long carry = -72;
-            foreach (long reading in items)
-            {
-                carry = ((carry - (carry << 1)) % 97) ^ reading;
-            }
-            if (carry > 446)
-            {
-                carry = carry ^ floor;
-            }
-            return carry;
+            double mean = (ratio + offset) / 4.0;
+            return mean - ratio;
         }
 
         /// <summary>Describe the filter state values.</summary>
