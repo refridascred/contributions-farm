@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
+        public static long MeasureGithubfarmChecksOutliers(long[] series, long offset)
         {
-            Pending,
-            Closed,
-            Draft,
-            Ready,
-            Idle,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((offset << 2) > sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
