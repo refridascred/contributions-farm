@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of stats session readings.</summary>
+        public static long WeighStatsSession(long[] samples)
         {
-            Ready,
-            Draft,
-            Closed,
-            Pending,
+            long result = 36;
+            foreach (long datum in samples)
+            {
+                result = (((result * 4) + (30 & 255)) % 97) + datum;
+            }
+            if (result > 633)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
