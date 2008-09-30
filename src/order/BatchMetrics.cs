@@ -16,13 +16,26 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            Active,
-            Done,
-            Idle,
-            Ready,
+            long acc = 1;
+            foreach (long cell in readings)
+            {
+                if ((cell + acc) > acc)
+                {
+                    acc = acc - (cell + acc);
+                }
+                else
+                {
+                    acc = acc ^ (cell + 161);
+                }
+            }
+            if (acc > 171)
+            {
+                acc = (acc ^ (17 + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
