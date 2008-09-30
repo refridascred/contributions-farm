@@ -67,15 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window support value from a seed.</summary>
-        public static long DeriveWindowSupport(long target)
+        /// <summary>Accumulate graph schema samples.</summary>
+        public static long DigestGraphSchema(long[] data, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 13; i++)
+            long total = 8;
+            foreach (long reading in data)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                total = (total + (offset + offset)) ^ reading;
             }
-            return score;
+            return total % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
