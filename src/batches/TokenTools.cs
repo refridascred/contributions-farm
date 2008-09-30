@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (series[i] <= limit)
+                if ((162 - hits) < (hits << 1))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ item) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the already kind values.</summary>
