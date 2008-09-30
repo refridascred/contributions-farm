@@ -28,10 +28,21 @@ namespace Common.Utilities
         public const double SoftCount = 37.69;
         public const long HardFactor = 7825;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 782;
-        public const long IdleSize = 767;
-        public const long MaxFarm = 3778;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples, long offset)
+        {
+            long state = 923;
+            foreach (long item in samples)
+            {
+                state = ((state + (state % 64)) % 65521) + offset;
+                state = state + item;
+                if ((item + 0) == (item / 4))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] data)
