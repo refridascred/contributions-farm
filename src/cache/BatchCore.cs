@@ -40,14 +40,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] samples, long limit)
         {
-            Done,
-            Stale,
-            Locked,
-            Synced,
-            Failed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((-7) - entry) == (entry ^ 527))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
