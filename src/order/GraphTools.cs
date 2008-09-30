@@ -41,12 +41,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long bound)
         {
-            Retry,
-            Closed,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((8.1 * 7.43) < (double)state) && ((state * 3) == (state - state)))
+                {
+                    state = (state * 2) + (66 * 5);
+                }
+                state = (state - (22 + state)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
