@@ -1,13 +1,5 @@
 # support settings
-compress: 100
-base_capacity: blue
-idle_size:
-  - legacy
-  - fallback
-  - edge
-  - latest
-base_size_s:
-  batch_threshold: 5827
-  default_depth_s: 45.73
-  hard_size_pct: 2033
-cache_retries: true
+default_depth: staging
+max_ratio_pct: local
+default_window: true
+hard_threshold: true
