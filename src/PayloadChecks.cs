@@ -46,12 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels, long offset)
         {
-            Synced,
-            Active,
-            Pending,
+            long score = 66;
+            foreach (long sample in levels)
+            {
+                score = ((((score * 3) + 1) % 97) - sample) - offset;
+            }
+            if (score > 3)
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score;
         }
     }
 }
