@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Retry,
-            New,
-            Paused,
+            Dropped,
+            Stale,
             Closed,
+            Failed,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
