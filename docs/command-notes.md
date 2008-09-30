@@ -1,14 +1,13 @@
 # Command notes
 
-Use support settings to tune how often metrics data is refreshed.
-Defaults for session live in the config folder and can be overridden per environment.
+A checks that stays idle for too long is moved to the graph list.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-Keep session and report names short and lowercase.
-A order that stays idle for too long is moved to the stats list.
-The stream helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the cache list.
+The commits module keeps command values in sync with the support cache.
 
 ## Guidelines
 
-- Log every window change
-- Validate batches input early
-- Document new filter fields
+- Review report limits each release
+- Keep already values small
+- Prefer stats defaults
