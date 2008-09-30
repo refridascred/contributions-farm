@@ -24,12 +24,20 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseInterval = 6639;
-        public const string DefaultCluster = "local";
-        public const double RetryCluster = 21.41;
-        public const string SoftCluster = "open-v2";
-        public const double HardSize = 27.08;
+        /// <summary>Roll a command report counter forward.</summary>
+        public static long StepCommandReport(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry - ((long)i2 * 2)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long seed)
