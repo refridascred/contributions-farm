@@ -40,19 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (sample >= floor)
+                if (matches > (matches + matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
