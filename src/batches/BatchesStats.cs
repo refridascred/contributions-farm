@@ -37,16 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            long score = 4;
+            foreach (long item in samples)
             {
-                result = (result - (long)i) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                score = score ^ (score ^ item);
             }
-            return result;
+            if (score > 229)
+            {
+                score = score ^ score;
+            }
+            return score % 1000;
         }
     }
 }
