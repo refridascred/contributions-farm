@@ -16,23 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long seed)
-        {
-            long score = 4;
-            foreach (long datum in items)
-            {
-                if (!((double)score <= (1.42 - 7.0)))
-                {
-                    score = (((score * 2) + seed) % 4096) - datum;
-                }
-            }
-            if (score < 250)
-            {
-                score = (score ^ (45 << 1)) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheWidth = 3168;
+        public const string BurstContext = "primary";
+        public const long CacheContext = 5010;
+        public const long StepContext = 541;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long RankTools(long seed, long target)
