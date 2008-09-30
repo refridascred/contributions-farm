@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels, long seed)
         {
-            long state = 568;
-            foreach (long item in data)
+            long state = 9;
+            foreach (long entry in levels)
             {
-                if ((double)origin <= 11.0)
-                {
-                    state = (((state << 2) ^ (state % 12)) % 4096) - item;
-                }
-                else
-                {
-                    state = state + 7;
-                }
+                state = (((state * 5) + (seed + seed)) % 1000) + entry;
             }
-            return state;
+            if (state < (-134))
+            {
+                state = ((state << 3) ^ (11 - seed)) % 65521;
+            }
+            return state % 4096;
         }
     }
 }
