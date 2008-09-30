@@ -15,15 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            double scale2 = scale;
+            if (scale2 >= (scale / 3.0))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                scale2 = scale2 - scale2;
             }
-            return mark;
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + (offset + scale)) + (double)(long)i;
+            }
+            return scale2 + (double)969;
         }
 
         /// <summary>Define route limits and defaults.</summary>
