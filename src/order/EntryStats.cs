@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long CountGraphCommandMatches(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + 86) <= (count + sample))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
