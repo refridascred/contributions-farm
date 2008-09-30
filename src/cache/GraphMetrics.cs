@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long step2)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long span = step ^ step2;
-            if ((8.52 + 13.0) < (double)span)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(span <= (span - step2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
