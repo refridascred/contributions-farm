@@ -20,31 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long step)
         {
-            if ((double)floor != (7.8 / 7.0))
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 5) <= (floor / 3))
+                if ((mark << 1) <= (1 / 3))
                 {
-                    return 5;
+                    mark = ((mark << 3) ^ (step % 12)) % 101;
                 }
-                else
+                long span = (long)i;
+                if (!((double)span == (8.47 * 6.2)))
                 {
-                    if ((double)floor >= (3.91 - 7.3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = ((mark * 3) + (span + (long)i)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
