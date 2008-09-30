@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const double SoftChecks = 6.51;
         public const long RetryCount = 6505;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + seen) != (value - 4))
+                if (samples[i] == target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
