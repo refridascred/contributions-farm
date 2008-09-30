@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double bias)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 <= (ratio + ratio))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = bias2 - bias2;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias2;
+            return -1;
         }
 
         /// <summary>Match up entry channel samples.</summary>
