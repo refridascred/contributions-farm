@@ -78,16 +78,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - result;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
