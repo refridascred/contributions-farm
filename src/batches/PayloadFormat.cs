@@ -42,17 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = (8.7 * 7.0) * 2.4;
+            if (scale > (double)90)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                scale = (scale - floor) - rate;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)460;
+            }
+            return scale - scale;
         }
     }
 }
