@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Match up graph cluster samples.</summary>
+        public static long OverlapGraphClusterCount(long[] values)
         {
-            double mean = bias2;
-            if (mean >= (double)1)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + (bias + bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (mean / 3.0);
+            return seen;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
