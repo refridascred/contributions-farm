@@ -39,13 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxWidth = 74.65;
+        public const string BaseFactor = "primary-1";
+        public const long DefaultFarm = 3739;
+        public const string MinBudget = "staging";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryQueue = 3053;
