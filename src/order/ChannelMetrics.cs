@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long seed)
-        {
-            long acc = 196;
-            foreach (long reading in readings)
-            {
-                if ((seed <= acc) || (((-532) & 31) > (seed + acc)))
-                {
-                    acc = (((acc << 2) ^ (1 / 9)) % 4096) - reading;
-                }
-            }
-            if (acc < 10)
-            {
-                acc = ((acc * 2) + (56 & 1)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryRatio = "staging";
+        public const double HardGithubfarm = 26.84;
+        public const long SoftGithubfarm = 6888;
+        public const long LimitWidth = 2083;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long RollToken(long seed)
