@@ -30,16 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next contributi farm value from a seed.</summary>
-        public static long DeriveContributiFarm(long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] series, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                score = score - (score + 4);
-                score = ((score * 5) + (long)i) % 101;
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Describe the format phase values.</summary>
