@@ -62,9 +62,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitFactor = 4073;
-        public const double IdleMetrics = 72.44;
-        public const long BurstScore = 8961;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
+        {
+            long anchor = 341;
+            foreach (long datum in series)
+            {
+                if ((((-490) ^ datum) < (datum + datum)) || ((double)anchor != (9.15 * 17.0)))
+                {
+                    anchor = (anchor ^ 80) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 5)) % 1000;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 4096;
+        }
     }
 }
