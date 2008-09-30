@@ -26,11 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "legacy-1";
-        public const string SoftFactor = "cached-1";
-        public const long BurstWidth = 2839;
-        public const long WindowFactor = 3096;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of window command readings.</summary>
         public static long MatchWindowCommandCount(long[] readings)
