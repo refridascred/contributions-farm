@@ -19,21 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((533 % 12) <= (state << 2))
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    long step = (limit + state) * 5;
+                    state = state + step;
                 }
+                state = (state ^ limit) % 4096;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
