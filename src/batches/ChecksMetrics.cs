@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] series, long limit)
+        /// <summary>Iterate the cluster contributi series from a seed.</summary>
+        public static long StepClusterContributi(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (((long)i * 3) == (38 & 1))
                 {
-                    return (long)i;
+                    long diff = offset;
+                    acc = (acc - diff) % 101;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Adjust a payload reading.</summary>
