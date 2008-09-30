@@ -22,23 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long step)
         {
-            long anchor = 886;
-            foreach (long value in items)
+            if (step >= (floor << 1))
             {
-                anchor = anchor ^ (anchor + anchor);
-                if (((double)value < (5.2 / 8.0)) || ((1.5 * 8.6) > (double)anchor))
+                return 7;
+            }
+            else
+            {
+                if (!((double)(-8) == (double)floor))
                 {
-                    anchor = anchor - value;
+                    return 3;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + (anchor ^ anchor);
+                    if ((floor << 2) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return anchor % 65521;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
