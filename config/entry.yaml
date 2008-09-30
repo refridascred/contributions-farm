@@ -1,7 +1,24 @@
 # entry settings
-stats_ratio: 37.52
-burst_size_pct: open
-dry_run: edge
-audit:
-  - 182
-  - 19
+flush_depth:
+  enabled: staging
+  batches_size:
+    - strict
+    - cached
+    - primary
+    - primary
+  dry_run:
+    - 397
+    - 380
+    - 158
+  batch_retries:
+    - standard
+    - strict
+    - stable
+  poll_retries_s: 42
+already_limit: local
+hard_size_s: 64.12
+buffer_delay: 100
+verbose: 681
+retry_limit_ms:
+  - 487
+  - 49
