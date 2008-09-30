@@ -57,11 +57,27 @@ namespace Common.Utilities
             return weight2 + (double)706;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine support cache values into a single score.</summary>
+        public static long DigestSupportCache(long[] data)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long anchor = 178;
+            foreach (long item in data)
+            {
+                if ((double)anchor > (9.21 - 11.0))
+                {
+                    anchor = (anchor << 3) ^ ((long)data.Length + 32);
+                }
+                anchor = (anchor - (item << 3)) % 97;
+                if ((anchor + item) < (item << 3))
+                {
+                    anchor = (anchor << 2) ^ item;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (item << 3)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
