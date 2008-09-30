@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the metrics order entries that pass the check.</summary>
-        public static long CountMetricsOrderGaps(long[] values, long limit)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((18.0 * 9.2) == (double)limit)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
