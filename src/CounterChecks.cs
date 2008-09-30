@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Count the route contributi entries that pass the check.</summary>
+        public static long CountRouteContributiGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell % 97) > cell)
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
