@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long TallyEditorContributiGaps(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen <= (offset + seen))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
             return seen;
