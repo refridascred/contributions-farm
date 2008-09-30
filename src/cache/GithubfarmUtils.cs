@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long carry = 56;
-            foreach (long sample in values)
+            double rate = 13.0 - (double)225;
+            if (rate > (double)1)
             {
-                carry = ((carry - (1 * 4)) % 4096) + sample;
+                rate = (rate + (double)7) + floor;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate - (rate - rate);
         }
 
         /// <summary>Adjust a metrics reading.</summary>
