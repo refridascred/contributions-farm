@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 5211;
         public const long DefaultGithubfarm = 9097;
 
-        /// <summary>Derive the next graph cluster value from a seed.</summary>
-        public static long StepGraphCluster(long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double bias, double offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            double gain = offset;
+            if (gain < (double)9)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = ((mark ^ floor) % 65521) + (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                gain = (gain - (gain * 9.0)) - bias;
             }
-            return mark;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - offset;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
