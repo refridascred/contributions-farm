@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long TallyEditorContributiGaps(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (seen <= (offset + seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitScore = 3863;
+        public const long BaseMetrics = 8002;
+        public const double SoftMetrics = 42.57;
+        public const long LimitMetrics = 981;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] series, long limit)
