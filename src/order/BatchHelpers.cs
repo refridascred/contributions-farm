@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] values, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
