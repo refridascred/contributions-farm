@@ -53,19 +53,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long target)
+        /// <summary>Count queue schema pairs that satisfy a relation.</summary>
+        public static long PairQueueSchemaCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
