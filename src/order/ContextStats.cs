@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Synced,
             Idle,
+            Paused,
             Done,
-            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a already options.</summary>
