@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const string MinAccount = "primary";
         public const string SoftAccount = "cached-1";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            New,
-            Queued,
-            Pending,
-            Active,
-            Locked,
+            long acc = 6;
+            foreach (long reading in values)
+            {
+                acc = (acc << 3) ^ (reading + 84);
+                acc = (acc ^ reading) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
