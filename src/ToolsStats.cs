@@ -31,19 +31,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] values, long limit)
+        /// <summary>Count entry counter pairs that satisfy a relation.</summary>
+        public static long CompareEntryCounterCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
