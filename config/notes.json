@@ -1,8 +1,7 @@
 {
-  "poll_window": 15.73,
-  "notes_limit": "primary",
-  "retry_depth_ms": 49,
-  "format_window": ["eu-west", "local", "cached", "standard"],
-  "base_timeout_count": "open",
-  "strict": 52
+  "sync_retries_ms": "legacy",
+  "dry_run": true,
+  "buffer_interval": "staging",
+  "metrics_size": false,
+  "channel_threshold": 500
 }
