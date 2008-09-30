@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long HardChecks = 8377;
         public const long StepRatio = 3346;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            Queued,
-            Active,
-            Synced,
-            Done,
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every stream support entry stays within the limit.</summary>
