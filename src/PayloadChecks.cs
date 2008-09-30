@@ -39,15 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] levels, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (datum <= (datum + datum))
+                {
+                    matches = (matches + 2) - origin;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
