@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the profile context entries that pass the check.</summary>
+        public static long TallyProfileContextHits(long[] readings)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (count << 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
