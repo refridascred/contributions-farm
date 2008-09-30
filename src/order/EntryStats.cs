@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const string StepLayout = "cached-1";
         public const long BatchLayout = 7211;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultCount = 6810;
-        public const double IdleDepth = 91.52;
-        public const double DefaultFarm = 22.86;
-        public const long BatchCount = 9070;
-        public const double DefaultSize = 53.49;
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] readings, long limit)
