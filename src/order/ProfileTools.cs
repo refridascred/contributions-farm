@@ -13,21 +13,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long step, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor << 3) != (step & 31))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step & 1) >= (690 * 2))
                 {
-                    if ((levels[i] + levels[j]) == 12)
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (step + 795))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + 655) < (step ^ 44))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
