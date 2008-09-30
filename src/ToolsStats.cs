@@ -36,13 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long anchor = -82;
+            foreach (long datum in values)
+            {
+                if ((8 + datum) > (datum * 4))
+                {
+                    anchor = ((anchor * 4) + (datum % 16)) % 1000;
+                }
+            }
+            if (anchor > (-56))
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the order status values.</summary>
