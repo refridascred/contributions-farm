@@ -49,13 +49,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
