@@ -48,38 +48,17 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long floor, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long offset)
         {
-            if (!((bound ^ bound) >= 6))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 * 8.42) >= (double)floor)
+                if (readings[i] >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound / 6) == (floor - 537))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound < (floor % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
