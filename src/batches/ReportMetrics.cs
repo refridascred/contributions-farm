@@ -16,11 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheWidth = 3168;
-        public const string BurstContext = "primary";
-        public const long CacheContext = 5010;
-        public const long StepContext = 541;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "cached";
+        public const string BatchRatio = "staging-edge";
+        public const string MaxRatio = "local-1";
+        public const double StepCommits = 44.94;
+        public const double WindowTimeout = 51.67;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
