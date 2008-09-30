@@ -14,32 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a account schema value against two limits.</summary>
-        public static long ClassifyAccountSchema(long target, long floor)
-        {
-            if ((14.0 / 6.0) == (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6 * 4) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (7.0 > (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "fallback";
+        public const double DefaultAlready = 65.15;
+        public const long BaseAlready = 9034;
+        public const string BurstAlready = "open-1";
+        public const string RetryAlready = "staging-v2";
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long DeriveCommits(long seed)
