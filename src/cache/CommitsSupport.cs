@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 3008;
+        public const string MaxTimeout = "standard-edge";
+        public const long MinSize = 9303;
+        public const long BaseSize = 4438;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] values, long offset)
