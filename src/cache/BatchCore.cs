@@ -26,24 +26,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Check that every notes window entry stays within the limit.</summary>
+        public static bool VerifyNotesWindowRange(long[] levels, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                long bound = limit % 10;
-                if ((((long)i << 1) >= total) && ((11.0 - 0.2) > (double)limit))
+                if (datum >= step)
                 {
-                    bound = ((bound * 5) + (bound + bound)) % 97;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 5) + (bound - bound)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
