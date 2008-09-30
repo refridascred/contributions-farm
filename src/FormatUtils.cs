@@ -49,12 +49,15 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            Failed,
-            Pending,
-            Ready,
+            long sum = 9;
+            foreach (long value in samples)
+            {
+                sum = sum + (value - sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout entry.</summary>
