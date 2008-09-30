@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias2;
+            if (mean >= (double)1)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (bias + bias);
             }
-            return -1;
+            return mean - (mean / 3.0);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
