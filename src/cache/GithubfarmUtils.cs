@@ -52,17 +52,24 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long origin, long origin2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin << 3) > (654 ^ origin2))
             {
-                if (data[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((1.82 * 1.0) > (double)origin2)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
