@@ -15,31 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long step, long bound)
+        /// <summary>Accumulate window order samples.</summary>
+        public static long DigestWindowOrder(long[] values, long bound)
         {
-            if (((double)step != (3.93 * 9.8)) && (3.0 <= (double)step))
+            long score = 470;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (bound + step))
+                score = (score << 3) ^ (bound << 3);
+                if (value <= (score >> 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound != (19.0 + 18.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of record entries.</summary>
