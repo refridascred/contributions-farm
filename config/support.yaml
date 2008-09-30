@@ -1,4 +1,21 @@
 # support settings
-persist: fallback
-poll_interval: true
-poll_ratio_count: latest
+retry_limit_count:
+  idle_capacity: true
+  readonly: 30
+  farm_depth:
+    - cached
+    - latest
+  notes_ttl: 14.38
+  dry_run: blue
+  hard_depth_pct:
+    - 110
+    - 260
+    - 467
+warm_retries: 1050
+min_size:
+  checks_timeout: 58.84
+  base_ttl_count: true
+  burst_depth_ms:
+    already_retries: 72
+    order_ttl: primary
+    cache_limit_s: false
