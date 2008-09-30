@@ -19,23 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout filter samples.</summary>
-        public static long TallyLayoutFilter(long[] levels, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long anchor = 25;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor << 2) ^ anchor;
-                if (!((offset - reading) >= (anchor - anchor)))
-                {
-                    anchor = anchor ^ (anchor + 1);
-                }
-                else
-                {
-                    anchor = anchor ^ (reading << 3);
-                }
-            }
-            return anchor % 1000;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
