@@ -29,12 +29,12 @@ namespace Common.Utilities
             return bias + 7.3;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
