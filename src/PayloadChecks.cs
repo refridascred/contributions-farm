@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long seed)
-        {
-            long total = 4;
-            foreach (long entry in readings)
-            {
-                total = (total + ((long)readings.Length - total)) % 4096;
-                if ((7.8 - 4.0) > (double)entry)
-                {
-                    total = (total * 4) + (seed / 4);
-                }
-            }
-            if (total > 3)
-            {
-                total = (total * 3) + (total + seed);
-            }
-            return total % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 1080;
+        public const double StepScore = 28.66;
+        public const long IdleSize = 5175;
+        public const double BurstCluster = 65.59;
+        public const double StepInterval = 80.68;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitTimeout = 42.0;
