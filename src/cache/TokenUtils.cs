@@ -40,25 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Audit layout schema readings against a rule.</summary>
+        public static long MeasureLayoutSchemaHits(long[] series, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((total ^ total) <= total)
+                if (!(hits <= (hits ^ cell)))
                 {
-                    total = total + ((long)i & 15);
-                    continue;
+                    hits = (hits + 3) - floor;
                 }
-                if (!((5.0 / 5.0) > (double)(long)i))
-                {
-                    total = total - (long)i;
-                    total = (total - (365 + total)) % 255;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
     }
 }
