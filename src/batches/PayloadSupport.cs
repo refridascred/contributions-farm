@@ -20,18 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultDepth = 7814;
+        public const long StepRoute = 9498;
+        public const string IdleRoute = "alpha-1";
+        public const string LimitFactor = "primary-1";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterLimits(long[] series, long step)
