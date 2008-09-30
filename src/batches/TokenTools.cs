@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long MeasureBatchAccountGaps(long[] levels, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((seed <= entry) || ((seed << 1) == (6 >> 1)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
