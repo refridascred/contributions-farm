@@ -24,10 +24,14 @@ namespace Common.Utilities
             return rate + (ratio + floor);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3163;
-        public const long StepCounter = 106;
-        public const double MaxInterval = 22.71;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Pending,
+            Failed,
+            Done,
+            Idle,
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool VerifyBufferLimits(long[] levels, long seed)
