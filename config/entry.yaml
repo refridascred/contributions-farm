@@ -1,21 +1,7 @@
 # entry settings
-burst_ttl_pct: stable
-hard_delay_count: latest
-dry_run:
-  - 491
-  - 314
-max_window_count: strict
-command_retries: 43
-soft_ttl:
-  idle_ttl: 15
-  verbose: 52
-  warm_interval_s: blue
-  audit:
-    verbose: 6209
-    default_timeout: true
-    max_threshold_count:
-      - stable
-      - standard
-      - staging
-      - green
-  hard_ttl: 1024
+base_interval_pct: 250
+retry_limit:
+  - 23
+  - 253
+  - 248
+default_depth_ms: 35.05
