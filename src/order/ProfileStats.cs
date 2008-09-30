@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long carry = 565;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry * 5) + (entry & 63);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Roll a tools account counter forward.</summary>
