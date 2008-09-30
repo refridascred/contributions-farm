@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a editor buffer pair into a bucket.</summary>
-        public static long GradeEditorBuffer(long floor, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            if ((88 + 139) <= origin)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin > (double)floor) || ((origin << 1) < (origin + floor)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (floor << 2))
+                    if ((data[i] ^ data[j]) < 17)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - origin) < 6)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
