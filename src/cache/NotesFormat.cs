@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit ^ limit) <= limit)
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (limit >> 1)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Project the next queue value.</summary>
