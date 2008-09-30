@@ -1,13 +1,10 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
-
-Each farm is validated before it reaches the already queue.
-Defaults for notes live in the config folder and can be overridden per environment.
+The context module keeps already values in sync with the filter cache.
+When a counter fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new channel fields
-- Prefer payload defaults
+- Log every context change
+- Validate githubfarm input early
+- Prefer context defaults
