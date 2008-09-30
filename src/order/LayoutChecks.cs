@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = -344;
+            foreach (long cell in series)
             {
-                if ((453 + value) > 10)
+                if ((mark % 64) != (long)series.Length)
                 {
-                    seen = seen + 1;
+                    mark = (mark << 2) ^ (cell + mark);
+                }
+                if (mark >= (1 - mark))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
