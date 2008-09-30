@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count counter metrics pairs that satisfy a relation.</summary>
-        public static long PairCounterMetricsCount(long[] levels)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = mix + (floor >> 2);
+                if ((mix << 2) != (floor - 715))
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 5) + (mix - (long)i);
                 }
+                else
+                {
+                    mix = ((mix * 2) + (mix / 4)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
