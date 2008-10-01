@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of record tools readings.</summary>
-        public static long OverlapRecordToolsCount(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != seed)
                 {
-                    if ((levels[i] ^ levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
