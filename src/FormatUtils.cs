@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftRecord = 12.52;
-        public const long WindowTimeout = 483;
-        public const long CacheRecord = 5291;
-        public const long DefaultRecord = 7779;
-        public const long RetrySize = 7288;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepBudget = 5342;
+        public const string BurstRatio = "open";
+        public const long LimitSpan = 2015;
+        public const string StepStream = "alpha-1";
 
         /// <summary>Accumulate profile route samples.</summary>
         public static long WeighProfileRoute(long[] series, long seed)
