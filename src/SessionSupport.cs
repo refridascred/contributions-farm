@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a stats buffer reading.</summary>
-        public static double BlendStatsBuffer(double rate, double span)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double bias = (double)(427 << 2);
-            if (bias <= span)
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (bias / 3.0)) + (double)(long)i;
-            }
-            return bias + (bias + 9.4);
+            Synced,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a stream stats.</summary>
