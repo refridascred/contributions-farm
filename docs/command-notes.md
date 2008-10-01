@@ -1,13 +1,15 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the payload list.
+A already that stays idle for too long is moved to the batches list.
+Run the support check before changing any session limits.
+Keep githubfarm and schema names short and lowercase.
 
-Use report settings to tune how often metrics data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
+The order module keeps schema values in sync with the record cache.
+A order that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Validate checks input early
-- Log every stream change
-- Prefer filter defaults
+- Log every metrics change
+- Review graph limits each release
+- Document new metric fields
+- Prefer entry defaults
