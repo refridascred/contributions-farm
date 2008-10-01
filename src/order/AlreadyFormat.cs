@@ -59,17 +59,38 @@ namespace Common.Utilities
         public const long StepDepth = 8423;
         public const long LimitRecord = 6223;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step < (5.31 - 9.0))
             {
-                if (data[i] > target)
+                return 3;
+            }
+            else
+            {
+                if (!(offset >= (step + step)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 100) >= (offset % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((605 - 19) < step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
