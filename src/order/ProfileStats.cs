@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate command profile readings against a bound.</summary>
-        public static bool ValidateCommandProfileRange(long[] items, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
