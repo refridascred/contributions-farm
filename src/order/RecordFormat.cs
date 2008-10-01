@@ -83,19 +83,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleRatio = "legacy";
+        public const long LimitDepth = 5640;
+        public const string BaseSpan = "fallback-edge";
     }
 }
