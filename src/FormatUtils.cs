@@ -92,22 +92,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Match up support order samples.</summary>
+        public static long PairSupportOrderCount(long[] levels)
         {
-            long mark = -904;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.7 / 6.0) > (double)mark)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + (sample - sample);
-                }
-                if ((mark + mark) >= mark)
-                {
-                    mark = ((mark * 3) + sample) % 4096;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
