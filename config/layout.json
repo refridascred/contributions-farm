@@ -1,17 +1,8 @@
 {
-  "flush_depth_ms": "cached",
-  "audit": "fallback",
-  "hard_timeout_count": true,
-  "soft_ttl_pct": {
-    "warm_ratio_count": [482, 217, 37],
-    "idle_retries": {
-      "dry_run": false,
-      "batch_retries_count": true,
-      "soft_interval_count": "latest",
-      "readonly": 48.0
-    },
-    "audit": "local",
-    "hard_delay_count": 60.99,
-    "batch_window": 60
-  }
+  "payload_timeout": "primary",
+  "default_size": 32.17,
+  "readonly": 92,
+  "warm_ttl_count": false,
+  "verbose": [429, 198, 3],
+  "poll_interval_count": 36
 }
