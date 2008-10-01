@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long bound)
+        /// <summary>Audit route stats readings against a rule.</summary>
+        public static long AuditRouteStatsOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
+                if (value <= (0 + value))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
