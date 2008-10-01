@@ -60,15 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double span)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double gain = 5.0;
-            if (gain < (bias * 7.0))
-            {
-                gain = gain + (span + gain);
-            }
-            return gain - gain;
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metric record.</summary>
