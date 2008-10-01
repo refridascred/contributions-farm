@@ -30,22 +30,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine filter githubfarm values into a single score.</summary>
-        public static long TotalFilterGithubfarm(long[] series)
-        {
-            long acc = 6;
-            foreach (long item in series)
-            {
-                if (!((acc - (-26)) >= (item * 3)))
-                {
-                    acc = (acc ^ (acc - acc)) % 4096;
-                }
-            }
-            if (acc < 780)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftBudget = 6577;
+        public const long LimitStream = 5559;
+        public const string MaxWidth = "stable-edge";
+        public const long WindowRatio = 5141;
+        public const long IdleLevel = 3894;
     }
 }
