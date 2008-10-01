@@ -1,21 +1,7 @@
 # support settings
-cache_capacity_ms: staging
-poll_capacity:
-  - cached
-  - legacy
-idle_interval_count: false
-audit:
-  persist: false
-  readonly: false
-  hard_limit_ms:
-    metrics_timeout:
-      - 135
-      - 374
-    default_depth_ms: false
-    idle_depth_s: green
-  filter_window: staging
-  idle_threshold:
-    - open
-    - legacy
-    - primary
-default_delay: staging
+poll_window_s: local
+dry_run: false
+min_limit_count: cached
+strict: 1.32
+editor_interval: false
+soft_timeout_ms: blue
