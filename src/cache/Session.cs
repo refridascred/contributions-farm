@@ -31,17 +31,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a cluster notes sample.</summary>
-        public static long SeekClusterNotesIndex(long[] items, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
