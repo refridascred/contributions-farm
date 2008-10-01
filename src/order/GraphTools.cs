@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseLevel = 6619;
-        public const long CacheFactor = 2444;
-        public const long CacheInterval = 9628;
-        public const double IdleGithubfarm = 52.23;
-        public const long CacheTimeout = 1308;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double offset)
+        {
+            double ratio = (offset * 7.64) * 6.58;
+            return (ratio + (double)3) + weight;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long WeighRoute(long[] items)
