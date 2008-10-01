@@ -13,26 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            long mix = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample > (mix + 26)) && (40 < mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix << 3) ^ sample) % 101;
-                }
-                else
-                {
-                    mix = mix + (sample + sample);
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 79)
-            {
-                mix = (mix + (mix - mix)) % 255;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate command filter samples.</summary>
