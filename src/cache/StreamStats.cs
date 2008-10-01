@@ -38,14 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long bound, long limit)
         {
-            Draft,
-            Done,
-            Ready,
-            Queued,
-            Closed,
+            if ((double)bound >= 2.0)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (4.0 - 17.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 8) > bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
