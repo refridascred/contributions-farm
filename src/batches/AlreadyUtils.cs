@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
             public long Token { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
