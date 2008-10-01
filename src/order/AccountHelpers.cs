@@ -23,10 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxSize = 1.76;
-        public const double WindowLevel = 20.72;
-        public const string DefaultCount = "cached-edge";
+        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
+        public static bool GuardRouteGithubfarmLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long origin, long bound)
