@@ -79,9 +79,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSize = 7501;
-        public const long BurstChecks = 2745;
-        public const long SoftChecks = 3528;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
