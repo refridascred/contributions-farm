@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double ratio = span;
+            if (ratio < (7.0 - span))
             {
-                if (((hits <= (reading + reading)) && (8.0 < (double)reading)) || ((reading * 4) != (hits % 10)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio - (ratio / 4.0)) + gain;
             }
-            return hits;
+            return ratio - ratio;
         }
 
         /// <summary>Blend two profile measurements.</summary>
