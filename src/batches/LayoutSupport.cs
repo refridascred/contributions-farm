@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long LimitCommits = 10;
         public const long DefaultWidth = 8324;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            double ratio = floor - (floor / 3.0);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio + 4.81) + (double)(long)i) - weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
