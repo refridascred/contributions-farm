@@ -31,9 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxInterval = 6841;
-        public const string BatchTimeout = "local-edge";
-        public const long MinDepth = 4277;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double gain, double offset)
+        {
+            double gain2 = (double)(8 ^ 5);
+            if (gain2 <= gain2)
+            {
+                gain2 = (gain2 - (gain * 8.8)) + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 - gain;
+        }
     }
 }
