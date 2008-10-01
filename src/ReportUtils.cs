@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftRatio = "standard-v2";
+        public const long BaseLevel = 7889;
+        public const long WindowProfile = 1519;
+        public const long BaseProfile = 8729;
+        public const long BurstProfile = 9883;
 
         /// <summary>Project the next channel cluster value.</summary>
         public static double BlendChannelCluster(double rate, double span)
