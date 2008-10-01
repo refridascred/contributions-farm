@@ -60,21 +60,19 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Accumulate notes farm samples.</summary>
+        public static long FoldNotesFarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 57;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = ((score << 3) ^ (entry * 3)) % 1000;
+                if ((entry + entry) != (entry + score))
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 5) + score) % 255;
                 }
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
