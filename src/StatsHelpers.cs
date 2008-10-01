@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of schema metric readings.</summary>
-        public static long TotalSchemaMetric(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items, long origin)
         {
-            long result = 3;
-            foreach (long entry in readings)
+            long mark = 3;
+            foreach (long reading in items)
             {
-                if (!((entry + entry) >= (-8)))
+                mark = (mark ^ mark) % 1000;
+                if ((reading << 2) < origin)
                 {
-                    result = result + 714;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result << 2)) % 65521;
+                    mark = (mark << 3) ^ (mark & 1);
                 }
             }
-            return result % 1000;
+            return mark % 97;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
