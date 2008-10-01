@@ -1,11 +1,15 @@
 # support settings
-burst_threshold:
-  - 242
-  - 244
-  - 426
-stats_capacity: false
-hard_delay:
-  - 421
-  - 500
-  - 122
-counter_timeout: true
+compress: 30
+soft_ratio_pct: 30
+burst_ttl_pct:
+  max_size_pct: true
+  min_window_ms:
+    context_window: cached
+    stream_limit:
+      - edge
+      - stable
+    enabled: true
+    compress: 39
+  soft_interval_count: 46
+retry_retries_pct: 30.29
+max_depth: eu-west
