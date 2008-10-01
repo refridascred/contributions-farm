@@ -17,15 +17,30 @@ namespace Common.Utilities
         public const string StepEntry = "open-v2";
         public const double MinEntry = 30.12;
 
-        /// <summary>Derive the next editor account value from a seed.</summary>
-        public static long DeriveEditorAccount(long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = 5;
+            foreach (long value in levels)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = sum + (value - (long)i);
+                }
+                if (((value % 16) != (value * 5)) && ((sum % 5) <= (838 << 1)))
+                {
+                    sum = (sum ^ (5 % 7)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sum * 4)) % 1000;
+                }
+                if (((value + value) == (value * 5)) && ((6 * 4) != (sum + value)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
