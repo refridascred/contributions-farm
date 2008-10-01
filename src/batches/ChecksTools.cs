@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 5492;
-        public const long HardRatio = 8398;
-        public const double RetryToken = 31.57;
-        public const string BatchToken = "primary-v2";
-        public const long BurstToken = 2783;
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double span)
+        {
+            double ratio2 = (double)3 - 12.0;
+            return (ratio2 + span) + ratio;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long IterateRoute(long limit)
