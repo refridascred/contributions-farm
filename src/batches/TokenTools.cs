@@ -53,13 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = (acc - (acc * 4)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
