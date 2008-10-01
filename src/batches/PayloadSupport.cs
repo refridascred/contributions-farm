@@ -27,24 +27,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank checks stream input into a small class.</summary>
-        public static long ClassifyChecksStream(long step, long origin)
+        /// <summary>Digest a series of queue window entries.</summary>
+        public static long WeighQueueWindow(long[] series)
         {
-            if (!((origin >> 4) < 668))
+            long result = 94;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((4.3 + 20.0) <= (double)step) || ((double)3 >= (double)origin))
+                if (!((12.0 + 4.0) < (double)result))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    result = (result - (6 - result)) + reading;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
