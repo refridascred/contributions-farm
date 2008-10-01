@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Pending,
-            Idle,
-            Locked,
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
