@@ -57,26 +57,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = 243;
-            foreach (long reading in levels)
-            {
-                if (reading < (carry * 5))
-                {
-                    carry = (carry * 4) + (carry - reading);
-                }
-                if (reading > (reading + origin))
-                {
-                    break;
-                }
-            }
-            if (carry > 480)
-            {
-                carry = (carry ^ (16 / 4)) % 4096;
-            }
-            return carry;
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
