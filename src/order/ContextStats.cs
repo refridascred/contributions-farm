@@ -19,14 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] samples, long floor)
         {
-            Done,
-            Dropped,
-            Idle,
-            Closed,
-            Draft,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine token values into a single score.</summary>
