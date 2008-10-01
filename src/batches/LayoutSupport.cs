@@ -23,12 +23,20 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 6529;
-        public const long HardStats = 2288;
-        public const string SoftSize = "open-1";
-        public const double BatchWidth = 35.83;
-        public const long CacheStats = 9721;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] readings, long bound)
