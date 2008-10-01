@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine tools payload values into a single score.</summary>
-        public static long ScoreToolsPayload(long[] samples, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = -151;
-            foreach (long cell in samples)
-            {
-                anchor = anchor + (limit / 6);
-                if ((cell % 97) <= (540 - 69))
-                {
-                    anchor = anchor - (anchor / 4);
-                }
-            }
-            return anchor % 1000;
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
