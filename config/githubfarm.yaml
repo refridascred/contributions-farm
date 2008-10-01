@@ -1,4 +1,4 @@
 # githubfarm settings
-default_window_ms: true
-audit: 95.75
-tools_size: 90.9
+readonly: 60
+max_limit: 59.73
+burst_depth: 94
