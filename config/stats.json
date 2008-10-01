@@ -1,9 +1,5 @@
 {
-  "max_threshold": 60,
-  "hard_capacity_s": {
-    "dry_run": true,
-    "min_size_s": 5.24,
-    "soft_limit_count": "cached"
-  },
-  "readonly": 3
+  "cache_window": false,
+  "poll_size_count": 1024,
+  "dry_run": 60
 }
