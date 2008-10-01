@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Retry,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit queue session readings against a rule.</summary>
