@@ -1,7 +1,6 @@
 {
-  "warm_limit": 30,
-  "batch_ratio": "standard",
-  "max_retries_count": "standard",
-  "batch_retries": 250,
-  "audit": ["legacy", "eu-west", "open", "green"]
+  "entry_capacity": 1285,
+  "flush_window_s": [47, 161],
+  "session_size": ["green", "edge", "primary", "local"],
+  "payload_threshold": false
 }
