@@ -1,7 +1,5 @@
 # support settings
-cache_capacity: 77.87
-persist: latest
-sync_delay_ms: standard
-batch_size_ms: true
-max_delay_s: true
-batch_depth: 27
+persist: local
+warm_ttl_ms: standard
+min_size_ms: fallback
+default_delay: true
