@@ -28,32 +28,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long origin, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long offset)
         {
-            long delta = origin - bound;
-            if ((origin + delta) <= (delta / 6))
+            long score = 21;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(((-1) ^ origin) <= (bound & 15)))
+                if (7 >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((15.0 * 6.24) < (double)delta) || ((bound << 2) < (origin % 60)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (((score << 2) ^ 744) % 255) + cell;
                 }
             }
+            if (score > 2)
+            {
+                score = ((score * 2) + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
