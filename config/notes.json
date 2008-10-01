@@ -1,13 +1,7 @@
 {
-  "githubfarm_depth": ["legacy", "edge", "eu-west"],
-  "graph_interval": ["strict", "latest"],
-  "buffer_retries": {
-    "strict": "strict",
-    "farm_interval": 7331,
-    "contributi_ratio": 30,
-    "idle_retries_s": ["local", "blue"],
-    "default_threshold_pct": 11.8
-  },
-  "window_size": "standard",
-  "retry_capacity": "open"
+  "soft_delay_pct": 3198,
+  "warm_threshold_s": "primary",
+  "compress": 250,
+  "already_window": "stable",
+  "soft_threshold_pct": "green"
 }
