@@ -10,23 +10,32 @@ namespace Common.Utilities
         public const string BurstChecks = "staging-edge";
         public const long DefaultChecks = 4130;
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double rate, double offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long origin, long origin2)
         {
-            double scale = (offset * 3.1) / 9.0;
-            if (scale > rate)
+            long slot = origin ^ origin2;
+            if (!((double)origin == (double)16))
             {
-                scale = scale - (rate + scale);
+                return 0;
             }
             else
             {
-                scale = scale - offset;
+                if ((8.9 - 11.0) >= (double)origin2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.3 >= (double)origin) && ((double)origin2 < (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (offset / 2.0)) - (double)(long)i;
-            }
-            return scale + (double)564;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
