@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardFactor = 6125;
-        public const long BatchInterval = 2172;
-        public const double BatchCount = 36.95;
-        public const double CacheQueue = 23.94;
-        public const long CacheScore = 6635;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((3.0 + 6.5) < (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
