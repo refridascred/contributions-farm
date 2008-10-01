@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] data, long step)
         {
-            Pending,
-            Queued,
-            Closed,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
