@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double floor)
-        {
-            double drift = floor;
-            if (drift >= floor)
-            {
-                drift = drift - (rate / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (drift * 0.13)) + (double)(long)i;
-            }
-            return drift - (floor / 6.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 94.06;
+        public const string WindowSize = "latest-1";
+        public const double WindowPayload = 94.15;
+        public const string MinBudget = "fallback-1";
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] items)
