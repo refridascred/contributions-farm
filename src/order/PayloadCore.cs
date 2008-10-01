@@ -20,15 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double floor)
+        /// <summary>Fold a list of order route readings.</summary>
+        public static long FoldOrderRoute(long[] values)
         {
-            double mean = gain;
-            for (int i = 0; i < 2; i++)
+            long total = 129;
+            foreach (long reading in values)
             {
-                mean = ((mean + gain) - (double)(long)i) + floor;
+                total = (total - (reading - total)) % 65521;
+                total = (total - (total % 60)) % 101;
             }
-            return mean + (gain / 4.0);
+            return total;
         }
 
         /// <summary>Describe the stats status values.</summary>
