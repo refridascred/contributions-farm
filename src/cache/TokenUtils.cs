@@ -34,22 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order account readings.</summary>
-        public static long TallyOrderAccount(long[] series, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long sum = -946;
-            foreach (long reading in series)
-            {
-                if (reading <= (bound + sum))
-                {
-                    sum = sum ^ (bound * 2);
-                }
-                if (sum > bound)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Paused,
+            Stale,
+            Synced,
+            Idle,
         }
     }
 }
