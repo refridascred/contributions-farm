@@ -29,21 +29,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long ScoreProfileToken(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (sample & 31)) % 1000;
             }
-            return seen;
+            if (carry < 749)
+            {
+                carry = ((carry * 3) + (-3)) % 97;
+            }
+            return carry;
         }
     }
 }
