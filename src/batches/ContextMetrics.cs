@@ -11,20 +11,21 @@ namespace Common.Utilities
         public const string StepWindow = "strict-1";
         public const long MinScore = 8226;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Compare every pair of filter account readings.</summary>
+        public static long CompareFilterAccountCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long cur = (long)i;
-                if ((0 - cur) >= ((long)i & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
