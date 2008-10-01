@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((offset + seed) != (offset + offset))
             {
-                if ((matches + matches) > (421 - datum))
+                return 1;
+            }
+            else
+            {
+                if ((5.01 - 16.0) >= (double)offset)
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed & 255) > (seed + seed)) && ((21 + offset) <= (offset + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset < (offset / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
