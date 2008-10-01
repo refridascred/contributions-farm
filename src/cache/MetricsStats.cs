@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long offset, long offset2)
-        {
-            if (!((offset + offset) >= (offset % 10)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset2 == (20.0 / 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset2 - offset2) == (offset2 + 53)) && ((offset << 1) <= (offset - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheInterval = "cached-1";
+        public const double RetryFilter = 45.44;
+        public const long StepBudget = 8267;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] series, long target)
