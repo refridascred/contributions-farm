@@ -1,12 +1,6 @@
 {
-  "strict": "staging",
-  "flush_capacity_s": 69.77,
-  "compress": [111, 192],
-  "retry_ratio_pct": {
-    "notes_ratio": ["blue", "standard", "blue", "primary"],
-    "audit": "blue",
-    "soft_ttl": "primary"
-  },
-  "counter_delay": [392, 355, 208, 476],
-  "retry_ttl": ["primary", "local", "stable"]
+  "persist": 2542,
+  "idle_window_ms": false,
+  "queue_retries": 42,
+  "base_threshold_count": false
 }
