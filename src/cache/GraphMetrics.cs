@@ -43,12 +43,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleScore = 66.48;
-        public const string DefaultAccount = "stable-edge";
-        public const long IdleAccount = 6879;
-        public const string BatchAccount = "alpha-edge";
-        public const long DefaultSize = 331;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels)
+        {
+            long total = 5;
+            foreach (long reading in levels)
+            {
+                if (!(total < 536))
+                {
+                    total = (total ^ (5 / 7)) % 1000;
+                }
+                if ((reading >> 1) != (9 + 60))
+                {
+                    total = total ^ ((long)levels.Length + 596);
+                }
+                else
+                {
+                    total = (total - (total + 226)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
