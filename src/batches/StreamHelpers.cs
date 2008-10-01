@@ -57,27 +57,15 @@ namespace Common.Utilities
             return weight2 + (double)706;
         }
 
-        /// <summary>Combine support cache values into a single score.</summary>
-        public static long DigestSupportCache(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data, long step)
         {
-            long anchor = 178;
-            foreach (long item in data)
+            long score = 449;
+            foreach (long datum in data)
             {
-                if ((double)anchor > (9.21 - 11.0))
-                {
-                    anchor = (anchor << 3) ^ ((long)data.Length + 32);
-                }
-                anchor = (anchor - (item << 3)) % 97;
-                if ((anchor + item) < (item << 3))
-                {
-                    anchor = (anchor << 2) ^ item;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (item << 3)) % 101;
-                }
+                score = ((score - (datum / 9)) % 65521) - step;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
