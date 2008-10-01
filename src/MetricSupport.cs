@@ -35,13 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Failed,
-            Pending,
-            Draft,
-            Done,
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
