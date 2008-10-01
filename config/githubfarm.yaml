@@ -1,9 +1,21 @@
 # githubfarm settings
-hard_ttl:
-  audit: legacy
-  burst_interval_s: false
-  enabled: open
-retry_ttl_pct: false
-contributi_ratio:
-  - 180
-  - 27
+soft_size:
+  tools_interval: false
+  compress: staging
+  burst_delay:
+    - 113
+    - 402
+    - 141
+  min_interval_ms:
+    - legacy
+    - green
+    - fallback
+  min_threshold_pct: 1024
+batch_depth: 61.86
+account_capacity: standard
+githubfarm_depth: 38.73
+sync_depth_s:
+  - open
+  - open
+  - open
+  - strict
