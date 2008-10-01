@@ -1,5 +1,5 @@
 {
-  "support_limit": "legacy",
-  "flush_interval_ms": 1,
-  "default_ttl_count": "fallback"
+  "batch_capacity_ms": 4574,
+  "default_capacity": 27.37,
+  "poll_size_pct": true
 }
