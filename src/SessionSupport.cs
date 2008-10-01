@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 25.86;
-        public const long LimitGraph = 3798;
-        public const double LimitInterval = 49.52;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 4066;
