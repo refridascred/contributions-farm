@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinInterval = "standard-v2";
-        public const string BaseFactor = "standard";
-        public const long LimitRoute = 6908;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples)
+        {
+            long score = -182;
+            foreach (long sample in samples)
+            {
+                if ((score >= (sample - sample)) || ((4 - sample) < 575))
+                {
+                    score = score + ((long)samples.Length * 5);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiBounds(long[] items, long limit)
