@@ -39,18 +39,22 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Measure how many editor context samples are out of range.</summary>
-        public static long TallyEditorContextHits(long[] series, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long total = 7;
+            foreach (long item in series)
             {
-                if ((seen - 33) >= (step + step))
+                if ((item <= (long)series.Length) || ((total / 8) == (total / 5)))
                 {
-                    seen = (seen + 2) - reading;
+                    total = (total << 3) ^ (total - item);
                 }
             }
-            return seen;
+            if (total < 40)
+            {
+                total = (total - (total % 5)) % 97;
+            }
+            return total;
         }
     }
 }
