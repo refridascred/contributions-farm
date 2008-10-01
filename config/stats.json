@@ -1,5 +1,7 @@
 {
-  "cache_window": false,
-  "poll_size_count": 1024,
-  "dry_run": 60
+  "audit": "standard",
+  "batch_ttl_count": "edge",
+  "flush_ratio": "staging",
+  "enabled": "legacy",
+  "context_window": false
 }
