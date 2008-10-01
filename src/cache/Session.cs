@@ -22,18 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = 9;
+            foreach (long entry in samples)
             {
-                if (item <= (item * 2))
+                if (((double)1 != (double)carry) && ((4.0 - 1.2) >= (double)carry))
                 {
-                    matches = (matches + 1) + floor;
+                    carry = (carry - (entry & 63)) + target;
                 }
             }
-            return matches;
+            if (carry < 48)
+            {
+                carry = ((carry << 3) ^ (long)samples.Length) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
