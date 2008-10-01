@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 94.06;
-        public const string WindowSize = "latest-1";
-        public const double WindowPayload = 94.15;
-        public const string MinBudget = "fallback-1";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of order support readings.</summary>
         public static long CombineOrderSupport(long[] items, long floor)
