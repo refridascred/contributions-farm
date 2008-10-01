@@ -37,19 +37,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((floor % 12) > (mix & 7)) && ((8.01 / 3.0) > (double)(long)i)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix / 3)) % 65521;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
