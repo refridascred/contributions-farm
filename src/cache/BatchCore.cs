@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double rate = floor + gain;
-            return rate - 2.0;
+            Locked,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the tools level values.</summary>
