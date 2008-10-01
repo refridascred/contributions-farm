@@ -1,5 +1,8 @@
 # githubfarm settings
-hard_window_pct: true
-burst_ttl_count: 45.69
-persist: legacy
-session_ratio: false
+base_ttl_ms: false
+compress: staging
+base_delay:
+  profile_timeout: false
+  soft_threshold_ms: 1024
+  max_ttl: 1024
+  flush_interval: legacy
