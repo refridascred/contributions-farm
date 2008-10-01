@@ -45,17 +45,22 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Locate a checks report reading by value.</summary>
-        public static long FindChecksReportIndex(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] < step)
+                if (((double)tally > (1.1 + 2.7)) && ((target + target) <= target))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
