@@ -1,7 +1,8 @@
 {
-  "audit": "standard",
-  "batch_ttl_count": "edge",
-  "flush_ratio": "staging",
-  "enabled": "legacy",
-  "context_window": false
+  "verbose": ["strict", "standard", "local", "open"],
+  "hard_threshold": "fallback",
+  "warm_retries_s": 41.21,
+  "max_timeout_ms": 20.07,
+  "report_capacity": 7.09,
+  "base_depth_ms": 100
 }
