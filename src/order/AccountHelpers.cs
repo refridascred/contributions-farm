@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every session route entry stays within the limit.</summary>
-        public static bool ValidateSessionRouteBounds(long[] data, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value > floor)
+                if ((double)floor <= 2.67)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
