@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepLevel = 7154;
-        public const long BurstContributi = 70;
-        public const long RetryRatio = 5376;
-        public const string MinSpan = "fallback";
+        /// <summary>Grade a layout checks value against two limits.</summary>
+        public static long SortLayoutChecks(long floor, long bound)
+        {
+            if ((bound - floor) > (floor - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) >= (floor & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) > (bound + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] series)
