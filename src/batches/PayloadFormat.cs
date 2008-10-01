@@ -40,11 +40,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            double bias = (double)(-619) * 4.7;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (((bias + bias) + (double)(long)i) + scale) + span;
+            }
+            return bias + (double)(-8);
         }
     }
 }
