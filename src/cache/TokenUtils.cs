@@ -41,18 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the format schema entries that pass the check.</summary>
-        public static long TallyFormatSchemaHits(long[] levels)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally - entry) <= (entry + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Queued,
         }
     }
 }
