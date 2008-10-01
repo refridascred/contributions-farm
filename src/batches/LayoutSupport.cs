@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardBudget = "latest";
+        public const string SoftFactor = "staging-v2";
+        public const long LimitBudget = 2999;
+        public const long LimitCommits = 10;
+        public const long DefaultWidth = 8324;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double BlendStream(double weight, double floor)
