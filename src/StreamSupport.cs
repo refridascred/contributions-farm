@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] items, long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((9.91 * 8.62) <= (double)limit)
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Locate a format reading by value.</summary>
