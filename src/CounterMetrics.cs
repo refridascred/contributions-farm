@@ -36,22 +36,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels)
+        /// <summary>Roll a already entry counter forward.</summary>
+        public static long IterateAlreadyEntry(long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((19.0 - 2.3) <= (double)matches)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    sum = ((sum + (sum >> 1)) % 4096) - (long)i2;
+                    sum = ((sum << 3) ^ (origin & 127)) % 4096;
+                }
+                if (!((sum + origin) != ((long)i << 3)))
+                {
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = ((sum << 2) ^ (6 / 7)) % 65521;
                 }
+                if ((7.91 - 11.0) <= (4.9 * 10.0))
+                {
+                    sum = (sum + origin) % 97;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
