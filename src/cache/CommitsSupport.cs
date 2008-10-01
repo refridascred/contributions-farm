@@ -30,15 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count stats batch pairs that satisfy a relation.</summary>
-        public static long MatchStatsBatchCount(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) == 14)
+                    if ((series[i] - series[j]) == 12)
                     {
                         seen = seen + 1;
                     }
