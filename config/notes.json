@@ -1,6 +1,10 @@
 {
-  "commits_timeout": "latest",
-  "hard_limit": 4018,
-  "hard_capacity_pct": 64.83,
-  "filter_ttl": 30
+  "support_ratio": "staging",
+  "persist": [218, 101],
+  "burst_size": {
+    "flush_threshold_count": 9382,
+    "audit": [457, 276],
+    "context_timeout": 7625,
+    "counter_timeout": 30
+  }
 }
