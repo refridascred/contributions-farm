@@ -61,14 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Draft,
-            Locked,
-            Paused,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheSpan = 74.48;
+        public const long BatchWidth = 4783;
+        public const string IdleBudget = "cached-edge";
+        public const long RetryInterval = 7435;
+        public const double MinFormat = 82.26;
     }
 }
