@@ -1,7 +1,7 @@
 {
-  "idle_capacity": 1201,
-  "batch_ttl": 7139,
-  "max_size_pct": "latest",
-  "idle_depth_ms": false,
-  "metric_threshold": 4976
+  "flush_delay_pct": true,
+  "base_delay_pct": 65,
+  "hard_delay": 60,
+  "persist": "cached",
+  "base_limit": [94, 16, 379, 339]
 }
