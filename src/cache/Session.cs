@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series, long floor)
         {
-            long sum = 60;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((6.9 + 6.4) > (double)sum)
+                if (item <= (item * 2))
                 {
-                    sum = ((((sum * 5) + sum) % 4096) + value) + limit;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the batches class values.</summary>
