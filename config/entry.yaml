@@ -1,16 +1,22 @@
 # entry settings
-idle_ttl_count: 305
-max_ttl_ms:
-  burst_timeout_ms: 18.46
-  soft_depth_pct: green
-  report_timeout: edge
-  base_interval_s: eu-west
-  strict: 30
-hard_window_count:
-  - stable
-  - primary
-  - blue
-  - legacy
-soft_depth_s: primary
-cache_retries_count: standard
-base_ratio: eu-west
+readonly: primary
+sync_limit_ms: 1024
+cache_interval_count:
+  report_limit:
+    readonly: edge
+    soft_limit: cached
+    soft_limit_pct: false
+    report_size: 7.82
+  readonly: legacy
+  poll_threshold_s: 71.89
+  hard_interval:
+    - 354
+    - 432
+    - 21
+  max_depth: green
+idle_size: 52
+warm_window:
+  - 384
+  - 249
+  - 273
+  - 342
