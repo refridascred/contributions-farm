@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] data)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long item in data)
             {
-                if ((tally ^ 82) >= (entry ^ tally))
+                if (((item + tally) >= tally) && ((4 - tally) == (tally ^ tally)))
                 {
                     tally = tally + 3;
                 }
