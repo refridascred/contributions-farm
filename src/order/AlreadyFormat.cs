@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = ((carry - item) % 4096) - floor;
+                if ((4 / 6) == (item ^ 62))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (carry - item);
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
