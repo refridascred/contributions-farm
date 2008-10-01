@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
+            long sum = 94;
+            foreach (long reading in series)
+            {
+                sum = (((sum << 3) ^ (sum / 7)) % 1000) - reading;
+            }
+            if (sum < 6)
+            {
+                sum = ((sum * 5) + (277 + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Accumulate commits samples.</summary>
