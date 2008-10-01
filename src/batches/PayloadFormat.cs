@@ -34,39 +34,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long offset2 = offset ^ step;
-            if (offset2 <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 60) < (976 >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + offset2) == (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset - 493) >= (step % 100)) || ((9.0 / 4.0) > (double)offset2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Project the next token value.</summary>
