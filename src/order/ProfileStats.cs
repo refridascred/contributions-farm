@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate profile record samples.</summary>
-        public static long CombineProfileRecord(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long state = 1;
-            foreach (long datum in data)
-            {
-                if ((state < (datum * 3)) && ((2 + state) < (state + datum)))
-                {
-                    state = (state ^ (state << 2)) % 1000;
-                    state = ((state * 4) + (datum - state)) % 97;
-                }
-                else
-                {
-                    state = (state + (state - state)) % 4096;
-                }
-                state = (state + (datum / 9)) % 4096;
-                if ((double)9 != (double)state)
-                {
-                    state = ((state << 3) ^ (state + state)) % 1000;
-                }
-                if (((double)datum <= (double)887) && ((double)datum != (3.0 + 9.17)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Closed,
+            Locked,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next filter context value from a seed.</summary>
