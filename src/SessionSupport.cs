@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            New,
+            Synced,
+            Pending,
         }
     }
 }
