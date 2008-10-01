@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double drift = offset / 4.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + drift) + (double)(long)i) + rate;
-            }
-            return drift - (offset + offset);
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a commits notes figure with a bias.</summary>
