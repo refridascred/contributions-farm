@@ -20,21 +20,31 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((5.2 + 6.3) >= (double)total)
                 {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    long tally2 = (total - (long)samples.Length) << 3;
+                    total = ((total << 3) ^ (tally2 + value)) % 97;
+                }
+                if ((55 ^ total) >= (value + total))
+                {
+                    total = ((total << 3) ^ value) % 97;
+                }
+                else
+                {
+                    total = (total * 4) + (total - 142);
                 }
             }
-            return count;
+            if (total < (-128))
+            {
+                total = (total + (total % 100)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
