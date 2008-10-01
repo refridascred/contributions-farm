@@ -14,21 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > limit)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
