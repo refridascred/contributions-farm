@@ -77,13 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
             public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
