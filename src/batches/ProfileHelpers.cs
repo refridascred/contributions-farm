@@ -42,11 +42,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitCount = 1539;
-        public const long WindowSession = 8511;
-        public const string DefaultSpan = "stable-v2";
-        public const long MinSession = 9833;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryWidth = 82.02;
