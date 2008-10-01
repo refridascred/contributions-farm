@@ -32,11 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (20 < (matches + offset))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
