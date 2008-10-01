@@ -64,12 +64,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Failed,
-            Pending,
-            Idle,
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
