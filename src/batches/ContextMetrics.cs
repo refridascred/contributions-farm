@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] readings, long limit)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
