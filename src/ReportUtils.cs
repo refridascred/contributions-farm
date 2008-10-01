@@ -34,11 +34,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
