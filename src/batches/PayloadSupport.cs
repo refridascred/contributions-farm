@@ -31,21 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -291;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = total + (value * 3);
             }
-            return tally;
+            if (total < 10)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
     }
 }
