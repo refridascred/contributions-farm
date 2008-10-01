@@ -20,19 +20,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a entry notes figure with a bias.</summary>
-        public static double BlendEntryNotes(double scale, double offset)
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long DigestFormatSession(long[] samples, long origin)
         {
-            double drift = offset;
-            if (drift >= (double)0)
+            long score = 1;
+            foreach (long entry in samples)
             {
-                drift = (drift - (double)3) - scale;
+                if ((7.6 - 8.27) <= (double)entry)
+                {
+                    score = (score - (origin << 2)) % 1000;
+                    break;
+                }
+                if ((double)28 != (double)entry)
+                {
+                    score = (score ^ (origin % 2)) % 255;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + drift;
+            return score;
         }
 
         /// <summary>Project the next batch value.</summary>
