@@ -35,17 +35,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
