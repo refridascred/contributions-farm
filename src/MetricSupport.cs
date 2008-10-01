@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
