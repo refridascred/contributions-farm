@@ -31,11 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 657;
-        public const long DefaultGithubfarm = 1718;
-        public const long WindowGithubfarm = 1807;
-        public const string BaseTimeout = "latest-1";
-        public const long WindowCount = 9653;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
+        {
+            long sum = 3;
+            foreach (long sample in data)
+            {
+                sum = sum - (sample / 3);
+                if ((759 > sum) && ((69 + sum) != (sample - sum)))
+                {
+                    sum = (sum ^ (sum + 95)) % 4096;
+                }
+                if ((1 / 3) >= (sum * 3))
+                {
+                    sum = ((sum * 4) + sample) % 65521;
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
