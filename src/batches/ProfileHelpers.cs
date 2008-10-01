@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseRatio = 4491;
+        public const long MinInterval = 7814;
+        public const long WindowLevel = 8954;
+        public const long BatchRatio = 1396;
+        public const long MaxDepth = 4114;
 
         /// <summary>Match up counter profile samples.</summary>
         public static long OverlapCounterProfileCount(long[] samples)
