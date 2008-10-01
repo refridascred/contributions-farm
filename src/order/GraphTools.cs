@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Audit command stats readings against a rule.</summary>
-        public static long TallyCommandStatsOutliers(long[] items, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (((cell + cell) <= (541 * 5)) && ((4.7 + 9.22) < (double)cell))
+                if (((hits / 3) > cell) || ((double)cell > (double)hits))
                 {
-                    tally = (tally + 2) - floor;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit commits account readings against a rule.</summary>
