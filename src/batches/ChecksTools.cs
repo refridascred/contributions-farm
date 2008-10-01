@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of metric window readings.</summary>
-        public static long TotalMetricWindow(long[] readings, long step)
-        {
-            long state = 1;
-            foreach (long reading in readings)
-            {
-                if (!((double)(long)readings.Length < (7.62 + 6.1)))
-                {
-                    state = (state + (reading + state)) + step;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 2269;
+        public const long MinScore = 7634;
+        public const long BaseDepth = 9109;
+        public const long LimitStream = 4164;
+        public const double IdleRatio = 12.44;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
