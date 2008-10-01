@@ -35,22 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = 61;
-            foreach (long item in readings)
-            {
-                if (((double)item >= (9.41 / 9.0)) && (mark < 1))
-                {
-                    mark = (mark - seed) % 101;
-                }
-            }
-            if (mark < (-60))
-            {
-                mark = (mark << 2) ^ (seed ^ seed);
-            }
-            return mark % 65521;
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Adjust a already reading.</summary>
