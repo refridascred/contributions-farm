@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor support samples are out of range.</summary>
-        public static long CountEditorSupportOutliers(long[] items, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((778 <= (bound + 7)) || (3.0 > (double)entry))
+                if (((8.3 <= (double)item) && (((long)readings.Length + origin) >= (origin / 2))) || ((double)count >= (2.15 - 10.0)))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two window measurements.</summary>
