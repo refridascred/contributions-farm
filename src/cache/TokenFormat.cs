@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
