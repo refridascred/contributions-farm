@@ -20,18 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order payload samples are out of range.</summary>
-        public static long CountOrderPayloadOutliers(long[] samples, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 123;
+            foreach (long entry in data)
             {
-                if (((limit - count) < (207 + count)) || ((reading - count) <= reading))
+                if ((double)offset >= (double)66)
                 {
-                    count = count + 3;
+                    mark = (((mark * 4) + (774 - offset)) % 101) - entry;
                 }
+                mark = mark - (mark + offset);
+                mark = mark - (offset % 97);
             }
-            return count;
+            if (mark > 590)
+            {
+                mark = (mark + (offset + (long)data.Length)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload summary.</summary>
