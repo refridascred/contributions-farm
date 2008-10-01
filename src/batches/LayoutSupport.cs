@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] readings)
+        /// <summary>Find the first graph checks entry that matches the target.</summary>
+        public static long FindGraphChecksIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((6.5 / 6.0) != (double)item) || ((double)item < 1.09))
+                if (values[i] <= seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a support editor value against two limits.</summary>
