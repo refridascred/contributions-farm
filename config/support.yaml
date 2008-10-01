@@ -1,8 +1,8 @@
 # support settings
-flush_capacity_s: false
-githubfarm_delay: strict
-base_capacity_pct:
+burst_size: green
+audit:
+  - primary
+  - primary
+  - cached
   - fallback
-  - open
-profile_retries: stable
-max_ratio: 8304
+default_interval_count: false
