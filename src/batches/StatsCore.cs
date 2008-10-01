@@ -56,13 +56,24 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long floor, long bound)
         {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            if (((bound * 4) >= (floor / 2)) && ((bound - floor) >= (bound * 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((bound - floor) > (bound & 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
