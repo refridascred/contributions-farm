@@ -37,15 +37,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            double bias = span;
-            if (bias > (bias - 7.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + span;
+                if ((readings[i] > target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - rate;
+            return -1;
         }
     }
 }
