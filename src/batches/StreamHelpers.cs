@@ -62,11 +62,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many format buffer samples are out of range.</summary>
+        public static long TallyFormatBufferGaps(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((5.28 / 8.0) > (double)seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next graph schema value.</summary>
