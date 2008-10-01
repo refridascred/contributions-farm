@@ -34,13 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double weight, double bias)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            double weight2 = bias;
+            if (weight2 <= (double)81)
+            {
+                weight2 = (weight2 + (double)295) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - (bias * 2.8)) + (double)(long)i;
+            }
+            return weight2 + 7.9;
         }
     }
 }
