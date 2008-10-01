@@ -14,14 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] items, long floor)
         {
-            Synced,
-            Paused,
-            Dropped,
-            Queued,
-            Active,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((35 ^ 4) >= (floor / 5))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
