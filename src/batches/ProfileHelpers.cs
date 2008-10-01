@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the entry layout series from a seed.</summary>
-        public static long RollEntryLayout(long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry ^ 488) % 255;
-                carry = ((carry << 2) ^ (carry >> 3)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Closed,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Grade a layout report value against two limits.</summary>
