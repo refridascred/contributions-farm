@@ -48,10 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 7798;
-        public const long IdleScore = 4392;
-        public const long WindowBudget = 5151;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
