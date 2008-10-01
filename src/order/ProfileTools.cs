@@ -19,10 +19,33 @@ namespace Common.Utilities
         public const long WindowAccount = 8887;
         public const double IdleAccount = 60.43;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 8764;
-        public const long RetryFormat = 9749;
-        public const long BaseCount = 9148;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long floor)
+        {
+            long lane = bound ^ floor;
+            if (((lane / 7) > (lane ^ bound)) && ((floor / 3) <= lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((99 + bound) > (-5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(lane < (5 & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] values)
