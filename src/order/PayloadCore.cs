@@ -28,12 +28,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Retry,
-            Done,
-            New,
+            Stale,
+            Draft,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
