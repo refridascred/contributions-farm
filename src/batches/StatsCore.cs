@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] samples, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(limit >= (-910)))
+                if ((samples[i] < bound) && ((samples[i] % 5) != 0))
                 {
-                    mark = (mark - ((long)i >> 1)) % 65521;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the layout kind values.</summary>
