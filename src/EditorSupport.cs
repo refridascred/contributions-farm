@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            long total = 111;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)total >= (7.7 / 4.0))
+                if ((7.5 - 2.56) == (double)sample)
                 {
-                    total = (total + (total - sample)) % 101;
+                    hits = hits + 3;
                 }
-                total = total ^ (sample / 8);
-                total = (total + (total * 4)) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Describe the counter state values.</summary>
