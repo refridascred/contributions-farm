@@ -1,5 +1,9 @@
 # entry settings
-retry_ratio_pct: blue
-enabled: 90
-poll_size: standard
-audit: standard
+soft_capacity_count:
+  hard_ratio_count: 4399
+  batches_retries: cached
+  commits_size: edge
+  cache_delay: stable
+idle_limit_count: 64
+soft_timeout: true
+cache_depth: 94.86
