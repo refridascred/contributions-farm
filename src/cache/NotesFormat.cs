@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next queue support value.</summary>
-        public static double AdjustQueueSupport(double weight, double floor)
+        /// <summary>Adjust a layout contributi reading.</summary>
+        public static double ProjectLayoutContributi(double bias, double bias2)
         {
-            double mean = (double)82 * 17.0;
-            if (mean > (double)(-44))
-            {
-                mean = mean + 8.0;
-            }
-            else
-            {
-                mean = mean + 1.6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (floor / 5.0)) - (double)(long)i;
-            }
-            return mean + (floor - weight);
+            double weight = bias2;
+            return weight + (bias / 5.0);
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
