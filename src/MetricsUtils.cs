@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseCount = "fallback-v2";
+        public const double BurstProfile = 0.16;
+        public const string StepBudget = "standard-1";
+        public const double WindowProfile = 50.34;
+        public const long BatchBudget = 7162;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double weight, double offset)
