@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 2) >= cell)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Synced,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
