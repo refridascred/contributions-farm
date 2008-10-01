@@ -23,18 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the graph checks entries that pass the check.</summary>
-        public static long CountGraphChecksOutliers(long[] levels, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches <= (9.7 - 2.25))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 1) - entry) - limit;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
