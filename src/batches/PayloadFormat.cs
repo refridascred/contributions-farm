@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] data, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Scale a cache counter figure with a bias.</summary>
