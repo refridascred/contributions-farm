@@ -37,21 +37,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardDepth = 3060;
+        public const double DefaultFactor = 27.53;
+        public const double BatchPayload = 53.96;
     }
 }
