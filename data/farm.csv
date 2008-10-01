@@ -1,7 +1,6 @@
-id,token,region,ratio,active
-1,826,eu-west,607,361
-2,80.59,458,78.8,cached
-3,209,latest,strict,latest
-4,216,808,fallback,23.4
-5,164,eu-west,412,625
-6,18,633,51.18,cached
+id,ratio,state
+1,latest,31.37
+2,staging,18.3
+3,269,808
+4,4.24,228
+5,local,standard
