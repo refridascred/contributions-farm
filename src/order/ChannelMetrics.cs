@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of profile stats entries.</summary>
+        public static long TotalProfileStats(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long state = 5;
+            foreach (long sample in samples)
+            {
+                if ((sample + offset) > (offset / 6))
+                {
+                    state = (state * 3) + (offset + state);
+                }
+            }
+            if (state < 3)
+            {
+                state = (state + offset) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Adjust a batch reading.</summary>
