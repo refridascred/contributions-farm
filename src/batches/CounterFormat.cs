@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((698 - cell) > (74 % 64))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the command buffer series from a seed.</summary>
