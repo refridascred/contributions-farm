@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long IdleStats = 6130;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long origin)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the order state values.</summary>
