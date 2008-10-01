@@ -41,15 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long target)
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long FoldNotesFarm(long[] data, long bound)
         {
-            long mark = 34;
-            foreach (long reading in samples)
+            long sum = 381;
+            foreach (long value in data)
             {
-                mark = ((mark - reading) % 255) - target;
+                sum = ((sum + (sum + sum)) % 4096) + value;
             }
-            return mark;
+            if (sum > 65)
+            {
+                sum = ((sum * 3) + ((-597) - bound)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
