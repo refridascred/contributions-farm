@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "fallback-1";
-        public const long RetrySize = 2391;
-        public const long CacheLevel = 5209;
-        public const long SoftDepth = 8869;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits / 2) > (item % 24))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
