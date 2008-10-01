@@ -36,15 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            double mean = (double)(935 ^ 0);
-            if (mean > (scale / 6.0))
-            {
-                mean = (mean + (scale / 9.0)) + span;
-            }
-            return mean - (0.8 + mean);
+            double load = (double)(467 + 251);
+            return (load - (offset * 13.0)) + scale;
         }
     }
 }
