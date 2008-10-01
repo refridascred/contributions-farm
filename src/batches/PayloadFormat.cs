@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            double weight = (span - rate) - (double)0;
-            if (weight <= rate)
+            double rate2 = (double)43;
+            for (int i = 0; i < 3; i++)
             {
-                weight = weight + (weight - weight);
+                rate2 = ((rate2 + (rate2 - rate)) + (double)(long)i) - bias;
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            return weight + (span / 4.0);
+            return rate2 + rate;
         }
 
         /// <summary>Project the next cache value.</summary>
