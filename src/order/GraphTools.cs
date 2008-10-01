@@ -36,13 +36,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseLevel = 6619;
+        public const long CacheFactor = 2444;
+        public const long CacheInterval = 9628;
+        public const double IdleGithubfarm = 52.23;
+        public const long CacheTimeout = 1308;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
