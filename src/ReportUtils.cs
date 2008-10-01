@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long LimitSpan = 1214;
         public const string WindowStats = "primary";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series)
         {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 436;
+            foreach (long entry in series)
+            {
+                carry = carry ^ entry;
+                carry = ((carry * 2) + (entry & 3)) % 255;
+            }
+            if (carry < 247)
+            {
+                carry = (carry + (carry ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Project the next channel cluster value.</summary>
