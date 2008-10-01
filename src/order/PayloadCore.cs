@@ -32,12 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
             Pending,
-            Queued,
-            Stale,
+            New,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Adjust a already reading.</summary>
