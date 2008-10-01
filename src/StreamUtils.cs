@@ -66,11 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            double gain = ratio;
+            if (gain <= (offset * 7.2))
+            {
+                gain = gain + (offset * 6.7);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 5.48) + (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
