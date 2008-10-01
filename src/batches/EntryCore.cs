@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
