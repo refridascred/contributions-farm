@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            double weight2 = (double)81;
-            if (weight2 >= floor)
+            double rate2 = rate / 5.0;
+            if (rate2 < (double)22)
             {
-                weight2 = weight2 + (weight2 * 10.0);
+                rate2 = (rate2 - (double)3) - offset;
             }
             else
             {
-                weight2 = weight2 - (weight - weight);
+                rate2 = rate2 - (rate2 + rate);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 + floor) - (double)(long)i;
-            }
-            return weight2 + (double)706;
+            return rate2 + (double)340;
         }
 
         /// <summary>Accumulate channel samples.</summary>
