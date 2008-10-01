@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings, long floor)
+        /// <summary>Check that every route cluster entry stays within the limit.</summary>
+        public static bool GuardRouteClusterLimits(long[] data, long bound)
         {
-            long score = -7;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (79 > floor)
+                if (item > bound)
                 {
-                    score = (score + floor) - sample;
-                }
-                if ((score - score) <= score)
-                {
-                    score = (score ^ 283) % 65521;
-                }
-                if ((score >> 5) <= (808 >> 4))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
