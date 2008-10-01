@@ -63,12 +63,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] items)
         {
-            Paused,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading < (4.17 + 3.3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
