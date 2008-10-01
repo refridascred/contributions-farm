@@ -50,19 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (7.07 > (double)state)
-                {
-                    state = (state ^ (18 % 10)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Retry,
+            Ready,
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
