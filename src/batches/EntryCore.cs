@@ -49,21 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((20.0 * 14.0) > (double)cell) || ((count % 7) < cell)))
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
