@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
