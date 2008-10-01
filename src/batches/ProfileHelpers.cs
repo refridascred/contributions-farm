@@ -20,39 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a layout report value against two limits.</summary>
-        public static long SortLayoutReport(long limit, long limit2)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long offset)
         {
-            long lane = limit - limit2;
-            if (((lane + limit) >= (lane / 5)) && (limit > (limit << 3)))
+            long sum = 21;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 4) < lane)
+                for (int i = 0; i < 6; i++)
                 {
-                    return 6;
+                    sum = (sum ^ (7 + sum)) - (long)i;
                 }
-                else
+                if ((double)sample <= (6.0 * 15.0))
                 {
-                    if ((double)limit < (3.01 * 5.52))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((4.75 + 9.0) != (double)limit2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum + (774 / 2)) % 65521;
                 }
             }
+            if (sum > 0)
+            {
+                sum = (sum * 4) + (offset & 3);
+            }
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
