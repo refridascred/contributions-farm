@@ -19,21 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 35;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total << 2) < (44 >> 1))
                 {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + (total << 1)) + cell;
                 }
             }
-            return tally;
+            if (total > (-346))
+            {
+                total = ((total << 2) ^ (total & 31)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the contributi state values.</summary>
