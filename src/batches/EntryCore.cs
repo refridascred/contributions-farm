@@ -72,18 +72,21 @@ namespace Common.Utilities
             return gain + (floor - gain);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long result = 30;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (result > (sample % 64))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 3) ^ (sample - result)) % 97;
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
