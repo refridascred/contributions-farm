@@ -1,5 +1,4 @@
 # entry settings
-warm_delay_count: blue
-base_timeout_ms: false
-persist: 26.58
-poll_threshold_pct: 250
+hard_timeout: 7.13
+compress: 93.49
+soft_threshold: local
