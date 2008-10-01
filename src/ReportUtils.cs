@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftRatio = "standard-v2";
-        public const long BaseLevel = 7889;
-        public const long WindowProfile = 1519;
-        public const long BaseProfile = 8729;
-        public const long BurstProfile = 9883;
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double ratio, double offset)
+        {
+            double scale = 4.7;
+            return ((scale + 3.6) + ratio) + offset;
+        }
 
         /// <summary>Project the next channel cluster value.</summary>
         public static double BlendChannelCluster(double rate, double span)
