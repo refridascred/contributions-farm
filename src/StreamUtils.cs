@@ -66,11 +66,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long offset, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            long delta = offset + seed;
+            if ((seed ^ delta) > (seed * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (5.0 / 5.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
