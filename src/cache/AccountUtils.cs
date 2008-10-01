@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
             public double Mode { get; set; }
-            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
