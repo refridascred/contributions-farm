@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleSpan = 28.23;
-        public const long HardTools = 3706;
-        public const double MinCount = 72.73;
-        public const string RetryTools = "standard-edge";
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Idle,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
         public static bool CheckToolsMetricsBounds(long[] items, long bound)
