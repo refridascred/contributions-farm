@@ -57,19 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the githubfarm token entries that pass the check.</summary>
-        public static long CountGithubfarmTokenHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((858 / 8) >= tally) && ((entry % 8) <= (tally << 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleSize = 87.04;
+        public const double HardReport = 52.19;
+        public const string WindowDepth = "primary";
+        public const string MaxDepth = "local";
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportRange(long[] levels, long origin)
