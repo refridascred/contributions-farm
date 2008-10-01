@@ -70,15 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] values, long step)
         {
-            long result = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                result = result + (sample + 4);
+                if ((item - item) >= (step + item))
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of graph stats readings.</summary>
