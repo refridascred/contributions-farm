@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Check that every route cluster entry stays within the limit.</summary>
