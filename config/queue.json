@@ -1,18 +1,8 @@
 {
-  "layout_capacity": false,
-  "strict": "stable",
-  "readonly": false,
-  "hard_retries_count": {
-    "farm_delay": 22,
-    "verbose": "blue",
-    "max_retries": ["staging", "staging", "strict", "primary"],
-    "strict": "blue",
-    "base_timeout_pct": false,
-    "notes_retries": {
-      "warm_threshold": "local",
-      "audit": true,
-      "verbose": false,
-      "profile_ttl": true
-    }
-  }
+  "verbose": 9851,
+  "cache_threshold_pct": 78.41,
+  "min_size": 250,
+  "batches_threshold": 250,
+  "audit": true,
+  "counter_ttl": ["eu-west", "primary", "cached", "latest"]
 }
