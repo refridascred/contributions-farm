@@ -50,18 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
+        public static long OverlapGraphEntryCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2 ^ tally) <= tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((data[i] + data[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a token snapshot.</summary>
