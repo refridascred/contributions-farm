@@ -56,20 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long CombineEditorBuffer(long[] readings)
         {
-            long result = 1;
-            foreach (long cell in items)
+            long mark = 91;
+            foreach (long reading in readings)
             {
-                result = (result + (bound >> 4)) - cell;
-                result = result + bound;
+                if (!((161 + reading) >= (mark & 7)))
+                {
+                    mark = mark + (7 - reading);
+                }
             }
-            if (result < 88)
-            {
-                result = result ^ (4 + 3);
-            }
-            return result % 97;
+            return mark;
         }
     }
 }
