@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const double CacheQueue = 23.94;
         public const long CacheScore = 6635;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowScore = 3932;
-        public const string MaxWindow = "primary-v2";
-        public const double SoftScore = 25.97;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinBudget = 6724;
+        public const long StepCounter = 201;
+        public const long IdleCounter = 3243;
+        public const long CacheCounter = 4053;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterGaps(long[] items)
