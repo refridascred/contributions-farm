@@ -33,35 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster notes values into a single score.</summary>
-        public static long FoldClusterNotes(long[] samples, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] items)
         {
-            long acc = 3;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                acc = (acc ^ (step - 8)) % 65521;
-                if (((step + (-51)) == (step * 3)) || ((datum - step) != (887 + datum)))
+                if ((4.88 > (double)item) && ((count + 8) == (count + item)))
                 {
-                    break;
-                }
-                if ((step % 8) < (step ^ datum))
-                {
-                    acc = acc + (716 + acc);
+                    count = count + 2;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ (acc ^ acc);
-                }
-                if (((step - datum) >= (acc + datum)) || ((step >> 3) >= (datum / 6)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (acc < 74)
-            {
-                acc = (acc + (8 + step)) % 65521;
-            }
-            return acc;
+            return count;
         }
     }
 }
