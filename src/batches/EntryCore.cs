@@ -40,19 +40,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Compare every pair of cluster schema readings.</summary>
+        public static long CompareClusterSchemaCount(long[] values)
         {
-            double gain = 4.5;
-            if (gain <= (3.0 / 7.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (floor / 6.0);
-            }
-            return gain + (floor - gain);
+            return matches;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
