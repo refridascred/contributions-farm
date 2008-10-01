@@ -1,7 +1,8 @@
 # support settings
-support_interval: 20
-retry_interval: 0.11
-batch_ratio_ms: eu-west
-soft_threshold_count: 33.64
-profile_ttl: cached
-sync_interval_count: 500
+warm_threshold_s: 2348
+window_interval: 6075
+batch_limit: 94.9
+sync_depth:
+  - open
+  - green
+max_retries: false
