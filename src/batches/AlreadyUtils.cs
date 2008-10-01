@@ -54,17 +54,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a stats channel sample.</summary>
-        public static long LocateStatsChannelIndex(long[] data, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -768;
+            foreach (long reading in series)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (anchor - anchor)) + reading;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor;
         }
     }
 }
