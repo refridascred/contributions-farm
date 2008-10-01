@@ -42,22 +42,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((double)sample != (double)count)
+                if (sample >= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a report info.</summary>
