@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] values, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
