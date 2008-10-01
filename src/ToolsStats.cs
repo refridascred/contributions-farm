@@ -64,22 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long origin)
         {
-            long mix = 36;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((offset + mix) != (offset >> 1))
+                if (datum < origin)
                 {
-                    mix = ((mix ^ (offset - mix)) % 65521) ^ entry;
-                }
-                else
-                {
-                    mix = (mix * 2) + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ready;
         }
     }
 }
