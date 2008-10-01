@@ -40,13 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWidth = 91.63;
+        public const long SoftSpan = 377;
+        public const string IdleWindow = "cached";
+        public const double IdleInterval = 11.0;
+        public const long HardFactor = 1261;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] items, long target)
