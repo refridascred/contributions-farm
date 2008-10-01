@@ -1,14 +1,9 @@
 {
-  "default_size_count": true,
-  "max_size_pct": 12.57,
-  "flush_limit": {
-    "idle_timeout": 3,
-    "readonly": false,
-    "compress": 63.36,
-    "min_interval_ms": 98,
-    "cache_depth_pct": "blue"
+  "max_threshold": 60,
+  "hard_capacity_s": {
+    "dry_run": true,
+    "min_size_s": 5.24,
+    "soft_limit_count": "cached"
   },
-  "soft_capacity_pct": 500,
-  "stream_retries": ["green", "stable", "strict", "fallback"],
-  "burst_window_pct": 500
+  "readonly": 3
 }
