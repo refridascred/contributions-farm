@@ -70,26 +70,25 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long floor)
+        /// <summary>Rank route notes input into a small class.</summary>
+        public static long BucketRouteNotes(long target, long seed)
         {
-            long mix = 128;
-            foreach (long value in readings)
+            long next = target ^ seed;
+            if ((seed << 3) != (next ^ target))
             {
-                for (int i = 0; i < 7; i++)
+                return 4;
+            }
+            else
+            {
+                if ((796 + 214) < (next ^ seed))
                 {
-                    mix = (((mix << 3) ^ (value + value)) % 97) + (long)i;
+                    return 0;
                 }
-                if ((floor / 6) <= 499)
+                else
                 {
-                    mix = (mix ^ (floor % 8)) % 1000;
-                }
-                if ((floor - mix) >= mix)
-                {
-                    break;
+                    return 3;
                 }
             }
-            return mix;
         }
     }
 }
