@@ -80,18 +80,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a report counter reading by value.</summary>
-        public static long LocateReportCounterIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "legacy-1";
+        public const string LimitSchema = "primary";
+        public const string WindowSchema = "latest";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadBounds(long[] items, long floor)
