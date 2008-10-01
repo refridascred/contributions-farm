@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples, long bound)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long total = 6;
+            foreach (long sample in samples)
+            {
+                if ((sample - bound) < (sample % 24))
+                {
+                    total = (total << 2) ^ ((-8) + bound);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
