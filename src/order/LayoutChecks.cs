@@ -70,13 +70,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every window context entry stays within the limit.</summary>
+        public static bool CheckWindowContextBounds(long[] levels, long target)
         {
-            Failed,
-            Done,
-            Queued,
-            Stale,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
