@@ -26,18 +26,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally & 255) >= 742)
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
