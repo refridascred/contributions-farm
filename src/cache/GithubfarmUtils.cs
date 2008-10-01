@@ -36,22 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
+        public static long MatchRouteClusterCount(long[] samples)
         {
-            long mix = 5;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.4 / 4.0) == (double)sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 5) + (sample * 4)) % 97;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < (-4))
-            {
-                mix = (mix ^ (mix % 12)) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
