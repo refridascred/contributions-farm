@@ -87,21 +87,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (10 >= (target / 6))
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state ^ (target % 64)) % 4096) - sample;
+                }
+                else
+                {
+                    state = (state * 5) + (state & 3);
                 }
             }
-            return count;
+            return state % 97;
         }
     }
 }
