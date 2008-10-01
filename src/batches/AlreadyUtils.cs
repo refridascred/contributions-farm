@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 86.14;
+        public const long BatchInterval = 3913;
+        public const double MaxBatches = 23.05;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long CombineBatch(long[] levels)
