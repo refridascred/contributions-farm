@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+for item in fallback open edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green stable legacy; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
