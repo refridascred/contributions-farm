@@ -18,17 +18,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long datum in levels)
             {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state + (state & 63)) % 4096;
+                state = (state << 2) ^ (datum * 4);
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
