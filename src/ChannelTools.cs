@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Pending,
-            New,
-            Retry,
-            Queued,
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the cluster class values.</summary>
