@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Synced,
             Queued,
-            Draft,
-            Locked,
-            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
