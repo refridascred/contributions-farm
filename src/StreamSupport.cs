@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
