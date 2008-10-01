@@ -42,22 +42,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long seed, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((97 % 2) != (seed - target))
             {
-                if ((double)matches <= 12.0)
+                return 6;
+            }
+            else
+            {
+                if ((seed % 7) != (seed + seed))
                 {
-                    matches = ((matches + 3) + cell) - floor;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((seed + target) == (seed >> 4)) && ((double)target > (3.0 / 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the support state values.</summary>
