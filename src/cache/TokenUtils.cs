@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const double WindowPayload = 94.15;
         public const string MinBudget = "fallback-1";
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Fold a list of order support readings.</summary>
+        public static long CombineOrderSupport(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 814;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (773 > (mix - floor))
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (reading + reading)) % 255;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of order account readings.</summary>
