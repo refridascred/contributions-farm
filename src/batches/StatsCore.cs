@@ -70,19 +70,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] series, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long edge = origin - offset;
+            if ((offset >> 4) != (64 - offset))
             {
-                if (cell >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((22 * 4) < (edge / 7))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
     }
 }
