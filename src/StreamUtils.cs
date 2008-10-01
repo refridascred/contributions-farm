@@ -33,19 +33,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate filter graph readings against a bound.</summary>
-        public static bool VerifyFilterGraphBounds(long[] series, long target)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
