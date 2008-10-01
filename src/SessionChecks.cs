@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] samples, long seed)
         {
-            Draft,
-            Stale,
-            Pending,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
