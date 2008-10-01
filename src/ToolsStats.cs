@@ -48,39 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long step, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] levels, long origin)
         {
-            long lane = step - bound;
-            if (lane >= (185 + lane))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((lane + bound) != (step - 99))
+                if (cell >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step - lane) == (bound / 8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound % 12) <= 19)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
