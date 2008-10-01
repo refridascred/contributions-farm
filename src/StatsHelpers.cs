@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a batch checks pair into a bucket.</summary>
-        public static long BucketBatchChecks(long bound, long limit)
-        {
-            long gap = bound - limit;
-            if ((double)(-43) > (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.7 - 7.49) == (double)gap)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "cached";
+        public const long BatchSize = 808;
+        public const double BatchPayload = 89.77;
+        public const long LimitPayload = 8966;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
