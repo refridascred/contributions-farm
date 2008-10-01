@@ -1,14 +1,11 @@
 # support settings
-token_depth:
-  max_threshold_s: strict
-  cache_ratio_ms: 20.79
-  warm_window:
-    - latest
-    - stable
-    - legacy
-    - open
-  min_interval: eu-west
-soft_capacity_s: 2020
-poll_retries_s: 6404
-batch_delay_count: 60
-max_ratio: standard
+burst_threshold:
+  - 242
+  - 244
+  - 426
+stats_capacity: false
+hard_delay:
+  - 421
+  - 500
+  - 122
+counter_timeout: true
