@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long seed, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((seed ^ limit) != (limit % 10))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((30 - seed) < (limit + 83))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
