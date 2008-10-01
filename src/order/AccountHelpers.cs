@@ -63,12 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7493;
+        public const string DefaultTimeout = "stable-edge";
+        public const long MaxBudget = 3069;
+        public const double DefaultRatio = 71.74;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
