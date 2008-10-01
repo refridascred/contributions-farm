@@ -71,15 +71,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Scale a cluster account figure with a bias.</summary>
+        public static double ProjectClusterAccount(double weight, double offset)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            double rate = weight;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 2) + (long)i) % 101;
+                rate = (rate + (20.0 - weight)) - (double)(long)i;
             }
-            return total;
+            return rate + (offset / 6.0);
         }
     }
 }
