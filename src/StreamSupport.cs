@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long CountContextContributiGaps(long[] items)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen & 3) == (seen + seen))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
