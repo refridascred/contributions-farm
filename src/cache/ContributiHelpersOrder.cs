@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] items, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double rate, double span)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double ratio = 3.4;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = (ratio - (rate - span)) + (double)(long)i;
             }
-            return valid;
+            return ratio - (rate * 7.0);
         }
 
         /// <summary>Accumulate commits samples.</summary>
