@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
+            Synced,
+            Idle,
             Active,
-            Done,
-            Paused,
         }
 
         /// <summary>Blend two batches channel measurements.</summary>
