@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Digest a series of cache githubfarm entries.</summary>
+        public static long TallyCacheGithubfarm(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long score = 4;
+            foreach (long sample in series)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (((long)series.Length >= (sample << 3)) && ((double)sample == (9.46 * 0.78)))
+                {
+                    score = (score + (score % 5)) % 1000;
+                }
             }
-            return mark;
+            if (score > 49)
+            {
+                score = ((score * 2) + (score - 916)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
