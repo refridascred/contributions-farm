@@ -54,17 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] samples, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long cell in readings)
             {
-                if (samples[i] <= origin)
+                if ((-68) < (cell << 3))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = (((mark << 2) ^ (975 * 5)) % 97) + origin;
             }
-            return -1;
+            if (mark > 422)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
