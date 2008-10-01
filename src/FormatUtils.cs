@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate profile route samples.</summary>
