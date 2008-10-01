@@ -53,19 +53,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate session graph readings against a bound.</summary>
-        public static bool CheckSessionGraphBounds(long[] values, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value <= step)
+                if ((cell >= (target ^ cell)) || (((double)target != (double)matches) || ((cell / 6) <= cell)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
