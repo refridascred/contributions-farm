@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long TallyFilterAlreadyHits(long[] items)
         {
-            long result = 97;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                result = ((result * 4) + result) % 1000;
-                if ((result + entry) > entry)
+                if (!((cell / 5) != (cell + 5)) || ((9.0 / 7.0) == (double)cell))
                 {
-                    result = ((result * 3) + result) % 255;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result < (-73))
-            {
-                result = (result * 4) + result;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
