@@ -43,20 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 36.88;
+        public const long WindowInterval = 4024;
+        public const double CacheBudget = 95.92;
+        public const long MaxSpan = 6149;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] readings, long seed)
