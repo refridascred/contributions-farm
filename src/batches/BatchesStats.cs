@@ -27,9 +27,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstDepth = 29.64;
-        public const string MaxCommits = "staging-1";
-        public const long SoftSize = 4110;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
