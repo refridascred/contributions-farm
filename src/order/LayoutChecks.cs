@@ -33,21 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Fold a list of contributi batches readings.</summary>
+        public static long TotalContributiBatches(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 5;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (((mix << 2) ^ (mix % 3)) % 255) - value;
+                if ((double)mix <= 1.63)
                 {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix < 20)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count graph entry pairs that satisfy a relation.</summary>
