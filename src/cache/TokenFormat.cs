@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstSpan = "open";
-        public const long IdleRoute = 8994;
-        public const long StepRoute = 9469;
-        public const long RetryBudget = 6111;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long step)
+        {
+            long acc = 105;
+            foreach (long reading in readings)
+            {
+                if ((step << 3) >= 7)
+                {
+                    acc = (acc + reading) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (616 % 100)) % 65521;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Combine filter githubfarm values into a single score.</summary>
         public static long TotalFilterGithubfarm(long[] series)
