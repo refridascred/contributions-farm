@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
