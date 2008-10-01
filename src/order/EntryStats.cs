@@ -44,13 +44,15 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long offset)
         {
-            Synced,
-            Failed,
-            Idle,
-            Retry,
+            long result = 853;
+            foreach (long reading in readings)
+            {
+                result = ((result * 2) + (offset % 2)) ^ reading;
+            }
+            return result;
         }
     }
 }
