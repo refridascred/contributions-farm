@@ -38,18 +38,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate channel queue samples.</summary>
-        public static long TotalChannelQueue(long[] series, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] series, long limit)
         {
-            long acc = 51;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((limit & 15) != (acc / 6))
+                if ((item << 1) == (seen * 4))
                 {
-                    acc = (((acc * 2) + ((long)series.Length + acc)) % 97) - value;
+                    seen = (seen + 1) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
