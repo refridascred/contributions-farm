@@ -1,11 +1,12 @@
 # githubfarm settings
-min_depth_s: 2
-default_interval: eu-west
-idle_ttl: 80.18
-base_interval:
-  hard_timeout: green
-  soft_delay_count: false
-  soft_retries_pct: staging
-  burst_ttl_count: 96.2
-  retry_interval_ms: primary
-warm_depth_count: strict
+max_limit:
+  - local
+  - eu-west
+  - eu-west
+poll_interval_ms:
+  - standard
+  - stable
+  - cached
+min_threshold: stable
+max_ttl_ms: 80
+support_delay: 500
