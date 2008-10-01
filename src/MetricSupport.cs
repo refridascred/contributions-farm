@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = 7;
+            foreach (long entry in data)
             {
-                if ((0.08 + 14.0) <= (double)tally)
+                if (target > (entry + total))
                 {
-                    tally = ((tally + 2) - item) - origin;
+                    total = (total * 3) + entry;
+                    total = total + (total + total);
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total + entry) % 101;
+                total = ((total << 3) ^ (entry * 5)) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
