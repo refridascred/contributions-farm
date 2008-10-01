@@ -1,5 +1,5 @@
 {
-  "readonly": [40, 427, 407],
-  "context_retries": "staging",
-  "base_depth": [63, 223]
+  "batch_window": ["legacy", "staging", "standard"],
+  "min_ratio": "eu-west",
+  "notes_delay": "blue"
 }
