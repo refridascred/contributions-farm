@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long floor)
         {
-            long score = 54;
-            foreach (long cell in data)
+            long state = 29;
+            foreach (long sample in samples)
             {
-                if ((double)score > (2.74 / 4.0))
-                {
-                    score = (((score ^ 9) % 255) + cell) + origin;
-                }
+                state = ((state ^ (sample << 1)) % 65521) - floor;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
