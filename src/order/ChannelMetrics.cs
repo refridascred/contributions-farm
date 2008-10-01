@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items, long origin)
         {
-            long total = 463;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                total = total ^ (item >> 3);
+                if ((origin + entry) > entry)
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
