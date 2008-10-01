@@ -41,13 +41,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] readings, long bound)
         {
-            Retry,
-            Dropped,
-            Stale,
-            Ready,
+            long state = 559;
+            foreach (long entry in readings)
+            {
+                if (((entry + (long)readings.Length) <= (entry & 63)) && (entry < (entry / 6)))
+                {
+                    state = (state ^ (entry ^ state)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (bound << 2)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
