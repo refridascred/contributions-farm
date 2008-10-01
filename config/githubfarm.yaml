@@ -1,8 +1,10 @@
 # githubfarm settings
-max_ratio_ms: primary
-persist:
-  - blue
-  - green
-burst_interval_count: 4892
-verbose: 100
-audit: strict
+strict: false
+max_window_s: 42
+batch_delay_ms: 93.76
+record_timeout:
+  - eu-west
+  - staging
+  - local
+warm_interval: 500
+readonly: green
