@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many session profile samples are out of range.</summary>
-        public static long TallySessionProfileHits(long[] items, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((value * 3) <= (hits * 4))
+                if (datum <= target)
                 {
-                    hits = (hits + 3) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
