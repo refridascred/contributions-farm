@@ -53,21 +53,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report payload readings.</summary>
-        public static long OverlapReportPayloadCount(long[] series)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
                 {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
