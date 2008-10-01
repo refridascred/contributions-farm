@@ -1,8 +1,9 @@
-id,active,count
-1,918,stable
-2,strict,27
-3,584,25.11
-4,edge,213
-5,stable,80.31
-6,1.18,50.71
-7,primary,83
+id,label,region,state,rank
+1,edge,946,60.41,40
+2,53.02,923,2.15,60.3
+3,391,76.81,cached,strict
+4,stable,eu-west,88.55,13.18
+5,blue,252,91.24,eu-west
+6,open,220,574,legacy
+7,32.35,97.14,legacy,eu-west
+8,275,723,95.46,63.37
