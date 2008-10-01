@@ -1,4 +1,7 @@
 # entry settings
-hard_timeout: 7.13
-compress: 93.49
-soft_threshold: local
+base_capacity_s: open
+cache_interval_s: 250
+graph_size: 2873
+tools_ratio: false
+soft_delay: staging
+dry_run: latest
