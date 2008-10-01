@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            long acc = 212;
-            foreach (long datum in data)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (acc + (seed + datum)) ^ (long)i;
-                }
-                acc = (acc + (816 - seed)) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Combine report values into a single score.</summary>
