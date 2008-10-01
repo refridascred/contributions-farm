@@ -1,11 +1,5 @@
 # githubfarm settings
-readonly: 49.51
-batch_size:
-  - 36
-  - 72
-  - 136
-  - 301
-idle_ttl: 81.81
-hard_window: 39.37
-channel_ttl: 65
-record_interval: 60
+compress: 15.17
+soft_ratio: false
+flush_retries: eu-west
+hard_depth_s: 8.4
