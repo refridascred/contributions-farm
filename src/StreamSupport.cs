@@ -14,38 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            if ((floor - floor) > ((-50) + 701))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 60) >= (floor + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - offset) != ((-1) * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - offset) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Look up the position of a route channel sample.</summary>
