@@ -1,24 +1,7 @@
 # support settings
-tools_threshold: cached
-farm_size: 1339
-batch_retries:
-  default_timeout_ms: 64.31
-  support_interval: 51.18
-  flush_ttl_count: true
-  default_window: 3836
-  default_limit_count: 80
-notes_depth:
-  compress: true
-  soft_depth: true
-  warm_delay_count:
-    dry_run: true
-    default_interval_count:
-      - 296
-      - 255
-      - 193
-    readonly: primary
-    compress: 45.82
-    max_capacity_count: cached
-    account_depth: primary
-persist: strict
-checks_interval: 74.4
+cache_capacity: 77.87
+persist: latest
+sync_delay_ms: standard
+batch_size_ms: true
+max_delay_s: true
+batch_depth: 27
