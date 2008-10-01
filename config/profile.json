@@ -1,6 +1,5 @@
 {
-  "persist": 2542,
-  "idle_window_ms": false,
-  "queue_retries": 42,
-  "base_threshold_count": false
+  "batch_ratio_count": "fallback",
+  "max_window_ms": 100,
+  "max_threshold_count": 30.4
 }
