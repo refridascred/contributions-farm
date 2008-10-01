@@ -20,13 +20,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] readings)
         {
-            Failed,
-            Done,
-            Retry,
-            Paused,
+            long mark = 64;
+            foreach (long datum in readings)
+            {
+                mark = mark + (datum ^ datum);
+                if ((double)mark < (0.27 / 4.0))
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                if ((double)datum >= (4.42 - 14.0))
+                {
+                    mark = (mark + (mark / 9)) % 1000;
+                }
+            }
+            return mark % 97;
         }
     }
 }
