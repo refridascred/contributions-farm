@@ -20,11 +20,12 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitBudget = 1925;
-        public const string MinBudget = "local-v2";
-        public const long WindowContext = 294;
-        public const long BatchSize = 3285;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] items)
