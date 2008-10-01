@@ -71,23 +71,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long origin)
         {
-            long score = 67;
-            foreach (long datum in values)
+            if (((step >> 4) > step) && ((double)origin <= (14.0 - 1.95)))
             {
-                score = ((score * 2) + datum) % 97;
-                if (((double)score < (1.9 - 1.7)) || ((score + datum) > (score & 15)))
+                return 7;
+            }
+            else
+            {
+                if (!((origin * 2) != (origin - origin)))
                 {
-                    score = score + (score & 15);
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (score < 5)
-            {
-                score = ((score << 2) ^ (score % 3)) % 97;
-            }
-            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
