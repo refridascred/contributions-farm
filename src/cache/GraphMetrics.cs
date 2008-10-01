@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
         {
-            long acc = 85;
-            foreach (long entry in values)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry << 3) > acc)
-                {
-                    acc = ((acc << 3) ^ bound) % 65521;
-                }
-                else
-                {
-                    acc = acc + (81 << 2);
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
