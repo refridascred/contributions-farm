@@ -14,13 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
