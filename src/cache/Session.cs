@@ -35,16 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state + 403) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the commits tools entries that pass the check.</summary>
