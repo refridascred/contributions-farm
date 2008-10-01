@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long seed, long limit)
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            if ((seed ^ limit) != (limit % 10))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((30 - seed) < (limit + 83))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
