@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const long BatchSupport = 1655;
         public const long IdleRatio = 1948;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long origin)
         {
-            if ((target - 7) < offset)
+            long acc = 75;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - target) > (offset << 3))
+                if ((value << 2) > (value - 670))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    acc = (acc + value) % 4096;
                 }
             }
+            if (acc < (-4))
+            {
+                acc = (acc - (origin + acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
