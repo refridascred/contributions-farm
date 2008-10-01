@@ -19,38 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long target, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            if ((double)target >= (1.3 + 8.01))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound > (16.0 + 6.0)))
+                if ((matches + matches) > (421 - datum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - target) > (bound * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target - 877) != (bound + (-28))) || ((5.3 * 8.5) == (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of session readings.</summary>
