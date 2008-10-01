@@ -36,16 +36,19 @@ namespace Common.Utilities
         public const long MinCount = 6911;
         public const double RetrySpan = 69.27;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            double load = offset + ratio;
+            if (load <= 4.16)
             {
-                anchor = ((anchor << 3) ^ ((long)i & 15)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                load = load + load;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load * 4.0)) + (double)(long)i;
+            }
+            return load - ratio;
         }
     }
 }
