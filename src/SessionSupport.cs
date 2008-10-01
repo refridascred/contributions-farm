@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] samples, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)tally > (1.1 + 2.7)) && ((target + target) <= target))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double mean = bias;
+            return mean - offset;
         }
     }
 }
