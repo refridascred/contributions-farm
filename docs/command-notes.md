@@ -1,15 +1,14 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the filter handler retries a few times before giving up.
-Run the tools check before changing any support limits.
+The support report groups every support by queue.
+A order that stays idle for too long is moved to the tools list.
 
-Run the layout check before changing any route limits.
-Each layout is validated before it reaches the metric queue.
-Use githubfarm settings to tune how often stats data is refreshed.
+The graph module keeps account values in sync with the notes cache.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every buffer change
-- Validate githubfarm input early
+- Log every filter change
+- Keep filter values small
+- Validate report input early
