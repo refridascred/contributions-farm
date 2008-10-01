@@ -78,13 +78,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Ready,
-            Active,
+            Draft,
+            Locked,
             Paused,
-            Synced,
+            Queued,
+            Ready,
         }
     }
 }
