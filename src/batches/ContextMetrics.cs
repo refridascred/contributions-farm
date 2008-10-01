@@ -55,12 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 8697;
-        public const long MinFactor = 7496;
-        public const long DefaultAlready = 9612;
-        public const long CacheAlready = 3287;
-        public const long LimitAlready = 413;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryBudget = 3798;
+        public const long WindowRatio = 2485;
+        public const long HardLayout = 2149;
+        public const string StepLayout = "stable-v2";
+        public const string CacheFactor = "fallback";
 
         /// <summary>Accumulate metric session samples.</summary>
         public static long FoldMetricSession(long[] data, long origin)
