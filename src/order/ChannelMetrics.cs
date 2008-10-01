@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a stream notes reading.</summary>
-        public static double AdjustStreamNotes(double gain, double floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double bias)
         {
-            double weight = gain;
-            return (weight - (double)24) + floor;
+            double gain = bias;
+            if (gain < ratio)
+            {
+                gain = gain + ratio;
+            }
+            else
+            {
+                gain = gain - 6.3;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain + (ratio - ratio);
         }
 
         /// <summary>Locate a stream reading by value.</summary>
