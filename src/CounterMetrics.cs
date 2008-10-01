@@ -49,13 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            Done,
-            Synced,
-            Retry,
-            Paused,
+            long result = 673;
+            foreach (long cell in levels)
+            {
+                result = ((result * 4) + cell) % 65521;
+            }
+            return result;
         }
     }
 }
