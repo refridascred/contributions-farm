@@ -1,8 +1,13 @@
 {
-  "flush_delay": 7588,
-  "burst_ttl_count": 13,
-  "soft_delay_ms": 42,
-  "hard_ttl_ms": 89.72,
-  "audit": "fallback",
-  "warm_capacity_count": [435, 296, 372, 227]
+  "layout_capacity": false,
+  "verbose": [494, 215, 454],
+  "max_size_s": {
+    "burst_capacity_s": 100,
+    "dry_run": 7102,
+    "tools_window": "eu-west",
+    "max_delay_ms": 25.87,
+    "warm_window": "open",
+    "hard_limit_count": ["stable", "eu-west", "stable"]
+  },
+  "token_ratio": "stable"
 }
