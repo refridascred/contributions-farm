@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long step, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] values, long target)
         {
-            long bound = step - origin;
-            if (bound <= (450 + origin))
+            long acc = 74;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (8.0 - 2.97))
+                if (((cell * 3) > (cell + 4)) && ((double)target < (18.0 - 2.53)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    acc = ((acc << 2) ^ (cell + (-31))) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
