@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] series, long bound)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                sum = ((((sum << 2) ^ (sum / 7)) % 1000) + item) + offset;
+                if ((double)bound < (4.06 / 6.0))
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            if (sum > 72)
-            {
-                sum = ((sum * 5) + sum) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
