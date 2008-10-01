@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((962 > (bound + 657)) || ((bound + seed) < (bound % 24)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((595 + bound) != (seed >> 1)) && ((2 + bound) < (2 + seed)))
                 {
-                    if ((series[i] + series[j]) != 2)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + bound) > (bound ^ seed))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry header.</summary>
