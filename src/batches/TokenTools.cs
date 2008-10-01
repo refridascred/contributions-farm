@@ -30,19 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long offset)
         {
-            double load = (double)7 + ratio;
-            if (load <= (ratio - load))
+            bool found = true;
+            foreach (long value in readings)
             {
-                load = load + (load * 8.3);
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)21) + (double)(long)i;
-            }
-            return load + floor;
+            return found;
         }
     }
 }
