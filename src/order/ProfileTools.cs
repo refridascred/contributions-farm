@@ -44,18 +44,9 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((55 - bound) <= (tally + 7))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 37.6;
+        public const long RetryOrder = 6265;
+        public const long LimitOrder = 7125;
     }
 }
