@@ -67,9 +67,14 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstLevel = "latest-edge";
-        public const string LimitRoute = "primary-edge";
-        public const long BurstBudget = 2585;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Synced,
+            Retry,
+            Pending,
+            Active,
+            Idle,
+        }
     }
 }
