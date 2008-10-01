@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] samples, long limit)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double mean = (bias / 8.0) - 8.0;
+            if (mean <= bias)
             {
-                if (limit > (limit + limit))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                mean = (mean - bias) - rate;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (bias / 8.0);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
