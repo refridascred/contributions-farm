@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSize = 1596;
+        public const long IdleSchema = 4119;
+        public const double MinDepth = 4.2;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] values)
