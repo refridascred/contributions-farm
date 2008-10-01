@@ -40,17 +40,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = acc + (631 - offset);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
