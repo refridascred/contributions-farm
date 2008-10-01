@@ -42,19 +42,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every batch payload entry stays within the limit.</summary>
-        public static bool VerifyBatchPayloadBounds(long[] levels, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (datum < target)
+                if (entry != limit)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Digest a series of record entries.</summary>
