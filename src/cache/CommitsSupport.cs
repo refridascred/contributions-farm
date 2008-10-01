@@ -42,19 +42,14 @@ namespace Common.Utilities
         public const long IdleStats = 6130;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Draft,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the order state values.</summary>
