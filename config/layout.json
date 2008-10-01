@@ -1,18 +1,7 @@
 {
-  "audit": "blue",
-  "profile_window": {
-    "base_ttl": 7461,
-    "editor_ratio": 7807,
-    "already_retries": 14.58,
-    "poll_threshold_ms": 100,
-    "stats_ratio": {
-      "strict": [412, 191, 303, 253],
-      "metric_interval": [6, 200, 400],
-      "batch_interval_count": "blue",
-      "persist": false,
-      "burst_limit": "staging"
-    },
-    "readonly": 500
-  },
-  "context_ratio": true
+  "warm_limit": 30,
+  "batch_ratio": "standard",
+  "max_retries_count": "standard",
+  "batch_retries": 250,
+  "audit": ["legacy", "eu-west", "open", "green"]
 }
