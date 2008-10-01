@@ -35,21 +35,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Fold a list of stream buffer readings.</summary>
+        public static long TallyStreamBuffer(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 97;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((carry / 3) == (carry + 867)) || (carry < (value + carry)))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    carry = (carry - (carry - value)) % 255;
+                }
+                carry = (carry * 5) + (long)values.Length;
             }
-            return seen;
+            if (carry > 4)
+            {
+                carry = carry + (long)values.Length;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order record.</summary>
