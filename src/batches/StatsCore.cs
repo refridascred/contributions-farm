@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long WindowChecks = 3107;
         public const double WindowSpan = 64.36;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 3424;
+        public const long IdleFormat = 7715;
+        public const long MinFormat = 8095;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
