@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
