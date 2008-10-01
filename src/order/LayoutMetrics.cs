@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 2185;
-        public const long SoftRatio = 2372;
-        public const long StepSession = 8039;
-        public const string IdleSession = "standard-v2";
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Dropped,
+            New,
+            Idle,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long SeekCommitsIndex(long[] series, long offset)
