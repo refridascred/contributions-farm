@@ -1,6 +1,8 @@
-id,state,count,region
-1,74.97,375,legacy
-2,standard,84.97,55
-3,84.6,85.42,279
-4,primary,41.43,green
-5,870,530,69.28
+id,rank,owner,token
+1,957,248,332
+2,edge,738,eu-west
+3,184,18.13,40.27
+4,594,13.65,785
+5,blue,34.23,581
+6,green,fallback,772
+7,37.05,52.84,944
