@@ -34,10 +34,33 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 3258;
-        public const double StepTimeout = 71.87;
-        public const long RetryEditor = 6568;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long origin, long step)
+        {
+            long lane = origin ^ step;
+            if ((1.4 / 4.0) < (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)lane > 0.62)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane / 6) == (step % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a command report reading by value.</summary>
         public static long LookupCommandReportIndex(long[] values, long offset)
