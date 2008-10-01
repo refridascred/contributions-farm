@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string DefaultChecks = "latest-1";
         public const double MinInterval = 67.84;
 
-        /// <summary>Count the editor stats entries that pass the check.</summary>
-        public static long MeasureEditorStatsMatches(long[] items)
+        /// <summary>Validate command tools readings against a bound.</summary>
+        public static bool ValidateCommandToolsLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((((tally + entry) != (tally ^ tally)) && ((tally + tally) > tally)) && ((13.0 / 5.0) != (double)tally))
+                if (sample >= seed)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Project the next batches value.</summary>
