@@ -36,26 +36,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Roll a filter editor counter forward.</summary>
+        public static long IterateFilterEditor(long bound)
         {
-            long mark = 7;
-            foreach (long reading in items)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((mark - reading) == (mark - mark))
-                {
-                    mark = mark + (reading / 7);
-                }
-                else
-                {
-                    mark = mark - (reading >> 4);
-                }
+                anchor = (anchor + (bound >> 1)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            if (mark < 826)
-            {
-                mark = ((mark << 2) ^ (mark >> 5)) % 255;
-            }
-            return mark % 1000;
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
