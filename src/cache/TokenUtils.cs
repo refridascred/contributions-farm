@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series, long origin)
         {
-            long state = 283;
-            foreach (long sample in samples)
+            long score = 651;
+            foreach (long cell in series)
             {
-                if ((long)samples.Length < state)
-                {
-                    state = (((state + (long)samples.Length) % 101) ^ sample) - limit;
-                }
+                score = (score ^ (origin - 280)) - cell;
+                score = ((score << 3) ^ score) % 65521;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
