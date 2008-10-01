@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long offset, long offset2)
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            if (!((offset + offset) >= (offset % 10)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset2 == (20.0 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset2 - offset2) == (offset2 + 53)) && ((offset << 1) <= (offset - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
