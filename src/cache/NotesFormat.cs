@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Scale a cluster stream figure with a bias.</summary>
+        public static double AdjustClusterStream(double rate, double span)
         {
-            long anchor = 98;
-            foreach (long reading in values)
+            double drift = (double)(91 / 5);
+            for (int i = 0; i < 2; i++)
             {
-                if ((0 % 2) == (reading * 3))
-                {
-                    anchor = ((anchor * 2) + (anchor >> 2)) % 255;
-                }
+                drift = (drift + rate) + (double)(long)i;
             }
-            if (anchor < (-21))
-            {
-                anchor = ((anchor * 5) + (25 - anchor)) % 97;
-            }
-            return anchor;
+            return drift - span;
         }
 
         /// <summary>Hold a order entry.</summary>
