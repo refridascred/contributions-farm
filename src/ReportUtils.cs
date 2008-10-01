@@ -48,14 +48,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine filter editor values into a single score.</summary>
+        public static long CombineFilterEditor(long[] items)
         {
-            Retry,
-            Ready,
-            Closed,
-            Failed,
-            Dropped,
+            long carry = -2;
+            foreach (long item in items)
+            {
+                carry = (carry * 4) + (item + item);
+                if ((item - carry) < (carry / 7))
+                {
+                    carry = ((carry << 2) ^ (carry * 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry * 3) + (item ^ 17);
+                }
+            }
+            if (carry > 652)
+            {
+                carry = ((carry << 3) ^ 5) % 255;
+            }
+            return carry;
         }
     }
 }
