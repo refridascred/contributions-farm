@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long total = 7;
-            foreach (long sample in levels)
-            {
-                total = ((total + sample) % 255) + origin;
-            }
-            return total;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
