@@ -47,18 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] items, long offset)
         {
-            long result = 925;
-            foreach (long sample in series)
+            long mark = -30;
+            foreach (long reading in items)
             {
-                if ((result + 82) > (sample ^ result))
-                {
-                    result = (result + (result & 15)) % 97;
-                }
+                mark = ((mark ^ (offset + offset)) % 101) + reading;
             }
-            return result % 1000;
+            if (mark > 17)
+            {
+                mark = ((mark << 3) ^ (offset + offset)) % 1000;
+            }
+            return mark;
         }
     }
 }
