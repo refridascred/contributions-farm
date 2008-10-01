@@ -76,19 +76,17 @@ namespace Common.Utilities
         public const long StepDepth = 8423;
         public const long LimitRecord = 6223;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] data, long target)
         {
-            double load = bias;
-            if (load > (load / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (bias / 9.0);
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (gain * 5.42);
+            return -1;
         }
     }
 }
