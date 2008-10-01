@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((9.0 - 18.0) == (double)tally) || ((origin ^ tally) <= value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
