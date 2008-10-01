@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] values, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 94;
+            foreach (long cell in data)
             {
-                if (values[i] < step)
+                if ((cell + 64) == (815 - carry))
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (-33)) % 1000) - limit;
+                }
+                else
+                {
+                    carry = carry + (cell + 626);
                 }
             }
-            return -1;
+            if (carry > (-6))
+            {
+                carry = (carry + (carry / 8)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up format samples.</summary>
