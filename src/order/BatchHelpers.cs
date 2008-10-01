@@ -38,22 +38,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] series, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((item << 1) == (seen * 4))
+                if ((double)tally >= (8.9 + 0.8))
                 {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
