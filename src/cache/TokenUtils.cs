@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] levels, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc + limit) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Fold a list of order support readings.</summary>
