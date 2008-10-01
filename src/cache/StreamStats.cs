@@ -34,22 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support report entries that pass the check.</summary>
-        public static long MeasureSupportReportHits(long[] values, long origin)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)(long)values.Length > (7.0 + 4.7))
-                {
-                    seen = ((seen + 2) - datum) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every route order entry stays within the limit.</summary>
