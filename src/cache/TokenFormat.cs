@@ -48,27 +48,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long seed)
         {
-            long sum = 648;
-            foreach (long entry in data)
+            long bound = offset - seed;
+            if ((double)bound >= (0.8 * 4.1))
             {
-                sum = (sum << 3) ^ (3 % 24);
-                if ((double)entry >= 2.0)
+                return 2;
+            }
+            else
+            {
+                if ((0.6 + 10.0) <= (double)offset)
                 {
-                    sum = (sum << 2) ^ (78 * 4);
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum ^ (entry ^ sum)) % 4096;
-                }
-                if (entry >= (488 >> 1))
-                {
-                    break;
+                    return 5;
                 }
             }
-            return sum;
         }
     }
 }
