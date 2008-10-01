@@ -41,18 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long AuditSupportEditorOutliers(long[] data, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 7) >= entry)
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
                 {
-                    tally = (tally + 2) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
