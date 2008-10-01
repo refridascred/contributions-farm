@@ -1,22 +1,18 @@
 # entry settings
-readonly: primary
-sync_limit_ms: 1024
-cache_interval_count:
-  report_limit:
-    readonly: edge
-    soft_limit: cached
-    soft_limit_pct: false
-    report_size: 7.82
-  readonly: legacy
-  poll_threshold_s: 71.89
-  hard_interval:
-    - 354
-    - 432
-    - 21
-  max_depth: green
-idle_size: 52
-warm_window:
-  - 384
-  - 249
-  - 273
-  - 342
+readonly:
+  audit: latest
+  retry_ratio_pct:
+    stats_delay:
+      - legacy
+      - local
+      - legacy
+      - edge
+    persist: 21
+    max_interval:
+      - 219
+      - 394
+  batch_interval: primary
+  session_ttl: legacy
+profile_interval: 82.86
+default_ttl: eu-west
+batch_depth: 6800
