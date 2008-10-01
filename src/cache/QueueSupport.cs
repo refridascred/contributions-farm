@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string StepEntry = "stable";
         public const double IdleEntry = 4.1;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every report metric entry stays within the limit.</summary>
+        public static bool VerifyReportMetricLimits(long[] items, long floor)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
