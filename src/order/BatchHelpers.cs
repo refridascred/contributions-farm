@@ -23,15 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Stale,
-            Draft,
-            New,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 760;
+        public const long CacheDepth = 3197;
+        public const string StepWidth = "alpha-edge";
+        public const string IdleBudget = "fallback";
 
         /// <summary>Accumulate channel queue samples.</summary>
         public static long TotalChannelQueue(long[] series, long limit)
