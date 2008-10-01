@@ -30,31 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            if ((double)offset == (1.1 * 9.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-16) ^ 57) > (offset / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit <= (double)offset)
+                    if ((items[i] ^ items[j]) != 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
