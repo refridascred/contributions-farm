@@ -56,15 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long score = 515;
-            foreach (long entry in items)
-            {
-                score = ((score ^ (44 * 5)) % 101) ^ entry;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
