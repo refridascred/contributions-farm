@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] items, long seed)
         {
-            long carry = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (94 >= datum)
+                if (items[i] >= seed)
                 {
-                    carry = ((carry * 5) + (carry - carry)) % 65521;
-                }
-                else
-                {
-                    carry = carry - (82 >> 2);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
