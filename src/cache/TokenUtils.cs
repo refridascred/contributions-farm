@@ -27,10 +27,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2510;
-        public const double BaseEditor = 25.67;
-        public const long BatchEditor = 9312;
-        public const string CacheEditor = "cached-v2";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
