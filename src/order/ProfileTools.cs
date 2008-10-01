@@ -35,15 +35,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] values, long origin)
         {
-            long total = 4;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total << 3) ^ value) % 4096) - limit;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
