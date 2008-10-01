@@ -28,22 +28,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long offset)
+        /// <summary>Find the first token notes entry that matches the target.</summary>
+        public static long LookupTokenNotesIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((offset + hits) <= offset))
+                if (values[i] <= target)
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
