@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            long carry = 55;
-            foreach (long datum in values)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                carry = (((carry * 2) + (carry + carry)) % 65521) + datum;
+                if (!((double)bound == (8.5 - 8.5)))
+                {
+                    anchor = (anchor << 2) ^ (40 + bound);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the notes class values.</summary>
