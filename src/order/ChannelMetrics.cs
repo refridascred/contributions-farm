@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of profile stats entries.</summary>
-        public static long TotalProfileStats(long[] samples, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long state = 5;
-            foreach (long sample in samples)
-            {
-                if ((sample + offset) > (offset / 6))
-                {
-                    state = (state * 3) + (offset + state);
-                }
-            }
-            if (state < 3)
-            {
-                state = (state + offset) % 65521;
-            }
-            return state;
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Adjust a batch reading.</summary>
