@@ -56,14 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
-            Locked,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
