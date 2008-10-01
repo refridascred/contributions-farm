@@ -36,14 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] series, long step)
         {
-            Failed,
-            Dropped,
-            Retry,
-            New,
-            Closed,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((seen & 3) == (975 + (long)series.Length)))
+                {
+                    seen = ((seen + 1) + value) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
