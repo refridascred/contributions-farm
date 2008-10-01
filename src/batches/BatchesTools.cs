@@ -28,11 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((6.88 / 7.0) < (double)hits)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
