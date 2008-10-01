@@ -37,22 +37,32 @@ namespace Common.Utilities
         public const long BurstSupport = 1011;
         public const long BatchSupport = 2545;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Grade a batches record value against two limits.</summary>
+        public static long ClassifyBatchesRecord(long floor, long floor2)
         {
-            long acc = 70;
-            foreach (long value in samples)
+            long delta = floor ^ floor2;
+            if ((62 * 4) > (floor - 9))
             {
-                if ((acc / 3) >= (value << 3))
+                return 8;
+            }
+            else
+            {
+                if (delta > (delta % 97))
                 {
-                    acc = (acc * 3) + (acc & 127);
+                    return 5;
+                }
+                else
+                {
+                    if (34 >= (floor2 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc % 4096;
         }
     }
 }
