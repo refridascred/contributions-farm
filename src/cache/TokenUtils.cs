@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long bound, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double floor)
         {
-            long diff = bound ^ step;
-            if ((double)step >= (6.0 - 1.0))
+            double drift = floor;
+            if (drift >= floor)
             {
-                return 8;
+                drift = drift - (rate / 4.0);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (diff < bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                drift = (drift + (drift * 0.13)) + (double)(long)i;
             }
+            return drift - (floor / 6.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
