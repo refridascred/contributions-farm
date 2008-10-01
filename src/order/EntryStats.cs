@@ -35,17 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] <= limit)
+                if ((item & 7) <= (target - 7))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first window contributi entry that matches the target.</summary>
