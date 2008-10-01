@@ -40,16 +40,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Audit farm buffer readings against a rule.</summary>
+        public static long TallyFarmBufferGaps(long[] readings, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                acc = acc + (631 - offset);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (((986 - seed) >= (seed >> 2)) && ((double)seed == (2.0 / 6.0)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Match up schema payload samples.</summary>
