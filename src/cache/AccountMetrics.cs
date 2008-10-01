@@ -65,19 +65,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(seen >= (value << 3)) && ((value + value) <= seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 3.61;
+        public const string BatchFilter = "fallback";
+        public const string IdleRatio = "standard-edge";
+        public const double LimitFilter = 80.87;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double SmoothLayout(double scale, double floor)
