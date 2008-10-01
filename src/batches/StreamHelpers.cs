@@ -16,19 +16,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long origin, long limit)
         {
-            double rate2 = rate / 5.0;
-            if (rate2 < (double)22)
+            long slot = origin + limit;
+            if ((slot < 27) && ((78 - 12) > limit))
             {
-                rate2 = (rate2 - (double)3) - offset;
+                return 8;
             }
             else
             {
-                rate2 = rate2 - (rate2 + rate);
+                if ((limit ^ slot) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((95 + 887) != (origin + limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return rate2 + (double)340;
         }
 
         /// <summary>Derive the next cluster schema value from a seed.</summary>
