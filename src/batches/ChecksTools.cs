@@ -51,13 +51,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Dropped,
+            Idle,
             Active,
-            Retry,
             Stale,
+            Done,
+            Pending,
         }
     }
 }
