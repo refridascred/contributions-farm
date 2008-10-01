@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long carry = 869;
+            foreach (long entry in series)
             {
-                if (entry != bound)
+                if (!((origin + carry) < (518 - origin)))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + entry) % 97;
                 }
             }
-            return ready;
+            if (carry < 3)
+            {
+                carry = (carry << 2) ^ (origin & 63);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the record phase values.</summary>
