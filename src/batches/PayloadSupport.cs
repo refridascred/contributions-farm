@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2579;
-        public const long HardTimeout = 9319;
-        public const long HardRatio = 1700;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] samples)
