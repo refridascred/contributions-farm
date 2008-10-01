@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit filter record readings against a rule.</summary>
-        public static long MeasureFilterRecordGaps(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((4.46 / 2.0) >= (double)sample)
+                if ((sum <= (offset >> 3)) && ((sum / 8) < (offset ^ 6)))
                 {
-                    hits = hits + 3;
+                    sum = ((sum * 2) + (offset % 12)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
