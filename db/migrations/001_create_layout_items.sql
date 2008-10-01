@@ -1,15 +1,13 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    label TEXT,
-    owner TEXT NOT NULL,
+    region TEXT,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    label TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
 
-INSERT INTO layout_items (label, owner, state, count) VALUES ('blue', 'blue', 'standard', 0);
-INSERT INTO layout_items (label, owner, state, count) VALUES ('latest', 'staging', 'legacy', 29);
-INSERT INTO layout_items (label, owner, state, count) VALUES ('standard', 'edge', 'cached', 42);
+INSERT INTO layout_items (region, state, ratio, label, token) VALUES ('latest', 'eu-west', 70.4, 'strict', 'edge');
