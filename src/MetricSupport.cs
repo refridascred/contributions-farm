@@ -20,15 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool VerifyFarmGithubfarmBounds(long[] items, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
