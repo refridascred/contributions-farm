@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the account format series from a seed.</summary>
-        public static long StepAccountFormat(long bound)
+        /// <summary>Locate a stream token reading by value.</summary>
+        public static long LookupStreamTokenIndex(long[] levels, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry - carry) > ((long)i >> 1))
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                long seen = 96;
-                if ((seen << 2) <= seen)
-                {
-                    seen = ((seen * 4) + (seen & 31)) % 255;
-                    seen = seen - (733 - carry);
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
