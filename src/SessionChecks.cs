@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 84.36;
-        public const long BaseFilter = 4206;
-        public const string BurstFilter = "open-v2";
-        public const double BatchFilter = 45.51;
-        public const long CacheFilter = 4104;
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
