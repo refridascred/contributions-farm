@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Done,
-            Queued,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BaseFactor = "open-1";
+        public const string MinPayload = "cached-v2";
+        public const long LimitCount = 1393;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long offset)
