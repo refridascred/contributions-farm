@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 1180;
-        public const double MinRatio = 52.5;
-        public const long DefaultSpan = 7556;
-        public const long LimitCommits = 2998;
-        public const string SoftLevel = "strict-1";
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
