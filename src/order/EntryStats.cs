@@ -57,17 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window contributi entry that matches the target.</summary>
-        public static long LocateWindowContributiIndex(long[] values, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (matches >= (reading >> 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
