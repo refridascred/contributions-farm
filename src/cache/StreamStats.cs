@@ -38,28 +38,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long floor, long limit)
         {
-            if ((double)bound >= 2.0)
+            long offset = floor ^ limit;
+            if ((double)limit >= (14.0 + 2.0))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((double)bound == (4.0 - 17.0))
+                if ((limit / 6) <= (floor - floor))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit % 8) > bound)
+                    if ((floor * 4) >= offset)
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 6;
                     }
                 }
             }
