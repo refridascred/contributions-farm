@@ -32,13 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Locked,
+            Retry,
+            Done,
             New,
-            Idle,
-            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
