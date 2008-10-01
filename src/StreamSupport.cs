@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc << 3) ^ (acc + (long)i)) % 101;
+                acc = (acc + (seed + 6)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm entry.</summary>
