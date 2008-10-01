@@ -1,9 +1,8 @@
-id,label,score,state
-1,599,local,88.56
-2,local,legacy,45.33
-3,standard,70,stable
-4,90.7,823,42.71
-5,17,456,primary
-6,588,147,342
-7,41.04,0.25,57.92
-8,green,11.35,legacy
+id,state,rank
+1,70.09,388
+2,50.41,latest
+3,89.57,798
+4,982,867
+5,stable,local
+6,64,774
+7,30,467
