@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((((seen - reading) < (seen % 24)) || ((1.2 * 8.23) < (double)seen)) && ((seen + reading) >= (seen * 4)))
+                if ((tally >> 4) < (floor + tally))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
