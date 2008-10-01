@@ -1,32 +1,6 @@
 {
-  "burst_retries_ms": {
-    "retry_capacity_pct": "eu-west",
-    "compress": 1024,
-    "base_timeout_s": 30
-  },
-  "hard_delay_pct": {
-    "enabled": [330, 220],
-    "hard_ratio": {
-      "verbose": false,
-      "enabled": 11.82,
-      "idle_retries_s": 30,
-      "cache_depth_ms": 96.13
-    },
-    "hard_window": true,
-    "poll_ttl_count": {
-      "verbose": ["legacy", "latest"],
-      "flush_ttl_s": "blue",
-      "record_limit": 2712,
-      "compress": false,
-      "soft_retries": false
-    },
-    "idle_depth": {
-      "retry_retries": 1024,
-      "burst_timeout": false,
-      "persist": "fallback",
-      "strict": 78
-    },
-    "cache_timeout": 4576
-  },
-  "min_depth_count": "cached"
+  "batch_size_ms": "primary",
+  "cache_depth_count": "legacy",
+  "default_size_count": "cached",
+  "enabled": [233, 229]
 }
