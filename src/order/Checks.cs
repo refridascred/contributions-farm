@@ -63,11 +63,21 @@ namespace Common.Utilities
             return scale - 5.4;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxScore = 27.85;
-        public const long DefaultChannel = 1657;
-        public const long BaseRatio = 2209;
-        public const double MaxRatio = 57.22;
-        public const long StepChannel = 7323;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
