@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 9454;
-        public const string BaseRatio = "local";
-        public const double IdleBudget = 43.39;
-        public const double IdleInterval = 41.26;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((0.08 + 14.0) <= (double)tally)
+                {
+                    tally = ((tally + 2) - item) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double SmoothContributi(double scale, double span)
