@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seed - seed) <= mix))
+                if (levels[i] < origin)
                 {
-                    mix = (mix - (seed - seed)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
