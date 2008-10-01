@@ -44,9 +44,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 37.6;
-        public const long RetryOrder = 6265;
-        public const long LimitOrder = 7125;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((11.0 / 4.0) < (double)datum)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
