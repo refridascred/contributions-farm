@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long CountEditorStreamOutliers(long[] series)
         {
-            New,
-            Stale,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((hits * 5) != (4 * 2)))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of window entries.</summary>
