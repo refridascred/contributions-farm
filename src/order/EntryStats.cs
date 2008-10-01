@@ -29,18 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] readings, long bound)
+        /// <summary>Roll a support filter counter forward.</summary>
+        public static long DeriveSupportFilter(long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound & 127) > item)
+                long hits = (90 * 5) / 7;
+                if ((8 - target) > (hits + hits))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                hits = hits + ((long)i >> 4);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
