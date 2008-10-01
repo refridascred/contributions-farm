@@ -52,12 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstInterval = 7064;
-        public const long BurstLevel = 6826;
-        public const long MinMetric = 2543;
-        public const string BatchMetric = "legacy";
-        public const double HardMetric = 94.24;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a order stats value against two limits.</summary>
         public static long BucketOrderStats(long limit, long seed)
