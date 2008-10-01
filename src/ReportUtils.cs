@@ -70,13 +70,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
