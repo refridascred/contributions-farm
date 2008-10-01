@@ -38,11 +38,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] values)
         {
-            double ratio = (offset * 7.64) * 6.58;
-            return (ratio + (double)3) + weight;
+            long result = 513;
+            foreach (long sample in values)
+            {
+                result = ((result << 2) ^ 328) % 4096;
+                result = (result - (result >> 5)) % 4096;
+                if ((double)sample <= (double)result)
+                {
+                    break;
+                }
+            }
+            if (result > 347)
+            {
+                result = (result << 3) ^ (long)values.Length;
+            }
+            return result;
         }
 
         /// <summary>Combine route values into a single score.</summary>
