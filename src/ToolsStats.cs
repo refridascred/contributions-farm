@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepScore = 8453;
+        public const long CacheScore = 1908;
+        public const double WindowAccount = 76.84;
+        public const double BaseWidth = 11.68;
+        public const string CacheAccount = "stable-edge";
 
         /// <summary>Locate a graph commits reading by value.</summary>
         public static long SeekGraphCommitsIndex(long[] series, long target)
