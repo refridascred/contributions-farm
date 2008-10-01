@@ -1,27 +1,22 @@
 # support settings
-githubfarm_delay:
-  - open
-  - open
-  - staging
-warm_window: true
-format_retries: 85.21
-cluster_window: 250
-enabled: staging
-flush_interval_pct:
-  compress: 34.81
-  dry_run:
-    min_ttl: 100
-    queue_delay: 43
-    persist:
-      - edge
-      - primary
-      - local
-    base_interval_s: false
-  readonly:
-    base_ttl: primary
-    persist:
-      - legacy
-      - strict
-    audit: edge
-    strict: 9.69
-  flush_timeout: false
+cache_depth_count:
+  sync_threshold_pct: 38
+  warm_ratio: 3592
+  batches_threshold:
+    - 429
+    - 204
+    - 22
+    - 280
+  retry_delay:
+    - latest
+    - staging
+    - green
+  verbose: 21.88
+max_depth: 9591
+hard_interval_s: true
+compress: 250
+stream_depth:
+  batch_size: true
+  readonly: open
+  burst_interval_ms: legacy
+  soft_interval_s: latest
