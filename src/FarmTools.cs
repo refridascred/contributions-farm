@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long floor2)
-        {
-            if (((floor2 - floor2) <= (floor2 + 53)) || (576 <= (floor + floor2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 2) != (floor2 + floor2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor == (9.6 * 1.89)) && (floor2 <= (floor2 << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((floor % 2) <= floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "latest-v2";
+        public const long BaseContributi = 7176;
+        public const long SoftBudget = 801;
+        public const long BurstContributi = 1543;
+        public const double RetryInterval = 17.11;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowWidth = 1241;
