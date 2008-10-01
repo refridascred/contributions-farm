@@ -1,7 +1,5 @@
 {
-  "warm_capacity_ms": 98,
-  "burst_retries": "edge",
-  "counter_depth": 85,
-  "default_depth": 250,
-  "cache_depth": "eu-west"
+  "min_depth_pct": 250,
+  "default_capacity_s": ["blue", "standard", "strict", "open"],
+  "compress": "staging"
 }
