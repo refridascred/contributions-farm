@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] data, long offset)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long AuditBatchesCommitsHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (((offset - 80) >= (offset & 15)) || ((value - count) >= (value % 60)))
+                if (!(((seen / 5) > (seen ^ cell)) && ((double)seen != (4.4 * 4.0))))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a stream summary.</summary>
