@@ -34,14 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long limit)
         {
-            Stale,
-            New,
-            Active,
-            Paused,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first window contributi entry that matches the target.</summary>
