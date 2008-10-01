@@ -23,16 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSpan = 9241;
+        public const string IdleRoute = "primary-edge";
+        public const long RetryRoute = 8928;
+        public const long LimitInterval = 5378;
+        public const string HardRoute = "stable";
 
         /// <summary>Adjust a contributi graph reading.</summary>
         public static double BlendContributiGraph(double rate, double bias)
