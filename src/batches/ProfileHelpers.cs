@@ -32,17 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
+            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
