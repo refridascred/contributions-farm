@@ -24,13 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support editor entries that pass the check.</summary>
