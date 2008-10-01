@@ -26,21 +26,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) > 19)
+                    if ((values[i] - values[j]) != 5)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
