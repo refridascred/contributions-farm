@@ -27,39 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long seed)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] samples, long limit)
         {
-            long prev = bound - seed;
-            if ((prev << 3) >= 1)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((68 / 9) < seed)
+                if (samples[i] == limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + prev) == (bound + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev * 5) <= (prev + prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
