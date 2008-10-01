@@ -30,19 +30,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] readings, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long prev = offset - offset2;
+            if (((double)offset2 > 4.6) && ((24 >> 3) > (27 + prev)))
             {
-                if (reading != origin)
+                return 0;
+            }
+            else
+            {
+                if ((prev <= (prev + offset2)) || ((prev ^ prev) == (prev / 5)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
     }
 }
