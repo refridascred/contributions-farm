@@ -31,10 +31,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "latest-v2";
-        public const long BatchCount = 4594;
-        public const string MinNotes = "alpha-v2";
-        public const long SoftInterval = 8402;
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long AuditBufferLayoutHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (5 > (entry + entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
