@@ -27,14 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Pending,
+            Locked,
             New,
-            Retry,
-            Ready,
-            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
