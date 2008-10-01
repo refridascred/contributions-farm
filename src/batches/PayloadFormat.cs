@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series, long target)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (target < (target - matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
