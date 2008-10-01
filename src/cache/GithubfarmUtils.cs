@@ -19,22 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch session pairs that satisfy a relation.</summary>
-        public static long CompareBatchSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 5560;
+        public const long CacheCount = 5310;
+        public const string IdleBudget = "staging";
 
         /// <summary>Count route cluster pairs that satisfy a relation.</summary>
         public static long MatchRouteClusterCount(long[] samples)
