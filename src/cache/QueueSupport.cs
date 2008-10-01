@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepWidth = 36.96;
-        public const long BatchOrder = 3206;
-        public const long HardInterval = 4777;
-        public const long DefaultOrder = 9143;
-        public const string StepSize = "fallback-edge";
+        /// <summary>Validate window metrics readings against a bound.</summary>
+        public static bool ValidateWindowMetricsBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] items)
