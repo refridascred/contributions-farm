@@ -34,18 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit report githubfarm readings against a rule.</summary>
-        public static long AuditReportGithubfarmHits(long[] readings)
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool ValidateProfileChannelLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (!!((matches % 60) == (matches / 9)))
+                if (entry != step)
                 {
-                    matches = (matches + 2) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
