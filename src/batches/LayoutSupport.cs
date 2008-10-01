@@ -66,22 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile channel values into a single score.</summary>
-        public static long TallyProfileChannel(long[] readings)
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long TallyRouteMetricOutliers(long[] readings, long limit)
         {
-            long anchor = 756;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (!((6.38 / 6.0) < (double)anchor))
+                if (((double)sample > (double)limit) || !((double)sample >= (8.3 + 9.44)))
                 {
-                    anchor = (((anchor * 2) + ((long)readings.Length & 3)) % 65521) ^ item;
+                    tally = tally + 1;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Hold a metrics entry.</summary>
