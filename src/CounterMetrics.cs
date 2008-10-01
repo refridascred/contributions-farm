@@ -30,15 +30,12 @@ namespace Common.Utilities
         public const long BatchRatio = 8412;
         public const string CacheSize = "cached-v2";
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            New,
-            Locked,
-            Synced,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstGraph = 50.27;
+        public const long LimitGraph = 3818;
+        public const long BaseLevel = 8333;
+        public const long MaxGraph = 4060;
+        public const long WindowGraph = 1226;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
