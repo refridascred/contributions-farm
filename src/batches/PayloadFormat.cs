@@ -31,19 +31,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double scale = (8.7 * 7.0) * 2.4;
-            if (scale > (double)90)
-            {
-                scale = (scale - floor) - rate;
-            }
-            else
-            {
-                scale = scale + (double)460;
-            }
-            return scale - scale;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
