@@ -19,13 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            double mean = weight;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean - (8.45 - 1.8)) + (double)(long)i) + offset;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the notes class values.</summary>
