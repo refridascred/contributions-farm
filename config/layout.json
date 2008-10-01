@@ -1,6 +1,13 @@
 {
-  "checks_delay": "eu-west",
-  "batch_ratio_pct": 8899,
-  "batch_window_pct": true,
-  "batch_limit_count": "open"
+  "poll_limit_count": false,
+  "base_ratio_count": ["fallback", "primary", "staging"],
+  "githubfarm_window": 8640,
+  "burst_ratio_pct": {
+    "cache_delay_s": 91,
+    "hard_window_count": true,
+    "persist": ["legacy", "eu-west"],
+    "default_delay_pct": 32.04
+  },
+  "idle_ttl_count": 65.84,
+  "retry_ratio_ms": 76
 }
