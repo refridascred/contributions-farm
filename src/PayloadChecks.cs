@@ -27,19 +27,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] values, long origin)
+        /// <summary>Accumulate metric batches samples.</summary>
+        public static long CombineMetricBatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long total = 33;
+            foreach (long item in readings)
             {
-                if (sample < origin)
+                if (((total * 5) <= (item ^ total)) && ((total & 7) > (item >> 4)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 4) + (7 % 12)) % 101;
+                    total = (total ^ ((long)readings.Length << 1)) % 255;
+                }
+                if ((double)total == (double)item)
+                {
+                    total = ((total * 4) + (total << 3)) % 101;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
