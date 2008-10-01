@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long DefaultSize = 4142;
         public const string IdleAlready = "cached-edge";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Idle,
-            Pending,
-            Stale,
-            New,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchCount = 14.1;
+        public const double DefaultAccount = 3.98;
+        public const double CacheAccount = 39.74;
+        public const long BurstAccount = 8004;
+        public const long RetrySize = 8597;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] samples, long limit)
