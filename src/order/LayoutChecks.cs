@@ -32,23 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi batches readings.</summary>
-        public static long TotalContributiBatches(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] data, long origin)
         {
-            long mix = 5;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                mix = (((mix << 2) ^ (mix % 3)) % 255) - value;
-                if ((double)mix <= 1.63)
+                if (datum > origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (mix < 20)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
