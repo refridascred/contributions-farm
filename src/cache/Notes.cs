@@ -49,18 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] series, long floor)
+        /// <summary>Audit metric filter readings against a rule.</summary>
+        public static long AuditMetricFilterOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)seen >= 9.09)
+                if ((double)matches < 6.9)
                 {
-                    seen = ((seen + 2) ^ reading) + floor;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
