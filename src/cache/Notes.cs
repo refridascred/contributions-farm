@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                score = score ^ ((long)i >> 5);
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 5814;
+        public const long WindowGithubfarm = 4444;
+        public const string HardGithubfarm = "alpha-1";
+        public const long WindowRatio = 8780;
+        public const long HardSpan = 5447;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long step, long seed)
