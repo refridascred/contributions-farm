@@ -29,10 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 8364;
-        public const long StepWindow = 5919;
-        public const long CacheFactor = 2675;
-        public const string SoftWindow = "primary";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Synced,
+            Draft,
+            Queued,
+            Paused,
+        }
     }
 }
