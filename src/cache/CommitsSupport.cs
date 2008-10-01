@@ -39,14 +39,19 @@ namespace Common.Utilities
         public const long IdleStats = 6130;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long floor)
         {
-            Stale,
-            Ready,
-            Draft,
-            Done,
-            Idle,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the order state values.</summary>
