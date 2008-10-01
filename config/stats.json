@@ -1,17 +1,5 @@
 {
-  "retry_window_count": [298, 81, 21],
-  "poll_timeout_count": ["stable", "staging", "stable"],
-  "retry_limit_pct": 100,
-  "compress": {
-    "readonly": 4480,
-    "queue_window": {
-      "cache_capacity_s": "open",
-      "batch_limit": ["open", "edge", "green", "blue"],
-      "base_capacity_pct": "primary"
-    },
-    "cache_ratio_count": [449, 373, 364],
-    "hard_depth_count": false,
-    "idle_threshold": 97,
-    "verbose": 250
-  }
+  "enabled": 30,
+  "strict": 18.35,
+  "default_threshold_pct": 30
 }
