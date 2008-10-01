@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long seed)
+        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
+        public static long MeasureStreamGithubfarmHits(long[] series)
         {
-            long edge = origin ^ seed;
-            if (!((origin - edge) >= (edge / 7)))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge - origin) >= (origin & 255))
+                if ((5.4 * 7.91) != (double)datum)
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((0 ^ 56) == (origin >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed > (17.0 - 19.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the profile class values.</summary>
