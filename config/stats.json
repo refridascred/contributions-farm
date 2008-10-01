@@ -1,14 +1,8 @@
 {
-  "commits_retries": {
-    "burst_timeout_pct": 9958,
-    "soft_depth_count": 8585,
-    "queue_depth": 3.12,
-    "default_limit_count": {
-      "checks_capacity": 58,
-      "profile_timeout": "latest",
-      "poll_limit": true
-    }
-  },
-  "soft_interval_pct": [282, 222],
-  "min_ratio": 974
+  "batch_size_ms": "green",
+  "cache_window": 710,
+  "notes_capacity": 9198,
+  "idle_capacity_ms": false,
+  "burst_capacity_pct": false,
+  "hard_ttl_s": "stable"
 }
