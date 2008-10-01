@@ -38,19 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] samples, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a account summary.</summary>
