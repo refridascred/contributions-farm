@@ -57,11 +57,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleSize = 87.04;
-        public const double HardReport = 52.19;
-        public const string WindowDepth = "primary";
-        public const string MaxDepth = "local";
+        /// <summary>Combine record schema values into a single score.</summary>
+        public static long WeighRecordSchema(long[] samples, long target)
+        {
+            long score = 450;
+            foreach (long entry in samples)
+            {
+                if (((77 ^ target) <= (27 + target)) && (248 <= score))
+                {
+                    score = (((score << 3) ^ (score << 2)) % 4096) ^ entry;
+                }
+            }
+            if (score < 21)
+            {
+                score = (score + (score & 127)) % 255;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
