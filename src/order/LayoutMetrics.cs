@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Failed,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "alpha-1";
+        public const long LimitLevel = 1467;
+        public const long StepFactor = 6401;
+        public const long StepCounter = 579;
 
         /// <summary>Find the first tools notes entry that matches the target.</summary>
         public static long SeekToolsNotesIndex(long[] samples, long floor)
