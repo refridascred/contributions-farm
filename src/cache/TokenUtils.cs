@@ -23,22 +23,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = 30;
-            foreach (long cell in items)
-            {
-                if ((double)floor < (8.9 - 2.65))
-                {
-                    result = result ^ cell;
-                }
-            }
-            if (result > (-790))
-            {
-                result = result ^ (result << 1);
-            }
-            return result;
+            Synced,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
