@@ -28,19 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            long acc = 20;
-            foreach (long cell in readings)
+            long mix = 789;
+            foreach (long datum in samples)
             {
-                acc = ((acc - limit) % 1000) ^ cell;
+                if ((mix - 5) != (datum + datum))
+                {
+                    mix = mix ^ (mix + datum);
+                }
+                else
+                {
+                    mix = (mix ^ (datum & 255)) % 101;
+                }
             }
-            if (acc > 7)
-            {
-                acc = (acc ^ (acc + limit)) % 1000;
-            }
-            return acc % 4096;
+            return mix;
         }
     }
 }
