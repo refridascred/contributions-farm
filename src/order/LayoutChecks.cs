@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series, long step)
         {
-            long cur = limit - step;
-            if (!((cur * 2) < 661))
+            long total = 28;
+            foreach (long sample in series)
             {
-                return 2;
+                total = ((((total << 3) ^ 972) % 101) + sample) + step;
             }
-            else
-            {
-                if ((step <= (step + limit)) || ((limit - cur) == (cur * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((2.5 * 9.4) <= (double)cur) || (step < (limit * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of contributi batches readings.</summary>
