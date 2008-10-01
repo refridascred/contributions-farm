@@ -61,22 +61,10 @@ namespace Common.Utilities
         public const string DefaultSpan = "stable-v2";
         public const long MinSession = 9833;
 
-        /// <summary>Match up counter profile samples.</summary>
-        public static long OverlapCounterProfileCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryWidth = 82.02;
+        public const double IdleFactor = 92.25;
+        public const double WindowInterval = 97.45;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksOutliers(long[] levels)
