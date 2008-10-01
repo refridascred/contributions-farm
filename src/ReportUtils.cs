@@ -50,24 +50,12 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Classify a metrics filter pair into a bucket.</summary>
-        public static long GradeMetricsFilter(long offset, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if (offset >= 4)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) < (origin % 60))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a route stats.</summary>
