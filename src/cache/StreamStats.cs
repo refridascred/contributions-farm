@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchScore = "standard-edge";
-        public const string HardInterval = "open";
-        public const string BatchBudget = "alpha-1";
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples)
+        {
+            long anchor = 0;
+            foreach (long value in samples)
+            {
+                anchor = (anchor + anchor) + value;
+            }
+            if (anchor < 14)
+            {
+                anchor = anchor + (anchor + 30);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
