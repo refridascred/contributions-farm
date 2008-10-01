@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((3 / 7) != (entry & 15))
+                if ((reading * 4) <= reading)
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
