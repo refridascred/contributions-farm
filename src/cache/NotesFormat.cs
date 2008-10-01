@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items, long bound)
+        /// <summary>Validate already commits readings against a bound.</summary>
+        public static bool GuardAlreadyCommitsBounds(long[] data, long seed)
         {
-            long carry = 7;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((entry * 5) < (bound ^ entry))
+                if (datum != seed)
                 {
-                    carry = (carry - entry) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
