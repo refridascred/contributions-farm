@@ -37,18 +37,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally >= (8.9 + 0.8))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
