@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseCount = "fallback-v2";
-        public const double BurstProfile = 0.16;
-        public const string StepBudget = "standard-1";
-        public const double WindowProfile = 50.34;
-        public const long BatchBudget = 7162;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long origin, long limit)
+        {
+            if ((origin + 453) <= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit ^ limit) == (12 + 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 1) > (origin + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ScaleLayout(double rate, double offset)
