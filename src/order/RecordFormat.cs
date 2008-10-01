@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit filter record readings against a rule.</summary>
+        public static long MeasureFilterRecordGaps(long[] levels)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((4.46 / 2.0) >= (double)sample)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank token input into a small class.</summary>
