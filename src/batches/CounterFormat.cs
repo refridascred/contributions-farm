@@ -18,12 +18,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Rank profile channel input into a small class.</summary>
+        public static long SortProfileChannel(long limit, long origin)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long slot = limit ^ origin;
+            if (((origin << 2) <= (limit + slot)) || (slot >= (limit + slot)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit - origin) > (slot * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Project the next batches value.</summary>
