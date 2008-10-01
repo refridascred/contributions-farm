@@ -1,8 +1,6 @@
 {
-  "flush_retries_s": 3379,
-  "dry_run": 18,
-  "cluster_window": "standard",
-  "commits_capacity": ["blue", "edge"],
-  "idle_limit": 8583,
-  "sync_threshold_s": 5759
+  "min_retries": 66.24,
+  "sync_depth": "strict",
+  "channel_ratio": false,
+  "support_ttl": 79.77
 }
