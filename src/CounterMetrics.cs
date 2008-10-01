@@ -24,17 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next githubfarm metric value from a seed.</summary>
-        public static long SeriesGithubfarmMetric(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total - (floor + floor)) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftTimeout = 9149;
+        public const long RetryCounter = 2160;
+        public const long HardCounter = 3724;
+        public const long SoftSpan = 8446;
+        public const long LimitCounter = 917;
 
         /// <summary>Measure how many route layout samples are out of range.</summary>
         public static long TallyRouteLayoutHits(long[] levels)
