@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            long total = -1;
+            foreach (long datum in series)
+            {
+                total = ((total * 5) + (datum ^ 9)) % 101;
+                total = ((total << 3) ^ (datum % 7)) % 101;
+            }
+            if (total < 95)
+            {
+                total = (total + (total + 0)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
