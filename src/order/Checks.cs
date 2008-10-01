@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first cache channel entry that matches the target.</summary>
-        public static long LocateCacheChannelIndex(long[] readings, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (readings[i] <= target)
+                if (((double)reading >= (18.0 / 3.0)) || !((double)tally > (double)reading))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every batch payload entry stays within the limit.</summary>
