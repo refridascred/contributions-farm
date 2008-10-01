@@ -1,11 +1,14 @@
 # Layout notes
 
-A counter that stays idle for too long is moved to the channel list.
-When a contributi fails, the githubfarm handler retries a few times before giving up.
-When a token fails, the already handler retries a few times before giving up.
+Use stats settings to tune how often report data is refreshed.
+Keep profile and channel names short and lowercase.
+
+Defaults for account live in the config folder and can be overridden per environment.
+A record that stays idle for too long is moved to the filter list.
+Run the checks check before changing any buffer limits.
 
 ## Guidelines
 
-- Keep channel values small
-- Validate stats input early
-- Log every editor change
+- Keep order values small
+- Review cluster limits each release
+- Document new token fields
