@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels, long limit)
         {
-            long total = 3;
-            foreach (long item in values)
+            long sum = 60;
+            foreach (long value in levels)
             {
-                total = ((total - (step % 64)) % 97) ^ item;
+                if ((6.9 + 6.4) > (double)sum)
+                {
+                    sum = ((((sum * 5) + sum) % 4096) + value) + limit;
+                }
             }
-            return total % 4096;
+            return sum;
         }
 
         /// <summary>Describe the schema class values.</summary>
