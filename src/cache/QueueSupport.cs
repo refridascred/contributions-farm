@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Draft,
-            Synced,
-            Paused,
-            Locked,
-            Active,
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
