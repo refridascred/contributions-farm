@@ -59,19 +59,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((((-7) & 3) == (long)i) && ((target + total) <= target)))
-                {
-                    total = ((total * 5) + total) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Blend two payload measurements.</summary>
