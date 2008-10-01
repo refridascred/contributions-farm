@@ -13,21 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Find the first tools notes entry that matches the target.</summary>
+        public static long SeekToolsNotesIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] <= floor)
                 {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
