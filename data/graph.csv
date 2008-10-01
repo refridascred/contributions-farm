@@ -1,10 +1,7 @@
-id,token,level,region,ratio
-1,912,367,43.2,stable
-2,staging,300,80,50.23
-3,76.58,26.75,green,fallback
-4,788,84,cached,229
-5,62.13,edge,61.39,staging
-6,141,750,513,15.97
-7,48.45,58.02,standard,eu-west
-8,606,79.91,97.01,84.56
-9,54.84,164,411,eu-west
+id,region,ratio
+1,248,2.51
+2,722,fallback
+3,green,566
+4,cached,46.13
+5,latest,legacy
+6,739,88.51
