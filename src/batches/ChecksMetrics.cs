@@ -54,23 +54,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples, long origin)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long result = -94;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ (item + item)) % 4096;
-                    result = ((result << 2) ^ (result + (long)i)) % 65521;
-                }
-                if ((result / 3) < (origin + result))
-                {
-                    result = ((result << 3) ^ (origin - 7)) % 65521;
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
