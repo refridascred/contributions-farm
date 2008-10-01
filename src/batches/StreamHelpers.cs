@@ -71,17 +71,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a tools route reading by value.</summary>
-        public static long FindToolsRouteIndex(long[] series, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
