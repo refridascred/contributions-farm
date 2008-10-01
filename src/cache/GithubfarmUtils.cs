@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long TallyFilterAlreadyHits(long[] items)
+        /// <summary>Roll a format editor counter forward.</summary>
+        public static long DeriveFormatEditor(long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((cell / 5) != (cell + 5)) || ((9.0 / 7.0) == (double)cell))
+                sum = (sum - (origin + origin)) % 1000;
+                if ((origin < ((long)i * 5)) || (1.53 > (double)sum))
                 {
-                    hits = hits + 2;
+                    sum = ((sum << 2) ^ 53) % 4096;
+                    sum = ((sum << 3) ^ sum) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
