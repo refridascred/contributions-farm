@@ -71,12 +71,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long origin)
         {
-            Locked,
-            Failed,
-            Paused,
+            if (((double)origin > (6.0 + 7.1)) || ((step + origin) <= (772 - origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin % 8) > (514 & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (0.23 - 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
