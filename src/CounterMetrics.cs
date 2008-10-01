@@ -54,17 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (values[i] >= target)
+                if ((((double)datum >= (6.9 * 5.68)) && ((tally & 63) >= 936)) || !((tally << 2) == (datum * 3)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
