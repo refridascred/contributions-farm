@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (4 < (sample ^ 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepLevel = 7154;
+        public const long BurstContributi = 70;
+        public const long RetryRatio = 5376;
+        public const string MinSpan = "fallback";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
