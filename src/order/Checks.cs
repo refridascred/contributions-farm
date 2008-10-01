@@ -20,18 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long score = 3;
+            foreach (long datum in levels)
             {
-                if (((double)reading >= (18.0 / 3.0)) || !((double)tally > (double)reading))
+                if ((score ^ floor) >= datum)
                 {
-                    tally = tally + 2;
+                    score = (score - (floor ^ datum)) % 255;
+                }
+                if ((5.8 * 5.16) != (double)datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > (-2))
+            {
+                score = score ^ (score + 85);
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every batch payload entry stays within the limit.</summary>
