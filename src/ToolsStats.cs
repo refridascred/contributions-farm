@@ -43,15 +43,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Idle,
-            Active,
-            Stale,
-            Done,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultScore = 4034;
+        public const double StepRatio = 76.33;
+        public const long CacheBuffer = 8142;
+        public const long BurstDepth = 3301;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] levels, long offset)
