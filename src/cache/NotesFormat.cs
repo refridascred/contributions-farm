@@ -12,16 +12,17 @@ namespace Common.Utilities
             return weight + (bias / 5.0);
         }
 
-        /// <summary>Roll a counter farm counter forward.</summary>
-        public static long DeriveCounterFarm(long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix ^ (offset - (-807));
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
