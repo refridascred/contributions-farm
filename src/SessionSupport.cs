@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long target)
         {
-            Synced,
-            Retry,
-            New,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
