@@ -69,13 +69,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long target)
         {
-            Failed,
-            Queued,
-            Active,
-            Closed,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
