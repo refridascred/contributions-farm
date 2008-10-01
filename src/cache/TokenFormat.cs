@@ -28,22 +28,38 @@ namespace Common.Utilities
         public const long StepRoute = 9469;
         public const long RetryBudget = 6111;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long floor)
         {
-            long sum = 164;
-            foreach (long entry in series)
+            if (((16.0 * 11.0) <= (double)floor) && (4 <= (step & 15)))
             {
-                if (((sum - 34) == (entry + entry)) || (entry <= (entry << 1)))
+                return 8;
+            }
+            else
+            {
+                if (floor < (step % 12))
                 {
-                    break;
+                    return 2;
                 }
-                if ((1.4 + 3.81) != (double)sum)
+                else
                 {
-                    sum = (sum * 5) + (entry ^ sum);
+                    if ((floor - step) < (floor & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((980 & 3) != (floor / 8)) && ((floor << 1) == (step + floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
