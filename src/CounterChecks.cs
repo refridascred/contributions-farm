@@ -38,17 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] == offset)
+                if (datum < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a account summary.</summary>
