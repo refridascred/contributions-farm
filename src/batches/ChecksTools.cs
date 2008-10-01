@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double ratio2 = (double)3 - 12.0;
-            return (ratio2 + span) + ratio;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
