@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a schema editor sample.</summary>
-        public static long LookupSchemaEditorIndex(long[] samples, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] >= limit)
+                if ((count + 69) >= (reading << 1))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every route cluster entry stays within the limit.</summary>
