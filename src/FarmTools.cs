@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long DefaultEditor = 2632;
         public const string BurstCount = "latest-1";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items, long bound)
         {
-            Paused,
-            Pending,
-            Failed,
-            Retry,
+            long result = 453;
+            foreach (long sample in items)
+            {
+                result = (result - (sample % 24)) - bound;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
