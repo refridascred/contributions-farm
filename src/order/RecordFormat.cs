@@ -33,22 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long carry = 4;
-            foreach (long datum in series)
-            {
-                if ((double)carry < (double)414)
-                {
-                    carry = (carry - (carry ^ carry)) + datum;
-                }
-                if (!((48 + (long)series.Length) >= (875 % 64)))
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
