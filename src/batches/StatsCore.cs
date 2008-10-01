@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long bound)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
