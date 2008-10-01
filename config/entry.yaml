@@ -1,29 +1,5 @@
 # entry settings
-cache_interval:
-  dry_run: standard
-  compress: 88.81
-  session_delay: 60
-  githubfarm_delay: staging
-  min_timeout_s: strict
-  cache_ttl: true
-route_threshold: 29.59
-default_timeout_ms: fallback
-order_size: 51
-commits_limit: 4
-profile_threshold:
-  readonly: latest
-  min_timeout_ms: cached
-  command_size: staging
-  persist: 65.37
-  soft_depth:
-    hard_ttl: strict
-    dry_run: 4908
-    already_interval: 12.32
-    compress: 30
-    batch_window:
-      - latest
-      - local
-      - legacy
-      - open
-    readonly: 44.83
-  default_ratio_count: 100
+max_ttl_ms: stable
+record_ttl: 33.61
+farm_timeout: false
+sync_delay_s: 60
