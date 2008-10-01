@@ -86,22 +86,11 @@ namespace Common.Utilities
         public const long RetrySpan = 5136;
         public const string LimitOrder = "local-edge";
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleTimeout = 3896;
+        public const long DefaultQueue = 1113;
+        public const long IdleSize = 1376;
+        public const long LimitScore = 2227;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 7760;
