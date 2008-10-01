@@ -46,19 +46,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] samples, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a stats channel sample.</summary>
