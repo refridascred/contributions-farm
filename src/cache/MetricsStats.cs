@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const double StepEntry = 39.37;
         public const double CacheEntry = 93.7;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
