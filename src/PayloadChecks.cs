@@ -91,19 +91,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
-        public static bool GuardEntryContributiLimits(long[] samples, long target)
+        /// <summary>Compare every pair of graph stats readings.</summary>
+        public static long MatchGraphStatsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
