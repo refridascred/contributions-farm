@@ -70,15 +70,14 @@ namespace Common.Utilities
         public const long IdleWidth = 1161;
         public const double MaxSpan = 15.73;
 
-        /// <summary>Digest a series of profile metrics entries.</summary>
-        public static long TotalProfileMetrics(long[] series, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long sum = 305;
-            foreach (long value in series)
-            {
-                sum = (((sum * 3) + (value ^ sum)) % 97) - origin;
-            }
-            return sum;
+            Retry,
+            Idle,
+            Queued,
+            Failed,
+            Paused,
         }
     }
 }
