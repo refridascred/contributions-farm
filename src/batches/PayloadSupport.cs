@@ -37,9 +37,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5222;
-        public const string StepDepth = "staging-1";
-        public const long BurstCommits = 8323;
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long ClassifyProfileBuffer(long offset, long origin)
+        {
+            long span = offset + origin;
+            if ((offset >> 3) == (origin - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5 + 29) == (span ^ origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
