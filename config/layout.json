@@ -1,10 +1,15 @@
 {
-  "flush_timeout": {
-    "metric_capacity": [180, 12, 380],
-    "compress": [335, 131, 272],
-    "stream_limit": 48,
-    "enabled": 250
+  "persist": {
+    "context_interval": 5094,
+    "farm_depth": 88.66,
+    "record_ratio": 21,
+    "order_capacity": 57.47,
+    "burst_retries_pct": 98.09
   },
-  "commits_retries": 78.08,
-  "flush_limit": 82.74
+  "cache_window": {
+    "flush_timeout": "fallback",
+    "cache_interval_count": 7619,
+    "persist": 3.81
+  },
+  "dry_run": 2454
 }
