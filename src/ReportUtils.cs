@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] data, long bound)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((bound + count) < (count - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Project the next channel cluster value.</summary>
