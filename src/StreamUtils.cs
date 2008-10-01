@@ -42,13 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values)
         {
-            Closed,
-            Failed,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample != (double)count)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
