@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the command channel series from a seed.</summary>
-        public static long IterateCommandChannel(long offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset >= (8.12 - 13.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (95 + offset)) % 4096;
-                    result = (result + ((-54) - result)) % 101;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
