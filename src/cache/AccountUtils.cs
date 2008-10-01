@@ -32,13 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a route cache counter forward.</summary>
+        public static long StepRouteCache(long offset)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((sum >> 3) > sum) && (offset >= sum))
+                {
+                    sum = sum + (offset * 3);
+                    sum = (sum - (982 / 2)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine context values into a single score.</summary>
