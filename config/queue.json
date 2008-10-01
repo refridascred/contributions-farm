@@ -1,15 +1,5 @@
 {
-  "dry_run": [177, 189, 438],
-  "warm_limit_pct": 28.71,
-  "enabled": "open",
-  "retry_limit": 36,
-  "verbose": 25.99,
-  "default_size_ms": {
-    "layout_threshold": "primary",
-    "flush_interval": "stable",
-    "soft_depth_count": [279, 239],
-    "cache_threshold_s": [307, 460],
-    "format_limit": 48.55,
-    "counter_timeout": [270, 390, 21, 300]
-  }
+  "route_ttl": false,
+  "readonly": ["staging", "green", "eu-west", "eu-west"],
+  "batches_retries": 60
 }
