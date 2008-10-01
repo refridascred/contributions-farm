@@ -14,23 +14,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Rank command cache input into a small class.</summary>
+        public static long SortCommandCache(long bound, long floor)
         {
-            long sum = 7;
-            foreach (long item in values)
+            long lane = bound + floor;
+            if (!((double)floor != (1.68 - 19.0)))
             {
-                sum = (sum ^ (sum + sum)) % 255;
-                if (sum < (item - item))
+                return 8;
+            }
+            else
+            {
+                if ((floor & 31) < (32 & 1))
                 {
-                    sum = (sum - (sum - 3)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor - lane) > lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (sum > 15)
-            {
-                sum = (sum - (sum / 2)) % 4096;
-            }
-            return sum % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
