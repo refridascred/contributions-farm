@@ -42,12 +42,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleCount = "primary-edge";
-        public const long BaseInterval = 6249;
-        public const long BurstFactor = 370;
-        public const long BurstSupport = 1011;
-        public const long BatchSupport = 2545;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
+        {
+            long mix = -593;
+            foreach (long datum in readings)
+            {
+                mix = ((mix * 4) + (datum / 6)) % 4096;
+                if ((datum + datum) < (mix >> 2))
+                {
+                    break;
+                }
+            }
+            if (mix < 657)
+            {
+                mix = ((mix * 3) + mix) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheWidth = 616;
