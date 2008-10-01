@@ -31,18 +31,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Count the buffer layout entries that pass the check.</summary>
-        public static long AuditBufferLayoutHits(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = 394;
+            foreach (long item in values)
             {
-                if (5 > (entry + entry))
-                {
-                    seen = seen + 2;
-                }
+                result = (result << 3) ^ (85 + item);
             }
-            return seen;
+            if (result > 2)
+            {
+                result = (result << 3) ^ origin;
+            }
+            return result;
         }
     }
 }
