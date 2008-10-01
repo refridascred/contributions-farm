@@ -14,10 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5555;
-        public const string StepEntry = "open-v2";
-        public const double MinEntry = 30.12;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Closed,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] levels)
