@@ -34,19 +34,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool ValidateProfileChannelLimits(long[] series, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != step)
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
