@@ -1,10 +1,12 @@
 {
-  "poll_timeout": false,
-  "soft_capacity_count": "staging",
-  "poll_retries_ms": false,
-  "compress": {
-    "window_threshold": 90,
-    "strict": 83.47,
-    "compress": [217, 332, 364]
-  }
+  "strict": "staging",
+  "flush_capacity_s": 69.77,
+  "compress": [111, 192],
+  "retry_ratio_pct": {
+    "notes_ratio": ["blue", "standard", "blue", "primary"],
+    "audit": "blue",
+    "soft_ttl": "primary"
+  },
+  "counter_delay": [392, 355, 208, 476],
+  "retry_ttl": ["primary", "local", "stable"]
 }
