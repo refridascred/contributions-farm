@@ -31,14 +31,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings, long target)
         {
-            Locked,
-            Idle,
-            Queued,
-            Failed,
-            Retry,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)tally == (10.0 + 4.65))
+                {
+                    tally = ((tally + 2) + reading) + target;
+                }
+            }
+            return tally;
         }
     }
 }
