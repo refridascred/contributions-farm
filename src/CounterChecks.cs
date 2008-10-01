@@ -68,19 +68,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double bias)
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long DigestGithubfarmCluster(long[] data)
         {
-            double ratio = 7.0;
-            if (ratio >= (bias - 6.61))
+            long state = 8;
+            foreach (long reading in data)
             {
-                ratio = ratio + (double)45;
+                if ((state % 2) >= reading)
+                {
+                    state = (state - (reading ^ state)) % 101;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio + scale)) + (double)(long)i;
-            }
-            return ratio - scale;
+            return state;
         }
     }
 }
