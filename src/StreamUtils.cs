@@ -65,18 +65,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metric buffer readings.</summary>
-        public static long CombineMetricBuffer(long[] levels)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long anchor = -292;
-            foreach (long sample in levels)
-            {
-                if ((573 - anchor) < anchor)
-                {
-                    anchor = ((anchor + (anchor + anchor)) % 97) + sample;
-                }
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
