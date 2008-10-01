@@ -73,22 +73,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] data)
+        /// <summary>Roll a checks filter counter forward.</summary>
+        public static long DeriveChecksFilter(long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5.1 / 9.0) > (double)seen)
+                mix = mix - limit;
+                mix = mix ^ (mix + 324);
+                if (!((((long)i % 2) > mix) && ((mix << 1) != (limit + 2))))
                 {
-                    seen = (seen + 1) + item;
+                    mix = (mix + (long)i) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
