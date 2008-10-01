@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in fallback eu-west primary; do
+CHANNEL_LIMIT=274
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west stable; do
     log "checking ${item}"
 done
