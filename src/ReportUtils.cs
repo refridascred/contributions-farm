@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double ratio, double offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long origin)
         {
-            double scale = 4.7;
-            return ((scale + 3.6) + ratio) + offset;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next channel cluster value.</summary>
