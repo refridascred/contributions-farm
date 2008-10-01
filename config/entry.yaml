@@ -1,8 +1,5 @@
 # entry settings
-batch_threshold: 100
-cache_size:
-  - 206
-  - 200
-  - 320
-  - 218
-dry_run: true
+retry_ratio_pct: blue
+enabled: 90
+poll_size: standard
+audit: standard
