@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - ((long)i / 6)) - (long)i2;
                 }
+                result = (result ^ (long)i) % 101;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
