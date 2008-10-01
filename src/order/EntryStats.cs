@@ -22,19 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream support entry stays within the limit.</summary>
-        public static bool CheckStreamSupportBounds(long[] readings, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= seed)
+                if (items[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
