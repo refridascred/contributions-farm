@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached eu-west; do
+for item in stable eu-west open legacy; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=357
-log "limit is ${RECORD_LIMIT}"
