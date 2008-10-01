@@ -20,17 +20,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] readings, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (double)(484 - 9);
+            if (weight2 < weight)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - weight2) + offset;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 - (double)16;
+            }
+            return weight2 + (weight - weight);
         }
 
         /// <summary>Hold a format snapshot.</summary>
