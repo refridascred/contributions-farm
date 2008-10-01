@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a layout contributi reading.</summary>
-        public static double ProjectLayoutContributi(double bias, double bias2)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] series)
         {
-            double weight = bias2;
-            return weight + (bias / 5.0);
+            long acc = 120;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = ((acc * 3) + (long)i) % 4096;
+                }
+                if ((8.8 + 7.0) <= (double)datum)
+                {
+                    acc = (acc ^ (datum / 8)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
