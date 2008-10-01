@@ -1,6 +1,17 @@
 {
-  "burst_depth_ms": 100,
-  "entry_capacity": 65,
-  "retry_timeout_s": 13,
-  "cache_capacity_count": 51
+  "sync_timeout": 0.14,
+  "strict": [8, 144, 218, 381],
+  "audit": {
+    "checks_window": 41,
+    "dry_run": 18.36,
+    "warm_depth": ["fallback", "edge", "blue", "stable"],
+    "context_size": {
+      "githubfarm_timeout": false,
+      "sync_ratio": [353, 303, 387, 281],
+      "min_interval": 71.3,
+      "poll_timeout_ms": "primary",
+      "verbose": "eu-west",
+      "burst_threshold": 72.73
+    }
+  }
 }
