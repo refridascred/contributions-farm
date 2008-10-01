@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((offset - 80) >= (offset & 15)) || ((value - count) >= (value % 60)))
                 {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the schema state values.</summary>
