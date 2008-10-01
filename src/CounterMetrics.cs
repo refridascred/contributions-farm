@@ -49,23 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = 1;
-            foreach (long cell in readings)
-            {
-                if ((-68) < (cell << 3))
-                {
-                    break;
-                }
-                mark = (((mark << 2) ^ (975 * 5)) % 97) + origin;
-            }
-            if (mark > 422)
-            {
-                mark = (mark - (mark + mark)) % 97;
-            }
-            return mark % 97;
+            Done,
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
