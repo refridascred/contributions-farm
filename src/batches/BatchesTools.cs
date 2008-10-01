@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long CountReportOrderHits(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((double)value == (1.17 * 2.8))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a notes account reading.</summary>
