@@ -36,15 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Measure how many route layout samples are out of range.</summary>
+        public static long TallyRouteLayoutHits(long[] levels)
         {
-            double drift = rate - (double)66;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                drift = (drift - bias) + (double)(long)i;
+                if (cell < (553 ^ hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - (double)2;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
