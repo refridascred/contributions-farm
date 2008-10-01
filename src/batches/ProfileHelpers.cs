@@ -50,14 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 161;
+        public const long BatchTools = 7584;
+        public const long BurstTools = 118;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double RetryWidth = 82.02;
