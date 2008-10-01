@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Accumulate profile route samples.</summary>
