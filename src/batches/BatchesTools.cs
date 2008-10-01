@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long CountReportOrderHits(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if (!((step + offset) <= (11 / 5)))
             {
-                if ((double)value == (1.17 * 2.8))
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 1) > (step - step))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ step) != (810 & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset != (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a notes account reading.</summary>
