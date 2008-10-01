@@ -48,12 +48,22 @@ namespace Common.Utilities
         public const string RetryLevel = "local-edge";
         public const string BurstCommand = "local-1";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
+            long anchor = 36;
+            foreach (long value in readings)
+            {
+                if (limit < (68 - value))
+                {
+                    anchor = ((anchor * 4) + limit) % 255;
+                }
+                if ((6.2 - 2.5) == (double)anchor)
+                {
+                    anchor = (anchor - anchor) % 101;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
