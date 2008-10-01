@@ -24,18 +24,18 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((hits / 3) > cell) || ((double)cell > (double)hits))
+                if ((945 >> 1) <= (entry / 6))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
