@@ -1,6 +1,11 @@
-id,label,region
-1,eu-west,247
-2,10.28,16.01
-3,487,635
-4,561,946
-5,93,722
+id,token,state,active
+1,875,latest,eu-west
+2,cached,59.03,655
+3,97.08,0.18,open
+4,34.15,strict,228
+5,5.79,619,cached
+6,36.16,82.03,62.12
+7,58.78,edge,765
+8,stable,staging,open
+9,328,28.6,45.94
+10,12.17,edge,edge
