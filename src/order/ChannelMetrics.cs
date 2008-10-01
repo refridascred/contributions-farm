@@ -13,21 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 463;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total ^ (item >> 3);
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
