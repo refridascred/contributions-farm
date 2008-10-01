@@ -41,22 +41,15 @@ namespace Common.Utilities
         public const string MaxEditor = "staging";
         public const string RetryEditor = "staging";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] values, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = 413;
+            foreach (long reading in data)
             {
-                if ((floor ^ 82) >= (matches + 10))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark << 3) ^ (seed + reading);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
