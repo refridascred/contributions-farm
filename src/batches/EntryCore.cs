@@ -48,18 +48,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item * 4) < seen)
+                if (!((score % 100) <= (score ^ limit)))
                 {
-                    seen = seen + 2;
+                    score = (score - score) % 255;
                 }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
