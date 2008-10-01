@@ -20,22 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Look up the position of a farm metrics sample.</summary>
+        public static long SeekFarmMetricsIndex(long[] items, long offset)
         {
-            long sum = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= 54)
+                if (items[i] >= offset)
                 {
-                    sum = ((sum << 2) ^ (sum & 1)) % 1000;
+                    return (long)i;
                 }
             }
-            if (sum < 949)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
