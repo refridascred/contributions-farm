@@ -63,11 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double bias)
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            double bias2 = weight;
+            return (bias2 - weight) + bias;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
