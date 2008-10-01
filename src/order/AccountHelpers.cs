@@ -28,16 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score << 3) ^ ((long)i + seed)) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit cluster filter readings against a rule.</summary>
