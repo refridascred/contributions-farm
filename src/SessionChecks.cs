@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long StepScore = 6376;
         public const double SoftAlready = 96.99;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 1) <= (datum + 688))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
