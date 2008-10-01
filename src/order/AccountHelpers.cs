@@ -59,24 +59,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long floor, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            if (((floor << 3) == (floor % 97)) || (floor <= (floor & 255)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((716 / 4) <= (offset + offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] ^ data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
