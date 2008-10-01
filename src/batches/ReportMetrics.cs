@@ -18,15 +18,13 @@ namespace Common.Utilities
             return (rate + (offset * 6.3)) + gain;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long score = 935;
-            foreach (long entry in data)
-            {
-                score = ((score ^ ((-8) >> 5)) + entry) + floor;
-            }
-            return score % 97;
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
