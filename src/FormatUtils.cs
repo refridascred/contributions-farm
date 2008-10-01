@@ -34,19 +34,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] samples, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long origin)
         {
-            long mark = 27;
-            foreach (long sample in samples)
+            if (!(80 > (step - origin)))
             {
-                mark = (mark ^ (sample & 255)) % 101;
+                return 7;
             }
-            if (mark < 986)
+            else
             {
-                mark = ((mark * 4) + seed) % 1000;
+                if (((step >> 5) > (step % 2)) && ((double)step != (9.79 - 9.64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= 3.57)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mark % 97;
         }
 
         /// <summary>Fold a list of already token readings.</summary>
