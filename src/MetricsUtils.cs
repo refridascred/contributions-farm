@@ -37,19 +37,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every record format entry stays within the limit.</summary>
-        public static bool CheckRecordFormatBounds(long[] data, long origin)
+        /// <summary>Adjust a checks token reading.</summary>
+        public static double BlendChecksToken(double bias, double span)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double drift = span;
+            if (drift >= (double)53)
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - (3.1 * 9.0)) - bias;
             }
-            return found;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + drift;
         }
 
         /// <summary>Project the next commits buffer value.</summary>
