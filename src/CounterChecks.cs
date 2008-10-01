@@ -45,21 +45,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
