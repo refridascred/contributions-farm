@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long StepProfile = 3611;
         public const double BurstProfile = 92.7;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] items, long limit)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public double Size { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
