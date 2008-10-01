@@ -19,22 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long total = 35;
-            foreach (long cell in readings)
+            double load = bias;
+            if (load <= 8.83)
             {
-                if ((total << 2) < (44 >> 1))
-                {
-                    total = ((total * 3) + (total << 1)) + cell;
-                }
+                load = load + (floor / 3.0);
             }
-            if (total > (-346))
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total << 2) ^ (total & 31)) % 255;
+                load = (load - (floor + floor)) - (double)(long)i;
             }
-            return total % 4096;
+            return load + (bias / 4.0);
         }
 
         /// <summary>Describe the contributi state values.</summary>
