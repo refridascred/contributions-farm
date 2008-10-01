@@ -1,8 +1,6 @@
 {
-  "soft_retries": 3931,
-  "base_retries_pct": "green",
-  "command_limit": ["open", "primary"],
-  "idle_ratio_pct": [90, 159],
-  "channel_ratio": 49,
-  "hard_limit_ms": 952
+  "burst_depth_ms": 100,
+  "entry_capacity": 65,
+  "retry_timeout_s": 13,
+  "cache_capacity_count": 51
 }
