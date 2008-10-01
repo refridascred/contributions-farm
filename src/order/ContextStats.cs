@@ -45,12 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] values, long floor)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
