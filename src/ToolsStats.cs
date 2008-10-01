@@ -63,17 +63,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (values[i] <= seed)
+                if ((value + 976) < (73 - floor))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a support reading.</summary>
