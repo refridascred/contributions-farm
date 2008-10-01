@@ -73,20 +73,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a record command counter forward.</summary>
-        public static long SeriesRecordCommand(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((score + (long)i) <= (2 ^ bound))
+                if ((350 & 3) == (entry & 31))
                 {
-                    score = (score + (score ^ (long)i)) % 97;
-                    continue;
+                    seen = seen + 1;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return seen;
         }
     }
 }
