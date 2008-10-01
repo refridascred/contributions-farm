@@ -45,21 +45,18 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches < (3 - limit))
                 {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
