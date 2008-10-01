@@ -40,14 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many metrics route samples are out of range.</summary>
+        public static long AuditMetricsRouteMatches(long[] levels, long origin)
         {
-            Synced,
-            Idle,
-            Dropped,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((5.4 * 5.49) <= (double)164) && ((origin <= (value & 255)) || ((861 & 127) <= (tally >> 1))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
