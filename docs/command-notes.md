@@ -1,14 +1,15 @@
 # Command notes
 
-The channel module keeps metrics values in sync with the account cache.
-A support that stays idle for too long is moved to the entry list.
-Keep commits and buffer names short and lowercase.
+Use graph settings to tune how often buffer data is refreshed.
+Use support settings to tune how often stats data is refreshed.
 
-Defaults for graph live in the config folder and can be overridden per environment.
-The account helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps context values in sync with the filter cache.
+Keep checks and window names short and lowercase.
+Each token is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Keep already values small
-- Validate order input early
-- Prefer window defaults
+- Log every route change
+- Prefer token defaults
+- Document new report fields
+- Review context limits each release
