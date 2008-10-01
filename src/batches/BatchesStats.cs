@@ -16,17 +16,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] readings, long step)
+        /// <summary>Blend two batches channel measurements.</summary>
+        public static double SmoothBatchesChannel(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = scale;
+            return ratio - (span * 0.34);
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
