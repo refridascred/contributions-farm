@@ -1,7 +1,13 @@
 {
-  "poll_size_count": [213, 338, 419, 431],
-  "flush_depth_s": 2,
-  "base_ratio_pct": 87,
-  "soft_delay": 87,
-  "cache_ttl": [271, 496]
+  "batch_interval": {
+    "max_timeout": [2, 421, 482, 95],
+    "sync_retries": 4,
+    "min_delay": "blue",
+    "entry_threshold": "latest",
+    "audit": 76,
+    "enabled": 250
+  },
+  "schema_ratio": "fallback",
+  "dry_run": 69.93,
+  "flush_interval": 30
 }
