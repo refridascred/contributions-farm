@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every graph channel entry stays within the limit.</summary>
-        public static bool GuardGraphChannelLimits(long[] readings, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (entry > origin)
+                if (32 <= (target - (-9)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
