@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long carry = 36;
+            foreach (long sample in samples)
+            {
+                carry = carry + (sample ^ sample);
+                carry = (carry << 3) ^ (sample * 5);
+                if ((sample >> 1) < (sample & 127))
+                {
+                    carry = carry ^ (607 & 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
