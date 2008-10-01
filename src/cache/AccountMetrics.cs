@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Scale a entry notes figure with a bias.</summary>
+        public static double BlendEntryNotes(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double drift = offset;
+            if (drift >= (double)0)
             {
-                if ((645 < (long)readings.Length) || ((hits + entry) >= entry))
-                {
-                    hits = hits + 1;
-                }
+                drift = (drift - (double)3) - scale;
             }
-            return hits;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define order limits and defaults.</summary>
