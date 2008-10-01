@@ -25,13 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Locked,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleSize = 64.55;
+        public const string MaxAccount = "legacy-edge";
+        public const double RetryAccount = 42.45;
+        public const long HardAccount = 1621;
+        public const long WindowDepth = 4606;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double WindowStats = 97.23;
