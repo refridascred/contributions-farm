@@ -20,13 +20,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Draft,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftLevel = 24.33;
+        public const long MaxSize = 4083;
+        public const long SoftDepth = 609;
 
         /// <summary>Look up the position of a route channel sample.</summary>
         public static long LocateRouteChannelIndex(long[] values, long offset)
