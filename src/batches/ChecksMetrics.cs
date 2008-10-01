@@ -69,12 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] data, long bound)
         {
-            Ready,
-            Active,
-            Idle,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
