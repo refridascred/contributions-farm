@@ -77,16 +77,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
-            {
-                score = (score << 2) ^ score;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
