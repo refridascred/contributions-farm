@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data, long target)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = 7;
-            foreach (long entry in data)
-            {
-                if (target > (entry + total))
-                {
-                    total = (total * 3) + entry;
-                    total = total + (total + total);
-                    continue;
-                }
-                total = (total + entry) % 101;
-                total = ((total << 3) ^ (entry * 5)) % 65521;
-            }
-            return total;
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
