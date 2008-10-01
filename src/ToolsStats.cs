@@ -16,12 +16,11 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepScore = 8453;
-        public const long CacheScore = 1908;
-        public const double WindowAccount = 76.84;
-        public const double BaseWidth = 11.68;
-        public const string CacheAccount = "stable-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftFactor = 7583;
+        public const string BatchSize = "stable-v2";
+        public const long MaxSpan = 8385;
+        public const long BurstCounter = 3210;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long target)
