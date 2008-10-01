@@ -1,12 +1,14 @@
 # githubfarm settings
-readonly: 7446
-support_window: 8040
-poll_limit_s:
-  - 172
-  - 106
-  - 448
-token_delay:
+audit: local
+order_size: primary
+persist:
+  - 143
+  - 500
+  - 89
+  - 441
+base_ratio_ms: 59.68
+schema_delay: cached
+flush_delay:
   - primary
-  - local
-  - eu-west
-soft_depth_ms: 1024
+  - staging
+  - strict
