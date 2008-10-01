@@ -14,15 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            double bias = (double)(4 + (-55));
-            if (bias < scale)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - bias;
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
