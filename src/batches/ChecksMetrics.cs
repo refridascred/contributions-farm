@@ -69,15 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster account figure with a bias.</summary>
-        public static double ProjectClusterAccount(double weight, double offset)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            double rate = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (20.0 - weight)) - (double)(long)i;
-            }
-            return rate + (offset / 6.0);
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
