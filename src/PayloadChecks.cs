@@ -57,21 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of graph stats readings.</summary>
-        public static long MatchGraphStatsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftDepth = "standard-1";
+        public const double CacheFormat = 29.3;
+        public const string SoftFormat = "local-1";
+        public const string MaxFormat = "cached";
     }
 }
