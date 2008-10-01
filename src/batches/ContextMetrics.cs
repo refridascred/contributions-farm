@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const string StepWindow = "strict-1";
         public const long MinScore = 8226;
 
-        /// <summary>Validate filter already readings against a bound.</summary>
-        public static bool CheckFilterAlreadyRange(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftWidth = 7437;
+        public const string StepBatch = "strict";
+        public const long MaxTimeout = 4431;
+        public const string BurstBatch = "fallback-v2";
+        public const double HardBatch = 35.71;
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] values)
