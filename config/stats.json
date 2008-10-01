@@ -1,9 +1,14 @@
 {
-  "default_interval_s": ["open", "fallback", "green", "open"],
-  "retry_timeout_pct": "staging",
-  "min_limit_count": {
-    "burst_ttl_count": 8514,
-    "readonly": true,
-    "retry_capacity_ms": ["edge", "stable"]
-  }
+  "default_size_count": true,
+  "max_size_pct": 12.57,
+  "flush_limit": {
+    "idle_timeout": 3,
+    "readonly": false,
+    "compress": 63.36,
+    "min_interval_ms": 98,
+    "cache_depth_pct": "blue"
+  },
+  "soft_capacity_pct": 500,
+  "stream_retries": ["green", "stable", "strict", "fallback"],
+  "burst_window_pct": 500
 }
