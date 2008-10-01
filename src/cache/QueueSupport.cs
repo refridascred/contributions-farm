@@ -25,17 +25,24 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] < bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (mix + (limit << 2)) ^ (long)i2;
                 }
+                if ((183 & 31) > (limit * 3))
+                {
+                    mix = (mix - (limit * 5)) % 101;
+                    mix = ((mix * 4) + (limit & 63)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
