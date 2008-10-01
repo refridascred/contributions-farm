@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long CountSchemaFarmMatches(long[] values, long offset)
+        /// <summary>Roll a filter githubfarm counter forward.</summary>
+        public static long StepFilterGithubfarm(long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!!((offset * 4) != (offset + hits)))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
