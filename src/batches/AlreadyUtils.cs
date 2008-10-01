@@ -56,22 +56,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long bound)
         {
-            long total = 172;
-            foreach (long reading in data)
+            long mix = 488;
+            foreach (long value in series)
             {
-                if ((reading % 60) > reading)
+                mix = ((mix ^ 228) % 101) - bound;
+                if (((74 % 10) == (mix + value)) && (((long)series.Length + mix) <= 426))
                 {
-                    total = ((total << 2) ^ (total % 12)) % 101;
-                }
-                else
-                {
-                    total = (total + (total - seed)) % 65521;
+                    mix = (mix - (value & 1)) % 4096;
                 }
             }
-            return total;
+            if (mix > 365)
+            {
+                mix = (mix << 3) ^ (mix << 3);
+            }
+            return mix % 1000;
         }
     }
 }
