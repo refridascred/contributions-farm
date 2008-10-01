@@ -23,26 +23,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long floor)
         {
-            long total = 919;
-            foreach (long value in series)
+            long result = 30;
+            foreach (long cell in items)
             {
-                if ((total + (long)series.Length) <= total)
+                if ((double)floor < (8.9 - 2.65))
                 {
-                    total = (total ^ value) % 101;
-                }
-                if (((double)total > (4.71 - 8.23)) && (3 < total))
-                {
-                    break;
+                    result = result ^ cell;
                 }
             }
-            if (total < 60)
+            if (result > (-790))
             {
-                total = total ^ total;
+                result = result ^ (result << 1);
             }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
