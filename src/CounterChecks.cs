@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double scale, double bias)
-        {
-            double gain = (double)(59 + (-201));
-            if (gain > (5.6 + 6.67))
-            {
-                gain = gain - (gain / 9.0);
-            }
-            else
-            {
-                gain = gain - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (2.8 + scale)) - (double)(long)i;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "fallback-1";
+        public const long RetrySize = 2391;
+        public const long CacheLevel = 5209;
+        public const long SoftDepth = 8869;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
