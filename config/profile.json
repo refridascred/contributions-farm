@@ -1,19 +1,5 @@
 {
-  "cache_timeout": "latest",
-  "cache_ttl_count": {
-    "retry_size_ms": 250,
-    "min_ratio_s": "cached",
-    "flush_threshold_count": 62,
-    "max_timeout": [12, 434, 340],
-    "retry_limit_s": "open"
-  },
-  "buffer_size": {
-    "flush_interval_pct": "latest",
-    "poll_ttl_ms": true,
-    "hard_interval": 7726,
-    "compress": 44.97
-  },
-  "batch_retries_pct": false,
-  "audit": 21,
-  "retry_ratio_ms": 70.98
+  "channel_retries": 1024,
+  "tools_threshold": 7.37,
+  "sync_limit": 250
 }
