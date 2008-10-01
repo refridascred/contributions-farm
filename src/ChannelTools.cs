@@ -31,19 +31,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double floor)
-        {
-            double bias = (scale / 4.0) / 7.0;
-            if (bias <= 1.0)
-            {
-                bias = bias - (double)323;
-            }
-            else
-            {
-                bias = bias + 2.4;
-            }
-            return bias + (floor / 5.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxInterval = 6841;
+        public const string BatchTimeout = "local-edge";
+        public const long MinDepth = 4277;
     }
 }
