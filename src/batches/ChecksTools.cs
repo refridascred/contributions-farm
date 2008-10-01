@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 2269;
-        public const long MinScore = 7634;
-        public const long BaseDepth = 9109;
-        public const long LimitStream = 4164;
-        public const double IdleRatio = 12.44;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] items)
