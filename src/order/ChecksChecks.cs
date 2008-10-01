@@ -32,11 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Pending,
+            New,
         }
     }
 }
