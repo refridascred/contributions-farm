@@ -46,19 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes farm samples.</summary>
-        public static long FoldNotesFarm(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] readings, long limit)
         {
-            long score = 57;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                score = ((score << 3) ^ (entry * 3)) % 1000;
-                if ((entry + entry) != (entry + score))
+                if (((-7) + (-7)) <= (matches << 3))
                 {
-                    score = ((score * 5) + score) % 255;
+                    matches = ((matches + 1) ^ value) - limit;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
