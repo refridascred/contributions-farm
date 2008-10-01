@@ -57,17 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
