@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryLevel = 8419;
-        public const long WindowCounter = 7984;
-        public const long StepCounter = 5666;
-        public const long HardFactor = 4711;
-        public const long BurstCounter = 4993;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandRange(long[] samples, long limit)
