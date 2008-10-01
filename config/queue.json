@@ -1,19 +1,8 @@
 {
-  "soft_window_pct": [452, 114],
-  "max_timeout_ms": false,
-  "payload_interval": true,
-  "flush_depth_ms": {
-    "min_window_ms": {
-      "batch_ttl": 3662,
-      "batch_ratio_s": 73,
-      "enabled": [313, 329, 362],
-      "hard_ratio": "eu-west",
-      "cache_size_count": "cached"
-    },
-    "retry_timeout_pct": 7651,
-    "support_timeout": "stable",
-    "hard_interval": 250
-  },
-  "strict": 1024,
-  "record_delay": "blue"
+  "format_timeout": ["primary", "edge", "green", "green"],
+  "batch_retries": 17,
+  "route_retries": "strict",
+  "queue_capacity": 97,
+  "cache_timeout": "green",
+  "min_ratio_count": "local"
 }
