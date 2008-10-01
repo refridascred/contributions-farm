@@ -44,11 +44,19 @@ namespace Common.Utilities
         public const long RetryFactor = 103;
         public const long IdleScore = 7554;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            double scale = (double)((-4) - 43);
+            if (scale <= (bias2 + bias2))
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)40) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
