@@ -33,22 +33,21 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long acc = 716;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc > (acc - acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ reading;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc ^ (acc ^ acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
