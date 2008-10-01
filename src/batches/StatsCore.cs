@@ -36,10 +36,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepSpan = 38.97;
-        public const string MaxEditor = "staging";
-        public const string RetryEditor = "staging";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings)
+        {
+            long state = 150;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state * 3) + reading) + (long)i;
+                }
+                if ((state / 4) != (0 ^ state))
+                {
+                    state = (state ^ (reading ^ state)) % 1000;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] data, long seed)
