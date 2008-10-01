@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a layout checks value against two limits.</summary>
-        public static long SortLayoutChecks(long floor, long bound)
-        {
-            if ((bound - floor) > (floor - floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) >= (floor & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) > (bound + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftBudget = "latest-edge";
+        public const long LimitSpan = 1214;
+        public const string WindowStats = "primary";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
