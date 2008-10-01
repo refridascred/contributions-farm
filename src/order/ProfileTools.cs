@@ -14,38 +14,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long step, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            if ((floor << 3) != (step & 31))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step & 1) >= (690 * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (step + 795))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step + 655) < (step ^ 44))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a farm info.</summary>
