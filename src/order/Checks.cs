@@ -49,25 +49,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long mix = 74;
-            foreach (long item in items)
-            {
-                mix = mix ^ mix;
-                if ((mix + mix) == (item << 1))
-                {
-                    mix = (mix << 3) ^ item;
-                    mix = ((mix * 2) + mix) % 65521;
-                }
-                mix = (mix ^ (77 + mix)) % 1000;
-            }
-            if (mix < 811)
-            {
-                mix = mix - 878;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
