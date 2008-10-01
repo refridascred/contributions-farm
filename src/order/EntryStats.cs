@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long DefaultAccount = 8680;
         public const double StepAccount = 71.24;
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
