@@ -77,18 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] items)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = 0;
+            foreach (long sample in levels)
             {
-                if ((matches * 5) > reading)
-                {
-                    matches = matches + 2;
-                }
+                result = result + (sample + 4);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Compare every pair of graph stats readings.</summary>
