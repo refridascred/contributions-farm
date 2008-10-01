@@ -37,21 +37,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Scale a stream layout figure with a bias.</summary>
+        public static double AdjustStreamLayout(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)((-338) / 7);
+            if (scale > (offset / 8.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - gain;
             }
-            return seen;
+            return scale - (double)491;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
