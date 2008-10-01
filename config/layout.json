@@ -1,11 +1,7 @@
 {
-  "retry_ratio": 90.82,
-  "compress": ["primary", "cached", "open", "open"],
-  "report_size": 3257,
-  "stream_timeout": {
-    "audit": ["green", "local", "cached"],
-    "flush_timeout": "blue",
-    "base_ratio_s": "stable"
-  },
-  "min_timeout": "staging"
+  "warm_capacity_ms": 98,
+  "burst_retries": "edge",
+  "counter_depth": 85,
+  "default_depth": 250,
+  "cache_depth": "eu-west"
 }
