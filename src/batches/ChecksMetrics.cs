@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long SoftRatio = 102;
         public const double StepFactor = 70.21;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long anchor = 97;
+            foreach (long entry in series)
             {
-                if ((sample + matches) > (0 & 3))
+                if (!(((6.08 * 7.0) >= (double)anchor) || ((double)entry > (4.28 * 9.5))))
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor - 420) % 65521) - origin;
                 }
+                anchor = (anchor + (321 % 7)) % 65521;
             }
-            return matches;
+            if (anchor > 9)
+            {
+                anchor = anchor + (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
