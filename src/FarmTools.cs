@@ -20,16 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                score = score + 67;
-                score = ((score * 4) + (long)i) % 4093;
+                if (!((3.8 / 4.0) != (double)entry))
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
