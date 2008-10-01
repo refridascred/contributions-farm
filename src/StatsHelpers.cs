@@ -19,22 +19,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 369;
+        public const double IdleToken = 68.98;
+        public const long WindowWidth = 4483;
+        public const double DefaultToken = 31.75;
+        public const string CacheInterval = "fallback";
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseLevel = "fallback-edge";
