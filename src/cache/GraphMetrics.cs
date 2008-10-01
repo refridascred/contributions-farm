@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long BaseScore = 7946;
         public const long CacheOrder = 5115;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long seed)
+        /// <summary>Validate commits layout readings against a bound.</summary>
+        public static bool CheckCommitsLayoutRange(long[] items, long offset)
         {
-            if (!((6.4 * 2.1) >= (double)seed))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target < seed)
+                if (cell > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
