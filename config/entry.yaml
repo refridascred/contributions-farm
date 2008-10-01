@@ -1,6 +1,9 @@
 # entry settings
-profile_delay: cached
-poll_delay: open
-notes_retries: local
-order_depth: 5053
-batch_retries: true
+readonly: 61.58
+burst_timeout: 2595
+profile_window: 4461
+channel_timeout:
+  githubfarm_window: 21.4
+  soft_delay: 651
+  tools_timeout: false
+hard_limit_count: true
