@@ -25,17 +25,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long entry in series)
             {
-                if (items[i] > offset)
+                if ((floor % 10) < floor)
                 {
-                    return (long)i;
+                    total = (total + (floor * 4)) ^ entry;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
