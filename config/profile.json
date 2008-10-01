@@ -1,8 +1,6 @@
 {
-  "warm_retries": 250,
-  "filter_interval": "primary",
-  "warm_capacity_count": "legacy",
-  "commits_timeout": 60.98,
-  "soft_interval_count": "latest",
-  "retry_timeout": "blue"
+  "command_ratio": false,
+  "base_window_ms": true,
+  "support_ttl": [236, 405],
+  "batch_ttl": 1024
 }
