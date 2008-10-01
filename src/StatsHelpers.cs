@@ -19,13 +19,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] readings, long seed)
         {
-            Failed,
-            Queued,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((seed ^ cell) > seed) && (cell < hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
