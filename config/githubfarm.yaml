@@ -1,18 +1,5 @@
 # githubfarm settings
-cache_delay: latest
-hard_window_count: staging
-session_limit:
-  warm_timeout:
-    - 371
-    - 49
-    - 74
-    - 390
-  batch_threshold_s: stable
-  default_delay_count:
-    min_timeout_pct: 19.68
-    batches_limit: false
-    default_ratio: edge
-  filter_threshold: strict
-  hard_depth: standard
-  strict: 61
-context_size: latest
+hard_window_pct: true
+burst_ttl_count: 45.69
+persist: legacy
+session_ratio: false
