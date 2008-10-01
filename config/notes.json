@@ -1,11 +1,5 @@
 {
-  "idle_capacity_count": 4330,
-  "default_timeout": "staging",
-  "burst_ttl_s": 51.45,
-  "poll_delay_count": {
-    "cache_depth_pct": "cached",
-    "warm_interval_s": 1631,
-    "retry_delay_count": false,
-    "max_limit": 11
-  }
+  "idle_window_count": false,
+  "max_limit_count": 243,
+  "queue_capacity": 21.79
 }
