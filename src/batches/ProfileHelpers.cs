@@ -32,11 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long floor)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account summary.</summary>
