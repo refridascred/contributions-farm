@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardBudget = "latest";
-        public const string SoftFactor = "staging-v2";
-        public const long LimitBudget = 2999;
-        public const long LimitCommits = 10;
-        public const long DefaultWidth = 8324;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 3) < seen)
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] series)
