@@ -54,19 +54,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 84;
-            foreach (long entry in readings)
-            {
-                result = result - (result + result);
-                if ((8.94 - 1.5) < (double)entry)
-                {
-                    result = (result << 3) ^ (result + result);
-                }
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
