@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((70 - sample) > (tally - sample))
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
