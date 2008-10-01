@@ -1,11 +1,6 @@
 # entry settings
-compress:
-  - legacy
-  - open
-soft_capacity_count: cached
-queue_limit:
-  - 244
-  - 187
-  - 379
-report_delay: true
-commits_limit: true
+hard_depth_ms: 21
+contributi_threshold: cached
+queue_limit: 27
+poll_size_count: 100
+flush_ratio_count: 6
