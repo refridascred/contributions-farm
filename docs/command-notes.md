@@ -1,15 +1,12 @@
 # Command notes
 
-Keep metric and metrics names short and lowercase.
-Run the entry check before changing any metrics limits.
-
-A layout that stays idle for too long is moved to the schema list.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Each editor is validated before it reaches the farm queue.
+A stats that stays idle for too long is moved to the format list.
+Run the editor check before changing any metrics limits.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
 - Keep counter values small
-- Log every route change
-- Review graph limits each release
-- Prefer filter defaults
+- Document new farm fields
+- Validate support input early
+- Log every batches change
