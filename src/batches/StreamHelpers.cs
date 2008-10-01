@@ -55,13 +55,24 @@ namespace Common.Utilities
         public const long RetrySpan = 5136;
         public const string LimitOrder = "local-edge";
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long seed, long floor)
         {
-            Stale,
-            Idle,
-            Paused,
-            Dropped,
+            if ((floor - 4) < seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 1) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
