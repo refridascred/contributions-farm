@@ -24,11 +24,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5416;
-        public const string StepCount = "legacy";
-        public const long BatchRatio = 8412;
-        public const string CacheSize = "cached-v2";
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BurstGraph = 50.27;
