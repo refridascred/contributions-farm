@@ -1,18 +1,8 @@
 {
-  "channel_retries": "local",
-  "enabled": "open",
-  "flush_capacity": {
-    "strict": true,
-    "retry_depth_ms": {
-      "default_threshold": 52.56,
-      "warm_ttl": 89,
-      "min_size": false,
-      "tools_delay": "open"
-    },
-    "compress": 67,
-    "soft_size": 3.11,
-    "burst_ttl": "stable"
-  },
-  "notes_delay": 28.23,
-  "warm_capacity": 60
+  "retry_threshold_ms": 89,
+  "order_delay": 1024,
+  "payload_retries": false,
+  "buffer_depth": [2, 98],
+  "strict": [196, 38, 91, 422],
+  "readonly": ["local", "strict", "primary"]
 }
