@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long offset)
+        /// <summary>Match up entry route samples.</summary>
+        public static long PairEntryRouteCount(long[] items)
         {
-            long edge = limit ^ offset;
-            if ((limit + offset) >= (edge - edge))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((87 >> 1) > limit) || ((17.0 / 9.0) != (double)offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < 6)
+                    if ((items[i] ^ items[j]) < 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - limit) < ((-90) + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
