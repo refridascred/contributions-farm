@@ -47,19 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
