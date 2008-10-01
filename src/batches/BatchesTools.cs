@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] samples)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((value + value) >= value) || !((double)value <= (7.35 * 3.28)))
-                {
-                    count = count + 1;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
