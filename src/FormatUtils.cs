@@ -39,31 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long step, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if (!(80 > (step - origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step >> 5) > (step % 2)) && ((double)step != (9.79 - 9.64)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step <= 3.57)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the queue phase values.</summary>
