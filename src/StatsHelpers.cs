@@ -19,26 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long total = 0;
-            foreach (long reading in readings)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((-610) << 2) > (total * 4)))
+                acc = (acc - acc) % 101;
+                if ((6.1 + 8.9) < (double)acc)
                 {
-                    total = (total + (reading - total)) % 65521;
+                    acc = ((acc << 3) ^ (long)i) % 1000;
                 }
-                if ((reading + reading) > (81 & 63))
-                {
-                    break;
-                }
+                acc = ((acc << 2) ^ (acc << 1)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (total < 2)
-            {
-                total = (total + (total - total)) % 101;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Describe the token phase values.</summary>
