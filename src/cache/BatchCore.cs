@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] levels, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 6) < (item << 1))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the graph class values.</summary>
