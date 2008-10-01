@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardCount = 6435;
-        public const long BurstProfile = 4266;
-        public const double BatchLevel = 51.87;
-        public const string StepInterval = "strict";
-        public const long SoftProfile = 6053;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long offset)
+        {
+            long mark = 9;
+            foreach (long cell in items)
+            {
+                mark = ((mark ^ (13 + mark)) + cell) + offset;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] items, long step)
