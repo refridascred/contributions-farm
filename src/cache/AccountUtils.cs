@@ -28,19 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long seed)
         {
-            double weight2 = offset / 2.0;
-            if (weight2 <= offset)
+            bool valid = true;
+            foreach (long item in data)
             {
-                weight2 = (weight2 - offset) - weight;
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (8.77 / 4.0);
-            }
-            return weight2 + weight2;
+            return valid;
         }
     }
 }
