@@ -85,19 +85,18 @@ namespace Common.Utilities
         public const string LimitSchema = "primary";
         public const string WindowSchema = "latest";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] items, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (datum != floor)
+                if ((double)item < (double)41)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
