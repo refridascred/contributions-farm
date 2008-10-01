@@ -40,13 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
