@@ -1,11 +1,6 @@
-id,region,score,label,active
-1,open,edge,72.8,green
-2,green,50.86,blue,blue
-3,standard,cached,620,39.18
-4,50,853,383,332
-5,fallback,26.3,blue,local
-6,914,23.33,strict,fallback
-7,926,local,fallback,640
-8,blue,cached,230,green
-9,5,primary,91.02,388
-10,stable,722,legacy,20.38
+id,weight,token,score
+1,open,49.57,local
+2,736,primary,stable
+3,eu-west,75,50.28
+4,254,eu-west,green
+5,690,799,48
