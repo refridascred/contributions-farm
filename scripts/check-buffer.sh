@@ -7,13 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in blue staging standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=110
+log "limit is ${BUFFER_LIMIT}"
