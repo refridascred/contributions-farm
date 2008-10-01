@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long CountSchemaFarmMatches(long[] values, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!!((offset * 4) != (offset + hits)))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
