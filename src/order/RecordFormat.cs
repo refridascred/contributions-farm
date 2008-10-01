@@ -40,16 +40,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series, long seed)
+        /// <summary>Locate a checks metrics reading by value.</summary>
+        public static long LocateChecksMetricsIndex(long[] series, long offset)
         {
-            long acc = 5;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc << 2) ^ seed) % 97;
-                acc = acc ^ entry;
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
