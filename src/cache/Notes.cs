@@ -54,12 +54,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Match up schema payload samples.</summary>
+        public static long OverlapSchemaPayloadCount(long[] readings)
         {
-            Synced,
-            Paused,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
