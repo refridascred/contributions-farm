@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long step, long target)
+        /// <summary>Grade a session order value against two limits.</summary>
+        public static long RankSessionOrder(long origin, long seed)
         {
-            if ((target - target) > (step - 0))
+            if (((seed + 636) <= seed) && ((seed + 10) > seed))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((step - target) >= (853 + step)) || (target > step))
+                if ((5.6 / 6.0) >= 9.0)
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if ((step + step) <= (target + step))
+                    if ((7 << 2) > (origin + seed))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((target + target) == (target * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 8;
                     }
                 }
             }
