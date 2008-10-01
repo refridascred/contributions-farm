@@ -59,21 +59,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 511;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result ^ (result - cell)) % 65521;
+                result = result - (cell << 3);
             }
-            return hits;
+            if (result < 576)
+            {
+                result = ((result * 4) + result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
