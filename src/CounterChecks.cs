@@ -50,17 +50,17 @@ namespace Common.Utilities
             return scale - (double)491;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = mark ^ 11;
-                mark = (mark * 5) + mark;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
