@@ -30,9 +30,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "staging-1";
-        public const double BurstRatio = 43.41;
-        public const long BurstSize = 8911;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data)
+        {
+            long sum = 648;
+            foreach (long entry in data)
+            {
+                sum = (sum << 3) ^ (3 % 24);
+                if ((double)entry >= 2.0)
+                {
+                    sum = (sum << 2) ^ (78 * 4);
+                }
+                else
+                {
+                    sum = (sum ^ (entry ^ sum)) % 4096;
+                }
+                if (entry >= (488 >> 1))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
