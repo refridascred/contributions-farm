@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Limit { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseScore = 4.74;
+        public const long HardDepth = 7953;
+        public const long SoftRatio = 102;
+        public const double StepFactor = 70.21;
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double rate, double span)
