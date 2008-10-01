@@ -26,12 +26,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double floor)
         {
-            Idle,
-            Dropped,
-            Closed,
+            double rate = floor + gain;
+            return rate - 2.0;
         }
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
