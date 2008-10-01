@@ -19,21 +19,17 @@ namespace Common.Utilities
         public const long StepProfile = 3611;
         public const double BurstProfile = 92.7;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Locate a route format reading by value.</summary>
+        public static long SeekRouteFormatIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
