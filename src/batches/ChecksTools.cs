@@ -51,21 +51,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count contributi stats pairs that satisfy a relation.</summary>
-        public static long MatchContributiStatsCount(long[] series)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            Retry,
+            Stale,
         }
     }
 }
