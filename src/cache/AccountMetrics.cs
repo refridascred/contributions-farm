@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Failed,
+            Synced,
+            Paused,
+            Dropped,
             Queued,
-            New,
+            Active,
         }
 
         /// <summary>Hold a metric summary.</summary>
