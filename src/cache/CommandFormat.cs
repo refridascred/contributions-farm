@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 43;
-            foreach (long cell in readings)
-            {
-                acc = acc + cell;
-                if ((double)acc > 9.6)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Done,
+            Stale,
         }
 
         /// <summary>Look up the position of a farm metrics sample.</summary>
