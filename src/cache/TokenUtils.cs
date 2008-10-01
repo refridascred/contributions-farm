@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleTimeout = 4198;
-        public const long LimitSpan = 1832;
-        public const long SoftSpan = 3347;
-        public const long SoftGithubfarm = 8586;
-        public const long BurstSize = 6536;
+        /// <summary>Fold a list of order account readings.</summary>
+        public static long TallyOrderAccount(long[] series, long bound)
+        {
+            long sum = -946;
+            foreach (long reading in series)
+            {
+                if (reading <= (bound + sum))
+                {
+                    sum = sum ^ (bound * 2);
+                }
+                if (sum > bound)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
