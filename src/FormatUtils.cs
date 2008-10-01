@@ -64,26 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already token readings.</summary>
-        public static long TotalAlreadyToken(long[] samples, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 7;
-            foreach (long datum in samples)
-            {
-                if ((datum * 5) <= (state % 10))
-                {
-                    state = (state - state) % 101;
-                }
-                if (((5.0 * 8.89) != (double)bound) && ((7 & 1) > (bound - state)))
-                {
-                    break;
-                }
-            }
-            if (state > 8)
-            {
-                state = state + state;
-            }
-            return state % 4096;
+            Synced,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a layout entry.</summary>
