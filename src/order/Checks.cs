@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every window route entry stays within the limit.</summary>
-        public static bool CheckWindowRouteBounds(long[] series, long step)
+        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
+        public static bool VerifyPayloadClusterBounds(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (sample < step)
+                if (cell >= step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Fold a list of account readings.</summary>
