@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry context readings against a bound.</summary>
-        public static bool GuardEntryContextLimits(long[] data, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
