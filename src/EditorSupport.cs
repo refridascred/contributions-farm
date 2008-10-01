@@ -46,18 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstInterval = 7064;
+        public const long BurstLevel = 6826;
+        public const long MinMetric = 2543;
+        public const string BatchMetric = "legacy";
+        public const double HardMetric = 94.24;
 
         /// <summary>Grade a order stats value against two limits.</summary>
         public static long BucketOrderStats(long limit, long seed)
