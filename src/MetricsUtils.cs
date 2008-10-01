@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 581;
+            foreach (long cell in values)
+            {
+                mark = mark ^ (cell * 3);
+            }
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
