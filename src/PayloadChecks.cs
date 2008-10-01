@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCount = 9598;
+        public const string BurstWidth = "latest";
+        public const string MinCommand = "local";
+        public const long SoftCommand = 7703;
+        public const long StepCommand = 3018;
 
         /// <summary>Accumulate metric batches samples.</summary>
         public static long CombineMetricBatches(long[] readings)
