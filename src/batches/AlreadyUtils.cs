@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long BatchInterval = 3913;
         public const double MaxBatches = 23.05;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
