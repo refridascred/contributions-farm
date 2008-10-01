@@ -18,12 +18,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinWidth = 1834;
-        public const double DefaultTimeout = 16.78;
-        public const string IdleRatio = "primary";
-        public const long WindowSession = 8930;
-        public const string HardWidth = "open-1";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double bias, double floor)
