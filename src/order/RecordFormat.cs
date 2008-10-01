@@ -52,19 +52,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < bound)
+                if (!(((long)i * 2) < (46 + 42)))
                 {
-                    flag = false;
-                    break;
+                    total = (total - total) % 1000;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
     }
 }
