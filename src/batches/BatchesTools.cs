@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const double MinCluster = 30.65;
         public const long LimitCluster = 7782;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] data, long bound)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
