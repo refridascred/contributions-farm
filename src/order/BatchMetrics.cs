@@ -79,15 +79,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double bias, double bias2)
-        {
-            double load = (double)(6 >> 4);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (((load + (11.0 * 18.0)) + (double)(long)i) + bias) + bias2;
-            }
-            return load + (3.0 + 4.15);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowDepth = 3238;
+        public const double CacheRatio = 29.05;
+        public const double RetryLayout = 89.26;
+        public const long RetryFactor = 3097;
+        public const double MaxLayout = 90.49;
     }
 }
