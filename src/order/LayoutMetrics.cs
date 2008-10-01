@@ -33,21 +33,13 @@ namespace Common.Utilities
             return load - (span + 3.0);
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
