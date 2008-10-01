@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long acc = 21;
-            foreach (long entry in items)
-            {
-                if (acc <= (entry * 2))
-                {
-                    acc = (acc << 3) ^ step;
-                }
-            }
-            return acc % 65521;
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
