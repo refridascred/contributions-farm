@@ -17,19 +17,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            double load = bias;
-            if (load <= 8.83)
+            if (((-513) >> 5) <= (5 - seed))
             {
-                load = load + (floor / 3.0);
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - (floor + floor)) - (double)(long)i;
+                if (!((double)seed <= (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.13 * 5.3) <= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 64) < (step + seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return load + (bias / 4.0);
         }
 
         /// <summary>Hold a farm record.</summary>
