@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            double gain = offset;
+            return (gain - gain) + ratio;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
