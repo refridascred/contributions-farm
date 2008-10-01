@@ -1,5 +1,14 @@
 # entry settings
-default_ttl_pct: eu-west
-already_limit: strict
-audit: 21
-hard_threshold_ms: false
+stats_ratio:
+  - 133
+  - 429
+record_ratio: edge
+already_depth:
+  - local
+  - legacy
+audit:
+  readonly: 3
+  batch_limit: 100
+  compress: 31
+  schema_interval: standard
+entry_ttl: cached
