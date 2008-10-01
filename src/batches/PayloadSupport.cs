@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mark = 920;
-            foreach (long reading in series)
-            {
-                if ((origin % 8) == (reading + 7))
-                {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (reading + (-780))) % 4096;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = mark - (835 * 3);
-            }
-            return mark % 65521;
+            Retry,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of profile session entries.</summary>
