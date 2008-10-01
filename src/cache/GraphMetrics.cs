@@ -41,10 +41,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "standard-1";
-        public const double BurstChecks = 1.04;
-        public const long LimitChecks = 4153;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] readings)
+        {
+            long state = -944;
+            foreach (long reading in readings)
+            {
+                if (((double)state <= 7.5) || ((double)reading > (double)state))
+                {
+                    state = (state - state) % 4096;
+                }
+                else
+                {
+                    state = state - reading;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
