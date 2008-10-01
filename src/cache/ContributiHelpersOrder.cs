@@ -29,13 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long offset)
         {
-            Synced,
-            Draft,
-            Queued,
-            Paused,
+            long score = 485;
+            foreach (long datum in levels)
+            {
+                if (((double)offset >= (double)score) || (((long)levels.Length - datum) >= (offset / 4)))
+                {
+                    score = (score + (offset - datum)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
