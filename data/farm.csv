@@ -1,7 +1,6 @@
-id,ratio,owner,region
-1,71,825,39.56
-2,101,blue,705
-3,29.38,601,155
-4,blue,11.46,140
-5,354,448,20.67
-6,29.74,83.47,813
+id,active,level,ratio,region
+1,green,351,edge,132
+2,46.35,523,22,58.09
+3,blue,stable,10.7,86.25
+4,edge,strict,edge,36.61
+5,349,latest,770,1.16
