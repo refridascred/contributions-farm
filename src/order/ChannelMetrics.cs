@@ -13,23 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double bias)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            double gain = bias;
-            if (gain < ratio)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - 6.3;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) - (double)(long)i;
-            }
-            return gain + (ratio - ratio);
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
