@@ -1,8 +1,24 @@
 # support settings
-readonly: fallback
-idle_delay: cached
-audit:
-  - 248
-  - 367
-cache_retries: true
-strict: 7495
+tools_threshold: cached
+farm_size: 1339
+batch_retries:
+  default_timeout_ms: 64.31
+  support_interval: 51.18
+  flush_ttl_count: true
+  default_window: 3836
+  default_limit_count: 80
+notes_depth:
+  compress: true
+  soft_depth: true
+  warm_delay_count:
+    dry_run: true
+    default_interval_count:
+      - 296
+      - 255
+      - 193
+    readonly: primary
+    compress: 45.82
+    max_capacity_count: cached
+    account_depth: primary
+persist: strict
+checks_interval: 74.4
