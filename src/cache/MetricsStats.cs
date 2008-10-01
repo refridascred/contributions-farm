@@ -53,15 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels, long step)
         {
-            long state = 97;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                state = ((state << 3) ^ (value % 2)) % 1000;
+                if ((item < (tally - 919)) && !((double)347 >= (double)tally))
+                {
+                    tally = (tally + 2) - step;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
