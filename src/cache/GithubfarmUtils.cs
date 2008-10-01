@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values)
-        {
-            long mix = 176;
-            foreach (long cell in values)
-            {
-                if (((cell + mix) >= (mix << 3)) && (cell < (cell + cell)))
-                {
-                    mix = (mix + cell) % 65521;
-                }
-            }
-            if (mix < 428)
-            {
-                mix = ((mix << 3) ^ ((-105) + mix)) % 255;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxLevel = 9818;
+        public const string CacheWidth = "open-edge";
+        public const long LimitWidth = 1336;
+        public const string WindowCluster = "stable-edge";
+        public const double CacheCluster = 78.64;
 
         /// <summary>Count batch session pairs that satisfy a relation.</summary>
         public static long CompareBatchSessionCount(long[] series)
