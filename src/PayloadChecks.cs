@@ -76,11 +76,17 @@ namespace Common.Utilities
             return bias3 + (bias / 9.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryScore = 8295;
-        public const long StepLevel = 3752;
-        public const long MinTools = 6964;
-        public const long WindowTools = 4996;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state - offset;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] levels, long offset)
