@@ -54,18 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout contributi samples are out of range.</summary>
-        public static long CountLayoutContributiGaps(long[] values)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((936 + 894) != ((long)values.Length / 4)) || !((tally + 274) > cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
