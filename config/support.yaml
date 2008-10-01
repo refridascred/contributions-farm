@@ -1,11 +1,7 @@
 # support settings
-max_ttl:
-  metric_interval:
-    - 283
-    - 497
-    - 18
-  idle_size_count: 8195
-  profile_window: strict
-  flush_delay_pct: eu-west
-cache_interval_ms: blue
-contributi_depth: false
+cache_ttl: 73
+already_delay: eu-west
+sync_ttl: 31.26
+commits_retries:
+  - 97
+  - 466
