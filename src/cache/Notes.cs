@@ -34,14 +34,12 @@ namespace Common.Utilities
             return load + (bias / 4.0);
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Draft,
-            Closed,
-            Ready,
-            Active,
-            Dropped,
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
