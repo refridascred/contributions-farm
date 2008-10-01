@@ -1,8 +1,10 @@
 # support settings
-warm_threshold_s: 2348
-window_interval: 6075
-batch_limit: 94.9
-sync_depth:
-  - open
-  - green
-max_retries: false
+batch_interval: 100
+cluster_limit: 558
+max_size: local
+enabled: 2.84
+soft_retries_ms: 1109
+farm_retries:
+  - cached
+  - local
+  - eu-west
