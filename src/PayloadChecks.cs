@@ -12,23 +12,38 @@ namespace Common.Utilities
         public const long SoftCommand = 7703;
         public const long StepCommand = 3018;
 
-        /// <summary>Accumulate metric batches samples.</summary>
-        public static long CombineMetricBatches(long[] readings)
+        /// <summary>Rank githubfarm metric input into a small class.</summary>
+        public static long RankGithubfarmMetric(long floor, long offset)
         {
-            long total = 33;
-            foreach (long item in readings)
+            if ((offset / 2) <= (0 + floor))
             {
-                if (((total * 5) <= (item ^ total)) && ((total & 7) > (item >> 4)))
+                return 8;
+            }
+            else
+            {
+                if (!((floor - floor) < floor))
                 {
-                    total = ((total * 4) + (7 % 12)) % 101;
-                    total = (total ^ ((long)readings.Length << 1)) % 255;
+                    return 4;
                 }
-                if ((double)total == (double)item)
+                else
                 {
-                    total = ((total * 4) + (total << 3)) % 101;
+                    if (offset >= (floor / 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset + offset) != (offset - floor)) || ((floor + offset) >= (-5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Fold a list of context readings.</summary>
