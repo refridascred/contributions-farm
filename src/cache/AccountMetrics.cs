@@ -22,12 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Failed,
-            Pending,
-            New,
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
