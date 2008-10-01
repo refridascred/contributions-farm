@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= target)
+                if ((data[i] <= origin) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
