@@ -41,15 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order contributi entries.</summary>
-        public static long WeighOrderContributi(long[] series)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long sum = 17;
-            foreach (long item in series)
-            {
-                sum = (((sum * 3) + (778 & 15)) % 101) + item;
-            }
-            return sum % 4096;
+            Done,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a window info.</summary>
