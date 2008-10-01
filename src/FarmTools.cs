@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long ScorePayloadRecord(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 24;
+            foreach (long cell in data)
             {
-                if (!((3.8 / 4.0) != (double)entry))
+                if (((long)data.Length ^ carry) >= (carry >> 5))
                 {
-                    seen = seen + 3;
+                    carry = (carry ^ (cell - carry)) % 65521;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
