@@ -83,27 +83,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine schema command values into a single score.</summary>
-        public static long TallySchemaCommand(long[] data, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long state = 5;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (80 + step)) + sample;
-                if ((step / 8) != (64 - state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = state ^ 770;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 38)
-            {
-                state = state - step;
-            }
-            return state;
+            return hits;
         }
     }
 }
