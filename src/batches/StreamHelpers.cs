@@ -34,12 +34,13 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Closed,
-            Failed,
-            Pending,
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
