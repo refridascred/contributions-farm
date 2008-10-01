@@ -35,12 +35,20 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "staging";
-        public const double StepOrder = 91.44;
-        public const double CacheSpan = 60.0;
-        public const long MaxOrder = 9556;
-        public const long HardOrder = 6419;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double offset)
+        {
+            double drift = scale;
+            if (drift <= (offset * 6.7))
+            {
+                drift = drift - (double)9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (7.0 - scale);
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long IterateTools(long limit)
