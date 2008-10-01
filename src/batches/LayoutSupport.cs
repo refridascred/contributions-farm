@@ -66,32 +66,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support editor value against two limits.</summary>
-        public static long GradeSupportEditor(long seed, long floor)
+        /// <summary>Combine profile channel values into a single score.</summary>
+        public static long TallyProfileChannel(long[] readings)
         {
-            long step = seed - floor;
-            if ((step + step) > seed)
+            long anchor = 756;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (18.0 + 2.64))
+                if (!((6.38 / 6.0) < (double)anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + floor) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (((anchor * 2) + ((long)readings.Length & 3)) % 65521) ^ item;
                 }
             }
+            if (anchor < 4)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a metrics entry.</summary>
