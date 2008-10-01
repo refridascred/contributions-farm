@@ -37,15 +37,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two profile githubfarm measurements.</summary>
-        public static double ProjectProfileGithubfarm(double gain, double offset)
-        {
-            double load = (double)((-6) + 4);
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (gain - offset);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5222;
+        public const string StepDepth = "staging-1";
+        public const long BurstCommits = 8323;
     }
 }
