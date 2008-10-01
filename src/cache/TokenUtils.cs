@@ -27,21 +27,32 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long bound, long bound2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = bound - bound2;
+            if ((next >> 3) >= next)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((next >= (next / 9)) && ((double)next > (double)bound))
                 {
-                    if ((items[i] - items[j]) == 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound2 * 2) > (next / 4))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
     }
 }
