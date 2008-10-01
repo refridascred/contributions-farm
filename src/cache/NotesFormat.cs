@@ -33,21 +33,31 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Rank tools githubfarm input into a small class.</summary>
+        public static long GradeToolsGithubfarm(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (328 <= (bound * 4))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound / 2) <= (target + target))
                 {
-                    if ((samples[i] + samples[j]) == 0)
+                    return 0;
+                }
+                else
+                {
+                    if (target > (83 ^ target))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
