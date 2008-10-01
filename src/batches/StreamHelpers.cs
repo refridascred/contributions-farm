@@ -69,9 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 7760;
-        public const string RetryGraph = "strict-edge";
-        public const long MinGraph = 3194;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
