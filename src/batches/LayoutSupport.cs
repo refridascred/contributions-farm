@@ -73,11 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCount = 84.5;
-        public const double StepInterval = 73.92;
-        public const double HardFactor = 8.22;
-        public const long BatchSize = 4213;
-        public const string MaxCounter = "stable-1";
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
