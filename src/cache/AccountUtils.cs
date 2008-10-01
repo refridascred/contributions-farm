@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long limit)
         {
-            if ((962 > (bound + 657)) || ((bound + seed) < (bound % 24)))
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((595 + bound) != (seed >> 1)) && ((2 + bound) < (2 + seed)))
+                if (((double)score > (11.0 + 8.46)) && ((double)1 < (double)limit))
                 {
-                    return 6;
+                    score = score + (limit * 4);
+                    score = (score << 3) ^ (58 % 64);
                 }
                 else
                 {
-                    if ((seed + bound) > (bound ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    score = score ^ ((long)i - (-66));
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Roll a route cache counter forward.</summary>
