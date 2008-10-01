@@ -58,11 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double load = scale;
-            return (load - (7.88 * 8.1)) + offset;
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the graph phase values.</summary>
