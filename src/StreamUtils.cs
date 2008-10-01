@@ -67,24 +67,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long origin)
+        /// <summary>Fold a list of metric buffer readings.</summary>
+        public static long CombineMetricBuffer(long[] levels)
         {
-            if (((limit + limit) <= limit) || ((origin * 3) == (123 << 3)))
+            long anchor = -292;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit % 60) == (origin * 2))
+                if ((573 - anchor) < anchor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    anchor = ((anchor + (anchor + anchor)) % 97) + sample;
                 }
             }
+            return anchor;
         }
     }
 }
