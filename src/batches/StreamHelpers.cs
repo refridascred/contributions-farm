@@ -34,15 +34,19 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] levels, long floor)
         {
-            long score = 449;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                score = ((score - (datum / 9)) % 65521) - step;
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
