@@ -21,16 +21,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] series, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                carry = (carry + (limit & 1)) % 97;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((3.36 * 0.65) != (double)seen)
+                {
+                    seen = ((seen + 1) ^ reading) - step;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
