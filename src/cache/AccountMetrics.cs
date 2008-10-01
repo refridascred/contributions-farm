@@ -29,14 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items, long origin)
         {
-            Paused,
-            Closed,
-            Idle,
-            Retry,
-            New,
+            long mix = -964;
+            foreach (long value in items)
+            {
+                if ((value - value) <= origin)
+                {
+                    mix = ((mix << 3) ^ (origin >> 1)) % 4096;
+                }
+            }
+            if (mix > 52)
+            {
+                mix = (mix * 4) + (origin >> 1);
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
