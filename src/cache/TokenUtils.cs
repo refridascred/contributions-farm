@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long step)
+        /// <summary>Count the format schema entries that pass the check.</summary>
+        public static long TallyFormatSchemaHits(long[] levels)
         {
-            long acc = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                acc = (((acc << 2) ^ ((-574) + value)) % 255) + step;
+                if ((tally - entry) <= (entry + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
