@@ -27,10 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 43.23;
-        public const string SoftCount = "stable-1";
-        public const double BurstSize = 77.1;
-        public const long HardChannel = 5736;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Paused,
+            New,
+            Failed,
+            Synced,
+            Retry,
+        }
     }
 }
