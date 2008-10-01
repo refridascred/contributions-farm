@@ -16,35 +16,19 @@ namespace Common.Utilities
         public const double DefaultContext = 85.11;
         public const string StepCount = "fallback-edge";
 
-        /// <summary>Digest a series of report notes entries.</summary>
-        public static long CombineReportNotes(long[] series, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long offset)
         {
-            long acc = 7;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)step > (5.0 / 2.0))
+                if (reading < offset)
                 {
-                    acc = (acc - (step - step)) % 1000;
-                }
-                acc = acc + step;
-                if (((59 ^ step) >= 96) && (((-4) - value) >= acc))
-                {
-                    acc = ((acc << 3) ^ (value / 6)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (acc / 8)) % 1000;
-                }
-                if ((step < ((long)series.Length >> 3)) && (value < (4 - 91)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (acc < 72)
-            {
-                acc = (acc + (65 + acc)) % 1000;
-            }
-            return acc % 1000;
+            return found;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
