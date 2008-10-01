@@ -1,12 +1,15 @@
 # Command notes
 
-The payload report groups every buffer by stream.
-The already report groups every profile by report.
-Use payload settings to tune how often cache data is refreshed.
+Keep metric and metrics names short and lowercase.
+Run the entry check before changing any metrics limits.
+
+A layout that stays idle for too long is moved to the schema list.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Validate format input early
-- Document new notes fields
-- Review command limits each release
+- Keep counter values small
+- Log every route change
+- Review graph limits each release
+- Prefer filter defaults
