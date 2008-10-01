@@ -72,25 +72,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long bound2 = offset + bound;
-            if ((2.2 + 9.88) >= (double)bound2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (875 >= bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
