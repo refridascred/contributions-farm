@@ -43,19 +43,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] readings, long offset)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = bias;
+            return drift + offset;
         }
 
         /// <summary>Combine record schema values into a single score.</summary>
