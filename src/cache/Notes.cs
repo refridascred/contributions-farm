@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitTimeout = 1003;
-        public const long DefaultSize = 4142;
-        public const string IdleAlready = "cached-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxCount = "latest-edge";
+        public const long LimitScore = 2012;
+        public const long MinInterval = 3108;
+        public const long IdleInterval = 1038;
+        public const string SoftSession = "legacy-edge";
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BatchCount = 14.1;
