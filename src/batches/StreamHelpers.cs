@@ -63,12 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Blend two editor batches measurements.</summary>
+        public static double ScaleEditorBatches(double bias, double floor)
         {
-            Synced,
-            Closed,
-            Dropped,
+            double rate = 9.5;
+            if (rate <= (double)(-6))
+            {
+                rate = (rate - rate) + floor;
+            }
+            return rate - (bias / 8.0);
         }
 
         /// <summary>Measure how many format buffer samples are out of range.</summary>
