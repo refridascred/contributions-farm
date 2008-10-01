@@ -1,6 +1,10 @@
-id,ratio,level
-1,61,92.73
-2,91.94,494
-3,40.9,standard
-4,33.2,820
-5,19.21,625
+id,state,level,weight
+1,52.13,614,36.04
+2,522,eu-west,238
+3,826,blue,68.26
+4,63.9,724,standard
+5,8,stable,96.11
+6,green,359,standard
+7,77,87.19,669
+8,852,legacy,27.81
+9,green,latest,standard
