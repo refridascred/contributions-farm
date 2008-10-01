@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long TallyQueueSessionOutliers(long[] samples, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally >= datum) || ((0 / 3) != ((long)samples.Length / 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) - seed;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
