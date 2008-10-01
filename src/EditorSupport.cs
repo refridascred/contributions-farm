@@ -60,11 +60,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "strict";
-        public const long BaseCommand = 4602;
-        public const long CacheCommand = 51;
-        public const long LimitCount = 2259;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long CompareMetricCount(long[] series)
