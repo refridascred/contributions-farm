@@ -52,21 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Audit report githubfarm readings against a rule.</summary>
+        public static long AuditReportGithubfarmHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((matches % 60) == (matches / 9)))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
