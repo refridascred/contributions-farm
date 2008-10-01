@@ -59,18 +59,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] data, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((-836) - hits) < ((long)data.Length << 2))
-                {
-                    hits = ((hits + 2) + datum) - limit;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
