@@ -5,35 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of payload format readings.</summary>
-        public static long WeighPayloadFormat(long[] items, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double span)
         {
-            long sum = 67;
-            foreach (long sample in items)
+            double load = (double)734 / 8.0;
+            if (load > rate)
             {
-                if ((13.0 * 4.0) < (double)sample)
-                {
-                    sum = sum ^ (sum - floor);
-                }
-                else
-                {
-                    sum = (sum - (floor >> 3)) % 4096;
-                    sum = ((sum * 5) + (floor << 2)) % 65521;
-                }
-                if ((((-6) + floor) <= floor) || ((double)floor <= 8.41))
-                {
-                    sum = (sum - sample) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (floor ^ sum)) % 255;
-                }
-                if (17.0 > (double)sum)
-                {
-                    break;
-                }
+                load = load - 7.0;
             }
-            return sum % 1000;
+            else
+            {
+                load = load + (rate * 3.64);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load - span)) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
