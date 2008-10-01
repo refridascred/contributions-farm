@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryDepth = 69.86;
-        public const double StepRecord = 14.78;
-        public const double HardScore = 45.63;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Draft,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series)
