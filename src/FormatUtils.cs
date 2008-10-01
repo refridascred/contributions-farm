@@ -64,20 +64,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the graph route series from a seed.</summary>
-        public static long IterateGraphRoute(long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = -904;
+            foreach (long sample in samples)
             {
-                if ((6.0 / 9.0) != (double)seed)
+                if ((1.7 / 6.0) > (double)mark)
                 {
-                    carry = (carry - (seed >> 1)) % 97;
-                    continue;
+                    mark = mark + (sample - sample);
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((mark + mark) >= mark)
+                {
+                    mark = ((mark * 3) + sample) % 4096;
+                }
             }
-            return carry;
+            return mark % 65521;
         }
     }
 }
