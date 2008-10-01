@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long seed)
+        /// <summary>Check that every graph channel entry stays within the limit.</summary>
+        public static bool GuardGraphChannelLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (values[i] >= seed)
+                if (entry > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
