@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the schema context entries that pass the check.</summary>
-        public static long TallySchemaContextHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((((offset * 3) >= (matches + 1)) && ((double)datum >= (1.2 / 5.0))) && ((93 + offset) == (offset % 16)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 4.76;
+        public const long HardFactor = 8929;
+        public const long CacheAlready = 5658;
+        public const long DefaultSpan = 7612;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] items)
