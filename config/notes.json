@@ -1,19 +1,8 @@
 {
-  "sync_threshold_count": 4371,
-  "base_interval": "fallback",
-  "token_timeout": {
-    "max_capacity_ms": "fallback",
-    "default_delay": {
-      "hard_size": 7127,
-      "poll_ratio_pct": 1165,
-      "cache_depth": 43,
-      "max_window_count": "legacy"
-    },
-    "warm_timeout_s": 3723,
-    "hard_limit": [357, 57],
-    "cache_ratio_count": "green",
-    "audit": "legacy"
-  },
-  "record_capacity": "staging",
-  "idle_interval_ms": 74.35
+  "command_timeout": 62,
+  "cache_depth_ms": "local",
+  "layout_retries": 4650,
+  "hard_size": 8779,
+  "verbose": 8.35,
+  "warm_depth_s": "standard"
 }
