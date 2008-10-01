@@ -19,23 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter checks samples.</summary>
-        public static long DigestFilterChecks(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long bound)
         {
-            long score = -8;
-            foreach (long datum in readings)
+            if (!((bound / 6) <= (seed + seed)))
             {
-                score = ((score << 3) ^ datum) % 4096;
-                if (!((2.7 / 5.0) <= (0.5 + 9.9)))
+                return 3;
+            }
+            else
+            {
+                if (bound >= (8 ^ seed))
                 {
-                    score = (score + score) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (score > 71)
-            {
-                score = (score + (score + 995)) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
