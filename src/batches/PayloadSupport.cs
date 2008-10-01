@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double bias, double offset)
         {
-            long score = 28;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    score = (score - ((long)i - datum)) % 255;
-                }
-                if (((double)score >= 8.4) && ((13.0 * 18.0) != (double)score))
-                {
-                    score = (score + score) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (datum * 5)) % 97;
-                }
-            }
-            return score;
+            double ratio = (offset - 9.15) - (19.0 / 9.0);
+            return ratio + bias;
         }
 
         /// <summary>Count the notes counter entries that pass the check.</summary>
