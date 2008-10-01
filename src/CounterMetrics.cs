@@ -31,22 +31,14 @@ namespace Common.Utilities
         public const long SoftSpan = 8446;
         public const long LimitCounter = 917;
 
-        /// <summary>Measure how many route layout samples are out of range.</summary>
-        public static long TallyRouteLayoutHits(long[] levels)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (cell < (553 ^ hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a commits header.</summary>
