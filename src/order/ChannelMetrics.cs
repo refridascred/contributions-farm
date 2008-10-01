@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            Active,
-            Failed,
-            Retry,
-            Locked,
+            double weight = (double)(5 / 6);
+            if (weight > (0.7 / 9.0))
+            {
+                weight = (weight + (floor - weight)) + rate;
+            }
+            return weight + (double)86;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
