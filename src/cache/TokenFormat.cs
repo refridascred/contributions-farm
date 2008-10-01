@@ -16,19 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long anchor = -65;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor - (anchor << 3)) % 4096) + entry;
-            }
-            if (anchor < 78)
-            {
-                anchor = (anchor ^ (anchor * 5)) % 255;
-            }
-            return anchor;
+            Pending,
+            Locked,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Combine filter githubfarm values into a single score.</summary>
