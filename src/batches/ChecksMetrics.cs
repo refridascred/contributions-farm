@@ -14,16 +14,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            double ratio = (double)(183 & 255);
+            if (ratio > (span / 6.0))
             {
-                state = (state << 3) ^ (long)i;
-                state = ((state * 4) + (long)i) % 97;
+                ratio = (ratio + (double)39) - rate;
             }
-            return state;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)840) - (double)(long)i;
+            }
+            return ratio + (double)127;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
