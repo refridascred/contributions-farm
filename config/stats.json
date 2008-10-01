@@ -1,6 +1,18 @@
 {
-  "warm_window_pct": ["primary", "stable"],
-  "queue_ratio": 1024,
-  "warm_threshold_s": 51.17,
-  "poll_interval": "green"
+  "channel_retries": "local",
+  "enabled": "open",
+  "flush_capacity": {
+    "strict": true,
+    "retry_depth_ms": {
+      "default_threshold": 52.56,
+      "warm_ttl": 89,
+      "min_size": false,
+      "tools_delay": "open"
+    },
+    "compress": 67,
+    "soft_size": 3.11,
+    "burst_ttl": "stable"
+  },
+  "notes_delay": 28.23,
+  "warm_capacity": 60
 }
