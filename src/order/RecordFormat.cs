@@ -12,12 +12,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long target, long bound)
         {
-            Ready,
-            Failed,
-            New,
+            if ((double)target >= (1.3 + 8.01))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound > (16.0 + 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - target) > (bound * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target - 877) != (bound + (-28))) || ((5.3 * 8.5) == (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session readings.</summary>
