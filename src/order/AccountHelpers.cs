@@ -73,24 +73,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank tools farm input into a small class.</summary>
-        public static long BucketToolsFarm(long floor, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((8.2 * 6.39) != (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((floor - floor) >= (bound << 2)) && ((bound - bound) < (floor + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
