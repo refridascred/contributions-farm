@@ -21,28 +21,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine profile order values into a single score.</summary>
-        public static long DigestProfileOrder(long[] items, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long mark = 6;
-            foreach (long reading in items)
-            {
-                long seen = (reading / 8) & 127;
-                if (!((reading ^ mark) < seen))
-                {
-                    mark = (((mark << 2) ^ (reading << 3)) % 1000) - seed;
-                }
-                mark = mark + ((-15) - reading);
-                if ((901 / 8) < reading)
-                {
-                    break;
-                }
-            }
-            if (mark > 775)
-            {
-                mark = ((mark << 3) ^ 618) % 97;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two support token measurements.</summary>
