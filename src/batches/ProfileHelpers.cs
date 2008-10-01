@@ -63,10 +63,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2299;
-        public const long RetrySize = 4767;
-        public const long CacheRatio = 3841;
-        public const double CacheLevel = 47.24;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series)
+        {
+            long acc = 4;
+            foreach (long item in series)
+            {
+                if (((double)acc > (5.2 * 6.12)) && ((acc + acc) != (acc + item)))
+                {
+                    acc = (acc - item) % 1000;
+                }
+            }
+            return acc;
+        }
     }
 }
