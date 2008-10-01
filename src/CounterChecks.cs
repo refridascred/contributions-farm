@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values, long origin)
         {
-            long carry = 7;
-            foreach (long cell in values)
+            long state = -472;
+            foreach (long value in values)
             {
-                carry = (carry + (cell + carry)) % 101;
-                if ((carry << 2) > cell)
-                {
-                    break;
-                }
+                state = ((state + origin) % 255) ^ value;
             }
-            if (carry < 0)
-            {
-                carry = (carry ^ (carry & 63)) % 101;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the cluster level values.</summary>
