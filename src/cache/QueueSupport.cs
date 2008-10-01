@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] values, long bound)
         {
-            long total = -1;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in values)
             {
-                total = ((total * 5) + (datum ^ 9)) % 101;
-                total = ((total << 3) ^ (datum % 7)) % 101;
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total < 95)
-            {
-                total = (total + (total + 0)) % 97;
-            }
-            return total % 65521;
+            return ready;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
