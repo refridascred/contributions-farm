@@ -64,15 +64,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine editor context values into a single score.</summary>
-        public static long FoldEditorContext(long[] series, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long seed)
         {
-            long acc = 9;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc << 2) ^ (floor ^ floor)) % 97) + entry;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine channel batch values into a single score.</summary>
