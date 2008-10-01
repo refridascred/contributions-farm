@@ -41,13 +41,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a token filter value against two limits.</summary>
+        public static long SortTokenFilter(long step, long offset)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            if ((offset ^ offset) == (offset << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(step <= (step + (-64))))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
