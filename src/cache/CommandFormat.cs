@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            Synced,
-            Done,
-            Stale,
+            long total = 4;
+            foreach (long datum in values)
+            {
+                if ((double)datum > (double)8)
+                {
+                    total = (total ^ (608 >> 2)) % 97;
+                }
+            }
+            if (total > 20)
+            {
+                total = (total ^ (total - total)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the graph checks entries that pass the check.</summary>
