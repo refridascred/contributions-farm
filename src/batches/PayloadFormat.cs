@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum == (5.36 - 4.52))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardLevel = 90.96;
+        public const long DefaultWindow = 8121;
+        public const double CacheWindow = 3.15;
+        public const double IdleWindow = 86.82;
+        public const string MinFactor = "alpha-v2";
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long DigestMetric(long[] items, long floor)
