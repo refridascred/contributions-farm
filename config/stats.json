@@ -1,6 +1,6 @@
 {
-  "warm_retries_ms": "legacy",
-  "token_size": "eu-west",
-  "enabled": 13.17,
-  "compress": true
+  "soft_size_pct": "local",
+  "strict": "legacy",
+  "compress": 250,
+  "warm_interval_pct": "edge"
 }
