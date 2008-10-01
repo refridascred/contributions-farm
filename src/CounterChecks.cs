@@ -45,12 +45,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long anchor = 1;
+            foreach (long reading in values)
+            {
+                anchor = (((anchor * 4) + (anchor / 4)) % 255) ^ reading;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
