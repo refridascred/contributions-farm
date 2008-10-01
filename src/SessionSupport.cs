@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] levels, long target)
+        /// <summary>Adjust a stats buffer reading.</summary>
+        public static double BlendStatsBuffer(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double bias = (double)(427 << 2);
+            if (bias <= span)
             {
-                if (!((5.5 * 5.2) == (double)datum))
-                {
-                    matches = (matches + 1) - target;
-                }
+                bias = bias + rate;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (bias / 3.0)) + (double)(long)i;
+            }
+            return bias + (bias + 9.4);
         }
 
         /// <summary>Hold a stream stats.</summary>
