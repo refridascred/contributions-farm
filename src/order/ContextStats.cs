@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7516;
-        public const long WindowCache = 8043;
-        public const long HardCache = 2199;
-        public const long IdleCache = 628;
-        public const long BurstCache = 5962;
+        /// <summary>Measure how many account already samples are out of range.</summary>
+        public static long TallyAccountAlreadyHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample != (6.4 + 2.14)) || ((tally - (-556)) == (sample / 4)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of notes farm entries.</summary>
         public static long FoldNotesFarm(long[] data, long bound)
