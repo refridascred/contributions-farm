@@ -39,18 +39,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data, long offset)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits - 0) >= (offset & 7))
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
