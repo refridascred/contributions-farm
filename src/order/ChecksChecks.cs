@@ -40,14 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long limit)
         {
-            Failed,
-            Retry,
-            Paused,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((limit + 61) <= (limit - tally)) || (((99 + tally) < (limit % 100)) || ((tally ^ limit) < (tally + limit))))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
