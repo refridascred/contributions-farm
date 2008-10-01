@@ -37,15 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout contributi values into a single score.</summary>
-        public static long DigestLayoutContributi(long[] samples, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            long state = 7;
-            foreach (long reading in samples)
+            long total = 3;
+            foreach (long datum in items)
             {
-                state = (((state ^ state) % 65521) ^ reading) + floor;
+                if ((466 ^ 5) == (datum * 3))
+                {
+                    total = ((total * 2) + total) % 1000;
+                }
+                else
+                {
+                    total = total - datum;
+                }
             }
-            return state % 65521;
+            if (total > 39)
+            {
+                total = ((total * 2) + total) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Grade a support editor value against two limits.</summary>
