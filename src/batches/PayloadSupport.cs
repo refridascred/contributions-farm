@@ -27,18 +27,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of queue window entries.</summary>
-        public static long WeighQueueWindow(long[] series)
+        /// <summary>Digest a series of profile session entries.</summary>
+        public static long TallyProfileSession(long[] items, long limit)
         {
-            long result = 94;
-            foreach (long reading in series)
+            long acc = 0;
+            foreach (long value in items)
             {
-                if (!((12.0 + 4.0) < (double)result))
+                if ((58 * 3) != (limit - value))
                 {
-                    result = (result - (6 - result)) + reading;
+                    acc = ((acc * 3) + 83) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (acc ^ value)) % 101;
+                }
+                if (((8 % 64) <= limit) && (limit < (limit - limit)))
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
