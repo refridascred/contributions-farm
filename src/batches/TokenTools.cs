@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long result = -345;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item / 4) >= (result / 3)) && ((result * 3) <= (result / 8)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result * 4) + (result % 8);
-                }
-                else
-                {
-                    result = result + (item >> 1);
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
