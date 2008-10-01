@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile schema samples are out of range.</summary>
-        public static long AuditProfileSchemaGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((double)floor < (9.0 * 7.22)) && ((795 - 150) < tally))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "cached-1";
+        public const long MaxLevel = 4119;
+        public const long DefaultEditor = 2632;
+        public const string BurstCount = "latest-1";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
