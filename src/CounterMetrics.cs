@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long total = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
