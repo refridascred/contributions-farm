@@ -30,17 +30,10 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 43.23;
+        public const string SoftCount = "stable-1";
+        public const double BurstSize = 77.1;
+        public const long HardChannel = 5736;
     }
 }
