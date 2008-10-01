@@ -17,12 +17,15 @@ namespace Common.Utilities
         public const string BaseCommand = "local-edge";
         public const double MaxCommand = 94.58;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long origin)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
