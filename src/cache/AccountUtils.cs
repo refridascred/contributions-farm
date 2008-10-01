@@ -21,10 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 77.8;
-        public const long BatchProfile = 5281;
-        public const long BurstWidth = 2060;
-        public const double CacheWidth = 3.09;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
