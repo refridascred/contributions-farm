@@ -1,8 +1,8 @@
-id,label,region
-1,standard,98.13
-2,147,916
-3,691,950
-4,76.67,917
-5,94.97,164
-6,cached,506
-7,27.54,primary
+id,region,token,state,ratio
+1,29.28,10,35.65,latest
+2,65.57,local,232,staging
+3,618,292,634,532
+4,blue,edge,primary,531
+5,staging,85.61,706,primary
+6,310,79.25,62.09,green
+7,68.73,28.81,38,881
