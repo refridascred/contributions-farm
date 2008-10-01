@@ -41,25 +41,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long bound, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long bound2 = bound ^ offset;
-            if ((bound2 & 15) < (bound ^ offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (0.6 >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Closed,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
