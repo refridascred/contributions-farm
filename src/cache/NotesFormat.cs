@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] samples, long origin)
         {
-            long anchor = -789;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 4) + (target / 4)) ^ sample;
+                if ((2 - value) >= (value - value))
+                {
+                    matches = (matches + 1) - origin;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
