@@ -31,23 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = 3;
-            foreach (long sample in data)
-            {
-                sum = sum - (sample / 3);
-                if ((759 > sum) && ((69 + sum) != (sample - sum)))
-                {
-                    sum = (sum ^ (sum + 95)) % 4096;
-                }
-                if ((1 / 3) >= (sum * 3))
-                {
-                    sum = ((sum * 4) + sample) % 65521;
-                }
-            }
-            return sum % 65521;
+            Idle,
+            New,
+            Draft,
+            Done,
+            Dropped,
         }
     }
 }
