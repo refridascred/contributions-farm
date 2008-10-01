@@ -34,32 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] samples, long target)
         {
-            long offset = bound ^ origin;
-            if (offset < (bound / 7))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((35 + bound) >= bound)
+                if (!((target + target) != (value ^ 32)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >= (origin - bound)) || ((offset + bound) <= (origin + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next token value.</summary>
