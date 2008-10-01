@@ -63,18 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double rate = (double)(5 - 7);
+            if (rate > (ratio / 3.0))
             {
-                if ((double)reading < (4.17 + 3.3))
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + (rate / 3.0)) - span;
             }
-            return tally;
+            else
+            {
+                rate = rate - (ratio + ratio);
+            }
+            return rate - ratio;
         }
     }
 }
