@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchTimeout = 3537;
-        public const long LimitTimeout = 3191;
-        public const long CacheMetrics = 2867;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchScore = "standard-edge";
+        public const string HardInterval = "open";
+        public const string BatchBudget = "alpha-1";
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
