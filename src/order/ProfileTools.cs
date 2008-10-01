@@ -47,13 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels)
         {
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (seen << 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
