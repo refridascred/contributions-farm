@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitTimeout = "legacy-v2";
-        public const long CacheTimeout = 140;
-        public const double RetrySize = 4.74;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long origin)
+        {
+            long mix = 83;
+            foreach (long entry in readings)
+            {
+                if (((double)(long)readings.Length < (18.0 + 9.4)) || (origin >= mix))
+                {
+                    mix = (((mix * 2) + (origin << 3)) % 255) ^ entry;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
