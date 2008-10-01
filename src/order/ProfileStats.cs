@@ -49,23 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] series, long target)
         {
-            long score = 3;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                score = (score - (item % 12)) % 101;
-                if ((score ^ (long)readings.Length) > (61 - item))
+                if ((matches - cell) >= (13 << 3))
                 {
-                    score = (score ^ (714 >> 2)) % 101;
+                    matches = (matches + 3) - target;
                 }
             }
-            if (score < 65)
-            {
-                score = (score - (score << 1)) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
