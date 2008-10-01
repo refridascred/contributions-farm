@@ -42,14 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] values, long offset)
         {
-            Active,
-            New,
-            Pending,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!!((offset ^ offset) > seen))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report info.</summary>
