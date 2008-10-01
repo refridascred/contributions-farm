@@ -64,12 +64,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long origin)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
