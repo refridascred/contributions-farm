@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Count the schema context entries that pass the check.</summary>
+        public static long TallySchemaContextHits(long[] levels, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((2.5 + 5.86) > (double)floor)
+                if ((((offset * 3) >= (matches + 1)) && ((double)datum >= (1.2 / 5.0))) && ((93 + offset) == (offset % 16)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
