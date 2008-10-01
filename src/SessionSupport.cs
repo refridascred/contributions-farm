@@ -27,13 +27,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long offset)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            if ((target - 7) < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset - target) > (offset << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a window header.</summary>
