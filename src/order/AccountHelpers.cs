@@ -15,19 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
-        public static bool GuardRouteGithubfarmLimits(long[] data, long seed)
+        /// <summary>Check that every session route entry stays within the limit.</summary>
+        public static bool ValidateSessionRouteBounds(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (item >= seed)
+                if (value > floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
