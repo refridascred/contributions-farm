@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] samples, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 - value) >= (value - value))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
