@@ -44,12 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate filter graph readings against a bound.</summary>
+        public static bool VerifyFilterGraphBounds(long[] series, long target)
         {
-            Retry,
-            Stale,
-            Synced,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of record entries.</summary>
