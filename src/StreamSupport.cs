@@ -36,11 +36,32 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitLevel = "open-edge";
-        public const double StepContributi = 20.3;
-        public const double LimitContributi = 64.47;
-        public const long LimitInterval = 4543;
-        public const long LimitFactor = 7208;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long offset2)
+        {
+            long step = offset ^ offset2;
+            if ((2.14 * 4.0) >= (double)offset2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset2 <= (offset + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (2 > (offset2 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
