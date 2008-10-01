@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (item >= floor)
+                if ((item / 6) < (item << 1))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) - step;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Blend two order measurements.</summary>
