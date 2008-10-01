@@ -14,32 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank command cache input into a small class.</summary>
-        public static long SortCommandCache(long bound, long floor)
+        /// <summary>Blend two command format measurements.</summary>
+        public static double AdjustCommandFormat(double weight, double span)
         {
-            long lane = bound + floor;
-            if (!((double)floor != (1.68 - 19.0)))
+            double drift = weight;
+            if (drift > (1.33 - 16.0))
             {
-                return 8;
+                drift = (drift + (double)502) + span;
             }
-            else
-            {
-                if ((floor & 31) < (32 & 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor - lane) > lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift - (double)89;
         }
 
         /// <summary>Blend two channel measurements.</summary>
