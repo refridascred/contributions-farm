@@ -23,11 +23,27 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheWidth = 40.33;
-        public const double SoftBudget = 35.25;
-        public const double SoftQueue = 54.49;
-        public const long CacheQueue = 7394;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
+        {
+            long anchor = 75;
+            foreach (long item in data)
+            {
+                if ((item ^ item) <= 22)
+                {
+                    anchor = ((anchor << 3) ^ (anchor % 10)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor << 3);
+                }
+                if (4 < (anchor + item))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of order contributi entries.</summary>
         public static long WeighOrderContributi(long[] series)
