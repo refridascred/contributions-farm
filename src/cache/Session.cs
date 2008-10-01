@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] levels, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (((origin << 2) <= (origin + 252)) && (carry <= (24 ^ origin)))
+                if (((1.3 * 3.75) > (double)datum) || ((origin + 952) <= origin))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
