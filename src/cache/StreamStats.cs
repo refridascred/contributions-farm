@@ -48,19 +48,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every route order entry stays within the limit.</summary>
-        public static bool CheckRouteOrderBounds(long[] readings, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= seed)
+                if (items[i] <= target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
