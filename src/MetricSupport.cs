@@ -13,22 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((533 % 12) <= (state << 2))
-                {
-                    long step = (limit + state) * 5;
-                    state = state + step;
-                }
-                state = (state ^ limit) % 4096;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 9454;
+        public const string BaseRatio = "local";
+        public const double IdleBudget = 43.39;
+        public const double IdleInterval = 41.26;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double CacheFactor = 12.53;
