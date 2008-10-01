@@ -70,12 +70,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Rank tools githubfarm input into a small class.</summary>
+        public static long SortToolsGithubfarm(long limit, long offset)
         {
-            Done,
-            Stale,
-            Queued,
+            long diff = limit - offset;
+            if ((offset + offset) > diff)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)limit < (5.0 + 13.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5 < (offset % 16)) && ((double)diff >= (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (39 - diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
