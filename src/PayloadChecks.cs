@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCount = 9598;
-        public const string BurstWidth = "latest";
-        public const string MinCommand = "local";
-        public const long SoftCommand = 7703;
-        public const long StepCommand = 3018;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardCount = 6435;
