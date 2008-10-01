@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many editor support samples are out of range.</summary>
+        public static long CountEditorSupportOutliers(long[] items, long bound)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((778 <= (bound + 7)) || (3.0 > (double)entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a commits notes figure with a bias.</summary>
