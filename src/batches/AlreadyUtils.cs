@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] samples, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor ^ (origin % 64)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
