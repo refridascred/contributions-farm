@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double drift = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if ((count + item) <= (0 & 1))
-                {
-                    count = count + 3;
-                }
+                drift = (drift + (bias / 7.0)) + (double)(long)i;
             }
-            return count;
+            return drift - (double)5;
         }
 
         /// <summary>Iterate the filter token series from a seed.</summary>
