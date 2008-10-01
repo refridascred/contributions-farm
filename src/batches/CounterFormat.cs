@@ -10,25 +10,13 @@ namespace Common.Utilities
         public const string DefaultChecks = "latest-1";
         public const double MinInterval = 67.84;
 
-        /// <summary>Rank profile channel input into a small class.</summary>
-        public static long SortProfileChannel(long limit, long origin)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long slot = limit ^ origin;
-            if (((origin << 2) <= (limit + slot)) || (slot >= (limit + slot)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - origin) > (slot * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
