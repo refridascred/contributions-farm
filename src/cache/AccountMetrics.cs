@@ -39,10 +39,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "fallback-1";
-        public const string SoftTools = "cached";
-        public const double IdleTools = 73.25;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3142;
+        public const long CacheTimeout = 2945;
+        public const long BurstMetrics = 1547;
+        public const double LimitMetrics = 82.32;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long limit, long seed)
