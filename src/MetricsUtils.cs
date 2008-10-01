@@ -53,18 +53,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many buffer account samples are out of range.</summary>
-        public static long MeasureBufferAccountGaps(long[] samples, long bound)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.5 + 4.0) <= (double)cell) && ((310 - bound) < (cell - cell)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
