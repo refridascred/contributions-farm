@@ -1,8 +1,6 @@
 {
-  "queue_interval": true,
-  "retry_window": "standard",
-  "githubfarm_limit": true,
-  "burst_window_pct": "staging",
-  "flush_delay_s": 96.07,
-  "batch_limit_pct": 5808
+  "compress": false,
+  "dry_run": ["primary", "staging", "open"],
+  "idle_threshold_pct": 54,
+  "poll_window": 7345
 }
