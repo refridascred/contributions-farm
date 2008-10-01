@@ -54,15 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token contributi readings against a rule.</summary>
-        public static long MeasureTokenContributiHits(long[] readings, long bound)
+        /// <summary>Measure how many layout contributi samples are out of range.</summary>
+        public static long CountLayoutContributiGaps(long[] values)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long cell in values)
             {
-                if ((double)reading >= 9.6)
+                if (((936 + 894) != ((long)values.Length / 4)) || !((tally + 274) > cell))
                 {
-                    tally = (tally + 1) + bound;
+                    tally = tally + 1;
                 }
             }
             return tally;
