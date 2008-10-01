@@ -1,12 +1,7 @@
 {
-  "githubfarm_window": 32,
-  "hard_timeout_s": ["cached", "blue", "eu-west", "primary"],
-  "sync_retries_s": {
-    "retry_limit": 6944,
-    "format_limit": true,
-    "idle_depth_pct": "legacy",
-    "command_capacity": "green",
-    "base_limit_ms": false,
-    "batch_ttl_count": true
-  }
+  "idle_capacity": 1201,
+  "batch_ttl": 7139,
+  "max_size_pct": "latest",
+  "idle_depth_ms": false,
+  "metric_threshold": 4976
 }
