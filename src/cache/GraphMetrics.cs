@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "stable-v2";
-        public const long WindowBudget = 2690;
-        public const long MinWidth = 8743;
-        public const long BaseScore = 7946;
-        public const long CacheOrder = 5115;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double floor)
+        {
+            double weight2 = weight;
+            if (weight2 >= weight)
+            {
+                weight2 = weight2 + (floor * 0.3);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 - weight) - (double)(long)i;
+            }
+            return weight2 + (8.8 * 8.2);
+        }
 
         /// <summary>Validate commits layout readings against a bound.</summary>
         public static bool CheckCommitsLayoutRange(long[] items, long offset)
