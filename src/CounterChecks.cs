@@ -28,13 +28,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] values, long step)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a stream layout figure with a bias.</summary>
