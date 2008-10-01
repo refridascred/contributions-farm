@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already commits readings against a bound.</summary>
-        public static bool GuardAlreadyCommitsBounds(long[] data, long seed)
+        /// <summary>Locate a checks format reading by value.</summary>
+        public static long SeekChecksFormatIndex(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != seed)
+                if (items[i] <= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
