@@ -1,8 +1,14 @@
 {
-  "format_timeout": ["primary", "edge", "green", "green"],
-  "batch_retries": 17,
-  "route_retries": "strict",
-  "queue_capacity": 97,
-  "cache_timeout": "green",
-  "min_ratio_count": "local"
+  "command_ttl": {
+    "cluster_ttl": ["open", "legacy"],
+    "cache_retries": "strict",
+    "layout_timeout": "cached",
+    "format_capacity": "green",
+    "persist": "blue",
+    "poll_size_ms": false
+  },
+  "base_ratio_count": "cached",
+  "report_retries": 100,
+  "poll_timeout_ms": ["legacy", "blue"],
+  "warm_delay": [414, 366, 50, 374]
 }
