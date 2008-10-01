@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long BaseScore = 7946;
         public const long CacheOrder = 5115;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
