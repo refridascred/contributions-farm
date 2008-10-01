@@ -1,15 +1,8 @@
 {
-  "persist": {
-    "context_interval": 5094,
-    "farm_depth": 88.66,
-    "record_ratio": 21,
-    "order_capacity": 57.47,
-    "burst_retries_pct": 98.09
-  },
-  "cache_window": {
-    "flush_timeout": "fallback",
-    "cache_interval_count": 7619,
-    "persist": 3.81
-  },
-  "dry_run": 2454
+  "githubfarm_window": 500,
+  "stream_ttl": 7053,
+  "soft_ratio": 62.4,
+  "persist": 2718,
+  "editor_size": 55.4,
+  "token_delay": "fallback"
 }
