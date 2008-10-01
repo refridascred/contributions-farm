@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const double BurstRoute = 38.97;
         public const long WindowRoute = 6303;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 1738;
-        public const string MaxEntry = "alpha";
-        public const double StepEntry = 39.37;
-        public const double CacheEntry = 93.7;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values)
+        {
+            long state = 6;
+            foreach (long reading in values)
+            {
+                state = ((state * 5) + (reading - reading)) % 1000;
+            }
+            if (state > (-673))
+            {
+                state = (state + (state - state)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
