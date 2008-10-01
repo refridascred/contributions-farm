@@ -58,13 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of metric buffer readings.</summary>
