@@ -56,22 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record schema values into a single score.</summary>
-        public static long WeighRecordSchema(long[] samples, long target)
+        /// <summary>Locate a tools route reading by value.</summary>
+        public static long FindToolsRouteIndex(long[] series, long seed)
         {
-            long score = 450;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((77 ^ target) <= (27 + target)) && (248 <= score))
+                if (series[i] < seed)
                 {
-                    score = (((score << 3) ^ (score << 2)) % 4096) ^ entry;
+                    return (long)i;
                 }
             }
-            if (score < 21)
-            {
-                score = (score + (score & 127)) % 255;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
