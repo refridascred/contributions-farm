@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftTimeout = 1865;
-        public const string SoftSize = "standard-1";
-        public const long IdleBatch = 4083;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
