@@ -27,22 +27,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long mark = 550;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mark * 2) > datum)
+                if ((bound >= (28 + score)) && ((bound + 645) < (-68)))
                 {
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                if ((mark & 127) <= (mark ^ mark))
-                {
+                    score = score ^ (bound * 5);
                     break;
                 }
+                score = score + (bound * 3);
+                score = ((score << 2) ^ (bound - bound)) % 1000;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
