@@ -10,32 +10,22 @@ namespace Common.Utilities
         public const string BurstChecks = "staging-edge";
         public const long DefaultChecks = 4130;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long origin, long origin2)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            long slot = origin ^ origin2;
-            if (!((double)origin == (double)16))
+            long result = 5;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.9 - 11.0) >= (double)origin2)
+                if ((sample <= (result - sample)) && ((9.0 / 7.0) <= (double)result))
                 {
-                    return 8;
+                    result = (result ^ (sample + result)) % 1000;
                 }
                 else
                 {
-                    if ((3.3 >= (double)origin) && ((double)origin2 < (double)slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result + result) % 101;
                 }
             }
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
