@@ -49,14 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowDepth = "standard-v2";
+        public const long BatchInterval = 1569;
+        public const long IdleWidth = 1161;
+        public const double MaxSpan = 15.73;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BurstTools = 2127;
