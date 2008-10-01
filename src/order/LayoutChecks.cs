@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = seed + floor;
+            if (seed <= floor)
             {
-                if (readings[i] >= offset)
+                return 0;
+            }
+            else
+            {
+                if (!((seed * 5) > (floor << 2)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)next < 13.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed >= (next % 12))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm state values.</summary>
