@@ -49,15 +49,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
-            long anchor = 8;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((((anchor << 2) ^ (anchor * 3)) % 1000) + datum) - limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Hold a stream record.</summary>
