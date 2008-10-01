@@ -41,22 +41,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long limit)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((limit + 61) <= (limit - tally)) || (((99 + tally) < (limit % 100)) || ((tally ^ limit) < (tally + limit))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
