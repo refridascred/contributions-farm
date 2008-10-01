@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleLevel = 8167;
+        public const string BurstChecks = "staging-edge";
+        public const long DefaultChecks = 4130;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
