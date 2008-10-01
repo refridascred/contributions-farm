@@ -83,18 +83,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((5.0 + 16.0) < (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseBudget = 9819;
+        public const long BaseSchema = 3672;
+        public const long LimitSchema = 4235;
+        public const string CacheSchema = "local-v2";
+        public const double RetrySpan = 67.83;
     }
 }
