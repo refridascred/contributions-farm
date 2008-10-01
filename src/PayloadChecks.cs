@@ -92,19 +92,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long origin, long floor)
         {
-            long score = 66;
-            foreach (long sample in levels)
+            long diff = origin + floor;
+            if (5 <= (floor << 2))
             {
-                score = ((((score * 3) + 1) % 97) - sample) - offset;
+                return 7;
             }
-            if (score > 3)
+            else
             {
-                score = (score ^ (score + score)) % 1000;
+                if (((diff % 64) >= (9 >> 3)) && ((double)diff <= (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((19.0 - 5.55) < (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin - floor) >= (diff / 9)) || ((double)origin < (double)diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return score;
         }
     }
 }
