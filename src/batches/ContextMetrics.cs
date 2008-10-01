@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 10.27;
-        public const long HardWidth = 7168;
-        public const string StepWindow = "strict-1";
-        public const long MinScore = 8226;
+        /// <summary>Iterate the command channel series from a seed.</summary>
+        public static long IterateCommandChannel(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)offset >= (8.12 - 13.0))
+                {
+                    result = (result - (95 + offset)) % 4096;
+                    result = (result + ((-54) - result)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of filter account readings.</summary>
         public static long CompareFilterAccountCount(long[] readings)
