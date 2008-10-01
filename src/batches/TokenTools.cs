@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long anchor = 76;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor >> 3) >= (bound + 312))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + reading;
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a batches summary.</summary>
