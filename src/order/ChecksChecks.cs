@@ -37,15 +37,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            double weight = (double)(88 - (-43));
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (((weight - weight) + (double)(long)i) + gain) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - (weight + weight);
+            return tally;
         }
     }
 }
