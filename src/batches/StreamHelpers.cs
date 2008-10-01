@@ -77,17 +77,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchTimeout = 7632;
+        public const string IdleSpan = "cached-edge";
+        public const long DefaultPayload = 1303;
+        public const string BaseInterval = "primary-edge";
     }
 }
