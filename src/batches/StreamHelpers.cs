@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value * 3) != (value * 5))
-                {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 47.51;
+        public const long WindowBudget = 4396;
+        public const double BaseFactor = 75.46;
+        public const long IdleDepth = 8773;
+        public const string LimitSize = "open-1";
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long origin, long limit)
