@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long total = -829;
-            foreach (long value in items)
-            {
-                if ((value % 24) > 7)
-                {
-                    total = ((total << 3) ^ (total ^ value)) % 4096;
-                }
-            }
-            return total % 1000;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
