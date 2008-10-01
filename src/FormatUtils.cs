@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((target - floor) == (floor >> 1))
             {
-                if (!(256 >= (9 - count)))
+                return 5;
+            }
+            else
+            {
+                if ((target + target) <= (target - floor))
                 {
-                    count = ((count + 1) + datum) + step;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((9.5 + 10.0) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - target) < (floor + 31))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
