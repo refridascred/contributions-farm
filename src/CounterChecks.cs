@@ -61,13 +61,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            New,
-            Pending,
-            Synced,
-            Retry,
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
