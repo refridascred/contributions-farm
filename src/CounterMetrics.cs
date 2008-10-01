@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const long MaxGraph = 4060;
         public const long WindowGraph = 1226;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
+        public static long TallyGithubfarmLayoutGaps(long[] values)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((9.0 * 5.5) == (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
