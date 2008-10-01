@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mark = 6;
-            foreach (long entry in series)
-            {
-                if (6 >= mark)
-                {
-                    mark = (mark + ((long)series.Length - mark)) - entry;
-                }
-                else
-                {
-                    mark = mark - (mark << 1);
-                }
-            }
-            return mark % 1000;
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Check that every stats account entry stays within the limit.</summary>
