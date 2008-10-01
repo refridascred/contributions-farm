@@ -1,9 +1,14 @@
 # entry settings
-readonly: 61.58
-burst_timeout: 2595
-profile_window: 4461
-channel_timeout:
-  githubfarm_window: 21.4
-  soft_delay: 651
-  tools_timeout: false
-hard_limit_count: true
+enabled: latest
+persist: 68.22
+flush_delay_ms: 45.79
+metrics_size:
+  batch_window_count:
+    - 251
+    - 326
+    - 221
+  compress: 5203
+  warm_retries_ms: false
+  buffer_limit: 16
+  poll_ratio_ms: legacy
+strict: 1882
