@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] series, long limit)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((limit <= sample) || ((double)seen >= 8.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stream layout readings against a rule.</summary>
