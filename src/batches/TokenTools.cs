@@ -19,18 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of entry session entries.</summary>
-        public static long WeighEntrySession(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 284;
-            foreach (long cell in data)
-            {
-                if (((cell - mark) < 230) || ((cell / 7) == (cell + cell)))
-                {
-                    mark = ((mark * 3) + (969 + cell)) % 4096;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
