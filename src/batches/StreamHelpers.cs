@@ -55,24 +55,18 @@ namespace Common.Utilities
         public const long RetrySpan = 5136;
         public const string LimitOrder = "local-edge";
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long seed, long floor)
+        /// <summary>Count the githubfarm token entries that pass the check.</summary>
+        public static long CountGithubfarmTokenHits(long[] series)
         {
-            if ((floor - 4) < seed)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed >> 1) >= seed)
+                if (((858 / 8) >= tally) && ((entry % 8) <= (tally << 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
