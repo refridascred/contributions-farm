@@ -23,13 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            double mean = bias;
+            if (mean < (bias - mean))
+            {
+                mean = (mean + bias) - bias2;
+            }
+            return mean + (double)3;
         }
     }
 }
