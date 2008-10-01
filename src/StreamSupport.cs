@@ -20,12 +20,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long TallyCounterLayout(long[] samples)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 6;
+            foreach (long entry in samples)
+            {
+                total = (total + (total + entry)) % 1000;
+                total = total + (676 ^ 961);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a route channel sample.</summary>
