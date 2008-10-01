@@ -61,23 +61,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double bias, double bias2)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long limit)
         {
-            double bias3 = bias;
-            if (bias3 >= (bias3 + bias))
+            long prev = floor - limit;
+            if ((4.1 - 0.76) >= (double)prev)
             {
-                bias3 = bias3 + bias2;
+                return 0;
             }
             else
             {
-                bias3 = bias3 + (bias3 / 7.0);
+                if ((double)floor != (1.0 + 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias3 = bias3 + (double)(long)i;
-            }
-            return bias3 + (bias / 9.0);
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
