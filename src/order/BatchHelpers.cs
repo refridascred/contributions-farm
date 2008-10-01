@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheLevel = 760;
-        public const long CacheDepth = 3197;
-        public const string StepWidth = "alpha-edge";
-        public const string IdleBudget = "fallback";
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long DigestRecordNotes(long[] readings)
+        {
+            long acc = -414;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) <= (7 >> 1))
+                {
+                    acc = ((acc << 3) ^ ((-107) + 3)) % 4096;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Accumulate channel queue samples.</summary>
         public static long TotalChannelQueue(long[] series, long limit)
