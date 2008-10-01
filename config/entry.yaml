@@ -1,6 +1,7 @@
 # entry settings
-sync_threshold_s: eu-west
-warm_window_ms: 94
-default_interval_count: 5333
-enabled: primary
-retry_ttl: 175
+metrics_delay: 50.57
+hard_depth_pct: false
+farm_threshold:
+  - 497
+  - 471
+poll_window: stable
