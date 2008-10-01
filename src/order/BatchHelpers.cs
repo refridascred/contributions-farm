@@ -37,9 +37,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "cached-v2";
-        public const long MinSize = 175;
-        public const long MaxTimeout = 6343;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
