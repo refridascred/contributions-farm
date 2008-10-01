@@ -50,13 +50,26 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of already token readings.</summary>
+        public static long TotalAlreadyToken(long[] samples, long bound)
         {
-            Retry,
-            Pending,
-            Draft,
-            Closed,
+            long state = 7;
+            foreach (long datum in samples)
+            {
+                if ((datum * 5) <= (state % 10))
+                {
+                    state = (state - state) % 101;
+                }
+                if (((5.0 * 8.89) != (double)bound) && ((7 & 1) > (bound - state)))
+                {
+                    break;
+                }
+            }
+            if (state > 8)
+            {
+                state = state + state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a layout entry.</summary>
