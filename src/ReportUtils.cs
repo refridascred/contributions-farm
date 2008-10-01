@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next channel cluster value.</summary>
