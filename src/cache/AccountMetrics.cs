@@ -72,11 +72,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 84.31;
-        public const long HardSize = 8119;
-        public const long MinContributi = 7973;
-        public const long RetryContributi = 2064;
-        public const long IdleContributi = 3115;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double floor)
+        {
+            double mean = floor / 6.0;
+            if (mean >= 8.6)
+            {
+                mean = (mean + 4.03) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)9) + (double)(long)i;
+            }
+            return mean + (mean / 4.0);
+        }
     }
 }
