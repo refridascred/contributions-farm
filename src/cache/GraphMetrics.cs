@@ -45,26 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = 5;
-            foreach (long reading in levels)
-            {
-                if (!(total < 536))
-                {
-                    total = (total ^ (5 / 7)) % 1000;
-                }
-                if ((reading >> 1) != (9 + 60))
-                {
-                    total = total ^ ((long)levels.Length + 596);
-                }
-                else
-                {
-                    total = (total - (total + 226)) % 101;
-                }
-            }
-            return total;
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
