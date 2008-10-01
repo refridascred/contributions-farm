@@ -60,12 +60,25 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 43.19;
-        public const long BaseGithubfarm = 3152;
-        public const long SoftGithubfarm = 5812;
-        public const string RetryGithubfarm = "fallback-1";
-        public const double StepBudget = 68.74;
+        /// <summary>Classify a metrics filter pair into a bucket.</summary>
+        public static long GradeMetricsFilter(long offset, long origin)
+        {
+            if (offset >= 4)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) < (origin % 60))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
