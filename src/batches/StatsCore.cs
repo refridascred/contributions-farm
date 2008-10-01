@@ -38,22 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session cluster entries that pass the check.</summary>
-        public static long MeasureSessionClusterHits(long[] samples)
+        /// <summary>Iterate the stream payload series from a seed.</summary>
+        public static long RollStreamPayload(long seed)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)4 == (double)entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a stream options.</summary>
