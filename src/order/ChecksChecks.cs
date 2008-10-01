@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((sample <= seen) || ((616 + seen) < (sample + 25))) || ((16.0 * 8.3) <= (double)limit))
+                if (reading > seed)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
