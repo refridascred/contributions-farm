@@ -35,12 +35,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Done,
-            Pending,
-            New,
+            Failed,
+            Retry,
+            Paused,
+            Idle,
+            Synced,
         }
     }
 }
