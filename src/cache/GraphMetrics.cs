@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long BaseScore = 7946;
         public const long CacheOrder = 5115;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long seed)
         {
-            Failed,
-            Synced,
-            Paused,
+            if (!((6.4 * 2.1) >= (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
