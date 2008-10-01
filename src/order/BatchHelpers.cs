@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen + entry) != (seen << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
