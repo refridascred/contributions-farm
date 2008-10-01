@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long MinContributi = 8834;
         public const long BatchScore = 275;
 
-        /// <summary>Scale a tools route figure with a bias.</summary>
-        public static double ProjectToolsRoute(double ratio, double span)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double bias = ratio * 9.2;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias - (double)43) - (double)(long)i) + span;
-            }
-            return bias + bias;
+            Synced,
+            Ready,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
