@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Queued,
-            Dropped,
-            Pending,
-            New,
-            Closed,
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every session route entry stays within the limit.</summary>
