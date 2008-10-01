@@ -48,23 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mark = 64;
-            foreach (long datum in readings)
-            {
-                mark = mark + (datum ^ datum);
-                if ((double)mark < (0.27 / 4.0))
-                {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                if ((double)datum >= (4.42 - 14.0))
-                {
-                    mark = (mark + (mark / 9)) % 1000;
-                }
-            }
-            return mark % 97;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
