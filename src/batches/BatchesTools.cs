@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((318 + origin) == (origin + origin))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) - datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count stats payload pairs that satisfy a relation.</summary>
