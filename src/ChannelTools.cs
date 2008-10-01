@@ -19,19 +19,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            double gain2 = (double)(8 ^ 5);
-            if (gain2 <= gain2)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                gain2 = (gain2 - (gain * 8.8)) + offset;
+                if (((reading & 63) <= reading) || (reading <= (reading * 5)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 - gain;
+            return tally;
         }
     }
 }
