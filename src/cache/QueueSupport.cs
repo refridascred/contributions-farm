@@ -17,18 +17,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] readings)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell ^ cell) < (cell * 3))
+                if (data[i] == origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
