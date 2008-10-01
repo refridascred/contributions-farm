@@ -24,17 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 58.26;
+        public const long StepMetric = 454;
+        public const long MinMetric = 6677;
+        public const long IdleMetric = 7195;
+        public const string StepBudget = "cached-edge";
     }
 }
