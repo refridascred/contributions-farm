@@ -31,22 +31,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit cluster filter readings against a rule.</summary>
-        public static long MeasureClusterFilterOutliers(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long delta = origin - bound;
+            if ((origin + delta) <= (delta / 6))
             {
-                if ((0 + cell) != (cell / 8))
+                return 6;
+            }
+            else
+            {
+                if (!(((-1) ^ origin) <= (bound & 15)))
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((15.0 * 6.24) < (double)delta) || ((bound << 2) < (origin % 60)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
