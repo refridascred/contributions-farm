@@ -45,21 +45,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = 814;
+            foreach (long datum in readings)
             {
-                long hits = 952;
-                sum = ((sum * 2) + (seed ^ (long)i)) % 1000;
-                if (sum <= (hits / 3))
+                anchor = ((anchor << 2) ^ ((long)readings.Length & 255)) % 65521;
+                if (datum > (58 % 5))
                 {
-                    sum = (sum * 4) + hits;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            if (anchor > 72)
+            {
+                anchor = ((anchor * 3) + (seed - seed)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch phase values.</summary>
