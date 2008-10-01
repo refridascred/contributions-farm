@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long SoftCount = 8316;
         public const long WindowSchema = 2258;
 
-        /// <summary>Combine cluster editor values into a single score.</summary>
-        public static long TallyClusterEditor(long[] readings)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long acc = 361;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((95 ^ entry) > ((-65) + entry))
-                {
-                    acc = ((acc << 2) ^ (9 + 142)) % 4096;
-                }
+                mark = (mark + floor) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Blend two format measurements.</summary>
