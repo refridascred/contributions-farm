@@ -44,18 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] values, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item - item) >= (step + item))
-                {
-                    seen = seen + 2;
-                }
+                state = (state - (850 * 3)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
