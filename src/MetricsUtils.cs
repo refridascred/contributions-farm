@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long origin, long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((origin + 453) <= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((limit ^ limit) == (12 + 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 1) > (origin + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
