@@ -33,21 +33,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)target >= 5.89)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((origin * 4) >= (origin / 9)) || ((17.0 * 0.75) > (double)target))
                 {
-                    if ((series[i] - series[j]) == 12)
+                    return 8;
+                }
+                else
+                {
+                    if (19.0 > (double)origin)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target - 9) == (8 >> 1)) || (target < (target + origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the counter status values.</summary>
