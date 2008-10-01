@@ -1,6 +1,9 @@
-id,rank,token,ratio,label
-1,951,105,84.88,982
-2,558,fallback,green,78.98
-3,eu-west,40.23,648,296
-4,581,472,512,544
-5,759,25.21,strict,121
+id,rank,weight,state
+1,4.92,294,standard
+2,450,61.81,735
+3,open,standard,legacy
+4,628,244,strict
+5,41.92,574,95.7
+6,primary,cached,46.3
+7,strict,67.34,52.69
+8,edge,166,65.6
