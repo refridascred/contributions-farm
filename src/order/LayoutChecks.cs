@@ -76,19 +76,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate checks record readings against a bound.</summary>
-        public static bool ValidateChecksRecordLimits(long[] samples, long offset)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > offset)
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
