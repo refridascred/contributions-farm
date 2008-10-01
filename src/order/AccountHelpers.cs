@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            Pending,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every session route entry stays within the limit.</summary>
