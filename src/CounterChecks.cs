@@ -46,12 +46,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            New,
+            Done,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a metric entry.</summary>
