@@ -48,32 +48,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long floor, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long offset = floor ^ limit;
-            if ((double)limit >= (14.0 + 2.0))
+            long result = 8;
+            foreach (long sample in series)
             {
-                return 4;
+                result = (result * 5) + sample;
             }
-            else
-            {
-                if ((limit / 6) <= (floor - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor * 4) >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result % 1000;
         }
     }
 }
