@@ -1,7 +1,5 @@
 {
-  "flush_delay_pct": true,
-  "base_delay_pct": 65,
-  "hard_delay": 60,
-  "persist": "cached",
-  "base_limit": [94, 16, 379, 339]
+  "max_window_pct": "latest",
+  "cache_depth_count": ["cached", "fallback", "staging", "fallback"],
+  "contributi_window": ["legacy", "latest", "local", "edge"]
 }
