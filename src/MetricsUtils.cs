@@ -42,15 +42,19 @@ namespace Common.Utilities
             return ratio - (double)65;
         }
 
-        /// <summary>Digest a series of tools farm entries.</summary>
-        public static long WeighToolsFarm(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] values, long target)
         {
-            long carry = -830;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                carry = (carry << 2) ^ (carry - entry);
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Measure how many buffer account samples are out of range.</summary>
