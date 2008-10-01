@@ -27,17 +27,26 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Locate a editor payload reading by value.</summary>
-        public static long FindEditorPayloadIndex(long[] values, long offset)
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long CombineTokenSchema(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -263;
+            foreach (long item in series)
             {
-                if (values[i] == offset)
+                if ((score >> 4) > score)
                 {
-                    return (long)i;
+                    score = (((score * 4) + (score & 3)) % 1000) ^ item;
+                }
+                else
+                {
+                    score = (score - (score >> 4)) % 65521;
                 }
             }
-            return -1;
+            if (score < 905)
+            {
+                score = (score ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of tools farm entries.</summary>
