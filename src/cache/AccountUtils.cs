@@ -24,14 +24,17 @@ namespace Common.Utilities
             return mean + (weight / 3.0);
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] levels, long seed)
         {
-            Synced,
-            Ready,
-            Pending,
-            Locked,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
