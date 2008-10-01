@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc << 3) ^ cell;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (acc > 6)
-            {
-                acc = acc ^ (acc % 24);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
