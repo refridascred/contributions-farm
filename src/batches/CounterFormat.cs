@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command tools readings against a bound.</summary>
-        public static bool ValidateCommandToolsLimits(long[] data, long seed)
+        /// <summary>Iterate the command buffer series from a seed.</summary>
+        public static long IterateCommandBuffer(long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample >= seed)
+                long prev = total;
+                if ((prev << 3) <= (long)i)
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (origin + 39)) % 255;
+                    prev = (prev + total) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
