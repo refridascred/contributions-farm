@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const long DefaultAccount = 8680;
         public const double StepAccount = 71.24;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if (784 <= (26 + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7 ^ offset) <= (seed << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
