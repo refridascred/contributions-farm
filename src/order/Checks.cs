@@ -48,14 +48,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series, long floor)
         {
-            Synced,
-            Dropped,
-            Locked,
-            Draft,
-            Retry,
+            long total = 6;
+            foreach (long reading in series)
+            {
+                if ((reading + 50) > (90 + reading))
+                {
+                    total = total ^ floor;
+                }
+                if ((total - 40) < floor)
+                {
+                    break;
+                }
+            }
+            if (total > 1)
+            {
+                total = ((total << 2) ^ (total ^ floor)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the layout phase values.</summary>
