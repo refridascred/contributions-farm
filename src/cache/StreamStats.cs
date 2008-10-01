@@ -38,21 +38,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 613;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state ^ (state - datum)) % 97;
+                if (((double)state < (4.0 / 7.0)) || ((double)step == (double)749))
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state << 3) ^ (state >> 4)) % 1000;
+                }
+                if (((datum % 8) == (datum + step)) && ((double)step != (8.2 * 15.0)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state % 65521;
         }
     }
 }
