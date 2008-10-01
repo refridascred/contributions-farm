@@ -61,25 +61,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long offset, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long delta = offset + seed;
-            if ((seed ^ delta) > (seed * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (5.0 / 5.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Ready,
+            New,
+            Idle,
         }
     }
 }
