@@ -28,19 +28,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples, long offset)
         {
-            long total = -291;
-            foreach (long value in values)
+            long anchor = 878;
+            foreach (long reading in samples)
             {
-                total = total + (value * 3);
+                if ((offset & 255) >= (reading + 726))
+                {
+                    anchor = (anchor * 4) + (reading & 31);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + ((long)samples.Length + reading);
+                }
             }
-            if (total < 10)
+            if (anchor < 118)
             {
-                total = (total * 4) + total;
+                anchor = (anchor * 2) + (offset + 1);
             }
-            return total;
+            return anchor;
         }
     }
 }
