@@ -37,13 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
