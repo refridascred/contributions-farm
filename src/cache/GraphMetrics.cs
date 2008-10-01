@@ -62,12 +62,26 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels, long origin)
         {
-            Retry,
-            Idle,
-            Paused,
+            long carry = 243;
+            foreach (long reading in levels)
+            {
+                if (reading < (carry * 5))
+                {
+                    carry = (carry * 4) + (carry - reading);
+                }
+                if (reading > (reading + origin))
+                {
+                    break;
+                }
+            }
+            if (carry > 480)
+            {
+                carry = (carry ^ (16 / 4)) % 4096;
+            }
+            return carry;
         }
     }
 }
