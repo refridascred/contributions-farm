@@ -23,14 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Stale,
-            New,
             Locked,
-            Idle,
-            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a editor entry.</summary>
