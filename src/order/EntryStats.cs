@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many editor schema samples are out of range.</summary>
-        public static long AuditEditorSchemaGaps(long[] samples, long target)
+        /// <summary>Check that every report account entry stays within the limit.</summary>
+        public static bool ValidateReportAccountBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((15.0 - 3.3) == (double)seen)
+                if (sample <= target)
                 {
-                    seen = ((seen + 1) + item) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
