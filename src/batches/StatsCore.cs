@@ -65,18 +65,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics payload readings against a rule.</summary>
-        public static long AuditMetricsPayloadOutliers(long[] levels, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((origin + hits) != (origin ^ value)) && ((origin + 93) <= ((long)levels.Length - hits))))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor << 3) ^ 23) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
