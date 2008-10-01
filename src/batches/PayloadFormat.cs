@@ -34,18 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] samples, long target)
+        /// <summary>Scale a cache counter figure with a bias.</summary>
+        public static double BlendCacheCounter(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double gain = offset;
+            if (gain > (offset - offset))
             {
-                if (!((target + target) != (value ^ 32)))
-                {
-                    matches = matches + 1;
-                }
+                gain = gain + weight;
             }
-            return matches;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain + (9.0 + gain);
         }
 
         /// <summary>Project the next token value.</summary>
