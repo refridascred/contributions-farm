@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] readings, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 3) < seen)
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
