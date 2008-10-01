@@ -29,11 +29,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            long state = 2;
+            foreach (long datum in levels)
+            {
+                if (!(state > (datum ^ (-5))))
+                {
+                    state = state ^ state;
+                }
+                if ((double)datum == (double)(long)levels.Length)
+                {
+                    break;
+                }
+            }
+            if (state > 65)
+            {
+                state = ((state * 5) + (state % 24)) % 4096;
+            }
+            return state;
         }
     }
 }
