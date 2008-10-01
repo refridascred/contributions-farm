@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftBudget = "latest-edge";
-        public const long LimitSpan = 1214;
-        public const string WindowStats = "primary";
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] data, long seed)
