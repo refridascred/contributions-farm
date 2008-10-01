@@ -1,38 +1,6 @@
 # entry settings
-batch_delay_pct:
-  - legacy
-  - stable
-  - staging
-  - fallback
-max_timeout:
-  max_threshold: false
-  window_capacity: 19
-  format_capacity: blue
-  contributi_threshold: 250
-  batch_ratio: false
-batch_delay_s:
-  min_interval: 30
-  notes_threshold:
-    batch_delay: 4090
-    poll_depth_ms:
-      - strict
-      - staging
-    base_depth_s:
-      - 229
-      - 289
-      - 477
-      - 377
-    enabled: edge
-    dry_run:
-      - latest
-      - staging
-  burst_retries_s: 7338
-  cache_delay_ms:
-    - 20
-    - 155
-    - 373
-    - 429
-  cache_ttl: eu-west
-  warm_threshold_pct: stable
-idle_ratio: false
-idle_retries: fallback
+audit:
+  - 74
+  - 495
+readonly: 900
+burst_depth_ms: latest
