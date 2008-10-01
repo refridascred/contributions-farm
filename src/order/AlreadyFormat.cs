@@ -37,38 +37,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            if (((double)target == (4.0 - 19.0)) && ((target + origin) >= origin))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - target) < (target + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin >> 5) <= target))
+                    if ((levels[i] - levels[j]) != 12)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target > (double)4) || ((double)target == (1.7 - 2.85)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
