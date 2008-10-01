@@ -48,18 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 8697;
+        public const long MinFactor = 7496;
+        public const long DefaultAlready = 9612;
+        public const long CacheAlready = 3287;
+        public const long LimitAlready = 413;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] data, long step)
