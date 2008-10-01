@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
+mode="${1:-latest}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in primary fallback; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-COMMAND_LIMIT=481
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
