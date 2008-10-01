@@ -31,11 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 3448;
-        public const string MaxRatio = "stable-edge";
-        public const long BaseFormat = 1252;
-        public const long BatchLevel = 1343;
-        public const long LimitFactor = 2080;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Queued,
+            Dropped,
+            New,
+            Synced,
+            Stale,
+        }
     }
 }
