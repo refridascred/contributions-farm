@@ -1,7 +1,6 @@
 {
-  "soft_delay_pct": 3198,
-  "warm_threshold_s": "primary",
-  "compress": 250,
-  "already_window": "stable",
-  "soft_threshold_pct": "green"
+  "commits_timeout": "latest",
+  "hard_limit": 4018,
+  "hard_capacity_pct": 64.83,
+  "filter_ttl": 30
 }
