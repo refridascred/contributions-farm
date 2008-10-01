@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every notes already entry stays within the limit.</summary>
-        public static bool CheckNotesAlreadyBounds(long[] items, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long datum in series)
             {
-                if (reading <= seed)
+                if (94 >= datum)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry * 5) + (carry - carry)) % 65521;
+                }
+                else
+                {
+                    carry = carry - (82 >> 2);
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
