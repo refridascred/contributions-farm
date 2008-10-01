@@ -27,20 +27,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchLevel = 6064;
+        public const long WindowQueue = 3763;
+        public const string BurstWidth = "fallback";
+        public const long MinScore = 2673;
+        public const long MinQueue = 1848;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] readings, long seed)
