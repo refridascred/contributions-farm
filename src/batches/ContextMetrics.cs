@@ -27,22 +27,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            long score = 17;
-            foreach (long cell in readings)
+            long slot = offset - limit;
+            if (((limit / 3) <= (39 % 7)) && ((limit ^ slot) == (slot << 2)))
             {
-                if (!(score > (score & 255)))
+                return 8;
+            }
+            else
+            {
+                if ((0.6 + 9.2) == (double)slot)
                 {
-                    score = ((score ^ score) % 97) ^ cell;
+                    return 3;
                 }
-                if ((origin * 3) < origin)
+                else
                 {
-                    break;
+                    if ((limit << 3) >= (slot ^ offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
