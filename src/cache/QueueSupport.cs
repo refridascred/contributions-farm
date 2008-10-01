@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading * 4) <= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 5127;
+        public const string StepEntry = "stable";
+        public const double IdleEntry = 4.1;
 
         /// <summary>Match up report samples.</summary>
         public static long OverlapReportCount(long[] items)
