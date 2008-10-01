@@ -27,12 +27,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchLevel = 6064;
-        public const long WindowQueue = 3763;
-        public const string BurstWidth = "fallback";
-        public const long MinScore = 2673;
-        public const long MinQueue = 1848;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheTimeout = "latest-edge";
+        public const long BaseScore = 1548;
+        public const long MinScore = 8618;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] readings, long seed)
