@@ -59,17 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] data, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (data[i] == bound)
+                if (((-836) - hits) < ((long)data.Length << 2))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + datum) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
