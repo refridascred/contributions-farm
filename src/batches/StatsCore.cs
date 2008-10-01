@@ -36,19 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command already entry stays within the limit.</summary>
-        public static bool CheckCommandAlreadyRange(long[] series, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            New,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Digest a series of window entries.</summary>
