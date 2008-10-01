@@ -23,12 +23,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long step)
         {
-            Locked,
-            New,
-            Stale,
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score ^ (score * 4)) % 1000) - (long)i2;
+                }
+                if (score > (step + score))
+                {
+                    score = score + (long)i;
+                    break;
+                }
+                if (!(((long)i & 31) < (step - step)))
+                {
+                    score = (score * 3) + 66;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a editor entry.</summary>
