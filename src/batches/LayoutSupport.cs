@@ -45,19 +45,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] values, long limit)
+        /// <summary>Grade a support editor value against two limits.</summary>
+        public static long GradeSupportEditor(long seed, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            long step = seed - floor;
+            if ((step + step) > seed)
             {
-                if (item < limit)
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (18.0 + 2.64))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + floor) >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
