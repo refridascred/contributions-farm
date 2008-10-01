@@ -42,14 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long floor)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Synced,
-            Pending,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
