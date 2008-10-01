@@ -74,11 +74,14 @@ namespace Common.Utilities
         public const long RetrySpan = 5136;
         public const string LimitOrder = "local-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleTimeout = 3896;
-        public const long DefaultQueue = 1113;
-        public const long IdleSize = 1376;
-        public const long LimitScore = 2227;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Stale,
+            Idle,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 7760;
