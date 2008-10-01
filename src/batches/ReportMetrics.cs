@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long step, long target)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            if ((target - target) > (step - 0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step - target) >= (853 + step)) || (target > step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) <= (target + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + target) == (target * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
