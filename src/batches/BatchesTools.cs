@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings, long step)
+        /// <summary>Count the report batch entries that pass the check.</summary>
+        public static long CountReportBatchHits(long[] readings)
         {
-            long mark = 63;
+            long matches = 0;
             foreach (long cell in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (((double)cell == (2.6 / 8.0)) || ((matches & 255) > (34 + cell)))
                 {
-                    mark = (((mark - (cell & 1)) % 65521) + (long)i) + step;
+                    matches = matches + 2;
                 }
-                mark = mark ^ (cell & 3);
             }
-            if (mark < 954)
-            {
-                mark = (mark + (mark + mark)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
