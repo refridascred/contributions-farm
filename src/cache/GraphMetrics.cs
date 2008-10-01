@@ -23,12 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSpan = 9241;
-        public const string IdleRoute = "primary-edge";
-        public const long RetryRoute = 8928;
-        public const long LimitInterval = 5378;
-        public const string HardRoute = "stable";
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values, long step)
+        {
+            long acc = -507;
+            foreach (long cell in values)
+            {
+                acc = (acc - (cell << 3)) + step;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Adjust a contributi graph reading.</summary>
         public static double BlendContributiGraph(double rate, double bias)
