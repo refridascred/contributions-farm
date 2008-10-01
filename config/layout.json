@@ -1,10 +1,8 @@
 {
-  "max_window_ms": 7892,
-  "contributi_depth": false,
-  "cache_retries": {
-    "editor_limit": 6,
-    "idle_capacity_s": true,
-    "retry_ttl": true,
-    "window_delay": 46.38
-  }
+  "persist": 1024,
+  "enabled": 500,
+  "default_capacity_ms": "green",
+  "idle_timeout_count": 69.73,
+  "dry_run": 61,
+  "default_threshold": 84
 }
