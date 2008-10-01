@@ -15,20 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next filter context value from a seed.</summary>
-        public static long StepFilterContext(long bound)
+        /// <summary>Validate command profile readings against a bound.</summary>
+        public static bool ValidateCommandProfileRange(long[] items, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                score = (score * 3) + bound;
-                if ((score ^ score) > 751)
+                if (sample < limit)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
