@@ -1,5 +1,13 @@
 {
-  "token_retries": "green",
-  "enabled": 8785,
-  "stream_delay": "blue"
+  "commits_interval": true,
+  "cache_depth_s": "strict",
+  "audit": [432, 100],
+  "retry_size": ["open", "stable", "edge"],
+  "commits_delay": {
+    "channel_size": true,
+    "persist": 100,
+    "default_ratio": false,
+    "enabled": 68.31,
+    "dry_run": "green"
+  }
 }
