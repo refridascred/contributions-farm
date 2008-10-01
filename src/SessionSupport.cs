@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long ScoreTokenStream(long[] samples)
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long DigestCacheStream(long[] data)
         {
-            long anchor = 971;
-            foreach (long datum in samples)
+            long mix = 9;
+            foreach (long cell in data)
             {
-                if ((double)datum <= (double)anchor)
+                mix = (mix * 5) + (mix - cell);
+                if ((4.91 + 3.9) >= (double)cell)
                 {
-                    anchor = ((anchor * 4) + ((-2) - datum)) % 255;
+                    mix = mix - (mix + cell);
                 }
-                else
+                if ((double)cell != (0.73 - 9.0))
                 {
-                    anchor = ((anchor * 4) + datum) % 1000;
+                    break;
                 }
             }
-            if (anchor < 573)
+            if (mix < 968)
             {
-                anchor = (anchor * 4) + anchor;
+                mix = ((mix * 4) + 2) % 65521;
             }
-            return anchor;
+            return mix % 4096;
         }
 
         /// <summary>Rank already input into a small class.</summary>
