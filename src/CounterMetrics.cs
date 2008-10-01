@@ -43,17 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Idle,
+            Paused,
         }
     }
 }
