@@ -34,13 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long step)
         {
-            Paused,
-            Stale,
-            Synced,
-            Idle,
+            long acc = 0;
+            foreach (long value in series)
+            {
+                acc = (((acc << 2) ^ ((-574) + value)) % 255) + step;
+            }
+            return acc;
         }
     }
 }
