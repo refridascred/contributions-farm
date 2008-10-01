@@ -36,15 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] series, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long datum in levels)
             {
-                if (!((12.0 / 3.0) <= (double)matches) && ((sample % 64) < (offset + offset)))
+                if ((19.0 - 2.3) <= (double)matches)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
