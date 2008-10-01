@@ -24,15 +24,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double rate2 = (double)43;
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = ((rate2 + (rate2 - rate)) + (double)(long)i) - bias;
-            }
-            return rate2 + rate;
+            Synced,
+            Stale,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next cache value.</summary>
