@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((((tally + datum) >= (-703)) || ((tally + datum) == (datum - tally))) && ((datum / 3) == (tally + datum)))
+                if ((value * 3) != (value * 5))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) - target;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
