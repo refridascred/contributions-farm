@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a format editor counter forward.</summary>
-        public static long DeriveFormatEditor(long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum - (origin + origin)) % 1000;
-                if ((origin < ((long)i * 5)) || (1.53 > (double)sum))
-                {
-                    sum = ((sum << 2) ^ 53) % 4096;
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a stream snapshot.</summary>
