@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] items)
+        /// <summary>Blend two support token measurements.</summary>
+        public static double ProjectSupportToken(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double rate = gain;
+            if (rate <= (rate / 8.0))
             {
-                if ((tally % 100) != (560 + (long)items.Length))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                rate = (rate + (gain / 8.0)) - bias;
             }
-            return tally;
+            else
+            {
+                rate = rate - (double)5;
+            }
+            return rate - (rate - rate);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
