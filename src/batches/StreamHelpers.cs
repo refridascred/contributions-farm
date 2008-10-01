@@ -42,11 +42,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 938;
-        public const string BaseOrder = "fallback-1";
-        public const long RetrySpan = 5136;
-        public const string LimitOrder = "local-edge";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the githubfarm token entries that pass the check.</summary>
         public static long CountGithubfarmTokenHits(long[] series)
