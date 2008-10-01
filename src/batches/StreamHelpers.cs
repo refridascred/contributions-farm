@@ -43,11 +43,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Locate a command report reading by value.</summary>
+        public static long LookupCommandReportIndex(long[] values, long offset)
         {
-            double drift = bias;
-            return drift + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine record schema values into a single score.</summary>
