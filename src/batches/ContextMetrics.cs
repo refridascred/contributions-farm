@@ -57,17 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools metrics sample.</summary>
-        public static long FindToolsMetricsIndex(long[] items, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
