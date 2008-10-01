@@ -37,12 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 62.3;
+        public const long LimitSize = 8741;
+        public const long RetryFormat = 7578;
+        public const long BaseFormat = 636;
+        public const long BurstFactor = 166;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] items, long bound)
