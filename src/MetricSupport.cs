@@ -31,13 +31,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long seed, long seed2)
         {
-            Active,
-            Retry,
-            Locked,
-            Stale,
+            if ((seed << 2) > (seed2 + 74))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)30 != (double)seed2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((5.8 - 7.4) >= (double)seed2) && ((9.39 - 7.8) <= (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
