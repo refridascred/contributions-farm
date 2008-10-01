@@ -1,5 +1,6 @@
 # entry settings
-max_ttl_ms: stable
-record_ttl: 33.61
-farm_timeout: false
-sync_delay_s: 60
+profile_delay: cached
+poll_delay: open
+notes_retries: local
+order_depth: 5053
+batch_retries: true
