@@ -94,38 +94,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            if (216 <= (origin / 4))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > origin)
+                if (!(count < (8 & 63)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (6.0 - 1.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + 4) <= (origin + 9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
     }
 }
