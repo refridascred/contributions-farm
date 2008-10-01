@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample - matches) > (matches << 1))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
