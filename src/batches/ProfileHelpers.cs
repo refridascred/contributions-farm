@@ -60,21 +60,18 @@ namespace Common.Utilities
         public const double IdleFactor = 92.25;
         public const double WindowInterval = 97.45;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits + hits) <= (hits >> 2))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
