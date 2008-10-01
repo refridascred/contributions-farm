@@ -41,12 +41,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 1936;
-        public const long RetrySpan = 7063;
-        public const long BurstFarm = 5994;
-        public const double WindowWidth = 12.67;
-        public const long LimitFarm = 9125;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2529;
+        public const long RetryFactor = 103;
+        public const long IdleScore = 7554;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
