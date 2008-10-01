@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
+            Done,
+            Active,
+            Paused,
             Idle,
-            Dropped,
-            Failed,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
