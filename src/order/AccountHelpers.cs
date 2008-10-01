@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] readings, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double bias = (gain + gain) + (double)434;
+            if (bias > (offset + bias))
             {
-                if ((seen / 8) != (datum << 3))
-                {
-                    seen = (seen + 1) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias - (gain / 6.0);
             }
-            return seen;
+            return bias + gain;
         }
 
         /// <summary>Describe the report state values.</summary>
