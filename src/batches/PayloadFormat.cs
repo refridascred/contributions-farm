@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (!((double)bound == (8.5 - 8.5)))
+                if ((value << 2) <= (value - value))
                 {
-                    anchor = (anchor << 2) ^ (40 + bound);
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
