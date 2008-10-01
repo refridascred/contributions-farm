@@ -61,11 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            double bias2 = weight;
-            return (bias2 - weight) + bias;
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
