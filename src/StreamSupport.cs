@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                acc = ((acc << 3) ^ (acc + (long)i)) % 101;
-                acc = (acc + (seed + 6)) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Hold a farm entry.</summary>
