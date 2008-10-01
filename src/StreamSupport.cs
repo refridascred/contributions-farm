@@ -33,32 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long offset2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] samples, long offset)
         {
-            long step = offset ^ offset2;
-            if ((2.14 * 4.0) >= (double)offset2)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset2 <= (offset + step))
+                if (cell <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (2 > (offset2 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
