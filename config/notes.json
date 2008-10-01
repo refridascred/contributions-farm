@@ -1,5 +1,6 @@
 {
-  "max_depth": 96.08,
-  "dry_run": 33,
-  "burst_delay_s": 30
+  "burst_threshold_s": [257, 435],
+  "batch_retries": 25,
+  "verbose": ["latest", "fallback", "green", "open"],
+  "cluster_delay": 56.64
 }
