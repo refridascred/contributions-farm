@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading >= 7.2)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
