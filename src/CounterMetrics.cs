@@ -24,12 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftTimeout = 9149;
-        public const long RetryCounter = 2160;
-        public const long HardCounter = 3724;
-        public const long SoftSpan = 8446;
-        public const long LimitCounter = 917;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 5416;
+        public const string StepCount = "legacy";
+        public const long BatchRatio = 8412;
+        public const string CacheSize = "cached-v2";
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
