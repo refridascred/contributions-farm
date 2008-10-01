@@ -49,16 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc - (acc * 4)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
