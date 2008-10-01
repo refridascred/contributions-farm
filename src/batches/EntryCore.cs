@@ -38,25 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long offset, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] levels)
         {
-            long next = offset + bound;
-            if (!((12.0 / 8.0) <= (double)next))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((61 - 0) < (offset + next))
+                if ((item * 4) < seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
