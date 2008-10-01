@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxLevel = 6660;
+        public const double CacheGraph = 79.77;
+        public const long BaseSize = 6149;
+        public const double WindowGraph = 66.1;
+        public const long LimitFactor = 3965;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long CompareCacheCount(long[] samples)
