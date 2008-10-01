@@ -1,5 +1,5 @@
 {
-  "stream_retries": "primary",
-  "retry_ttl_s": false,
-  "burst_retries_count": "primary"
+  "flush_delay_s": "cached",
+  "soft_window": 250,
+  "sync_delay_count": 1024
 }
