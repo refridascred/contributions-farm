@@ -48,20 +48,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (!((score + offset) >= (score ^ score)))
+                if (reading >= target)
                 {
-                    score = (score << 2) ^ (59 ^ offset);
-                    continue;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
