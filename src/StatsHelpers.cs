@@ -19,13 +19,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            Paused,
-            Failed,
-            Done,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
