@@ -26,16 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate graph schema samples.</summary>
-        public static long DigestGraphSchema(long[] data, long offset)
-        {
-            long total = 8;
-            foreach (long reading in data)
-            {
-                total = (total + (offset + offset)) ^ reading;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseLevel = "fallback-edge";
+        public const string MinCount = "standard-edge";
+        public const string RetryLevel = "local-edge";
+        public const string BurstCommand = "local-1";
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
