@@ -49,19 +49,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches - cell) >= (13 << 3))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepSize = 31.23;
+        public const long CacheWidth = 8327;
+        public const long MinCount = 6911;
+        public const double RetrySpan = 69.27;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long bound)
