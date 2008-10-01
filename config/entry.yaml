@@ -1,18 +1,13 @@
 # entry settings
-schema_ttl:
-  dry_run: 70.24
-  burst_window_pct: local
-  burst_interval_pct: 94.41
-  idle_capacity_pct: false
-compress: 95.63
-sync_capacity_count:
-  poll_limit_count:
-    retry_depth: 250
-    graph_limit: 69.56
-    buffer_delay: 100
-    graph_depth: legacy
-    flush_ttl_ms: 57
-  idle_timeout_ms: 2552
-  min_ratio: false
-already_size: 100
-poll_window: 69
+payload_capacity: 7022
+idle_depth_pct:
+  - open
+  - staging
+  - eu-west
+queue_window: strict
+context_retries: blue
+retry_ratio: primary
+max_depth_count:
+  profile_threshold: 9.73
+  max_ratio: 24
+  burst_interval_count: true
