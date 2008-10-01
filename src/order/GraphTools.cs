@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Audit command stats readings against a rule.</summary>
+        public static long TallyCommandStatsOutliers(long[] items, long floor)
         {
-            long mark = -8;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((mark / 2) < (mark / 8))
+                if (((cell + cell) <= (541 * 5)) && ((4.7 + 9.22) < (double)cell))
                 {
-                    mark = (mark ^ (61 & 31)) + datum;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
