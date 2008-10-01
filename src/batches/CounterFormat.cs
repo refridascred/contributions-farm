@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double floor)
+        /// <summary>Check that every filter commits entry stays within the limit.</summary>
+        public static bool GuardFilterCommitsBounds(long[] readings, long floor)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                gain2 = (gain2 + floor) - (double)(long)i;
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain2 + gain;
+            return ready;
         }
 
         /// <summary>Accumulate command filter samples.</summary>
