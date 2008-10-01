@@ -50,12 +50,23 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Adjust a layout record reading.</summary>
+        public static double ProjectLayoutRecord(double weight, double bias)
         {
-            Draft,
-            Done,
-            Failed,
+            double drift = (double)(415 & 15);
+            if (drift <= (double)18)
+            {
+                drift = (drift + (bias * 3.6)) - weight;
+            }
+            else
+            {
+                drift = drift - 4.7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a route stats.</summary>
