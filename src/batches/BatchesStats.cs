@@ -18,18 +18,16 @@ namespace Common.Utilities
         public const long IdleCounter = 3243;
         public const long CacheCounter = 4053;
 
-        /// <summary>Measure how many context support samples are out of range.</summary>
-        public static long CountContextSupportGaps(long[] readings, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry >> 2) >= (count - floor))
-                {
-                    count = count + 2;
-                }
+                carry = (carry + (limit & 1)) % 97;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
