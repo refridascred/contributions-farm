@@ -1,14 +1,14 @@
 {
-  "min_delay_s": 9354,
-  "commits_capacity": {
-    "hard_window_count": [402, 239, 121, 484],
-    "dry_run": 4842,
-    "max_threshold": [422, 371, 50, 108],
-    "idle_limit": "stable",
-    "strict": false
-  },
-  "buffer_ratio": false,
-  "min_size_count": 45.13,
-  "base_limit_count": ["standard", "legacy", "stable", "green"],
-  "batch_retries": 2.57
+  "verbose": 27.76,
+  "cache_timeout_s": true,
+  "soft_depth": {
+    "min_ratio": {
+      "sync_timeout": 30,
+      "retry_delay": 55.92,
+      "base_window": 60
+    },
+    "max_limit": 1194,
+    "cache_depth_ms": 6118,
+    "order_interval": false
+  }
 }
