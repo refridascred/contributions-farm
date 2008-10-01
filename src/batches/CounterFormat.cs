@@ -13,15 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinWidth = 1834;
+        public const double DefaultTimeout = 16.78;
+        public const string IdleRatio = "primary";
+        public const long WindowSession = 8930;
+        public const string HardWidth = "open-1";
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double bias, double floor)
