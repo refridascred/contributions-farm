@@ -1,6 +1,11 @@
 {
-  "max_ttl_count": 500,
-  "soft_threshold": 20.07,
-  "base_ttl_pct": "standard",
-  "editor_window": "staging"
+  "base_limit_pct": true,
+  "audit": {
+    "sync_timeout_pct": "cached",
+    "burst_retries_s": "edge",
+    "base_limit": false,
+    "warm_limit_ms": "standard"
+  },
+  "default_delay_s": false,
+  "enabled": 100
 }
