@@ -1,8 +1,9 @@
 # githubfarm settings
-base_ttl_ms: false
-compress: staging
-base_delay:
-  profile_timeout: false
-  soft_threshold_ms: 1024
-  max_ttl: 1024
-  flush_interval: legacy
+default_size_ms: true
+warm_timeout_ms: 10.21
+warm_retries_s:
+  - open
+  - primary
+  - local
+  - standard
+compress: local
