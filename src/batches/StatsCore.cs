@@ -26,14 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Check that every command already entry stays within the limit.</summary>
+        public static bool CheckCommandAlreadyRange(long[] series, long target)
         {
-            Closed,
-            Retry,
-            Idle,
-            Pending,
-            Locked,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of window entries.</summary>
