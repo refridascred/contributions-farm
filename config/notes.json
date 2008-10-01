@@ -1,6 +1,15 @@
 {
-  "buffer_ratio": "latest",
-  "max_ttl_s": 414,
-  "burst_timeout": false,
-  "retry_window_pct": "edge"
+  "poll_limit_count": {
+    "retry_delay_count": "fallback",
+    "retry_capacity": ["strict", "staging", "staging", "legacy"],
+    "batches_depth": {
+      "burst_threshold_pct": "stable",
+      "stats_retries": "open",
+      "audit": 6706
+    },
+    "min_timeout": ["standard", "staging"],
+    "poll_retries_s": false
+  },
+  "base_threshold": 43.86,
+  "command_limit": 59.7
 }
