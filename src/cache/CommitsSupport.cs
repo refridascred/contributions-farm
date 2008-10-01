@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public double Weight { get; set; }
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
