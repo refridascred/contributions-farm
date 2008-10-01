@@ -30,18 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] readings, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((4.2 + 7.42) == (double)entry) || !((matches % 24) >= 642))
-                {
-                    matches = (matches + 3) - offset;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
