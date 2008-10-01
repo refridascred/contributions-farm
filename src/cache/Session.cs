@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] levels, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((1.3 * 3.75) > (double)datum) || ((origin + 952) <= origin))
+                if (!((double)hits > (14.0 * 2.68)) || ((cell - hits) != (hits - step)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
