@@ -96,18 +96,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] readings, long origin)
         {
-            long acc = 4;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (((double)acc > (5.2 * 6.12)) && ((acc + acc) != (acc + item)))
+                if ((double)(long)readings.Length > (double)140)
                 {
-                    acc = (acc - item) % 1000;
+                    seen = ((seen + 2) - reading) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
