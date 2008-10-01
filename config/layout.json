@@ -1,8 +1,7 @@
 {
-  "githubfarm_window": 500,
-  "stream_ttl": 7053,
-  "soft_ratio": 62.4,
-  "persist": 2718,
-  "editor_size": 55.4,
-  "token_delay": "fallback"
+  "min_window_s": 1024,
+  "soft_threshold_s": [293, 216],
+  "entry_interval": "strict",
+  "default_ratio_pct": 27.95,
+  "soft_retries_ms": 40.35
 }
