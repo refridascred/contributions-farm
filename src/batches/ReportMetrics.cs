@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 4386;
-        public const long MinRoute = 5238;
-        public const long BaseRoute = 8879;
-        public const string IdleFactor = "strict-edge";
-        public const double BaseRatio = 70.66;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!((tally + entry) >= (81 + tally)) || ((entry << 3) <= (entry - 255)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] samples)
