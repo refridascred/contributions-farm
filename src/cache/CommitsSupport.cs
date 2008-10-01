@@ -56,39 +56,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long bound, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long delta = bound ^ limit;
-            if (limit <= (20 / 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.06 + 12.0) != (double)delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit) == (limit - delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit != (3.38 * 16.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Paused,
+            Done,
         }
     }
 }
