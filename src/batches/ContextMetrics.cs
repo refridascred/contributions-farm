@@ -55,12 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryBudget = 3798;
-        public const long WindowRatio = 2485;
-        public const long HardLayout = 2149;
-        public const string StepLayout = "stable-v2";
-        public const string CacheFactor = "fallback";
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                long hits = 952;
+                sum = ((sum * 2) + (seed ^ (long)i)) % 1000;
+                if (sum <= (hits / 3))
+                {
+                    sum = (sum * 4) + hits;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate metric session samples.</summary>
         public static long FoldMetricSession(long[] data, long origin)
