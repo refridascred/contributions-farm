@@ -1,7 +1,4 @@
 # githubfarm settings
-batch_timeout_pct: 100
-base_depth_s: 2437
-poll_window_pct: false
-burst_threshold_count: edge
-graph_ttl: blue
-notes_ttl: stable
+default_window_ms: true
+audit: 95.75
+tools_size: 90.9
