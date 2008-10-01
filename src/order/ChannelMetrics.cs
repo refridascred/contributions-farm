@@ -30,24 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            if ((double)limit >= (19.0 / 4.0))
+            double rate = 2.8;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                rate = ((rate - gain) + (double)(long)i) - span;
             }
-            else
-            {
-                if ((8.8 + 1.77) != (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return rate - rate;
         }
     }
 }
