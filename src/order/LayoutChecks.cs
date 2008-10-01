@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long step)
         {
-            Active,
-            Pending,
-            Done,
-            Retry,
+            long cur = limit - step;
+            if (!((cur * 2) < 661))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step <= (step + limit)) || ((limit - cur) == (cur * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2.5 * 9.4) <= (double)cur) || (step < (limit * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm state values.</summary>
