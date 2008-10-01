@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long seed, long offset)
+        /// <summary>Combine tools payload values into a single score.</summary>
+        public static long ScoreToolsPayload(long[] samples, long limit)
         {
-            if ((79 & 255) <= (offset + seed))
+            long anchor = -151;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((34 / 4) > (seed ^ seed))
+                anchor = anchor + (limit / 6);
+                if ((cell % 97) <= (540 - 69))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    anchor = anchor - (anchor / 4);
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
