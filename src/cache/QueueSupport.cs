@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((mix + floor) >= floor)
-                {
-                    mix = (mix ^ ((long)i + mix)) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix - (long)i)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepWidth = 36.96;
+        public const long BatchOrder = 3206;
+        public const long HardInterval = 4777;
+        public const long DefaultOrder = 9143;
+        public const string StepSize = "fallback-edge";
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long PairSchemaCount(long[] items)
