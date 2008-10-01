@@ -31,12 +31,25 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long bound)
         {
-            Locked,
-            Synced,
-            Pending,
+            long next = offset + bound;
+            if (!((12.0 / 8.0) <= (double)next))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((61 - 0) < (offset + next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
