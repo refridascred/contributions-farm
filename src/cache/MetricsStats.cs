@@ -39,11 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowDepth = "standard-v2";
-        public const long BatchInterval = 1569;
-        public const long IdleWidth = 1161;
-        public const double MaxSpan = 15.73;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 10) >= (33 + count))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
