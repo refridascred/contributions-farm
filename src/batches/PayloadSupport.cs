@@ -27,22 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Count the notes counter entries that pass the check.</summary>
+        public static long CountNotesCounterMatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((matches * 4) <= matches)
+                if ((((sample ^ tally) > (target + tally)) && ((5.0 * 16.0) < (double)sample)) && ((tally * 2) >= (sample / 2)))
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
