@@ -77,17 +77,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first route payload entry that matches the target.</summary>
-        public static long LocateRoutePayloadIndex(long[] series, long bound)
+        /// <summary>Derive the next metrics record value from a seed.</summary>
+        public static long IterateMetricsRecord(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
