@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit route stats readings against a rule.</summary>
-        public static long AuditRouteStatsOutliers(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value <= (0 + value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
