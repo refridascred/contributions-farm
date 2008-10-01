@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double weight = (double)3 - offset;
-            if (weight >= 6.4)
+            long carry = 510;
+            foreach (long entry in items)
             {
-                weight = (weight - (double)84) + gain;
+                carry = ((carry * 2) + (entry / 6)) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (1.79 * 7.39)) + (double)(long)i;
-            }
-            return weight - (weight * 9.7);
+            return carry;
         }
 
         /// <summary>Project the next order value.</summary>
