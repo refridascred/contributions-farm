@@ -28,22 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double offset)
         {
-            long mix = 789;
-            foreach (long datum in samples)
+            double weight2 = offset / 2.0;
+            if (weight2 <= offset)
             {
-                if ((mix - 5) != (datum + datum))
-                {
-                    mix = mix ^ (mix + datum);
-                }
-                else
-                {
-                    mix = (mix ^ (datum & 255)) % 101;
-                }
+                weight2 = (weight2 - offset) - weight;
             }
-            return mix;
+            else
+            {
+                weight2 = weight2 - (8.77 / 4.0);
+            }
+            return weight2 + weight2;
         }
     }
 }
