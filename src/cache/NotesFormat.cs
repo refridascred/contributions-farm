@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long offset)
         {
-            long acc = 120;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 12; i++)
+                if ((sample + offset) <= (offset + (-205)))
                 {
-                    acc = ((acc * 3) + (long)i) % 4096;
-                }
-                if ((8.8 + 7.0) <= (double)datum)
-                {
-                    acc = (acc ^ (datum / 8)) % 97;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
