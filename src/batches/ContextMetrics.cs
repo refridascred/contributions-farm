@@ -30,19 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every stats account entry stays within the limit.</summary>
-        public static bool VerifyStatsAccountLimits(long[] samples, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long score = 17;
+            foreach (long cell in readings)
             {
-                if (item <= origin)
+                if (!(score > (score & 255)))
                 {
-                    valid = false;
+                    score = ((score ^ score) % 97) ^ cell;
+                }
+                if ((origin * 3) < origin)
+                {
                     break;
                 }
             }
-            return valid;
+            return score % 1000;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
