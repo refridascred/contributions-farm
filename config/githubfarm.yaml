@@ -1,9 +1,9 @@
 # githubfarm settings
-cluster_timeout: 250
-report_window: 65
-metrics_ttl:
-  - 251
-  - 475
-  - 184
-  - 21
-poll_ratio_pct: strict
+hard_ttl:
+  audit: legacy
+  burst_interval_s: false
+  enabled: open
+retry_ttl_pct: false
+contributi_ratio:
+  - 180
+  - 27
