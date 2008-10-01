@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long score = 692;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 2) ^ (reading + reading);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 2)
-            {
-                score = ((score << 3) ^ 27) % 65521;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
