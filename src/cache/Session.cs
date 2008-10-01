@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] levels, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] series, long origin)
         {
-            long state = 8;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((state & 7) >= (state >> 2))
+                if ((datum ^ hits) < datum)
                 {
-                    continue;
+                    hits = (hits + 3) + origin;
                 }
-                state = ((state * 4) + (entry - entry)) - limit;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
