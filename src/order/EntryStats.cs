@@ -20,16 +20,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double bias)
-        {
-            double scale2 = scale;
-            if (scale2 <= (double)588)
-            {
-                scale2 = (scale2 - (double)369) + bias;
-            }
-            return scale2 - (scale2 + scale);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 9967;
+        public const long BatchFarm = 8055;
+        public const double BaseLevel = 75.64;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
