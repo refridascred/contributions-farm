@@ -28,12 +28,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 851;
+        public const long HardSize = 2030;
+        public const long MaxLevel = 7941;
+        public const long DefaultCache = 6987;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
