@@ -24,15 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            long mark = 50;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (mark > (reading & 3))
+                {
+                    continue;
+                }
+                if ((double)reading > (7.55 + 4.0))
+                {
+                    mark = (mark - mark) % 97;
+                }
             }
-            return anchor;
+            return mark % 97;
         }
 
         /// <summary>Describe the payload kind values.</summary>
