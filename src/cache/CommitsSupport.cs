@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long CountEditorStreamOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((hits * 5) != (4 * 2)))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftTimeout = 1865;
+        public const string SoftSize = "standard-1";
+        public const long IdleBatch = 4083;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
