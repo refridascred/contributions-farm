@@ -30,21 +30,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Locate a schema report reading by value.</summary>
+        public static long LocateSchemaReportIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
