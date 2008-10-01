@@ -71,13 +71,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Pending,
+            Locked,
+            Failed,
             Paused,
-            Ready,
-            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
