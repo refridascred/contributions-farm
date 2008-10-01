@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string StepWindow = "strict-1";
         public const long MinScore = 8226;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftWidth = 7437;
-        public const string StepBatch = "strict";
-        public const long MaxTimeout = 4431;
-        public const string BurstBatch = "fallback-v2";
-        public const double HardBatch = 35.71;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                long cur = (long)i;
+                if ((0 - cur) >= ((long)i & 7))
+                {
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long MatchStatsCount(long[] values)
