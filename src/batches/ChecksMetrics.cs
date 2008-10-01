@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long SoftRatio = 102;
         public const double StepFactor = 70.21;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double ratio = (double)(183 & 255);
-            if (ratio > (span / 6.0))
-            {
-                ratio = (ratio + (double)39) - rate;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)840) - (double)(long)i;
-            }
-            return ratio + (double)127;
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
