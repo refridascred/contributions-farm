@@ -19,17 +19,12 @@ namespace Common.Utilities
         public const long StepProfile = 3611;
         public const double BurstProfile = 92.7;
 
-        /// <summary>Locate a route format reading by value.</summary>
-        public static long SeekRouteFormatIndex(long[] values, long seed)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
