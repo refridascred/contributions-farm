@@ -23,17 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (784 <= (26 + offset))
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((7 ^ offset) <= (seed << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
