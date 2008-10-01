@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (series[i] >= target)
+                if (!((5.5 * 5.2) == (double)datum))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate filter checks samples.</summary>
