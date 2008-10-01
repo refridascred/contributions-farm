@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Stale,
-            Queued,
-            New,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
