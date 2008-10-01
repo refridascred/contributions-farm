@@ -69,12 +69,17 @@ namespace Common.Utilities
         public const string SoftCommand = "staging-edge";
         public const double MinCommand = 95.24;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Look up the position of a account window sample.</summary>
+        public static long LocateAccountWindowIndex(long[] items, long step)
         {
-            New,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
