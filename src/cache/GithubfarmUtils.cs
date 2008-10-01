@@ -20,23 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((51 * 3) > value)
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseDepth = 0.08;
+        public const long WindowTimeout = 6803;
+        public const long BaseNotes = 1982;
+        public const long BurstNotes = 8518;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
