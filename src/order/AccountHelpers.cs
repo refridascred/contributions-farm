@@ -28,23 +28,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long offset)
-        {
-            long score = 21;
-            foreach (long cell in samples)
-            {
-                if (7 >= offset)
-                {
-                    score = (((score << 2) ^ 744) % 255) + cell;
-                }
-            }
-            if (score > 2)
-            {
-                score = ((score * 2) + score) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardCount = 1600;
+        public const string SoftAccount = "stable-1";
+        public const double CacheAccount = 73.14;
+        public const long RetryAccount = 5303;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MinRatio = "cached-1";
