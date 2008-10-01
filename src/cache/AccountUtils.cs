@@ -30,25 +30,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long offset2)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long limit)
         {
-            long prev = offset - offset2;
-            if (((double)offset2 > 4.6) && ((24 >> 3) > (27 + prev)))
+            long acc = 20;
+            foreach (long cell in readings)
             {
-                return 0;
+                acc = ((acc - limit) % 1000) ^ cell;
             }
-            else
+            if (acc > 7)
             {
-                if ((prev <= (prev + offset2)) || ((prev ^ prev) == (prev / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                acc = (acc ^ (acc + limit)) % 1000;
             }
+            return acc % 4096;
         }
     }
 }
