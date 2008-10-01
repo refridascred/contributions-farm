@@ -67,14 +67,11 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Synced,
-            Retry,
-            Pending,
-            Active,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 84.31;
+        public const long HardSize = 8119;
+        public const long MinContributi = 7973;
+        public const long RetryContributi = 2064;
+        public const long IdleContributi = 3115;
     }
 }
