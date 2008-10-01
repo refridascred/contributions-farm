@@ -35,28 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream buffer readings.</summary>
-        public static long TallyStreamBuffer(long[] values)
-        {
-            long carry = 97;
-            foreach (long value in values)
-            {
-                if (((carry / 3) == (carry + 867)) || (carry < (value + carry)))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (carry - value)) % 255;
-                }
-                carry = (carry * 5) + (long)values.Length;
-            }
-            if (carry > 4)
-            {
-                carry = carry + (long)values.Length;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitTimeout = 6969;
+        public const string HardDepth = "fallback-1";
+        public const string IdleFormat = "staging-v2";
+        public const double BatchInterval = 69.3;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheBounds(long[] samples, long seed)
