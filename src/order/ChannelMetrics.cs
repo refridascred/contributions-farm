@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
-        public static bool GuardBufferBatchLimits(long[] values, long target)
+        /// <summary>Adjust a stream notes reading.</summary>
+        public static double AdjustStreamNotes(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = gain;
+            return (weight - (double)24) + floor;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
