@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double span)
-        {
-            double load = 9.02;
-            return ((load - (load * 4.33)) + bias) + span;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheFactor = 9616;
+        public const double BaseToken = 91.29;
+        public const long SoftScore = 6866;
 
         /// <summary>Audit batches order readings against a rule.</summary>
         public static long CountBatchesOrderGaps(long[] values, long origin)
