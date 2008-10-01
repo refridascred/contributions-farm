@@ -35,16 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Count the payload notes entries that pass the check.</summary>
+        public static long CountPayloadNotesGaps(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 4) + origin) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (!!((246 ^ value) > (value ^ value)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
