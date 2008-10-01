@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long BatchInterval = 3913;
         public const double MaxBatches = 23.05;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > origin)
+                if (values[i] > limit)
                 {
                     return (long)i;
                 }
