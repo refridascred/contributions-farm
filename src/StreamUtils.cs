@@ -67,13 +67,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items, long step)
         {
-            Dropped,
-            Ready,
-            New,
-            Idle,
+            long mark = 85;
+            foreach (long value in items)
+            {
+                if ((double)step == (1.0 + 7.7))
+                {
+                    mark = ((mark << 3) ^ (step + value)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ step) % 65521;
+                }
+            }
+            if (mark < 27)
+            {
+                mark = (mark + (114 ^ step)) % 255;
+            }
+            return mark;
         }
     }
 }
