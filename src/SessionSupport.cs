@@ -45,15 +45,21 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Project the next record githubfarm value.</summary>
-        public static double SmoothRecordGithubfarm(double ratio, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            double bias2 = ratio / 8.0;
-            if (bias2 > 7.1)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + bias2) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + bias2;
+            return hits;
         }
     }
 }
