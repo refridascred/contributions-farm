@@ -19,22 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long carry = 42;
+            foreach (long item in items)
             {
-                if ((matches % 5) != (matches << 3))
+                if ((8 > limit) && ((6 >> 1) < limit))
                 {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry - limit) - item;
                 }
             }
-            return matches;
+            if (carry < 90)
+            {
+                carry = carry - (limit + carry);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
