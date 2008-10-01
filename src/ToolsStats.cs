@@ -46,15 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a format context figure with a bias.</summary>
-        public static double AdjustFormatContext(double scale, double span)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double mean = span;
-            if (mean >= scale)
-            {
-                mean = mean - mean;
-            }
-            return mean + (10.0 / 9.0);
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
