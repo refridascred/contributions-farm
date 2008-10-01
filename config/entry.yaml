@@ -1,14 +1,5 @@
 # entry settings
-stats_ratio:
-  - 133
-  - 429
-record_ratio: edge
-already_depth:
-  - local
-  - legacy
-audit:
-  readonly: 3
-  batch_limit: 100
-  compress: 31
-  schema_interval: standard
-entry_ttl: cached
+route_retries: true
+record_retries: local
+compress: 6464
+retry_threshold_count: 5.24
