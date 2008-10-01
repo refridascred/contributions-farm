@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 6244;
-        public const string MaxRecord = "stable-edge";
-        public const string IdleRecord = "strict-v2";
-        public const double HardCount = 58.66;
-        public const long StepLevel = 9592;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
