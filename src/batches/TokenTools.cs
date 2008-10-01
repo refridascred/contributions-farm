@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
-        public static long MeasureStreamGithubfarmHits(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 76;
+            foreach (long reading in levels)
             {
-                if ((5.4 * 7.91) != (double)datum)
+                if ((anchor >> 3) >= (bound + 312))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor + reading;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the profile class values.</summary>
