@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series, long origin)
+        /// <summary>Scale a account queue figure with a bias.</summary>
+        public static double AdjustAccountQueue(double scale, double bias)
         {
-            long carry = 869;
-            foreach (long entry in series)
-            {
-                if (!((origin + carry) < (518 - origin)))
-                {
-                    carry = (carry + entry) % 97;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry << 2) ^ (origin & 63);
-            }
-            return carry % 4096;
+            double rate = scale;
+            return (rate - scale) + bias;
         }
 
         /// <summary>Describe the record phase values.</summary>
