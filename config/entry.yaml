@@ -1,11 +1,5 @@
 # entry settings
-default_depth: 9899
-strict: 63.98
-retry_interval_ms:
-  metrics_capacity:
-    - 15
-    - 159
-  tools_timeout: 30
-  compress: 8736
-  readonly: 100
-warm_threshold_count: primary
+default_ttl_pct: eu-west
+already_limit: strict
+audit: 21
+hard_threshold_ms: false
