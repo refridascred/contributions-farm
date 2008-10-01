@@ -40,17 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9754;
+        public const long MaxTools = 565;
+        public const long CacheTools = 7644;
+        public const double MinFactor = 89.27;
+        public const long BatchInterval = 6385;
     }
 }
