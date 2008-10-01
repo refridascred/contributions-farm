@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (32 <= (target - (-9)))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
