@@ -1,8 +1,13 @@
 {
-  "audit": 9,
-  "batch_threshold_pct": 58.14,
-  "stream_delay": "strict",
-  "strict": false,
-  "batch_interval": [323, 111, 362],
-  "counter_interval": "primary"
+  "githubfarm_depth": ["legacy", "edge", "eu-west"],
+  "graph_interval": ["strict", "latest"],
+  "buffer_retries": {
+    "strict": "strict",
+    "farm_interval": 7331,
+    "contributi_ratio": 30,
+    "idle_retries_s": ["local", "blue"],
+    "default_threshold_pct": 11.8
+  },
+  "window_size": "standard",
+  "retry_capacity": "open"
 }
