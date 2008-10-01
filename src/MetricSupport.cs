@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate report layout samples.</summary>
+        public static long FoldReportLayout(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long mark = 5;
+            foreach (long reading in readings)
+            {
+                if (!((3.9 - 5.32) >= (double)mark))
+                {
+                    mark = (mark + 26) % 4096;
+                }
+                if ((double)reading <= (double)limit)
+                {
+                    mark = (mark - (limit + (long)readings.Length)) % 65521;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
