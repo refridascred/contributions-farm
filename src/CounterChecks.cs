@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] items)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits / 2) > (item % 24))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
