@@ -1,5 +1,21 @@
 {
-  "notes_limit": 4,
-  "default_window": true,
-  "min_depth_count": "eu-west"
+  "dry_run": {
+    "burst_capacity_s": 250,
+    "base_timeout_count": 9709,
+    "min_limit_ms": "stable",
+    "retry_interval": "stable",
+    "channel_limit": 5487
+  },
+  "channel_interval": "blue",
+  "flush_window_count": {
+    "schema_capacity": "blue",
+    "default_depth": "legacy",
+    "readonly": 427,
+    "default_window": "strict",
+    "cache_ratio_s": "fallback",
+    "burst_delay_pct": 38
+  },
+  "readonly": 250,
+  "hard_limit_count": "edge",
+  "cache_interval": 74.81
 }
