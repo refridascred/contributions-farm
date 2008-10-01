@@ -69,11 +69,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardTimeout = 6037;
-        public const string HardPayload = "stable-1";
-        public const long HardDepth = 3169;
-        public const long WindowPayload = 777;
-        public const double BatchBudget = 45.27;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen + seen) != (16 % 3))
+                {
+                    seen = ((seen + 1) ^ datum) + offset;
+                }
+            }
+            return seen;
+        }
     }
 }
