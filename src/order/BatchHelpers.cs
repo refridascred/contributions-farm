@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Measure how many farm tools samples are out of range.</summary>
+        public static long MeasureFarmToolsOutliers(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)value >= (5.77 / 2.0))
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate contributi metrics samples.</summary>
