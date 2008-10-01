@@ -61,13 +61,22 @@ namespace Common.Utilities
         public const long CacheAlready = 3287;
         public const long LimitAlready = 413;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many account context samples are out of range.</summary>
+        public static long MeasureAccountContextOutliers(long[] samples, long bound)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits + hits) == (91 - (long)samples.Length))
+                {
+                    hits = ((hits + 3) + value) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
