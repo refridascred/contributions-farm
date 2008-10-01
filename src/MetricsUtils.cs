@@ -27,26 +27,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate token schema samples.</summary>
-        public static long CombineTokenSchema(long[] series)
+        /// <summary>Scale a commits notes figure with a bias.</summary>
+        public static double BlendCommitsNotes(double bias, double span)
         {
-            long score = -263;
-            foreach (long item in series)
+            double ratio = bias * 3.4;
+            if (ratio >= (double)801)
             {
-                if ((score >> 4) > score)
-                {
-                    score = (((score * 4) + (score & 3)) % 1000) ^ item;
-                }
-                else
-                {
-                    score = (score - (score >> 4)) % 65521;
-                }
+                ratio = (ratio - bias) - span;
             }
-            if (score < 905)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score ^ score) % 97;
+                ratio = (ratio - bias) - (double)(long)i;
             }
-            return score;
+            return ratio - (double)65;
         }
 
         /// <summary>Digest a series of tools farm entries.</summary>
