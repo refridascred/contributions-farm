@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long seed, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long next = seed + floor;
-            if (seed <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed * 5) > (floor << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)next < 13.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed >= (next % 12))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the farm state values.</summary>
