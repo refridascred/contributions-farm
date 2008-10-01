@@ -1,7 +1,6 @@
 # support settings
-poll_window_s: local
-dry_run: false
-min_limit_count: cached
-strict: 1.32
-editor_interval: false
-soft_timeout_ms: blue
+max_interval_pct: 72.63
+hard_limit_count: edge
+stream_interval: 47.8
+warm_window_s: 1024
+enabled: 20
