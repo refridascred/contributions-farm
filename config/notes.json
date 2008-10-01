@@ -1,6 +1,8 @@
 {
-  "burst_threshold_s": [257, 435],
-  "batch_retries": 25,
-  "verbose": ["latest", "fallback", "green", "open"],
-  "cluster_delay": 56.64
+  "flush_delay": 7588,
+  "burst_ttl_count": 13,
+  "soft_delay_ms": 42,
+  "hard_ttl_ms": 89.72,
+  "audit": "fallback",
+  "warm_capacity_count": [435, 296, 372, 227]
 }
