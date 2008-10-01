@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "open-1";
-        public const double IdleTimeout = 9.63;
-        public const long MaxChannel = 4377;
-        public const long RetryFactor = 6415;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Done,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long WeighBuffer(long[] samples, long origin)
