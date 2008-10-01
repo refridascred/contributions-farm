@@ -69,18 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((974 & 7) < entry))
+                if (!((double)tally < (4.4 * 4.04)))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
