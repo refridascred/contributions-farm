@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultRatio = "legacy";
-        public const string BaseCommand = "local-edge";
-        public const double MaxCommand = 94.58;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next editor account value from a seed.</summary>
         public static long DeriveEditorAccount(long seed)
