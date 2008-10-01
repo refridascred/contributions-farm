@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const string BaseCommand = "local-edge";
         public const double MaxCommand = 94.58;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Derive the next editor account value from a seed.</summary>
+        public static long DeriveEditorAccount(long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
