@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] readings, long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double gain = bias;
+            if (gain < bias)
             {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - (6.5 * 6.36)) - offset;
             }
-            return ready;
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain * 8.3)) + (double)(long)i;
+            }
+            return gain + 4.7;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
