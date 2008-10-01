@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const double WindowProfile = 50.34;
         public const long BatchBudget = 7162;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Match up commits account samples.</summary>
+        public static long PairCommitsAccountCount(long[] values)
         {
-            double scale = offset;
-            if (scale <= scale)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + (double)4) - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale - scale;
+            return matches;
         }
 
         /// <summary>Scale a commits notes figure with a bias.</summary>
