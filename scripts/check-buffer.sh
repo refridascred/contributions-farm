@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=40
+BUFFER_LIMIT=202
 log "limit is ${BUFFER_LIMIT}"
 
-for item in primary staging cached edge; do
-    log "checking ${item}"
-done
-
-mode="${1:-local}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
