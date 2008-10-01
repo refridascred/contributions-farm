@@ -53,19 +53,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double bias2 = (double)268 / 3.0;
-            if (bias2 < (double)6)
-            {
-                bias2 = bias2 + (scale + 12.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
-            }
-            return bias2 + (bias2 - 1.2);
+            Ready,
+            Pending,
+            Closed,
+            Draft,
         }
     }
 }
