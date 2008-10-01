@@ -90,12 +90,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long seed)
         {
-            Closed,
-            Done,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
