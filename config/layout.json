@@ -1,21 +1,12 @@
 {
-  "enabled": "strict",
-  "soft_delay_s": {
-    "dry_run": {
-      "max_timeout_s": 49.8,
-      "format_retries": "cached",
-      "default_timeout_s": false,
-      "base_timeout": 30
-    },
-    "notes_timeout": {
-      "order_ratio": 5886,
-      "readonly": 71.8,
-      "checks_threshold": ["stable", "cached"],
-      "metric_depth": 7876
-    },
-    "buffer_size": 250,
-    "report_window": [354, 117],
-    "order_capacity": "legacy"
-  },
-  "base_delay_pct": 87.35
+  "githubfarm_window": 32,
+  "hard_timeout_s": ["cached", "blue", "eu-west", "primary"],
+  "sync_retries_s": {
+    "retry_limit": 6944,
+    "format_limit": true,
+    "idle_depth_pct": "legacy",
+    "command_capacity": "green",
+    "base_limit_ms": false,
+    "batch_ttl_count": true
+  }
 }
