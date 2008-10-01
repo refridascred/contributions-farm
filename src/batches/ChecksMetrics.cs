@@ -55,21 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Audit token contributi readings against a rule.</summary>
+        public static long MeasureTokenContributiHits(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading >= 9.6)
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + bound;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Scale a cluster account figure with a bias.</summary>
