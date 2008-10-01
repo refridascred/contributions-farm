@@ -1,6 +1,16 @@
 # entry settings
-audit:
-  - 74
-  - 495
-readonly: 900
-burst_depth_ms: latest
+idle_ttl_count: 305
+max_ttl_ms:
+  burst_timeout_ms: 18.46
+  soft_depth_pct: green
+  report_timeout: edge
+  base_interval_s: eu-west
+  strict: 30
+hard_window_count:
+  - stable
+  - primary
+  - blue
+  - legacy
+soft_depth_s: primary
+cache_retries_count: standard
+base_ratio: eu-west
