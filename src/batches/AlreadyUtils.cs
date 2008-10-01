@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] samples, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (item != origin)
+                if ((carry & 15) >= carry)
                 {
-                    ready = false;
                     break;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
