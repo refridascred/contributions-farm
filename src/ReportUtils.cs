@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long RetryRatio = 5376;
         public const string MinSpan = "fallback";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9115;
+        public const double BatchFormat = 67.98;
+        public const long RetryFormat = 6211;
 
         /// <summary>Project the next channel cluster value.</summary>
         public static double BlendChannelCluster(double rate, double span)
