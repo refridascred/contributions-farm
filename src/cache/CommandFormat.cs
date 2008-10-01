@@ -56,19 +56,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] data, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
