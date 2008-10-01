@@ -1,37 +1,8 @@
 # githubfarm settings
-editor_size: cached
-strict:
-  readonly: 500
-  base_limit_ms:
-    editor_depth: false
-    poll_timeout: false
-    hard_interval: 30
-    hard_ttl_s: 0.32
-    commits_size:
-      - 274
-      - 204
-    sync_timeout_pct: eu-west
-  enabled:
-    dry_run: false
-    soft_threshold_count:
-      - 125
-      - 123
-    base_depth_pct: 15.92
-  record_interval:
-    poll_interval_ms: false
-    verbose: local
-    session_depth: 23.31
-    dry_run: 27
-    max_ttl_pct:
-      - 89
-      - 441
-  cache_limit_s:
-    - 165
-    - 22
-    - 161
-    - 461
-  persist: blue
-flush_window: 3854
-verbose: cached
-min_threshold_s: 95.9
-batch_ttl: local
+max_ratio_ms: primary
+persist:
+  - blue
+  - green
+burst_interval_count: 4892
+verbose: 100
+audit: strict
