@@ -27,14 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Closed,
-            Synced,
-            Dropped,
-            Idle,
-            Done,
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
