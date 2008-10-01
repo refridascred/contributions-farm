@@ -72,15 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long MeasureEditorFarmMatches(long[] data)
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long PairSchemaMetricCount(long[] levels)
         {
             long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.2 * 6.6) > (double)cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
