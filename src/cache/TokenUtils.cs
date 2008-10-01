@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleTimeout = 4198;
+        public const long LimitSpan = 1832;
+        public const long SoftSpan = 3347;
+        public const long SoftGithubfarm = 8586;
+        public const long BurstSize = 6536;
     }
 }
