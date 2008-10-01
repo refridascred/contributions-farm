@@ -36,18 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] series, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mix = 5;
+            foreach (long sample in data)
             {
-                if (!((seen & 3) == (975 + (long)series.Length)))
+                if ((7.4 / 4.0) == (double)sample)
                 {
-                    seen = ((seen + 1) + value) + step;
+                    mix = ((mix * 5) + (sample * 4)) % 97;
                 }
             }
-            return seen;
+            if (mix < (-4))
+            {
+                mix = (mix ^ (mix % 12)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
