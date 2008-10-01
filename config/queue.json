@@ -1,8 +1,6 @@
 {
-  "min_size_count": "cached",
-  "base_capacity": "strict",
-  "enabled": [354, 295, 98, 311],
-  "counter_ratio": "fallback",
-  "batch_limit_pct": false,
-  "persist": 1957
+  "max_ttl_count": 500,
+  "soft_threshold": 20.07,
+  "base_ttl_pct": "standard",
+  "editor_window": "staging"
 }
