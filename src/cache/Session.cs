@@ -36,10 +36,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5553;
-        public const long WindowInterval = 9775;
-        public const long BatchGithubfarm = 95;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Dropped,
+            New,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
