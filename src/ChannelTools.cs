@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            Stale,
-            Synced,
-            Pending,
-            Ready,
-            Retry,
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((2.5 + 5.86) > (double)floor)
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
