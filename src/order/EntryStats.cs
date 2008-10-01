@@ -48,19 +48,14 @@ namespace Common.Utilities
         public const double MaxWindow = 65.36;
         public const long SoftFactor = 4561;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] series, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of token readings.</summary>
