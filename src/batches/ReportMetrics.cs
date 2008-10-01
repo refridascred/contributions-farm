@@ -18,13 +18,15 @@ namespace Common.Utilities
             return (rate + (offset * 6.3)) + gain;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long floor)
         {
-            Idle,
-            Draft,
-            Closed,
-            Retry,
+            long score = 935;
+            foreach (long entry in data)
+            {
+                score = ((score ^ ((-8) >> 5)) + entry) + floor;
+            }
+            return score % 97;
         }
     }
 }
