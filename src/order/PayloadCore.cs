@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double bias, double offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double gain = bias;
-            if (gain < bias)
-            {
-                gain = (gain - (6.5 * 6.36)) - offset;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (gain * 8.3)) + (double)(long)i;
-            }
-            return gain + 4.7;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
