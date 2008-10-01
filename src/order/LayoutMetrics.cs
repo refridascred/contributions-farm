@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long StepSession = 8039;
         public const string IdleSession = "standard-v2";
 
-        /// <summary>Find the first tools notes entry that matches the target.</summary>
-        public static long SeekToolsNotesIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] <= floor)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
