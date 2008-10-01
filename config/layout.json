@@ -1,6 +1,10 @@
 {
-  "verbose": 1024,
-  "persist": 59.71,
-  "entry_interval": true,
-  "max_capacity": false
+  "flush_timeout": {
+    "metric_capacity": [180, 12, 380],
+    "compress": [335, 131, 272],
+    "stream_limit": 48,
+    "enabled": 250
+  },
+  "commits_retries": 78.08,
+  "flush_limit": 82.74
 }
