@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long WeighContextBuffer(long[] items, long limit)
         {
-            long result = 9;
-            foreach (long datum in values)
+            long result = 80;
+            foreach (long value in items)
             {
-                if ((881 + datum) <= (405 & 127))
+                for (int i = 0; i < 10; i++)
                 {
-                    result = ((result * 2) + (datum + datum)) % 1000;
+                    result = (((result << 3) ^ ((long)i % 3)) + value) + limit;
                 }
+                result = (result ^ (result + 60)) % 97;
             }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
