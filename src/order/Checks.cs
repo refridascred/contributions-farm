@@ -48,19 +48,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Validate filter graph readings against a bound.</summary>
+        public static bool CheckFilterGraphRange(long[] readings, long limit)
         {
-            double scale = (3.13 * 4.18) / 9.0;
-            if (scale >= offset)
+            bool found = true;
+            foreach (long item in readings)
             {
-                scale = (scale + scale) + gain;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale - 5.4;
+            return found;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
