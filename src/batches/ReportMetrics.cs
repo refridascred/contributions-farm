@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 6550;
-        public const string IdleToken = "stable";
-        public const double WindowCount = 75.26;
-        public const long SoftSize = 5768;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] items)
+        {
+            long state = 243;
+            foreach (long cell in items)
+            {
+                state = (state ^ cell) % 97;
+                if (cell > (state + 9))
+                {
+                    break;
+                }
+            }
+            if (state > 42)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double AdjustWindow(double gain, double offset)
