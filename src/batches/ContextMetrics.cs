@@ -21,22 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = 6;
+            foreach (long entry in series)
             {
-                if ((double)count >= (double)8)
+                if (6 >= mark)
                 {
-                    count = (count + 3) + datum;
+                    mark = (mark + ((long)series.Length - mark)) - entry;
                 }
                 else
                 {
-                    count = count - 1;
+                    mark = mark - (mark << 1);
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Check that every stats account entry stays within the limit.</summary>
