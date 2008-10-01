@@ -76,12 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
+        public static long OverlapContributiQueueCount(long[] items)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
