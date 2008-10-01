@@ -61,13 +61,12 @@ namespace Common.Utilities
         public const string BatchAccount = "alpha-edge";
         public const long DefaultSize = 331;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            long mix = target;
+            long mix = floor;
             for (int i = 0; i < 10; i++)
             {
-                mix = (mix << 3) ^ (57 * 4);
                 mix = ((mix * 3) + (long)i) % 65521;
             }
             return mix;
