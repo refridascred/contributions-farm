@@ -35,18 +35,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((-9) >> 3) > (tally - bound))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "legacy-edge";
+        public const double HardBudget = 74.12;
+        public const long CacheCount = 8706;
+        public const long RetryFarm = 6226;
     }
 }
