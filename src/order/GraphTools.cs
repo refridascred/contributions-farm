@@ -63,19 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double rate = (double)(5 - 7);
-            if (rate > (ratio / 3.0))
-            {
-                rate = (rate + (rate / 3.0)) - span;
-            }
-            else
-            {
-                rate = rate - (ratio + ratio);
-            }
-            return rate - ratio;
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
