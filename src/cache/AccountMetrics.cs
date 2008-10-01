@@ -30,12 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryRatio = 46.48;
-        public const string SoftStats = "staging-v2";
-        public const long LimitStats = 8047;
-        public const long BatchSpan = 35;
-        public const long WindowStats = 2961;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Paused,
+            Closed,
+            Idle,
+            Retry,
+            New,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string RetryTools = "fallback-1";
