@@ -101,21 +101,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] readings, long origin)
+        public static long AuditLayoutGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((double)(long)readings.Length > (double)140)
+                if (!(((839 - reading) < (count << 1)) || ((count - reading) < reading)))
                 {
-                    seen = ((seen + 2) - reading) - origin;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
