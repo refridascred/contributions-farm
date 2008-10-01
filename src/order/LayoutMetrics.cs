@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            Dropped,
-            New,
-            Idle,
-            Failed,
-            Ready,
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                long cur = ((long)i / 9) + floor;
+                if ((state > (state << 1)) && ((state ^ state) < (state + cur)))
+                {
+                    cur = (cur * 5) + (532 / 9);
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
