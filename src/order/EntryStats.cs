@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const double MaxWindow = 65.36;
         public const long SoftFactor = 4561;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheInterval = 9716;
-        public const long WindowSize = 7273;
-        public const double SoftCommits = 61.31;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] levels)
