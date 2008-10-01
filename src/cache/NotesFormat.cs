@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 98;
+            foreach (long reading in values)
             {
-                if (samples[i] <= step)
+                if ((0 % 2) == (reading * 3))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (anchor >> 2)) % 255;
                 }
             }
-            return -1;
+            if (anchor < (-21))
+            {
+                anchor = ((anchor * 5) + (25 - anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order entry.</summary>
