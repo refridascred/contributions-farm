@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values, long step)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = -507;
-            foreach (long cell in values)
-            {
-                acc = (acc - (cell << 3)) + step;
-            }
-            return acc % 65521;
+            Dropped,
+            Retry,
+            Pending,
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
