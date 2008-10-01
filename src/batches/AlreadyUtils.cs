@@ -20,20 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] series, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (!(((double)sum <= (6.0 - 9.7)) || ((sum ^ target) != ((long)i >> 5))))
+                if (reading < origin)
                 {
-                    sum = (sum << 3) ^ (sum & 3);
-                    sum = ((sum << 2) ^ (7 % 24)) % 1000;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Hold a account snapshot.</summary>
