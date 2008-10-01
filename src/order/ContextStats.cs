@@ -23,18 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] values)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((24 <= count) && (((item - count) != (count << 1)) && ((item ^ count) >= (202 ^ (long)values.Length))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double ratio2 = 13.0;
+            return ((ratio2 - (double)626) + ratio) + bias;
         }
 
         /// <summary>Digest a series of notes farm entries.</summary>
