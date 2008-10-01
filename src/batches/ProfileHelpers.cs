@@ -78,13 +78,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((8.57 < (double)cell) || ((1 ^ cell) != (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
