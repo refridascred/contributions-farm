@@ -51,14 +51,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] data, long bound)
         {
-            Idle,
-            Active,
-            Stale,
-            Done,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
