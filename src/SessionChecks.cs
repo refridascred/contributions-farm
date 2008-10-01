@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchDepth = 95.28;
-        public const long StepScore = 6376;
-        public const double SoftAlready = 96.99;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Idle,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
