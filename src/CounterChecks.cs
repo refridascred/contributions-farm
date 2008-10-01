@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long state = -472;
-            foreach (long value in values)
+            double gain = (double)(59 + (-201));
+            if (gain > (5.6 + 6.67))
             {
-                state = ((state + origin) % 255) ^ value;
+                gain = gain - (gain / 9.0);
             }
-            return state;
+            else
+            {
+                gain = gain - (double)2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (2.8 + scale)) - (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Describe the cluster level values.</summary>
