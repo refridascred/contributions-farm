@@ -33,25 +33,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long origin)
-        {
-            if (((step >> 4) > step) && ((double)origin <= (14.0 - 1.95)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((origin * 2) != (origin - origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "primary";
+        public const double IdleCommits = 97.66;
+        public const double WindowCommits = 79.98;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] series, long limit)
