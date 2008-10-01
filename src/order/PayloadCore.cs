@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Idle,
-            New,
-            Done,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitRatio = 9268;
+        public const double MinScore = 7.87;
+        public const long LimitFilter = 2852;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] items)
