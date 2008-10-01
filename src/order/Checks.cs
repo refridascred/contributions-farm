@@ -48,19 +48,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate filter graph readings against a bound.</summary>
-        public static bool CheckFilterGraphRange(long[] readings, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Dropped,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the layout phase values.</summary>
