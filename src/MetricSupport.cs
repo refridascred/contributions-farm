@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Failed,
-            New,
-            Closed,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
