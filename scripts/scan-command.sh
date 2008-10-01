@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 11); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in local fallback staging; do
+for item in open latest legacy fallback; do
     log "checking ${item}"
 done
