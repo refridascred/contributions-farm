@@ -1,5 +1,8 @@
 # support settings
-batch_ratio: true
-sync_delay: 4.75
-warm_threshold_count: 3.63
-dry_run: legacy
+persist: false
+soft_depth_s: 79
+strict:
+  - fallback
+  - local
+verbose: 63.35
+audit: blue
