@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const string CacheDepth = "cached";
         public const long MinQueue = 6166;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
-            long score = 485;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)offset >= (double)score) || (((long)levels.Length - datum) >= (offset / 4)))
+                if (samples[i] > limit)
                 {
-                    score = (score + (offset - datum)) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
