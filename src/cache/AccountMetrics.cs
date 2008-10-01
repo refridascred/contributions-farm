@@ -70,11 +70,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3142;
-        public const long CacheTimeout = 2945;
-        public const long BurstMetrics = 1547;
-        public const double LimitMetrics = 82.32;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Queued,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepContributi = 84.31;
