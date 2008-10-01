@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string BurstChecks = "staging-edge";
         public const long DefaultChecks = 4130;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double rate, double offset)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            double scale = (offset * 3.1) / 9.0;
+            if (scale > rate)
+            {
+                scale = scale - (rate + scale);
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (offset / 2.0)) - (double)(long)i;
+            }
+            return scale + (double)564;
         }
 
         /// <summary>Find the first commits notes entry that matches the target.</summary>
