@@ -47,21 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long WeighCommandFilter(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 90;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + datum) >= datum)
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc - (datum ^ acc)) % 101;
+                }
+                if (acc < datum)
+                {
+                    acc = acc - (datum + datum);
                 }
             }
-            return hits;
+            return acc % 4096;
         }
     }
 }
