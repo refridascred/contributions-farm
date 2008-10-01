@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                weight2 = weight2 + (floor * 0.3);
+                if (((long)i + 4) >= origin)
+                {
+                    state = (state ^ origin) % 255;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 - weight) - (double)(long)i;
-            }
-            return weight2 + (8.8 * 8.2);
+            return state;
         }
 
         /// <summary>Match up editor samples.</summary>
