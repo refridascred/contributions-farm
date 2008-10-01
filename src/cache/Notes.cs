@@ -27,18 +27,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] values, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long prev = bound - seed;
+            if ((prev << 3) >= 1)
             {
-                if (!((double)matches >= (15.0 * 8.0)))
+                return 4;
+            }
+            else
+            {
+                if ((68 / 9) < seed)
                 {
-                    matches = ((matches + 2) + cell) - limit;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + prev) == (bound + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((prev * 5) <= (prev + prev))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
