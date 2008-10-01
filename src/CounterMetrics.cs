@@ -24,22 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples, long offset)
+        /// <summary>Derive the next githubfarm metric value from a seed.</summary>
+        public static long SeriesGithubfarmMetric(long floor)
         {
-            long mix = 97;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value + mix) > (value ^ mix))
-                {
-                    mix = mix ^ (offset % 5);
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 101;
-                }
+                total = (total - (floor + floor)) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
