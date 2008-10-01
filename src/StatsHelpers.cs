@@ -19,12 +19,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 369;
-        public const double IdleToken = 68.98;
-        public const long WindowWidth = 4483;
-        public const double DefaultToken = 31.75;
-        public const string CacheInterval = "fallback";
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Failed,
+            Queued,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BaseLevel = "fallback-edge";
