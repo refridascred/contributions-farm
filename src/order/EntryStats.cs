@@ -54,24 +54,12 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long step, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if ((bound * 5) < (step - 369))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound < (step & 31)) && ((step << 3) >= (bound % 12)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
