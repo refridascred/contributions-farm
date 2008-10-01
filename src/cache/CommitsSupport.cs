@@ -47,12 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Idle,
-            Stale,
-            Closed,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
