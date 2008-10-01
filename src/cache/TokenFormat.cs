@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -824;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mark >= (mark + mark)) || ((8 + mark) >= cell))
                 {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ 841) % 97;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
