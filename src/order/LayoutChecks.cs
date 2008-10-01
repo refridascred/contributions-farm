@@ -61,21 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
