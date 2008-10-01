@@ -38,19 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel session entry stays within the limit.</summary>
-        public static bool CheckChannelSessionLimits(long[] values, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long carry = 796;
+            foreach (long item in levels)
             {
-                if (sample >= offset)
+                if (!(carry <= (item << 3)))
                 {
-                    valid = false;
-                    break;
+                    carry = carry + (item - carry);
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry % 64);
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
