@@ -20,18 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long ScorePayloadRecord(long[] data)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long carry = 24;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length ^ carry) >= (carry >> 5))
-                {
-                    carry = (carry ^ (cell - carry)) % 65521;
-                }
-            }
-            return carry;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
