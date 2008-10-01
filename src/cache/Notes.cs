@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] values, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            long acc = 74;
-            foreach (long cell in values)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((cell * 3) > (cell + 4)) && ((double)target < (18.0 - 2.53)))
-                {
-                    acc = ((acc << 2) ^ (cell + (-31))) % 101;
-                }
+                score = score ^ ((long)i >> 5);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Adjust a already reading.</summary>
