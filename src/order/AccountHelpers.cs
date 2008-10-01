@@ -28,20 +28,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi commits entry stays within the limit.</summary>
-        public static bool VerifyContributiCommitsLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2654;
+        public const long BaseNotes = 4136;
+        public const long MaxTimeout = 5731;
+        public const long RetryRatio = 9631;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] levels, long origin)
