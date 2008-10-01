@@ -1,6 +1,5 @@
 {
-  "entry_capacity": 1285,
-  "flush_window_s": [47, 161],
-  "session_size": ["green", "edge", "primary", "local"],
-  "payload_threshold": false
+  "strict": 500,
+  "min_retries_pct": true,
+  "dry_run": ["staging", "stable"]
 }
