@@ -1,13 +1,5 @@
 {
-  "batch_interval": {
-    "max_timeout": [2, 421, 482, 95],
-    "sync_retries": 4,
-    "min_delay": "blue",
-    "entry_threshold": "latest",
-    "audit": 76,
-    "enabled": 250
-  },
-  "schema_ratio": "fallback",
-  "dry_run": 69.93,
-  "flush_interval": 30
+  "cache_threshold_pct": ["strict", "green"],
+  "default_size_s": false,
+  "default_retries": "cached"
 }
