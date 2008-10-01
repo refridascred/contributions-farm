@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long BurstContributi = 1543;
         public const double RetryInterval = 17.11;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowWidth = 1241;
-        public const double BatchBudget = 14.6;
-        public const double DefaultCache = 76.86;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Paused,
+            Pending,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] samples, long bound)
