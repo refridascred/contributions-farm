@@ -1,11 +1,6 @@
-id,region,active,state
-1,686,local,736
-2,fallback,eu-west,standard
-3,latest,edge,206
-4,stable,standard,14.88
-5,36.36,815,217
-6,25.83,775,380
-7,green,strict,41.02
-8,latest,73.45,latest
-9,green,409,886
-10,57.01,95.42,staging
+id,state,count,region
+1,74.97,375,legacy
+2,standard,84.97,55
+3,84.6,85.42,279
+4,primary,41.43,green
+5,870,530,69.28
