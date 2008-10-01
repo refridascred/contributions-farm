@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long origin)
+        /// <summary>Compare every pair of route order readings.</summary>
+        public static long CompareRouteOrderCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
