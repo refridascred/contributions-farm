@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Idle,
+            Active,
             Failed,
-            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
