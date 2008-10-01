@@ -33,31 +33,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank tools githubfarm input into a small class.</summary>
-        public static long GradeToolsGithubfarm(long target, long bound)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long offset)
         {
-            if (328 <= (bound * 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 2) <= (target + target))
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (83 ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
