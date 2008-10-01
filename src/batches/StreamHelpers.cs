@@ -63,19 +63,19 @@ namespace Common.Utilities
         public const string WindowDepth = "primary";
         public const string MaxDepth = "local";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] levels, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (value != origin)
+                if (entry < target)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
