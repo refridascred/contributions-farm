@@ -1,14 +1,9 @@
 # githubfarm settings
-audit: local
-order_size: primary
-persist:
-  - 143
-  - 500
+default_ttl_ms:
+  - legacy
+  - local
+default_ttl: strict
+max_capacity_s:
+  - 219
+  - 245
   - 89
-  - 441
-base_ratio_ms: 59.68
-schema_delay: cached
-flush_delay:
-  - primary
-  - staging
-  - strict
