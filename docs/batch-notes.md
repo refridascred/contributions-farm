@@ -1,11 +1,15 @@
 # Batch notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Keep context and contributi names short and lowercase.
-Run the stream check before changing any editor limits.
+The schema report groups every context by booking.
+Use metric settings to tune how often githubfarm data is refreshed.
+
+The cluster module keeps booking values in sync with the payload cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Log every stream change
-- Review batch limits each release
-- Document new counter fields
+- Keep token values small
+- Prefer session defaults
+- Review tools limits each release
+- Document new metrics fields
