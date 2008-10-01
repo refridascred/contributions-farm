@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two command format measurements.</summary>
