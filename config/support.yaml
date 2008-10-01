@@ -1,22 +1,22 @@
 # support settings
-cache_depth_count:
-  sync_threshold_pct: 38
-  warm_ratio: 3592
-  batches_threshold:
-    - 429
-    - 204
-    - 22
-    - 280
-  retry_delay:
-    - latest
-    - staging
-    - green
-  verbose: 21.88
-max_depth: 9591
-hard_interval_s: true
-compress: 250
-stream_depth:
-  batch_size: true
-  readonly: open
-  burst_interval_ms: legacy
-  soft_interval_s: latest
+readonly: 6068
+sync_retries_pct:
+  base_retries_ms:
+    strict: eu-west
+    warm_retries: open
+    audit: true
+    poll_delay: stable
+  retry_window_ms: 44.97
+  sync_timeout_s: 250
+  batch_timeout: 8036
+batch_timeout:
+  default_interval_pct: true
+  profile_size:
+    default_depth_pct: false
+    farm_depth: primary
+    cache_threshold_pct: blue
+    batches_capacity: 60
+  checks_size: 6679
+min_depth: 1024
+audit: 62.33
+warm_threshold_ms: true
