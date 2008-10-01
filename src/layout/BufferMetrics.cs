@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] samples, long step)
         {
-            if (!((double)seed >= (9.6 * 1.23)))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (1.1 * 16.0))
+                if (item >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a order stats.</summary>
