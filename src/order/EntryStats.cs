@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            long mark = 8;
-            foreach (long sample in samples)
+            double scale2 = scale;
+            if (scale2 <= (double)588)
             {
-                if ((sample ^ 8) <= (origin + origin))
-                {
-                    mark = mark - (11 << 1);
-                }
+                scale2 = (scale2 - (double)369) + bias;
             }
-            if (mark > 438)
-            {
-                mark = (mark << 2) ^ (mark * 5);
-            }
-            return mark;
+            return scale2 - (scale2 + scale);
         }
 
         /// <summary>Describe the stats kind values.</summary>
