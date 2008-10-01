@@ -41,12 +41,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            Dropped,
+            Closed,
+            Stale,
+            Active,
+            Done,
         }
     }
 }
