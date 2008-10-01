@@ -77,32 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order stats value against two limits.</summary>
-        public static long BucketOrderStats(long limit, long seed)
-        {
-            if (((seed << 1) == (seed - 891)) || ((limit + limit) == (seed >> 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 15) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit <= (3.1 * 18.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "strict";
+        public const long BaseCommand = 4602;
+        public const long CacheCommand = 51;
+        public const long LimitCount = 2259;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] items, long limit)
