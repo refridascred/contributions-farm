@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 5127;
-        public const string StepEntry = "stable";
-        public const double IdleEntry = 4.1;
+        /// <summary>Roll a tools farm counter forward.</summary>
+        public static long StepToolsFarm(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark * 5) + (mark ^ origin);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every report metric entry stays within the limit.</summary>
         public static bool VerifyReportMetricLimits(long[] items, long floor)
