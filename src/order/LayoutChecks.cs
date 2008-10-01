@@ -41,13 +41,14 @@ namespace Common.Utilities
         public const long LimitWidth = 2514;
         public const long HardScore = 6784;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Active,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Check that every window context entry stays within the limit.</summary>
