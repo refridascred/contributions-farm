@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long offset)
         {
-            long result = 20;
-            foreach (long value in samples)
+            long bound2 = bound + offset;
+            if ((4.08 <= (double)bound2) && (bound >= (offset + bound)))
             {
-                result = (((result * 3) + (result + result)) % 1000) - value;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (72 > (bound2 * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(offset < bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset ^ bound2) < (bound2 - bound2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
