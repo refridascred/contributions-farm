@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long acc = 85;
+            foreach (long entry in values)
+            {
+                if ((entry << 3) > acc)
+                {
+                    acc = ((acc << 3) ^ bound) % 65521;
+                }
+                else
+                {
+                    acc = acc + (81 << 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
