@@ -1,14 +1,9 @@
 # entry settings
-enabled: latest
-persist: 68.22
-flush_delay_ms: 45.79
-metrics_size:
-  batch_window_count:
-    - 251
-    - 326
-    - 221
-  compress: 5203
-  warm_retries_ms: false
-  buffer_limit: 16
-  poll_ratio_ms: legacy
-strict: 1882
+flush_window_s: 30
+default_ratio_pct: 83
+audit:
+  notes_delay: true
+  flush_ratio: local
+  batches_window: 21
+cache_interval_ms: 75
+enabled: false
