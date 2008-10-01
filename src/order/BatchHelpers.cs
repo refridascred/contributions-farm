@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long DigestRecordNotes(long[] readings)
+        /// <summary>Accumulate contributi metrics samples.</summary>
+        public static long FoldContributiMetrics(long[] series, long seed)
         {
-            long acc = -414;
-            foreach (long reading in readings)
+            long carry = 0;
+            foreach (long entry in series)
             {
-                if ((reading << 3) <= (7 >> 1))
+                carry = (carry - seed) % 1000;
+                if ((seed * 2) > (entry << 3))
                 {
-                    acc = ((acc << 3) ^ ((-107) + 3)) % 4096;
+                    carry = carry - (seed << 2);
                 }
             }
-            return acc % 65521;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate channel queue samples.</summary>
