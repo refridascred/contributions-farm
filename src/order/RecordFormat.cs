@@ -18,21 +18,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Derive the next token context value from a seed.</summary>
+        public static long DeriveTokenContext(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Digest a series of order entries.</summary>
