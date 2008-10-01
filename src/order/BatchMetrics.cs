@@ -42,17 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] <= offset)
+                if ((offset ^ offset) > (long)i)
                 {
-                    return (long)i;
+                    mix = mix + (offset / 7);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
