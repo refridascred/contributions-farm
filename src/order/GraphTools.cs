@@ -65,18 +65,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] series, long origin)
+        /// <summary>Grade a stats notes value against two limits.</summary>
+        public static long SortStatsNotes(long seed, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long step2 = seed - step;
+            if (!((step & 63) >= (seed << 1)))
             {
-                if ((datum ^ seen) > (datum + origin))
+                return 0;
+            }
+            else
+            {
+                if ((seed & 15) < (step2 + 5))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (seed & 127))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed + step) == (step + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
