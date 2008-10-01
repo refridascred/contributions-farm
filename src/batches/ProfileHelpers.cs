@@ -71,22 +71,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(((839 - reading) < (count << 1)) || ((count - reading) < reading)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "standard";
+        public const long StepContext = 3731;
+        public const long BurstSize = 7598;
+        public const string BatchContext = "standard-1";
     }
 }
