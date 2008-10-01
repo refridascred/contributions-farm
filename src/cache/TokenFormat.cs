@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long offset)
+        /// <summary>Fold a list of payload format readings.</summary>
+        public static long WeighPayloadFormat(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long sum = 67;
+            foreach (long sample in items)
             {
-                if (reading <= offset)
+                if ((13.0 * 4.0) < (double)sample)
                 {
-                    ready = false;
+                    sum = sum ^ (sum - floor);
+                }
+                else
+                {
+                    sum = (sum - (floor >> 3)) % 4096;
+                    sum = ((sum * 5) + (floor << 2)) % 65521;
+                }
+                if ((((-6) + floor) <= floor) || ((double)floor <= 8.41))
+                {
+                    sum = (sum - sample) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (floor ^ sum)) % 255;
+                }
+                if (17.0 > (double)sum)
+                {
                     break;
                 }
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Describe the batches level values.</summary>
