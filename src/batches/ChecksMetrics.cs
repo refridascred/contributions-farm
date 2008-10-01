@@ -19,12 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values, long seed)
         {
-            Draft,
-            Queued,
-            Ready,
+            long result = 84;
+            foreach (long cell in values)
+            {
+                result = ((result << 2) ^ (seed ^ result)) % 1000;
+                result = (result + (cell ^ cell)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
