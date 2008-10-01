@@ -63,19 +63,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            double scale = (double)((-4) - 43);
-            if (scale <= (bias2 + bias2))
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                scale = scale - bias;
+                mark = mark ^ 11;
+                mark = (mark * 5) + mark;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)40) + (double)(long)i;
-            }
-            return scale - bias;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
