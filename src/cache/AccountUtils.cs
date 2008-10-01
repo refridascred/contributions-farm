@@ -21,23 +21,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] samples, long bound)
         {
-            long mix = 728;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!((double)mix < (9.29 / 7.0)))
+                if (((-9) >> 3) > (tally - bound))
                 {
-                    continue;
+                    tally = (tally + 1) ^ item;
                 }
-                else
-                {
-                    mix = (mix + entry) % 101;
-                }
-                mix = ((mix * 3) + (mix + mix)) % 1000;
             }
-            return mix;
+            return tally;
         }
     }
 }
