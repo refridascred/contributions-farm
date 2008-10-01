@@ -1,8 +1,8 @@
-id,rank,owner,token
-1,957,248,332
-2,edge,738,eu-west
-3,184,18.13,40.27
-4,594,13.65,785
-5,blue,34.23,581
-6,green,fallback,772
-7,37.05,52.84,944
+id,count,ratio,level
+1,local,693,6.09
+2,223,222,fallback
+3,61.5,52.41,44.29
+4,standard,137,staging
+5,primary,latest,local
+6,393,staging,blue
+7,24.66,830,869
