@@ -69,19 +69,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (datum <= target)
+                if (!((974 & 7) < entry))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
