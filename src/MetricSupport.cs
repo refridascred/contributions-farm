@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            Retry,
-            Done,
-            New,
-            Idle,
+            long state = 1;
+            foreach (long entry in items)
+            {
+                state = state ^ state;
+                if (entry > (14 >> 1))
+                {
+                    state = (state - (state - state)) % 4096;
+                }
+                if (((-30) % 16) == (entry >> 1))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate queue samples.</summary>
