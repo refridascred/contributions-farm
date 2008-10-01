@@ -45,12 +45,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Paused,
-            Dropped,
-            Retry,
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
