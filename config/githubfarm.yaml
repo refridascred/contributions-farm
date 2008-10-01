@@ -1,15 +1,4 @@
 # githubfarm settings
-counter_threshold: 41.22
-warm_window_pct:
-  hard_window_pct: 2810
-  filter_size: 45.03
-  format_ratio: 36.1
-  compress:
-    editor_interval: 40.99
-    audit: 79.29
-    warm_depth_ms: staging
-    soft_delay_count: 44
-    burst_depth_s: 30
-strict: 6.99
-compress: latest
-poll_capacity_s: strict
+report_size: 9945
+soft_size_count: 60
+warm_ttl_ms: 71
