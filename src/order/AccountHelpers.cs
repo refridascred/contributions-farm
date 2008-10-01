@@ -47,14 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinRatio = "cached-1";
+        public const long BaseWindow = 4807;
+        public const double IdleWindow = 3.82;
+        public const double CacheSpan = 74.32;
+        public const long HardWindow = 25;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
