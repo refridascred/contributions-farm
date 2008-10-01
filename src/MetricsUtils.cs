@@ -53,17 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long floor)
+        /// <summary>Measure how many buffer account samples are out of range.</summary>
+        public static long MeasureBufferAccountGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] > floor)
+                if (((5.5 + 4.0) <= (double)cell) && ((310 - bound) < (cell - cell)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
