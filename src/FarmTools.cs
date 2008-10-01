@@ -20,15 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            double weight = (offset / 4.0) / 9.0;
-            if (weight <= (scale / 2.0))
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight - 0.66;
+                score = score + 67;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return weight + weight;
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
