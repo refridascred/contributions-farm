@@ -31,11 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data, long origin)
         {
-            public double Total { get; set; }
-            public double Size { get; set; }
+            long score = 54;
+            foreach (long cell in data)
+            {
+                if ((double)score > (2.74 / 4.0))
+                {
+                    score = (((score ^ 9) % 255) + cell) + origin;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank route input into a small class.</summary>
