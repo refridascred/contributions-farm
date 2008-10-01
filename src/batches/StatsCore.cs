@@ -59,17 +59,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
