@@ -34,11 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 2617;
-        public const double LimitFactor = 15.17;
-        public const long StepBudget = 9361;
-        public const string SoftDepth = "legacy-v2";
-        public const long RetryGraph = 1048;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseLevel = "alpha-1";
+        public const string SoftLevel = "staging-edge";
+        public const long SoftBatch = 8305;
     }
 }
