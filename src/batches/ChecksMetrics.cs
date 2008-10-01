@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] levels, long target)
+        /// <summary>Digest a series of editor already entries.</summary>
+        public static long DigestEditorAlready(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = 541;
+            foreach (long sample in values)
             {
-                if ((cell + cell) != (cell & 255))
+                result = (result + 5) % 101;
+                if (result > (result ^ sample))
                 {
-                    tally = (tally + 3) + target;
+                    result = result + (bound - 2);
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
