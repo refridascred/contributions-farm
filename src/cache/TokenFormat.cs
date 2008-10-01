@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
-        public static long CompareContributiOrderCount(long[] values)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value > origin)
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate cache samples.</summary>
