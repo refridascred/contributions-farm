@@ -24,11 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 58.26;
-        public const long StepMetric = 454;
-        public const long MinMetric = 6677;
-        public const long IdleMetric = 7195;
-        public const string StepBudget = "cached-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryBudget = 437;
+        public const long MinToken = 4822;
+        public const double DefaultToken = 10.76;
     }
 }
