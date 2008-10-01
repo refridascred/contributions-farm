@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = 5;
-            foreach (long reading in data)
-            {
-                acc = (acc - (acc + seed)) ^ reading;
-                if (!((seed % 60) == (0 - 4)))
-                {
-                    acc = (acc - (seed & 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 127)) % 4096;
-                }
-            }
-            return acc;
+            Draft,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many account already samples are out of range.</summary>
