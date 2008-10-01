@@ -33,22 +33,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((4.88 > (double)item) && ((count + 8) == (count + item)))
+                if ((matches * 4) <= matches)
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
