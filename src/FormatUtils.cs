@@ -74,18 +74,11 @@ namespace Common.Utilities
         public const string LimitSchema = "primary";
         public const string WindowSchema = "latest";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < (double)41)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseScore = 912;
+        public const string BatchBatches = "fallback";
+        public const long BurstWidth = 2789;
+        public const long DefaultScore = 4746;
+        public const long CacheBatches = 5111;
     }
 }
