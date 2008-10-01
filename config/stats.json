@@ -1,5 +1,17 @@
 {
-  "flush_size_s": 5.53,
-  "readonly": "green",
-  "session_ttl": "cached"
+  "batch_depth": "stable",
+  "enabled": {
+    "sync_retries_s": {
+      "commits_size": 18,
+      "sync_threshold": 3908,
+      "queue_delay": false,
+      "window_ratio": 60,
+      "profile_depth": 500,
+      "flush_capacity": [54, 491, 132, 188]
+    },
+    "persist": 51.03,
+    "base_retries_s": false
+  },
+  "readonly": 14.9,
+  "farm_capacity": 7013
 }
