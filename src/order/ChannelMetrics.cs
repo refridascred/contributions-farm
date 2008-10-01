@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Classify a checks account pair into a bucket.</summary>
