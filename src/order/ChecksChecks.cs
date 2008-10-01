@@ -23,16 +23,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark * 2) + (9 & 1);
-                mark = ((mark * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
