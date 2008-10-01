@@ -13,12 +13,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "strict-edge";
-        public const long CacheTimeout = 9014;
-        public const long RetryCache = 8599;
-        public const long LimitCache = 4894;
-        public const long DefaultCache = 2098;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches > (datum >> 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
