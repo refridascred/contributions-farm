@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] levels, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Dropped,
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
