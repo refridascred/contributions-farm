@@ -1,5 +1,6 @@
 {
-  "idle_window_count": false,
-  "max_limit_count": 243,
-  "queue_capacity": 21.79
+  "default_threshold_count": 45.78,
+  "sync_retries_count": 9.03,
+  "metric_size": 250,
+  "cache_ratio_s": 11
 }
