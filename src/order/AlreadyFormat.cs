@@ -20,20 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double offset)
-        {
-            double weight2 = (double)(484 - 9);
-            if (weight2 < weight)
-            {
-                weight2 = (weight2 - weight2) + offset;
-            }
-            else
-            {
-                weight2 = weight2 - (double)16;
-            }
-            return weight2 + (weight - weight);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3694;
+        public const string WindowInterval = "strict-edge";
+        public const long BurstTimeout = 2287;
+        public const string RetryWidth = "fallback-v2";
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
