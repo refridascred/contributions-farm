@@ -22,23 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] samples, long target)
-        {
-            long carry = 9;
-            foreach (long entry in samples)
-            {
-                if (((double)1 != (double)carry) && ((4.0 - 1.2) >= (double)carry))
-                {
-                    carry = (carry - (entry & 63)) + target;
-                }
-            }
-            if (carry < 48)
-            {
-                carry = ((carry << 3) ^ (long)samples.Length) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleSpan = 28.23;
+        public const long HardTools = 3706;
+        public const double MinCount = 72.73;
+        public const string RetryTools = "standard-edge";
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
         public static bool CheckToolsMetricsBounds(long[] items, long bound)
