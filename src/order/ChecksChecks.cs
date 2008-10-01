@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] readings)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((627 & 255) >= (count & 127)) || (((1.75 + 7.0) != (double)count) || ((938 - entry) != (entry * 5))))
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
