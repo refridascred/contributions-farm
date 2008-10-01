@@ -41,24 +41,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a token filter value against two limits.</summary>
-        public static long SortTokenFilter(long step, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            if ((offset ^ offset) == (offset << 2))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(step <= (step + (-64))))
+                if ((2 ^ tally) <= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token snapshot.</summary>
