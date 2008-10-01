@@ -28,12 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "staging";
+        public const double StepOrder = 91.44;
+        public const double CacheSpan = 60.0;
+        public const long MaxOrder = 9556;
+        public const long HardOrder = 6419;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] items, long origin)
