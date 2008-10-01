@@ -1,4 +1,14 @@
 # support settings
-readonly: 7631
-enabled: 401
-farm_delay: stable
+stats_capacity: cached
+idle_delay: true
+persist:
+  - fallback
+  - blue
+  - primary
+  - strict
+counter_retries: 30
+session_capacity:
+  - legacy
+  - staging
+  - local
+base_delay: 40
