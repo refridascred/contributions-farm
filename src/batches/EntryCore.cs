@@ -48,19 +48,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Scale a token buffer figure with a bias.</summary>
-        public static double ProjectTokenBuffer(double gain, double bias)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            double rate = (gain + bias) + 7.0;
-            if (rate > (bias * 5.0))
+            double gain = 4.5;
+            if (gain <= (3.0 / 7.0))
             {
-                rate = rate + 17.0;
+                gain = gain - scale;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = rate - (double)(long)i;
+                gain = gain + (floor / 6.0);
             }
-            return rate + rate;
+            return gain + (floor - gain);
         }
 
         /// <summary>Digest a series of payload entries.</summary>
