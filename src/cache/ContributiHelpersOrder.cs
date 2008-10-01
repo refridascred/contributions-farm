@@ -20,15 +20,19 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] items, long floor)
         {
-            long sum = 989;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                sum = ((sum * 5) + (sum - sum)) + entry;
+                if (entry > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Accumulate commits samples.</summary>
