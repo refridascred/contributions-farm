@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + 925) > (hits << 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
