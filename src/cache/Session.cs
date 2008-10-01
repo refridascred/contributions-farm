@@ -52,13 +52,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            New,
+            Done,
+            Queued,
+            Retry,
         }
     }
 }
