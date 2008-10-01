@@ -41,15 +41,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            New,
-            Done,
-            Paused,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 1936;
+        public const long RetrySpan = 7063;
+        public const long BurstFarm = 5994;
+        public const double WindowWidth = 12.67;
+        public const long LimitFarm = 9125;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
