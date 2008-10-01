@@ -50,24 +50,18 @@ namespace Common.Utilities
             return drift - (7.0 - scale);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ acc) % 4096;
-                if ((limit + limit) != (80 - limit))
+                if ((37 ^ 97) >= (datum >> 1))
                 {
-                    acc = (acc ^ acc) % 4096;
+                    hits = (hits + 2) + bound;
                 }
-                else
-                {
-                    acc = ((acc * 4) + ((long)i * 5)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
