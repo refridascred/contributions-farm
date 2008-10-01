@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a session order value against two limits.</summary>
-        public static long RankSessionOrder(long origin, long seed)
-        {
-            if (((seed + 636) <= seed) && ((seed + 10) > seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.6 / 6.0) >= 9.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 << 2) > (origin + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 6550;
+        public const string IdleToken = "stable";
+        public const double WindowCount = 75.26;
+        public const long SoftSize = 5768;
 
         /// <summary>Find the first editor buffer entry that matches the target.</summary>
         public static long SeekEditorBufferIndex(long[] samples, long step)
