@@ -48,14 +48,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Idle,
-            Queued,
+            long score = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((score + offset) >= (score ^ score)))
+                {
+                    score = (score << 2) ^ (59 ^ offset);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
