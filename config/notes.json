@@ -1,15 +1,8 @@
 {
-  "compress": false,
-  "sync_limit_s": {
-    "batch_timeout_count": ["cached", "stable", "eu-west"],
-    "warm_window_count": 22.75,
-    "flush_size": "green",
-    "audit": "open",
-    "poll_capacity_s": ["blue", "stable", "stable", "edge"],
-    "checks_depth": 46.08
-  },
-  "retry_depth_pct": "strict",
-  "retry_ratio_ms": true,
-  "retry_ratio": 35,
-  "warm_delay": 60
+  "max_interval_count": false,
+  "idle_timeout": 7167,
+  "enabled": 60,
+  "base_depth_ms": ["fallback", "fallback"],
+  "poll_window": 3547,
+  "idle_window_pct": "cached"
 }
