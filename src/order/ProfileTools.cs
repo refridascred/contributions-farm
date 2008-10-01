@@ -31,19 +31,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = 4;
+            foreach (long value in values)
             {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total << 3) ^ value) % 4096) - limit;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Accumulate order samples.</summary>
