@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long LimitStream = 4164;
         public const double IdleRatio = 12.44;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long anchor = 297;
+            foreach (long entry in items)
+            {
+                if ((14.0 * 1.8) < (double)entry)
+                {
+                    anchor = anchor - entry;
+                }
+                if ((2.0 < (double)anchor) && ((5.68 + 6.0) >= (8.33 / 8.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 643)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
