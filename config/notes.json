@@ -1,6 +1,11 @@
 {
-  "warm_delay_s": "green",
-  "context_retries": "primary",
-  "verbose": "blue",
-  "metrics_window": 500
+  "strict": true,
+  "batch_limit": {
+    "default_interval_pct": 1690,
+    "report_limit": false,
+    "idle_ttl_s": ["eu-west", "open", "latest", "cached"],
+    "soft_ratio_s": 2.02,
+    "dry_run": "local"
+  },
+  "batch_timeout_pct": 12.19
 }
