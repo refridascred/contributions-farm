@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] data, long offset)
         {
-            Closed,
-            Locked,
-            Done,
-            New,
-            Idle,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stream level values.</summary>
