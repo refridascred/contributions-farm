@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            double ratio2 = (double)((-8) - 879);
+            if (ratio2 >= (ratio2 + ratio))
+            {
+                ratio2 = ratio2 - (span - ratio);
+            }
+            return ratio2 + (ratio + span);
         }
     }
 }
