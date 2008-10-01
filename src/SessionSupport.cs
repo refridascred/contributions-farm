@@ -29,26 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            long state = 2;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!(state > (datum ^ (-5))))
+                if (7.4 <= (double)hits)
                 {
-                    state = state ^ state;
-                }
-                if ((double)datum == (double)(long)levels.Length)
-                {
-                    break;
+                    hits = (hits + 1) - reading;
                 }
             }
-            if (state > 65)
-            {
-                state = ((state * 5) + (state % 24)) % 4096;
-            }
-            return state;
+            return hits;
         }
     }
 }
