@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] samples, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = 97;
+            foreach (long entry in levels)
             {
-                if (((88 & 15) <= (step + cell)) || ((step > (step + (-77))) && ((cell & 31) >= step)))
+                result = ((result * 4) + result) % 1000;
+                if ((result + entry) > entry)
                 {
-                    tally = tally + 2;
+                    result = ((result * 3) + result) % 255;
                 }
             }
-            return tally;
+            if (result < (-73))
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
