@@ -1,9 +1,7 @@
-id,region,score
-1,local,475
-2,10.98,297
-3,stable,789
-4,79.77,2.83
-5,staging,546
-6,41,720
-7,344,306
-8,51.08,861
+id,active,region
+1,latest,42.61
+2,62.32,77.98
+3,146,staging
+4,local,65.27
+5,strict,43.73
+6,46,326
