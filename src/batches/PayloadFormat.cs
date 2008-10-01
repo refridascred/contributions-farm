@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a report cluster pair into a bucket.</summary>
-        public static long RankReportCluster(long target, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] samples, long seed)
         {
-            long edge = target + bound;
-            if (!((bound + bound) < (38 << 1)))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3 * 4) == (edge + edge))
+                if (sample > seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
