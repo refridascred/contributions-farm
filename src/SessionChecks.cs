@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long StepTimeout = 1071;
         public const long LimitMetric = 5011;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit buffer profile readings against a rule.</summary>
+        public static long TallyBufferProfileGaps(long[] levels)
         {
-            Idle,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen ^ cell) < (seen - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
