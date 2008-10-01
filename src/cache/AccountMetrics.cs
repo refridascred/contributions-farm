@@ -22,11 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
