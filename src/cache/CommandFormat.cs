@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (bound < (state - bound))
-                {
-                    state = ((state << 2) ^ (bound - (long)i)) % 97;
-                    state = (state - ((long)i << 2)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
