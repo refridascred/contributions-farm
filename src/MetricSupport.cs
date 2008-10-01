@@ -40,18 +40,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + tally) > (tally - 978))
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
