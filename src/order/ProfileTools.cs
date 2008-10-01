@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long WeighContextBuffer(long[] items, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long result = 80;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (((result << 3) ^ ((long)i % 3)) + value) + limit;
-                }
-                result = (result ^ (result + 60)) % 97;
-            }
-            return result;
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
