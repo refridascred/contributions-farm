@@ -5,37 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            long carry = 20;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (sample < (2 >> 2))
+                if (((long)samples.Length > (tally - sample)) && (((sample & 127) <= (44 + tally)) && (((-448) + sample) != (sample + tally))))
                 {
-                    carry = (carry << 3) ^ (seed + seed);
-                    carry = (carry * 2) + (carry - sample);
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (7 / 9)) % 101;
-                    carry = (carry - (seed >> 3)) % 255;
-                }
-                if ((seed / 4) <= (sample - sample))
-                {
-                    carry = (carry - (seed + 375)) % 255;
-                }
-                else
-                {
-                    carry = (carry + 767) % 255;
-                }
-                if ((1.25 - 8.48) >= (double)seed)
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
