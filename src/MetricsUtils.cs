@@ -37,20 +37,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a checks token reading.</summary>
-        public static double BlendChecksToken(double bias, double span)
-        {
-            double drift = span;
-            if (drift >= (double)53)
-            {
-                drift = (drift - (3.1 * 9.0)) - bias;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3086;
+        public const string MaxFarm = "open-v2";
+        public const long HardFarm = 776;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double BatchFactor = 13.05;
