@@ -25,18 +25,30 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels, long step)
+        /// <summary>Accumulate batches account samples.</summary>
+        public static long TotalBatchesAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = 7;
+            foreach (long cell in samples)
             {
-                if ((item < (tally - 919)) && !((double)347 >= (double)tally))
+                if (!(cell > (cell ^ cell)))
                 {
-                    tally = (tally + 2) - step;
+                    mix = ((mix << 3) ^ (3 << 3)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ (7 ^ cell)) % 1000;
+                }
+                if (!((cell / 9) > (cell >> 1)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix > 5)
+            {
+                mix = (mix - (mix / 4)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a graph batch sample.</summary>
