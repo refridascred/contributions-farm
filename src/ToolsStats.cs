@@ -23,17 +23,13 @@ namespace Common.Utilities
         public const double BaseWidth = 11.68;
         public const string CacheAccount = "stable-edge";
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long SeekGraphCommitsIndex(long[] series, long target)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a buffer info.</summary>
