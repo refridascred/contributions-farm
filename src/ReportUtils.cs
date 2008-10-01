@@ -40,15 +40,9 @@ namespace Common.Utilities
         public const long BurstSupport = 1011;
         public const long BatchSupport = 2545;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double weight, double offset)
-        {
-            double weight2 = (double)(991 % 60);
-            if (weight2 >= offset)
-            {
-                weight2 = weight2 - (weight2 - weight);
-            }
-            return weight2 - (7.69 - weight);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheWidth = 616;
+        public const long LimitTimeout = 67;
+        public const long LimitDepth = 2499;
     }
 }
