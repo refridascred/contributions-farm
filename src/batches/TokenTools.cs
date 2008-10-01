@@ -39,16 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Audit stream layout readings against a rule.</summary>
+        public static long TallyStreamLayoutMatches(long[] levels, long seed)
         {
-            long anchor = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (anchor ^ anchor)) - reading;
-                anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
+                if (seed <= ((long)levels.Length % 97))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
