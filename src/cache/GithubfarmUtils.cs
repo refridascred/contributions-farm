@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values, long origin)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((51 * 3) > value)
+                {
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate context samples.</summary>
