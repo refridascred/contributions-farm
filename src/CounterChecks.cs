@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Compare every pair of record tools readings.</summary>
+        public static long OverlapRecordToolsCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((87 + hits) <= cell) && (((long)samples.Length << 3) >= (40 - (-838))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
