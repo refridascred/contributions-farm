@@ -1,5 +1,6 @@
 {
-  "hard_size_count": [87, 312],
-  "retry_depth_s": false,
-  "soft_timeout_count": [136, 137]
+  "base_ratio": true,
+  "schema_delay": "stable",
+  "graph_interval": 100,
+  "persist": 39.54
 }
