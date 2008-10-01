@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] series)
         {
-            long anchor = -5;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((anchor + anchor) == (bound << 3)) && ((bound / 6) < (anchor >> 1)))
+                if ((3 / 7) != (entry & 15))
                 {
-                    anchor = ((anchor << 2) ^ (132 - anchor)) - item;
+                    count = count + 2;
                 }
             }
-            if (anchor < 215)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
