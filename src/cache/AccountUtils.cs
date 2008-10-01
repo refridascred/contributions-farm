@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((double)score > (11.0 + 8.46)) && ((double)1 < (double)limit))
-                {
-                    score = score + (limit * 4);
-                    score = (score << 3) ^ (58 % 64);
-                }
-                else
-                {
-                    score = score ^ ((long)i - (-66));
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardCount = 3202;
+        public const long CacheContext = 9460;
+        public const double MinCount = 42.98;
+        public const double BaseSize = 67.99;
+        public const string BatchContext = "latest";
 
         /// <summary>Roll a route cache counter forward.</summary>
         public static long StepRouteCache(long offset)
