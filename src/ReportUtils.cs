@@ -70,12 +70,26 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long floor)
         {
-            Synced,
-            Locked,
-            Retry,
+            long mix = 128;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = (((mix << 3) ^ (value + value)) % 97) + (long)i;
+                }
+                if ((floor / 6) <= 499)
+                {
+                    mix = (mix ^ (floor % 8)) % 1000;
+                }
+                if ((floor - mix) >= mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
