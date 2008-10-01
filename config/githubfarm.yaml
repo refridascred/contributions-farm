@@ -1,11 +1,19 @@
 # githubfarm settings
-session_delay: 81.14
-dry_run: 4413
-persist: 90.09
-filter_retries: stable
-verbose:
-  cache_threshold: 81.94
-  batch_ratio_count: 100
-  idle_interval_s: primary
-  flush_capacity_count: open
-soft_depth_count: 97.99
+max_retries_count:
+  audit:
+    batches_window: false
+    cache_limit: 54
+    sync_interval_s: 1
+  flush_depth_s: 30
+  sync_ttl_count: local
+  readonly:
+    payload_threshold:
+      - 79
+      - 278
+    warm_capacity: staging
+    audit: cached
+  soft_interval_pct: legacy
+  idle_delay: green
+entry_window: 30
+max_interval_s: 0.23
+sync_size_pct: 20
