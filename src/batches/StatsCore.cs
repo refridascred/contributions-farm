@@ -59,39 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] series, long floor)
         {
-            long delta = origin + floor;
-            if ((origin / 7) >= 39)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + delta) > delta)
+                if (cell >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin != (3.0 / 5.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin >> 5) <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
