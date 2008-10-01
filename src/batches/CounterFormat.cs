@@ -23,22 +23,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long WeighCommandFilter(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double floor)
         {
-            long acc = 90;
-            foreach (long datum in levels)
+            double weight = bias - floor;
+            if (weight <= (bias + bias))
             {
-                if ((datum + datum) >= datum)
-                {
-                    acc = (acc - (datum ^ acc)) % 101;
-                }
-                if (acc < datum)
-                {
-                    acc = acc - (datum + datum);
-                }
+                weight = weight + (bias * 0.4);
             }
-            return acc % 4096;
+            else
+            {
+                weight = weight + (weight * 2.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
