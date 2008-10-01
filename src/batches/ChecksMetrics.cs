@@ -73,18 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((double)matches < (double)5) || ((reading >= (reading + 87)) && ((reading - reading) > (reading >> 5))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
