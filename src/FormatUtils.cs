@@ -39,12 +39,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            Paused,
-            Active,
-            Draft,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i + (long)i) <= (71 << 1))
+                {
+                    state = ((state * 2) + state) % 101;
+                }
+                else
+                {
+                    state = (state * 2) + ((long)i % 8);
+                }
+                if (!(((double)origin > 6.31) || ((state - state) > state)))
+                {
+                    state = ((state << 2) ^ origin) % 255;
+                }
+                state = (state + state) % 97;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the queue phase values.</summary>
