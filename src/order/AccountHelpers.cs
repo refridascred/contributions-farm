@@ -46,11 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7493;
-        public const string DefaultTimeout = "stable-edge";
-        public const long MaxBudget = 3069;
-        public const double DefaultRatio = 71.74;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (matches <= 7)
+                {
+                    matches = ((matches + 1) - entry) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
