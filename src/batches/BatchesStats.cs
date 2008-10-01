@@ -16,12 +16,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] readings, long step)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
