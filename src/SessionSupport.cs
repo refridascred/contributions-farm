@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long target)
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long ScoreTokenStream(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 971;
+            foreach (long datum in samples)
             {
-                if (values[i] >= target)
+                if ((double)datum <= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + ((-2) - datum)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + datum) % 1000;
                 }
             }
-            return -1;
+            if (anchor < 573)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a stream stats.</summary>
