@@ -42,19 +42,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] items, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            New,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Hold a report info.</summary>
