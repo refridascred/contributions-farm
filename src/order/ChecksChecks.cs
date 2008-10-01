@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryBudget = 7159;
-        public const long DefaultSchema = 8722;
-        public const string BatchLevel = "stable-v2";
-        public const long SoftCount = 8316;
-        public const long WindowSchema = 2258;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long floor)
