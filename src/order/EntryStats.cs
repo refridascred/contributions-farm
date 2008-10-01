@@ -43,10 +43,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardBudget = 98.07;
-        public const double MaxWindow = 65.36;
-        public const long SoftFactor = 4561;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples, long origin)
+        {
+            long mark = 8;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ 8) <= (origin + origin))
+                {
+                    mark = mark - (11 << 1);
+                }
+            }
+            if (mark > 438)
+            {
+                mark = (mark << 2) ^ (mark * 5);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
