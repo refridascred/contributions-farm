@@ -20,15 +20,12 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double weight, double bias)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double rate = (1.0 / 3.0) - (weight / 2.0);
-            if (rate >= (4.0 * 5.0))
-            {
-                rate = (rate + (weight + weight)) + bias;
-            }
-            return rate + (4.0 + rate);
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
