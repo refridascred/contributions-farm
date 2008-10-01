@@ -93,25 +93,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long origin, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] items, long floor)
         {
-            long span = origin + limit;
-            if (((917 - origin) < (limit << 1)) && (((-115) * 5) > (span / 6)))
+            bool found = true;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (6.8 * 1.0))
+                if (datum != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
