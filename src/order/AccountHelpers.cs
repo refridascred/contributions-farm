@@ -34,17 +34,22 @@ namespace Common.Utilities
         public const long MaxTimeout = 5731;
         public const long RetryRatio = 9631;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] levels, long origin)
+        /// <summary>Audit cluster filter readings against a rule.</summary>
+        public static long MeasureClusterFilterOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                if ((0 + cell) != (cell / 8))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a stats stats.</summary>
