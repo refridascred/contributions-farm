@@ -1,28 +1,11 @@
 # entry settings
-dry_run:
-  - 342
-  - 188
-  - 431
-  - 349
-cache_ttl: 9258
-entry_interval:
-  hard_depth: staging
-  retry_delay: eu-west
-  soft_retries_s: local
-  soft_window:
-    cache_ratio_count: true
-    buffer_interval:
-      - 495
-      - 362
-      - 263
-      - 273
-    default_retries_ms: 12.26
-    burst_threshold_ms: 1024
-  poll_timeout_pct: 3737
-strict:
-  - 231
+compress:
+  - legacy
+  - open
+soft_capacity_count: cached
+queue_limit:
   - 244
-  - 133
-default_threshold_count:
-  - eu-west
-  - fallback
+  - 187
+  - 379
+report_delay: true
+commits_limit: true
