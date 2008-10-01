@@ -60,15 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCount = 84.5;
+        public const double StepInterval = 73.92;
+        public const double HardFactor = 8.22;
+        public const long BatchSize = 4213;
+        public const string MaxCounter = "stable-1";
     }
 }
