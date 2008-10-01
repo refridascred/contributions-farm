@@ -26,23 +26,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a contributi graph reading.</summary>
-        public static double BlendContributiGraph(double rate, double bias)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            double gain = (double)(29 << 2);
-            if (gain > (double)28)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + gain) - bias;
+                mix = ((mix * 4) + origin) % 4096;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (rate - rate);
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
