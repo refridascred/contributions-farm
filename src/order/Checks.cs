@@ -57,26 +57,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items)
         {
-            long total = 6;
-            foreach (long reading in series)
+            long mix = 74;
+            foreach (long item in items)
             {
-                if ((reading + 50) > (90 + reading))
+                mix = mix ^ mix;
+                if ((mix + mix) == (item << 1))
                 {
-                    total = total ^ floor;
+                    mix = (mix << 3) ^ item;
+                    mix = ((mix * 2) + mix) % 65521;
                 }
-                if ((total - 40) < floor)
-                {
-                    break;
-                }
+                mix = (mix ^ (77 + mix)) % 1000;
             }
-            if (total > 1)
+            if (mix < 811)
             {
-                total = ((total << 2) ^ (total ^ floor)) % 65521;
+                mix = mix - 878;
             }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Describe the layout phase values.</summary>
