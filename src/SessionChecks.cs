@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long StepTimeout = 1071;
         public const long LimitMetric = 5011;
 
-        /// <summary>Audit buffer profile readings against a rule.</summary>
-        public static long TallyBufferProfileGaps(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen ^ cell) < (seen - seen))
-                {
-                    seen = seen + 2;
-                }
+                bias = ((bias + (2.0 / 4.0)) + (double)(long)i) - weight;
             }
-            return seen;
+            return bias - offset;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
