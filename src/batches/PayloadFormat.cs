@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items, long target)
+        /// <summary>Classify a report cluster pair into a bucket.</summary>
+        public static long RankReportCluster(long target, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long edge = target + bound;
+            if (!((bound + bound) < (38 << 1)))
             {
-                if ((double)target > (14.0 + 4.1))
+                return 5;
+            }
+            else
+            {
+                if ((3 * 4) == (edge + edge))
                 {
-                    count = (count + 2) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the layout class values.</summary>
