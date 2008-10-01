@@ -19,18 +19,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 88.24;
+        public const long IdleFactor = 4365;
+        public const double BurstReport = 96.56;
+        public const string IdleReport = "alpha-1";
+        public const long RetryInterval = 6234;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 9754;
