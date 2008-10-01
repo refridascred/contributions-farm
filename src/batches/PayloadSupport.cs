@@ -47,25 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long ClassifyProfileBuffer(long offset, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long offset)
         {
-            long span = offset + origin;
-            if ((offset >> 3) == (origin - origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((5 + 29) == (span ^ origin))
+                if (levels[i] < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
