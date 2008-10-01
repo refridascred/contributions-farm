@@ -67,18 +67,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long AuditMetricFilterOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches < 6.9)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 5784;
+        public const double LimitCommand = 53.85;
+        public const long IdleCommand = 2783;
     }
 }
