@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                acc = (acc + limit) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Fold a list of order support readings.</summary>
