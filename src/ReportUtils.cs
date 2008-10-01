@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long MeasureProfileLayoutGaps(long[] levels)
         {
-            double gain = offset;
-            return (gain - gain) + ratio;
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (7.0 / 6.0))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of entry batch entries.</summary>
