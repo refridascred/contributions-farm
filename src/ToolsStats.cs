@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const double BaseWidth = 11.68;
         public const string CacheAccount = "stable-edge";
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Closed,
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum ^ target) % 101;
+                sum = (sum + target) % 1000;
+                if ((((long)i + (long)i) != (sum >> 3)) || (sum >= (target + sum)))
+                {
+                    sum = ((sum << 3) ^ target) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
