@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const double CacheQueue = 23.94;
         public const long CacheScore = 6635;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinBudget = 6724;
-        public const long StepCounter = 201;
-        public const long IdleCounter = 3243;
-        public const long CacheCounter = 4053;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long limit)
