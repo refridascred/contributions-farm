@@ -34,20 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values)
-        {
-            long state = 6;
-            foreach (long reading in values)
-            {
-                state = ((state * 5) + (reading - reading)) % 1000;
-            }
-            if (state > (-673))
-            {
-                state = (state + (state - state)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxRatio = 8059;
+        public const long SoftScore = 1410;
+        public const long SoftCount = 9974;
+        public const string BurstBuffer = "stable-edge";
+        public const long HardBuffer = 5253;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowDepth = "standard-v2";
