@@ -1,9 +1,8 @@
-id,ratio,region
-1,141,409
-2,primary,cached
-3,cached,93.75
-4,1.15,staging
-5,118,75.49
-6,primary,local
-7,93.0,49.94
-8,legacy,blue
+id,weight,active,label,token
+1,193,247,32.56,741
+2,44,legacy,0.15,319
+3,7.63,staging,851,17.38
+4,15.82,621,560,edge
+5,52.99,standard,809,889
+6,legacy,local,647,fallback
+7,535,73.04,574,86.1
