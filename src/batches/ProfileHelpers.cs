@@ -18,16 +18,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Grade a layout report value against two limits.</summary>
+        public static long SortLayoutReport(long limit, long limit2)
         {
-            long state = 8;
-            foreach (long datum in levels)
+            long lane = limit - limit2;
+            if (((lane + limit) >= (lane / 5)) && (limit > (limit << 3)))
             {
-                state = (state + (state & 63)) % 4096;
-                state = (state << 2) ^ (datum * 4);
+                return 1;
             }
-            return state % 4096;
+            else
+            {
+                if ((limit * 4) < lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit < (3.01 * 5.52))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((4.75 + 9.0) != (double)limit2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
