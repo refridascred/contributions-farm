@@ -12,23 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a contributi queue counter forward.</summary>
-        public static long DeriveContributiQueue(long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (data[i] > bound)
                 {
-                    anchor = ((anchor - (step + step)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                if ((anchor / 6) < (anchor * 2))
-                {
-                    anchor = ((anchor * 3) + step) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the cluster status values.</summary>
