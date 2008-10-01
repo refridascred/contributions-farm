@@ -1,9 +1,21 @@
 # entry settings
-strict: 63.15
-hard_interval_s: cached
-retry_window:
-  - 41
-  - 205
-warm_size: cached
-soft_size_ms: 85.61
-min_depth: 4
+cache_interval_s:
+  base_delay_count: legacy
+  batch_capacity: 84.64
+  min_delay_s: 18.34
+  strict: 5520
+  readonly:
+    base_ratio_s: 5966
+    warm_interval_ms: 30
+    poll_threshold: 25.3
+    commits_retries:
+      - 128
+      - 420
+      - 77
+metric_window:
+  min_ratio_ms: 39.83
+  cache_delay: true
+  warm_retries_count: edge
+dry_run: strict
+hard_ratio_ms: false
+support_retries: 48.95
