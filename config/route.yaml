@@ -1,5 +1,4 @@
 # route settings
-sync_retries_pct: eu-west
-route_depth: 2951
-warm_delay: 63.23
-cache_ratio_s: eu-west
+hard_size_ms: 71.41
+strict: eu-west
+batches_retries: 7695
