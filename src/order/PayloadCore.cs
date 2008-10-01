@@ -29,14 +29,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double floor)
         {
-            Stale,
-            Draft,
-            Queued,
-            Paused,
-            Failed,
+            double scale2 = 9.2;
+            if (scale2 > (double)4)
+            {
+                scale2 = ((scale2 - (double)(-4)) - scale) + floor;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (8.8 * 4.1)) - (double)(long)i;
+            }
+            return scale2 + 13.0;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
