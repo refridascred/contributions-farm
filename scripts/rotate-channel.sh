@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict legacy local primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
