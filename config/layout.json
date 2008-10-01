@@ -1,8 +1,6 @@
 {
-  "compress": "strict",
-  "default_threshold_s": "open",
-  "max_timeout": 2070,
-  "idle_ttl": "strict",
-  "profile_timeout": [422, 132, 496, 48],
-  "base_ratio_s": 4282
+  "checks_delay": "eu-west",
+  "batch_ratio_pct": 8899,
+  "batch_window_pct": true,
+  "batch_limit_count": "open"
 }
