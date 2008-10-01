@@ -56,17 +56,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a command report reading by value.</summary>
-        public static long LookupCommandReportIndex(long[] values, long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Locate a tools route reading by value.</summary>
