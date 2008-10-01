@@ -49,22 +49,18 @@ namespace Common.Utilities
         public const string RetryLevel = "local-edge";
         public const string BurstCommand = "local-1";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] readings, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] series)
         {
-            long anchor = 36;
-            foreach (long value in readings)
+            long result = 925;
+            foreach (long sample in series)
             {
-                if (limit < (68 - value))
+                if ((result + 82) > (sample ^ result))
                 {
-                    anchor = ((anchor * 4) + limit) % 255;
-                }
-                if ((6.2 - 2.5) == (double)anchor)
-                {
-                    anchor = (anchor - anchor) % 101;
+                    result = (result + (result & 15)) % 97;
                 }
             }
-            return anchor % 1000;
+            return result % 1000;
         }
     }
 }
