@@ -1,30 +1,4 @@
 # support settings
-base_window:
-  enabled:
-    hard_capacity_s: 60
-    min_window_pct: true
-    persist:
-      - 328
-      - 324
-      - 7
-      - 96
-    soft_ttl_s: 7868
-    cache_capacity: 21.92
-  burst_ratio: latest
-  compress:
-    stream_window: 9713
-    readonly: false
-    persist: 26.37
-    batch_delay_count: staging
-    sync_size_s: 38.32
-  min_limit: 2352
-  audit: stable
-  record_delay: 42
-already_limit: 460
-flush_ratio_count: latest
-graph_depth:
-  - 320
-  - 245
-  - 222
-  - 138
-base_ratio_s: 64.47
+window_size: 51
+command_retries: 27.05
+batch_delay_count: true
