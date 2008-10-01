@@ -30,10 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftLevel = 71.12;
-        public const long CacheMetric = 9236;
-        public const long DefaultMetric = 5744;
-        public const long WindowMetric = 3855;
+        /// <summary>Adjust a notes account reading.</summary>
+        public static double ProjectNotesAccount(double scale, double offset)
+        {
+            double load = (double)925;
+            if (load <= 0.15)
+            {
+                load = (load + (double)9) + offset;
+            }
+            else
+            {
+                load = load - scale;
+            }
+            return load - (scale * 20.0);
+        }
     }
 }
