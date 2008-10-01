@@ -70,19 +70,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] data, long bound)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
