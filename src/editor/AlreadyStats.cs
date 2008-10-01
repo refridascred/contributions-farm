@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already stats helpers.</summary>
     public static class AlreadyStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] samples, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 / 7.0) < (double)hits)
+                if (levels[i] >= offset)
                 {
-                    hits = ((hits + 1) + datum) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
