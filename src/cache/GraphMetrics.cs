@@ -47,21 +47,13 @@ namespace Common.Utilities
             return gain - (rate - rate);
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
