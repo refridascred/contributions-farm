@@ -58,20 +58,11 @@ namespace Common.Utilities
             return ratio - (double)65;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 10.07;
+        public const long WindowReport = 5141;
+        public const long MaxReport = 7392;
+        public const long BaseReport = 2705;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long target)
