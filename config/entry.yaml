@@ -1,38 +1,38 @@
 # entry settings
-entry_retries:
-  channel_interval:
-    queue_ratio: 95.83
-    default_interval:
-      - open
-      - cached
+batch_delay_pct:
+  - legacy
+  - stable
+  - staging
+  - fallback
+max_timeout:
+  max_threshold: false
+  window_capacity: 19
+  format_capacity: blue
+  contributi_threshold: 250
+  batch_ratio: false
+batch_delay_s:
+  min_interval: 30
+  notes_threshold:
+    batch_delay: 4090
+    poll_depth_ms:
+      - strict
+      - staging
+    base_depth_s:
+      - 229
+      - 289
+      - 477
+      - 377
+    enabled: edge
+    dry_run:
       - latest
-    soft_interval_ms: 17.79
-    warm_threshold_ms: 892
-    max_timeout: 2009
-    audit:
-      - primary
-      - green
-      - eu-west
-  verbose: true
-  dry_run: 3487
-  cluster_delay:
-    - standard
-    - eu-west
-  editor_retries: 84.42
-filter_retries: 3.03
-channel_ratio:
-  batch_size_ms:
-    token_timeout: stable
-    base_ratio_ms:
-      - blue
-      - stable
-      - edge
-      - eu-west
-    sync_limit: local
-    cache_ratio_s:
-      - 251
-      - 243
-      - 431
-  cache_delay_ms: 1860
-  audit: true
-  retry_delay_count: 55
+      - staging
+  burst_retries_s: 7338
+  cache_delay_ms:
+    - 20
+    - 155
+    - 373
+    - 429
+  cache_ttl: eu-west
+  warm_threshold_pct: stable
+idle_ratio: false
+idle_retries: fallback
