@@ -44,19 +44,32 @@ namespace Common.Utilities
         public const string SoftTools = "cached";
         public const double IdleTools = 73.25;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long limit, long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long next = limit + seed;
+            if (((limit + (-835)) > seed) || (seed > (limit * 2)))
             {
-                if (datum >= limit)
+                return 5;
+            }
+            else
+            {
+                if (!((next * 4) <= (seed >> 1)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((0 - next) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
     }
 }
