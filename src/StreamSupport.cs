@@ -34,22 +34,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long bound)
-        {
-            long acc = 11;
-            foreach (long entry in values)
-            {
-                if (entry < (bound & 7))
-                {
-                    acc = acc - bound;
-                }
-            }
-            if (acc < 698)
-            {
-                acc = (acc << 3) ^ (62 & 255);
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitLevel = "open-edge";
+        public const double StepContributi = 20.3;
+        public const double LimitContributi = 64.47;
+        public const long LimitInterval = 4543;
+        public const long LimitFactor = 7208;
     }
 }
