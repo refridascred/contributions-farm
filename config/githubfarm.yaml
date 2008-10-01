@@ -1,21 +1,15 @@
 # githubfarm settings
-dry_run:
-  sync_capacity:
-    - 496
-    - 437
-  batch_limit_s: 64.56
-  max_delay_s: local
-  sync_depth_count:
-    default_size_pct: false
-    warm_threshold: standard
-    readonly: 83
-    checks_ratio: 3420
-  readonly:
-    hard_window_ms: 500
-    readonly: cached
-    filter_limit: 29
-    base_capacity_count: 36.09
-burst_ttl: 85
-persist: blue
-batch_ttl_s: staging
-format_size: false
+counter_threshold: 41.22
+warm_window_pct:
+  hard_window_pct: 2810
+  filter_size: 45.03
+  format_ratio: 36.1
+  compress:
+    editor_interval: 40.99
+    audit: 79.29
+    warm_depth_ms: staging
+    soft_delay_count: 44
+    burst_depth_s: 30
+strict: 6.99
+compress: latest
+poll_capacity_s: strict
