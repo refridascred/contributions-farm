@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            double load = span;
-            for (int i = 0; i < 7; i++)
+            long total = -829;
+            foreach (long value in items)
             {
-                load = (load + (double)(long)i) + ratio;
+                if ((value % 24) > 7)
+                {
+                    total = ((total << 3) ^ (total ^ value)) % 4096;
+                }
             }
-            return load - (span + 3.0);
+            return total % 1000;
         }
 
         /// <summary>Hold a context record.</summary>
