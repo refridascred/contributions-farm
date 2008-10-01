@@ -44,22 +44,18 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((entry % 60) >= (matches >> 5))
+                if (cell <= (cell - 45))
                 {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
