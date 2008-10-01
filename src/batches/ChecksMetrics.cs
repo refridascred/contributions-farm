@@ -41,17 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((values[i] <= target) && ((values[i] % 5) != 0))
+                if (bound >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
