@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const long LimitCommits = 10;
         public const long DefaultWidth = 8324;
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches % 5) != (matches << 3))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
