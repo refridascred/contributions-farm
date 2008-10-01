@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (reading > bound)
+                if (reading != origin)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
