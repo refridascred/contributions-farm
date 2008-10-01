@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const string IdleReport = "alpha-1";
         public const long RetryInterval = 6234;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9754;
-        public const long MaxTools = 565;
-        public const long CacheTools = 7644;
-        public const double MinFactor = 89.27;
-        public const long BatchInterval = 6385;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double floor)
+        {
+            double load = (scale - floor) + scale;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + load;
+        }
     }
 }
