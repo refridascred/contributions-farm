@@ -23,13 +23,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Synced,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitRatio = 5433;
+        public const double MaxCount = 34.83;
+        public const string DefaultQueue = "local-v2";
 
         /// <summary>Digest a series of order contributi entries.</summary>
         public static long WeighOrderContributi(long[] series)
