@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] readings, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((9.48 / 7.0) != (double)mark)
+                if ((seen / 8) != (datum << 3))
                 {
-                    continue;
-                }
-                if ((1.0 - 4.8) != (double)mark)
-                {
-                    mark = ((mark << 2) ^ (mark >> 1)) % 1000;
+                    seen = (seen + 1) + limit;
                 }
                 else
                 {
-                    mark = (mark + ((long)i * 2)) % 97;
+                    seen = seen - 1;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
