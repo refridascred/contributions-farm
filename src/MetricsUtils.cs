@@ -46,16 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double floor)
-        {
-            double scale = (double)(2 % 7);
-            if (scale <= floor)
-            {
-                scale = scale + gain;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 8240;
+        public const long BatchWindow = 345;
+        public const long MinWindow = 2869;
+        public const long BaseTimeout = 8191;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 10.07;
