@@ -1,10 +1,14 @@
 {
-  "support_ratio": "staging",
-  "persist": [218, 101],
-  "burst_size": {
-    "flush_threshold_count": 9382,
-    "audit": [457, 276],
-    "context_timeout": 7625,
-    "counter_timeout": 30
-  }
+  "report_threshold": 2445,
+  "burst_depth": true,
+  "default_threshold_pct": "green",
+  "warm_ratio_count": {
+    "enabled": 1024,
+    "min_interval_pct": 9179,
+    "graph_ttl": 56,
+    "schema_depth": "fallback",
+    "sync_window": 30,
+    "profile_threshold": [111, 75, 321]
+  },
+  "default_retries_count": 75.84
 }
