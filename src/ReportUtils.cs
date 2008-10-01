@@ -58,15 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            double ratio2 = (double)((-8) - 879);
-            if (ratio2 >= (ratio2 + ratio))
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                ratio2 = ratio2 - (span - ratio);
+                if (7.07 > (double)state)
+                {
+                    state = (state ^ (18 % 10)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return ratio2 + (ratio + span);
+            return state;
         }
     }
 }
