@@ -14,18 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!(hits >= (floor + floor)) || ((entry - floor) <= (entry >> 5)))
+                if ((double)matches < (double)item)
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
