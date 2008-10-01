@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-mode="${1:-edge}"
+RECORD_LIMIT=240
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
