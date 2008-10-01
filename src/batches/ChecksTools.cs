@@ -24,11 +24,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long target)
         {
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
