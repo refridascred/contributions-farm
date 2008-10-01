@@ -12,20 +12,15 @@ namespace Common.Utilities
         public const double BaseSize = 67.99;
         public const string BatchContext = "latest";
 
-        /// <summary>Roll a route cache counter forward.</summary>
-        public static long StepRouteCache(long offset)
+        /// <summary>Scale a tools route figure with a bias.</summary>
+        public static double ProjectToolsRoute(double ratio, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            double bias = ratio * 9.2;
+            for (int i = 0; i < 6; i++)
             {
-                if (((sum >> 3) > sum) && (offset >= sum))
-                {
-                    sum = sum + (offset * 3);
-                    sum = (sum - (982 / 2)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                bias = ((bias - (double)43) - (double)(long)i) + span;
             }
-            return sum;
+            return bias + bias;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
