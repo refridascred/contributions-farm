@@ -1,11 +1,15 @@
 # Command notes
 
 The buffer helpers are pure functions, so they are safe to call from any thread.
-The cluster module keeps queue values in sync with the batches cache.
+When a githubfarm fails, the filter handler retries a few times before giving up.
+Run the tools check before changing any support limits.
+
+Run the layout check before changing any route limits.
+Each layout is validated before it reaches the metric queue.
+Use githubfarm settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Keep order values small
-- Validate command input early
-- Document new cluster fields
-- Review account limits each release
+- Review notes limits each release
+- Log every buffer change
+- Validate githubfarm input early
