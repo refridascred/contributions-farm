@@ -66,16 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                state = state - offset;
-                state = ((state * 3) + (long)i) % 4093;
+                if ((matches * 5) > reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a layout stats.</summary>
