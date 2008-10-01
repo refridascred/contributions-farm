@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc - acc) % 101;
-                if ((6.1 + 8.9) < (double)acc)
-                {
-                    acc = ((acc << 3) ^ (long)i) % 1000;
-                }
-                acc = ((acc << 2) ^ (acc << 1)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Locked,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the token phase values.</summary>
