@@ -1,5 +1,10 @@
 # entry settings
-route_retries: true
-record_retries: local
-compress: 6464
-retry_threshold_count: 5.24
+burst_delay_pct: 39.79
+cache_retries: staging
+metrics_window:
+  cache_retries: 40
+  idle_window_ms: staging
+  dry_run: open
+  already_threshold: legacy
+  already_capacity: strict
+filter_size: 30
