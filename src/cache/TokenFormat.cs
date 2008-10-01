@@ -30,11 +30,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftBudget = 6577;
-        public const long LimitStream = 5559;
-        public const string MaxWidth = "stable-edge";
-        public const long WindowRatio = 5141;
-        public const long IdleLevel = 3894;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "staging-1";
+        public const double BurstRatio = 43.41;
+        public const long BurstSize = 8911;
     }
 }
