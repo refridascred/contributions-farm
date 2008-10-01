@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            Idle,
+            New,
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
