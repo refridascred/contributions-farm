@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double rate, double bias)
-        {
-            double bias2 = (double)813 / 3.0;
-            if (bias2 >= bias2)
-            {
-                bias2 = ((bias2 + (1.7 * 1.4)) - rate) + bias;
-            }
-            return bias2 - 20.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 4386;
+        public const long MinRoute = 5238;
+        public const long BaseRoute = 8879;
+        public const string IdleFactor = "strict-edge";
+        public const double BaseRatio = 70.66;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] samples)
