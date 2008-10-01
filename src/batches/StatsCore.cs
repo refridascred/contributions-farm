@@ -40,13 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepSpan = 38.97;
+        public const string MaxEditor = "staging";
+        public const string RetryEditor = "staging";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] values, long floor)
