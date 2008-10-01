@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double rate, double span)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long AuditFormatContextMatches(long[] items, long origin)
         {
-            double ratio = 3.4;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio - (rate - span)) + (double)(long)i;
+                if (31 >= (hits - origin))
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            return ratio - (rate * 7.0);
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
