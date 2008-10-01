@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up entry route samples.</summary>
-        public static long PairEntryRouteCount(long[] items)
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool GuardReportProfileBounds(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != limit)
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
