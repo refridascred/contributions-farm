@@ -33,15 +33,11 @@ namespace Common.Utilities
         public const long LimitWidth = 2514;
         public const long HardScore = 6784;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Queued,
-            Active,
-            Synced,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepScore = 2721;
+        public const double WindowTimeout = 69.32;
+        public const double IdlePayload = 17.69;
+        public const long StepSpan = 874;
 
         /// <summary>Check that every window context entry stays within the limit.</summary>
         public static bool CheckWindowContextBounds(long[] levels, long target)
