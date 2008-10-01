@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseScore = 4.74;
-        public const long HardDepth = 7953;
-        public const long SoftRatio = 102;
-        public const double StepFactor = 70.21;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((((seen - reading) < (seen % 24)) || ((1.2 * 8.23) < (double)seen)) && ((seen + reading) >= (seen * 4)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double RetryDepth = 69.86;
