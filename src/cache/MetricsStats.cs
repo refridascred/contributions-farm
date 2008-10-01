@@ -39,18 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a graph batch sample.</summary>
+        public static long LookupGraphBatchIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value % 10) >= (33 + count))
+                if (samples[i] < floor)
                 {
-                    count = (count + 1) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
