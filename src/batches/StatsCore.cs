@@ -59,16 +59,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long delta = origin + floor;
+            if ((origin / 7) >= 39)
             {
-                anchor = ((anchor << 3) ^ 23) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((origin + delta) > delta)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin != (3.0 / 5.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin >> 5) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
