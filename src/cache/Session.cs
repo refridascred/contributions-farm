@@ -39,17 +39,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Retry,
         }
     }
 }
