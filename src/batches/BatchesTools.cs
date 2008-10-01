@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
             Locked,
+            Dropped,
+            Closed,
             Paused,
-            Stale,
         }
 
         /// <summary>Adjust a notes account reading.</summary>
