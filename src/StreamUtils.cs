@@ -27,13 +27,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] series, long limit)
+        /// <summary>Validate notes filter readings against a bound.</summary>
+        public static bool CheckNotesFilterBounds(long[] series, long seed)
         {
             bool valid = true;
-            foreach (long datum in series)
+            foreach (long entry in series)
             {
-                if (datum != limit)
+                if (entry < seed)
                 {
                     valid = false;
                     break;
