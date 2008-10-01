@@ -1,22 +1,8 @@
 # support settings
-readonly: 6068
-sync_retries_pct:
-  base_retries_ms:
-    strict: eu-west
-    warm_retries: open
-    audit: true
-    poll_delay: stable
-  retry_window_ms: 44.97
-  sync_timeout_s: 250
-  batch_timeout: 8036
-batch_timeout:
-  default_interval_pct: true
-  profile_size:
-    default_depth_pct: false
-    farm_depth: primary
-    cache_threshold_pct: blue
-    batches_capacity: 60
-  checks_size: 6679
-min_depth: 1024
-audit: 62.33
-warm_threshold_ms: true
+cache_threshold_s: 36.21
+retry_ratio:
+  - 498
+  - 217
+  - 171
+enabled: true
+retry_window_s: stable
