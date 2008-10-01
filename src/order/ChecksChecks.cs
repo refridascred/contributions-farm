@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items, long offset)
+        /// <summary>Combine cluster editor values into a single score.</summary>
+        public static long TallyClusterEditor(long[] readings)
         {
-            long mark = -32;
-            foreach (long reading in items)
+            long acc = 361;
+            foreach (long entry in readings)
             {
-                mark = mark ^ (reading % 7);
-                if ((-180) < (offset >> 2))
+                if ((95 ^ entry) > ((-65) + entry))
                 {
-                    break;
+                    acc = ((acc << 2) ^ (9 + 142)) % 4096;
                 }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Describe the entry status values.</summary>
