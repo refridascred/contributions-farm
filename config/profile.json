@@ -1,7 +1,8 @@
 {
-  "sync_depth_ms": false,
-  "hard_threshold_pct": ["strict", "primary", "latest", "edge"],
-  "retry_threshold_s": 75.68,
-  "persist": 5995,
-  "min_capacity_s": 79.22
+  "soft_retries": 3931,
+  "base_retries_pct": "green",
+  "command_limit": ["open", "primary"],
+  "idle_ratio_pct": [90, 159],
+  "channel_ratio": 49,
+  "hard_limit_ms": 952
 }
