@@ -68,39 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools githubfarm input into a small class.</summary>
-        public static long SortToolsGithubfarm(long limit, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            long diff = limit - offset;
-            if ((offset + offset) > diff)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)limit < (5.0 + 13.0)))
+                if ((double)entry <= (2.7 / 2.0))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((5 < (offset % 16)) && ((double)diff >= (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (39 - diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
