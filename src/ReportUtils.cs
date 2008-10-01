@@ -67,27 +67,13 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "fallback-1";
         public const double StepBudget = 68.74;
 
-        /// <summary>Combine filter editor values into a single score.</summary>
-        public static long CombineFilterEditor(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long carry = -2;
-            foreach (long item in items)
-            {
-                carry = (carry * 4) + (item + item);
-                if ((item - carry) < (carry / 7))
-                {
-                    carry = ((carry << 2) ^ (carry * 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry * 3) + (item ^ 17);
-                }
-            }
-            if (carry > 652)
-            {
-                carry = ((carry << 3) ^ 5) % 255;
-            }
-            return carry;
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
