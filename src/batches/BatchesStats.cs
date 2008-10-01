@@ -44,15 +44,9 @@ namespace Common.Utilities
             return mean - (bias / 8.0);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long floor)
-        {
-            long score = -332;
-            foreach (long datum in series)
-            {
-                score = (((score << 3) ^ score) - datum) - floor;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstDepth = 29.64;
+        public const string MaxCommits = "staging-1";
+        public const long SoftSize = 4110;
     }
 }
