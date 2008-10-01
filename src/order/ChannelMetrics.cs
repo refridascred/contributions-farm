@@ -27,30 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long origin)
         {
-            long next = offset + origin;
-            if (11.0 >= (double)offset)
+            if ((double)limit >= (19.0 / 4.0))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((offset - offset) == (offset >> 1))
+                if ((8.8 + 1.77) != (double)limit)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset & 7) <= (next >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
