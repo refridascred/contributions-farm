@@ -28,11 +28,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 851;
-        public const long HardSize = 2030;
-        public const long MaxLevel = 7941;
-        public const long DefaultCache = 6987;
+        /// <summary>Iterate the filter token series from a seed.</summary>
+        public static long DeriveFilterToken(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix << 3) ^ origin;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
