@@ -23,17 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
-        public static long SeekGithubfarmReportIndex(long[] series, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset == (1.1 * 9.0))
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((-16) ^ 57) > (offset / 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit <= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
