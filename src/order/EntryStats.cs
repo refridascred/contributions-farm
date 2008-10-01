@@ -44,15 +44,39 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
         {
-            long result = 853;
-            foreach (long reading in readings)
+            long step = offset ^ bound;
+            if ((step < (step + offset)) || ((5.7 + 4.1) != (double)step))
             {
-                result = ((result * 2) + (offset % 2)) ^ reading;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((9.16 * 6.0) == (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < 4.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound >> 4) >= (6 - offset)) && ((bound - 933) <= (step << 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
