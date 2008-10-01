@@ -31,14 +31,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            Queued,
-            Dropped,
-            New,
-            Synced,
-            Stale,
+            long carry = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum >> 1) > (carry >> 3)) && ((long)levels.Length >= (datum * 4)))
+                {
+                    carry = carry ^ (datum >> 3);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (datum >> 4);
+                }
+                if (datum >= (datum ^ carry))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
