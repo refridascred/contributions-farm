@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 7;
+            foreach (long entry in items)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                if ((entry * 5) < (bound ^ entry))
                 {
-                    return (long)i;
+                    carry = (carry - entry) % 65521;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
