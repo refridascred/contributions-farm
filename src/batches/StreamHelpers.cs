@@ -51,16 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster schema value from a seed.</summary>
-        public static long IterateClusterSchema(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                acc = acc + (target + target);
-                acc = ((acc * 4) + (long)i) % 97;
+                if (entry > matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
