@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            Done,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
