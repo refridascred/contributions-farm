@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] items, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine route values into a single score.</summary>
