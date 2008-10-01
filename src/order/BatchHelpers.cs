@@ -20,17 +20,13 @@ namespace Common.Utilities
         public const long LimitCache = 4894;
         public const long DefaultCache = 2098;
 
-        /// <summary>Roll a token metric counter forward.</summary>
-        public static long RollTokenMetric(long step)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc << 2) ^ (long)i;
-                acc = (acc - (acc * 4)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
