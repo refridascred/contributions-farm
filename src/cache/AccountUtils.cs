@@ -21,19 +21,23 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mix = 728;
+            foreach (long entry in values)
             {
-                if (item > seed)
+                if (!((double)mix < (9.29 / 7.0)))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mix = (mix + entry) % 101;
+                }
+                mix = ((mix * 3) + (mix + mix)) % 1000;
             }
-            return valid;
+            return mix;
         }
     }
 }
