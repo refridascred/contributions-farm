@@ -46,19 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double bias, double bias2)
+        /// <summary>Count contributi stream pairs that satisfy a relation.</summary>
+        public static long CompareContributiStreamCount(long[] samples)
         {
-            double rate = (double)664 * 1.7;
-            if (rate < (rate * 5.7))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + rate) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate + (bias2 / 9.0);
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
