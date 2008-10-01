@@ -35,11 +35,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitTimeout = 6969;
-        public const string HardDepth = "fallback-1";
-        public const string IdleFormat = "staging-v2";
-        public const double BatchInterval = 69.3;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels)
+        {
+            long sum = 0;
+            foreach (long cell in levels)
+            {
+                sum = ((sum * 4) + (sum / 2)) + cell;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheBounds(long[] samples, long seed)
