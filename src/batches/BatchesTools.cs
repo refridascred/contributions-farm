@@ -19,38 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if (!((step + offset) <= (11 / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 1) > (step - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step ^ step) != (810 & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset != (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a notes account reading.</summary>
