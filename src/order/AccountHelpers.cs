@@ -47,17 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] levels, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a cluster stats.</summary>
