@@ -70,12 +70,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardTimeout = 6037;
+        public const string HardPayload = "stable-1";
+        public const long HardDepth = 3169;
+        public const long WindowPayload = 777;
+        public const double BatchBudget = 45.27;
     }
 }
