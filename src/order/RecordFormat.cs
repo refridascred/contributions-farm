@@ -68,12 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate buffer account samples.</summary>
+        public static long DigestBufferAccount(long[] series)
         {
-            Dropped,
-            Stale,
-            Synced,
+            long state = 3;
+            foreach (long item in series)
+            {
+                if ((item + (long)series.Length) < (state * 5))
+                {
+                    state = state + (item ^ item);
+                }
+            }
+            if (state > 4)
+            {
+                state = ((state * 5) + (state & 7)) % 101;
+            }
+            return state;
         }
     }
 }
