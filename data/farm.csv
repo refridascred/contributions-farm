@@ -1,7 +1,8 @@
-id,owner,token
-1,open,83.33
-2,79,33.41
-3,blue,863
-4,83.45,501
-5,latest,cached
-6,541,483
+id,count,active,token
+1,270,32.51,edge
+2,831,6.73,legacy
+3,529,strict,274
+4,89.21,fallback,650
+5,36.66,613,green
+6,60.71,403,edge
+7,staging,legacy,stable
