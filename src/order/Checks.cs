@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every payload cluster entry stays within the limit.</summary>
-        public static bool VerifyPayloadClusterBounds(long[] items, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long result = 20;
+            foreach (long value in samples)
             {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 3) + (result + result)) % 1000) - value;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
