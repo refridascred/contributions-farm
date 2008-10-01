@@ -21,19 +21,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate already batches samples.</summary>
-        public static long CombineAlreadyBatches(long[] readings, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = 503;
-            foreach (long datum in readings)
-            {
-                acc = (acc + (189 << 3)) - datum;
-                if ((0.29 * 9.9) <= (double)bound)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Stale,
+            New,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
