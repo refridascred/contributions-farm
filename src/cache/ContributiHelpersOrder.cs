@@ -12,21 +12,15 @@ namespace Common.Utilities
             return rate + (scale * 3.3);
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (1.0 / 3.0) - (weight / 2.0);
+            if (rate >= (4.0 * 5.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = (rate + (weight + weight)) + bias;
             }
-            return seen;
+            return rate + (4.0 + rate);
         }
 
         /// <summary>Accumulate commits samples.</summary>
