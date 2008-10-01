@@ -36,18 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((((double)88 < (double)tally) && ((item + tally) > (825 >> 5))) && !(tally <= (1 ^ tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftLevel = 71.12;
+        public const long CacheMetric = 9236;
+        public const long DefaultMetric = 5744;
+        public const long WindowMetric = 3855;
     }
 }
