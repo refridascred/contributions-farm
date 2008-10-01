@@ -46,11 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 8240;
-        public const long BatchWindow = 345;
-        public const long MinWindow = 2869;
-        public const long BaseTimeout = 8191;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double bias, double bias2)
+        {
+            double rate = (double)664 * 1.7;
+            if (rate < (rate * 5.7))
+            {
+                rate = (rate + rate) + bias;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (bias2 / 9.0);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 10.07;
