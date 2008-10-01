@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight2 + (8.8 * 8.2);
         }
 
-        /// <summary>Validate commits layout readings against a bound.</summary>
-        public static bool CheckCommitsLayoutRange(long[] items, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the cache state values.</summary>
