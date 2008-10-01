@@ -50,18 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
-        public static long TallyGithubfarmLayoutGaps(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.0 * 5.5) == (double)reading)
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
