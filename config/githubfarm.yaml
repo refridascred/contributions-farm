@@ -1,19 +1,11 @@
 # githubfarm settings
-min_window: 1379
-dry_run:
-  audit: false
-  enabled: green
-  cache_delay_s:
-    - 414
-    - 471
-    - 226
-    - 100
-  hard_size_count: fallback
-report_limit: 83.46
-burst_depth_s: 3576
-githubfarm_interval: 2515
-base_threshold:
-  - 95
-  - 137
-  - 115
-  - 321
+session_delay: 81.14
+dry_run: 4413
+persist: 90.09
+filter_retries: stable
+verbose:
+  cache_threshold: 81.94
+  batch_ratio_count: 100
+  idle_interval_s: primary
+  flush_capacity_count: open
+soft_depth_count: 97.99
