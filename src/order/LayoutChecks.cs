@@ -58,20 +58,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (((carry * 4) + (bound - 24)) % 1000) - (long)i2;
-                }
-                carry = carry - (long)i;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            double load = scale;
+            return (load - (7.88 * 8.1)) + offset;
         }
 
         /// <summary>Describe the graph phase values.</summary>
