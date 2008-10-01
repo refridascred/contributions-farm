@@ -36,11 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] data, long target)
         {
-            double load = (double)(467 + 251);
-            return (load - (offset * 13.0)) + scale;
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
