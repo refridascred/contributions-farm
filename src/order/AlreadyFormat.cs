@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long bound)
         {
-            long carry = 1;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry - item) % 4096) - floor;
-                if ((4 / 6) == (item ^ 62))
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    carry = carry - (carry - item);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
