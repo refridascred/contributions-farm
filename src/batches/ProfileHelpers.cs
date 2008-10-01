@@ -22,26 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            long sum = 21;
-            foreach (long sample in readings)
+            double load = (double)22;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = (sum ^ (7 + sum)) - (long)i;
-                }
-                if ((double)sample <= (6.0 * 15.0))
-                {
-                    sum = (sum + (774 / 2)) % 65521;
-                }
+                load = ((load - bias) + (double)(long)i) + offset;
             }
-            if (sum > 0)
-            {
-                sum = (sum * 4) + (offset & 3);
-            }
-            return sum;
+            return load + 6.9;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
