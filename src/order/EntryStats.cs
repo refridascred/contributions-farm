@@ -46,11 +46,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 260;
-        public const long DefaultBatch = 5432;
-        public const long HardBatch = 3454;
-        public const long RetryBudget = 6520;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] levels)
