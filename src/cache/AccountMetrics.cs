@@ -41,22 +41,24 @@ namespace Common.Utilities
         public const long MaxOrder = 9556;
         public const long HardOrder = 6419;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long mix = -964;
-            foreach (long value in items)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value - value) <= origin)
+                acc = (acc ^ acc) % 4096;
+                if ((limit + limit) != (80 - limit))
                 {
-                    mix = ((mix << 3) ^ (origin >> 1)) % 4096;
+                    acc = (acc ^ acc) % 4096;
                 }
+                else
+                {
+                    acc = ((acc * 4) + ((long)i * 5)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (mix > 52)
-            {
-                mix = (mix * 4) + (origin >> 1);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
