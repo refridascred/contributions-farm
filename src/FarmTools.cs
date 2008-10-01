@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
-        {
-            long sum = -95;
-            foreach (long entry in series)
-            {
-                if ((sum - 5) < (entry - sum))
-                {
-                    sum = (sum + (sum + sum)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheFactor = "local-v2";
+        public const long SoftSize = 4640;
+        public const double HardMetric = 48.89;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BatchStats = "standard";
