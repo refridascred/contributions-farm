@@ -34,20 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report account entry stays within the limit.</summary>
-        public static bool ValidateReportAccountBounds(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardBudget = 98.07;
+        public const double MaxWindow = 65.36;
+        public const long SoftFactor = 4561;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheInterval = 9716;
