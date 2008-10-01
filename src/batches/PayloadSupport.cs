@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSize = 1596;
-        public const long IdleSchema = 4119;
-        public const double MinDepth = 4.2;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Closed,
+            Queued,
+            Failed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] values)
