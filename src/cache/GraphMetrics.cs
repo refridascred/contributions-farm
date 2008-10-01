@@ -61,15 +61,13 @@ namespace Common.Utilities
         public const string BatchAccount = "alpha-edge";
         public const long DefaultSize = 331;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Locked,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
