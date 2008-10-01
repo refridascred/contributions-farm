@@ -31,19 +31,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = 5;
-            foreach (long datum in readings)
-            {
-                result = (result ^ (2 + datum)) + seed;
-                if (datum > result)
-                {
-                    result = (result << 2) ^ 2;
-                }
-            }
-            return result;
+            public double Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
