@@ -23,21 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 51;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sum < (sample + sum))
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (sum + offset)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 3) + (sample ^ sum);
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
