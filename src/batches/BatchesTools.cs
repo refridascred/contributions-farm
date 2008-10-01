@@ -22,10 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinRatio = "alpha-edge";
-        public const double MinCluster = 30.65;
-        public const long LimitCluster = 7782;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 4958;
+        public const double LimitWindow = 58.46;
+        public const double BatchInterval = 45.99;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] data, long bound)
