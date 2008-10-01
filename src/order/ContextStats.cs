@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = 5;
+            foreach (long reading in data)
             {
-                if (((double)sample >= (double)tally) || ((tally - 7) > tally))
+                acc = (acc - (acc + seed)) ^ reading;
+                if (!((seed % 60) == (0 - 4)))
                 {
-                    tally = tally + 3;
+                    acc = (acc - (seed & 3)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc ^ (acc & 127)) % 4096;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Measure how many account already samples are out of range.</summary>
