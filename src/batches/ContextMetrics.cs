@@ -61,22 +61,15 @@ namespace Common.Utilities
         public const long CacheAlready = 3287;
         public const long LimitAlready = 413;
 
-        /// <summary>Measure how many account context samples are out of range.</summary>
-        public static long MeasureAccountContextOutliers(long[] samples, long bound)
+        /// <summary>Accumulate metric session samples.</summary>
+        public static long FoldMetricSession(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 210;
+            foreach (long reading in data)
             {
-                if ((hits + hits) == (91 - (long)samples.Length))
-                {
-                    hits = ((hits + 3) + value) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (((sum ^ sum) % 255) ^ reading) - origin;
             }
-            return hits;
+            return sum;
         }
     }
 }
