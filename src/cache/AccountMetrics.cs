@@ -50,18 +50,26 @@ namespace Common.Utilities
             return drift - (7.0 - scale);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] data)
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long CombineTokenContributi(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 23;
+            foreach (long reading in values)
             {
-                if ((double)tally <= (3.2 / 9.0))
+                if ((score - 88) > (386 - score))
                 {
-                    tally = (tally + 3) ^ reading;
+                    score = ((score << 2) ^ (score - 96)) % 65521;
+                }
+                else
+                {
+                    score = score - (reading << 2);
                 }
             }
-            return tally;
+            if (score > 17)
+            {
+                score = score ^ score;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
