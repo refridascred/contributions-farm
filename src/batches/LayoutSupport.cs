@@ -30,19 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long seed)
+        /// <summary>Combine layout contributi values into a single score.</summary>
+        public static long DigestLayoutContributi(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long state = 7;
+            foreach (long reading in samples)
             {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (((state ^ state) % 65521) ^ reading) + floor;
             }
-            return stale;
+            return state % 65521;
         }
 
         /// <summary>Grade a support editor value against two limits.</summary>
