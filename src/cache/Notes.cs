@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxCount = "latest-edge";
-        public const long LimitScore = 2012;
-        public const long MinInterval = 3108;
-        public const long IdleInterval = 1038;
-        public const string SoftSession = "legacy-edge";
+        /// <summary>Grade a support route value against two limits.</summary>
+        public static long SortSupportRoute(long origin, long origin2)
+        {
+            if ((origin < (934 ^ origin)) && ((origin2 << 3) >= (origin2 * 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin2 == (14.0 - 12.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BatchCount = 14.1;
