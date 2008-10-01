@@ -1,7 +1,7 @@
-id,owner,rank,weight,ratio
-1,54.22,8.6,900,49.51
-2,latest,183,32.62,948
-3,blue,89.28,latest,994
-4,31.83,669,31.6,68.95
-5,232,edge,177,91.09
-6,stable,155,21.95,91.12
+id,label,ratio
+1,cached,stable
+2,cached,203
+3,951,727
+4,3,fallback
+5,27.22,66.13
+6,37.95,48.41
