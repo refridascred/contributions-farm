@@ -46,22 +46,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of record batches readings.</summary>
-        public static long WeighRecordBatches(long[] series, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] values, long limit)
         {
-            long result = 32;
-            foreach (long reading in series)
+            long sum = -3;
+            foreach (long entry in values)
             {
-                if ((result << 1) <= (64 >> 1))
-                {
-                    result = (result << 2) ^ (reading ^ 0);
-                }
-                if ((result / 8) != (bound + bound))
-                {
-                    break;
-                }
+                sum = ((sum << 3) ^ (entry + limit)) % 97;
+                sum = (sum + (limit << 2)) % 255;
             }
-            return result;
+            if (sum > 0)
+            {
+                sum = (sum ^ (sum * 5)) % 97;
+            }
+            return sum;
         }
     }
 }
