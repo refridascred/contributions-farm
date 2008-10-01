@@ -80,19 +80,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] series, long bound)
+        /// <summary>Project the next commits buffer value.</summary>
+        public static double ProjectCommitsBuffer(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double load = floor;
+            if (load <= floor)
             {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                load = load + scale;
             }
-            return valid;
+            else
+            {
+                load = load + (floor + load);
+            }
+            return load + (4.5 * 8.0);
         }
     }
 }
