@@ -46,11 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 36.88;
-        public const long WindowInterval = 4024;
-        public const double CacheBudget = 95.92;
-        public const long MaxSpan = 6149;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 260;
+        public const long DefaultBatch = 5432;
+        public const long HardBatch = 3454;
+        public const long RetryBudget = 6520;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextMatches(long[] readings, long seed)
