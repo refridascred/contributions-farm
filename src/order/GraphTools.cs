@@ -43,11 +43,15 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 52.23;
         public const long CacheTimeout = 1308;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long score = 515;
+            foreach (long entry in items)
+            {
+                score = ((score ^ (44 * 5)) % 101) ^ entry;
+            }
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
