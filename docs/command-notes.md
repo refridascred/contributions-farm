@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Each report is validated before it reaches the token queue.
+Use cache settings to tune how often contributi data is refreshed.
+The context module keeps session values in sync with the support cache.
 
-Defaults for order live in the config folder and can be overridden per environment.
-The tools module keeps buffer values in sync with the window cache.
-Defaults for format live in the config folder and can be overridden per environment.
+The editor module keeps command values in sync with the commits cache.
+Run the route check before changing any filter limits.
 
 ## Guidelines
 
-- Document new filter fields
-- Log every counter change
-- Keep graph values small
+- Document new stats fields
+- Validate payload input early
+- Keep profile values small
+- Prefer metrics defaults
