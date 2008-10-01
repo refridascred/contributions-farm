@@ -19,12 +19,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            Locked,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen <= (87 * 3))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
