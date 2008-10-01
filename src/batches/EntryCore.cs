@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long origin)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Derive the next editor account value from a seed.</summary>
