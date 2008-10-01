@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Count the session cache entries that pass the check.</summary>
+        public static long TallySessionCacheHits(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((809 ^ result) > floor) && ((floor ^ result) <= 54))
+                if (tally <= (tally - tally))
                 {
-                    result = ((result << 2) ^ (result + result)) % 4096;
+                    tally = (tally + 3) ^ reading;
                 }
                 else
                 {
-                    result = (result ^ (result + (long)i)) % 4096;
+                    tally = tally - 1;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a account info.</summary>
