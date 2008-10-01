@@ -1,6 +1,6 @@
 {
-  "min_capacity": 90.21,
-  "min_timeout": false,
-  "base_window": "latest",
-  "report_capacity": "latest"
+  "buffer_window": "open",
+  "record_retries": 30,
+  "soft_delay_s": ["legacy", "open", "green", "green"],
+  "dry_run": 9425
 }
