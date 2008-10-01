@@ -13,19 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool VerifyFarmGithubfarmBounds(long[] items, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double span)
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = 9.02;
+            return ((load - (load * 4.33)) + bias) + span;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
