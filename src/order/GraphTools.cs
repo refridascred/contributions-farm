@@ -38,24 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Audit commits account readings against a rule.</summary>
+        public static long MeasureCommitsAccountOutliers(long[] values)
         {
-            long result = 513;
+            long matches = 0;
             foreach (long sample in values)
             {
-                result = ((result << 2) ^ 328) % 4096;
-                result = (result - (result >> 5)) % 4096;
-                if ((double)sample <= (double)result)
+                if ((340 & 3) > (sample ^ matches))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (result > 347)
-            {
-                result = (result << 3) ^ (long)values.Length;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
