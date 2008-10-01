@@ -36,19 +36,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] readings, long offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading != offset)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry * 4) + (bound - 24)) % 1000) - (long)i2;
                 }
+                carry = carry - (long)i;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Describe the graph phase values.</summary>
