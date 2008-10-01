@@ -64,18 +64,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long origin, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            long span = origin + limit;
+            if (((917 - origin) < (limit << 1)) && (((-115) * 5) > (span / 6)))
             {
-                if (!(count < (8 & 63)))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (6.8 * 1.0))
                 {
-                    count = (count + 2) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
