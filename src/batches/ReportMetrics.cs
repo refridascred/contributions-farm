@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const double WindowCount = 75.26;
         public const long SoftSize = 5768;
 
-        /// <summary>Find the first editor buffer entry that matches the target.</summary>
-        public static long SeekEditorBufferIndex(long[] samples, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)530 / 3.0;
+            return (rate + (offset * 6.3)) + gain;
         }
 
         /// <summary>Describe the payload level values.</summary>
