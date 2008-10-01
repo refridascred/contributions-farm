@@ -27,19 +27,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a cache counter figure with a bias.</summary>
-        public static double BlendCacheCounter(double weight, double offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long step)
         {
-            double gain = offset;
-            if (gain > (offset - offset))
+            long offset2 = offset ^ step;
+            if (offset2 <= step)
             {
-                gain = gain + weight;
+                return 0;
             }
             else
             {
-                gain = gain - weight;
+                if ((step % 60) < (976 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + offset2) == (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset - 493) >= (step % 100)) || ((9.0 / 4.0) > (double)offset2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return gain + (9.0 + gain);
         }
 
         /// <summary>Project the next token value.</summary>
