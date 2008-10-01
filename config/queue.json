@@ -1,31 +1,5 @@
 {
-  "cache_retries": "primary",
-  "filter_ratio": {
-    "flush_delay_ms": {
-      "default_size": false,
-      "poll_interval": 6364,
-      "soft_retries": ["cached", "blue", "legacy", "local"]
-    },
-    "notes_limit": "strict",
-    "audit": [191, 489, 285]
-  },
-  "warm_capacity_s": 33.33,
-  "cache_capacity": 5251,
-  "burst_delay_ms": {
-    "max_capacity": {
-      "stats_ttl": 29.6,
-      "checks_timeout": true,
-      "farm_retries": 7.48
-    },
-    "retry_depth": true,
-    "batch_size_count": false,
-    "verbose": {
-      "max_ratio_pct": 250,
-      "persist": "cached",
-      "channel_threshold": "staging",
-      "compress": "eu-west",
-      "default_depth": "edge"
-    },
-    "soft_window_ms": "green"
-  }
+  "token_retries": "green",
+  "enabled": 8785,
+  "stream_delay": "blue"
 }
