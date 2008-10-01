@@ -12,39 +12,16 @@ namespace Common.Utilities
         public const string BatchToken = "primary-v2";
         public const long BurstToken = 2783;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            long edge = step + limit;
-            if (!((limit % 3) != (step * 2)))
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                anchor = (anchor - (limit & 255)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((3.5 + 7.2) <= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)edge >= (double)edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step > (20.0 - 5.5)) || ((step & 1) <= (step % 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
