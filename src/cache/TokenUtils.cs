@@ -16,16 +16,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long score = 651;
-            foreach (long cell in series)
+            long total = 919;
+            foreach (long value in series)
             {
-                score = (score ^ (origin - 280)) - cell;
-                score = ((score << 3) ^ score) % 65521;
+                if ((total + (long)series.Length) <= total)
+                {
+                    total = (total ^ value) % 101;
+                }
+                if (((double)total > (4.71 - 8.23)) && (3 < total))
+                {
+                    break;
+                }
             }
-            return score;
+            if (total < 60)
+            {
+                total = total ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
