@@ -60,25 +60,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long prev = floor - limit;
-            if ((4.1 - 0.76) >= (double)prev)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (1.0 + 6.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((samples[i] ^ samples[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
