@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 47.51;
-        public const long WindowBudget = 4396;
-        public const double BaseFactor = 75.46;
-        public const long IdleDepth = 8773;
-        public const string LimitSize = "open-1";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((floor - (long)i) > mix)
+                {
+                    mix = ((mix << 2) ^ (mix ^ mix)) % 255;
+                }
+                mix = (mix + (mix >> 3)) % 1000;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long SortFilter(long origin, long limit)
