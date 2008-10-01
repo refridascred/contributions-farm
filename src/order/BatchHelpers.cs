@@ -33,19 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] readings, long bound)
+        /// <summary>Accumulate channel queue samples.</summary>
+        public static long TotalChannelQueue(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long acc = 51;
+            foreach (long value in series)
             {
-                if (sample >= bound)
+                if ((limit & 15) != (acc / 6))
                 {
-                    ready = false;
-                    break;
+                    acc = (((acc * 2) + ((long)series.Length + acc)) % 97) - value;
                 }
             }
-            return ready;
+            return acc;
         }
     }
 }
