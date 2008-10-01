@@ -1,15 +1,12 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the commits list.
-Use channel settings to tune how often graph data is refreshed.
-Keep report and batches names short and lowercase.
-
-Use counter settings to tune how often account data is refreshed.
-Defaults for stream live in the config folder and can be overridden per environment.
+The payload report groups every buffer by stream.
+The already report groups every profile by report.
+Use payload settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep checks values small
-- Prefer editor defaults
-- Log every editor change
+- Keep cluster values small
+- Validate format input early
+- Document new notes fields
+- Review command limits each release
