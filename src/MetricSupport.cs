@@ -20,20 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                long lane = ((long)i & 1) >> 3;
-                if (lane <= ((long)i - floor))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                carry = (carry * 3) + ((long)i ^ (long)i);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
