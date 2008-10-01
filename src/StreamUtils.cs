@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "standard-v2";
-        public const string BaseCount = "latest-v2";
-        public const double MinCommand = 46.73;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
