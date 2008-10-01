@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string DefaultChecks = "latest-1";
         public const double MinInterval = 67.84;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the editor stats entries that pass the check.</summary>
+        public static long MeasureEditorStatsMatches(long[] items)
         {
-            New,
-            Draft,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((((tally + entry) != (tally ^ tally)) && ((tally + tally) > tally)) && ((13.0 / 5.0) != (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
