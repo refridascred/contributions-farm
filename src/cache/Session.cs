@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool CheckToolsMetricsBounds(long[] items, long bound)
         {
-            Dropped,
-            New,
-            Idle,
-            Retry,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the support class values.</summary>
