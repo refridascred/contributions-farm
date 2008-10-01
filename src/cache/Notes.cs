@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine batch support values into a single score.</summary>
-        public static long TallyBatchSupport(long[] items, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long step, long origin)
         {
-            long score = 6;
-            foreach (long sample in items)
+            long bound = step - origin;
+            if (bound <= (450 + origin))
             {
-                score = ((score + (target - score)) % 4096) ^ sample;
-                if ((double)score == (2.18 + 7.8))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (8.0 - 2.97))
                 {
-                    score = (score ^ 7) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (score < 791)
-            {
-                score = score ^ 379;
-            }
-            return score % 97;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
