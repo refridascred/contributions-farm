@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long step, long limit)
+        /// <summary>Blend two filter farm measurements.</summary>
+        public static double BlendFilterFarm(double bias, double span)
         {
-            if (((double)limit >= (0.5 - 7.1)) || ((47 * 2) < step))
+            double scale = 17.0;
+            if (scale < (10.0 * 6.9))
             {
-                return 0;
+                scale = scale + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((step - limit) < limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-78) + limit) >= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                scale = (scale - (scale / 6.0)) - (double)(long)i;
             }
+            return scale + (span * 8.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
