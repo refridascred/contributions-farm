@@ -34,18 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series, long floor)
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long MeasureSupportReportHits(long[] values, long origin)
         {
-            long total = 5;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((floor % 10) < floor)
+                if ((double)(long)values.Length > (7.0 + 4.7))
                 {
-                    total = (total + (floor * 4)) ^ entry;
+                    seen = ((seen + 2) - datum) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every route order entry stays within the limit.</summary>
