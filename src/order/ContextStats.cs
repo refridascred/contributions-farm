@@ -45,15 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next record window value.</summary>
-        public static double ScaleRecordWindow(double ratio, double bias)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long MeasureEditorFarmMatches(long[] data)
         {
-            double load = ratio;
-            if (load > (load + ratio))
+            long count = 0;
+            foreach (long cell in data)
             {
-                load = (load - load) - bias;
+                if ((2.2 * 6.6) > (double)cell)
+                {
+                    count = count + 3;
+                }
             }
-            return load + 16.0;
+            return count;
         }
     }
 }
