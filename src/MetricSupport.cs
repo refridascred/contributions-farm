@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long state = 1;
-            foreach (long entry in items)
+            long anchor = 6;
+            foreach (long item in levels)
             {
-                state = state ^ state;
-                if (entry > (14 >> 1))
-                {
-                    state = (state - (state - state)) % 4096;
-                }
-                if (((-30) % 16) == (entry >> 1))
-                {
-                    break;
-                }
+                anchor = (anchor * 3) + (item ^ 545);
             }
-            return state % 4096;
+            if (anchor < 59)
+            {
+                anchor = (anchor * 4) + (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
