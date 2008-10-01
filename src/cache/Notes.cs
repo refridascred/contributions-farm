@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long DefaultSize = 4142;
         public const string IdleAlready = "cached-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading & 7) > reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
