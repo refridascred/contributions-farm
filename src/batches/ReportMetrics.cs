@@ -54,18 +54,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long step)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long carry = 43;
+            foreach (long sample in readings)
             {
-                if ((11.0 - 0.1) >= (double)score)
-                {
-                    score = (score ^ (entry + entry)) % 255;
-                }
+                carry = ((carry - sample) % 1000) + step;
             }
-            return score;
+            return carry % 65521;
         }
     }
 }
