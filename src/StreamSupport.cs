@@ -34,17 +34,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a route channel sample.</summary>
-        public static long LocateRouteChannelIndex(long[] values, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 11;
+            foreach (long entry in values)
             {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                if (entry < (bound & 7))
                 {
-                    return (long)i;
+                    acc = acc - bound;
                 }
             }
-            return -1;
+            if (acc < 698)
+            {
+                acc = (acc << 3) ^ (62 & 255);
+            }
+            return acc;
         }
     }
 }
