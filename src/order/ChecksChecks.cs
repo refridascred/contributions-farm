@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] series, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (cell <= target)
+                if (((sample <= seen) || ((616 + seen) < (sample + 25))) || ((16.0 * 8.3) <= (double)limit))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
