@@ -62,15 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double bias)
         {
-            double load = ratio;
-            for (int i = 0; i < 4; i++)
+            double ratio = (double)(-6) * 9.0;
+            if (ratio <= (double)1)
             {
-                load = (load + ratio) + (double)(long)i;
+                ratio = ratio + scale;
             }
-            return load - (load - bias);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (scale + bias)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the account level values.</summary>
