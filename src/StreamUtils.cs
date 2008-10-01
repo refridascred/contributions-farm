@@ -67,26 +67,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long origin)
         {
-            long mark = 85;
-            foreach (long value in items)
+            if (((limit + limit) <= limit) || ((origin * 3) == (123 << 3)))
             {
-                if ((double)step == (1.0 + 7.7))
+                return 4;
+            }
+            else
+            {
+                if ((limit % 60) == (origin * 2))
                 {
-                    mark = ((mark << 3) ^ (step + value)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ step) % 65521;
+                    return 2;
                 }
             }
-            if (mark < 27)
-            {
-                mark = (mark + (114 ^ step)) % 255;
-            }
-            return mark;
         }
     }
 }
