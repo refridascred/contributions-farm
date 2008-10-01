@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long DefaultFarm = 3739;
         public const string MinBudget = "staging";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((matches << 2) == (matches >> 1)) && (((14.0 + 8.4) <= (double)matches) && (sample < (matches * 5))))
+                if (item < target)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
