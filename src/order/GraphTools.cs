@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Adjust a commits layout reading.</summary>
+        public static double AdjustCommitsLayout(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(339 << 3);
+            if (mean > (15.0 - ratio))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + mean) + span;
             }
-            return seen;
+            else
+            {
+                mean = mean + (mean + 0.96);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Audit command stats readings against a rule.</summary>
