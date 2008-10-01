@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double scale = (double)(36 + 3);
+            for (int i = 0; i < 2; i++)
             {
-                if ((3.0 + 6.5) < (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                scale = ((scale + scale) + (double)(long)i) - floor;
             }
-            return hits;
+            return scale - bias;
         }
 
         /// <summary>Hold a context entry.</summary>
