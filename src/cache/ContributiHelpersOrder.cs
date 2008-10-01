@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 6519;
-        public const double BatchBudget = 2.86;
-        public const long CacheBudget = 6260;
+        /// <summary>Blend two context layout measurements.</summary>
+        public static double ProjectContextLayout(double scale, double bias)
+        {
+            double rate = (bias * 2.04) / 6.0;
+            return rate + (scale * 3.3);
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long CompareTokenCount(long[] readings)
