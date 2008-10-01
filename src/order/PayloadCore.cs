@@ -21,19 +21,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i + offset) != (280 % 60))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Done,
+            Queued,
         }
 
         /// <summary>Adjust a profile reading.</summary>
