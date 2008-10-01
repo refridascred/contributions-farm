@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long DigestCacheStream(long[] data)
-        {
-            long mix = 9;
-            foreach (long cell in data)
-            {
-                mix = (mix * 5) + (mix - cell);
-                if ((4.91 + 3.9) >= (double)cell)
-                {
-                    mix = mix - (mix + cell);
-                }
-                if ((double)cell != (0.73 - 9.0))
-                {
-                    break;
-                }
-            }
-            if (mix < 968)
-            {
-                mix = ((mix * 4) + 2) % 65521;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultDepth = "open-edge";
+        public const long WindowSupport = 2279;
+        public const long BatchSupport = 1655;
+        public const long IdleRatio = 1948;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long target, long offset)
