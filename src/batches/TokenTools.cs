@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            Idle,
         }
     }
 }
