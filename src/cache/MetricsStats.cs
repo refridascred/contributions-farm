@@ -53,21 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order graph samples.</summary>
-        public static long PairOrderGraphCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 97;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state << 3) ^ (value % 2)) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
