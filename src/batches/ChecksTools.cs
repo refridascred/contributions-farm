@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of metric window readings.</summary>
+        public static long TotalMetricWindow(long[] readings, long step)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            long state = 1;
+            foreach (long reading in readings)
+            {
+                if (!((double)(long)readings.Length < (7.62 + 6.1)))
+                {
+                    state = (state + (reading + state)) + step;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a cache summary.</summary>
