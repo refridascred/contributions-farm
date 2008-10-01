@@ -77,11 +77,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheSpan = 74.48;
-        public const long BatchWidth = 4783;
-        public const string IdleBudget = "cached-edge";
-        public const long RetryInterval = 7435;
-        public const double MinFormat = 82.26;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
     }
 }
