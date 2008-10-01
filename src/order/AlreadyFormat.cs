@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 3694;
-        public const string WindowInterval = "strict-edge";
-        public const long BurstTimeout = 2287;
-        public const string RetryWidth = "fallback-v2";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepInterval = 0.33;
+        public const long StepCommits = 5186;
+        public const long IdleCommits = 1642;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] values, long target)
