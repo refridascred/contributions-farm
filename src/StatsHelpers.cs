@@ -34,24 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            if ((5 + limit) > (origin + 67))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin & 31) != (limit + limit)) || (1.83 > (double)limit))
+                if ((values[i] < step) && ((values[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
