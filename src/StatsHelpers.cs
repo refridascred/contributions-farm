@@ -49,22 +49,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long CountChecksStreamHits(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample < (8.25 / 8.0))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
