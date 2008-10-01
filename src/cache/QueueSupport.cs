@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string StepEntry = "stable";
         public const double IdleEntry = 4.1;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
