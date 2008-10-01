@@ -25,24 +25,10 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix + (limit << 2)) ^ (long)i2;
-                }
-                if ((183 & 31) > (limit * 3))
-                {
-                    mix = (mix - (limit * 5)) % 101;
-                    mix = ((mix * 4) + (limit & 63)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "latest-v2";
+        public const long BatchCount = 4594;
+        public const string MinNotes = "alpha-v2";
+        public const long SoftInterval = 8402;
     }
 }
