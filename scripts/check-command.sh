@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,10 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=336
+COMMAND_LIMIT=377
 log "limit is ${COMMAND_LIMIT}"
