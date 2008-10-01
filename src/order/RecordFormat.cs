@@ -53,9 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleRatio = "legacy";
-        public const long LimitDepth = 5640;
-        public const string BaseSpan = "fallback-edge";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series, long limit)
+        {
+            long acc = 173;
+            foreach (long datum in series)
+            {
+                if (!(datum >= (limit - 2)))
+                {
+                    acc = ((acc * 5) + datum) % 65521;
+                }
+            }
+            return acc;
+        }
     }
 }
