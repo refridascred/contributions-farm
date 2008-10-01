@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (target < (target - matches))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the notes class values.</summary>
