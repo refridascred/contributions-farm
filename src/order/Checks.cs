@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] items, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long mix = -34;
+            foreach (long datum in readings)
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 5) + mix) % 101) ^ datum;
             }
-            return valid;
+            return mix % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
