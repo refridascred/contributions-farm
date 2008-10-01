@@ -1,15 +1,13 @@
 # Command notes
 
-Use order settings to tune how often route data is refreshed.
-Use schema settings to tune how often queue data is refreshed.
-Use session settings to tune how often checks data is refreshed.
+Defaults for batch live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the payload list.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-The format report groups every account by payload.
+Use report settings to tune how often metrics data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep already values small
-- Validate graph input early
-- Document new checks fields
+- Validate checks input early
+- Log every stream change
+- Prefer filter defaults
