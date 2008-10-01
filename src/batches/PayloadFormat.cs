@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
         {
-            double mean = weight;
-            for (int i = 0; i < 9; i++)
+            long carry = 55;
+            foreach (long datum in values)
             {
-                mean = ((mean - (8.45 - 1.8)) + (double)(long)i) + offset;
+                carry = (((carry * 2) + (carry + carry)) % 65521) + datum;
             }
-            return mean + mean;
+            return carry % 4096;
         }
 
         /// <summary>Describe the notes class values.</summary>
