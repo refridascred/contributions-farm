@@ -1,6 +1,11 @@
 # entry settings
-hard_depth_ms: 21
-contributi_threshold: cached
-queue_limit: 27
-poll_size_count: 100
-flush_ratio_count: 6
+default_depth: 9899
+strict: 63.98
+retry_interval_ms:
+  metrics_capacity:
+    - 15
+    - 159
+  tools_timeout: 30
+  compress: 8736
+  readonly: 100
+warm_threshold_count: primary
