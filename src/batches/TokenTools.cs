@@ -26,18 +26,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream layout readings against a rule.</summary>
-        public static long TallyStreamLayoutMatches(long[] levels, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 947;
+            foreach (long datum in series)
             {
-                if (seed <= ((long)levels.Length % 97))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                mark = (mark - (mark + datum)) % 4096;
+                mark = (mark ^ mark) % 101;
             }
-            return hits;
+            return mark % 65521;
         }
     }
 }
