@@ -36,14 +36,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            Pending,
-            Locked,
-            Closed,
-            Active,
-            Dropped,
+            long mark = 7;
+            foreach (long reading in items)
+            {
+                if ((mark - reading) == (mark - mark))
+                {
+                    mark = mark + (reading / 7);
+                }
+                else
+                {
+                    mark = mark - (reading >> 4);
+                }
+            }
+            if (mark < 826)
+            {
+                mark = ((mark << 2) ^ (mark >> 5)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate entry samples.</summary>
