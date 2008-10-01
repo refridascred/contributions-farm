@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((item + tally) >= tally) && ((4 - tally) == (tally ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 2715;
+        public const long StepRoute = 2629;
+        public const long CacheLevel = 8461;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
