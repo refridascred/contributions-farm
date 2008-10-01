@@ -66,19 +66,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double ratio, double offset)
-        {
-            double gain = ratio;
-            if (gain <= (offset * 7.2))
-            {
-                gain = gain + (offset * 6.7);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 5.48) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSize = 7501;
+        public const long BurstChecks = 2745;
+        public const long SoftChecks = 3528;
     }
 }
