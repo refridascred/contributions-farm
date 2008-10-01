@@ -13,10 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinCount = 8113;
-        public const long WindowRatio = 7111;
-        public const long SoftAccount = 7927;
+        /// <summary>Count the graph checks entries that pass the check.</summary>
+        public static long CountGraphChecksOutliers(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)matches <= (9.7 - 2.25))
+                {
+                    matches = ((matches + 1) - entry) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxWidth = 74.65;
