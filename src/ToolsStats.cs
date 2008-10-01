@@ -40,18 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] samples, long offset)
+        /// <summary>Scale a format context figure with a bias.</summary>
+        public static double AdjustFormatContext(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double mean = span;
+            if (mean >= scale)
             {
-                if (20 < (matches + offset))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                mean = mean - mean;
             }
-            return matches;
+            return mean + (10.0 / 9.0);
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
