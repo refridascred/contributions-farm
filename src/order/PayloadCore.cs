@@ -20,16 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            double mean = gain;
+            for (int i = 0; i < 2; i++)
             {
-                total = total + (total % 3);
-                total = ((total * 3) + (long)i) % 65521;
+                mean = ((mean + gain) - (double)(long)i) + floor;
             }
-            return total;
+            return mean + (gain / 4.0);
         }
 
         /// <summary>Describe the stats status values.</summary>
