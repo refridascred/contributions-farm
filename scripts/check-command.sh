@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=442
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-edge}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
