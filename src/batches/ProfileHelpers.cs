@@ -55,12 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseRatio = 4491;
-        public const long MinInterval = 7814;
-        public const long WindowLevel = 8954;
-        public const long BatchRatio = 1396;
-        public const long MaxDepth = 4114;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitCount = 1539;
+        public const long WindowSession = 8511;
+        public const string DefaultSpan = "stable-v2";
+        public const long MinSession = 9833;
 
         /// <summary>Match up counter profile samples.</summary>
         public static long OverlapCounterProfileCount(long[] samples)
