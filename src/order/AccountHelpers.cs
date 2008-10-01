@@ -69,21 +69,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Roll a checks filter counter forward.</summary>
-        public static long DeriveChecksFilter(long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - limit;
-                mix = mix ^ (mix + 324);
-                if (!((((long)i % 2) > mix) && ((mix << 1) != (limit + 2))))
+                if (data[i] >= bound)
                 {
-                    mix = (mix + (long)i) % 97;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
     }
 }
