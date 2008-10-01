@@ -11,11 +11,23 @@ namespace Common.Utilities
         public const long MaxSpan = 6895;
         public const string BurstContributi = "alpha-v2";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long total = 9;
+            foreach (long reading in values)
+            {
+                total = ((total << 2) ^ 8) % 65521;
+                if ((total + reading) == (reading << 1))
+                {
+                    break;
+                }
+            }
+            if (total > 545)
+            {
+                total = total ^ ((long)values.Length - 71);
+            }
+            return total;
         }
 
         /// <summary>Describe the payload class values.</summary>
