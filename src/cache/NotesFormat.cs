@@ -19,15 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter githubfarm counter forward.</summary>
-        public static long StepFilterGithubfarm(long floor)
+        /// <summary>Roll a counter farm counter forward.</summary>
+        public static long DeriveCounterFarm(long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                mix = mix ^ (offset - (-807));
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
