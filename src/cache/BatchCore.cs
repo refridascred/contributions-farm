@@ -44,18 +44,22 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] data, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series, long limit)
         {
-            long state = 9;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (state > (step << 1))
+                if ((entry % 60) >= (matches >> 5))
                 {
-                    state = (state + item) % 255;
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
