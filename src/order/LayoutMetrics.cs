@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total ^ (offset ^ total);
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 2185;
+        public const long SoftRatio = 2372;
+        public const long StepSession = 8039;
+        public const string IdleSession = "standard-v2";
 
         /// <summary>Find the first tools notes entry that matches the target.</summary>
         public static long SeekToolsNotesIndex(long[] samples, long floor)
