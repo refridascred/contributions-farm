@@ -1,5 +1,10 @@
 {
-  "warm_size_s": true,
-  "warm_delay": 36.65,
-  "soft_limit_pct": true
+  "payload_ttl": false,
+  "retry_retries_s": [387, 383, 423],
+  "dry_run": "blue",
+  "graph_limit": {
+    "channel_depth": false,
+    "min_timeout_ms": true,
+    "soft_ratio_ms": "latest"
+  }
 }
