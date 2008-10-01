@@ -1,15 +1,5 @@
 # support settings
-farm_interval:
-  account_capacity: 1
-  checks_depth: green
-  enabled: 94.96
-  cache_window: 79
-  compress: latest
-cache_window_pct:
-  record_size: true
-  metrics_ratio: 9
-  persist: stable
-  readonly: edge
-  token_delay: 47
-  compress: 12.06
-hard_timeout_pct: 217
+batch_ratio: true
+sync_delay: 4.75
+warm_threshold_count: 3.63
+dry_run: legacy
