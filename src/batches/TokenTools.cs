@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count profile already pairs that satisfy a relation.</summary>
-        public static long OverlapProfileAlreadyCount(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count == (7.6 + 1.0))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 3) ^ datum) + bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
