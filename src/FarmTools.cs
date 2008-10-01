@@ -20,13 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long step)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile token readings.</summary>
