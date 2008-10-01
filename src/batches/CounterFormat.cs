@@ -13,22 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] items, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double gain2 = gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (((origin + 11) != (reading & 7)) || ((tally - (long)items.Length) <= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain2 = (gain2 + floor) - (double)(long)i;
             }
-            return tally;
+            return gain2 + gain;
         }
 
         /// <summary>Accumulate command filter samples.</summary>
