@@ -29,15 +29,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Synced,
-            Ready,
-            Pending,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 5553;
+        public const long WindowInterval = 9775;
+        public const long BatchGithubfarm = 95;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
