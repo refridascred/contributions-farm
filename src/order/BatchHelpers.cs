@@ -13,22 +13,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches > (datum >> 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
