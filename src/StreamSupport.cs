@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 6298;
-        public const long BatchSpan = 6438;
-        public const long BaseBuffer = 4202;
-        public const double MinBuffer = 3.16;
-        public const string BatchBuffer = "open-edge";
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long limit)
+        {
+            long acc = 308;
+            foreach (long datum in data)
+            {
+                acc = ((acc ^ 741) % 1000) - limit;
+                acc = acc - (acc + datum);
+            }
+            return acc;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] values, long target)
