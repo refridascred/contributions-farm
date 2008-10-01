@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3486;
-        public const long IdleChecks = 5973;
-        public const long HardChecks = 8377;
-        public const long StepRatio = 3346;
+        /// <summary>Measure how many route batches samples are out of range.</summary>
+        public static long CountRouteBatchesOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((12.0 + 4.0) > (double)cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long RollCache(long limit)
