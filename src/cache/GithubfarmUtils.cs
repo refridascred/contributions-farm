@@ -26,21 +26,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count route cluster pairs that satisfy a relation.</summary>
-        public static long MatchRouteClusterCount(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 28;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = ((result * 2) + (target - target)) % 65521;
+                if ((double)result <= 3.7)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result - result;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item - result)) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
