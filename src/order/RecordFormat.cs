@@ -55,17 +55,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a checks metrics reading by value.</summary>
-        public static long LocateChecksMetricsIndex(long[] series, long offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate buffer account samples.</summary>
