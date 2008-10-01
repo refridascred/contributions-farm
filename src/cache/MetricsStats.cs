@@ -60,22 +60,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long bound)
-        {
-            long acc = 15;
-            foreach (long value in items)
-            {
-                if ((double)acc < 4.0)
-                {
-                    acc = (acc - (bound & 63)) ^ value;
-                }
-            }
-            if (acc < 417)
-            {
-                acc = (acc - (acc - bound)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2127;
+        public const double SoftFactor = 78.05;
+        public const long MinTools = 8940;
     }
 }
