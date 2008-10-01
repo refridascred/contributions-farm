@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] items, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((origin + entry) > entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
