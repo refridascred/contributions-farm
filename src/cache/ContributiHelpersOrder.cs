@@ -20,17 +20,23 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long seed)
+        /// <summary>Derive the next order channel value from a seed.</summary>
+        public static long StepOrderChannel(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                if (mix <= (995 - mix))
                 {
-                    return (long)i;
+                    mix = (mix - (1 - (long)i)) % 101;
                 }
+                else
+                {
+                    mix = (mix - (step & 255)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate commits samples.</summary>
