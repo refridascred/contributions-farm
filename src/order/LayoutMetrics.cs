@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] values, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                long cur = ((long)i / 9) + floor;
-                if ((state > (state << 1)) && ((state ^ state) < (state + cur)))
+                if (value <= origin)
                 {
-                    cur = (cur * 5) + (532 / 9);
+                    ok = false;
                     break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Project the next checks value.</summary>
