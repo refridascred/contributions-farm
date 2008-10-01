@@ -14,13 +14,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Active,
             Stale,
-            Idle,
-            Closed,
+            Synced,
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
