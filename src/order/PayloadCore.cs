@@ -21,12 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public bool Ratio { get; set; }
+            public double Owner { get; set; }
             public long Level { get; set; }
-            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
