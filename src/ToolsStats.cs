@@ -64,22 +64,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] values, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((value + 976) < (73 - floor))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate record notes readings against a bound.</summary>
