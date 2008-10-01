@@ -20,19 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long WeighLayoutTools(long[] samples, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long step)
         {
-            long result = 7;
-            foreach (long value in samples)
+            long delta = floor + step;
+            if (delta <= (delta + 849))
             {
-                result = ((result << 3) ^ (value + result)) % 97;
-                if ((value >> 5) < floor)
+                return 1;
+            }
+            else
+            {
+                if (delta >= (step * 5))
                 {
-                    result = result + (floor & 63);
+                    return 6;
+                }
+                else
+                {
+                    if (delta < (step ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Iterate the filter token series from a seed.</summary>
