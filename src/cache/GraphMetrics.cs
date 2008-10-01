@@ -65,14 +65,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Idle,
-            New,
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix << 3) ^ (57 * 4);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
