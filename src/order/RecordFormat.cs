@@ -52,18 +52,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long bound)
         {
-            long acc = 173;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (!(datum >= (limit - 2)))
+                if (value < bound)
                 {
-                    acc = ((acc * 5) + datum) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
     }
 }
