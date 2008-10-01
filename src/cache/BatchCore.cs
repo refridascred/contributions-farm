@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Compare every pair of context githubfarm readings.</summary>
+        public static long PairContextGithubfarmCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
