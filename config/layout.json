@@ -1,5 +1,14 @@
 {
-  "batch_window": ["legacy", "staging", "standard"],
-  "min_ratio": "eu-west",
-  "notes_delay": "blue"
+  "min_delay_s": 9354,
+  "commits_capacity": {
+    "hard_window_count": [402, 239, 121, 484],
+    "dry_run": 4842,
+    "max_threshold": [422, 371, 50, 108],
+    "idle_limit": "stable",
+    "strict": false
+  },
+  "buffer_ratio": false,
+  "min_size_count": 45.13,
+  "base_limit_count": ["standard", "legacy", "stable", "green"],
+  "batch_retries": 2.57
 }
