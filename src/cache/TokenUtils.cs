@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of order support readings.</summary>
-        public static long CombineOrderSupport(long[] items, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long limit)
         {
-            long mix = 814;
-            foreach (long reading in items)
+            long state = 283;
+            foreach (long sample in samples)
             {
-                if (773 > (mix - floor))
+                if ((long)samples.Length < state)
                 {
-                    mix = (mix - (reading + reading)) % 255;
+                    state = (((state + (long)samples.Length) % 101) ^ sample) - limit;
                 }
             }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
