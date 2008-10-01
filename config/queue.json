@@ -1,6 +1,5 @@
 {
-  "compress": [467, 231, 18],
-  "retry_window_ms": true,
-  "sync_delay": "local",
-  "max_threshold_s": 30.04
+  "audit": "local",
+  "hard_depth_count": 7452,
+  "stream_threshold": "local"
 }
