@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long offset)
         {
-            long mix = 86;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                mix = ((mix + (mix >> 2)) % 255) - sample;
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the batches level values.</summary>
