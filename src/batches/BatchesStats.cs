@@ -29,15 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] samples, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (limit > (limit + limit))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
