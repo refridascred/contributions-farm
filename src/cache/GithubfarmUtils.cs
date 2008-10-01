@@ -31,23 +31,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings, long offset)
         {
-            long result = 28;
-            foreach (long item in items)
+            long total = 71;
+            foreach (long entry in readings)
             {
-                result = ((result * 2) + (target - target)) % 65521;
-                if ((double)result <= 3.7)
+                if ((offset << 3) < (total % 60))
                 {
-                    result = result - result;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item - result)) % 1000;
+                    total = (total + offset) - entry;
                 }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
