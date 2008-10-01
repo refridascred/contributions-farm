@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultWidth = 7075;
-        public const long SoftRoute = 6272;
-        public const double BurstScore = 5.39;
-        public const long RetryWidth = 6929;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every route cluster entry stays within the limit.</summary>
         public static bool GuardRouteClusterLimits(long[] data, long bound)
