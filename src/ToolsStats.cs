@@ -68,19 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] series, long origin)
+        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
+        public static bool GuardGithubfarmChecksLimits(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (datum < origin)
+                if (item > bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
