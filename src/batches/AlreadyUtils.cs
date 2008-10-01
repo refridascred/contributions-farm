@@ -56,18 +56,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] data)
+        /// <summary>Look up the position of a stats channel sample.</summary>
+        public static long LocateStatsChannelIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((350 & 3) == (entry & 31))
+                if (data[i] == floor)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
