@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Look up the position of a route record sample.</summary>
-        public static long SeekRouteRecordIndex(long[] readings, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = gain * 5.1;
+            if (ratio < (9.1 / 4.0))
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)10) - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain - 5.0)) + (double)(long)i;
+            }
+            return ratio - (double)4;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
