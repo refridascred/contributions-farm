@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 626;
+        public const double IdleProfile = 82.44;
+        public const string BatchProfile = "staging";
+        public const long BurstProfile = 9249;
+        public const string CacheRatio = "stable";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseScore = 8456;
