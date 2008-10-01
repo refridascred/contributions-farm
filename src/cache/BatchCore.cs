@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every graph order entry stays within the limit.</summary>
-        public static bool CheckGraphOrderBounds(long[] series, long offset)
+        /// <summary>Count session batch pairs that satisfy a relation.</summary>
+        public static long PairSessionBatchCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
