@@ -46,19 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits notes figure with a bias.</summary>
-        public static double BlendCommitsNotes(double bias, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double floor)
         {
-            double ratio = bias * 3.4;
-            if (ratio >= (double)801)
+            double scale = (double)(2 % 7);
+            if (scale <= floor)
             {
-                ratio = (ratio - bias) - span;
+                scale = scale + gain;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - bias) - (double)(long)i;
-            }
-            return ratio - (double)65;
+            return scale - floor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
