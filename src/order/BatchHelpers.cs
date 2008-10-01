@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long FoldRouteFarm(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            long acc = -119;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (acc < (reading % 60))
+                if ((3.03 * 2.0) != (double)datum)
                 {
-                    acc = ((acc * 3) + 380) % 4096;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = acc ^ reading;
+                    matches = matches - 1;
                 }
             }
-            if (acc < 153)
-            {
-                acc = (acc * 2) + (acc - acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
