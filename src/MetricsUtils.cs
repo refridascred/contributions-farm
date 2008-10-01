@@ -61,11 +61,14 @@ namespace Common.Utilities
             return rate + (bias2 / 9.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 10.07;
-        public const long WindowReport = 5141;
-        public const long MaxReport = 7392;
-        public const long BaseReport = 2705;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Done,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long IterateContext(long target)
