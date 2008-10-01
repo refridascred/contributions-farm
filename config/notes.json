@@ -1,11 +1,19 @@
 {
-  "compress": [439, 286],
-  "queue_ttl": false,
-  "audit": {
-    "dry_run": "primary",
-    "route_threshold": 5.7,
-    "layout_ratio": 8
+  "sync_threshold_count": 4371,
+  "base_interval": "fallback",
+  "token_timeout": {
+    "max_capacity_ms": "fallback",
+    "default_delay": {
+      "hard_size": 7127,
+      "poll_ratio_pct": 1165,
+      "cache_depth": 43,
+      "max_window_count": "legacy"
+    },
+    "warm_timeout_s": 3723,
+    "hard_limit": [357, 57],
+    "cache_ratio_count": "green",
+    "audit": "legacy"
   },
-  "persist": "legacy",
-  "enabled": "cached"
+  "record_capacity": "staging",
+  "idle_interval_ms": 74.35
 }
