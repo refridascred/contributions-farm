@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] values, long limit)
+        /// <summary>Locate a checks report reading by value.</summary>
+        public static long FindChecksReportIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches < (3 - limit))
+                if (series[i] < step)
                 {
-                    matches = (matches + 2) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
