@@ -34,19 +34,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] values, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = 394;
-            foreach (long item in values)
-            {
-                result = (result << 3) ^ (85 + item);
-            }
-            if (result > 2)
-            {
-                result = (result << 3) ^ origin;
-            }
-            return result;
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
