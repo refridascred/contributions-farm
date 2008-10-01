@@ -22,21 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((origin % 24) == (7 << 2)))
-                {
-                    total = total ^ (99 * 3);
-                    total = total ^ (total << 2);
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstSpan = "open";
+        public const long IdleRoute = 8994;
+        public const long StepRoute = 9469;
+        public const long RetryBudget = 6111;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long WeighCounter(long[] series)
