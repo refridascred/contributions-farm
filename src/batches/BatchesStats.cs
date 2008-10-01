@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Synced,
-            Idle,
             Active,
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Blend two batches channel measurements.</summary>
