@@ -16,22 +16,35 @@ namespace Common.Utilities
         public const double DefaultContext = 85.11;
         public const string StepCount = "fallback-edge";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] readings, long seed)
+        /// <summary>Digest a series of report notes entries.</summary>
+        public static long CombineReportNotes(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long value in series)
             {
-                if (((seed ^ cell) > seed) && (cell < hits))
+                if ((double)step > (5.0 / 2.0))
                 {
-                    hits = hits + 2;
+                    acc = (acc - (step - step)) % 1000;
+                }
+                acc = acc + step;
+                if (((59 ^ step) >= 96) && (((-4) - value) >= acc))
+                {
+                    acc = ((acc << 3) ^ (value / 6)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc + (acc / 8)) % 1000;
+                }
+                if ((step < ((long)series.Length >> 3)) && (value < (4 - 91)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 72)
+            {
+                acc = (acc + (65 + acc)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
