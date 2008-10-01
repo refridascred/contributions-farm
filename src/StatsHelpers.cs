@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 2715;
-        public const long StepRoute = 2629;
-        public const long CacheLevel = 8461;
+        /// <summary>Classify a batch checks pair into a bucket.</summary>
+        public static long BucketBatchChecks(long bound, long limit)
+        {
+            long gap = bound - limit;
+            if ((double)(-43) > (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.7 - 7.49) == (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
