@@ -27,19 +27,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long anchor = -789;
+            foreach (long sample in samples)
             {
-                if ((offset % 7) < (acc + offset))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                anchor = ((anchor * 4) + (target / 4)) ^ sample;
             }
-            return acc;
+            return anchor;
         }
     }
 }
