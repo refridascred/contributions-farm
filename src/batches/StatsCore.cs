@@ -59,15 +59,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] data, long limit)
         {
-            long mark = 413;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (seed + reading);
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
