@@ -10,23 +10,14 @@ namespace Common.Utilities
         public const double MinWidth = 17.37;
         public const long MaxScore = 9431;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 5) + target) ^ (long)i2;
-                }
-                if (((sum ^ target) == (243 + target)) && ((target ^ sum) < (long)i))
-                {
-                    sum = ((sum << 2) ^ ((long)i + (-7))) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Synced,
+            Pending,
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
