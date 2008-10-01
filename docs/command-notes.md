@@ -1,14 +1,11 @@
 # Command notes
 
-The support report groups every support by queue.
-A order that stays idle for too long is moved to the tools list.
-
-The graph module keeps account values in sync with the notes cache.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Defaults for context live in the config folder and can be overridden per environment.
+Run the record check before changing any notes limits.
+The profile report groups every entry by window.
+The metric report groups every report by cache.
 
 ## Guidelines
 
-- Log every filter change
-- Keep filter values small
-- Validate report input early
+- Prefer metrics defaults
+- Keep stream values small
+- Log every notes change
