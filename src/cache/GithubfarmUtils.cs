@@ -19,10 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 5560;
-        public const long CacheCount = 5310;
-        public const string IdleBudget = "staging";
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Count route cluster pairs that satisfy a relation.</summary>
         public static long MatchRouteClusterCount(long[] samples)
