@@ -51,24 +51,12 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Adjust a layout record reading.</summary>
-        public static double ProjectLayoutRecord(double weight, double bias)
-        {
-            double drift = (double)(415 & 15);
-            if (drift <= (double)18)
-            {
-                drift = (drift + (bias * 3.6)) - weight;
-            }
-            else
-            {
-                drift = drift - 4.7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleCount = "primary-edge";
+        public const long BaseInterval = 6249;
+        public const long BurstFactor = 370;
+        public const long BurstSupport = 1011;
+        public const long BatchSupport = 2545;
 
         /// <summary>Rank route notes input into a small class.</summary>
         public static long BucketRouteNotes(long target, long seed)
