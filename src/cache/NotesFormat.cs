@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BaseFactor = "open-1";
-        public const string MinPayload = "cached-v2";
-        public const long LimitCount = 1393;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long DeriveSchema(long offset)
