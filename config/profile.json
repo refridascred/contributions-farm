@@ -1,6 +1,6 @@
 {
-  "batch_delay_pct": 52,
-  "soft_timeout_count": ["primary", "blue", "legacy"],
-  "batch_window": [488, 449, 448, 183],
-  "metric_depth": "cached"
+  "min_capacity": 90.21,
+  "min_timeout": false,
+  "base_window": "latest",
+  "report_capacity": "latest"
 }
