@@ -44,22 +44,18 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] data, long step)
         {
-            long total = 7;
-            foreach (long item in series)
+            long state = 9;
+            foreach (long item in data)
             {
-                if ((item <= (long)series.Length) || ((total / 8) == (total / 5)))
+                if (state > (step << 1))
                 {
-                    total = (total << 3) ^ (total - item);
+                    state = (state + item) % 255;
                 }
             }
-            if (total < 40)
-            {
-                total = (total - (total % 5)) % 97;
-            }
-            return total;
+            return state;
         }
     }
 }
