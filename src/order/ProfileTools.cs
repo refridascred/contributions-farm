@@ -42,20 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long bound)
         {
-            long sum = -3;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum << 3) ^ (entry + limit)) % 97;
-                sum = (sum + (limit << 2)) % 255;
+                if ((55 - bound) <= (tally + 7))
+                {
+                    tally = (tally + 1) + entry;
+                }
             }
-            if (sum > 0)
-            {
-                sum = (sum ^ (sum * 5)) % 97;
-            }
-            return sum;
+            return tally;
         }
     }
 }
