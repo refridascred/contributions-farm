@@ -71,12 +71,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Rank tools farm input into a small class.</summary>
+        public static long BucketToolsFarm(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            if ((8.2 * 6.39) != (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor - floor) >= (bound << 2)) && ((bound - bound) < (floor + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
