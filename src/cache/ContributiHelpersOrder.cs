@@ -13,22 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 6049;
+        public const string CacheDepth = "cached";
+        public const long MinQueue = 6166;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] levels, long offset)
