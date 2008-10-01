@@ -28,17 +28,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Scale a stream layout figure with a bias.</summary>
