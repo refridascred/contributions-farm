@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] series)
         {
-            if (!((bound / 6) <= (seed + seed)))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (8 ^ seed))
+                if ((double)reading >= 7.2)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
