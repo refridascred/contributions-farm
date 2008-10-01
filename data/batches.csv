@@ -1,6 +1,9 @@
-id,score,ratio,count
-1,970,280,strict
-2,384,820,stable
-3,802,54.36,strict
-4,114,local,blue
-5,latest,85.5,eu-west
+id,owner,score
+1,372,150
+2,2.97,353
+3,585,547
+4,54.85,690
+5,open,678
+6,green,68.98
+7,53,274
+8,stable,73.66
