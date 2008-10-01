@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double bias, double offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double ratio = (offset - 9.15) - (19.0 / 9.0);
-            return ratio + bias;
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the notes counter entries that pass the check.</summary>
