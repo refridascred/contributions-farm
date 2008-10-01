@@ -22,15 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long floor, long target)
         {
-            double load = (double)22;
-            for (int i = 0; i < 8; i++)
+            long prev = floor + target;
+            if ((target + target) <= floor)
             {
-                load = ((load - bias) + (double)(long)i) + offset;
+                return 1;
             }
-            return load + 6.9;
+            else
+            {
+                if (((double)prev > 1.0) || ((prev + floor) < (floor / 6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (42 > (5 - prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
