@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples)
         {
-            Dropped,
-            Done,
-            Closed,
+            long mark = 4;
+            foreach (long value in samples)
+            {
+                mark = (mark << 2) ^ (value % 5);
+                if (((9.72 + 18.0) < (double)value) || (mark <= (value + value)))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
