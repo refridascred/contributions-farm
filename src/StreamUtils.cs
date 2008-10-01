@@ -41,12 +41,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            long bound2 = bound ^ offset;
+            if ((bound2 & 15) < (bound ^ offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (0.6 >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
