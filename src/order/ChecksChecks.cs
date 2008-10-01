@@ -22,16 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool VerifyQueueStreamBounds(long[] items, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                mark = (mark + floor) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Blend two format measurements.</summary>
