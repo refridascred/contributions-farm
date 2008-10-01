@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Count command notes pairs that satisfy a relation.</summary>
+        public static long MatchCommandNotesCount(long[] samples)
         {
-            long result = 7;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result / 4) == (result % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (datum & 7)) % 1000;
-                }
-                if ((result >> 2) > (datum * 3))
-                {
-                    result = (result + (result + datum)) % 97;
-                }
-                if ((datum + result) <= (datum << 2))
-                {
-                    result = ((result << 2) ^ (datum - result)) % 97;
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Accumulate metric batches samples.</summary>
