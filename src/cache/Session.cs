@@ -47,14 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count the commits tools entries that pass the check.</summary>
+        public static long AuditCommitsToolsMatches(long[] levels)
         {
-            Paused,
-            New,
-            Done,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (5.94 < (double)value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
