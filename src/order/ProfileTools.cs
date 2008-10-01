@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long WeighLayoutTools(long[] samples, long floor)
         {
-            Closed,
-            Paused,
-            Active,
-            Locked,
-            Dropped,
+            long result = 7;
+            foreach (long value in samples)
+            {
+                result = ((result << 3) ^ (value + result)) % 97;
+                if ((value >> 5) < floor)
+                {
+                    result = result + (floor & 63);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a farm info.</summary>
