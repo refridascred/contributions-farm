@@ -30,21 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Accumulate booking samples.</summary>
+        public static long ScoreBooking(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 670;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((359 + reading) == (reading >> 1))
                 {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total - (4 - total)) % 65521) - bound;
+                }
+                if ((double)(long)levels.Length >= (0.2 - 1.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
