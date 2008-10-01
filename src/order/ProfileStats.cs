@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Ready,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseScore = 8456;
+        public const long SoftTimeout = 883;
+        public const double BatchCount = 74.86;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] levels, long origin)
