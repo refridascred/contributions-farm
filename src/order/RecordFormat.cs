@@ -19,13 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)matches == (1.82 - 5.87))
+                {
+                    matches = ((matches + 1) + cell) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
