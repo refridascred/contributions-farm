@@ -65,21 +65,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum ^ seen) > (datum + origin))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
