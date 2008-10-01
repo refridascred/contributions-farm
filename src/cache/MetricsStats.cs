@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Done,
+            Queued,
+            Synced,
             Active,
-            Paused,
-            Idle,
-            Draft,
+            Done,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
