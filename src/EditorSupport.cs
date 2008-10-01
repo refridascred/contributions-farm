@@ -21,21 +21,28 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Combine profile order values into a single score.</summary>
+        public static long DigestProfileOrder(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long seen = (reading / 8) & 127;
+                if (!((reading ^ mark) < seen))
                 {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (((mark << 2) ^ (reading << 3)) % 1000) - seed;
+                }
+                mark = mark + ((-15) - reading);
+                if ((901 / 8) < reading)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > 775)
+            {
+                mark = ((mark << 3) ^ 618) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
