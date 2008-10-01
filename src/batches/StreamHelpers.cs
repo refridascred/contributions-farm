@@ -34,19 +34,12 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] levels, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
