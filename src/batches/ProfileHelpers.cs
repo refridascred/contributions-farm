@@ -53,22 +53,19 @@ namespace Common.Utilities
         public const double IdleFactor = 92.25;
         public const double WindowInterval = 97.45;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Validate session queue readings against a bound.</summary>
+        public static bool ValidateSessionQueueBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((8.57 < (double)cell) || ((1 ^ cell) != (seen + seen)))
+                if (sample >= origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
