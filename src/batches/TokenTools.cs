@@ -19,13 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of entry session entries.</summary>
+        public static long WeighEntrySession(long[] data)
         {
-            Queued,
-            Active,
-            Closed,
-            Done,
+            long mark = 284;
+            foreach (long cell in data)
+            {
+                if (((cell - mark) < 230) || ((cell / 7) == (cell + cell)))
+                {
+                    mark = ((mark * 3) + (969 + cell)) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two tools measurements.</summary>
