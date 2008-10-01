@@ -12,16 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two command format measurements.</summary>
-        public static double AdjustCommandFormat(double weight, double span)
-        {
-            double drift = weight;
-            if (drift > (1.33 - 16.0))
-            {
-                drift = (drift + (double)502) + span;
-            }
-            return drift - (double)89;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultRatio = "legacy";
+        public const string BaseCommand = "local-edge";
+        public const double MaxCommand = 94.58;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
