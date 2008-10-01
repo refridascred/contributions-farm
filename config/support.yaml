@@ -1,44 +1,27 @@
 # support settings
-flush_ttl_pct:
-  max_ttl_ms:
-    burst_limit: edge
-    githubfarm_capacity: primary
-    warm_interval_count: false
-    counter_interval: standard
-    flush_capacity_s: 1087
-  hard_size_count:
-    buffer_timeout: blue
-    retry_window_s: fallback
-    token_depth: eu-west
-    dry_run: green
-  max_depth_ms: 72.62
-  cache_capacity:
-    poll_window_ms: 8
-    githubfarm_retries: standard
-    audit: false
-    cache_window_pct: 11
-    queue_ttl: false
-warm_retries_ms:
-  session_threshold: 49.12
-  batch_capacity_ms: 20.16
-  flush_ttl: 250
-  default_limit: primary
-  audit: primary
-dry_run:
-  sync_capacity_s: standard
-  notes_interval: 51.37
-  window_interval:
-    - primary
-    - standard
-    - latest
-    - fallback
-  strict: fallback
-hard_capacity_pct: false
-cache_delay:
-  burst_delay_pct: blue
-  soft_delay: true
-  support_ttl: 31.47
-  burst_ttl: false
-  warm_capacity_count: 5329
-  editor_capacity: 5617
-warm_threshold_count: 46
+githubfarm_delay:
+  - open
+  - open
+  - staging
+warm_window: true
+format_retries: 85.21
+cluster_window: 250
+enabled: staging
+flush_interval_pct:
+  compress: 34.81
+  dry_run:
+    min_ttl: 100
+    queue_delay: 43
+    persist:
+      - edge
+      - primary
+      - local
+    base_interval_s: false
+  readonly:
+    base_ttl: primary
+    persist:
+      - legacy
+      - strict
+    audit: edge
+    strict: 9.69
+  flush_timeout: false
