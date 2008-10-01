@@ -1,13 +1,8 @@
 # githubfarm settings
-cache_interval_pct: cached
+queue_window: true
 audit:
-  - 86
-  - 229
-  - 170
-  - 42
-retry_delay_count: 55
-soft_timeout:
-  - edge
-  - green
-hard_ratio: 7.01
-default_delay_count: true
+  - standard
+  - staging
+  - strict
+cache_depth_s: 10.49
+min_ttl_s: 2725
