@@ -65,11 +65,9 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitLevel = 8073;
-        public const double BurstTools = 21.34;
-        public const long SoftDepth = 5464;
-        public const long HardTools = 1747;
-        public const long RetryTools = 2090;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstLevel = "latest-edge";
+        public const string LimitRoute = "primary-edge";
+        public const long BurstBudget = 2585;
     }
 }
