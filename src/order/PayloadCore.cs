@@ -20,16 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order route readings.</summary>
-        public static long FoldOrderRoute(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long step)
         {
-            long total = 129;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (reading - total)) % 65521;
-                total = (total - (total % 60)) % 101;
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
