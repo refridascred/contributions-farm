@@ -49,12 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] levels, long bound)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen > (bound - bound))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
