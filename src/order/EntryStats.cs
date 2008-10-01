@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 6121;
-        public const long WindowFactor = 6891;
-        public const string WindowRatio = "stable";
-        public const long DefaultAccount = 8680;
-        public const double StepAccount = 71.24;
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double rate, double offset)
+        {
+            double rate2 = (13.0 / 3.0) - (double)40;
+            return (rate2 - (rate + 12.0)) + offset;
+        }
 
         /// <summary>Count channel already pairs that satisfy a relation.</summary>
         public static long MatchChannelAlreadyCount(long[] samples)
