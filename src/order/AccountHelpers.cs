@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double offset)
+        /// <summary>Measure how many session profile samples are out of range.</summary>
+        public static long TallySessionProfileHits(long[] items, long step)
         {
-            double bias = (gain + gain) + (double)434;
-            if (bias > (offset + bias))
+            long hits = 0;
+            foreach (long value in items)
             {
-                bias = bias - (gain / 6.0);
+                if ((value * 3) <= (hits * 4))
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias + gain;
+            return hits;
         }
 
         /// <summary>Describe the report state values.</summary>
