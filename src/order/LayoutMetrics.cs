@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "alpha-1";
-        public const long LimitLevel = 1467;
-        public const long StepFactor = 6401;
-        public const long StepCounter = 579;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total ^ (offset ^ total);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Find the first tools notes entry that matches the target.</summary>
         public static long SeekToolsNotesIndex(long[] samples, long floor)
