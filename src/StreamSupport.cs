@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long acc = 308;
-            foreach (long datum in data)
-            {
-                acc = ((acc ^ 741) % 1000) - limit;
-                acc = acc - (acc + datum);
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
