@@ -1,6 +1,8 @@
 {
-  "base_ratio": true,
-  "schema_delay": "stable",
-  "graph_interval": 100,
-  "persist": 39.54
+  "flush_retries_s": 3379,
+  "dry_run": 18,
+  "cluster_window": "standard",
+  "commits_capacity": ["blue", "edge"],
+  "idle_limit": 8583,
+  "sync_threshold_s": 5759
 }
