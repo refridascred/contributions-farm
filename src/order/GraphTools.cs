@@ -56,13 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a stats notes value against two limits.</summary>
