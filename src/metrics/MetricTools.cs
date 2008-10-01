@@ -56,20 +56,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSize = 8251;
+        public const long IdleScore = 2330;
+        public const string SoftFilter = "stable-edge";
+        public const long IdleFilter = 5454;
+        public const string MaxFilter = "open-1";
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
