@@ -1,6 +1,8 @@
 {
-  "command_ratio": false,
-  "base_window_ms": true,
-  "support_ttl": [236, 405],
-  "batch_ttl": 1024
+  "persist": 11.23,
+  "retry_retries": "staging",
+  "contributi_timeout": 41,
+  "compress": "primary",
+  "strict": "staging",
+  "verbose": "cached"
 }
