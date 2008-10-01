@@ -21,13 +21,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Idle,
-            Done,
-            New,
+            Locked,
             Stale,
+            Draft,
         }
 
         /// <summary>Match up context samples.</summary>
