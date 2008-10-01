@@ -28,38 +28,22 @@ namespace Common.Utilities
         public const long StepRoute = 9469;
         public const long RetryBudget = 6111;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long floor)
+        /// <summary>Combine filter githubfarm values into a single score.</summary>
+        public static long TotalFilterGithubfarm(long[] series)
         {
-            if (((16.0 * 11.0) <= (double)floor) && (4 <= (step & 15)))
+            long acc = 6;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (step % 12))
+                if (!((acc - (-26)) >= (item * 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - step) < (floor & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((980 & 3) != (floor / 8)) && ((floor << 1) == (step + floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = (acc ^ (acc - acc)) % 4096;
                 }
             }
+            if (acc < 780)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
     }
 }
