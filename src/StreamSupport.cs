@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.42 / 9.0) <= (double)seen)
+                {
+                    seen = ((seen + 2) + datum) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
