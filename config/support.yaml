@@ -1,8 +1,19 @@
 # support settings
-burst_size: green
-audit:
-  - primary
-  - primary
-  - cached
-  - fallback
-default_interval_count: false
+flush_retries_pct:
+  base_depth_count:
+    - standard
+    - open
+  verbose: 61
+  idle_ttl_s:
+    notes_retries: 500
+    profile_limit: 99
+    batch_delay: 100
+    soft_size: strict
+    max_timeout_s:
+      - 376
+      - 176
+      - 109
+schema_limit: 9
+hard_threshold_s: 83
+commits_retries: standard
+enabled: open
