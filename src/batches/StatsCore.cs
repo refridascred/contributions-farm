@@ -39,18 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels, long bound)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen > (bound - bound))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
