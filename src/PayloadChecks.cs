@@ -71,39 +71,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long origin, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long diff = origin + floor;
-            if (5 <= (floor << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((diff % 64) >= (9 >> 3)) && ((double)diff <= (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((19.0 - 5.55) < (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin - floor) >= (diff / 9)) || ((double)origin < (double)diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
