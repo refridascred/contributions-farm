@@ -67,13 +67,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
