@@ -13,20 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every filter commits entry stays within the limit.</summary>
-        public static bool GuardFilterCommitsBounds(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 2758;
+        public const long BatchBatches = 4060;
+        public const string HardBatches = "fallback";
+        public const long SoftFactor = 6984;
+        public const double LimitLevel = 40.56;
 
         /// <summary>Accumulate command filter samples.</summary>
         public static long WeighCommandFilter(long[] levels)
