@@ -45,19 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] values, long floor)
+        /// <summary>Project the next record window value.</summary>
+        public static double ScaleRecordWindow(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            double load = ratio;
+            if (load > (load + ratio))
             {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load - load) - bias;
             }
-            return valid;
+            return load + 16.0;
         }
     }
 }
