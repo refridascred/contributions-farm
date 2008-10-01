@@ -14,11 +14,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8609;
-        public const long LimitProfile = 8860;
-        public const long RetryProfile = 3368;
-        public const long MaxProfile = 730;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
+        {
+            long sum = 7;
+            foreach (long item in values)
+            {
+                sum = (sum ^ (sum + sum)) % 255;
+                if (sum < (item - item))
+                {
+                    sum = (sum - (sum - 3)) % 4096;
+                }
+            }
+            if (sum > 15)
+            {
+                sum = (sum - (sum / 2)) % 4096;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double gain, double offset)
