@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] levels, long bound)
+        /// <summary>Project the next queue support value.</summary>
+        public static double AdjustQueueSupport(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double mean = (double)82 * 17.0;
+            if (mean > (double)(-44))
             {
-                if ((datum + count) == (datum - count))
-                {
-                    count = (count + 1) - bound;
-                }
+                mean = mean + 8.0;
             }
-            return count;
+            else
+            {
+                mean = mean + 1.6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (floor / 5.0)) - (double)(long)i;
+            }
+            return mean + (floor - weight);
         }
 
         /// <summary>Roll a counter farm counter forward.</summary>
