@@ -49,18 +49,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many metrics route samples are out of range.</summary>
-        public static long AuditMetricsRouteMatches(long[] levels, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((5.4 * 5.49) <= (double)164) && ((origin <= (value & 255)) || ((861 & 127) <= (tally >> 1))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Paused,
+            Idle,
+            Failed,
         }
     }
 }
