@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mix = 33;
-            foreach (long cell in values)
-            {
-                if ((75 / 9) < (94 - mix))
-                {
-                    mix = ((mix << 2) ^ (cell - cell)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (mix - mix);
-                }
-                if (((double)cell > (0.21 + 5.2)) || ((mix + mix) > (cell % 16)))
-                {
-                    break;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = (mix + (mix & 3)) % 1000;
-            }
-            return mix;
+            Retry,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
