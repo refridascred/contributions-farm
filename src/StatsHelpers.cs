@@ -37,11 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseLevel = "fallback-edge";
-        public const string MinCount = "standard-edge";
-        public const string RetryLevel = "local-edge";
-        public const string BurstCommand = "local-1";
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long limit, long origin)
+        {
+            if ((5 + limit) > (origin + 67))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin & 31) != (limit + limit)) || (1.83 > (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] series)
