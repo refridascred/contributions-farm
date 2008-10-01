@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long origin)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long result = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 4) + origin) % 65521;
+                result = result - 47;
+                result = (result ^ (9 - result)) % 97;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
