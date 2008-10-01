@@ -28,11 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 2654;
-        public const long BaseNotes = 4136;
-        public const long MaxTimeout = 5731;
-        public const long RetryRatio = 9631;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score << 3) ^ ((long)i + seed)) % 255;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit cluster filter readings against a rule.</summary>
         public static long MeasureClusterFilterOutliers(long[] samples)
