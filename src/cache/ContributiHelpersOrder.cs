@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            double weight = (double)3 - offset;
+            if (weight >= 6.4)
+            {
+                weight = (weight - (double)84) + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (1.79 * 7.39)) + (double)(long)i;
+            }
+            return weight - (weight * 9.7);
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
