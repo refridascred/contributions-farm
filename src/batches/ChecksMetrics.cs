@@ -19,16 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] levels, long step)
         {
-            long result = 84;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                result = ((result << 2) ^ (seed ^ result)) % 1000;
-                result = (result + (cell ^ cell)) % 4096;
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
