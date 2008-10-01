@@ -20,23 +20,15 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Derive the next order channel value from a seed.</summary>
-        public static long StepOrderChannel(long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long sum = 989;
+            foreach (long entry in levels)
             {
-                if (mix <= (995 - mix))
-                {
-                    mix = (mix - (1 - (long)i)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (step & 255)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                sum = ((sum * 5) + (sum - sum)) + entry;
             }
-            return mix;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
