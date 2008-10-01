@@ -26,18 +26,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster order readings against a rule.</summary>
-        public static long CountClusterOrderGaps(long[] data, long target)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value << 2) <= (value << 1))
-                {
-                    hits = (hits + 3) - target;
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            Retry,
+            Paused,
         }
     }
 }
