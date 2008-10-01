@@ -1,11 +1,30 @@
 # githubfarm settings
-enabled: blue
-sync_depth_pct:
-  batch_retries_ms:
-    - 290
-    - 440
-    - 193
-    - 328
-  cache_interval: true
-  profile_delay: primary
-default_depth_ms: 2.53
+persist:
+  cluster_timeout: primary
+  dry_run: true
+  record_window: 89.93
+  audit: false
+  base_threshold_count:
+    githubfarm_ratio:
+      - 166
+      - 368
+      - 160
+      - 411
+    burst_threshold: local
+    burst_limit:
+      - local
+      - stable
+      - primary
+    format_ratio: 30
+    enabled: true
+    notes_retries: 2005
+compress: standard
+default_ttl_count: standard
+base_timeout_ms:
+  cache_window: 86
+  poll_depth_pct: 6079
+  cache_delay_pct:
+    - open
+    - green
+    - latest
+  readonly: green
