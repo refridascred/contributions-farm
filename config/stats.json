@@ -1,8 +1,9 @@
 {
-  "retry_threshold_ms": 89,
-  "order_delay": 1024,
-  "payload_retries": false,
-  "buffer_depth": [2, 98],
-  "strict": [196, 38, 91, 422],
-  "readonly": ["local", "strict", "primary"]
+  "default_interval_s": ["open", "fallback", "green", "open"],
+  "retry_timeout_pct": "staging",
+  "min_limit_count": {
+    "burst_ttl_count": 8514,
+    "readonly": true,
+    "retry_capacity_ms": ["edge", "stable"]
+  }
 }
