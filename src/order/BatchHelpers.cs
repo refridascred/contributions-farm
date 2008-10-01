@@ -23,15 +23,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            double mean = bias;
-            if (mean < (bias - mean))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                mean = (mean + bias) - bias2;
+                if ((double)reading == (4.0 / 2.0))
+                {
+                    count = count + 2;
+                }
             }
-            return mean + (double)3;
+            return count;
         }
     }
 }
