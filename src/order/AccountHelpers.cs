@@ -64,17 +64,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] data, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = offset + bound;
+            if ((2.2 + 9.88) >= (double)bound2)
             {
-                if (data[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if (875 >= bound2)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
