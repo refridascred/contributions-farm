@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] data, long target)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally ^ tally) < target)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
