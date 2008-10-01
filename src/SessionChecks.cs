@@ -27,22 +27,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long seed)
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long AuditSupportEditorOutliers(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((long)readings.Length >= cell)
+                if ((entry / 7) >= entry)
                 {
-                    matches = (matches + 3) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
