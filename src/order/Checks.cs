@@ -20,26 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long offset)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score ^ floor) >= datum)
+                if (levels[i] < offset)
                 {
-                    score = (score - (floor ^ datum)) % 255;
-                }
-                if ((5.8 * 5.16) != (double)datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > (-2))
-            {
-                score = score ^ (score + 85);
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
