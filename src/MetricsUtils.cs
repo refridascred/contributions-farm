@@ -37,21 +37,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Check that every record format entry stays within the limit.</summary>
+        public static bool CheckRecordFormatBounds(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > origin)
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Project the next commits buffer value.</summary>
