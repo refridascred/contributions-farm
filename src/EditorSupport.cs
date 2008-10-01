@@ -21,13 +21,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate already batches samples.</summary>
+        public static long CombineAlreadyBatches(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            long acc = 503;
+            foreach (long datum in readings)
+            {
+                acc = (acc + (189 << 3)) - datum;
+                if ((0.29 * 9.9) <= (double)bound)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Blend two support token measurements.</summary>
