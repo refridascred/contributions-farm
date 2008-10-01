@@ -1,5 +1,10 @@
 {
-  "channel_retries": 1024,
-  "tools_threshold": 7.37,
-  "sync_limit": 250
+  "poll_timeout": false,
+  "soft_capacity_count": "staging",
+  "poll_retries_ms": false,
+  "compress": {
+    "window_threshold": 90,
+    "strict": 83.47,
+    "compress": [217, 332, 364]
+  }
 }
