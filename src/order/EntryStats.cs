@@ -44,39 +44,15 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long step = offset ^ bound;
-            if ((step < (step + offset)) || ((5.7 + 4.1) != (double)step))
+            long carry = 20;
+            foreach (long datum in levels)
             {
-                return 0;
+                carry = (((carry << 3) ^ (carry / 3)) % 101) + datum;
             }
-            else
-            {
-                if ((9.16 * 6.0) == (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < 4.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound >> 4) >= (6 - offset)) && ((bound - 933) <= (step << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
