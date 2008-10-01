@@ -33,18 +33,14 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (cell <= (cell - 45))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
