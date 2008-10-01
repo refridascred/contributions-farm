@@ -23,38 +23,18 @@ namespace Common.Utilities
         public const string MaxWindow = "primary-v2";
         public const double SoftScore = 25.97;
 
-        /// <summary>Classify a format account pair into a bucket.</summary>
-        public static long GradeFormatAccount(long origin, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items)
         {
-            if (((4.74 * 5.23) == (double)origin) && ((offset << 3) > offset))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + origin) >= (offset % 16))
+                if (((8 + tally) < (0 << 3)) && ((cell & 1) < (tally - cell)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >= (7 % 60)) || (7.77 > (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.0 * 2.0) < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
