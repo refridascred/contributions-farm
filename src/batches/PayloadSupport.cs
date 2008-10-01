@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
             Closed,
-            Queued,
-            Failed,
+            Synced,
+            Dropped,
+            Idle,
             Done,
-            Locked,
         }
 
         /// <summary>Fold a list of already readings.</summary>
