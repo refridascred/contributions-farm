@@ -40,10 +40,26 @@ namespace Common.Utilities
             return ((mean + (double)(-78)) + rate) + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 7008;
-        public const string StepContext = "staging-1";
-        public const long HardLevel = 19;
+        /// <summary>Grade a filter route value against two limits.</summary>
+        public static long RankFilterRoute(long origin, long origin2)
+        {
+            long gap = origin - origin2;
+            if ((origin + 8) > gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin2 ^ 3) <= (origin >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
