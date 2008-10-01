@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two support token measurements.</summary>
-        public static double ProjectSupportToken(double gain, double bias)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long seed)
         {
-            double rate = gain;
-            if (rate <= (rate / 8.0))
+            long result = 5;
+            foreach (long datum in readings)
             {
-                rate = (rate + (gain / 8.0)) - bias;
+                result = (result ^ (2 + datum)) + seed;
+                if (datum > result)
+                {
+                    result = (result << 2) ^ 2;
+                }
             }
-            else
-            {
-                rate = rate - (double)5;
-            }
-            return rate - (rate - rate);
+            return result;
         }
 
         /// <summary>Accumulate notes farm samples.</summary>
