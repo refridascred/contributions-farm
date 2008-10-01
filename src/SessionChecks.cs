@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchDepth = 95.28;
+        public const long StepScore = 6376;
+        public const double SoftAlready = 96.99;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportGaps(long[] levels, long seed)
