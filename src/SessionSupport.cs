@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool GuardReportProfileBounds(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 25.86;
+        public const long LimitGraph = 3798;
+        public const double LimitInterval = 49.52;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxCluster = 4066;
