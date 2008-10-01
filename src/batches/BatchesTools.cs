@@ -28,19 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a notes account reading.</summary>
-        public static double ProjectNotesAccount(double scale, double offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double load = (double)925;
-            if (load <= 0.15)
-            {
-                load = (load + (double)9) + offset;
-            }
-            else
-            {
-                load = load - scale;
-            }
-            return load - (scale * 20.0);
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
