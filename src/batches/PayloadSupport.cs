@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] data)
         {
-            Locked,
-            Done,
-            New,
-            Pending,
+            long score = 28;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (score - ((long)i - datum)) % 255;
+                }
+                if (((double)score >= 8.4) && ((13.0 * 18.0) != (double)score))
+                {
+                    score = (score + score) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (datum * 5)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the notes counter entries that pass the check.</summary>
