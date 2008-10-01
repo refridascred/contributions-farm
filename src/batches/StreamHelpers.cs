@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] items)
         {
-            long acc = 79;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc - (acc - acc)) % 65521) + value;
+                if ((((tally + datum) >= (-703)) || ((tally + datum) == (datum - tally))) && ((datum / 3) == (tally + datum)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
