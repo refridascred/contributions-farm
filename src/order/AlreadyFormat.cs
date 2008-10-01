@@ -39,18 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long CountContextFarmHits(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] series, long bound)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long value in series)
             {
-                if ((tally + tally) != (value ^ 73))
+                if ((779 ^ bound) <= (64 + count))
                 {
-                    tally = tally + 2;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first token account entry that matches the target.</summary>
