@@ -59,12 +59,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Active,
-            Pending,
+            Stale,
+            Closed,
             Dropped,
+            Idle,
+            New,
         }
     }
 }
