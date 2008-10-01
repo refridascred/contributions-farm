@@ -38,22 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            long carry = 796;
-            foreach (long item in levels)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(carry <= (item << 3)))
+                if (!((seed - seed) <= mix))
                 {
-                    carry = carry + (item - carry);
+                    mix = (mix - (seed - seed)) % 101;
                 }
-                else
-                {
-                    carry = (carry * 5) + (carry % 64);
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
