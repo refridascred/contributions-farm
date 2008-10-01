@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string BatchSpan = "alpha";
         public const string CacheCommits = "cached-v2";
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Queued,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftTimeout = 2288;
+        public const double DefaultContext = 85.11;
+        public const string StepCount = "fallback-edge";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] readings, long seed)
