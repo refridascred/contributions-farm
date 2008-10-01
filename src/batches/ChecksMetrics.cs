@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long SoftRatio = 102;
         public const double StepFactor = 70.21;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long seed)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
