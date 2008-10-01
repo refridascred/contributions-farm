@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Locked,
-            Pending,
-            Retry,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardSize = 9371;
+        public const long IdleQueue = 563;
+        public const double MinQueue = 54.11;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool ValidateFilterLimits(long[] levels, long limit)
