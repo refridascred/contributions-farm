@@ -63,24 +63,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if ((10.0 * 2.3) > (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 97) > (limit + limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
