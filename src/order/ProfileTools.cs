@@ -35,17 +35,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
