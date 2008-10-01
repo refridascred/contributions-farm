@@ -37,17 +37,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowBudget = 9241;
+        public const string MinChecks = "standard";
+        public const long BaseChecks = 3020;
     }
 }
