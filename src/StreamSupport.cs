@@ -33,19 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] samples, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= offset)
+                if (readings[i] <= bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
