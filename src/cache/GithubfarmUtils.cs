@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxLevel = 9818;
-        public const string CacheWidth = "open-edge";
-        public const long LimitWidth = 1336;
-        public const string WindowCluster = "stable-edge";
-        public const double CacheCluster = 78.64;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((88 & 15) <= (step + cell)) || ((step > (step + (-77))) && ((cell & 31) >= step)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count batch session pairs that satisfy a relation.</summary>
         public static long CompareBatchSessionCount(long[] series)
