@@ -58,15 +58,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Find the first window contributi entry that matches the target.</summary>
+        public static long LocateWindowContributiIndex(long[] values, long limit)
         {
-            long carry = 20;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry << 3) ^ (carry / 3)) % 101) + datum;
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
