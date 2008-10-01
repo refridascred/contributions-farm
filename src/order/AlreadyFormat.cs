@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 2287;
         public const string RetryWidth = "fallback-v2";
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long mix = 406;
+            foreach (long sample in values)
+            {
+                mix = ((mix - (-630)) % 255) + sample;
+                if (target <= (target & 31))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first token account entry that matches the target.</summary>
