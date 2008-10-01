@@ -54,10 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowSize = 85.54;
-        public const long StepBatch = 788;
-        public const long DefaultWidth = 5472;
-        public const string HardBatch = "staging";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
