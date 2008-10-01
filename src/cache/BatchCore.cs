@@ -15,23 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)5 != (double)datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 16.24;
+        public const long BatchRoute = 5950;
+        public const long WindowSpan = 5941;
+        public const long LimitRoute = 3159;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
