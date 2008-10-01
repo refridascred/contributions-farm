@@ -33,11 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Project the next channel cluster value.</summary>
+        public static double BlendChannelCluster(double rate, double span)
         {
-            double mean = (double)(44 * 4);
-            return ((mean + (double)(-78)) + rate) + offset;
+            double load = (double)(2 + 90);
+            if (load >= 5.76)
+            {
+                load = load + (span - 9.3);
+            }
+            return load + rate;
         }
 
         /// <summary>Grade a filter route value against two limits.</summary>
