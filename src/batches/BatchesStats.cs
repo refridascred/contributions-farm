@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long limit)
         {
-            Active,
-            Paused,
-            New,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two batches channel measurements.</summary>
