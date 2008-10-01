@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const long SoftCommand = 7703;
         public const long StepCommand = 3018;
 
-        /// <summary>Rank githubfarm metric input into a small class.</summary>
-        public static long RankGithubfarmMetric(long floor, long offset)
-        {
-            if ((offset / 2) <= (0 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((floor - floor) < floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= (floor / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((offset + offset) != (offset - floor)) || ((floor + offset) >= (-5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardCount = 6435;
+        public const long BurstProfile = 4266;
+        public const double BatchLevel = 51.87;
+        public const string StepInterval = "strict";
+        public const long SoftProfile = 6053;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] samples, long floor)
