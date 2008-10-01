@@ -1,14 +1,12 @@
 # Command notes
 
-Use cluster settings to tune how often contributi data is refreshed.
-A order that stays idle for too long is moved to the queue list.
-
-The tools helpers are pure functions, so they are safe to call from any thread.
-When a record fails, the route handler retries a few times before giving up.
+Use session settings to tune how often token data is refreshed.
+Keep record and metrics names short and lowercase.
+The record report groups every session by session.
 
 ## Guidelines
 
-- Document new entry fields
-- Review editor limits each release
-- Log every schema change
-- Prefer window defaults
+- Prefer cluster defaults
+- Validate order input early
+- Log every layout change
+- Review githubfarm limits each release
