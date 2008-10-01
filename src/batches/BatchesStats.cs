@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long IdleCounter = 3243;
         public const long CacheCounter = 4053;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] items)
+        /// <summary>Measure how many context support samples are out of range.</summary>
+        public static long CountContextSupportGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (((8 + tally) < (0 << 3)) && ((cell & 1) < (tally - cell)))
+                if ((entry >> 2) >= (count - floor))
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
