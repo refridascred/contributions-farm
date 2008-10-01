@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Active,
-            Failed,
             Synced,
+            New,
             Idle,
         }
 
