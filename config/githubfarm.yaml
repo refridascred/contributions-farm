@@ -1,21 +1,13 @@
 # githubfarm settings
-soft_size:
-  tools_interval: false
-  compress: staging
-  burst_delay:
-    - 113
-    - 402
-    - 141
-  min_interval_ms:
-    - legacy
-    - green
-    - fallback
-  min_threshold_pct: 1024
-batch_depth: 61.86
-account_capacity: standard
-githubfarm_depth: 38.73
-sync_depth_s:
-  - open
-  - open
-  - open
-  - strict
+cache_interval_pct: cached
+audit:
+  - 86
+  - 229
+  - 170
+  - 42
+retry_delay_count: 55
+soft_timeout:
+  - edge
+  - green
+hard_ratio: 7.01
+default_delay_count: true
