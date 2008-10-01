@@ -14,31 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long seed, long seed2)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values)
         {
-            if ((seed << 2) > (seed2 + 74))
+            long acc = 8;
+            foreach (long cell in values)
             {
-                return 2;
+                acc = (acc << 3) ^ cell;
             }
-            else
+            if (acc > 6)
             {
-                if ((double)30 != (double)seed2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((5.8 - 7.4) >= (double)seed2) && ((9.39 - 7.8) <= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                acc = acc ^ (acc % 24);
             }
+            return acc;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
