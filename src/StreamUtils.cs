@@ -60,21 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = 5.0;
+            if (gain < (bias * 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + (span + gain);
             }
-            return hits;
+            return gain - gain;
         }
 
         /// <summary>Hold a metric record.</summary>
