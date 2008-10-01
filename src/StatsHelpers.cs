@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitScore = 6184;
+        public const long IdleTimeout = 2820;
+        public const long IdleDepth = 7614;
+        public const long MaxDepth = 8792;
+        public const double IdleStream = 64.69;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftTimeout = 2288;
