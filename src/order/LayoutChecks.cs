@@ -83,11 +83,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseBudget = 9819;
-        public const long BaseSchema = 3672;
-        public const long LimitSchema = 4235;
-        public const string CacheSchema = "local-v2";
-        public const double RetrySpan = 67.83;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
