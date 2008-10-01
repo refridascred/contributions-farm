@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values)
         {
-            Ready,
-            Synced,
-            Retry,
+            long result = 9;
+            foreach (long datum in values)
+            {
+                if ((881 + datum) <= (405 & 127))
+                {
+                    result = ((result * 2) + (datum + datum)) % 1000;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
