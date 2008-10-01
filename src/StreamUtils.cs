@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((mark << 2) >= (mark / 7))
-                {
-                    mark = (mark + (mark + bound)) % 65521;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "standard-v2";
+        public const string BaseCount = "latest-v2";
+        public const double MinCommand = 46.73;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
