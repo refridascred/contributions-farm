@@ -1,7 +1,8 @@
 {
-  "cache_ttl_ms": "strict",
-  "batch_limit_ms": ["strict", "green", "primary"],
-  "retry_interval": 93,
-  "idle_threshold_count": 100,
-  "base_retries": 30
+  "audit": 9,
+  "batch_threshold_pct": 58.14,
+  "stream_delay": "strict",
+  "strict": false,
+  "batch_interval": [323, 111, 362],
+  "counter_interval": "primary"
 }
