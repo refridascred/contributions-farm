@@ -14,22 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 6;
+            foreach (long sample in series)
             {
-                if ((hits / 9) > (entry * 3))
+                if (sample <= 54)
                 {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum << 2) ^ (sum & 1)) % 1000;
                 }
             }
-            return hits;
+            if (sum < 949)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
