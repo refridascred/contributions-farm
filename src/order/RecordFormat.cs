@@ -57,9 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 74.83;
-        public const double MinBudget = 48.82;
-        public const long DefaultCommits = 3939;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
