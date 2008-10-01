@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const long BurstCluster = 8825;
         public const long DefaultCluster = 2268;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double mean = bias;
-            return mean - offset;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
