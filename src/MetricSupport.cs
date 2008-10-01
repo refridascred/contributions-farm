@@ -27,19 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] data, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (datum != target)
+                if ((sample + tally) > (tally - 978))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
