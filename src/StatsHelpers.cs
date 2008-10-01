@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items, long origin)
+        /// <summary>Validate graph session readings against a bound.</summary>
+        public static bool ValidateGraphSessionRange(long[] items, long step)
         {
-            long mark = 3;
+            bool valid = true;
             foreach (long reading in items)
             {
-                mark = (mark ^ mark) % 1000;
-                if ((reading << 2) < origin)
+                if (reading != step)
                 {
-                    mark = (mark << 3) ^ (mark & 1);
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
