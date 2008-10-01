@@ -62,12 +62,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleWidth = 79.05;
-        public const double BatchSpan = 6.98;
-        public const string BaseWidth = "strict";
-        public const long IdleMetrics = 5830;
-        public const long LimitCount = 1830;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] samples, long seed)
+        {
+            long mark = 27;
+            foreach (long sample in samples)
+            {
+                mark = (mark ^ (sample & 255)) % 101;
+            }
+            if (mark < 986)
+            {
+                mark = ((mark * 4) + seed) % 1000;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
