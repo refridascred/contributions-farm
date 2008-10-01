@@ -22,17 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long seed)
+        /// <summary>Measure how many editor schema samples are out of range.</summary>
+        public static long AuditEditorSchemaGaps(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= seed)
+                if ((15.0 - 3.3) == (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 1) + item) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
