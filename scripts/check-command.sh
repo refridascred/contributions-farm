@@ -8,19 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=386
-log "limit is ${COMMAND_LIMIT}"
+for item in standard latest legacy cached; do
+    log "checking ${item}"
+done
