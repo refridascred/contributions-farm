@@ -85,19 +85,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph schema value.</summary>
-        public static double BlendGraphSchema(double weight, double floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long step)
         {
-            double weight2 = weight / 6.0;
-            if (weight2 >= (floor * 7.7))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 + floor;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - floor) + (double)(long)i;
-            }
-            return weight2 - 2.1;
+            return -1;
         }
     }
 }
