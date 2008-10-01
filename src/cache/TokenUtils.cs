@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long bound, long step)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long diff = bound ^ step;
+            if ((double)step >= (6.0 - 1.0))
             {
-                state = (state << 2) ^ (target + 0);
-                state = ((state * 3) + (long)i) % 1000;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (diff < bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the buffer level values.</summary>
