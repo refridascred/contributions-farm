@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double bias)
-        {
-            double drift = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (bias / 7.0)) + (double)(long)i;
-            }
-            return drift - (double)5;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxSize = 86.44;
+        public const long WindowAccount = 8887;
+        public const double IdleAccount = 60.43;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchWidth = 8764;
