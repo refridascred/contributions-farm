@@ -34,19 +34,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] data, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
