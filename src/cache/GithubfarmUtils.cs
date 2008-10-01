@@ -38,18 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long target)
         {
-            long total = 71;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset << 3) < (total % 60))
+                if (data[i] <= target)
                 {
-                    total = (total + offset) - entry;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit report githubfarm readings against a rule.</summary>
