@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] data, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell != step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = mix - (5 / 6);
+                mix = (mix * 3) + mix;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
