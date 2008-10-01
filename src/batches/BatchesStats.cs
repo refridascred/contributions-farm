@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batches channel measurements.</summary>
-        public static double SmoothBatchesChannel(double scale, double span)
-        {
-            double ratio = scale;
-            return ratio - (span * 0.34);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowScore = 3932;
+        public const string MaxWindow = "primary-v2";
+        public const double SoftScore = 25.97;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double HardFormat = 16.45;
