@@ -62,20 +62,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double bias)
-        {
-            double ratio = (double)(-6) * 9.0;
-            if (ratio <= (double)1)
-            {
-                ratio = ratio + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (scale + bias)) + (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleWidth = 79.05;
+        public const double BatchSpan = 6.98;
+        public const string BaseWidth = "strict";
+        public const long IdleMetrics = 5830;
+        public const long LimitCount = 1830;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
