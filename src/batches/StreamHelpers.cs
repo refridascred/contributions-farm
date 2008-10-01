@@ -31,32 +31,16 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long origin, long step)
+        /// <summary>Derive the next cluster schema value from a seed.</summary>
+        public static long IterateClusterSchema(long target)
         {
-            long lane = origin ^ step;
-            if ((1.4 / 4.0) < (double)origin)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                acc = acc + (target + target);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)lane > 0.62)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((lane / 6) == (step % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Locate a command report reading by value.</summary>
