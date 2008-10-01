@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long LimitTimeout = 3191;
         public const long CacheMetrics = 2867;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] series, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Retry,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
