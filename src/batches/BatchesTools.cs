@@ -22,10 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 4958;
-        public const double LimitWindow = 58.46;
-        public const double BatchInterval = 45.99;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings, long step)
+        {
+            long mark = 63;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = (((mark - (cell & 1)) % 65521) + (long)i) + step;
+                }
+                mark = mark ^ (cell & 3);
+            }
+            if (mark < 954)
+            {
+                mark = (mark + (mark + mark)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] data, long bound)
