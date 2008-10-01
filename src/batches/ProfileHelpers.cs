@@ -70,24 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((98 < (47 - seed)) || (62 < (bound - bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 5) >= (bound + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
