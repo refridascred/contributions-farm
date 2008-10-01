@@ -1,4 +1,4 @@
 # githubfarm settings
-readonly: 60
-max_limit: 59.73
-burst_depth: 94
+verbose: true
+poll_ttl_s: 68.24
+report_ttl: 98.3
