@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            long mark = 9;
-            foreach (long cell in items)
+            double mean = (1.81 * 3.7) - (weight / 6.0);
+            if (mean <= mean)
             {
-                mark = ((mark ^ (13 + mark)) + cell) + offset;
+                mean = (mean - weight) - span;
             }
-            return mark % 97;
+            return mean + (9.85 * 7.89);
         }
 
         /// <summary>Describe the counter phase values.</summary>
