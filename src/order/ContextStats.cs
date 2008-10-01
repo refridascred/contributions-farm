@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long CountWindowQueueGaps(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((2.0 - 4.4) >= (double)value)
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultCount = 5007;
+        public const string MaxRatio = "strict-edge";
+        public const string IdleDepth = "strict-v2";
 
         /// <summary>Fold a list of farm queue readings.</summary>
         public static long FoldFarmQueue(long[] samples, long bound)
