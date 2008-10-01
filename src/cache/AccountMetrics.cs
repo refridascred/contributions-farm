@@ -64,12 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            Queued,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!(seen >= (value << 3)) && ((value + value) <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
