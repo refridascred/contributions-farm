@@ -50,17 +50,23 @@ namespace Common.Utilities
             return scale - (double)491;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Scale a entry counter figure with a bias.</summary>
+        public static double BlendEntryCounter(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio2 = (double)((-17) % 16);
+            if (ratio2 > (5.1 - ratio))
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 - (double)223) - bias;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 / 8.0)) - (double)(long)i;
+            }
+            return ratio2 + 9.21;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
