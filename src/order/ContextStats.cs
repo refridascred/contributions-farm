@@ -37,39 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long limit)
         {
-            long gap = limit + offset;
-            if (((limit + offset) <= (offset / 8)) || ((double)gap != (0.5 / 8.0)))
+            bool found = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap >> 1) < (offset * 5))
+                if (cell < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset / 6) < (offset >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((15.0 < (double)offset) && (limit <= (80 % 60)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count schema metric pairs that satisfy a relation.</summary>
