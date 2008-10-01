@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] levels, long bound)
+        /// <summary>Look up the position of a schema editor sample.</summary>
+        public static long LookupSchemaEditorIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((-2) < (entry + 98))
+                if (samples[i] >= limit)
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
