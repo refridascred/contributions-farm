@@ -70,12 +70,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next metric already value from a seed.</summary>
+        public static long IterateMetricAlready(long offset)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                state = state ^ (state / 7);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
