@@ -33,23 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] items, long bound)
         {
-            long result = 55;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                result = ((result << 2) ^ 114) + cell;
-                if ((result << 1) > (5 ^ result))
+                if (datum >= bound)
                 {
-                    result = (result ^ (result + offset)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (result > 81)
-            {
-                result = (result + offset) % 101;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Blend two entry measurements.</summary>
