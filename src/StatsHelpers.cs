@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BatchPayload = 89.77;
         public const long LimitPayload = 8966;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Locked,
-            Ready,
-            Dropped,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
