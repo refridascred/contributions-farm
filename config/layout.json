@@ -1,5 +1,29 @@
 {
-  "min_depth_pct": 250,
-  "default_capacity_s": ["blue", "standard", "strict", "open"],
-  "compress": "staging"
+  "idle_ratio": {
+    "cache_ratio": "fallback",
+    "hard_timeout_ms": 672,
+    "order_size": ["open", "eu-west", "stable", "fallback"]
+  },
+  "enabled": {
+    "report_window": {
+      "route_threshold": 96,
+      "compress": 60,
+      "filter_window": 3579,
+      "soft_delay": 32.91,
+      "max_timeout": "staging"
+    },
+    "verbose": 5718,
+    "audit": 35.88,
+    "sync_limit": 91.59,
+    "batch_limit": [176, 194, 113],
+    "burst_timeout": {
+      "counter_interval": "open",
+      "burst_delay_ms": false,
+      "editor_ttl": 95.71
+    }
+  },
+  "idle_timeout_pct": "green",
+  "editor_timeout": ["fallback", "standard"],
+  "verbose": true,
+  "burst_window_s": 41.92
 }
