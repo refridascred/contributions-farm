@@ -1,10 +1,15 @@
 # Command notes
 
-Keep command and batches names short and lowercase.
-A metric that stays idle for too long is moved to the cluster list.
+The format helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any notes limits.
+Keep notes and report names short and lowercase.
+
+When a stats fails, the editor handler retries a few times before giving up.
+Each tools is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Validate account input early
-- Log every cluster change
+- Document new command fields
+- Review profile limits each release
+- Prefer command defaults
+- Log every notes change
