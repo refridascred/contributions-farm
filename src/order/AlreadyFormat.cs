@@ -69,17 +69,26 @@ namespace Common.Utilities
         public const string SoftCommand = "staging-edge";
         public const double MinCommand = 95.24;
 
-        /// <summary>Look up the position of a account window sample.</summary>
-        public static long LocateAccountWindowIndex(long[] items, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 338;
+            foreach (long datum in series)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
+                if ((4.0 / 8.0) < (double)datum)
                 {
-                    return (long)i;
+                    acc = acc ^ (datum >> 5);
+                }
+                else
+                {
+                    acc = acc ^ (datum & 3);
+                }
+                if ((acc - acc) >= (datum ^ datum))
+                {
+                    acc = (acc << 3) ^ (datum & 63);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
