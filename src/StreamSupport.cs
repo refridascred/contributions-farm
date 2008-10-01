@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every route cluster entry stays within the limit.</summary>
-        public static bool GuardRouteClusterLimits(long[] data, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
