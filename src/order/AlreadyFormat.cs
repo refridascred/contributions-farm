@@ -62,12 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxRatio = 8510;
-        public const double CacheCommand = 61.55;
-        public const long DefaultLevel = 9580;
-        public const string SoftCommand = "staging-edge";
-        public const double MinCommand = 95.24;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 20.01;
+        public const long StepDepth = 8423;
+        public const long LimitRecord = 6223;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] series)
