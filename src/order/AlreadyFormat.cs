@@ -69,26 +69,19 @@ namespace Common.Utilities
         public const long StepDepth = 8423;
         public const long LimitRecord = 6223;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            long acc = 338;
-            foreach (long datum in series)
+            double load = bias;
+            if (load > (load / 9.0))
             {
-                if ((4.0 / 8.0) < (double)datum)
-                {
-                    acc = acc ^ (datum >> 5);
-                }
-                else
-                {
-                    acc = acc ^ (datum & 3);
-                }
-                if ((acc - acc) >= (datum ^ datum))
-                {
-                    acc = (acc << 3) ^ (datum & 63);
-                }
+                load = load - (bias / 9.0);
             }
-            return acc % 1000;
+            else
+            {
+                load = load - load;
+            }
+            return load + (gain * 5.42);
         }
     }
 }
