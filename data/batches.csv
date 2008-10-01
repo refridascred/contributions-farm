@@ -1,8 +1,6 @@
-id,weight,score
-1,254,113
-2,75.98,80.1
-3,969,958
-4,506,53
-5,58,48.6
-6,blue,72.81
-7,stable,2.12
+id,owner
+1,23.72
+2,latest
+3,fallback
+4,open
+5,76
