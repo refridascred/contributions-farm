@@ -23,18 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state ^ (seed % 64);
-                state = ((state << 3) ^ (seed + state)) % 255;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxSize = 1.76;
+        public const double WindowLevel = 20.72;
+        public const string DefaultCount = "cached-edge";
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long origin, long bound)
