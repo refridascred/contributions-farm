@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2579;
+        public const long HardTimeout = 9319;
+        public const long HardRatio = 1700;
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] samples)
