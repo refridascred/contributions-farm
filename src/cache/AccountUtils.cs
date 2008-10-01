@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardCount = 3202;
-        public const long CacheContext = 9460;
-        public const double MinCount = 42.98;
-        public const double BaseSize = 67.99;
-        public const string BatchContext = "latest";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 5972;
+        public const long MinContributi = 8834;
+        public const long BatchScore = 275;
 
         /// <summary>Scale a tools route figure with a bias.</summary>
         public static double ProjectToolsRoute(double ratio, double span)
