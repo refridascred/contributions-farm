@@ -20,16 +20,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long TallyCounterLayout(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values, long target)
         {
-            long total = 6;
-            foreach (long entry in samples)
+            long state = 101;
+            foreach (long datum in values)
             {
-                total = (total + (total + entry)) % 1000;
-                total = total + (676 ^ 961);
+                if (datum > target)
+                {
+                    state = ((state << 2) ^ state) % 255;
+                }
+                if (((datum + (long)values.Length) != (target - state)) || ((double)datum < (double)state))
+                {
+                    break;
+                }
             }
-            return total;
+            if (state > 59)
+            {
+                state = ((state << 3) ^ (target / 6)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a route channel sample.</summary>
