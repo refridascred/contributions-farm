@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const long SoftSize = 4640;
         public const double HardMetric = 48.89;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "standard";
-        public const long RetryStats = 5907;
-        public const long MaxStats = 8577;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchWidth = 8354;
+        public const double LimitScore = 98.07;
+        public const double MinSupport = 62.91;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] readings)
