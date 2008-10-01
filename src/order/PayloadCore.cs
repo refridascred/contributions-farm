@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = 36;
-            foreach (long sample in samples)
-            {
-                carry = carry + (sample ^ sample);
-                carry = (carry << 3) ^ (sample * 5);
-                if ((sample >> 1) < (sample & 127))
-                {
-                    carry = carry ^ (607 & 3);
-                }
-            }
-            return carry;
+            Ready,
+            Synced,
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the order kind values.</summary>
