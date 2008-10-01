@@ -64,19 +64,21 @@ namespace Common.Utilities
         public const double IdleFactor = 92.25;
         public const double WindowInterval = 97.45;
 
-        /// <summary>Validate session queue readings against a bound.</summary>
-        public static bool ValidateSessionQueueBounds(long[] values, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
