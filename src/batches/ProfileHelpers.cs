@@ -70,16 +70,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric already value from a seed.</summary>
-        public static long IterateMetricAlready(long offset)
+        /// <summary>Match up counter profile samples.</summary>
+        public static long OverlapCounterProfileCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state ^ (state / 7);
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
