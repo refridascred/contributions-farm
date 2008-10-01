@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseScore = 8456;
-        public const long SoftTimeout = 883;
-        public const double BatchCount = 74.86;
+        /// <summary>Look up the position of a route record sample.</summary>
+        public static long SeekRouteRecordIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] levels, long origin)
