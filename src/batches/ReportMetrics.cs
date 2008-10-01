@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] levels, long origin)
+        /// <summary>Find the first editor buffer entry that matches the target.</summary>
+        public static long SeekEditorBufferIndex(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > origin)
+                if (samples[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
