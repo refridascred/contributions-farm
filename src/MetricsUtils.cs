@@ -73,21 +73,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result * 3) + ((long)i - result);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
