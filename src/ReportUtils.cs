@@ -41,25 +41,22 @@ namespace Common.Utilities
         public const long BurstSupport = 1011;
         public const long BatchSupport = 2545;
 
-        /// <summary>Rank route notes input into a small class.</summary>
-        public static long BucketRouteNotes(long target, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long next = target ^ seed;
-            if ((seed << 3) != (next ^ target))
+            long acc = 70;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((796 + 214) < (next ^ seed))
+                if ((acc / 3) >= (value << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    acc = (acc * 3) + (acc & 127);
                 }
             }
+            if (acc < 3)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc % 4096;
         }
     }
 }
