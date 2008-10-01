@@ -23,19 +23,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next checks queue value from a seed.</summary>
-        public static long SeriesChecksQueue(long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (total >= ((long)i / 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the token phase values.</summary>
