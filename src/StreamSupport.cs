@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 6298;
+        public const long BatchSpan = 6438;
+        public const long BaseBuffer = 4202;
+        public const double MinBuffer = 3.16;
+        public const string BatchBuffer = "open-edge";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] values, long target)
