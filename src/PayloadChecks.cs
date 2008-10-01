@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count command notes pairs that satisfy a relation.</summary>
-        public static long MatchCommandNotesCount(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < bound)
                 {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate metric batches samples.</summary>
