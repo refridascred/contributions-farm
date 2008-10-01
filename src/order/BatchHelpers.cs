@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.03 * 2.0) != (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate contributi metrics samples.</summary>
