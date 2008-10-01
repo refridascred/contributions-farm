@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.25 / 4.0) <= (double)value)
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
