@@ -47,12 +47,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Stale,
+            Ready,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
