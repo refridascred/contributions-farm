@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long DefaultAccount = 8680;
         public const double StepAccount = 71.24;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count channel already pairs that satisfy a relation.</summary>
+        public static long MatchChannelAlreadyCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
