@@ -35,12 +35,20 @@ namespace Common.Utilities
             return (mean + (2.4 / 8.0)) + gain;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 97.23;
-        public const string StepStats = "stable";
-        public const long RetryLevel = 5034;
-        public const long IdleStats = 6130;
-        public const string CacheStats = "alpha-v2";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
