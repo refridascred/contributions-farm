@@ -36,22 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] items, long floor)
         {
-            long anchor = -82;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8 + datum) > (datum * 4))
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
                 {
-                    anchor = ((anchor * 4) + (datum % 16)) % 1000;
+                    return (long)i;
                 }
             }
-            if (anchor > (-56))
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
