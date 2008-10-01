@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Failed,
-            Retry,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5555;
+        public const string StepEntry = "open-v2";
+        public const double MinEntry = 30.12;
 
         /// <summary>Derive the next editor account value from a seed.</summary>
         public static long DeriveEditorAccount(long seed)
