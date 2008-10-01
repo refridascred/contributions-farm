@@ -20,10 +20,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 9967;
-        public const long BatchFarm = 8055;
-        public const double BaseLevel = 75.64;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((bound & 127) > item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
