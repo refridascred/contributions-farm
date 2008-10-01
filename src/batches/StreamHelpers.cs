@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = 79;
+            foreach (long value in levels)
             {
-                if (((long)samples.Length > (tally - sample)) && (((sample & 127) <= (44 + tally)) && (((-448) + sample) != (sample + tally))))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc - (acc - acc)) % 65521) + value;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
