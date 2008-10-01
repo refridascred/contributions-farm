@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 9278;
+        public const double MinRatio = 60.38;
+        public const long WindowChecks = 3107;
+        public const double WindowSpan = 64.36;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] items)
