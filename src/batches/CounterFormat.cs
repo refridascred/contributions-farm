@@ -22,21 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command buffer series from a seed.</summary>
-        public static long IterateCommandBuffer(long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                long prev = total;
-                if ((prev << 3) <= (long)i)
-                {
-                    total = (total ^ (origin + 39)) % 255;
-                    prev = (prev + total) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
