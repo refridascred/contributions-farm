@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double offset)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            double rate = scale * 13.0;
+            if (rate >= scale)
+            {
+                rate = (rate - 1.0) + offset;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
