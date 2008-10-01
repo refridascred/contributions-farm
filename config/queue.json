@@ -1,8 +1,5 @@
 {
-  "verbose": 9851,
-  "cache_threshold_pct": 78.41,
-  "min_size": 250,
-  "batches_threshold": 250,
-  "audit": true,
-  "counter_ttl": ["eu-west", "primary", "cached", "latest"]
+  "dry_run": true,
+  "batch_depth_s": 35.8,
+  "context_delay": false
 }
