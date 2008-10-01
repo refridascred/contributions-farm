@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] items, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((((hits + limit) > (limit << 3)) && ((datum / 9) < (limit >> 4))) && !(limit <= (hits / 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Iterate the stream payload series from a seed.</summary>
