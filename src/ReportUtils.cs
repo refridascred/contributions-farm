@@ -23,15 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel cluster value.</summary>
-        public static double BlendChannelCluster(double rate, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = (double)(2 + 90);
-            if (load >= 5.76)
-            {
-                load = load + (span - 9.3);
-            }
-            return load + rate;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
