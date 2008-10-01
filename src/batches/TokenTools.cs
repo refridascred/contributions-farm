@@ -39,23 +39,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long acc = 113;
-            foreach (long reading in items)
+            long anchor = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc + (origin % 10)) % 1000) ^ reading;
-                if (!((acc / 6) <= acc))
-                {
-                    acc = ((acc << 3) ^ (acc / 5)) % 65521;
-                }
+                anchor = (anchor + (anchor ^ anchor)) - reading;
+                anchor = ((anchor << 3) ^ (anchor & 3)) % 65521;
             }
-            if (acc > 629)
-            {
-                acc = ((acc * 3) + (816 - 9)) % 97;
-            }
-            return acc % 1000;
+            return anchor;
         }
     }
 }
