@@ -1,8 +1,7 @@
 {
-  "cache_depth_s": 33.16,
-  "retry_depth_ms": 100,
-  "dry_run": 90,
-  "enabled": 4.83,
-  "verbose": "cached",
-  "audit": "green"
+  "poll_size_count": [213, 338, 419, 431],
+  "flush_depth_s": 2,
+  "base_ratio_pct": 87,
+  "soft_delay": 87,
+  "cache_ttl": [271, 496]
 }
