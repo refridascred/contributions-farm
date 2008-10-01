@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long total = 438;
-            foreach (long value in data)
-            {
-                long prev = (value & 1) + total;
-                if ((prev / 3) >= prev)
-                {
-                    total = (total - (prev ^ prev)) % 255;
-                }
-                if (((total + 154) <= (total * 5)) && ((total & 255) < (total + total)))
-                {
-                    total = ((total << 3) ^ (value + 75)) % 4096;
-                }
-            }
-            return total;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every buffer batch entry stays within the limit.</summary>
