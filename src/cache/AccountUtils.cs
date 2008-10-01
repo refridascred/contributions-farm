@@ -13,22 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long result = 774;
-            foreach (long datum in samples)
-            {
-                if ((origin + origin) <= (origin << 2))
-                {
-                    result = ((result + (12 ^ origin)) % 255) + datum;
-                }
-                if ((double)origin != (8.0 * 4.34))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
