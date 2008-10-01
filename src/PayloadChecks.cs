@@ -57,12 +57,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 9342;
-        public const string IdleSupport = "staging-edge";
-        public const string StepSize = "legacy-1";
-        public const long RetrySupport = 9374;
-        public const double DefaultInterval = 34.87;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double bias, double bias2)
+        {
+            double bias3 = bias;
+            if (bias3 >= (bias3 + bias))
+            {
+                bias3 = bias3 + bias2;
+            }
+            else
+            {
+                bias3 = bias3 + (bias3 / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias3 = bias3 + (double)(long)i;
+            }
+            return bias3 + (bias / 9.0);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryScore = 8295;
