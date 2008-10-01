@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] samples, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (sample > seed)
+                if ((double)datum == (5.36 - 4.52))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
