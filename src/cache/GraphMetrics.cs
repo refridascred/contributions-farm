@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a contributi graph reading.</summary>
