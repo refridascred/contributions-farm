@@ -29,11 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            long mark = 94;
+            foreach (long reading in items)
+            {
+                mark = ((mark ^ (mark >> 3)) - reading) - offset;
+            }
+            return mark;
         }
     }
 }
