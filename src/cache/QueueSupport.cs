@@ -17,14 +17,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] readings)
         {
-            Paused,
-            New,
-            Failed,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ cell) < (cell * 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
