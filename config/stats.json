@@ -1,6 +1,6 @@
 {
-  "min_retries": 66.24,
-  "sync_depth": "strict",
-  "channel_ratio": false,
-  "support_ttl": 79.77
+  "warm_window_pct": ["primary", "stable"],
+  "queue_ratio": 1024,
+  "warm_threshold_s": 51.17,
+  "poll_interval": "green"
 }
