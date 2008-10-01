@@ -36,22 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!((value + 83) < (9 / 8)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
