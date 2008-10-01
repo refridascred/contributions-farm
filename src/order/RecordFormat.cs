@@ -48,11 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a schema stats.</summary>
