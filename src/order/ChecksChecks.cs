@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((-3) >= (matches % 97)) && (((double)(long)series.Length == (5.17 * 8.54)) && (item > (step / 8))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryBudget = 7159;
+        public const long DefaultSchema = 8722;
+        public const string BatchLevel = "stable-v2";
+        public const long SoftCount = 8316;
+        public const long WindowSchema = 2258;
 
         /// <summary>Combine cluster editor values into a single score.</summary>
         public static long TallyClusterEditor(long[] readings)
