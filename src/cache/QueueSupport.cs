@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate window metrics readings against a bound.</summary>
-        public static bool ValidateWindowMetricsBounds(long[] levels, long step)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
