@@ -43,11 +43,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultScore = 4034;
-        public const double StepRatio = 76.33;
-        public const long CacheBuffer = 8142;
-        public const long BurstDepth = 3301;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long FoldRecord(long[] levels, long offset)
