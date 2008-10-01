@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items, long step)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
+            long state = 869;
+            foreach (long sample in items)
+            {
+                state = ((state ^ 593) % 4096) ^ sample;
+            }
+            if (state > 6)
+            {
+                state = state - (46 - step);
+            }
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
