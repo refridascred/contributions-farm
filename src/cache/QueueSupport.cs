@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double scale, double offset)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] items)
         {
-            double rate = scale * 13.0;
-            if (rate >= scale)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - 1.0) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
