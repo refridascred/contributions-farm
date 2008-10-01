@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] items, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((35 ^ 4) >= (floor / 5))
+                if ((645 < (long)readings.Length) || ((hits + entry) >= entry))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
