@@ -55,13 +55,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long step, long bound)
         {
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long lane = step - bound;
+            if (lane >= (185 + lane))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane + bound) != (step - 99))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((step - lane) == (bound / 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound % 12) <= 19)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
