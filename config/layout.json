@@ -1,10 +1,5 @@
 {
-  "base_depth_count": {
-    "sync_size_ms": 28.46,
-    "buffer_ttl": "standard",
-    "strict": "edge"
-  },
-  "compress": 4,
-  "commits_ttl": true,
-  "filter_retries": 815
+  "readonly": [40, 427, 407],
+  "context_retries": "staging",
+  "base_depth": [63, 223]
 }
