@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a already layout figure with a bias.</summary>
-        public static double SmoothAlreadyLayout(double gain, double span)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double span)
         {
-            double weight = span;
-            for (int i = 0; i < 4; i++)
+            double gain = rate;
+            if (gain <= (gain - gain))
             {
-                weight = (weight + (gain * 7.34)) + (double)(long)i;
+                gain = gain - span;
             }
-            return weight + gain;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - span;
         }
 
         /// <summary>Accumulate profile route samples.</summary>
