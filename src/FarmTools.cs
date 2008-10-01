@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] values, long offset)
+        /// <summary>Measure how many session queue samples are out of range.</summary>
+        public static long MeasureSessionQueueMatches(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((-554) >= (6 - reading))
+                if (((seed + seed) >= seed) && (seed >= (hits >> 4)))
                 {
-                    count = (count + 3) - offset;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
