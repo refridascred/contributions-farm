@@ -16,11 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long floor)
         {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            if ((floor - floor) > ((-50) + 701))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor % 60) >= (floor + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - offset) != ((-1) * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - offset) >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
