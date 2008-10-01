@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double bias)
-        {
-            double ratio2 = 13.0;
-            return ((ratio2 - (double)626) + ratio) + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7516;
+        public const long WindowCache = 8043;
+        public const long HardCache = 2199;
+        public const long IdleCache = 628;
+        public const long BurstCache = 5962;
 
         /// <summary>Digest a series of notes farm entries.</summary>
         public static long FoldNotesFarm(long[] data, long bound)
