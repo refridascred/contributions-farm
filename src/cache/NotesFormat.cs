@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
