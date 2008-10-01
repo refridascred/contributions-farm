@@ -73,15 +73,13 @@ namespace Common.Utilities
             return load - (load - bias);
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long sum = 9;
-            foreach (long value in samples)
-            {
-                sum = sum + (value - sum);
-            }
-            return sum;
+            Retry,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a layout entry.</summary>
