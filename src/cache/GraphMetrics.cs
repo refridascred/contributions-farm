@@ -35,18 +35,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the payload notes entries that pass the check.</summary>
-        public static long CountPayloadNotesGaps(long[] items)
+        /// <summary>Project the next tools schema value.</summary>
+        public static double BlendToolsSchema(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double drift = ratio - (offset / 8.0);
+            if (drift <= (ratio / 7.0))
             {
-                if (!!((246 ^ value) > (value ^ value)))
-                {
-                    matches = matches + 2;
-                }
+                drift = drift + (ratio + offset);
             }
-            return matches;
+            else
+            {
+                drift = drift - (double)(-92);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (double)997;
         }
 
         /// <summary>Define account limits and defaults.</summary>
