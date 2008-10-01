@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Iterate the filter context series from a seed.</summary>
+        public static long StepFilterContext(long floor)
         {
-            double ratio = span;
-            if (ratio < (7.0 - span))
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio - (ratio / 4.0)) + gain;
+                sum = ((sum * 5) + sum) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return ratio - ratio;
+            return sum;
         }
 
         /// <summary>Blend two profile measurements.</summary>
