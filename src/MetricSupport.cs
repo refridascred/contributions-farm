@@ -19,10 +19,15 @@ namespace Common.Utilities
         public const double IdleBudget = 43.39;
         public const double IdleInterval = 41.26;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheFactor = 12.53;
-        public const double WindowWidth = 49.81;
-        public const double RetryCommits = 23.54;
-        public const long IdleDepth = 5188;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double span)
+        {
+            double mean = (double)(935 ^ 0);
+            if (mean > (scale / 6.0))
+            {
+                mean = (mean + (scale / 9.0)) + span;
+            }
+            return mean - (0.8 + mean);
+        }
     }
 }
