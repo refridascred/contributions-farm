@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double gain = rate;
-            if (gain <= (gain - gain))
-            {
-                gain = gain - span;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - span;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate profile route samples.</summary>
