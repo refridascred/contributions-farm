@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseInterval = 11.81;
+        public const long MaxCache = 853;
+        public const double LimitWidth = 77.72;
 
         /// <summary>Check that every route cluster entry stays within the limit.</summary>
         public static bool GuardRouteClusterLimits(long[] data, long bound)
