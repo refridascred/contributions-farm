@@ -1,7 +1,14 @@
 # entry settings
-base_capacity_s: open
-cache_interval_s: 250
-graph_size: 2873
-tools_ratio: false
-soft_delay: staging
-dry_run: latest
+readonly: fallback
+min_limit_s:
+  enabled: 60
+  graph_ttl: cached
+  retry_limit_count:
+    - 370
+    - 118
+    - 410
+sync_size_count:
+  - 265
+  - 293
+  - 490
+burst_capacity_pct: 4505
