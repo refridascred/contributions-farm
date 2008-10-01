@@ -54,18 +54,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > (seen << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
