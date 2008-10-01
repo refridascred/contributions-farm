@@ -1,5 +1,8 @@
 {
-  "batch_capacity_ms": 4574,
-  "default_capacity": 27.37,
-  "poll_size_pct": true
+  "cache_depth_s": 33.16,
+  "retry_depth_ms": 100,
+  "dry_run": 90,
+  "enabled": 4.83,
+  "verbose": "cached",
+  "audit": "green"
 }
