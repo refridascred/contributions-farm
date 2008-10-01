@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 207;
+            foreach (long entry in series)
+            {
+                mark = (((mark * 5) + 47) % 97) - entry;
+            }
+            if (mark < 431)
+            {
+                mark = (mark ^ (mark + origin)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
