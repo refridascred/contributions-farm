@@ -52,10 +52,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 58.84;
-        public const long BatchCount = 5670;
-        public const long WindowSize = 903;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 9342;
+        public const string IdleSupport = "staging-edge";
+        public const string StepSize = "legacy-1";
+        public const long RetrySupport = 9374;
+        public const double DefaultInterval = 34.87;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryScore = 8295;
