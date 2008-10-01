@@ -37,19 +37,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool CheckToolsMetricsBounds(long[] items, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long offset)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + 403) % 97;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the support phase values.</summary>
