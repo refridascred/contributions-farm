@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every session route entry stays within the limit.</summary>
