@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (!((tally + entry) >= (81 + tally)) || ((entry << 3) <= (entry - 255)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
