@@ -27,12 +27,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Rank checks stream input into a small class.</summary>
+        public static long ClassifyChecksStream(long step, long origin)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            if (!((origin >> 4) < 668))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((4.3 + 20.0) <= (double)step) || ((double)3 >= (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a profile buffer value against two limits.</summary>
