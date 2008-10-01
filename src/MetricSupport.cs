@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Roll a report githubfarm counter forward.</summary>
+        public static long DeriveReportGithubfarm(long seed)
         {
-            Failed,
-            New,
-            Draft,
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
