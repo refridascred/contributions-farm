@@ -1,14 +1,5 @@
 {
-  "report_threshold": 2445,
-  "burst_depth": true,
-  "default_threshold_pct": "green",
-  "warm_ratio_count": {
-    "enabled": 1024,
-    "min_interval_pct": 9179,
-    "graph_ttl": 56,
-    "schema_depth": "fallback",
-    "sync_window": 30,
-    "profile_threshold": [111, 75, 321]
-  },
-  "default_retries_count": 75.84
+  "stream_retries": "primary",
+  "retry_ttl_s": false,
+  "burst_retries_count": "primary"
 }
