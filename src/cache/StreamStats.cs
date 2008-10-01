@@ -48,15 +48,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = 8;
-            foreach (long sample in series)
-            {
-                result = (result * 5) + sample;
-            }
-            return result % 1000;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
