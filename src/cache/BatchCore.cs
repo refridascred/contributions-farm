@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Check that every graph order entry stays within the limit.</summary>
+        public static bool CheckGraphOrderBounds(long[] series, long offset)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
