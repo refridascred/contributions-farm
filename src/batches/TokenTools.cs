@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long result = -345;
+            foreach (long item in values)
+            {
+                if (((item / 4) >= (result / 3)) && ((result * 3) <= (result / 8)))
+                {
+                    result = (result * 4) + (result % 8);
+                }
+                else
+                {
+                    result = result + (item >> 1);
+                }
+            }
+            return result;
         }
 
         /// <summary>Blend two tools measurements.</summary>
