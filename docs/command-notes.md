@@ -1,14 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often contributi data is refreshed.
-The context module keeps session values in sync with the support cache.
+Each tools is validated before it reaches the cluster queue.
+Each editor is validated before it reaches the route queue.
 
-The editor module keeps command values in sync with the commits cache.
-Run the route check before changing any filter limits.
+Defaults for session live in the config folder and can be overridden per environment.
+Use schema settings to tune how often command data is refreshed.
+The report report groups every graph by batch.
 
 ## Guidelines
 
-- Document new stats fields
-- Validate payload input early
-- Keep profile values small
-- Prefer metrics defaults
+- Validate account input early
+- Review farm limits each release
+- Prefer entry defaults
+- Document new batches fields
