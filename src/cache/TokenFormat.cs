@@ -36,16 +36,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a filter editor counter forward.</summary>
-        public static long IterateFilterEditor(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 671;
+            foreach (long value in data)
             {
-                anchor = (anchor + (bound >> 1)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                mix = ((mix - (mix + 24)) % 4096) ^ value;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
