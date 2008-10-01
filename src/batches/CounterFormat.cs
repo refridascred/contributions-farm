@@ -13,12 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 2758;
-        public const long BatchBatches = 4060;
-        public const string HardBatches = "fallback";
-        public const long SoftFactor = 6984;
-        public const double LimitLevel = 40.56;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Stale,
+            Idle,
+            Paused,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Accumulate command filter samples.</summary>
         public static long WeighCommandFilter(long[] levels)
