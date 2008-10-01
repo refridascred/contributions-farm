@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate graph session readings against a bound.</summary>
-        public static bool ValidateGraphSessionRange(long[] items, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (reading != step)
+                if ((tally ^ 82) >= (entry ^ tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
