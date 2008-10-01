@@ -38,15 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] items, long limit)
         {
-            double rate = 2.8;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = ((rate - gain) + (double)(long)i) - span;
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
     }
 }
