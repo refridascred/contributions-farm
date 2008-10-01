@@ -1,15 +1,15 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any notes limits.
-Keep notes and report names short and lowercase.
+When a token fails, the buffer handler retries a few times before giving up.
+Keep editor and batch names short and lowercase.
+Run the command check before changing any report limits.
 
-When a stats fails, the editor handler retries a few times before giving up.
-Each tools is validated before it reaches the report queue.
+The record module keeps payload values in sync with the support cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new command fields
-- Review profile limits each release
-- Prefer command defaults
-- Log every notes change
+- Prefer metrics defaults
+- Validate layout input early
+- Log every schema change
+- Document new schema fields
