@@ -80,12 +80,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
+        public static bool GuardEntryContributiLimits(long[] samples, long target)
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
