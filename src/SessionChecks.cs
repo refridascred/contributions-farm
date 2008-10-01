@@ -42,17 +42,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] levels, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -1;
+            foreach (long datum in data)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if (((mark >> 2) <= (mark & 7)) || ((double)mark == (double)datum))
                 {
-                    return (long)i;
+                    mark = (mark - datum) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
