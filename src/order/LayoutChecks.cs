@@ -35,22 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
-        public static long OverlapGraphEntryCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowSize = "open-v2";
+        public const double BaseBatch = 7.08;
+        public const long LimitWidth = 2514;
+        public const long HardScore = 6784;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
