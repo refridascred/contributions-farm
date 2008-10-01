@@ -1,8 +1,19 @@
 # githubfarm settings
-queue_window: true
-audit:
-  - standard
-  - staging
-  - strict
-cache_depth_s: 10.49
-min_ttl_s: 2725
+max_capacity_s:
+  strict: 500
+  sync_ratio: 3746
+  hard_threshold_pct: false
+  commits_delay: blue
+  queue_interval: 500
+  filter_ttl: 54.2
+verbose:
+  account_size: edge
+  graph_depth: standard
+  burst_ttl_pct: fallback
+  max_depth: 3842
+stream_size:
+  - 408
+  - 44
+flush_size: open
+hard_timeout: 9327
+strict: true
