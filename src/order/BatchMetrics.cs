@@ -79,18 +79,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double load = (double)(6 >> 4);
+            for (int i = 0; i < 2; i++)
             {
-                if (!((double)tally < (4.4 * 4.04)))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                load = (((load + (11.0 * 18.0)) + (double)(long)i) + bias) + bias2;
             }
-            return tally;
+            return load + (3.0 + 4.15);
         }
     }
 }
