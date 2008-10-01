@@ -27,22 +27,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((bound >= (28 + score)) && ((bound + 645) < (-68)))
-                {
-                    score = score ^ (bound * 5);
-                    break;
-                }
-                score = score + (bound * 3);
-                score = ((score << 2) ^ (bound - bound)) % 1000;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double mean = (offset * 12.0) * 7.6;
+            return (mean + (2.4 / 8.0)) + gain;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
