@@ -1,6 +1,10 @@
 {
-  "readonly": true,
-  "persist": true,
-  "min_limit": 43,
-  "layout_ratio": 70.73
+  "base_depth_count": {
+    "sync_size_ms": 28.46,
+    "buffer_ttl": "standard",
+    "strict": "edge"
+  },
+  "compress": 4,
+  "commits_ttl": true,
+  "filter_retries": 815
 }
