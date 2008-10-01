@@ -34,13 +34,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 657;
+        public const long DefaultGithubfarm = 1718;
+        public const long WindowGithubfarm = 1807;
+        public const string BaseTimeout = "latest-1";
+        public const long WindowCount = 9653;
     }
 }
