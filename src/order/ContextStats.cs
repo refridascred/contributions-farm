@@ -39,19 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] data, long bound)
         {
-            double bias = (double)(6 * 4);
-            if (bias > weight)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                bias = bias - (span / 9.0);
+                if (cell >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (double)592) + (double)(long)i;
-            }
-            return bias - (bias * 2.03);
+            return valid;
         }
     }
 }
