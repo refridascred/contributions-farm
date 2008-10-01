@@ -23,26 +23,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] series, long seed)
         {
-            long anchor = 75;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((item ^ item) <= 22)
+                if (matches < (seed * 5))
                 {
-                    anchor = ((anchor << 3) ^ (anchor % 10)) % 255;
+                    matches = (matches + 3) ^ cell;
                 }
                 else
                 {
-                    anchor = anchor ^ (anchor << 3);
-                }
-                if (4 < (anchor + item))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of order contributi entries.</summary>
