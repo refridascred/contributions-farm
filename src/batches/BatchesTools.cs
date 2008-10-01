@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
