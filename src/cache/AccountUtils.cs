@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const double MinWidth = 17.37;
         public const long MaxScore = 9431;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long seed)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] == seed)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    sum = ((sum * 5) + target) ^ (long)i2;
                 }
+                if (((sum ^ target) == (243 + target)) && ((target ^ sum) < (long)i))
+                {
+                    sum = ((sum << 2) ^ ((long)i + (-7))) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
