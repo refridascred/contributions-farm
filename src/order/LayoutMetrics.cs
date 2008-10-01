@@ -22,17 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = (load + (double)(long)i) + ratio;
             }
-            return -1;
+            return load - (span + 3.0);
         }
 
         /// <summary>Match up entry samples.</summary>
