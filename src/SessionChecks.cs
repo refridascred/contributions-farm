@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinTimeout = 1824;
-        public const long StepTimeout = 1071;
-        public const long LimitMetric = 5011;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double ProjectMetrics(double weight, double offset)
