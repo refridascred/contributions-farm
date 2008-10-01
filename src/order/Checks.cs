@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Check that every batch payload entry stays within the limit.</summary>
+        public static bool VerifyBatchPayloadBounds(long[] levels, long target)
         {
-            long mix = -34;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                mix = (((mix * 5) + mix) % 101) ^ datum;
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Accumulate editor samples.</summary>
