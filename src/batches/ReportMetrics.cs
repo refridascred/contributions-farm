@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] data, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((seed + entry) == (entry & 31))
+                if (datum > origin)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
