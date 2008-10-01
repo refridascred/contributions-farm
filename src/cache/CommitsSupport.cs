@@ -41,19 +41,11 @@ namespace Common.Utilities
         public const long IdleStats = 6130;
         public const string CacheStats = "alpha-v2";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
