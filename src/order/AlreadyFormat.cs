@@ -41,18 +41,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first token account entry that matches the target.</summary>
-        public static long LookupTokenAccountIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxRatio = 8510;
+        public const double CacheCommand = 61.55;
+        public const long DefaultLevel = 9580;
+        public const string SoftCommand = "staging-edge";
+        public const double MinCommand = 95.24;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
