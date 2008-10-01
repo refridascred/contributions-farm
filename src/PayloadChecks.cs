@@ -52,16 +52,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next batches channel value from a seed.</summary>
-        public static long SeriesBatchesChannel(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 58.84;
+        public const long BatchCount = 5670;
+        public const long WindowSize = 903;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryScore = 8295;
