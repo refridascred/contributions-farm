@@ -19,17 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Combine token values into a single score.</summary>
