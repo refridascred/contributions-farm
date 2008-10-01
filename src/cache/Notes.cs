@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long DefaultSize = 4142;
         public const string IdleAlready = "cached-edge";
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
