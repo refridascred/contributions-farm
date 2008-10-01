@@ -73,11 +73,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long ScoreMetricAccount(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long score = 2;
+            foreach (long sample in items)
+            {
+                if ((score + score) <= 507)
+                {
+                    score = (score * 3) + (sample % 97);
+                    break;
+                }
+                score = score ^ (3 / 7);
+                if ((double)38 >= (double)sample)
+                {
+                    score = ((score << 2) ^ (score * 2)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample * 5)) % 101;
+                }
+            }
+            return score;
         }
     }
 }
