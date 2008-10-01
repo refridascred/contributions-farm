@@ -23,19 +23,12 @@ namespace Common.Utilities
             return drift - (double)89;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double gain, double offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            double scale = gain + (gain / 3.0);
-            if (scale <= (gain + scale))
-            {
-                scale = scale + (double)98;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (offset / 5.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
