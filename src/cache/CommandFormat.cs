@@ -24,9 +24,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitRatio = 5433;
-        public const double MaxCount = 34.83;
-        public const string DefaultQueue = "local-v2";
+        public const double CacheWidth = 40.33;
+        public const double SoftBudget = 35.25;
+        public const double SoftQueue = 54.49;
+        public const long CacheQueue = 7394;
 
         /// <summary>Digest a series of order contributi entries.</summary>
         public static long WeighOrderContributi(long[] series)
