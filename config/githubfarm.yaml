@@ -1,12 +1,18 @@
 # githubfarm settings
-max_limit:
-  - local
-  - eu-west
-  - eu-west
-poll_interval_ms:
-  - standard
-  - stable
-  - cached
-min_threshold: stable
-max_ttl_ms: 80
-support_delay: 500
+cache_delay_s:
+  buffer_timeout: 18.44
+  command_ttl:
+    batch_ttl: 250
+    max_timeout: latest
+    enabled: staging
+    min_interval_ms: 23.66
+    default_limit: 250
+  batches_interval: 1024
+  burst_ttl_s: blue
+context_delay:
+  - 484
+  - 369
+  - 428
+entry_interval: standard
+dry_run: true
+strict: strict
