@@ -1,6 +1,8 @@
 {
-  "default_threshold_count": 45.78,
-  "sync_retries_count": 9.03,
-  "metric_size": 250,
-  "cache_ratio_s": 11
+  "report_threshold": "standard",
+  "readonly": "green",
+  "sync_size": ["standard", "staging", "strict", "staging"],
+  "sync_window": "staging",
+  "sync_window_ms": "primary",
+  "hard_threshold_pct": 91
 }
