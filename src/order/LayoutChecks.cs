@@ -93,22 +93,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items, long target)
+        /// <summary>Validate checks record readings against a bound.</summary>
+        public static bool ValidateChecksRecordLimits(long[] samples, long offset)
         {
-            long state = 3;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (10 >= (target / 6))
+                if (reading > offset)
                 {
-                    state = ((state ^ (target % 64)) % 4096) - sample;
-                }
-                else
-                {
-                    state = (state * 5) + (state & 3);
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
     }
 }
