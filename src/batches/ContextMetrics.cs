@@ -21,21 +21,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of filter account readings.</summary>
-        public static long CompareFilterAccountCount(long[] readings)
+        /// <summary>Roll a format profile counter forward.</summary>
+        public static long RollFormatProfile(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor + (anchor ^ anchor)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up stats samples.</summary>
