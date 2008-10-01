@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitRatio = 9268;
-        public const double MinScore = 7.87;
-        public const long LimitFilter = 2852;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long MatchNotesCount(long[] items)
