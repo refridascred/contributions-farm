@@ -40,18 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] items, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (bound >= tally)
+                if ((double)matches <= 12.0)
                 {
-                    tally = (tally + 1) + datum;
+                    matches = ((matches + 3) + cell) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
