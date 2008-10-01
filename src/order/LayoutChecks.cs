@@ -72,22 +72,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((cell >= (target ^ cell)) || (((double)target != (double)matches) || ((cell / 6) <= cell)))
+                if ((5.0 + 16.0) < (double)cell)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
