@@ -40,32 +40,15 @@ namespace Common.Utilities
         public const long BurstSupport = 1011;
         public const long BatchSupport = 2545;
 
-        /// <summary>Grade a batches record value against two limits.</summary>
-        public static long ClassifyBatchesRecord(long floor, long floor2)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            long delta = floor ^ floor2;
-            if ((62 * 4) > (floor - 9))
+            double weight2 = (double)(991 % 60);
+            if (weight2 >= offset)
             {
-                return 8;
+                weight2 = weight2 - (weight2 - weight);
             }
-            else
-            {
-                if (delta > (delta % 97))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (34 >= (floor2 << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return weight2 - (7.69 - weight);
         }
     }
 }
