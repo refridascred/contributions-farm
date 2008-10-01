@@ -77,13 +77,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Fold a list of record batches readings.</summary>
+        public static long WeighRecordBatches(long[] series, long bound)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long result = 32;
+            foreach (long reading in series)
+            {
+                if ((result << 1) <= (64 >> 1))
+                {
+                    result = (result << 2) ^ (reading ^ 0);
+                }
+                if ((result / 8) != (bound + bound))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
