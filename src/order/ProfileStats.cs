@@ -30,19 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double load = offset + ratio;
-            if (load <= 4.16)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (load * 4.0)) + (double)(long)i;
-            }
-            return load - ratio;
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
