@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values)
         {
-            Stale,
-            Pending,
-            Closed,
-            Ready,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (tally & 255))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
