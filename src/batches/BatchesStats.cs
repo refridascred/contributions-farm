@@ -23,10 +23,39 @@ namespace Common.Utilities
         public const string MaxWindow = "primary-v2";
         public const double SoftScore = 25.97;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardFormat = 16.45;
-        public const string MinFormat = "local-edge";
-        public const double LimitCount = 15.13;
+        /// <summary>Classify a format account pair into a bucket.</summary>
+        public static long GradeFormatAccount(long origin, long offset)
+        {
+            if (((4.74 * 5.23) == (double)origin) && ((offset << 3) > offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + origin) >= (offset % 16))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >= (7 % 60)) || (7.77 > (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.0 * 2.0) < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] data)
