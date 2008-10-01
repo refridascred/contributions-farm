@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                if (!!((double)entry > (6.0 * 4.8)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
