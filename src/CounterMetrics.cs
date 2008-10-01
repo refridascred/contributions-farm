@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((tally % 5) >= (value + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Find the first token notes entry that matches the target.</summary>
