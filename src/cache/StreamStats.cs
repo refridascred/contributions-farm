@@ -48,13 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Check that every route order entry stays within the limit.</summary>
+        public static bool CheckRouteOrderBounds(long[] readings, long seed)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
