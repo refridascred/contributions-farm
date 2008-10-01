@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long IdleQueue = 563;
         public const double MinQueue = 54.11;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
