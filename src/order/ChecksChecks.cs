@@ -33,14 +33,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double bias)
         {
-            Closed,
-            Retry,
-            New,
-            Idle,
-            Locked,
+            double weight = (double)(88 - (-43));
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (((weight - weight) + (double)(long)i) + gain) - bias;
+            }
+            return weight - (weight + weight);
         }
     }
 }
