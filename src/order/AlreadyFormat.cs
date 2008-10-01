@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)limit >= (0.5 - 7.1)) || ((47 * 2) < step))
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((step - limit) < limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((-78) + limit) >= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
