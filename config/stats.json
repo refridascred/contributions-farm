@@ -1,6 +1,14 @@
 {
-  "batch_size_ms": "primary",
-  "cache_depth_count": "legacy",
-  "default_size_count": "cached",
-  "enabled": [233, 229]
+  "idle_threshold": {
+    "hard_ttl": "green",
+    "verbose": 60,
+    "sync_capacity_s": {
+      "idle_threshold": "legacy",
+      "metric_ratio": ["stable", "blue", "green", "blue"],
+      "editor_threshold": false
+    }
+  },
+  "dry_run": 500,
+  "retry_window": 85.94,
+  "batch_timeout_s": true
 }
