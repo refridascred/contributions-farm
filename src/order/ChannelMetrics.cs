@@ -27,10 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 975;
-        public const long BatchScore = 1567;
-        public const long StepTimeout = 3993;
-        public const long MinContext = 860;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (limit < state)
+                {
+                    state = ((state * 2) + (long)i) % 65521;
+                }
+                if ((state & 255) > ((long)i & 7))
+                {
+                    state = (state - (state + limit)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
