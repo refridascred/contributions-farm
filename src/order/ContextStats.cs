@@ -52,21 +52,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
-        public static long PairSchemaMetricCount(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.07 + 6.05) <= (double)cell)
                 {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
