@@ -1,5 +1,12 @@
 # githubfarm settings
-compress: 15.17
-soft_ratio: false
-flush_retries: eu-west
-hard_depth_s: 8.4
+readonly: 7446
+support_window: 8040
+poll_limit_s:
+  - 172
+  - 106
+  - 448
+token_delay:
+  - primary
+  - local
+  - eu-west
+soft_depth_ms: 1024
