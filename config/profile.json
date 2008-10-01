@@ -1,6 +1,8 @@
 {
-  "buffer_window": "open",
-  "record_retries": 30,
-  "soft_delay_s": ["legacy", "open", "green", "green"],
-  "dry_run": 9425
+  "warm_retries": 250,
+  "filter_interval": "primary",
+  "warm_capacity_count": "legacy",
+  "commits_timeout": 60.98,
+  "soft_interval_count": "latest",
+  "retry_timeout": "blue"
 }
