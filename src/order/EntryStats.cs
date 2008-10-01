@@ -43,18 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((item & 7) <= (target - 7))
+                if (reading < bound)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
