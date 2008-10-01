@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 7.59;
-        public const double StepCommand = 34.12;
-        public const long HardRatio = 3221;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "local";
+        public const string DefaultChecks = "latest-1";
+        public const double MinInterval = 67.84;
 
         /// <summary>Rank profile channel input into a small class.</summary>
         public static long SortProfileChannel(long limit, long origin)
