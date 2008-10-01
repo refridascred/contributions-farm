@@ -1,21 +1,38 @@
 # entry settings
-cache_interval_s:
-  base_delay_count: legacy
-  batch_capacity: 84.64
-  min_delay_s: 18.34
-  strict: 5520
-  readonly:
-    base_ratio_s: 5966
-    warm_interval_ms: 30
-    poll_threshold: 25.3
-    commits_retries:
-      - 128
-      - 420
-      - 77
-metric_window:
-  min_ratio_ms: 39.83
-  cache_delay: true
-  warm_retries_count: edge
-dry_run: strict
-hard_ratio_ms: false
-support_retries: 48.95
+entry_retries:
+  channel_interval:
+    queue_ratio: 95.83
+    default_interval:
+      - open
+      - cached
+      - latest
+    soft_interval_ms: 17.79
+    warm_threshold_ms: 892
+    max_timeout: 2009
+    audit:
+      - primary
+      - green
+      - eu-west
+  verbose: true
+  dry_run: 3487
+  cluster_delay:
+    - standard
+    - eu-west
+  editor_retries: 84.42
+filter_retries: 3.03
+channel_ratio:
+  batch_size_ms:
+    token_timeout: stable
+    base_ratio_ms:
+      - blue
+      - stable
+      - edge
+      - eu-west
+    sync_limit: local
+    cache_ratio_s:
+      - 251
+      - 243
+      - 431
+  cache_delay_ms: 1860
+  audit: true
+  retry_delay_count: 55
