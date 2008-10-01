@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long SoftRatio = 102;
         public const double StepFactor = 70.21;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (datum > seed)
+                if ((sample + matches) > (0 & 3))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
