@@ -1,4 +1,22 @@
 # githubfarm settings
-report_size: 9945
-soft_size_count: 60
-warm_ttl_ms: 71
+audit: true
+enabled:
+  soft_interval: 2
+  batch_retries: 27.67
+  flush_interval_ms: legacy
+  min_retries_pct:
+    checks_delay: 3065
+    poll_limit_count: false
+    max_retries_pct: false
+    verbose: false
+  persist: 9907
+  metric_delay: 60
+default_delay: true
+stream_threshold:
+  flush_size_s: 5901
+  enabled:
+    - open
+    - green
+  farm_interval: 250
+already_retries: 60
+default_depth_pct: 250
