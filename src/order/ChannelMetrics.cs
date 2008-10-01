@@ -14,17 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                if (!(hits >= (floor + floor)) || ((entry - floor) <= (entry >> 5)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
