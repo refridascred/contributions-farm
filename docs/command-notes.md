@@ -1,10 +1,14 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the stats list.
-Run the batches check before changing any command limits.
+Each metrics is validated before it reaches the filter queue.
+Each report is validated before it reaches the metrics queue.
+
+The format module keeps batches values in sync with the report cache.
+Use already settings to tune how often checks data is refreshed.
+Each buffer is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Log every stats change
-- Validate metrics input early
+- Review format limits each release
+- Prefer support defaults
+- Document new tools fields
