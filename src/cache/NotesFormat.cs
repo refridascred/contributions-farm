@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a cluster stream figure with a bias.</summary>
-        public static double AdjustClusterStream(double rate, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] levels, long bound)
         {
-            double drift = (double)(91 / 5);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = (drift + rate) + (double)(long)i;
+                if ((datum + count) == (datum - count))
+                {
+                    count = (count + 1) - bound;
+                }
             }
-            return drift - span;
+            return count;
         }
 
         /// <summary>Hold a order entry.</summary>
