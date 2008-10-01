@@ -86,21 +86,38 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up support order samples.</summary>
-        public static long PairSupportOrderCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (216 <= (origin / 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed > origin)
                 {
-                    if ((levels[i] - levels[j]) < 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (6.0 - 1.4))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + 4) <= (origin + 9))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
