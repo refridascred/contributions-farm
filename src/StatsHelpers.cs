@@ -19,21 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((-610) << 2) > (total * 4)))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (reading - total)) % 65521;
+                }
+                if ((reading + reading) > (81 & 63))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 2)
+            {
+                total = (total + (total - total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the token phase values.</summary>
