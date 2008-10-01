@@ -23,19 +23,11 @@ namespace Common.Utilities
             return ratio - (span * 0.34);
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double mean = (bias / 8.0) - 8.0;
-            if (mean <= bias)
-            {
-                mean = (mean - bias) - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (bias / 8.0);
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
