@@ -1,10 +1,6 @@
-id,score,rank,ratio,state
-1,512,86.31,legacy,strict
-2,392,73.64,669,open
-3,edge,661,59.55,18.04
-4,legacy,latest,64.88,open
-5,strict,536,33.02,30.48
-6,19.69,490,315,567
-7,411,primary,84.53,primary
-8,194,943,616,edge
-9,primary,275,latest,green
+id,rank,token,ratio,label
+1,951,105,84.88,982
+2,558,fallback,green,78.98
+3,eu-west,40.23,648,296
+4,581,472,512,544
+5,759,25.21,strict,121
