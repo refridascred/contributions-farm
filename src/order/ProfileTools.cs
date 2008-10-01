@@ -25,17 +25,10 @@ namespace Common.Utilities
             return drift - (double)5;
         }
 
-        /// <summary>Iterate the filter token series from a seed.</summary>
-        public static long DeriveFilterToken(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix << 3) ^ origin;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 8764;
+        public const long RetryFormat = 9749;
+        public const long BaseCount = 9148;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] values)
