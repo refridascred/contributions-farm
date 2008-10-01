@@ -44,15 +44,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long acc = 15;
+            foreach (long value in items)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((double)acc < 4.0)
+                {
+                    acc = (acc - (bound & 63)) ^ value;
+                }
             }
-            return mark;
+            if (acc < 417)
+            {
+                acc = (acc - (acc - bound)) % 101;
+            }
+            return acc;
         }
     }
 }
