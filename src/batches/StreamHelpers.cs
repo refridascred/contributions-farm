@@ -34,14 +34,10 @@ namespace Common.Utilities
             return rate2 + (double)340;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 3258;
+        public const double StepTimeout = 71.87;
+        public const long RetryEditor = 6568;
 
         /// <summary>Locate a command report reading by value.</summary>
         public static long LookupCommandReportIndex(long[] values, long offset)
