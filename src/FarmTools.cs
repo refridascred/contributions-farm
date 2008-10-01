@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long RetryStats = 5907;
         public const long MaxStats = 8577;
 
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long ScoreProfileToken(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long carry = 8;
-            foreach (long sample in values)
-            {
-                carry = (carry - (sample & 31)) % 1000;
-            }
-            if (carry < 749)
-            {
-                carry = ((carry * 3) + (-3)) % 97;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
