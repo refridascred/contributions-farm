@@ -1,8 +1,6 @@
 {
-  "batch_threshold_ms": "primary",
-  "soft_depth_count": ["blue", "legacy", "primary"],
-  "hard_threshold": "edge",
-  "schema_timeout": [500, 238, 45, 166],
-  "enabled": 6943,
-  "verbose": "fallback"
+  "strict": ["staging", "open", "strict"],
+  "enabled": 76.16,
+  "min_size_s": 1939,
+  "soft_depth": "green"
 }
