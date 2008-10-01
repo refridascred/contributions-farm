@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] samples, long floor)
+        /// <summary>Fold a list of farm queue readings.</summary>
+        public static long FoldFarmQueue(long[] samples, long bound)
         {
-            bool found = true;
+            long score = 3;
             foreach (long item in samples)
             {
-                if (item > floor)
+                if ((item % 8) > (score + bound))
                 {
-                    found = false;
-                    break;
+                    score = (score - score) % 65521;
                 }
             }
-            return found;
+            if (score < 4)
+            {
+                score = score + (bound ^ score);
+            }
+            return score;
         }
 
         /// <summary>Combine token values into a single score.</summary>
