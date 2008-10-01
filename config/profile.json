@@ -1,5 +1,20 @@
 {
-  "batch_ratio_count": "fallback",
-  "max_window_ms": 100,
-  "max_threshold_count": 30.4
+  "hard_window_s": false,
+  "warm_interval": {
+    "audit": 30,
+    "counter_ratio": 92.44,
+    "min_delay_s": "fallback",
+    "flush_retries": "eu-west",
+    "cache_window_count": "strict",
+    "idle_ttl_pct": 2.47
+  },
+  "max_size": {
+    "idle_threshold_ms": 500,
+    "queue_capacity": false,
+    "sync_interval_count": "blue",
+    "account_size": false
+  },
+  "route_ratio": ["open", "primary", "local"],
+  "graph_window": 62,
+  "min_timeout_pct": [68, 380, 198, 387]
 }
