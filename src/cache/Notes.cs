@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a support route value against two limits.</summary>
-        public static long SortSupportRoute(long origin, long origin2)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long seed)
         {
-            if ((origin < (934 ^ origin)) && ((origin2 << 3) >= (origin2 * 5)))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin2 == (14.0 - 12.0))
+                if (value >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
