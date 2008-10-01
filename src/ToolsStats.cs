@@ -96,19 +96,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
-        public static bool GuardGithubfarmChecksLimits(long[] values, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double weight = gain;
+            if (weight > gain)
             {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + (1.39 + weight);
             }
-            return stale;
+            return weight + (gain + floor);
         }
     }
 }
