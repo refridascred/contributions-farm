@@ -34,22 +34,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long seed)
         {
-            long mark = 50;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mark > (reading & 3))
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
                 {
-                    continue;
-                }
-                if ((double)reading > (7.55 + 4.0))
-                {
-                    mark = (mark - mark) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Count contributi stats pairs that satisfy a relation.</summary>
