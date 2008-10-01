@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] samples, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long sum = 8;
+            foreach (long item in samples)
             {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((((sum << 2) ^ (sum / 7)) % 1000) + item) + offset;
             }
-            return stale;
+            if (sum > 72)
+            {
+                sum = ((sum * 5) + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate already samples.</summary>
