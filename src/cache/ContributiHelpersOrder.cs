@@ -20,19 +20,17 @@ namespace Common.Utilities
             return weight - (weight * 9.7);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long seed)
         {
-            long sum = 94;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum << 3) ^ (sum / 7)) % 1000) - reading;
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 6)
-            {
-                sum = ((sum * 5) + (277 + sum)) % 101;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
