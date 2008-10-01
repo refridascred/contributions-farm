@@ -14,11 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long origin)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long total = 7;
+            foreach (long sample in levels)
+            {
+                total = ((total + sample) % 255) + origin;
+            }
+            return total;
         }
 
         /// <summary>Describe the stats state values.</summary>
