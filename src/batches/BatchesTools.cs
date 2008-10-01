@@ -19,25 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context metrics pair into a bucket.</summary>
-        public static long BucketContextMetrics(long offset, long offset2)
-        {
-            if ((offset2 + 14) > (offset + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= 6.13)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinRatio = "alpha-edge";
+        public const double MinCluster = 30.65;
+        public const long LimitCluster = 7782;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
