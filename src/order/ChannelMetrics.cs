@@ -13,24 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a checks account pair into a bucket.</summary>
-        public static long SortChecksAccount(long offset, long origin)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if (((4 - offset) <= offset) || ((origin + 217) == (origin - offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3 ^ offset) == (origin >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Failed,
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Define context limits and defaults.</summary>
