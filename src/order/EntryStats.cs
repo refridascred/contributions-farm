@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const long WindowSize = 7273;
         public const double SoftCommits = 61.31;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            Synced,
+            Failed,
+            Idle,
+            Retry,
         }
     }
 }
