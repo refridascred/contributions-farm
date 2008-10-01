@@ -60,19 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] items, long offset)
+        /// <summary>Audit checks stream readings against a rule.</summary>
+        public static long CountChecksStreamHits(long[] items)
         {
-            long mark = -30;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark ^ (offset + offset)) % 101) + reading;
+                if ((double)sample < (8.25 / 8.0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mark > 17)
-            {
-                mark = ((mark << 3) ^ (offset + offset)) % 1000;
-            }
-            return mark;
+            return count;
         }
     }
 }
