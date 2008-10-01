@@ -63,21 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
