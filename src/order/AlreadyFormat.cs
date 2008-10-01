@@ -20,10 +20,13 @@ namespace Common.Utilities
             return scale + (span * 8.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepInterval = 0.33;
-        public const long StepCommits = 5186;
-        public const long IdleCommits = 1642;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Dropped,
+            Done,
+            Closed,
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long ScoreMetric(long[] values, long target)
