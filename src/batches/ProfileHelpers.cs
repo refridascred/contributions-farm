@@ -47,11 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long bound)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            if ((98 < (47 - seed)) || (62 < (bound - bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed % 5) >= (bound + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a command summary.</summary>
