@@ -69,18 +69,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen + seen) != (16 % 3))
-                {
-                    seen = ((seen + 1) ^ datum) + offset;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Active,
+            Closed,
         }
     }
 }
