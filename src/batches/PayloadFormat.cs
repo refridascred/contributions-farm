@@ -37,14 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long origin)
         {
-            Synced,
-            Stale,
-            Paused,
-            Dropped,
-            Done,
+            long offset = bound ^ origin;
+            if (offset < (bound / 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((35 + bound) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >= (origin - bound)) || ((offset + bound) <= (origin + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next token value.</summary>
