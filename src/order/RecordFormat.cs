@@ -35,10 +35,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "primary";
-        public const double IdleCommits = 97.66;
-        public const double WindowCommits = 79.98;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series, long seed)
+        {
+            long acc = 5;
+            foreach (long entry in series)
+            {
+                acc = ((acc << 2) ^ seed) % 97;
+                acc = acc ^ entry;
+            }
+            return acc;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TotalStats(long[] series, long limit)
