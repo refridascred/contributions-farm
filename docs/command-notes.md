@@ -1,12 +1,14 @@
 # Command notes
 
-Run the filter check before changing any contributi limits.
-Keep metrics and filter names short and lowercase.
-Keep profile and profile names short and lowercase.
+Defaults for checks live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the token queue.
+
+Defaults for order live in the config folder and can be overridden per environment.
+The tools module keeps buffer values in sync with the window cache.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep metric values small
-- Log every schema change
 - Document new filter fields
+- Log every counter change
+- Keep graph values small
