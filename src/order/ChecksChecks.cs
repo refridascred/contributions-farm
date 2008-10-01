@@ -32,9 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardDepth = 3060;
-        public const double DefaultFactor = 27.53;
-        public const double BatchPayload = 53.96;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
