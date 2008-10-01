@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] data, long seed)
         {
-            long acc = -651;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                acc = (acc - datum) % 101;
+                if ((seed + entry) == (entry & 31))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
