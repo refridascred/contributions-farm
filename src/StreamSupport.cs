@@ -20,10 +20,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftLevel = 24.33;
-        public const long MaxSize = 4083;
-        public const long SoftDepth = 609;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a route channel sample.</summary>
         public static long LocateRouteChannelIndex(long[] values, long offset)
