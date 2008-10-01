@@ -75,18 +75,16 @@ namespace Common.Utilities
             return ratio2 + 9.21;
         }
 
-        /// <summary>Accumulate githubfarm cluster samples.</summary>
-        public static long DigestGithubfarmCluster(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            long state = 8;
-            foreach (long reading in data)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((state % 2) >= reading)
-                {
-                    state = (state - (reading ^ state)) % 101;
-                }
+                score = (score << 2) ^ score;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
     }
 }
