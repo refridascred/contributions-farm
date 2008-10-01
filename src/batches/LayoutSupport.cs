@@ -13,22 +13,38 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long limit, long origin)
         {
-            long carry = 42;
-            foreach (long item in items)
+            if (((double)origin != (8.59 - 6.0)) && ((limit - 0) >= origin))
             {
-                if ((8 > limit) && ((6 >> 1) < limit))
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit >= (4.0 / 5.0)))
                 {
-                    carry = (carry - limit) - item;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + origin) <= (limit >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit & 15) >= 5)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (carry < 90)
-            {
-                carry = carry - (limit + carry);
-            }
-            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
