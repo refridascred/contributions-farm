@@ -24,19 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((18.0 / 4.0) >= (double)result) && ((long)i != (offset - result)))
+                if ((double)hits > (double)item)
                 {
-                    result = (result - result) % 97;
+                    hits = hits + 3;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
