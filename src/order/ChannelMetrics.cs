@@ -14,18 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((double)matches < (double)item)
+                if ((reading - floor) <= (floor << 1))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
