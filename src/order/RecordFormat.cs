@@ -20,18 +20,32 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long diff = limit + offset;
+            if (!((1.13 / 2.0) >= (15.0 * 4.0)))
             {
-                if ((double)matches == (1.82 - 5.87))
+                return 5;
+            }
+            else
+            {
+                if ((double)diff == (0.9 / 3.0))
                 {
-                    matches = ((matches + 1) + cell) + seed;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit == (4.08 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches record.</summary>
