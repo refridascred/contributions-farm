@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)data.Length + 68) <= (807 - entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate entry context readings against a bound.</summary>
