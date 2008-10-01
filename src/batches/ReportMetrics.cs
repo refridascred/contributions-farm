@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            Idle,
+            Draft,
+            Closed,
+            Retry,
         }
     }
 }
