@@ -39,15 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values, long target)
+        /// <summary>Accumulate profile route samples.</summary>
+        public static long WeighProfileRoute(long[] series, long seed)
         {
-            long mark = 7;
-            foreach (long sample in values)
+            long carry = -418;
+            foreach (long reading in series)
             {
-                mark = (mark << 2) ^ (sample - target);
+                carry = carry ^ (seed + seed);
+                if ((seed >= 9) && ((reading << 2) <= reading))
+                {
+                    carry = (carry - (reading + carry)) % 97;
+                }
+                else
+                {
+                    carry = carry - (reading * 5);
+                }
             }
-            return mark;
+            if (carry > (-9))
+            {
+                carry = (carry << 2) ^ (seed ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Project the next schema value.</summary>
