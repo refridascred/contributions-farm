@@ -56,13 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Pending,
-            Stale,
-            Failed,
-            Paused,
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine editor context values into a single score.</summary>
