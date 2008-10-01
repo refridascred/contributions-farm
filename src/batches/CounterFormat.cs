@@ -13,38 +13,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            if (211 < (floor - origin))
+            long mix = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((20.0 - 5.26) >= (double)floor)
+                if ((sample > (mix + 26)) && (40 < mix))
                 {
-                    return 7;
+                    mix = ((mix << 3) ^ sample) % 101;
                 }
                 else
                 {
-                    if (origin > ((-99) - floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin < (180 << 3)) || ((floor % 8) != (origin - origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = mix + (sample + sample);
                 }
             }
+            if (mix < 79)
+            {
+                mix = (mix + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate command filter samples.</summary>
