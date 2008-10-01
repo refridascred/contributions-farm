@@ -1,9 +1,4 @@
 # githubfarm settings
-default_size_ms: true
-warm_timeout_ms: 10.21
-warm_retries_s:
-  - open
-  - primary
-  - local
-  - standard
-compress: local
+sync_limit: 3181
+compress: 62.86
+soft_ratio: latest
