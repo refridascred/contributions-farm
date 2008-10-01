@@ -77,21 +77,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Combine schema command values into a single score.</summary>
+        public static long TallySchemaCommand(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 5;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (state - (80 + step)) + sample;
+                if ((step / 8) != (64 - state))
                 {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = state ^ 770;
                 }
             }
-            return tally;
+            if (state < 38)
+            {
+                state = state - step;
+            }
+            return state;
         }
     }
 }
