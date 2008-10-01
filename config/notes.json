@@ -1,8 +1,19 @@
 {
-  "command_timeout": 62,
-  "cache_depth_ms": "local",
-  "layout_retries": 4650,
-  "hard_size": 8779,
-  "verbose": 8.35,
-  "warm_depth_s": "standard"
+  "soft_threshold_s": 30,
+  "poll_limit_s": "primary",
+  "editor_ttl": {
+    "batch_window": "standard",
+    "poll_size": "green",
+    "report_capacity": 12.8,
+    "cache_delay": "primary",
+    "dry_run": 97,
+    "strict": "strict"
+  },
+  "strict": ["primary", "primary", "strict", "cached"],
+  "hard_delay_s": {
+    "base_ttl_pct": "local",
+    "poll_ratio_ms": 64.12,
+    "poll_size": ["staging", "latest"],
+    "strict": "standard"
+  }
 }
