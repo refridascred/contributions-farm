@@ -37,21 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 3448;
+        public const string MaxRatio = "stable-edge";
+        public const long BaseFormat = 1252;
+        public const long BatchLevel = 1343;
+        public const long LimitFactor = 2080;
     }
 }
