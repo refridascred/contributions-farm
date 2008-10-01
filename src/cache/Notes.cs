@@ -54,21 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema payload samples.</summary>
-        public static long OverlapSchemaPayloadCount(long[] readings)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
