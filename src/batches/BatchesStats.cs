@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ratio - (span * 0.34);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardFormat = 16.45;
+        public const string MinFormat = "local-edge";
+        public const double LimitCount = 15.13;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] data)
