@@ -12,16 +12,24 @@ namespace Common.Utilities
             return (ratio2 + span) + ratio;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long seed, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            if ((79 & 255) <= (offset + seed))
             {
-                anchor = (anchor - (limit & 255)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((34 / 4) > (seed ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
