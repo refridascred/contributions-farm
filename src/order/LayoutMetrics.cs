@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine profile contributi values into a single score.</summary>
-        public static long TotalProfileContributi(long[] data, long origin)
+        /// <summary>Compare every pair of stream counter readings.</summary>
+        public static long OverlapStreamCounterCount(long[] data)
         {
-            long acc = 693;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin - origin) <= (acc % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc - acc) - datum;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 11)
-            {
-                acc = (acc << 2) ^ (acc << 2);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Accumulate record samples.</summary>
