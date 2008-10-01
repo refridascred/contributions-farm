@@ -45,32 +45,19 @@ namespace Common.Utilities
         public const long BurstMetrics = 1547;
         public const double LimitMetrics = 82.32;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long limit, long seed)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            long next = limit + seed;
-            if (((limit + (-835)) > seed) || (seed > (limit * 2)))
+            double bias2 = (double)268 / 3.0;
+            if (bias2 < (double)6)
             {
-                return 5;
+                bias2 = bias2 + (scale + 12.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((next * 4) <= (seed >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0 - next) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias2 = (bias2 + (bias / 5.0)) + (double)(long)i;
             }
+            return bias2 + (bias2 - 1.2);
         }
     }
 }
