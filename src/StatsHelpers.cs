@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "cached";
-        public const long BatchSize = 808;
-        public const double BatchPayload = 89.77;
-        public const long LimitPayload = 8966;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCommits = "open";
+        public const double CacheRatio = 23.79;
+        public const string BatchSpan = "alpha";
+        public const string CacheCommits = "cached-v2";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
