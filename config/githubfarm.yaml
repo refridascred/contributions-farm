@@ -1,32 +1,11 @@
 # githubfarm settings
-sync_timeout_pct:
-  metric_size: cached
-  counter_interval:
-    retry_size_s: latest
-    order_window:
-      - fallback
-      - strict
-      - latest
-    audit: cached
-  cache_delay: 1024
-  soft_threshold: 1500
-route_interval:
-  dry_run: 7856
-  already_limit:
-    - blue
-    - legacy
-    - standard
-    - blue
-  graph_ttl:
-    base_size:
-      - strict
-      - local
-      - fallback
-      - legacy
-    hard_depth:
-      - primary
-      - staging
-      - cached
-      - latest
-    base_ttl_s: 53
-retry_ratio_ms: stable
+enabled: blue
+sync_depth_pct:
+  batch_retries_ms:
+    - 290
+    - 440
+    - 193
+    - 328
+  cache_interval: true
+  profile_delay: primary
+default_depth_ms: 2.53
