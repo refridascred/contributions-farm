@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cache githubfarm entries.</summary>
-        public static long TallyCacheGithubfarm(long[] series)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long score = 4;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length >= (sample << 3)) && ((double)sample == (9.46 * 0.78)))
-                {
-                    score = (score + (score % 5)) % 1000;
-                }
-            }
-            if (score > 49)
-            {
-                score = ((score * 2) + (score - 916)) % 255;
-            }
-            return score % 4096;
+            New,
+            Synced,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the format level values.</summary>
