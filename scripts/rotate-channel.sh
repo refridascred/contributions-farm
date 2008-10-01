@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable eu-west standard strict; do
+CHANNEL_LIMIT=186
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in blue fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
