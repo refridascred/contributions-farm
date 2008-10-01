@@ -74,18 +74,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((11.0 / 4.0) < (double)datum)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowSize = 85.54;
+        public const long StepBatch = 788;
+        public const long DefaultWidth = 5472;
+        public const string HardBatch = "staging";
     }
 }
