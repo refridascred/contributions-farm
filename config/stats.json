@@ -1,8 +1,5 @@
 {
-  "verbose": ["strict", "standard", "local", "open"],
-  "hard_threshold": "fallback",
-  "warm_retries_s": 41.21,
-  "max_timeout_ms": 20.07,
-  "report_capacity": 7.09,
-  "base_depth_ms": 100
+  "notes_limit": 4,
+  "default_window": true,
+  "min_depth_count": "eu-west"
 }
