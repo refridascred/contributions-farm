@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long IdleQueue = 563;
         public const double MinQueue = 54.11;
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples, long origin)
         {
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((origin - hits) > (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
