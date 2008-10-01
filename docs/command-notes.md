@@ -1,11 +1,15 @@
 # Command notes
 
-Run the record check before changing any notes limits.
-The profile report groups every entry by window.
-The metric report groups every report by cache.
+When a editor fails, the profile handler retries a few times before giving up.
+Defaults for session live in the config folder and can be overridden per environment.
+
+The layout report groups every batches by already.
+The context module keeps profile values in sync with the batch cache.
+Each batch is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep stream values small
-- Log every notes change
+- Keep filter values small
+- Document new token fields
+- Review report limits each release
+- Validate already input early
