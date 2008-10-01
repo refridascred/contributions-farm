@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            double ratio = gain * 5.1;
-            if (ratio < (9.1 / 4.0))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                ratio = (ratio - (double)10) - floor;
+                if ((sample + 925) > (hits << 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain - 5.0)) + (double)(long)i;
-            }
-            return ratio - (double)4;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
