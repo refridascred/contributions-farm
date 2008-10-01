@@ -28,22 +28,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 96;
-            foreach (long sample in data)
-            {
-                if ((sample & 15) != (sample + 351))
-                {
-                    acc = ((acc << 3) ^ ((-721) - 0)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + 7) % 101;
-                }
-            }
-            return acc % 97;
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
