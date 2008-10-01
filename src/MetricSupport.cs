@@ -28,13 +28,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long CountBatchesOrderGaps(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value & 63) != (origin + origin))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
