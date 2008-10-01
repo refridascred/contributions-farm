@@ -1,10 +1,5 @@
 # entry settings
-burst_delay_pct: 39.79
-cache_retries: staging
-metrics_window:
-  cache_retries: 40
-  idle_window_ms: staging
-  dry_run: open
-  already_threshold: legacy
-  already_capacity: strict
-filter_size: 30
+warm_delay_count: blue
+base_timeout_ms: false
+persist: 26.58
+poll_threshold_pct: 250
