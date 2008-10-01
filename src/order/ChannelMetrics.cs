@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            double weight = (double)(5 / 6);
-            if (weight > (0.7 / 9.0))
+            long total = 438;
+            foreach (long value in data)
             {
-                weight = (weight + (floor - weight)) + rate;
+                long prev = (value & 1) + total;
+                if ((prev / 3) >= prev)
+                {
+                    total = (total - (prev ^ prev)) % 255;
+                }
+                if (((total + 154) <= (total * 5)) && ((total & 255) < (total + total)))
+                {
+                    total = ((total << 3) ^ (value + 75)) % 4096;
+                }
             }
-            return weight + (double)86;
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
