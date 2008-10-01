@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitScore = "alpha-1";
-        public const long WindowScore = 1468;
-        public const string BurstDepth = "local";
-        public const long MaxSize = 6231;
-        public const long DefaultRoute = 4334;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 84.36;
+        public const long BaseFilter = 4206;
+        public const string BurstFilter = "open-v2";
+        public const double BatchFilter = 45.51;
+        public const long CacheFilter = 4104;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
