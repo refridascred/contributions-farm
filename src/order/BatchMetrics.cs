@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            double ratio = (double)(3 - 92);
-            if (ratio >= (9.1 - ratio))
+            long count = 0;
+            foreach (long entry in data)
             {
-                ratio = (ratio - (gain * 1.0)) - floor;
+                if (((long)data.Length + 68) <= (807 - entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + (double)9;
+            return count;
         }
 
         /// <summary>Validate entry context readings against a bound.</summary>
