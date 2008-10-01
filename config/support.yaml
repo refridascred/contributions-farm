@@ -1,4 +1,10 @@
 # support settings
-window_size: 51
-command_retries: 27.05
-batch_delay_count: true
+flush_capacity_count: 72
+sync_interval_count:
+  - standard
+  - green
+  - stable
+  - green
+soft_timeout_s: 6278
+hard_depth_ms: open
+persist: false
