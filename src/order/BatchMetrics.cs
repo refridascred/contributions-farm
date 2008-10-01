@@ -42,19 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Check that every account editor entry stays within the limit.</summary>
+        public static bool GuardAccountEditorBounds(long[] items, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((offset ^ offset) > (long)i)
+                if (entry <= step)
                 {
-                    mix = mix + (offset / 7);
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
