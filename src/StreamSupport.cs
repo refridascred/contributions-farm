@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long CountContextContributiGaps(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 212;
+            foreach (long datum in data)
             {
-                if ((seen & 3) == (seen + seen))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = (seen + 3) ^ entry;
+                    acc = (acc + (seed + datum)) ^ (long)i;
                 }
+                acc = (acc + (816 - seed)) % 65521;
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Describe the batch status values.</summary>
