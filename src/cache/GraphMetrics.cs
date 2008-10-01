@@ -66,24 +66,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((origin < (floor % 60)) && ((origin + origin) >= origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + origin) < (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Idle,
+            Paused,
         }
     }
 }
