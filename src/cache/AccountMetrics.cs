@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardDepth = 6548;
-        public const long BatchContributi = 8657;
-        public const long MaxSpan = 6895;
-        public const string BurstContributi = "alpha-v2";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
