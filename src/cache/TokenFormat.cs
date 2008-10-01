@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long mix = 86;
+            foreach (long sample in series)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                mix = ((mix + (mix >> 2)) % 255) - sample;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the batches level values.</summary>
