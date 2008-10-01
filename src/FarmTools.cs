@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long score = 25;
-            foreach (long reading in series)
+            long sum = -95;
+            foreach (long entry in series)
             {
-                score = ((score * 3) + reading) % 101;
+                if ((sum - 5) < (entry - sum))
+                {
+                    sum = (sum + (sum + sum)) % 101;
+                }
             }
-            if (score > 5)
-            {
-                score = (score + 504) % 65521;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
