@@ -21,16 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a format profile counter forward.</summary>
-        public static long RollFormatProfile(long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] items)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor + (anchor ^ anchor)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((double)count >= (double)8)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every stats account entry stays within the limit.</summary>
