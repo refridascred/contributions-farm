@@ -55,19 +55,13 @@ namespace Common.Utilities
         public const long CacheAlready = 3287;
         public const long LimitAlready = 413;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] data, long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
