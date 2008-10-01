@@ -20,21 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (offset / 4.0) / 9.0;
+            if (weight <= (scale / 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - 0.66;
             }
-            return hits;
+            return weight + weight;
         }
 
         /// <summary>Describe the batch level values.</summary>
