@@ -45,15 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long carry = 43;
-            foreach (long sample in readings)
-            {
-                carry = ((carry - sample) % 1000) + step;
-            }
-            return carry % 65521;
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
