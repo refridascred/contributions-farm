@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine route farm values into a single score.</summary>
+        public static long FoldRouteFarm(long[] items)
         {
-            public double Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            long acc = -119;
+            foreach (long reading in items)
+            {
+                if (acc < (reading % 60))
+                {
+                    acc = ((acc * 3) + 380) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ reading;
+                }
+            }
+            if (acc < 153)
+            {
+                acc = (acc * 2) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload kind values.</summary>
