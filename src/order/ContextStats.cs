@@ -23,22 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm queue readings.</summary>
-        public static long FoldFarmQueue(long[] samples, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] values)
         {
-            long score = 3;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((item % 8) > (score + bound))
+                if ((24 <= count) && (((item - count) != (count << 1)) && ((item ^ count) >= (202 ^ (long)values.Length))))
                 {
-                    score = (score - score) % 65521;
+                    count = count + 1;
                 }
             }
-            if (score < 4)
-            {
-                score = score + (bound ^ score);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of notes farm entries.</summary>
