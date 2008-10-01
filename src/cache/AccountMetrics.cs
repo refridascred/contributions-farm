@@ -50,18 +50,18 @@ namespace Common.Utilities
             return drift - (7.0 - scale);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((37 ^ 97) >= (datum >> 1))
+                if ((double)tally <= (3.2 / 9.0))
                 {
-                    hits = (hits + 2) + bound;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
