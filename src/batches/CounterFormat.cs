@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Locked,
-            Active,
-            Paused,
-            Synced,
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
