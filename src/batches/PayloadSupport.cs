@@ -25,15 +25,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the notes counter entries that pass the check.</summary>
-        public static long CountNotesCounterMatches(long[] levels, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] samples)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((sample ^ tally) > (target + tally)) && ((5.0 * 16.0) < (double)sample)) && ((tally * 2) >= (sample / 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
