@@ -62,23 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry counter figure with a bias.</summary>
-        public static double BlendEntryCounter(double ratio, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] values, long seed)
         {
-            double ratio2 = (double)((-17) % 16);
-            if (ratio2 > (5.1 - ratio))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                ratio2 = (ratio2 - (double)223) - bias;
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 8.0)) - (double)(long)i;
-            }
-            return ratio2 + 9.21;
+            return ok;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
