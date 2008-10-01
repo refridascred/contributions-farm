@@ -36,17 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] data, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (data[i] >= bound)
+                if ((((double)88 < (double)tally) && ((item + tally) > (825 >> 5))) && !(tally <= (1 ^ tally)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
