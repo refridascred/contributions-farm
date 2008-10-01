@@ -47,23 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] readings)
-        {
-            long state = -944;
-            foreach (long reading in readings)
-            {
-                if (((double)state <= 7.5) || ((double)reading > (double)state))
-                {
-                    state = (state - state) % 4096;
-                }
-                else
-                {
-                    state = state - reading;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleScore = 66.48;
+        public const string DefaultAccount = "stable-edge";
+        public const long IdleAccount = 6879;
+        public const string BatchAccount = "alpha-edge";
+        public const long DefaultSize = 331;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long SeriesBatches(long target)
