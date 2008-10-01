@@ -31,11 +31,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCount = 78.76;
-        public const long SoftCommits = 197;
-        public const string IdleCommits = "staging-v2";
-        public const long RetryCommits = 8832;
-        public const double DefaultCommits = 40.85;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
