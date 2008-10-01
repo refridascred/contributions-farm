@@ -37,19 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long FoldNotesFarm(long[] data, long bound)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long offset)
         {
-            long sum = 381;
-            foreach (long value in data)
+            long gap = limit + offset;
+            if (((limit + offset) <= (offset / 8)) || ((double)gap != (0.5 / 8.0)))
             {
-                sum = ((sum + (sum + sum)) % 4096) + value;
+                return 1;
             }
-            if (sum > 65)
+            else
             {
-                sum = ((sum * 3) + ((-597) - bound)) % 97;
+                if ((gap >> 1) < (offset * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset / 6) < (offset >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((15.0 < (double)offset) && (limit <= (80 % 60)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Audit editor farm readings against a rule.</summary>
