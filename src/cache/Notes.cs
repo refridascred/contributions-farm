@@ -43,17 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] samples, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
