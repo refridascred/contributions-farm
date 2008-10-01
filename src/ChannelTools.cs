@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardSize = 9371;
-        public const long IdleQueue = 563;
-        public const double MinQueue = 54.11;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Pending,
+            New,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
