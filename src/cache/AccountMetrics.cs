@@ -54,26 +54,15 @@ namespace Common.Utilities
             return drift - (7.0 - scale);
         }
 
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long CombineTokenContributi(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long score = 23;
-            foreach (long reading in values)
+            long result = 47;
+            foreach (long entry in items)
             {
-                if ((score - 88) > (386 - score))
-                {
-                    score = ((score << 2) ^ (score - 96)) % 65521;
-                }
-                else
-                {
-                    score = score - (reading << 2);
-                }
+                result = ((result ^ (result << 3)) % 4096) ^ entry;
             }
-            if (score > 17)
-            {
-                score = score ^ score;
-            }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
