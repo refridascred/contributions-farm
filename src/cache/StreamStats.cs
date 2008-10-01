@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            Locked,
-            Retry,
-            Pending,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((-632) < (matches - matches))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
