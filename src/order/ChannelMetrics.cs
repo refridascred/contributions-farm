@@ -27,23 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long next = offset + origin;
+            if (11.0 >= (double)offset)
             {
-                if (limit < state)
-                {
-                    state = ((state * 2) + (long)i) % 65521;
-                }
-                if ((state & 255) > ((long)i & 7))
-                {
-                    state = (state - (state + limit)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((offset - offset) == (offset >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset & 7) <= (next >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
