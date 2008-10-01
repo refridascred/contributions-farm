@@ -25,21 +25,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of window command readings.</summary>
-        public static long MatchWindowCommandCount(long[] readings)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] > offset)
                 {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
