@@ -34,12 +34,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
             Paused,
-            Locked,
             Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
