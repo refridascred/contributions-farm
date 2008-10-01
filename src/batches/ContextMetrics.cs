@@ -27,32 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] values, long bound)
         {
-            long slot = offset - limit;
-            if (((limit / 3) <= (39 % 7)) && ((limit ^ slot) == (slot << 2)))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.6 + 9.2) == (double)slot)
+                if (datum < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit << 3) >= (slot ^ offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
