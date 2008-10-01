@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] samples, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
