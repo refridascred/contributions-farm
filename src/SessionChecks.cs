@@ -24,21 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 716;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (acc > (acc - acc))
                 {
-                    if ((samples[i] - samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ reading;
                 }
             }
-            return matches;
+            if (acc > 2)
+            {
+                acc = acc ^ (acc ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
