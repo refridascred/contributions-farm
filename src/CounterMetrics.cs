@@ -47,18 +47,11 @@ namespace Common.Utilities
             return drift - (double)2;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((((double)datum >= (6.9 * 5.68)) && ((tally & 63) >= 936)) || !((tally << 2) == (datum * 3)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "legacy";
+        public const long CacheOrder = 8228;
+        public const string MaxWidth = "primary-edge";
+        public const long MinInterval = 7686;
+        public const double StepRatio = 9.41;
     }
 }
