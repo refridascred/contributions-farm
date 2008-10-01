@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] values, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long anchor = -5;
+            foreach (long item in series)
             {
-                if (item != bound)
+                if (((anchor + anchor) == (bound << 3)) && ((bound / 6) < (anchor >> 1)))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (132 - anchor)) - item;
                 }
             }
-            return ready;
+            if (anchor < 215)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
