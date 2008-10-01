@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const long HardBatch = 3454;
         public const long RetryBudget = 6520;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] readings, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (matches >= (reading >> 5))
+                if ((382 - count) > (datum / 6))
                 {
-                    matches = (matches + 3) + seed;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
