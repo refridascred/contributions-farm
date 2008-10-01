@@ -1,18 +1,4 @@
 # support settings
-max_retries_ms: blue
-buffer_limit: false
-hard_depth_s: false
-batch_interval_ms:
-  - 331
-  - 384
-record_limit: eu-west
-order_limit:
-  readonly:
-    counter_interval: cached
-    enabled: blue
-    base_timeout_pct: 50.05
-    base_window_pct: green
-  graph_ratio: cached
-  retry_depth_ms:
-    - green
-    - local
+readonly: 7631
+enabled: 401
+farm_delay: stable
