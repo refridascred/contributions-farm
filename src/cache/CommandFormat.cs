@@ -13,18 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a farm metrics sample.</summary>
-        public static long SeekFarmMetricsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinCount = 8113;
+        public const long WindowRatio = 7111;
+        public const long SoftAccount = 7927;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxWidth = 74.65;
