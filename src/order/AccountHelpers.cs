@@ -59,20 +59,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long floor, long offset)
         {
-            long result = 511;
-            foreach (long cell in series)
+            if (((floor << 3) == (floor % 97)) || (floor <= (floor & 255)))
             {
-                result = (result ^ (result - cell)) % 65521;
-                result = result - (cell << 3);
+                return 8;
             }
-            if (result < 576)
+            else
             {
-                result = ((result * 4) + result) % 1000;
+                if ((716 / 4) <= (offset + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
