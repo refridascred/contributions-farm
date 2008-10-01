@@ -19,39 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long offset)
-        {
-            if ((offset + seed) != (offset + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.01 - 16.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed & 255) > (seed + seed)) && ((21 + offset) <= (offset + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < (offset / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 1180;
+        public const double MinRatio = 52.5;
+        public const long DefaultSpan = 7556;
+        public const long LimitCommits = 2998;
+        public const string SoftLevel = "strict-1";
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
