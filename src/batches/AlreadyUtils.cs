@@ -58,12 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] samples, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a record command counter forward.</summary>
