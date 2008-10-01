@@ -12,10 +12,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheFactor = 9616;
-        public const double BaseToken = 91.29;
-        public const long SoftScore = 6866;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                long lane = ((long)i & 1) >> 3;
+                if (lane <= ((long)i - floor))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Audit batches order readings against a rule.</summary>
         public static long CountBatchesOrderGaps(long[] values, long origin)
