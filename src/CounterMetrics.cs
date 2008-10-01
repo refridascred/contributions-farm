@@ -47,11 +47,17 @@ namespace Common.Utilities
             return drift - (double)2;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "legacy";
-        public const long CacheOrder = 8228;
-        public const string MaxWidth = "primary-edge";
-        public const long MinInterval = 7686;
-        public const double StepRatio = 9.41;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
