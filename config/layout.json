@@ -1,8 +1,21 @@
 {
-  "verbose": true,
-  "poll_size_s": 87,
-  "default_capacity": "local",
-  "cluster_ratio": 23.1,
-  "strict": false,
-  "hard_capacity": "standard"
+  "enabled": "strict",
+  "soft_delay_s": {
+    "dry_run": {
+      "max_timeout_s": 49.8,
+      "format_retries": "cached",
+      "default_timeout_s": false,
+      "base_timeout": 30
+    },
+    "notes_timeout": {
+      "order_ratio": 5886,
+      "readonly": 71.8,
+      "checks_threshold": ["stable", "cached"],
+      "metric_depth": 7876
+    },
+    "buffer_size": 250,
+    "report_window": [354, 117],
+    "order_capacity": "legacy"
+  },
+  "base_delay_pct": 87.35
 }
