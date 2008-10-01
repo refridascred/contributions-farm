@@ -65,9 +65,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 5784;
-        public const double LimitCommand = 53.85;
-        public const long IdleCommand = 2783;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((double)mix >= (1.0 / 4.0)) && (step > mix))
+                {
+                    mix = (mix * 5) + (3 + mix);
+                    continue;
+                }
+                mix = (mix + (step + step)) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
