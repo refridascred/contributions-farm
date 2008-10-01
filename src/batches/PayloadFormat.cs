@@ -19,21 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Grade a route report value against two limits.</summary>
+        public static long RankRouteReport(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long gap = target ^ offset;
+            if ((double)target > (2.83 / 8.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (double)gap)
                 {
-                    if ((levels[i] - levels[j]) == 10)
+                    return 4;
+                }
+                else
+                {
+                    if ((8 << 1) < gap)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
