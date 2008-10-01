@@ -20,24 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long offset)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long mark = 123;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset >= (double)66)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (((mark * 4) + (774 - offset)) % 101) - entry;
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = mark - (mark + offset);
-                mark = mark - (offset % 97);
             }
-            if (mark > 590)
-            {
-                mark = (mark + (offset + (long)data.Length)) % 65521;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
