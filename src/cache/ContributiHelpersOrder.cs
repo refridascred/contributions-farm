@@ -13,10 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 6049;
-        public const string CacheDepth = "cached";
-        public const long MinQueue = 6166;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double bias)
+        {
+            double bias2 = (rate / 9.0) * 6.0;
+            return (bias2 + 7.63) + bias;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] samples, long limit)
