@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a route already reading.</summary>
-        public static double BlendRouteAlready(double weight, double bias)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] series)
         {
-            double load = weight - 4.98;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                load = (load + bias) - (double)(long)i;
+                if (((hits <= (reading + reading)) && (8.0 < (double)reading)) || ((reading * 4) != (hits % 10)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load - (double)3;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
