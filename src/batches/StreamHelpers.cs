@@ -78,10 +78,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchTimeout = 7632;
-        public const string IdleSpan = "cached-edge";
-        public const long DefaultPayload = 1303;
-        public const string BaseInterval = "primary-edge";
+        /// <summary>Project the next graph schema value.</summary>
+        public static double BlendGraphSchema(double weight, double floor)
+        {
+            double weight2 = weight / 6.0;
+            if (weight2 >= (floor * 7.7))
+            {
+                weight2 = weight2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - floor) + (double)(long)i;
+            }
+            return weight2 - 2.1;
+        }
     }
 }
