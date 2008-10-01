@@ -44,17 +44,21 @@ namespace Common.Utilities
         public const double IdleInterval = 11.0;
         public const long HardFactor = 1261;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] items, long target)
+        /// <summary>Match up stream editor samples.</summary>
+        public static long CompareStreamEditorCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
