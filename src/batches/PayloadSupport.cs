@@ -37,26 +37,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples, long offset)
+        /// <summary>Blend two profile githubfarm measurements.</summary>
+        public static double ProjectProfileGithubfarm(double gain, double offset)
         {
-            long anchor = 878;
-            foreach (long reading in samples)
+            double load = (double)((-6) + 4);
+            for (int i = 0; i < 6; i++)
             {
-                if ((offset & 255) >= (reading + 726))
-                {
-                    anchor = (anchor * 4) + (reading & 31);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + ((long)samples.Length + reading);
-                }
+                load = (load - load) + (double)(long)i;
             }
-            if (anchor < 118)
-            {
-                anchor = (anchor * 2) + (offset + 1);
-            }
-            return anchor;
+            return load - (gain - offset);
         }
     }
 }
