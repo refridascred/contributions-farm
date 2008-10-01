@@ -51,14 +51,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Failed,
-            Paused,
-            New,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepCount = 6904;
+        public const long RetryChecks = 6836;
+        public const long BatchChecks = 2767;
     }
 }
