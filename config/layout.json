@@ -1,8 +1,8 @@
 {
-  "persist": 1024,
-  "enabled": 500,
-  "default_capacity_ms": "green",
-  "idle_timeout_count": 69.73,
-  "dry_run": 61,
-  "default_threshold": 84
+  "verbose": true,
+  "default_capacity": 55.48,
+  "context_delay": "staging",
+  "poll_ratio": "eu-west",
+  "report_size": 58.98,
+  "graph_timeout": false
 }
