@@ -77,11 +77,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first route payload entry that matches the target.</summary>
+        public static long LocateRoutePayloadIndex(long[] series, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
