@@ -1,8 +1,7 @@
-id,active,rank,label
-1,edge,119,24.62
-2,standard,green,61.82
-3,2,899,local
-4,513,60.91,888
-5,70.77,local,396
-6,green,91.29,73.66
-7,eu-west,241,standard
+id,owner,token
+1,open,83.33
+2,79,33.41
+3,blue,863
+4,83.45,501
+5,latest,cached
+6,541,483
