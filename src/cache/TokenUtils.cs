@@ -41,12 +41,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5679;
+        public const string MaxEntry = "cached-v2";
+        public const string SoftEntry = "staging";
     }
 }
