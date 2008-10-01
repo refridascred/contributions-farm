@@ -30,17 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a schema report reading by value.</summary>
-        public static long LocateSchemaReportIndex(long[] samples, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 8;
+            foreach (long entry in levels)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                if ((11.0 - 0.1) >= (double)score)
                 {
-                    return (long)i;
+                    score = (score ^ (entry + entry)) % 255;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
