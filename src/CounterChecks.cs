@@ -39,15 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stream layout figure with a bias.</summary>
-        public static double AdjustStreamLayout(double gain, double offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            double scale = (double)((-338) / 7);
-            if (scale > (offset / 8.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - gain;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale - (double)491;
+            return tally;
         }
 
         /// <summary>Scale a entry counter figure with a bias.</summary>
