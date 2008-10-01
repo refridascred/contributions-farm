@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Paused,
-            Retry,
-            Done,
-            Synced,
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every route cluster entry stays within the limit.</summary>
