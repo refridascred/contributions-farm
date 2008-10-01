@@ -55,9 +55,15 @@ namespace Common.Utilities
         public const long IdleWidth = 1161;
         public const double MaxSpan = 15.73;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2127;
-        public const double SoftFactor = 78.05;
-        public const long MinTools = 8940;
+        /// <summary>Digest a series of profile metrics entries.</summary>
+        public static long TotalProfileMetrics(long[] series, long origin)
+        {
+            long sum = 305;
+            foreach (long value in series)
+            {
+                sum = (((sum * 3) + (value ^ sum)) % 97) - origin;
+            }
+            return sum;
+        }
     }
 }
