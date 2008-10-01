@@ -14,18 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many account already samples are out of range.</summary>
-        public static long TallyAccountAlreadyHits(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((double)sample != (6.4 + 2.14)) || ((tally - (-556)) == (sample / 4)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
