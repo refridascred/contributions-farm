@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "stable-v2";
+        public const long WindowBudget = 2690;
+        public const long MinWidth = 8743;
+        public const long BaseScore = 7946;
+        public const long CacheOrder = 5115;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
