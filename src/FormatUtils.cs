@@ -72,12 +72,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Locate a report counter reading by value.</summary>
+        public static long LocateReportCounterIndex(long[] data, long limit)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
