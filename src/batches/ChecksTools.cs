@@ -35,26 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = 341;
-            foreach (long datum in series)
-            {
-                if ((((-490) ^ datum) < (datum + datum)) || ((double)anchor != (9.15 * 17.0)))
-                {
-                    anchor = (anchor ^ 80) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 5)) % 1000;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 4096;
+            Failed,
+            Paused,
+            New,
+            Draft,
+            Queued,
         }
     }
 }
