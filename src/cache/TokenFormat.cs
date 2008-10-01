@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Count contributi order pairs that satisfy a relation.</summary>
+        public static long CompareContributiOrderCount(long[] values)
         {
-            long mark = -824;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark >= (mark + mark)) || ((8 + mark) >= cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ 841) % 97;
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
