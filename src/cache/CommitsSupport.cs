@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long target)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long score = 73;
-            foreach (long item in samples)
-            {
-                if (target <= (63 ^ item))
-                {
-                    score = score + score;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score * 2) + (item / 9)) - (long)i;
-                }
-                score = (score ^ (score ^ 193)) % 101;
-            }
-            return score % 1000;
+            New,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
