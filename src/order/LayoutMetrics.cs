@@ -12,11 +12,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if (score < (target >> 2))
+                {
+                    score = (score << 2) ^ ((long)i + score);
+                }
+                if ((9.47 + 5.8) < (double)score)
+                {
+                    score = (score + (target - target)) % 255;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
