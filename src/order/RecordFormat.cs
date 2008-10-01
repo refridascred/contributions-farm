@@ -27,15 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next token context value from a seed.</summary>
-        public static long DeriveTokenContext(long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
