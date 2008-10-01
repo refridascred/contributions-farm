@@ -53,10 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2529;
-        public const long RetryFactor = 103;
-        public const long IdleScore = 7554;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((floor % 12) > (mix & 7)) && ((8.01 / 3.0) > (double)(long)i)))
+                {
+                    mix = ((mix << 3) ^ (mix / 3)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double bias, double bias2)
