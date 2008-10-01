@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string BurstInterval = "latest-1";
         public const string BaseMetrics = "legacy-v2";
 
-        /// <summary>Iterate the account layout series from a seed.</summary>
-        public static long IterateAccountLayout(long origin)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum - (3 & 15);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the notes class values.</summary>
