@@ -62,15 +62,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metric session samples.</summary>
-        public static long FoldMetricSession(long[] data, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 210;
-            foreach (long reading in data)
-            {
-                sum = (((sum ^ sum) % 255) ^ reading) - origin;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
