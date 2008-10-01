@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long bound)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
