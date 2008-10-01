@@ -40,11 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxWidth = 74.65;
-        public const string BaseFactor = "primary-1";
-        public const long DefaultFarm = 3739;
-        public const string MinBudget = "staging";
+        /// <summary>Count already route pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyRouteCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] data, long target)
