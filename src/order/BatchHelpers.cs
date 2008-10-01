@@ -23,18 +23,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading == (4.0 / 2.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "cached-v2";
+        public const long MinSize = 175;
+        public const long MaxTimeout = 6343;
     }
 }
