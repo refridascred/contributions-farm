@@ -21,13 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i + offset) != (280 % 60))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a profile reading.</summary>
