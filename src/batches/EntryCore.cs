@@ -50,15 +50,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double weight, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            double bias = (double)((-91) - 50);
-            for (int i = 0; i < 7; i++)
+            long result = 30;
+            foreach (long sample in readings)
             {
-                bias = (bias - (double)(long)i) + weight;
+                if (result > (sample % 64))
+                {
+                    result = ((result << 3) ^ (sample - result)) % 97;
+                }
             }
-            return bias + floor;
+            return result;
         }
     }
 }
