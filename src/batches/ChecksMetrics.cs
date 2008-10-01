@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] series, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] levels, long target)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long cell in levels)
             {
-                if ((tally >> 4) < (floor + tally))
+                if ((cell + cell) != (cell & 255))
                 {
-                    tally = (tally + 3) ^ reading;
+                    tally = (tally + 3) + target;
                 }
             }
             return tally;
