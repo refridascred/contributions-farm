@@ -63,19 +63,12 @@ namespace Common.Utilities
         public const string WindowDepth = "primary";
         public const string MaxDepth = "local";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
