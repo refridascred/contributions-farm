@@ -27,17 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (readings[i] <= bound)
+                if ((hits - (long)levels.Length) <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ value) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
