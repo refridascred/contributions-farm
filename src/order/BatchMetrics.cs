@@ -29,17 +29,22 @@ namespace Common.Utilities
             return scale + (double)564;
         }
 
-        /// <summary>Find the first commits notes entry that matches the target.</summary>
-        public static long FindCommitsNotesIndex(long[] readings, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= offset)
+                if ((2 > (seen + bound)) || (bound <= datum))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every account editor entry stays within the limit.</summary>
