@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long BatchInterval = 3913;
         public const double MaxBatches = 23.05;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            long sum = 0;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                sum = ((sum * 4) + (sum / 2)) + cell;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a record info.</summary>
