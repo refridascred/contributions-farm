@@ -44,20 +44,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long seed)
         {
-            long anchor = -768;
-            foreach (long reading in series)
+            long total = 172;
+            foreach (long reading in data)
             {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) + reading;
-                anchor = ((anchor << 3) ^ anchor) % 65521;
+                if ((reading % 60) > reading)
+                {
+                    total = ((total << 2) ^ (total % 12)) % 101;
+                }
+                else
+                {
+                    total = (total + (total - seed)) % 65521;
+                }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor;
+            return total;
         }
     }
 }
