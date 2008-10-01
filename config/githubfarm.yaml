@@ -1,7 +1,19 @@
 # githubfarm settings
-verbose: latest
-notes_capacity: 23.24
-persist:
-  - 15
-  - 315
-  - 316
+min_window: 1379
+dry_run:
+  audit: false
+  enabled: green
+  cache_delay_s:
+    - 414
+    - 471
+    - 226
+    - 100
+  hard_size_count: fallback
+report_limit: 83.46
+burst_depth_s: 3576
+githubfarm_interval: 2515
+base_threshold:
+  - 95
+  - 137
+  - 115
+  - 321
