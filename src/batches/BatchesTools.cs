@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report batch entries that pass the check.</summary>
-        public static long CountReportBatchHits(long[] readings)
+        /// <summary>Count stats payload pairs that satisfy a relation.</summary>
+        public static long PairStatsPayloadCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)cell == (2.6 / 8.0)) || ((matches & 255) > (34 + cell)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
