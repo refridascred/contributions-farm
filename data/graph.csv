@@ -1,7 +1,10 @@
-id,label,state,weight
-1,41.19,green,495
-2,620,green,145
-3,165,cached,809
-4,815,open,edge
-5,local,522,317
-6,59.35,780,339
+id,score,ratio,active,rank
+1,163,latest,597,staging
+2,blue,cached,cached,local
+3,open,latest,97,53.23
+4,597,43.8,open,staging
+5,166,primary,994,280
+6,728,872,49.29,latest
+7,576,71.9,263,612
+8,751,277,blue,cached
+9,746,7.29,24.85,74
