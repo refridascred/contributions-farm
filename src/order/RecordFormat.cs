@@ -27,12 +27,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            long carry = 4;
+            foreach (long datum in series)
+            {
+                if ((double)carry < (double)414)
+                {
+                    carry = (carry - (carry ^ carry)) + datum;
+                }
+                if (!((48 + (long)series.Length) >= (875 % 64)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of order entries.</summary>
