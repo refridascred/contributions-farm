@@ -20,18 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "standard";
+        public const long RetryStats = 5907;
+        public const long MaxStats = 8577;
 
         /// <summary>Fold a list of profile token readings.</summary>
         public static long ScoreProfileToken(long[] values)
