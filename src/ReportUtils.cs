@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long LimitSpan = 1214;
         public const string WindowStats = "primary";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] samples, long floor)
         {
-            long carry = 436;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry ^ entry;
-                carry = ((carry * 2) + (entry & 3)) % 255;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 247)
-            {
-                carry = (carry + (carry ^ carry)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next channel cluster value.</summary>
