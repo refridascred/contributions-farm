@@ -40,21 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count already route pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyRouteCount(long[] data)
+        /// <summary>Digest a series of order contributi entries.</summary>
+        public static long WeighOrderContributi(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 17;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (((sum * 3) + (778 & 15)) % 101) + item;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
