@@ -32,12 +32,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 50.27;
-        public const long LimitGraph = 3818;
-        public const long BaseLevel = 8333;
-        public const long MaxGraph = 4060;
-        public const long WindowGraph = 1226;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((offset + hits) <= offset))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
         public static long TallyGithubfarmLayoutGaps(long[] values)
