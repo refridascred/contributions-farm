@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const string StepInterval = "strict";
         public const long SoftProfile = 6053;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long step)
         {
-            long state = 29;
-            foreach (long sample in samples)
+            long acc = 21;
+            foreach (long entry in items)
             {
-                state = ((state ^ (sample << 1)) % 65521) - floor;
+                if (acc <= (entry * 2))
+                {
+                    acc = (acc << 3) ^ step;
+                }
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
