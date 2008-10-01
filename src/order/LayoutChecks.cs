@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long target, long floor)
         {
-            long total = 28;
-            foreach (long sample in series)
+            if ((floor ^ target) >= (floor - (-2)))
             {
-                total = ((((total << 3) ^ 972) % 101) + sample) + step;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((target / 8) < (6 / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor >= (5.0 * 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi batches readings.</summary>
