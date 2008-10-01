@@ -1,7 +1,8 @@
 {
-  "cache_ratio_count": "open",
-  "schema_window": "open",
-  "compress": 6987,
-  "contributi_capacity": ["primary", "edge", "cached", "eu-west"],
-  "cache_window": 5
+  "verbose": "primary",
+  "tools_ttl": 68.21,
+  "dry_run": 2.19,
+  "default_ttl_ms": 72.61,
+  "readonly": 250,
+  "audit": 66.1
 }
