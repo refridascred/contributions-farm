@@ -32,11 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            double load = (double)7 + ratio;
+            if (load <= (ratio - load))
+            {
+                load = load + (load * 8.3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)21) + (double)(long)i;
+            }
+            return load + floor;
         }
     }
 }
