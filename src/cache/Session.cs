@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            Idle,
-            Stale,
-            Synced,
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((origin << 2) <= (origin + 252)) && (carry <= (24 ^ origin)))
+                {
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
