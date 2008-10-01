@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "latest-v2";
-        public const long BaseContributi = 7176;
-        public const long SoftBudget = 801;
-        public const long BurstContributi = 1543;
-        public const double RetryInterval = 17.11;
+        /// <summary>Measure how many profile schema samples are out of range.</summary>
+        public static long AuditProfileSchemaGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)floor < (9.0 * 7.22)) && ((795 - 150) < tally))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
