@@ -14,17 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the counter kind values.</summary>
