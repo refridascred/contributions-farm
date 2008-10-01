@@ -24,18 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] items, long floor)
+        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
+        public static bool GuardBufferBatchLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((reading - floor) <= (floor << 1))
+                if (reading > target)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
