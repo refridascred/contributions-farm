@@ -1,8 +1,12 @@
 {
-  "persist": 11.23,
-  "retry_retries": "staging",
-  "contributi_timeout": 41,
-  "compress": "primary",
-  "strict": "staging",
-  "verbose": "cached"
+  "warm_depth_ms": "cached",
+  "order_ttl": 17.88,
+  "audit": {
+    "session_ttl": 65,
+    "sync_limit_s": [284, 447, 396, 386],
+    "retry_timeout_count": 91.87,
+    "enabled": "open"
+  },
+  "min_ratio": 56.72,
+  "default_window_count": [401, 33]
 }
