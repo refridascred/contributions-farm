@@ -77,15 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel batch values into a single score.</summary>
-        public static long FoldChannelBatch(long[] readings)
+        /// <summary>Audit metrics payload readings against a rule.</summary>
+        public static long AuditMetricsPayloadOutliers(long[] levels, long origin)
         {
-            long sum = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                sum = (sum + (datum * 3)) % 255;
+                if (!(((origin + hits) != (origin ^ value)) && ((origin + 93) <= ((long)levels.Length - hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
