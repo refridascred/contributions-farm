@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
+        public static long TallyGithubfarmContributiHits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor / 7) <= (23 >> 4))
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a account info.</summary>
