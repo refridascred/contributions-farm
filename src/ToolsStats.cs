@@ -82,15 +82,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Validate record notes readings against a bound.</summary>
+        public static bool CheckRecordNotesBounds(long[] values, long target)
         {
-            double weight = gain;
-            if (weight > gain)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                weight = weight + (1.39 + weight);
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (gain + floor);
+            return ok;
         }
     }
 }
