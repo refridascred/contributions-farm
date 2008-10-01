@@ -34,18 +34,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] readings, long target)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally == (10.0 + 4.65))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 2) + reading) + target;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
