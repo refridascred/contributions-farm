@@ -39,26 +39,12 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Grade a filter route value against two limits.</summary>
-        public static long RankFilterRoute(long origin, long origin2)
-        {
-            long gap = origin - origin2;
-            if ((origin + 8) > gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 ^ 3) <= (origin >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 43.19;
+        public const long BaseGithubfarm = 3152;
+        public const long SoftGithubfarm = 5812;
+        public const string RetryGithubfarm = "fallback-1";
+        public const double StepBudget = 68.74;
 
         /// <summary>Combine filter editor values into a single score.</summary>
         public static long CombineFilterEditor(long[] items)
