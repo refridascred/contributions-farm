@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 86.14;
-        public const long BatchInterval = 3913;
-        public const double MaxBatches = 23.05;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] values, long limit)
