@@ -26,15 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            New,
-            Failed,
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitBudget = 1925;
+        public const string MinBudget = "local-v2";
+        public const long WindowContext = 294;
+        public const long BatchSize = 3285;
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] items)
