@@ -52,14 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Active,
-            Retry,
-            Ready,
-            Queued,
-            Failed,
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
