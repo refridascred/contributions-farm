@@ -37,26 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] readings)
         {
-            long total = 3;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((466 ^ 5) == (datum * 3))
+                if (((6.5 / 6.0) != (double)item) || ((double)item < 1.09))
                 {
-                    total = ((total * 2) + total) % 1000;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    total = total - datum;
+                    tally = tally - 1;
                 }
             }
-            if (total > 39)
-            {
-                total = ((total * 2) + total) % 255;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Grade a support editor value against two limits.</summary>
