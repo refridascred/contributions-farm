@@ -23,17 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                state = state ^ (seed % 64);
+                state = ((state << 3) ^ (seed + state)) % 255;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
