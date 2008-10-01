@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two filter farm measurements.</summary>
-        public static double BlendFilterFarm(double bias, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            double scale = 17.0;
-            if (scale < (10.0 * 6.9))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale / 6.0)) - (double)(long)i;
-            }
-            return scale + (span * 8.0);
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
