@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] data, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (datum < seed)
+                if (!((6.0 - 13.0) >= (5.8 - 19.0)))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 1) + entry) - offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
