@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            Idle,
-            Synced,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)5 != (double)datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
