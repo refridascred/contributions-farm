@@ -1,8 +1,11 @@
 # support settings
-cache_threshold_s: 36.21
-retry_ratio:
-  - 498
-  - 217
-  - 171
-enabled: true
-retry_window_s: stable
+max_ttl:
+  metric_interval:
+    - 283
+    - 497
+    - 18
+  idle_size_count: 8195
+  profile_window: strict
+  flush_delay_pct: eu-west
+cache_interval_ms: blue
+contributi_depth: false
