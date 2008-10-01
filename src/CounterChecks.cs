@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine route values into a single score.</summary>
