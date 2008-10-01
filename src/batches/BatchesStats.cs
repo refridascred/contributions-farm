@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine githubfarm account values into a single score.</summary>
-        public static long CombineGithubfarmAccount(long[] levels)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = 157;
-            foreach (long entry in levels)
-            {
-                sum = ((sum - sum) % 4096) - entry;
-            }
-            return sum % 1000;
+            Active,
+            Done,
+            Paused,
         }
 
         /// <summary>Blend two batches channel measurements.</summary>
