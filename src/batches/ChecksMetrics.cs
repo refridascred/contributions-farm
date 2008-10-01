@@ -11,24 +11,10 @@ namespace Common.Utilities
         public const long SoftRatio = 102;
         public const double StepFactor = 70.21;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] series, long origin)
-        {
-            long anchor = 97;
-            foreach (long entry in series)
-            {
-                if (!(((6.08 * 7.0) >= (double)anchor) || ((double)entry > (4.28 * 9.5))))
-                {
-                    anchor = ((anchor - 420) % 65521) - origin;
-                }
-                anchor = (anchor + (321 % 7)) % 65521;
-            }
-            if (anchor > 9)
-            {
-                anchor = anchor + (anchor << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryDepth = 69.86;
+        public const double StepRecord = 14.78;
+        public const double HardScore = 45.63;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series)
