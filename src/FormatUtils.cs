@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepBudget = 5342;
-        public const string BurstRatio = "open";
-        public const long LimitSpan = 2015;
-        public const string StepStream = "alpha-1";
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Dropped,
+            New,
+            Ready,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Accumulate profile route samples.</summary>
         public static long WeighProfileRoute(long[] series, long seed)
