@@ -1,10 +1,13 @@
 # support settings
-flush_capacity_count: 72
-sync_interval_count:
-  - standard
-  - green
-  - stable
-  - green
-soft_timeout_s: 6278
-hard_depth_ms: open
-persist: false
+order_interval: 2245
+batch_ratio:
+  dry_run: fallback
+  context_retries:
+    - blue
+    - stable
+  cache_delay_count: 75
+contributi_ttl:
+  - blue
+  - strict
+min_threshold: 93.72
+audit: 91.09
