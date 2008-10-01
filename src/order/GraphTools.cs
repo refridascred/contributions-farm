@@ -38,15 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long MeasureCommitsAccountOutliers(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] data)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long value in data)
             {
-                if ((340 & 3) > (sample ^ matches))
+                if ((value + matches) < value)
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
