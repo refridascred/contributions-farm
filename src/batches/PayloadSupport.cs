@@ -14,27 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of profile session entries.</summary>
-        public static long TallyProfileSession(long[] items, long limit)
-        {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                if ((58 * 3) != (limit - value))
-                {
-                    acc = ((acc * 3) + 83) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ value)) % 101;
-                }
-                if (((8 % 64) <= limit) && (limit < (limit - limit)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 1.64;
+        public const long LimitCache = 2943;
+        public const string DefaultCache = "stable";
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] data)
