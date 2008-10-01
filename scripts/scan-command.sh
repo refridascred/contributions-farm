@@ -6,24 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=420
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 4))
+    total=$((total + i * 3))
 done
 log "total ${total}"
