@@ -63,18 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long CombineEditorBuffer(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 91;
-            foreach (long reading in readings)
-            {
-                if (!((161 + reading) >= (mark & 7)))
-                {
-                    mark = mark + (7 - reading);
-                }
-            }
-            return mark;
+            Paused,
+            Retry,
+            Locked,
         }
     }
 }
