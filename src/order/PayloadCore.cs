@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a account queue figure with a bias.</summary>
-        public static double AdjustAccountQueue(double scale, double bias)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            double rate = scale;
-            return (rate - scale) + bias;
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total + (total % 3);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the record phase values.</summary>
