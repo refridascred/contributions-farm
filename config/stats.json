@@ -1,6 +1,5 @@
 {
-  "soft_size_pct": "local",
-  "strict": "legacy",
-  "compress": 250,
-  "warm_interval_pct": "edge"
+  "warm_size_s": true,
+  "warm_delay": 36.65,
+  "soft_limit_pct": true
 }
