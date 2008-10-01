@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Scale a already layout figure with a bias.</summary>
+        public static double SmoothAlreadyLayout(double gain, double span)
         {
-            Active,
-            Locked,
-            Queued,
+            double weight = span;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (gain * 7.34)) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Accumulate profile route samples.</summary>
