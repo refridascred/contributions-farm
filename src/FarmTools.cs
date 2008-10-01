@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session queue samples are out of range.</summary>
-        public static long MeasureSessionQueueMatches(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((seed + seed) >= seed) && (seed >= (hits >> 4)))
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowWidth = 1241;
+        public const double BatchBudget = 14.6;
+        public const double DefaultCache = 76.86;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] samples, long bound)
