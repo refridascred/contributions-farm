@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metric cache entry stays within the limit.</summary>
-        public static bool VerifyMetricCacheLimits(long[] levels, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
