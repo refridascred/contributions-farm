@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 4) + origin) % 65521;
-                result = result - 47;
-                result = (result ^ (9 - result)) % 97;
-                result = ((result * 5) + (long)i) % 65521;
+                if (!(1.0 <= (double)mix))
+                {
+                    mix = ((mix * 2) + (mix * 5)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
