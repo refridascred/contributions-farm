@@ -1,14 +1,8 @@
 {
-  "idle_threshold": {
-    "hard_ttl": "green",
-    "verbose": 60,
-    "sync_capacity_s": {
-      "idle_threshold": "legacy",
-      "metric_ratio": ["stable", "blue", "green", "blue"],
-      "editor_threshold": false
-    }
-  },
-  "dry_run": 500,
-  "retry_window": 85.94,
-  "batch_timeout_s": true
+  "batch_threshold_ms": "primary",
+  "soft_depth_count": ["blue", "legacy", "primary"],
+  "hard_threshold": "edge",
+  "schema_timeout": [500, 238, 45, 166],
+  "enabled": 6943,
+  "verbose": "fallback"
 }
