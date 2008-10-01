@@ -49,15 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = 673;
-            foreach (long cell in levels)
-            {
-                result = ((result * 4) + cell) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
