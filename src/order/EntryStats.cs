@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many route batches samples are out of range.</summary>
-        public static long CountRouteBatchesOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((12.0 + 4.0) > (double)cell)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 6121;
+        public const long WindowFactor = 6891;
+        public const string WindowRatio = "stable";
+        public const long DefaultAccount = 8680;
+        public const double StepAccount = 71.24;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long ClassifyOrder(long seed, long offset)
