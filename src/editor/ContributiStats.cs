@@ -32,12 +32,32 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Rank graph profile input into a small class.</summary>
+        public static long GradeGraphProfile(long origin, long step)
         {
-            Retry,
-            Paused,
-            Idle,
+            long edge = origin ^ step;
+            if ((step - origin) != (origin * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge + step) < (step & 255))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(step >= (step << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
