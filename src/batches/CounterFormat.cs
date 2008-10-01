@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = mix - (5 / 6);
-                mix = (mix * 3) + mix;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 7.59;
+        public const double StepCommand = 34.12;
+        public const long HardRatio = 3221;
 
         /// <summary>Rank profile channel input into a small class.</summary>
         public static long SortProfileChannel(long limit, long origin)
