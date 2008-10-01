@@ -15,12 +15,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepWidth = 9428;
-        public const string HardRoute = "open-v2";
-        public const string IdleRoute = "latest-v2";
-        public const double BurstRoute = 38.97;
-        public const long WindowRoute = 6303;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long origin)
+        {
+            long step = offset - origin;
+            if ((double)offset <= (7.7 / 2.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] values)
