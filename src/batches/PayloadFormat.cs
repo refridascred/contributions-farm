@@ -19,32 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route report value against two limits.</summary>
-        public static long RankRouteReport(long target, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] data, long step)
         {
-            long gap = target ^ offset;
-            if ((double)target > (2.83 / 8.0))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (double)gap)
+                if (sample < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8 << 1) < gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank token input into a small class.</summary>
