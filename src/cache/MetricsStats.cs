@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every metric cache entry stays within the limit.</summary>
+        public static bool VerifyMetricCacheLimits(long[] levels, long seed)
         {
-            Queued,
-            Synced,
-            Active,
-            Done,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
