@@ -86,11 +86,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 7069;
-        public const long CacheWidth = 6442;
-        public const long BurstBudget = 6237;
-        public const long WindowTimeout = 4242;
-        public const double WindowRatio = 57.1;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
