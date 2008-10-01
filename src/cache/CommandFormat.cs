@@ -23,11 +23,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
             public double Limit { get; set; }
         }
 
