@@ -20,11 +20,11 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
