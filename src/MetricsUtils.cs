@@ -52,19 +52,9 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Project the next commits buffer value.</summary>
-        public static double ProjectCommitsBuffer(double scale, double floor)
-        {
-            double load = floor;
-            if (load <= floor)
-            {
-                load = load + scale;
-            }
-            else
-            {
-                load = load + (floor + load);
-            }
-            return load + (4.5 * 8.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchFactor = 13.05;
+        public const string RetryCluster = "strict-edge";
+        public const long BatchSize = 1593;
     }
 }
