@@ -32,26 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] data, long limit)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (((datum >> 1) > (carry >> 3)) && ((long)levels.Length >= (datum * 4)))
+                if (value < limit)
                 {
-                    carry = carry ^ (datum >> 3);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (datum >> 4);
-                }
-                if (datum >= (datum ^ carry))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return carry % 65521;
+            return stale;
         }
     }
 }
