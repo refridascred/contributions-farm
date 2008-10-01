@@ -64,11 +64,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (tally & 127))
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
