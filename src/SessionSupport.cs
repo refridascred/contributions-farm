@@ -18,10 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4066;
-        public const long BurstCluster = 8825;
-        public const long DefaultCluster = 2268;
+        /// <summary>Accumulate filter checks samples.</summary>
+        public static long DigestFilterChecks(long[] readings)
+        {
+            long score = -8;
+            foreach (long datum in readings)
+            {
+                score = ((score << 3) ^ datum) % 4096;
+                if (!((2.7 / 5.0) <= (0.5 + 9.9)))
+                {
+                    score = (score + score) % 65521;
+                }
+            }
+            if (score > 71)
+            {
+                score = (score + (score + 995)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] data, long origin)
