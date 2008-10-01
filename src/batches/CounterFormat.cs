@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "local";
-        public const string DefaultChecks = "latest-1";
-        public const double MinInterval = 67.84;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((698 - cell) > (74 % 64))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate command tools readings against a bound.</summary>
         public static bool ValidateCommandToolsLimits(long[] data, long seed)
