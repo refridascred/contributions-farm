@@ -28,19 +28,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            long mix = 406;
-            foreach (long sample in values)
+            if (((double)target == (4.0 - 19.0)) && ((target + origin) >= origin))
             {
-                mix = ((mix - (-630)) % 255) + sample;
-                if (target <= (target & 31))
+                return 0;
+            }
+            else
+            {
+                if ((origin - target) < (target + origin))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin >> 5) <= target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target > (double)4) || ((double)target == (1.7 - 2.85)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
