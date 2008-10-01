@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
+        public static double ScaleCommitsGithubfarm(double gain, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            double scale = (double)((-940) - 30);
+            if (scale <= (double)8)
             {
-                if ((sum <= (offset >> 3)) && ((sum / 8) < (offset ^ 6)))
-                {
-                    sum = ((sum * 2) + (offset % 12)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                scale = (scale + scale) + offset;
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (11.0 * 6.19)) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
