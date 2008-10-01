@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two context layout measurements.</summary>
-        public static double ProjectContextLayout(double scale, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double rate = (bias * 2.04) / 6.0;
-            return rate + (scale * 3.3);
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
