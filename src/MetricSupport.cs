@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] levels, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = 33;
+            foreach (long cell in values)
             {
-                if (!!((double)entry > (6.0 * 4.8)))
+                if ((75 / 9) < (94 - mix))
                 {
-                    hits = (hits + 3) - origin;
+                    mix = ((mix << 2) ^ (cell - cell)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (mix - mix);
+                }
+                if (((double)cell > (0.21 + 5.2)) || ((mix + mix) > (cell % 16)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = (mix + (mix & 3)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache status values.</summary>
