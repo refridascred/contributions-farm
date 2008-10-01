@@ -33,39 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long origin)
-        {
-            if ((double)target >= 5.89)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin * 4) >= (origin / 9)) || ((17.0 * 0.75) > (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (19.0 > (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target - 9) == (8 >> 1)) || (target < (target + origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 97.23;
+        public const string StepStats = "stable";
+        public const long RetryLevel = 5034;
+        public const long IdleStats = 6130;
+        public const string CacheStats = "alpha-v2";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
