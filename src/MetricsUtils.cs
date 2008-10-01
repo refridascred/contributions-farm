@@ -78,16 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] series, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                result = (result * 3) + ((long)i - result);
-                result = ((result * 5) + (long)i) % 4093;
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
