@@ -32,25 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long target)
         {
-            long step = offset - origin;
-            if ((double)offset <= (7.7 / 2.0))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (step <= (offset + offset))
+                if (cell != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
