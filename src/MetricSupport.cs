@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long anchor = 6;
-            foreach (long item in levels)
-            {
-                anchor = (anchor * 3) + (item ^ 545);
-            }
-            if (anchor < 59)
-            {
-                anchor = (anchor * 4) + (anchor << 2);
-            }
-            return anchor;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
