@@ -53,12 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxRatio = 8059;
-        public const long SoftScore = 1410;
-        public const long SoftCount = 9974;
-        public const string BurstBuffer = "stable-edge";
-        public const long HardBuffer = 5253;
+        /// <summary>Match up order graph samples.</summary>
+        public static long PairOrderGraphCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowDepth = "standard-v2";
