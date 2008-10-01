@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data)
         {
-            long acc = 105;
-            foreach (long reading in readings)
+            long anchor = -65;
+            foreach (long entry in data)
             {
-                if ((step << 3) >= 7)
-                {
-                    acc = (acc + reading) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (616 % 100)) % 65521;
-                }
+                anchor = ((anchor - (anchor << 3)) % 4096) + entry;
             }
-            return acc % 97;
+            if (anchor < 78)
+            {
+                anchor = (anchor ^ (anchor * 5)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Combine filter githubfarm values into a single score.</summary>
