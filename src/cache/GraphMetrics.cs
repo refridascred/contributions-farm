@@ -48,14 +48,10 @@ namespace Common.Utilities
             return gain - (rate - rate);
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "standard-1";
+        public const double BurstChecks = 1.04;
+        public const long LimitChecks = 4153;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
