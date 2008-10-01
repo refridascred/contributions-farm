@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Paused,
-            Draft,
-            Failed,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchTimeout = 3537;
+        public const long LimitTimeout = 3191;
+        public const long CacheMetrics = 2867;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderRange(long[] series, long offset)
