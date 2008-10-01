@@ -16,18 +16,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the route tools entries that pass the check.</summary>
-        public static long AuditRouteToolsHits(long[] data)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (seen > ((-54) % 64))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a tools counter forward.</summary>
