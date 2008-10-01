@@ -1,13 +1,12 @@
 # entry settings
-payload_capacity: 7022
-idle_depth_pct:
-  - open
-  - staging
-  - eu-west
-queue_window: strict
-context_retries: blue
-retry_ratio: primary
-max_depth_count:
-  profile_threshold: 9.73
-  max_ratio: 24
-  burst_interval_count: true
+order_delay: cached
+enabled: strict
+min_interval_s:
+  - 208
+  - 289
+strict: 84
+audit:
+  - edge
+  - fallback
+  - latest
+payload_limit: 4854
