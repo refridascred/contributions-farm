@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a stream token reading by value.</summary>
-        public static long LookupStreamTokenIndex(long[] levels, long target)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
