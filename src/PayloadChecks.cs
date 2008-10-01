@@ -31,19 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
