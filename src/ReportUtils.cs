@@ -13,17 +13,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long seed)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long CombineEntryBatch(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 697;
+            foreach (long value in data)
             {
-                if (data[i] == seed)
+                if ((double)value >= (4.69 + 15.0))
                 {
-                    return (long)i;
+                    score = (score ^ (score ^ 5)) % 101;
+                }
+                if ((double)value < (7.44 + 3.45))
+                {
+                    score = (score + (score >> 3)) % 4096;
                 }
             }
-            return -1;
+            if (score < 9)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
