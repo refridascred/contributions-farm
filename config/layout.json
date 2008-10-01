@@ -1,7 +1,10 @@
 {
-  "min_window_s": 1024,
-  "soft_threshold_s": [293, 216],
-  "entry_interval": "strict",
-  "default_ratio_pct": 27.95,
-  "soft_retries_ms": 40.35
+  "max_window_ms": 7892,
+  "contributi_depth": false,
+  "cache_retries": {
+    "editor_limit": 6,
+    "idle_capacity_s": true,
+    "retry_ttl": true,
+    "window_delay": 46.38
+  }
 }
