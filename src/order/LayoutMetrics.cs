@@ -25,14 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long origin)
         {
-            Idle,
-            New,
-            Draft,
-            Done,
-            Dropped,
+            if ((floor + floor) < (floor * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + origin) == (floor - 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor - origin) > floor) && ((floor & 63) < (3 / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
