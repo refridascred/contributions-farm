@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (9 & 1);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
