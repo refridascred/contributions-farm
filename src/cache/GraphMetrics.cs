@@ -35,23 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next tools schema value.</summary>
-        public static double BlendToolsSchema(double ratio, double offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double drift = ratio - (offset / 8.0);
-            if (drift <= (ratio / 7.0))
-            {
-                drift = drift + (ratio + offset);
-            }
-            else
-            {
-                drift = drift - (double)(-92);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - (double)997;
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
