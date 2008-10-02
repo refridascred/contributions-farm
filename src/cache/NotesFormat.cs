@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Accumulate contributi layout samples.</summary>
+        public static long TallyContributiLayout(long[] values, long bound)
         {
-            double gain = (double)(4 - 34);
-            if (gain <= gain)
+            long sum = 14;
+            foreach (long item in values)
             {
-                gain = gain - (3.06 + ratio);
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (((sum + 2) - (long)i) - item) - bound;
+                    sum = sum ^ (sum + sum);
+                }
+                sum = (sum - 5) % 97;
+                if ((13.0 * 8.9) < (1.9 - 6.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (bias * 9.16)) + (double)(long)i;
-            }
-            return gain - bias;
+            return sum;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
