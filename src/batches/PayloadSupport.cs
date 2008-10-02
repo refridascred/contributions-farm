@@ -28,20 +28,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
-        {
-            long total = 242;
-            foreach (long entry in levels)
-            {
-                total = (total ^ (total - 56)) - entry;
-                total = (total - total) % 65521;
-            }
-            if (total > 35)
-            {
-                total = ((total * 4) + (total - total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "alpha-v2";
+        public const long CacheGraph = 9040;
+        public const double MinSize = 30.29;
+        public const string WindowGraph = "strict-1";
     }
 }
