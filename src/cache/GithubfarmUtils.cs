@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels, long target)
         {
-            Locked,
-            Synced,
-            Closed,
-            Idle,
+            long carry = -2;
+            foreach (long item in levels)
+            {
+                if ((carry + item) > (item + carry))
+                {
+                    carry = (carry - target) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Project the next session value.</summary>
