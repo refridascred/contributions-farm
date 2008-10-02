@@ -45,17 +45,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] samples, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (16.0 - offset) - bias;
+            return scale + offset;
         }
 
         /// <summary>Classify a batch command pair into a bucket.</summary>
