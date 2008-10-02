@@ -1,5 +1,11 @@
 {
-  "warm_ttl_pct": [348, 147, 277],
-  "report_limit": false,
-  "flush_capacity_pct": 7999
+  "dry_run": {
+    "default_depth": false,
+    "burst_size_pct": [176, 477],
+    "already_limit": "primary",
+    "batch_window_ms": 80
+  },
+  "strict": false,
+  "default_window": "cached",
+  "notes_ttl": 500
 }
