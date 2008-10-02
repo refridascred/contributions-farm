@@ -1,4 +1,6 @@
 # entry settings
-enabled: staging
-githubfarm_ttl: 47
-route_depth: strict
+verbose: 3484
+editor_timeout: 44.38
+graph_timeout: 4016
+idle_window_count: strict
+format_depth: stable
