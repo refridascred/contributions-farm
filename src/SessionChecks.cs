@@ -34,13 +34,21 @@ namespace Common.Utilities
         public const double LimitContext = 76.06;
         public const string MinRatio = "staging-edge";
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
