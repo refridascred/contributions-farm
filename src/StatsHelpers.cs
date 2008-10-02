@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double gain2 = gain;
-            if (gain2 < (bias / 2.0))
-            {
-                gain2 = gain2 + (gain2 / 8.0);
-            }
-            else
-            {
-                gain2 = gain2 + 7.8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - 3.16) + (double)(long)i;
-            }
-            return gain2 - gain;
+            Stale,
+            Ready,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a layout stats.</summary>
