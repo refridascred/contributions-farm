@@ -36,24 +36,19 @@ namespace Common.Utilities
         public const long WindowAlready = 9146;
         public const long CacheCount = 848;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long origin)
         {
-            if (((offset >> 5) >= (offset + offset)) || (374 > (offset + offset)))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset < (8.0 * 14.0))
+                if (item >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
