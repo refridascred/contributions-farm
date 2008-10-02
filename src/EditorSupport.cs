@@ -23,39 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long RankCounterLayout(long offset, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long seed)
         {
-            long step = offset + origin;
-            if ((double)origin >= (4.18 / 3.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + origin) < step)
+                if (items[i] < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (5.7 >= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 127) < (offset - 6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
