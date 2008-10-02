@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double span)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double weight2 = span;
-            if (weight2 >= weight2)
-            {
-                weight2 = (weight2 - span) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - span;
-            }
-            return weight2 - 14.0;
+            New,
+            Closed,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Locate a order reading by value.</summary>
