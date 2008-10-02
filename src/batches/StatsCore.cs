@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const string LimitCount = "latest-v2";
         public const long MaxBatch = 8360;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long floor)
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long MeasureCommitsEntryMatches(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                if ((72 < (entry + 51)) || ((1.12 * 8.0) <= (double)count))
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
