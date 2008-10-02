@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] data, long bound)
+        /// <summary>Digest a series of batch schema entries.</summary>
+        public static long CombineBatchSchema(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 34;
+            foreach (long sample in items)
             {
-                if (datum < bound)
+                if ((sample - total) >= ((-5) - total))
                 {
-                    ready = false;
-                    break;
+                    total = (total << 3) ^ 9;
+                }
+                else
+                {
+                    total = total + sample;
                 }
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
