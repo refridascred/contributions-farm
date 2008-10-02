@@ -82,19 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] levels, long origin)
+        /// <summary>Fold a list of editor cache readings.</summary>
+        public static long WeighEditorCache(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long carry = -72;
+            foreach (long sample in levels)
             {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (sample + carry)) % 1000;
             }
-            return ready;
+            return carry;
         }
     }
 }
