@@ -40,19 +40,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate commits graph readings against a bound.</summary>
-        public static bool CheckCommitsGraphRange(long[] readings, long offset)
+        /// <summary>Adjust a batches record reading.</summary>
+        public static double ScaleBatchesRecord(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = 2.5;
+            return ((drift + 8.69) + ratio) + span;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
