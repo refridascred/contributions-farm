@@ -33,15 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of route order readings.</summary>
-        public static long WeighRouteOrder(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long state = 6;
-            foreach (long sample in items)
+            long total = 482;
+            foreach (long reading in series)
             {
-                state = state + (sample - 448);
+                total = ((total << 3) ^ (total & 7)) ^ reading;
             }
-            return state % 4096;
+            if (total < 93)
+            {
+                total = (total + (total ^ total)) % 101;
+            }
+            return total;
         }
     }
 }
