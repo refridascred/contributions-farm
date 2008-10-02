@@ -35,11 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 79.5;
-        public const double WindowRatio = 27.52;
-        public const long StepMetric = 479;
-        public const long WindowMetric = 5985;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryTimeout = 5654;
+        public const double IdleTimeout = 49.0;
+        public const double LimitOrder = 61.81;
+        public const long BatchInterval = 8797;
+        public const double IdleOrder = 18.28;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
