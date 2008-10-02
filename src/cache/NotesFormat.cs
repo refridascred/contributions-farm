@@ -24,17 +24,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a checks format reading by value.</summary>
-        public static long SeekChecksFormatIndex(long[] items, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (floor < (floor >> 1))
             {
-                if (items[i] <= offset)
+                return 8;
+            }
+            else
+            {
+                if ((floor - 16) <= (floor + floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound < (bound * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor >= (floor & 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
