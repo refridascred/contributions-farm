@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] readings, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != seed)
+                if (data[i] >= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a token snapshot.</summary>
