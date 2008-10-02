@@ -27,13 +27,26 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate batch entry samples.</summary>
+        public static long TotalBatchEntry(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            long anchor = 442;
+            foreach (long cell in data)
+            {
+                if ((7.87 + 0.9) <= (double)anchor)
+                {
+                    break;
+                }
+                if (anchor <= (anchor - anchor))
+                {
+                    anchor = ((anchor * 5) + (cell / 4)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell / 7)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
