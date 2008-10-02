@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            Dropped,
-            Done,
-            Active,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (6.51 > (double)reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
