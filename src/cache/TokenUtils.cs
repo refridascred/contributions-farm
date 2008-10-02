@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepSpan = 9649;
+        public const long BurstBatch = 5673;
+        public const string SoftBatch = "strict-edge";
+        public const long DefaultBatch = 9955;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
