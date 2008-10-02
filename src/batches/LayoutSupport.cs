@@ -28,11 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public bool Limit { get; set; }
+            public bool Offset { get; set; }
             public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
