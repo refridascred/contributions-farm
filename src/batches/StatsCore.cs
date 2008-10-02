@@ -42,12 +42,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate githubfarm format samples.</summary>
+        public static long DigestGithubfarmFormat(long[] values)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long total = 39;
+            foreach (long cell in values)
+            {
+                total = (total + total) % 255;
+                if (((double)total == (8.0 - 4.5)) && (total <= (total + cell)))
+                {
+                    break;
+                }
+            }
+            if (total < 936)
+            {
+                total = ((total * 5) + (total % 24)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
