@@ -64,14 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Retry,
-            Idle,
-            Queued,
-            Failed,
-            Paused,
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
