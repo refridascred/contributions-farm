@@ -1,21 +1,6 @@
 {
-  "flush_timeout_count": 5245,
-  "flush_size": 84.7,
-  "stream_size": 60,
-  "hard_ratio": {
-    "poll_delay_s": 58,
-    "burst_timeout_pct": {
-      "cache_interval": 69.96,
-      "max_retries_pct": "legacy",
-      "retry_capacity_pct": "legacy",
-      "audit": 1024,
-      "window_capacity": 95.89
-    },
-    "cache_depth_count": false,
-    "max_ttl_count": [330, 161, 494, 149],
-    "schema_limit": 14.08,
-    "profile_timeout": 7905
-  },
-  "soft_interval": true,
-  "farm_ratio": 8206
+  "editor_interval": "stable",
+  "filter_window": "primary",
+  "base_capacity": false,
+  "editor_ttl": false
 }
