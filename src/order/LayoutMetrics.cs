@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long seed, long limit)
         {
-            long mix = 3;
-            foreach (long entry in values)
+            long span = seed - limit;
+            if (((2.4 - 1.89) >= (double)seed) || ((985 * 2) > seed))
             {
-                mix = (((mix * 5) + 74) % 97) ^ entry;
+                return 7;
             }
-            if (mix < (-4))
+            else
             {
-                mix = mix ^ (mix - mix);
+                if ((4.6 + 7.3) == (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.8 - 8.9) > (double)span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((span & 63) != (seed / 6)) || ((limit + limit) <= (limit + 736)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mix % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
