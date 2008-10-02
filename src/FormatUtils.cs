@@ -65,11 +65,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxBudget = 30.97;
+        public const long MinLayout = 8559;
+        public const long BatchLayout = 1181;
     }
 }
