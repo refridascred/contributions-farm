@@ -1,12 +1,5 @@
 {
-  "max_capacity": {
-    "idle_interval_count": [434, 184, 95, 260],
-    "batch_size_s": false,
-    "audit": "green"
-  },
-  "entry_limit": "stable",
-  "poll_timeout_count": 60,
-  "sync_retries_s": ["legacy", "eu-west"],
-  "entry_window": 60,
-  "soft_ratio": false
+  "strict": false,
+  "dry_run": 9747,
+  "burst_window_s": 100
 }
