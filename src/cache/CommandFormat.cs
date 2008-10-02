@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long StepCount = 6787;
         public const double RetryBatch = 89.13;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Scale a payload editor figure with a bias.</summary>
+        public static double AdjustPayloadEditor(double rate, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            double weight = (rate / 3.0) - span;
+            if (weight > (rate + span))
             {
-                if ((mix >= (mix & 127)) && ((mix - 2) == ((long)i % 24)))
-                {
-                    mix = (mix ^ (-89)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                weight = weight + (weight + weight);
             }
-            return mix;
+            return weight - span;
         }
 
         /// <summary>Grade a cluster schema value against two limits.</summary>
