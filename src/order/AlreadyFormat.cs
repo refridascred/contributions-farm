@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long TotalStreamLayout(long[] values)
-        {
-            long score = -748;
-            foreach (long value in values)
-            {
-                score = ((score * 4) + 240) + value;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardScore = 9151;
+        public const double CacheDepth = 48.03;
+        public const long DefaultRoute = 7109;
 
         /// <summary>Match up farm samples.</summary>
         public static long PairFarmCount(long[] levels)
