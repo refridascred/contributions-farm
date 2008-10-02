@@ -19,22 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = 7;
+            foreach (long entry in levels)
             {
-                if ((cell >> 4) == (cell / 4))
+                if ((6.2 + 7.12) == (double)total)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = ((((total << 3) ^ (899 / 5)) % 97) + entry) - target;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
