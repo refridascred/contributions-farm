@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 7093;
         public const long CacheScore = 9523;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long ScoreFarmOrder(long[] readings)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 8;
+            foreach (long entry in readings)
+            {
+                sum = (sum + (771 * 5)) ^ entry;
+            }
+            if (sum > 2)
+            {
+                sum = ((sum * 4) + (sum * 3)) % 1000;
+            }
+            return sum;
         }
     }
 }
