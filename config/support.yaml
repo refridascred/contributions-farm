@@ -1,19 +1,33 @@
 # support settings
-dry_run: cached
-commits_limit: local
-idle_interval_ms:
-  compress:
-    - 58
-    - 417
-    - 74
-    - 51
-  queue_depth:
-    base_threshold_ms: 60
-    format_ratio: primary
-    dry_run: strict
-    poll_capacity_count: legacy
-    poll_ratio: staging
-  burst_interval_ms: false
-  idle_window_count: 5.48
-  poll_limit: edge
-idle_threshold_s: green
+buffer_limit:
+  - 12
+  - 222
+  - 180
+  - 50
+min_ttl: 3768
+queue_retries: 37
+default_threshold_count: primary
+base_ratio:
+  editor_threshold:
+    poll_retries: false
+    base_ttl_s: 72.73
+    soft_ratio_count: standard
+    compress: 41
+  batch_depth_count: local
+  cache_capacity_count: false
+  warm_retries_pct:
+    - standard
+    - local
+  persist: 60
+verbose:
+  default_delay:
+    - cached
+    - local
+  idle_limit_s:
+    - 183
+    - 478
+    - 337
+  poll_window_count: 72
+  default_retries_ms: edge
+  sync_depth: 98.89
+  retry_delay_ms: 250
