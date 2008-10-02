@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long MeasureStatsCacheOutliers(long[] series, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (matches <= target)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
