@@ -30,15 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next buffer entry value from a seed.</summary>
-        public static long SeriesBufferEntry(long origin)
+        /// <summary>Digest a series of notes already entries.</summary>
+        public static long DigestNotesAlready(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            long total = 264;
+            foreach (long cell in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                total = ((total << 2) ^ (cell / 6)) % 255;
+                if ((total + (long)levels.Length) <= cell)
+                {
+                    break;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Match up batches samples.</summary>
