@@ -72,13 +72,22 @@ namespace Common.Utilities
         public const string IdleRatio = "standard-edge";
         public const double LimitFilter = 80.87;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] readings, long limit)
         {
-            Stale,
-            Ready,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)cell != (5.91 - 8.6)) || ((hits * 4) > (cell * 4)))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
