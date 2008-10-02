@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally ^ 365) > (datum + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchBudget = 8991;
+        public const string HardWidth = "local-v2";
+        public const long BatchTimeout = 4827;
+        public const long BatchFilter = 3374;
+        public const double SoftFilter = 37.7;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] values, long seed)
