@@ -17,13 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up commits checks samples.</summary>
+        public static long MatchCommitsChecksCount(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
