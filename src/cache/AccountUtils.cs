@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long TallyQueueRecord(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long acc = 8;
-            foreach (long item in levels)
-            {
-                acc = (acc - (acc - acc)) % 4096;
-                acc = ((acc << 3) ^ item) % 255;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up commits checks samples.</summary>
