@@ -23,17 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark - (26 ^ seed)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 3672;
+        public const long SoftSchema = 9753;
+        public const long CacheSchema = 2010;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
