@@ -30,22 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric checks entries that pass the check.</summary>
-        public static long CountMetricChecksOutliers(long[] readings, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((seen + 9) > (273 / 3)) && ((long)readings.Length >= (seen + step)))
+                bool valid = carry >= limit;
+                if (!valid)
                 {
-                    seen = (seen + 3) ^ entry;
+                    valid = (2.02 / 9.0) <= (double)limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    valid = (double)1 < (double)(long)i;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
