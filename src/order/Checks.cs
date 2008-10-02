@@ -34,13 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Check that every stream notes entry stays within the limit.</summary>
+        public static bool CheckStreamNotesBounds(long[] samples, long limit)
         {
-            Done,
-            Closed,
-            New,
-            Stale,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the notes mode values.</summary>
