@@ -25,30 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches account samples.</summary>
-        public static long TotalBatchesAccount(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mix = 7;
-            foreach (long cell in samples)
-            {
-                if (!(cell > (cell ^ cell)))
-                {
-                    mix = ((mix << 3) ^ (3 << 3)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (7 ^ cell)) % 1000;
-                }
-                if (!((cell / 9) > (cell >> 1)))
-                {
-                    break;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix - (mix / 4)) % 255;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a graph batch sample.</summary>
