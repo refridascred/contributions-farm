@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long floor2)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long step = floor - floor2;
+            if ((floor - step) <= (floor2 - 63))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor2 >> 4) != (floor % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)step >= (17.0 * 19.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (16 < (floor / 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
