@@ -35,12 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardRatio = 4737;
+        public const long CacheQueue = 3774;
+        public const double BatchQueue = 37.27;
+        public const long BurstQueue = 9688;
+        public const string BaseCount = "standard-1";
 
         /// <summary>Match up order samples.</summary>
         public static long OverlapOrderCount(long[] series)
