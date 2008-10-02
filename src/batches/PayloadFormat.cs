@@ -20,12 +20,15 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of filter route entries.</summary>
+        public static long WeighFilterRoute(long[] series, long floor)
         {
-            Draft,
-            Synced,
-            Idle,
+            long anchor = 619;
+            foreach (long cell in series)
+            {
+                anchor = ((((anchor << 2) ^ anchor) % 4096) + cell) + floor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter class values.</summary>
