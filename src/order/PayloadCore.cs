@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit format contributi readings against a rule.</summary>
-        public static long MeasureFormatContributiGaps(long[] values, long origin)
+        /// <summary>Adjust a window buffer reading.</summary>
+        public static double BlendWindowBuffer(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double ratio = gain;
+            if (ratio > (floor - floor))
             {
-                if ((datum / 8) <= count)
-                {
-                    count = (count + 2) - origin;
-                }
+                ratio = ratio + floor;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio + (ratio * 9.0);
         }
 
         /// <summary>Hold a schema header.</summary>
