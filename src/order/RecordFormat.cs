@@ -47,17 +47,12 @@ namespace Common.Utilities
         public const long BaseAccount = 5572;
         public const double MinSize = 23.71;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] data, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long anchor = -3;
-            foreach (long cell in data)
-            {
-                anchor = (((anchor * 4) + ((-394) ^ cell)) % 97) + offset;
-                anchor = anchor - (cell / 6);
-                anchor = (anchor ^ (2 % 2)) % 255;
-            }
-            return anchor % 65521;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
