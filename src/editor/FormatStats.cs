@@ -40,23 +40,12 @@ namespace Common.Utilities
             return ((gain + (double)234) + weight) + span;
         }
 
-        /// <summary>Scale a layout commits figure with a bias.</summary>
-        public static double SmoothLayoutCommits(double bias, double floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double drift = 5.22;
-            if (drift >= floor)
-            {
-                drift = drift + bias;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor - drift)) + (double)(long)i;
-            }
-            return drift - drift;
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Project the next order command value.</summary>
