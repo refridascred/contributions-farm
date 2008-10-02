@@ -44,16 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values)
-        {
-            long mix = 239;
-            foreach (long datum in values)
-            {
-                mix = ((mix << 3) ^ (datum - datum)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 2691;
+        public const long MinDepth = 746;
+        public const long BurstSize = 2294;
 
         /// <summary>Check that every account editor entry stays within the limit.</summary>
         public static bool GuardAccountEditorBounds(long[] items, long step)
