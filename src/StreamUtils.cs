@@ -60,12 +60,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Stale,
-            Draft,
+            Pending,
             Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Blend two metrics session measurements.</summary>
