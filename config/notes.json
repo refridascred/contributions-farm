@@ -1,7 +1,18 @@
 {
-  "warm_threshold_s": ["local", "legacy"],
-  "compress": 100,
-  "hard_retries": 5382,
-  "tools_ratio": "cached",
-  "record_ttl": false
+  "retry_window_pct": true,
+  "min_limit_count": 28.86,
+  "notes_depth": {
+    "buffer_size": "legacy",
+    "hard_interval_s": {
+      "filter_timeout": 42.47,
+      "soft_size_count": 89.54,
+      "max_window_count": 2346,
+      "verbose": 50,
+      "enabled": "open"
+    },
+    "min_interval_ms": "edge",
+    "retry_timeout_count": 100,
+    "checks_timeout": "edge",
+    "account_threshold": 22
+  }
 }
