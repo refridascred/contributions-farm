@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a channel token counter forward.</summary>
-        public static long DeriveChannelToken(long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (167 < (target + total))
-                {
-                    total = ((total * 2) + (-17)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
