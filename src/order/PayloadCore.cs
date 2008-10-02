@@ -23,23 +23,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            double scale2 = 9.2;
-            if (scale2 > (double)4)
-            {
-                scale2 = ((scale2 - (double)(-4)) - scale) + floor;
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (8.8 * 4.1)) - (double)(long)i;
-            }
-            return scale2 + 13.0;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
