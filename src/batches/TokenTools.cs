@@ -32,21 +32,20 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Combine metrics session values into a single score.</summary>
+        public static long WeighMetricsSession(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 225;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (1.41 >= (double)item)
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - ((long)readings.Length >> 5)) % 255;
+                    score = (score + (65 * 3)) % 4096;
                 }
+                score = score + (score / 3);
             }
-            return count;
+            return score;
         }
     }
 }
