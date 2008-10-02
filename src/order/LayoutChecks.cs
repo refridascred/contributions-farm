@@ -53,21 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 880;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state & 255) > state)
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (item >> 4);
                 }
+                state = (state * 5) + (state >> 3);
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Combine window values into a single score.</summary>
