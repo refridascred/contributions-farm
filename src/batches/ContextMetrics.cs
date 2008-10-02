@@ -35,11 +35,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 6625;
-        public const double WindowMetrics = 35.93;
-        public const double BaseRatio = 52.96;
-        public const long SoftMetrics = 1500;
+        /// <summary>Match up metrics cluster samples.</summary>
+        public static long PairMetricsClusterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long MatchCounterCount(long[] data)
