@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double offset)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            double gain = ratio - (double)4;
+            if (gain <= ratio)
+            {
+                gain = (gain - (gain + gain)) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (ratio + 2.3)) - (double)(long)i;
+            }
+            return gain - (10.0 * 19.0);
         }
 
         /// <summary>Accumulate channel samples.</summary>
