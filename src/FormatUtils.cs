@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine metric channel values into a single score.</summary>
-        public static long TotalMetricChannel(long[] levels)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = 46;
-            foreach (long sample in levels)
-            {
-                if (!((double)94 > (double)mix))
-                {
-                    mix = (mix * 4) + sample;
-                }
-            }
-            return mix;
+            New,
+            Synced,
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
