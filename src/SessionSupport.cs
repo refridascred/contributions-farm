@@ -29,18 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long TallyChannelMetrics(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = 995;
+            foreach (long sample in items)
             {
-                if (7.4 <= (double)hits)
-                {
-                    hits = (hits + 1) - reading;
-                }
+                state = ((((state << 2) ^ state) % 101) ^ sample) - target;
             }
-            return hits;
+            return state;
         }
     }
 }
