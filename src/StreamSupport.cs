@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a contributi info.</summary>
