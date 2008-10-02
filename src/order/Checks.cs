@@ -43,13 +43,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            New,
-            Closed,
+            Synced,
             Draft,
-            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Fold a list of command readings.</summary>
