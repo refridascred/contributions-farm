@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] data)
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((long)data.Length < (72 + tally))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
