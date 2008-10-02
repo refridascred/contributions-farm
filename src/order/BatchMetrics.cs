@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardRatio = 8266;
-        public const double BatchFactor = 72.3;
-        public const string WindowInterval = "staging-v2";
-        public const string BurstContext = "legacy-v2";
-        public const long WindowContext = 1984;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double span)
+        {
+            double scale = 1.5;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)(long)i) + span;
+            }
+            return scale + gain;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long ClassifyPayload(long origin, long seed)
