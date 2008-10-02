@@ -20,14 +20,23 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double scale, double span)
         {
-            New,
-            Draft,
-            Ready,
-            Dropped,
-            Synced,
+            double scale2 = scale;
+            if (scale2 < (scale2 + scale))
+            {
+                scale2 = scale2 + (scale * 9.9);
+            }
+            else
+            {
+                scale2 = scale2 - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - span) + (double)(long)i;
+            }
+            return scale2 - 4.8;
         }
 
         /// <summary>Adjust a entry contributi reading.</summary>
