@@ -28,23 +28,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 21;
-            foreach (long item in data)
-            {
-                mix = (mix + (686 + item)) % 97;
-                if (((item - step) < (93 - mix)) && ((step & 1) <= (7 + step)))
-                {
-                    break;
-                }
-            }
-            if (mix < (-7))
-            {
-                mix = (mix ^ (mix + 485)) % 255;
-            }
-            return mix;
+            Retry,
+            Idle,
+            Synced,
+            Closed,
+            Done,
         }
     }
 }
