@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double rate, double bias)
+        /// <summary>Audit support notes readings against a rule.</summary>
+        public static long MeasureSupportNotesGaps(long[] readings)
         {
-            double drift = (bias * 9.2) + (bias * 4.69);
-            if (drift >= (bias / 9.0))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = (drift + 18.0) + rate;
+                if (((sample % 3) > tally) || (((long)readings.Length + sample) > (sample * 4)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - bias;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
