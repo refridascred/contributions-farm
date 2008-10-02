@@ -1,18 +1,7 @@
 {
-  "warm_capacity": "legacy",
-  "min_retries": 5.8,
-  "idle_limit_pct": "fallback",
-  "notes_window": {
-    "hard_interval": "fallback",
-    "soft_threshold": [250, 75, 236],
-    "tools_threshold": 59.59,
-    "burst_ttl_s": 28.27,
-    "warm_size_s": {
-      "idle_ttl_ms": 8575,
-      "queue_delay": "latest",
-      "flush_size_s": "standard"
-    }
-  },
-  "idle_ttl": 8.33,
-  "compress": true
+  "soft_ttl": "stable",
+  "poll_capacity": [140, 308, 408, 77],
+  "support_size": "fallback",
+  "poll_ttl": "local",
+  "readonly": 40
 }
