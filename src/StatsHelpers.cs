@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 6184;
-        public const long IdleTimeout = 2820;
-        public const long IdleDepth = 7614;
-        public const long MaxDepth = 8792;
-        public const double IdleStream = 64.69;
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double bias)
+        {
+            double gain = rate;
+            if (gain < bias)
+            {
+                gain = gain - (gain + gain);
+            }
+            return gain + (9.67 * 4.7);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 561;
