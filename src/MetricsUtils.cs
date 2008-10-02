@@ -47,21 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.2 + 7.0) <= (double)state)
                 {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state << 2) ^ 677) % 97) ^ entry;
                 }
             }
-            return count;
+            return state % 4096;
         }
     }
 }
