@@ -58,19 +58,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
