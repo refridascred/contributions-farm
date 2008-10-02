@@ -38,22 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] data)
+        /// <summary>Project the next record route value.</summary>
+        public static double AdjustRecordRoute(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double mean = (double)(4 % 16);
+            if (mean < offset)
             {
-                if ((value + matches) < value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean - (double)5;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (scale - scale)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a cache options.</summary>
