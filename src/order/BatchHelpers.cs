@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Synced,
-            Paused,
-            Done,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
