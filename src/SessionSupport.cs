@@ -20,26 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = 7;
-            foreach (long cell in values)
-            {
-                if ((origin * 2) < (mix << 3))
-                {
-                    mix = ((mix * 2) + (origin * 2)) + cell;
-                }
-                else
-                {
-                    mix = mix ^ (mix << 3);
-                }
-            }
-            if (mix > 44)
-            {
-                mix = mix - (38 - mix);
-            }
-            return mix % 4096;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
