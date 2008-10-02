@@ -24,13 +24,22 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] values, long offset)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((offset & 7) > (item + (long)values.Length))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next record route value.</summary>
