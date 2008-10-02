@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long seed, long seed2)
         {
-            long mix = 65;
-            foreach (long sample in series)
+            long step = seed - seed2;
+            if (seed2 > (step >> 2))
             {
-                if (((mix + mix) >= (441 % 3)) || ((1.3 + 4.0) < (double)mix))
+                return 5;
+            }
+            else
+            {
+                if ((step - step) < step)
                 {
-                    mix = (mix ^ (mix ^ sample)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
