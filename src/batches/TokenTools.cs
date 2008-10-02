@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] data, long bound)
         {
-            Ready,
-            Locked,
-            Queued,
-            Pending,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((5.0 - 0.9) == (double)tally)
+                {
+                    tally = ((tally + 3) + cell) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
