@@ -38,19 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] series, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a command reading.</summary>
