@@ -56,19 +56,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] data, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (item >= offset)
+                if (datum > (seen * 5))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate record notes readings against a bound.</summary>
