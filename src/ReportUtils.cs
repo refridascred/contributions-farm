@@ -38,12 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            Paused,
-            Active,
-            Failed,
+            long mix = -309;
+            foreach (long entry in samples)
+            {
+                if ((mix * 2) < (mix * 3))
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix - entry)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate order cluster samples.</summary>
