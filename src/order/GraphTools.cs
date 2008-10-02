@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] levels, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((945 >> 1) <= (entry / 6))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Project the next record route value.</summary>
