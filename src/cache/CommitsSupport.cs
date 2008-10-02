@@ -28,19 +28,21 @@ namespace Common.Utilities
             return (mean + (2.4 / 8.0)) + gain;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] items, long seed)
+        /// <summary>Compare every pair of commits cluster readings.</summary>
+        public static long OverlapCommitsClusterCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
