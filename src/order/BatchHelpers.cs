@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)datum >= (3.63 - 14.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
