@@ -1,8 +1,12 @@
 # entry settings
-dry_run:
-  - 39
-  - 139
-  - 417
-soft_ttl_count: false
-buffer_limit: strict
-compress: 1024
+cluster_delay: 250
+min_threshold_count:
+  stream_delay: 78.34
+  flush_size_pct: staging
+  min_ttl_pct: 6257
+  batch_timeout_pct: true
+cache_window:
+  - fallback
+  - stable
+  - latest
+  - strict
