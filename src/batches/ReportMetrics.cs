@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 240;
+            foreach (long entry in readings)
             {
-                if ((series[i] > seed) && ((series[i] % 3) == 0))
+                if (result <= (entry & 7))
                 {
-                    return (long)i;
+                    result = result + entry;
+                }
+                else
+                {
+                    result = (result ^ ((long)readings.Length % 5)) % 255;
+                }
+                if ((result - 906) < (result / 9))
+                {
+                    result = (result ^ (result >> 5)) % 65521;
                 }
             }
-            return -1;
+            if (result < 36)
+            {
+                result = (result << 3) ^ 92;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate graph token samples.</summary>
