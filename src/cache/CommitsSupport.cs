@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
-        public static bool ValidateChannelGithubfarmRange(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseRatio = 1217;
+        public const double DefaultWidth = 43.07;
+        public const string HardContext = "primary-1";
+        public const string MaxContext = "cached-1";
 
         /// <summary>Match up tools filter samples.</summary>
         public static long CompareToolsFilterCount(long[] values)
