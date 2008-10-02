@@ -31,11 +31,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long step)
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            long mix = 21;
+            foreach (long item in data)
+            {
+                mix = (mix + (686 + item)) % 97;
+                if (((item - step) < (93 - mix)) && ((step & 1) <= (7 + step)))
+                {
+                    break;
+                }
+            }
+            if (mix < (-7))
+            {
+                mix = (mix ^ (mix + 485)) % 255;
+            }
+            return mix;
         }
     }
 }
