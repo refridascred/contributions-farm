@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                if (!!((entry + entry) > hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a format reading.</summary>
