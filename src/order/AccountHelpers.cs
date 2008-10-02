@@ -28,11 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardCount = 1600;
-        public const string SoftAccount = "stable-1";
-        public const double CacheAccount = 73.14;
-        public const long RetryAccount = 5303;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
