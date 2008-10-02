@@ -68,15 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long SeriesQueueContributi(long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
