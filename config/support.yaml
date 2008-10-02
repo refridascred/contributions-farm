@@ -1,15 +1,11 @@
 # support settings
-batch_threshold: 250
-graph_ratio: open
-compress: primary
-hard_ratio_ms:
-  idle_capacity_ms: 70
-  verbose: staging
-  graph_retries: 21.4
-  hard_ttl_s:
-    cache_timeout_count: open
-    retry_ttl: 42
-    queue_interval: 50
-  checks_retries: true
-  default_interval_ms: 31.01
-poll_depth_pct: 87.85
+metric_interval: 41.07
+batch_ttl_pct:
+  order_threshold: standard
+  hard_capacity_s:
+    schema_threshold: 15.01
+    metric_threshold: 77.92
+    strict: edge
+  strict: true
+min_depth_s: 100
+batch_threshold_pct: 775
