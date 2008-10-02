@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const double IdlePayload = 17.69;
         public const long StepSpan = 874;
 
-        /// <summary>Check that every window context entry stays within the limit.</summary>
-        public static bool CheckWindowContextBounds(long[] levels, long target)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
