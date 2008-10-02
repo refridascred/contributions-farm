@@ -1,7 +1,12 @@
 {
-  "idle_interval": "eu-west",
-  "support_threshold": 6809,
-  "burst_window_s": "staging",
-  "hard_window_count": 52.04,
-  "retry_ttl_s": "cached"
+  "idle_threshold": 1024,
+  "max_ttl_pct": "primary",
+  "flush_interval_s": ["fallback", "stable", "latest"],
+  "counter_retries": false,
+  "base_limit_pct": {
+    "sync_ratio": "green",
+    "base_window": 54,
+    "session_limit": 6855
+  },
+  "audit": true
 }
