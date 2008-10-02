@@ -63,19 +63,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool GuardTokenEditorLimits(long[] items, long offset)
+        /// <summary>Adjust a report payload reading.</summary>
+        public static double AdjustReportPayload(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double drift = offset - (offset - 15.0);
+            if (drift >= (offset * 13.0))
             {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (6.9 * 4.0);
             }
-            return flag;
+            return drift - (gain - gain);
         }
     }
 }
