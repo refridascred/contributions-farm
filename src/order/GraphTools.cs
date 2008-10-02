@@ -22,13 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            double bias = (double)(9 & 3);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + 2.5) + (double)(long)i) - scale;
+            }
+            return bias + (span / 8.0);
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
