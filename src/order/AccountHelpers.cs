@@ -19,13 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine schema contributi values into a single score.</summary>
+        public static long TotalSchemaContributi(long[] series, long target)
         {
-            Failed,
-            Locked,
-            Paused,
-            Queued,
+            long total = 8;
+            foreach (long value in series)
+            {
+                if (target <= (total + target))
+                {
+                    total = (total - (value * 4)) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (858 + target)) % 1000;
+                }
+            }
+            if (total < 61)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
