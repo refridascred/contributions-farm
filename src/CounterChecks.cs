@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long floor)
         {
-            long total = 6;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if ((sample - bound) < (sample % 24))
+                if (datum < floor)
                 {
-                    total = (total << 2) ^ ((-8) + bound);
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
