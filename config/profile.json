@@ -1,12 +1,6 @@
 {
-  "warm_limit": "staging",
-  "flush_threshold_s": ["eu-west", "green", "local"],
-  "poll_ratio_pct": {
-    "verbose": 2,
-    "persist": 5998,
-    "retry_retries_count": true,
-    "sync_interval_pct": ["blue", "open", "green"],
-    "soft_delay_pct": "local",
-    "idle_size": 2912
-  }
+  "persist": 30,
+  "soft_window_ms": ["latest", "staging"],
+  "burst_window_s": 58.34,
+  "soft_threshold_pct": 47.46
 }
