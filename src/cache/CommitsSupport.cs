@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseRatio = 1217;
-        public const double DefaultWidth = 43.07;
-        public const string HardContext = "primary-1";
-        public const string MaxContext = "cached-1";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Match up tools filter samples.</summary>
         public static long CompareToolsFilterCount(long[] values)
