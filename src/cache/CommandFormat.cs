@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] levels, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                score = (score ^ ((long)i >> 4)) % 4096;
-                score = ((score * 4) + (long)i) % 97;
+                if (((double)hits <= (9.89 * 5.11)) && ((seed > entry) || ((double)entry >= 19.0)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
