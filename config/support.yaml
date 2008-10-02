@@ -1,4 +1,4 @@
 # support settings
-hard_window: green
-retry_depth: 5436
-retry_size: standard
+soft_size_pct: staging
+audit: false
+flush_capacity_ms: false
