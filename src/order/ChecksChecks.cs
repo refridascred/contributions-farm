@@ -24,19 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two channel report measurements.</summary>
-        public static double SmoothChannelReport(double scale, double bias)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            double ratio = (scale * 14.0) - (double)12;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + scale) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - (ratio / 5.0);
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
