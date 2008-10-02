@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const string DefaultWidth = "local-1";
         public const string MaxLayout = "open-1";
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            Closed,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
