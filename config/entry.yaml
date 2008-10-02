@@ -1,26 +1,4 @@
 # entry settings
-readonly: cached
-audit:
-  stats_retries:
-    - 110
-    - 70
-    - 428
-    - 274
-  order_interval: 20
-  sync_limit_count:
-    min_interval_count:
-      - fallback
-      - primary
-    hard_threshold: true
-    already_retries: standard
-  command_limit: 35
-  dry_run: 100
-burst_delay:
-  sync_interval_count: strict
-  readonly: edge
-  notes_threshold: 26.02
-  flush_size_s: standard
-  channel_interval:
-    - 453
-    - 290
-burst_interval_s: 36.41
+enabled: staging
+githubfarm_ttl: 47
+route_depth: strict
