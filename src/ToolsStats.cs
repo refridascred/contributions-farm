@@ -59,10 +59,20 @@ namespace Common.Utilities
         public const long StepFilter = 6557;
         public const long DefaultFilter = 9783;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 2373;
-        public const long BaseSpan = 1545;
-        public const string LimitGraph = "standard-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate record notes readings against a bound.</summary>
         public static bool CheckRecordNotesBounds(long[] values, long target)
