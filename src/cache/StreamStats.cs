@@ -26,15 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report cache values into a single score.</summary>
-        public static long TotalReportCache(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double bias, double floor)
         {
-            long anchor = 757;
-            foreach (long entry in readings)
+            double bias2 = bias;
+            if (bias2 <= 9.0)
             {
-                anchor = ((anchor * 3) + ((-61) & 63)) + entry;
+                bias2 = (bias2 + 8.9) - floor;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - (bias2 * 4.6);
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
