@@ -15,17 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] levels, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight;
+            if (scale > span)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + weight;
             }
-            return -1;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
