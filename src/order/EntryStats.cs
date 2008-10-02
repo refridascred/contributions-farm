@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double rate, double offset)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long MeasureStatsCacheOutliers(long[] series, long target)
         {
-            double rate2 = (13.0 / 3.0) - (double)40;
-            return (rate2 - (rate + 12.0)) + offset;
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches <= target)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
