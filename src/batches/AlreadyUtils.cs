@@ -57,23 +57,14 @@ namespace Common.Utilities
         public const string LimitStream = "legacy-v2";
         public const string StepRatio = "standard";
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] series, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mix = 488;
-            foreach (long value in series)
-            {
-                mix = ((mix ^ 228) % 101) - bound;
-                if (((74 % 10) == (mix + value)) && (((long)series.Length + mix) <= 426))
-                {
-                    mix = (mix - (value & 1)) % 4096;
-                }
-            }
-            if (mix > 365)
-            {
-                mix = (mix << 3) ^ (mix << 3);
-            }
-            return mix % 1000;
+            Draft,
+            Queued,
+            Idle,
+            Done,
+            Locked,
         }
     }
 }
