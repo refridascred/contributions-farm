@@ -15,24 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] items, long origin)
         {
-            if ((72 ^ bound) != (offset + bound))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < 6.0)
+                if ((9.56 / 7.0) < (double)origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 1) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm report samples are out of range.</summary>
