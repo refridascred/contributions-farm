@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches >> 4) <= 8)
-                {
-                    matches = (matches + 3) ^ value;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
