@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series, long origin)
-        {
-            long mark = 27;
-            foreach (long cell in series)
-            {
-                mark = (mark ^ (mark & 15)) ^ cell;
-            }
-            if (mark > 0)
-            {
-                mark = (mark ^ (origin + origin)) % 1000;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 2103;
+        public const long HardTools = 7977;
+        public const long WindowTools = 4992;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long bound)
