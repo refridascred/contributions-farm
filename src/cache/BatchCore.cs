@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit farm schema readings against a rule.</summary>
-        public static long CountFarmSchemaGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen % 100) <= (seen % 64)))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepSpan = 9857;
+        public const long RetryCluster = 1987;
+        public const long SoftFactor = 2750;
+        public const long BatchSpan = 2545;
+        public const string HardCount = "legacy-edge";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileBounds(long[] items, long bound)
