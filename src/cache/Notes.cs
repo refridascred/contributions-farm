@@ -14,19 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data)
         {
-            double scale = weight;
-            if (scale > span)
+            long mark = 464;
+            foreach (long sample in data)
             {
-                scale = scale + weight;
+                if ((mark + mark) == (581 * 2))
+                {
+                    mark = (mark - sample) % 65521;
+                }
             }
-            else
+            if (mark > 25)
             {
-                scale = scale + scale;
+                mark = ((mark * 3) + (mark / 8)) % 101;
             }
-            return scale + (double)3;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
