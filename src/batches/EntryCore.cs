@@ -14,12 +14,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double gain, double offset)
         {
-            Closed,
-            Retry,
-            Queued,
+            double drift = gain - (double)261;
+            if (drift > gain)
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift + (drift - drift);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)177) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Combine format values into a single score.</summary>
