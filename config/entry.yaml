@@ -1,14 +1,21 @@
 # entry settings
-verbose: 16
-cache_depth_s: false
-idle_depth_s: false
-tools_delay: 94.28
-soft_ratio_ms: 4.97
-max_ratio:
-  counter_ratio: 76.12
-  sync_retries_pct: 49.4
-  batches_limit:
-    - 430
-    - 386
-    - 392
-    - 253
+verbose: false
+max_window_s: false
+stream_retries: 500
+batch_depth_ms: 100
+stream_ratio:
+  flush_delay_count:
+    - latest
+    - green
+    - standard
+    - eu-west
+  hard_limit_count: standard
+  flush_timeout_ms:
+    - 377
+    - 76
+    - 308
+    - 331
+  idle_retries_ms: 18
+  dry_run: 13
+  retry_delay: fallback
+batches_timeout: true
