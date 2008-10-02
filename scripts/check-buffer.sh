@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=288
+BUFFER_LIMIT=191
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging legacy open; do
+for item in standard primary; do
     log "checking ${item}"
 done
+
+mode="${1:-primary}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
