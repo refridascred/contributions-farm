@@ -19,21 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)acc >= 9.56)
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc * 2) + (seed * 5)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the metric state values.</summary>
