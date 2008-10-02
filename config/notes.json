@@ -1,7 +1,5 @@
 {
-  "hard_retries": "blue",
-  "burst_interval_pct": "eu-west",
-  "sync_timeout_s": 44,
-  "sync_limit_count": ["standard", "cached", "eu-west", "strict"],
-  "githubfarm_threshold": "latest"
+  "min_size_pct": true,
+  "sync_timeout_ms": 58.52,
+  "retry_interval_ms": 1024
 }
