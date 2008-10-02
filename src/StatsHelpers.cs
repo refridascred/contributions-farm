@@ -65,16 +65,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score * 5) + seed;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
