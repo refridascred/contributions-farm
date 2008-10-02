@@ -36,11 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up context samples.</summary>
