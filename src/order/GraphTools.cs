@@ -47,25 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long step2 = step ^ seed;
-            if ((253 * 5) > step2)
+            long mark = 757;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 ^ step) < (seed + step2))
+                mark = ((mark * 4) + reading) % 4096;
+                if ((reading / 5) > (659 + (-305)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    mark = ((mark * 3) + (161 + mark)) % 4096;
                 }
             }
+            if (mark < 94)
+            {
+                mark = mark + (mark / 9);
+            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
