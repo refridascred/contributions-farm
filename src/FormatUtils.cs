@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count / 4) <= count)
-                {
-                    count = ((count + 3) + item) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowLevel = 473;
+        public const double WindowCount = 18.76;
+        public const long StepSession = 1063;
+        public const double MinRatio = 78.6;
+        public const string MaxSession = "staging-1";
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
