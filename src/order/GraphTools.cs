@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of tools buffer readings.</summary>
-        public static long CompareToolsBufferCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 5214;
+        public const double IdleAlready = 26.34;
+        public const double MaxDepth = 8.4;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiMatches(long[] values, long offset)
