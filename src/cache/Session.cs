@@ -49,22 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits tools entries that pass the check.</summary>
-        public static long AuditCommitsToolsMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (5.94 < (double)value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 9.06;
+        public const double MinCommand = 21.68;
+        public const double StepBudget = 38.59;
+        public const long IdleDepth = 2268;
     }
 }
