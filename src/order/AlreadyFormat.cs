@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long TotalStreamLayout(long[] values)
         {
-            long mark = 4;
-            foreach (long value in samples)
+            long score = -748;
+            foreach (long value in values)
             {
-                mark = (mark << 2) ^ (value % 5);
-                if (((9.72 + 18.0) < (double)value) || (mark <= (value + value)))
-                {
-                    break;
-                }
+                score = ((score * 4) + 240) + value;
             }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Match up farm samples.</summary>
