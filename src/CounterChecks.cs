@@ -68,20 +68,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleInterval = "cached-1";
+        public const string LimitSpan = "fallback-edge";
+        public const long IdleChannel = 8829;
+        public const string RetryChannel = "cached-edge";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double rate, double offset)
