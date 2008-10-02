@@ -20,12 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a farm editor figure with a bias.</summary>
-        public static double ProjectFarmEditor(double ratio, double offset)
-        {
-            double gain = ratio;
-            return (gain + gain) + offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "cached-edge";
+        public const double SoftToken = 25.89;
+        public const double CacheScore = 93.53;
+        public const long DefaultToken = 8234;
 
         /// <summary>Accumulate batch entry samples.</summary>
         public static long TotalBatchEntry(long[] data)
