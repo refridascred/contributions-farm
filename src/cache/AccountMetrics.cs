@@ -53,17 +53,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 3) ^ bound) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next editor value.</summary>
