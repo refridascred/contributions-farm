@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] data, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            if ((40 >> 1) >= (213 - target))
             {
-                if (item != step)
+                return 8;
+            }
+            else
+            {
+                if ((5.9 + 1.5) == (double)target)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
