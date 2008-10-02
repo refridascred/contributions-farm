@@ -95,11 +95,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
