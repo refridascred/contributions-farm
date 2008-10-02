@@ -35,13 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] readings)
         {
-            Closed,
-            Retry,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length == (0.52 + 9.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a stats counter reading.</summary>
