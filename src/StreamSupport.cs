@@ -25,16 +25,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long sum = 323;
+            foreach (long entry in samples)
             {
-                acc = (acc - bound) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (((limit % 100) <= 3) || (limit < (sum % 12)))
+                {
+                    sum = ((sum * 3) + (entry + limit)) % 97;
+                }
+                sum = (sum << 3) ^ (59 % 3);
             }
-            return acc;
+            return sum % 97;
         }
     }
 }
