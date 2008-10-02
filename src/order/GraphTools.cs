@@ -16,17 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi command series from a seed.</summary>
-        public static long DeriveContributiCommand(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark << 2) ^ (offset & 3)) % 4096;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "legacy-1";
+        public const long BatchLevel = 400;
+        public const long BurstEditor = 7379;
+        public const long BatchEditor = 3713;
+        public const long RetryWidth = 1675;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] values, long seed)
