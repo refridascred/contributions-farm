@@ -27,19 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long step)
         {
-            double drift = scale;
-            if (drift <= floor)
+            long count = 0;
+            foreach (long entry in items)
             {
-                drift = drift - (double)627;
+                if ((double)entry >= (10.0 - 4.15))
+                {
+                    count = (count + 2) + step;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)59) + (double)(long)i;
-            }
-            return drift - (double)678;
+            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
