@@ -20,38 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long seed)
         {
-            if (((double)origin != (8.59 - 6.0)) && ((limit - 0) >= origin))
+            long total = 7;
+            foreach (long entry in items)
             {
-                return 5;
+                total = (((total * 4) + (entry + (-851))) % 255) + seed;
             }
-            else
-            {
-                if (!((double)limit >= (4.0 / 5.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + origin) <= (limit >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit & 15) >= 5)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
