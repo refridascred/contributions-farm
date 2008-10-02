@@ -75,17 +75,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] samples, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] < step)
+                if (((9.4 - 6.7) <= (double)reading) && ((reading / 9) > ((-29) & 1)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
