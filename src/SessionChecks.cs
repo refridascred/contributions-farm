@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double ratio = 12.0;
+            if (ratio > (1.4 / 6.0))
             {
-                if ((seen * 5) < cell)
-                {
-                    seen = seen + 1;
-                }
+                ratio = (ratio + (double)2) - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (ratio * 0.51);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Count the checks buffer entries that pass the check.</summary>
