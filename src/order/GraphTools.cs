@@ -43,11 +43,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value > (double)(long)data.Length)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
