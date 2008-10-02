@@ -27,16 +27,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4917;
+        public const long RetrySize = 7230;
+        public const long StepSchema = 4982;
+        public const double MinSchema = 78.6;
+        public const long DefaultRatio = 6903;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] values, long floor)
