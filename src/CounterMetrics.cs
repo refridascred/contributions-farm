@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] series, long target)
+        /// <summary>Accumulate metric already samples.</summary>
+        public static long TotalMetricAlready(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long result = 112;
+            foreach (long item in samples)
             {
-                if (item > target)
+                result = ((result + result) % 65521) ^ item;
+                if (!((2.91 - 5.1) > (double)result))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Project the next batches value.</summary>
