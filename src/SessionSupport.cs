@@ -27,19 +27,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((((long)i ^ 9) <= 996) || ((89 - limit) != ((long)i + carry)))
-                {
-                    carry = carry ^ ((long)i / 6);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 7030;
+        public const long CacheBudget = 5306;
+        public const string BaseInterval = "cached-1";
+        public const long BaseRecord = 3372;
     }
 }
