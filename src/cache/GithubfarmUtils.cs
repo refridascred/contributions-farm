@@ -26,31 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long bound, long bound2)
+        /// <summary>Accumulate stream batch samples.</summary>
+        public static long WeighStreamBatch(long[] samples, long offset)
         {
-            if ((601 % 60) > bound)
+            long state = -725;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((93 - bound2) != (bound & 1))
+                if (!(state <= reading))
                 {
-                    return 1;
+                    state = ((state << 2) ^ (offset >> 1)) % 1000;
                 }
                 else
                 {
-                    if ((double)bound < (7.63 * 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state + (offset % 97);
                 }
             }
+            return state;
         }
     }
 }
