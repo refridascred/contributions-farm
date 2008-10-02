@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double offset)
-        {
-            double bias = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias - (double)81) + (double)(long)i) + offset;
-            }
-            return bias + (weight / 8.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 6815;
+        public const long WindowRoute = 9012;
+        public const string HardDepth = "primary-1";
+        public const long DefaultInterval = 4781;
+        public const long RetrySize = 6372;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] samples, long limit)
