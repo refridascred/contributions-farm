@@ -1,12 +1,19 @@
 {
-  "payload_ttl": "cached",
-  "batch_capacity_pct": "latest",
-  "poll_ratio": true,
-  "batches_ttl": {
-    "window_timeout": [324, 164],
-    "schema_timeout": 55.99,
-    "sync_delay_pct": 8438,
-    "payload_timeout": 30
+  "report_timeout": "primary",
+  "flush_delay_ms": {
+    "dry_run": 8614,
+    "compress": [213, 301, 209],
+    "persist": true,
+    "idle_depth_ms": 100,
+    "base_delay_ms": [486, 23, 260, 296],
+    "poll_depth": {
+      "idle_timeout_ms": "latest",
+      "support_capacity": [219, 221],
+      "poll_delay": 30,
+      "metrics_delay": true
+    }
   },
-  "cache_depth": 1024
+  "editor_capacity": [226, 85],
+  "flush_ratio": false,
+  "entry_window": 9533
 }
