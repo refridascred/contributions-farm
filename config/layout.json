@@ -1,17 +1,5 @@
 {
-  "cache_depth_pct": 316,
-  "base_interval_s": "primary",
-  "base_timeout_pct": {
-    "support_retries": "stable",
-    "idle_interval_pct": {
-      "base_delay": 100,
-      "cache_depth": ["blue", "latest", "green", "eu-west"],
-      "window_depth": "standard"
-    },
-    "verbose": 7608,
-    "audit": 29.6,
-    "soft_capacity_pct": ["stable", "stable", "local"],
-    "dry_run": "fallback"
-  },
-  "warm_capacity_ms": "strict"
+  "order_retries": true,
+  "idle_threshold": 30,
+  "order_timeout": 72.81
 }
