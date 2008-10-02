@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 267;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset >= (double)mark)
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - offset) % 65521;
+                    mark = mark - (0 + offset);
+                }
+                mark = ((mark * 2) + (mark ^ sample)) % 65521;
+                if ((29 + mark) > (sample * 4))
+                {
+                    mark = (mark + (sample + offset)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 3) + (sample & 127);
                 }
             }
-            return matches;
+            if (mark > 540)
+            {
+                mark = mark - (offset / 3);
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
