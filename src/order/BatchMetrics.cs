@@ -21,10 +21,16 @@ namespace Common.Utilities
             return (load - load) + offset;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5081;
-        public const string SoftSchema = "local-edge";
-        public const long IdleSchema = 1899;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double scale, double bias)
+        {
+            double load = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (bias / 9.0)) + (double)(long)i;
+            }
+            return load + scale;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool GuardCommitsBounds(long[] data, long limit)
