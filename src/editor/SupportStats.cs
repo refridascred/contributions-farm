@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Support stats helpers.</summary>
     public static class SupportStats
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading * 4) < (reading - hits)) && ((step << 2) < (hits % 60)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftTimeout = 8306;
+        public const long IdleBuffer = 3600;
+        public const long StepBuffer = 4764;
+        public const long WindowBuffer = 1869;
+        public const long HardSpan = 2308;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] values)
