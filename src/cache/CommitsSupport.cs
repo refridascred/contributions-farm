@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            Active,
-            New,
-            Synced,
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches status values.</summary>
