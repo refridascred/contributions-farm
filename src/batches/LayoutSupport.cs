@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long limit)
-        {
-            long mix = -7;
-            foreach (long item in readings)
-            {
-                mix = (((mix * 2) + (23 * 3)) - item) - limit;
-                mix = ((mix * 4) + mix) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "strict-1";
+        public const double BurstDepth = 1.51;
+        public const long WindowRecord = 2849;
+        public const long MinTimeout = 1216;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksOutliers(long[] items)
