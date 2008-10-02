@@ -45,16 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state - (850 * 3)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Failed,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define format limits and defaults.</summary>
