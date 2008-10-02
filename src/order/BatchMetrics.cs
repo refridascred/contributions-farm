@@ -66,11 +66,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many graph contributi samples are out of range.</summary>
+        public static long TallyGraphContributiOutliers(long[] items, long origin)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + 93) >= cell)
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
