@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((9.0 - 18.0) == (double)tally) || ((origin ^ tally) <= value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double bias2 = bias * 2.0;
+            return (bias2 - bias) + rate;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
