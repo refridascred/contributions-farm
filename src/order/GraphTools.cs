@@ -36,12 +36,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 4926;
-        public const string IdleOrder = "alpha-v2";
-        public const long MinOrder = 9682;
-        public const double BurstLevel = 64.77;
-        public const long SoftOrder = 5899;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long bound)
+        {
+            if ((floor & 127) > (floor / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (4 < (floor + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(floor < (floor - floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] samples, long offset)
