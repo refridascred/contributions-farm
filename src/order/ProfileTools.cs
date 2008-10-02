@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchWidth = 270;
-        public const double WindowSpan = 66.49;
-        public const long LimitContributi = 4274;
-        public const double MinContributi = 73.78;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Locked,
+            Paused,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextLimits(long[] data, long bound)
