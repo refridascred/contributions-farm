@@ -41,16 +41,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate order cluster samples.</summary>
-        public static long ScoreOrderCluster(long[] levels, long origin)
-        {
-            long mix = 3;
-            foreach (long value in levels)
-            {
-                mix = (mix + (mix - value)) + origin;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRatio = 9358;
+        public const long SoftRoute = 6798;
+        public const double BaseRoute = 93.17;
+        public const double DefaultRoute = 49.6;
+        public const long MaxBudget = 6916;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long floor)
