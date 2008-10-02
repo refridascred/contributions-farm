@@ -88,15 +88,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mark = 7;
-            foreach (long cell in readings)
-            {
-                mark = ((mark ^ cell) % 65521) - bound;
-            }
-            return mark;
+            Synced,
+            Draft,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
