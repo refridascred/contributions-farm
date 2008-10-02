@@ -41,19 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
