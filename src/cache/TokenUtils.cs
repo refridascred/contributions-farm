@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(seen >= (long)series.Length))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload summary.</summary>
