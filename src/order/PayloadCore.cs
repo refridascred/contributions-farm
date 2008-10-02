@@ -15,14 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Pending,
-            Synced,
-            Closed,
-            Idle,
-            Draft,
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
