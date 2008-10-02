@@ -46,12 +46,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWidth = 1150;
-        public const string LimitWindow = "open-1";
-        public const string CacheTimeout = "local-edge";
-        public const long MinDepth = 1180;
-        public const double SoftWindow = 96.44;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values, long offset)
+        {
+            long mix = 82;
+            foreach (long datum in values)
+            {
+                if ((mix >= 44) && ((offset + offset) < ((-581) + datum)))
+                {
+                    long next = (datum * 4) >> 4;
+                    mix = (mix ^ (next - (-9))) % 65521;
+                }
+                mix = (mix ^ 2) % 101;
+            }
+            if (mix > 0)
+            {
+                mix = (mix * 3) + (offset - mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] data, long step)
