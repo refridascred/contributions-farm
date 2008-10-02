@@ -29,19 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes filter readings against a bound.</summary>
-        public static bool CheckNotesFilterBounds(long[] series, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
