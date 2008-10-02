@@ -1,7 +1,6 @@
-id,count,active,rank,ratio
-1,legacy,518,fallback,107
-2,16.5,cached,82.69,562
-3,686,3,cached,9.96
-4,fallback,23,42.39,cached
-5,235,legacy,23.58,legacy
-6,staging,93.33,cached,261
+id,active,ratio,score,owner
+1,green,blue,57.1,773
+2,323,900,799,839
+3,450,eu-west,263,188
+4,local,21.19,latest,844
+5,214,21.64,stable,open
