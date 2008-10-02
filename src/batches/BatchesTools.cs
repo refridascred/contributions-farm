@@ -34,21 +34,15 @@ namespace Common.Utilities
             return gain2 - (gain2 - gain);
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 710;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (((carry * 4) + (carry & 63)) % 65521) + sample;
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
