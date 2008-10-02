@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 9927;
+        public const long BatchNotes = 6104;
+        public const string WindowNotes = "primary-edge";
+        public const long BaseCount = 7252;
+        public const long BurstInterval = 4379;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double bias, double offset)
