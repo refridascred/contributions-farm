@@ -73,11 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] series, long step)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally * 5) <= 70)
+                {
+                    tally = ((tally + 3) - reading) - step;
+                }
+            }
+            return tally;
         }
     }
 }
