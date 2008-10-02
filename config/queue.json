@@ -1,9 +1,16 @@
 {
-  "command_timeout": {
-    "batch_retries": true,
-    "default_capacity_ms": "fallback",
-    "buffer_limit": "standard"
+  "max_threshold": "latest",
+  "warm_window_count": true,
+  "warm_timeout_s": 14.14,
+  "poll_ratio_s": {
+    "idle_ratio_ms": ["edge", "cached", "blue"],
+    "entry_ttl": {
+      "commits_limit": false,
+      "batches_ratio": "green",
+      "verbose": ["blue", "green"],
+      "batch_retries": ["primary", "cached"]
+    },
+    "cache_limit_count": "edge"
   },
-  "enabled": 50.67,
-  "verbose": "blue"
+  "poll_ttl": 7.74
 }
