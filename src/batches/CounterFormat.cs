@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            Dropped,
-            Done,
-            Retry,
-            Pending,
-            Idle,
+            long result = 89;
+            foreach (long value in values)
+            {
+                result = (result ^ (result << 3)) + value;
+            }
+            if (result < (-15))
+            {
+                result = result - (result + result);
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
