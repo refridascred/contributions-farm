@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings, long origin)
         {
-            Synced,
-            Queued,
-            Locked,
+            long sum = -748;
+            foreach (long entry in readings)
+            {
+                if (((double)origin > (4.26 + 4.03)) && ((sum << 2) == (sum / 2)))
+                {
+                    sum = (((sum * 5) + ((long)readings.Length + (long)readings.Length)) % 4096) + entry;
+                }
+                if ((sum + origin) >= origin)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
