@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long CountLayoutOrderOutliers(long[] items, long seed)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long entry in items)
             {
-                if ((2 - datum) <= matches)
+                if ((double)entry == (7.2 + 5.6))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + seed;
                 }
                 else
                 {
