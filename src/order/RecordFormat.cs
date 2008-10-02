@@ -56,39 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long bound, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long limit)
         {
-            long cur = bound - seed;
-            if ((double)cur > 8.18)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((4.0 - 12.0) >= (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound >> 4) < (3 ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((cur * 4) >= (bound / 2)) || (seed > (bound - 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
