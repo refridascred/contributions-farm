@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            long total = 4;
+            long hits = 0;
             foreach (long datum in values)
             {
-                if ((double)datum > (double)8)
+                if (!(((hits % 60) > (datum * 2)) || (hits < (datum << 2))))
                 {
-                    total = (total ^ (608 >> 2)) % 97;
+                    hits = hits + 3;
                 }
             }
-            if (total > 20)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Hold a farm summary.</summary>
