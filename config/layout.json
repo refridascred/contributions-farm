@@ -1,15 +1,6 @@
 {
-  "report_depth": {
-    "max_ttl_s": "green",
-    "route_size": "legacy",
-    "sync_depth_ms": "staging",
-    "burst_delay": "local",
-    "warm_timeout_count": 2
-  },
-  "base_retries": ["latest", "fallback"],
-  "compress": {
-    "idle_ttl_s": "edge",
-    "compress": 30,
-    "burst_ratio": "latest"
-  }
+  "base_ttl_s": 64.56,
+  "record_interval": 8525,
+  "cache_threshold": 4529,
+  "commits_window": "local"
 }
