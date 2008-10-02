@@ -1,15 +1,5 @@
 {
-  "min_size_pct": 82.48,
-  "min_threshold_pct": 81.99,
-  "compress": {
-    "cache_depth_count": [433, 226],
-    "persist": [212, 357],
-    "audit": "open",
-    "compress": ["standard", "cached", "strict", "staging"],
-    "batch_ttl_pct": 1033,
-    "batches_window": 60
-  },
-  "soft_capacity_s": [276, 102],
-  "cache_limit": 100,
-  "verbose": "edge"
+  "format_timeout": 7839,
+  "poll_ttl_s": 2032,
+  "record_ratio": 88.63
 }
