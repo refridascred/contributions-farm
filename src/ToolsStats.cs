@@ -59,19 +59,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ 8) > (bound * 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 2373;
+        public const long BaseSpan = 1545;
+        public const string LimitGraph = "standard-edge";
 
         /// <summary>Validate record notes readings against a bound.</summary>
         public static bool CheckRecordNotesBounds(long[] values, long target)
