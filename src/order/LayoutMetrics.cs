@@ -54,19 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long target)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ sample) % 255;
-                if ((double)sample <= (double)911)
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
                 {
-                    score = (score ^ (8 / 6)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
