@@ -29,12 +29,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            New,
+            Stale,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
