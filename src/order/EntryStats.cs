@@ -28,12 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate queue profile readings against a bound.</summary>
+        public static bool GuardQueueProfileBounds(long[] readings, long seed)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate session samples.</summary>
