@@ -16,15 +16,10 @@ namespace Common.Utilities
         public const long IdleFormat = 7715;
         public const long MinFormat = 8095;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Pending,
-            New,
-            Locked,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "strict";
+        public const long CacheCount = 1728;
+        public const long SoftLevel = 4908;
 
         /// <summary>Digest a series of filter account entries.</summary>
         public static long ScoreFilterAccount(long[] data)
