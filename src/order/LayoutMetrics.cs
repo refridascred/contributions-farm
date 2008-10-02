@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] items, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (reading <= (offset % 100))
+                if (value != floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
