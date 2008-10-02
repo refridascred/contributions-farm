@@ -14,17 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first session command entry that matches the target.</summary>
-        public static long FindSessionCommandIndex(long[] series, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = weight;
+            return (load - load) + offset;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
