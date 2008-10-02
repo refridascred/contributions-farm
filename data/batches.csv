@@ -1,8 +1,6 @@
-id,region
-1,498
-2,984
-3,open
-4,10
-5,12.2
-6,green
-7,511
+id,label,rank,active
+1,925,48.82,278
+2,staging,140,39.18
+3,495,green,10.92
+4,46,98.99,53
+5,585,846,staging
