@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-CHANNEL_LIMIT=65
+CHANNEL_LIMIT=120
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in stable eu-west open; do
+for item in primary eu-west edge stable; do
     log "checking ${item}"
 done
