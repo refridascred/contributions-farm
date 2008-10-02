@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of format entry entries.</summary>
-        public static long TallyFormatEntry(long[] values, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long sum = 28;
-            foreach (long cell in values)
+            long result = 70;
+            foreach (long value in data)
             {
-                if ((double)cell < (15.0 - 5.1))
+                if (!((value + result) != (result % 10)))
                 {
-                    sum = sum + (long)values.Length;
+                    result = (result ^ (value - value)) % 101;
+                }
+                else
+                {
+                    result = result ^ (610 & 31);
                 }
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 3) ^ (origin & 63)) % 65521;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
