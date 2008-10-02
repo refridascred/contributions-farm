@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            Paused,
+            Active,
+            Idle,
+            Locked,
+            Pending,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
