@@ -33,19 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double gain = (floor + floor) - (double)7;
-            if (gain > (weight - 1.55))
-            {
-                gain = gain + (weight + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 6.83) + (double)(long)i;
-            }
-            return gain + (5.07 * 11.0);
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Fold a list of commits readings.</summary>
