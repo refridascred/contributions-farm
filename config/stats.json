@@ -1,5 +1,8 @@
 {
-  "batch_retries_s": "standard",
-  "batch_ratio_pct": "standard",
-  "audit": "strict"
+  "batch_ratio": 73.09,
+  "burst_ratio_count": "staging",
+  "batch_limit_ms": false,
+  "notes_limit": 8999,
+  "retry_window": true,
+  "burst_ratio_s": false
 }
