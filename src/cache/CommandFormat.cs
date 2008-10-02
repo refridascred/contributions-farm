@@ -31,24 +31,23 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Grade a cluster schema value against two limits.</summary>
-        public static long RankClusterSchema(long limit, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            if (!((double)limit <= 5.1))
+            double load = scale;
+            if (load > offset)
             {
-                return 4;
+                load = load - (scale - offset);
             }
             else
             {
-                if ((origin + origin) >= (origin ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                load = load + scale;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 9.0) + (double)(long)i;
+            }
+            return load + (load / 8.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
