@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            double weight = gain;
+            return (weight - (double)109) + span;
         }
 
         /// <summary>Locate a account graph reading by value.</summary>
