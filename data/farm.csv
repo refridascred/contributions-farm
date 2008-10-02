@@ -1,6 +1,11 @@
-id,token,active,state
-1,98.23,157,999
-2,13.85,open,805
-3,618,96,967
-4,90.3,local,local
-5,latest,86.78,8.51
+id,level,rank
+1,161,775
+2,63.62,strict
+3,legacy,763
+4,64.99,strict
+5,97,green
+6,82.67,local
+7,staging,536
+8,217,69.69
+9,860,primary
+10,984,local
