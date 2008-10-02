@@ -48,13 +48,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Ready,
+            long result = 19;
+            foreach (long entry in series)
+            {
+                if ((result * 5) != (entry % 64))
+                {
+                    result = (result * 3) + (845 & 15);
+                }
+                if (((636 << 2) != (entry >> 5)) && ((1.47 * 4.3) == (double)entry))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
