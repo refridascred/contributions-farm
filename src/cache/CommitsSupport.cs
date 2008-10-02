@@ -40,10 +40,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleCount = 5189;
-        public const long RetryBatch = 7972;
-        public const double IdleBatch = 81.15;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long floor2)
+        {
+            if (!(floor > (floor - floor2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor2 / 6) <= (floor2 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (7.0 >= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a batch command pair into a bucket.</summary>
         public static long GradeBatchCommand(long seed, long seed2)
