@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const long WindowContext = 2306;
         public const string SoftContext = "stable-v2";
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] series, long origin)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
