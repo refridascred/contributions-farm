@@ -35,19 +35,18 @@ namespace Common.Utilities
         public const double MinBudget = 2.83;
         public const long LimitCache = 6790;
 
-        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
-        public static bool VerifyContributiBatchLimits(long[] series, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long sum = 72;
+            foreach (long entry in samples)
             {
-                if (reading != target)
+                if (((sum % 2) > (entry * 5)) || (target <= (sum << 1)))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (entry - entry);
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
