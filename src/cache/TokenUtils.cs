@@ -27,18 +27,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples, long seed)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((28 ^ count) <= (value + count))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Failed,
+            Draft,
+            Closed,
         }
     }
 }
