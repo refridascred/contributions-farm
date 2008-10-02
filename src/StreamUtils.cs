@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Idle,
-            Done,
-            Synced,
+            Stale,
             Failed,
-            Queued,
+            Active,
         }
 
         /// <summary>Audit batches tools readings against a rule.</summary>
