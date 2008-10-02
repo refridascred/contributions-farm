@@ -30,11 +30,11 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheBudget = "alpha";
-        public const long MaxContext = 8778;
-        public const long WindowContext = 2306;
-        public const string SoftContext = "stable-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 68.72;
+        public const long DefaultRecord = 5919;
+        public const long IdleRecord = 6632;
+        public const long BatchTimeout = 1296;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsRange(long[] series, long origin)
