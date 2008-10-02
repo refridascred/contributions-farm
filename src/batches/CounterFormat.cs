@@ -37,17 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] items, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
