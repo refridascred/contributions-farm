@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seen < (6.3 * 5.84))
                 {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    seen = ((seen + 2) ^ sample) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate notes cache samples.</summary>
