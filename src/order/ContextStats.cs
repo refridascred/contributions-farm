@@ -30,12 +30,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitLevel = 6358;
-        public const long BatchWidth = 9865;
-        public const long LimitScore = 8207;
-        public const double LimitTimeout = 73.77;
-        public const double BurstStream = 61.19;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double span)
+        {
+            double ratio2 = (double)(7 >> 3);
+            if (ratio2 < 7.0)
+            {
+                ratio2 = ratio2 + (double)1;
+            }
+            else
+            {
+                ratio2 = ratio2 + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - (ratio + 7.14);
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
