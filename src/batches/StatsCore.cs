@@ -27,11 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 9850;
-        public const long LimitOrder = 4622;
-        public const long MinOrder = 2958;
-        public const long RetryDepth = 6654;
+        /// <summary>Count metric payload pairs that satisfy a relation.</summary>
+        public static long PairMetricPayloadCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] readings, long floor)
