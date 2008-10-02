@@ -15,18 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (4.0 < (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next record route value.</summary>
