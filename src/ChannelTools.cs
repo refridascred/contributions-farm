@@ -33,19 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] items, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long cur = target ^ floor;
+            if ((floor << 2) <= (722 - floor))
             {
-                if (reading < limit)
+                return 1;
+            }
+            else
+            {
+                if (((cur * 2) > (floor * 2)) || (308 < (floor + cur)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((floor & 7) < (target + cur)) && ((0.9 / 4.0) <= (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((cur ^ target) > floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
