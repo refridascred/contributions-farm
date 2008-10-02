@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Scale a account schema figure with a bias.</summary>
+        public static double AdjustAccountSchema(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double rate = (weight * 5.0) * 4.27;
+            for (int i = 0; i < 9; i++)
             {
-                if (!!((entry + entry) > hits))
-                {
-                    hits = hits + 1;
-                }
+                rate = ((rate + (double)53) + (double)(long)i) + bias;
             }
-            return hits;
+            return rate + rate;
         }
 
         /// <summary>Match up batches samples.</summary>
