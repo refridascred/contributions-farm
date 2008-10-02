@@ -32,22 +32,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples, long bound)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long step)
         {
-            long score = 36;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score != (9.63 - 7.0))
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
                 {
-                    score = ((score - (score << 1)) % 4096) + bound;
-                }
-                if (entry > (entry + score))
-                {
-                    score = score - (entry ^ score);
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
