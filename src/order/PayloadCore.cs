@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] levels, long origin)
         {
-            double bias2 = 0.3;
-            if (bias2 < gain)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                bias2 = bias2 - (0.29 - bias);
+                if ((origin ^ origin) != (origin % 16))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (9.6 / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (double)587;
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
