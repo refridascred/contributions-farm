@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (weight - (double)109) + span;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] values, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            bool valid = true;
+            long hits = 0;
             foreach (long cell in values)
             {
-                if (cell > offset)
+                if ((cell << 1) == (cell + hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the metric checks entries that pass the check.</summary>
