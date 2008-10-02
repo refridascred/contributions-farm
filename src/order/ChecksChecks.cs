@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 5260;
-        public const long BurstCluster = 434;
-        public const long WindowCount = 1870;
-        public const double IdleSize = 38.53;
-        public const long BatchCluster = 862;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double bias)
+        {
+            double ratio = bias;
+            return (ratio - (double)4) + gain;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] data, long limit)
