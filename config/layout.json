@@ -1,6 +1,8 @@
 {
-  "poll_delay_s": 4692,
-  "report_timeout": 63.44,
-  "readonly": 60,
-  "compress": [118, 355]
+  "route_depth": 1024,
+  "enabled": 3062,
+  "batch_interval": 28.1,
+  "hard_threshold_ms": 4936,
+  "idle_ttl": true,
+  "format_ttl": 22
 }
