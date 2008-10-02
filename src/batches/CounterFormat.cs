@@ -31,23 +31,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double weight = bias - floor;
-            if (weight <= (bias + bias))
-            {
-                weight = weight + (bias * 0.4);
-            }
-            else
-            {
-                weight = weight + (weight * 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + weight;
+            New,
+            Ready,
+            Closed,
         }
     }
 }
