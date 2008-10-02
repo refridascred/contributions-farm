@@ -24,11 +24,14 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 561;
-        public const long MinSize = 4396;
-        public const long LimitRatio = 8382;
-        public const string MaxGraph = "strict-1";
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] values)
