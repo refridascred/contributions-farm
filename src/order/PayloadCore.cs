@@ -20,26 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long bound)
         {
-            long state = 510;
-            foreach (long reading in data)
+            long gap = seed + bound;
+            if ((double)gap <= (6.86 / 7.0))
             {
-                if ((reading << 1) != (reading >> 4))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound > (20.0 + 2.02)) && ((884 << 1) <= (bound + 26)))
                 {
-                    state = ((state + state) % 4096) + seed;
+                    return 1;
                 }
-                if (((17.0 + 12.0) < (double)state) && (state > (73 * 2)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (state > (-138))
-            {
-                state = state ^ 7;
-            }
-            return state % 97;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
