@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Paused,
-            Queued,
-            Pending,
-            Retry,
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
