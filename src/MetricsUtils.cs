@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double gain, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] values, long offset)
         {
-            double weight = bias;
-            return (weight - (weight / 6.0)) + gain;
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (double)offset)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes options.</summary>
