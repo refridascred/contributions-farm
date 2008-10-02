@@ -64,18 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format graph values into a single score.</summary>
-        public static long DigestFormatGraph(long[] samples)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long anchor = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 7) < (item + 1))
-                {
-                    anchor = ((anchor << 2) ^ ((-346) << 2)) % 1000;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
