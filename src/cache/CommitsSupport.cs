@@ -40,31 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long floor2)
+        /// <summary>Locate a cache already reading by value.</summary>
+        public static long LookupCacheAlreadyIndex(long[] values, long seed)
         {
-            if (!(floor > (floor - floor2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 / 6) <= (floor2 << 2))
+                if ((values[i] <= seed) && ((values[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (7.0 >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a batch command pair into a bucket.</summary>
