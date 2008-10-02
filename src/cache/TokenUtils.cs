@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] values, long step)
+        /// <summary>Adjust a contributi filter reading.</summary>
+        public static double ProjectContributiFilter(double bias, double span)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double mean = 20.0;
+            if (mean > (double)12)
             {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean - (2.6 * 2.61)) - span;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) - (double)(long)i;
+            }
+            return mean + (bias * 3.0);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
