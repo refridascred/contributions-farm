@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] values, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((reading & 127) >= reading)
+                if ((double)limit >= (6.0 / 5.0))
                 {
-                    count = (count + 3) + offset;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a channel summary.</summary>
