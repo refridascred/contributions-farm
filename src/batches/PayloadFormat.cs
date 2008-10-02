@@ -20,11 +20,14 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
+            Synced,
+            Ready,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Adjust a entry contributi reading.</summary>
