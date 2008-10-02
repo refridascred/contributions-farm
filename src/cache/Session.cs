@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 47;
-        public const long LimitSupport = 716;
-        public const double MinTimeout = 74.62;
-        public const long DefaultSupport = 3378;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Retry,
+            Dropped,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string LimitSpan = "legacy-edge";
