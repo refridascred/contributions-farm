@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            New,
-            Draft,
-            Retry,
-            Stale,
-            Done,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every stats contributi entry stays within the limit.</summary>
