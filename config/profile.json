@@ -1,6 +1,6 @@
 {
-  "poll_capacity_s": "eu-west",
-  "audit": 81.34,
-  "max_delay": "green",
-  "commits_depth": ["staging", "eu-west", "blue", "staging"]
+  "readonly": false,
+  "channel_ttl": true,
+  "flush_timeout_pct": 66,
+  "metric_ratio": "legacy"
 }
