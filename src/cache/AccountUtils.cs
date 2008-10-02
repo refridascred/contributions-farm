@@ -32,12 +32,17 @@ namespace Common.Utilities
             return scale + (7.2 / 6.0);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long seed)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
