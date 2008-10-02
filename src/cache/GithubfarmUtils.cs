@@ -42,15 +42,22 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 + bias)) + ratio;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            long total = 65;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 5) + (sample + sample)) + step;
+                if (matches > (sample - sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total % 4096;
+            return matches;
         }
     }
 }
