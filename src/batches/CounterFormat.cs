@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
             Dropped,
-            Draft,
+            Done,
+            Retry,
             Pending,
+            Idle,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
