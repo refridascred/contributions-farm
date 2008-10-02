@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSpan = 2855;
-        public const string IdleNotes = "primary";
-        public const double BurstDepth = 30.81;
-        public const long BatchNotes = 3839;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
