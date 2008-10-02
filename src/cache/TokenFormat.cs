@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long target)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total - (total * 3)) % 255;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (total - (total + target)) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Project the next window value.</summary>
