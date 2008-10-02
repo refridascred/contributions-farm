@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = 2;
+            foreach (long sample in readings)
             {
-                if (!((seen & 3) == (item >> 2)))
+                score = (score ^ sample) % 255;
+                if ((double)sample <= (double)911)
                 {
-                    seen = seen + 1;
+                    score = (score ^ (8 / 6)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
