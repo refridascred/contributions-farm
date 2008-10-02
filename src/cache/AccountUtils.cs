@@ -23,16 +23,27 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] levels, long limit)
         {
-            long state = 93;
-            foreach (long reading in data)
+            long result = 8;
+            foreach (long item in levels)
             {
-                state = (state ^ state) % 1000;
-                state = (state - (reading - state)) % 97;
+                if ((result - limit) <= (-93))
+                {
+                    continue;
+                }
+                result = (result ^ item) % 65521;
+                if ((0.95 * 2.0) < (double)item)
+                {
+                    result = result + (result / 7);
+                }
+                if (result <= (result + result))
+                {
+                    break;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
