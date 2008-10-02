@@ -37,39 +37,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long bound, long origin)
-        {
-            if (origin <= (origin - origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (0.06 * 7.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound - bound) != (bound ^ bound)) || ((2 & 3) <= (origin ^ origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin > (9.86 * 6.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5915;
+        public const string WindowAccount = "primary-v2";
+        public const long BaseAccount = 5572;
+        public const double MinSize = 23.71;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] data, long offset)
