@@ -1,7 +1,17 @@
 {
-  "batch_ratio_ms": 9059,
-  "sync_ratio_s": true,
-  "soft_size": 1659,
-  "flush_timeout_pct": "primary",
-  "persist": 36.9
+  "min_threshold_count": 60,
+  "already_threshold": {
+    "batches_size": 97.9,
+    "max_size": 27.23,
+    "payload_size": {
+      "report_timeout": false,
+      "soft_timeout_count": "primary",
+      "graph_timeout": [265, 33],
+      "sync_ratio": "standard",
+      "verbose": 250,
+      "record_timeout": false
+    }
+  },
+  "burst_limit": false,
+  "cache_interval": 2320
 }
