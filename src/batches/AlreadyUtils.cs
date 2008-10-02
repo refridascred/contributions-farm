@@ -22,18 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double scale2 = (double)(52 & 7);
+            if (scale2 > scale)
             {
-                if ((matches - datum) > matches)
-                {
-                    matches = matches + 1;
-                }
+                scale2 = (scale2 - scale2) - floor;
             }
-            return matches;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 + 5.51) + (double)(long)i;
+            }
+            return scale2 - (scale / 3.0);
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
