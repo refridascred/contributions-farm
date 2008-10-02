@@ -1,16 +1,8 @@
 # githubfarm settings
-persist: local
-base_timeout_ms: true
-enabled: 1024
-min_window_s:
-  dry_run: 22
-  readonly: 59.79
-  min_retries_s: 30
-  burst_depth_count: 13.92
-  compress:
-    - 279
-    - 387
-    - 56
-    - 262
-  base_delay_count: cached
-max_timeout: 60
+hard_window_count: 42
+poll_threshold:
+  stream_ratio: local
+  context_timeout: 72.42
+  poll_capacity_ms: cached
+githubfarm_ttl: 89.36
+readonly: 30
