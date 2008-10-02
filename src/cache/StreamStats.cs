@@ -33,23 +33,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((sum >> 4) <= (sum & 255)))
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
                 {
-                    sum = (sum - ((long)i << 3)) % 101;
+                    return (long)i;
                 }
-                if ((sum + sum) <= (offset ^ offset))
-                {
-                    sum = (sum + (9 / 2)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
