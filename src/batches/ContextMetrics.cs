@@ -52,12 +52,12 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long target)
+        /// <summary>Locate a payload metric reading by value.</summary>
+        public static long LookupPayloadMetricIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
