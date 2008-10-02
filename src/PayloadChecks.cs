@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Locked,
+            Stale,
             Dropped,
-            Synced,
-            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Match up editor samples.</summary>
