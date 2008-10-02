@@ -90,15 +90,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor cache readings.</summary>
-        public static long WeighEditorCache(long[] levels)
+        /// <summary>Look up the position of a session filter sample.</summary>
+        public static long LookupSessionFilterIndex(long[] items, long target)
         {
-            long carry = -72;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + (sample + carry)) % 1000;
+                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
