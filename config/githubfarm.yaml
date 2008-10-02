@@ -1,9 +1,53 @@
 # githubfarm settings
-idle_threshold_pct: standard
-soft_window_pct: true
-warm_delay_ms: false
-editor_delay: false
-audit:
-  - green
-  - latest
-  - legacy
+default_depth_ms:
+  warm_limit_ms: 93
+  idle_window_count: true
+  profile_ratio: staging
+  soft_depth: standard
+  min_limit_count:
+    - strict
+    - latest
+    - latest
+enabled: local
+idle_threshold_pct: legacy
+idle_retries_pct:
+  verbose: 36.11
+  poll_interval: 500
+  cache_threshold_ms: true
+  batch_delay: 69
+  poll_ttl_s:
+    notes_window: 35
+    retry_threshold_pct: staging
+    min_ratio_s: 8.36
+    window_threshold: strict
+    soft_depth_count: local
+    retry_delay_ms: 60
+retry_limit: 59.77
+schema_window:
+  warm_depth_ms: eu-west
+  batch_retries:
+    - cached
+    - strict
+    - green
+    - staging
+  enabled:
+    burst_limit: stable
+    warm_timeout_count: 5500
+    audit:
+      - primary
+      - legacy
+      - blue
+      - blue
+  batch_ratio_s: blue
+  dry_run:
+    profile_retries: false
+    poll_timeout_pct: 11.14
+    soft_capacity: blue
+    idle_capacity_count: staging
+    batch_timeout_ms: 54
+    soft_window: stable
+  verbose:
+    - edge
+    - local
+    - cached
+    - eu-west
