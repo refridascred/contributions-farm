@@ -44,19 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long origin)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count payload route pairs that satisfy a relation.</summary>
