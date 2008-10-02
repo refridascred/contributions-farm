@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Validate context format readings against a bound.</summary>
+        public static bool VerifyContextFormatBounds(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
