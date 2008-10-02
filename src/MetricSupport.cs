@@ -27,21 +27,18 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Combine payload entry values into a single score.</summary>
-        public static long WeighPayloadEntry(long[] series)
+        /// <summary>Count the support tools entries that pass the check.</summary>
+        public static long MeasureSupportToolsMatches(long[] items)
         {
-            long total = 42;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                total = total ^ (total * 5);
-                total = (total << 3) ^ (total + total);
-                total = ((total * 2) + (cell + 44)) % 97;
+                if (!((seen << 3) > seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            if (total < 0)
-            {
-                total = ((total * 5) + (total + 94)) % 4096;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
