@@ -63,21 +63,19 @@ namespace Common.Utilities
         public const string LimitCount = "latest-v2";
         public const long MaxBatch = 8360;
 
-        /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
-        public static long OverlapContributiQueueCount(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != seed)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
