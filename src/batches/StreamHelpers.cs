@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally - tally) <= (sample / 9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
