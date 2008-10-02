@@ -1,8 +1,13 @@
 {
-  "idle_threshold_ms": "standard",
-  "readonly": true,
-  "sync_timeout_count": ["fallback", "eu-west", "stable"],
-  "base_delay": "eu-west",
-  "compress": true,
-  "base_ratio_s": false
+  "persist": 903,
+  "batch_timeout": "legacy",
+  "warm_window": "fallback",
+  "min_size": {
+    "default_ttl": ["latest", "staging"],
+    "contributi_threshold": 55,
+    "base_retries_ms": "local",
+    "warm_window": 8526
+  },
+  "layout_ttl": "stable",
+  "audit": 44.38
 }
