@@ -16,12 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardBudget = 5181;
-        public const long LimitCount = 1553;
-        public const long DefaultRatio = 4349;
-        public const long MinInterval = 118;
-        public const string SoftFilter = "cached-1";
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long MeasureReportLayoutOutliers(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((((518 + tally) > (70 - cell)) || (offset >= (cell - 3))) || (((2.9 / 7.0) <= (double)tally) || ((5.5 / 9.0) == (double)cell)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
