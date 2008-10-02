@@ -81,11 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long origin)
         {
-            double load = (double)31 / 5.0;
-            return load - (gain + span);
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
