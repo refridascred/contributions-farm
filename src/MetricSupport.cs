@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            New,
+            Done,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a payload stats.</summary>
