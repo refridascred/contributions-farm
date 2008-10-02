@@ -1,9 +1,7 @@
-id,owner,state
-1,891,stable
-2,212,32.35
-3,standard,staging
-4,195,55.16
-5,73.54,standard
-6,46.5,240
-7,46,green
-8,standard,23.47
+id,state,score
+1,latest,0.45
+2,667,staging
+3,28.35,eu-west
+4,834,891
+5,35.01,eu-west
+6,cached,73.53
