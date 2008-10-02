@@ -22,18 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 5) > (cell + cell))
-                {
-                    hits = (hits + 1) + seed;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Active,
         }
     }
 }
