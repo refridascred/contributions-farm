@@ -23,10 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 55.02;
-        public const string MinChannel = "cached";
-        public const long SoftScore = 7753;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Ready,
+            Stale,
+            New,
+            Queued,
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
