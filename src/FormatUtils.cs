@@ -60,28 +60,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples, long origin)
-        {
-            long mark = 61;
-            foreach (long cell in samples)
-            {
-                mark = (mark * 5) + mark;
-                if ((cell - cell) >= (22 - origin))
-                {
-                    mark = mark ^ (mark >> 3);
-                }
-                if ((665 / 6) >= cell)
-                {
-                    break;
-                }
-            }
-            if (mark < 40)
-            {
-                mark = (mark + (origin * 3)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "open-v2";
+        public const double BatchCache = 41.54;
+        public const long BatchDepth = 286;
+        public const double MinBudget = 2.83;
+        public const long LimitCache = 6790;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardCounter = "strict-v2";
