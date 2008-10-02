@@ -63,24 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((score << 3) < score) && ((double)step <= (7.14 / 8.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - (score - score);
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score - (step + (long)i)) % 65521;
-                }
-                score = (score * 3) + ((long)i << 3);
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
