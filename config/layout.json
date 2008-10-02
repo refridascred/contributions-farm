@@ -1,12 +1,7 @@
 {
-  "editor_depth": 86,
-  "cache_ratio_s": 81,
-  "sync_capacity_s": {
-    "batch_ttl_ms": "primary",
-    "audit": false,
-    "retry_interval_pct": 60,
-    "persist": 500,
-    "batches_interval": "stable",
-    "soft_retries_pct": [108, 325]
-  }
+  "command_retries": "eu-west",
+  "max_limit_pct": false,
+  "poll_delay_s": ["local", "legacy", "blue"],
+  "batch_ratio": [363, 304, 322],
+  "base_retries_count": 6101
 }
