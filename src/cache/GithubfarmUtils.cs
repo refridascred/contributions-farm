@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const long BaseNotes = 1982;
         public const long BurstNotes = 8518;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            New,
-            Stale,
-            Idle,
+            long acc = 22;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc - (entry * 4)) % 97) ^ (long)i;
+                }
+                if (((double)acc <= (5.82 * 8.28)) || (entry > (53 - acc)))
+                {
+                    acc = ((acc * 4) + entry) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate stream batch samples.</summary>
