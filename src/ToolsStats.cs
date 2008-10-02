@@ -17,10 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 7233;
-        public const long RetryBudget = 1038;
-        public const double BaseCount = 33.74;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaGaps(long[] levels, long offset)
