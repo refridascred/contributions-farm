@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetrySize = 60.48;
-        public const double MinTimeout = 46.86;
-        public const double MinStats = 94.84;
-        public const long RetryStats = 5218;
-        public const long MinBudget = 5123;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenHits(long[] series, long floor)
