@@ -59,22 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long MeasureMetricsCommandOutliers(long[] data)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double load = bias;
+            if (load <= (double)11)
             {
-                if ((3 / 6) < (long)data.Length)
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = (load - load) - weight;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load * 14.0)) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
