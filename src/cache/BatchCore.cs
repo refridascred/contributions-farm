@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a stream layout counter forward.</summary>
-        public static long IterateStreamLayout(long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((origin << 2) >= origin) && ((double)origin == (7.0 * 5.15)))
+                if (value <= hits)
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two layout measurements.</summary>
