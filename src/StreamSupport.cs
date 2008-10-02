@@ -27,17 +27,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a account stream sample.</summary>
-        public static long SeekAccountStreamIndex(long[] samples, long origin)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
