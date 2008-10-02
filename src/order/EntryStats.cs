@@ -20,14 +20,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            Dropped,
-            Active,
-            Closed,
-            Done,
-            Synced,
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry - (carry - (long)i)) % 97) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    carry = ((carry + (carry + carry)) % 1000) - (long)i3;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate session samples.</summary>
