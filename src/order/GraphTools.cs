@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
             long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - 6) > (5 & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + target;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
