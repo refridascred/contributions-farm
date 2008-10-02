@@ -18,12 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate profile checks samples.</summary>
+        public static long CombineProfileChecks(long[] values)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long acc = 503;
+            foreach (long sample in values)
+            {
+                acc = (acc * 5) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Describe the format mode values.</summary>
