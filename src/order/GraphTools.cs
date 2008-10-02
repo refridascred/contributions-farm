@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const double IdleAlready = 26.34;
         public const double MaxDepth = 8.4;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((offset & 7) > (item + (long)values.Length))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Done,
+            New,
+            Dropped,
         }
 
         /// <summary>Project the next record route value.</summary>
