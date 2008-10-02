@@ -1,13 +1,6 @@
 # githubfarm settings
-soft_ttl_count: false
-commits_interval:
-  - open
-  - primary
-  - strict
-  - blue
-burst_retries_ms: open
-default_limit: 89.59
-warm_timeout_ms:
-  - latest
-  - edge
-  - legacy
+max_timeout_pct: 250
+soft_ratio_s: 79.41
+compress: fallback
+warm_ratio: true
+profile_interval: 30
