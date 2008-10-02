@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            double load = bias;
+            if (load < (3.6 - offset))
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load + offset;
+            }
+            return load - (offset * 20.0);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
