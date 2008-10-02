@@ -61,20 +61,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] series, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long mark = 54;
-            foreach (long datum in series)
-            {
-                mark = (mark ^ (mark / 9)) ^ datum;
-                mark = ((mark * 4) + step) % 97;
-            }
-            if (mark < 4)
-            {
-                mark = ((mark * 3) + (step + step)) % 4096;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
