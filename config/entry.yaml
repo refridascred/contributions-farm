@@ -1,16 +1,18 @@
 # entry settings
-command_depth: 11.42
-idle_timeout_count: 250
-max_delay_s: false
-support_ratio: 71
-min_timeout_count:
-  tools_window: 250
-  min_ratio_pct:
-    token_limit:
-      - legacy
-      - local
-    verbose: 721
-    order_ratio: 30
-    max_ratio: true
-  default_interval_ms: 79.51
-default_interval: 36.72
+flush_delay_s: true
+idle_size_count: false
+account_ratio: stable
+cache_retries_s:
+  verbose: 250
+  layout_delay:
+    - standard
+    - cached
+  stats_ttl: 25.53
+  burst_window_s: 87.58
+default_ratio:
+  max_depth_ms: 3453
+  max_depth: 250
+  verbose: 53.11
+  hard_capacity_count: false
+  min_capacity: 31.56
+  min_capacity_count: 68
