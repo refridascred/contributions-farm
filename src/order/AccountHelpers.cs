@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (hits >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) + cell;
+                    if ((data[i] + data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine schema contributi values into a single score.</summary>
