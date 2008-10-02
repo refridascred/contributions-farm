@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the filter schema entries that pass the check.</summary>
-        public static long CountFilterSchemaHits(long[] data, long floor)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)floor >= (double)entry) || (((floor >> 4) != (tally + tally)) && ((0.2 + 5.45) == (double)tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
