@@ -1,11 +1,14 @@
 # Command notes
 
-Use githubfarm settings to tune how often contributi data is refreshed.
-The report module keeps farm values in sync with the window cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use window settings to tune how often command data is refreshed.
+
+Defaults for notes live in the config folder and can be overridden per environment.
+Each payload is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review queue limits each release
-- Prefer route defaults
-- Keep session values small
-- Document new order fields
+- Keep metric values small
+- Review route limits each release
+- Validate commits input early
+- Document new batches fields
