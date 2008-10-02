@@ -56,13 +56,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitScore = "fallback-edge";
+        public const double MaxCommits = 49.45;
+        public const double CacheCommits = 34.44;
     }
 }
