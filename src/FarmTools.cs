@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Queued,
-            Pending,
-            Idle,
+            Active,
             Retry,
-            Ready,
+            Closed,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
