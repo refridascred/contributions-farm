@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double rate = 17.0;
-            return (rate - (weight * 6.0)) + offset;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
