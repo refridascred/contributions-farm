@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a contributi filter reading.</summary>
-        public static double ProjectContributiFilter(double bias, double span)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double mean = 20.0;
-            if (mean > (double)12)
-            {
-                mean = (mean - (2.6 * 2.61)) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) - (double)(long)i;
-            }
-            return mean + (bias * 3.0);
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
