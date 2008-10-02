@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double offset)
-        {
-            double load = bias;
-            if (load < (3.6 - offset))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            return load - (offset * 20.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSpan = 2855;
+        public const string IdleNotes = "primary";
+        public const double BurstDepth = 30.81;
+        public const long BatchNotes = 3839;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long seed)
