@@ -26,25 +26,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a farm entry value against two limits.</summary>
-        public static long ClassifyFarmEntry(long bound, long bound2)
-        {
-            if ((1.2 * 5.75) != (double)bound2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 + bound2) >= (bound * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstCount = 8124;
+        public const long BatchTimeout = 2309;
+        public const double DefaultLevel = 93.1;
+        public const long BatchBudget = 4227;
+        public const long MinBudget = 3468;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long offset)
