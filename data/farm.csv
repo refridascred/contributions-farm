@@ -1,7 +1,6 @@
-id,count,level
-1,open,475
-2,legacy,300
-3,509,825
-4,49.95,staging
-5,6.79,legacy
-6,9.7,44.09
+id,token,active,state
+1,98.23,157,999
+2,13.85,open,805
+3,618,96,967
+4,90.3,local,local
+5,latest,86.78,8.51
