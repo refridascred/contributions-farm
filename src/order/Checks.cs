@@ -58,22 +58,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long limit)
         {
-            long score = 113;
-            foreach (long value in series)
+            if ((7 / 7) < limit)
             {
-                if ((score - score) <= bound)
+                return 1;
+            }
+            else
+            {
+                if (((limit - 3) > (limit - target)) && (limit <= (427 + target)))
                 {
-                    score = ((score * 2) + (bound % 16)) + value;
+                    return 5;
                 }
                 else
                 {
-                    score = (score ^ (0 % 8)) % 1000;
+                    if ((601 % 24) < (target ^ limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score;
         }
     }
 }
