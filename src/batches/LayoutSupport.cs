@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metrics filter samples.</summary>
-        public static long CombineMetricsFilter(long[] data, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] samples, long floor)
         {
-            long acc = 69;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                acc = (acc * 4) + (acc + value);
-                if ((9 + seed) <= seed)
+                if (reading > floor)
                 {
-                    acc = ((acc << 3) ^ value) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 9)
-            {
-                acc = acc ^ (acc % 97);
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a counter options.</summary>
