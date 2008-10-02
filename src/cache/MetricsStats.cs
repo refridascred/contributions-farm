@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5614;
-        public const long DefaultScore = 923;
-        public const long RetryFactor = 7118;
-        public const long HardBatch = 1976;
-        public const long BurstBatch = 1651;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] levels, long bound)
+        {
+            long sum = 422;
+            foreach (long value in levels)
+            {
+                if ((593 - 7) < (sum >> 2))
+                {
+                    sum = (((sum << 3) ^ sum) % 1000) + value;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = sum + (bound + bound);
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] series, long target)
