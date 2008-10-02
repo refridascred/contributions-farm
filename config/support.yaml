@@ -1,11 +1,10 @@
 # support settings
-cluster_ttl:
-  - blue
-  - cached
-  - stable
-  - edge
-burst_capacity:
-  - 437
-  - 98
-  - 204
-retry_threshold_s: 84.19
+route_interval: 100
+already_timeout: primary
+hard_limit: strict
+hard_interval_count:
+  sync_timeout: 775
+  token_threshold: false
+  burst_limit: 23.54
+  idle_window_pct: 1024
+verbose: legacy
