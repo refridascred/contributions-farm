@@ -53,27 +53,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Count the window cluster entries that pass the check.</summary>
+        public static long TallyWindowClusterGaps(long[] series, long offset)
         {
-            long total = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = total ^ (7 / 3);
-                if (total >= (total - total))
+                if ((entry ^ offset) >= (seen + offset))
                 {
-                    total = (total + (value & 63)) % 97;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    total = (total + (value + total)) % 97;
-                }
-                if ((value - 6) < 57)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
