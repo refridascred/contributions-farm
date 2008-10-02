@@ -25,23 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] items, long offset)
         {
-            long result = 829;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                result = (result + reading) % 255;
-                for (int i = 0; i < 2; i++)
+                if (cell <= offset)
                 {
-                    result = ((result ^ reading) % 97) ^ (long)i;
-                }
-                if ((91 < result) || ((reading << 3) >= result))
-                {
-                    result = result + (reading * 2);
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
