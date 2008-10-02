@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload report entries that pass the check.</summary>
-        public static long TallyPayloadReportGaps(long[] values)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) >= (reading ^ reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
