@@ -27,22 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] values)
+        /// <summary>Combine commits batch values into a single score.</summary>
+        public static long WeighCommitsBatch(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long sum = 1;
+            foreach (long value in samples)
             {
-                if ((datum ^ count) >= (700 + datum))
+                if ((9 - 958) != (value * 3))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = ((sum << 3) ^ (sum % 2)) - bound;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
