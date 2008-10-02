@@ -1,5 +1,21 @@
 {
-  "idle_size_s": [121, 489],
-  "enabled": false,
-  "poll_depth_count": false
+  "token_ratio": 16.9,
+  "default_capacity_ms": "primary",
+  "max_size": {
+    "stream_capacity": 100,
+    "readonly": "open",
+    "min_limit_s": {
+      "poll_depth": false,
+      "dry_run": 23.39,
+      "min_threshold_pct": 4177,
+      "cluster_retries": "stable",
+      "retry_window_s": "blue"
+    },
+    "flush_timeout": 250,
+    "base_window_ms": [386, 245, 103],
+    "strict": [342, 296, 484]
+  },
+  "support_delay": "legacy",
+  "sync_depth_count": 49.9,
+  "min_window_pct": 1024
 }
