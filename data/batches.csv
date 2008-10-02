@@ -1,8 +1,9 @@
-id,weight,state,level
-1,eu-west,312,legacy
-2,971,blue,393
-3,staging,74.39,816
-4,70.15,24.28,90.51
-5,171,340,green
-6,65.72,latest,51
-7,legacy,786,93.13
+id,owner,state
+1,891,stable
+2,212,32.35
+3,standard,staging
+4,195,55.16
+5,73.54,standard
+6,46.5,240
+7,46,green
+8,standard,23.47
