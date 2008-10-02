@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Blend two window tools measurements.</summary>
+        public static double BlendWindowTools(double scale, double offset)
         {
-            double weight = floor / 5.0;
-            for (int i = 0; i < 6; i++)
+            double scale2 = (double)5 + (double)80;
+            if (scale2 < scale2)
             {
-                weight = (weight + (floor + gain)) - (double)(long)i;
+                scale2 = (scale2 + 8.2) - offset;
             }
-            return weight - (double)0;
+            else
+            {
+                scale2 = scale2 - 9.0;
+            }
+            return scale2 - (scale2 - scale);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
