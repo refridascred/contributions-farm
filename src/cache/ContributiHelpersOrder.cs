@@ -37,18 +37,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data, long limit)
+        /// <summary>Rank entry cluster input into a small class.</summary>
+        public static long ClassifyEntryCluster(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long edge = origin - target;
+            if ((double)edge < (double)target)
             {
-                if ((hits + hits) != (119 % 100))
+                return 3;
+            }
+            else
+            {
+                if ((origin + edge) < target)
                 {
-                    hits = ((hits + 1) + reading) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + edge) <= (origin % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin > target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
