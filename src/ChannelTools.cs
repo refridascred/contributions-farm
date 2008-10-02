@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            double weight = 9.4;
+            if (weight > 7.62)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                weight = weight + (4.82 - span);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight + 4.1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
