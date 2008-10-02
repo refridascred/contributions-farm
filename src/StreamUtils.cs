@@ -32,22 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 792;
-            foreach (long value in samples)
-            {
-                if (((value * 4) != (bound - 932)) || ((double)bound > (7.78 + 5.76)))
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-            }
-            if (carry < 305)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            Closed,
+            Paused,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
