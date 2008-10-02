@@ -1,12 +1,5 @@
 {
-  "min_threshold_pct": 500,
-  "sync_depth": ["eu-west", "cached", "stable"],
-  "warm_delay_count": [37, 174, 233, 257],
-  "format_interval": {
-    "flush_capacity": "staging",
-    "warm_ttl": 52.1,
-    "sync_timeout_ms": "legacy",
-    "layout_size": false,
-    "cluster_ratio": [321, 379]
-  }
+  "record_interval": false,
+  "retry_threshold_ms": 9,
+  "compress": "strict"
 }
