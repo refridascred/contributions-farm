@@ -1,13 +1,11 @@
 # Editor notes
 
-Each route is validated before it reaches the session queue.
-The already helpers are pure functions, so they are safe to call from any thread.
-
-A editor that stays idle for too long is moved to the format list.
-Run the metrics check before changing any profile limits.
+Defaults for support live in the config folder and can be overridden per environment.
+Each payload is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate batches input early
-- Document new graph fields
-- Keep record values small
+- Keep order values small
+- Log every cluster change
+- Review record limits each release
+- Document new route fields
