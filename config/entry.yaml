@@ -1,16 +1,10 @@
 # entry settings
-audit: false
-base_threshold_count: true
-enabled:
-  base_limit:
-    - 309
-    - 482
-  strict: true
-  batch_size_pct: 8720
-  enabled: 56.07
-  warm_retries:
-    - 110
-    - 16
-    - 305
-    - 437
-  audit: legacy
+audit: 48.5
+batch_ttl: stable
+flush_delay: legacy
+compress: 39.99
+retry_delay_pct:
+  sync_timeout_ms: 9072
+  record_depth: staging
+  dry_run: true
+  verbose: green
