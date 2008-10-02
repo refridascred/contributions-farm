@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            double load = (double)734 / 8.0;
-            if (load > rate)
-            {
-                load = load - 7.0;
-            }
-            else
-            {
-                load = load + (rate * 3.64);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load - span)) + (double)(long)i;
-            }
-            return load + rate;
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the account state values.</summary>
