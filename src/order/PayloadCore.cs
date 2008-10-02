@@ -15,12 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
+            Pending,
+            Synced,
             Closed,
-            Done,
-            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Digest a series of profile support entries.</summary>
