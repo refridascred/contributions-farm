@@ -25,14 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            Locked,
-            New,
-            Active,
-            Done,
-            Failed,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (((count + count) <= 96) && ((value * 4) <= (value + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
