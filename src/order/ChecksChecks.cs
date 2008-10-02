@@ -27,14 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            Retry,
-            Idle,
-            Synced,
-            Closed,
-            Done,
+            long acc = 786;
+            foreach (long value in values)
+            {
+                acc = (acc - (acc << 1)) ^ value;
+            }
+            if (acc > 694)
+            {
+                acc = (acc - (201 ^ acc)) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
