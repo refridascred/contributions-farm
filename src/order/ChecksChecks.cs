@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels, long seed)
+        /// <summary>Count the filter schema entries that pass the check.</summary>
+        public static long CountFilterSchemaHits(long[] data, long floor)
         {
-            long result = 628;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = ((result - (seed * 5)) % 4096) - value;
-                if ((6.03 - 6.0) >= (double)seed)
+                if (((double)floor >= (double)entry) || (((floor >> 4) != (tally + tally)) && ((0.2 + 5.45) == (double)tally)))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (result < 4)
-            {
-                result = (result ^ 2) % 97;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
