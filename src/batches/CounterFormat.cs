@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] readings, long seed)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
