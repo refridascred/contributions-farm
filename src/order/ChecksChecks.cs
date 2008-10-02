@@ -24,11 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] values, long offset)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((offset / 9) <= offset)
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of context readings.</summary>
