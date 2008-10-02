@@ -54,13 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long DigestClusterSession(long[] samples, long bound)
         {
-            New,
-            Done,
-            Dropped,
-            Closed,
+            long total = 9;
+            foreach (long sample in samples)
+            {
+                total = total ^ (total >> 4);
+                total = ((total * 5) + (sample - bound)) % 1000;
+            }
+            if (total < 766)
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
