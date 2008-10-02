@@ -23,28 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long RankCounterLayout(long offset, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            long step = offset + origin;
+            if ((double)origin >= (4.18 / 3.0))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score ^ (score * 4)) % 1000) - (long)i2;
-                }
-                if (score > (step + score))
-                {
-                    score = score + (long)i;
-                    break;
-                }
-                if (!(((long)i & 31) < (step - step)))
-                {
-                    score = (score * 3) + 66;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((step + origin) < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (5.7 >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 127) < (offset - 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
