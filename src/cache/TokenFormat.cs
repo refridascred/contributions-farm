@@ -23,12 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
+            Locked,
             New,
-            Ready,
-            Queued,
+            Active,
+            Done,
+            Failed,
         }
     }
 }
