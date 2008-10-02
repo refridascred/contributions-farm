@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Synced,
+            Idle,
+            New,
             Ready,
-            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the account state values.</summary>
