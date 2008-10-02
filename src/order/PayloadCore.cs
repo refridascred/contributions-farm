@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            Ready,
-            Synced,
-            Idle,
-            Active,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema header.</summary>
