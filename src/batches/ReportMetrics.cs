@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings)
-        {
-            long result = 240;
-            foreach (long entry in readings)
-            {
-                if (result <= (entry & 7))
-                {
-                    result = result + entry;
-                }
-                else
-                {
-                    result = (result ^ ((long)readings.Length % 5)) % 255;
-                }
-                if ((result - 906) < (result / 9))
-                {
-                    result = (result ^ (result >> 5)) % 65521;
-                }
-            }
-            if (result < 36)
-            {
-                result = (result << 3) ^ 92;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 2677;
+        public const long BatchCommand = 5336;
+        public const long DefaultCommand = 5117;
+        public const double RetryCommand = 96.22;
+        public const string WindowSize = "standard-1";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowBounds(long[] readings, long limit)
