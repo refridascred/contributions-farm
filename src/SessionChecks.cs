@@ -16,17 +16,19 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Find the first command window entry that matches the target.</summary>
-        public static long SeekCommandWindowIndex(long[] samples, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 534;
+            foreach (long cell in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ (cell - sum);
             }
-            return -1;
+            if (sum < 3)
+            {
+                sum = ((sum * 3) + (limit - limit)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
