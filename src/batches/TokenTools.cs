@@ -36,24 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long acc = -659;
+            foreach (long value in items)
             {
-                if (!((total - (long)i) <= origin))
+                if ((value + acc) < (acc + value))
                 {
-                    total = (total ^ (origin + total)) % 1000;
-                    total = total - ((long)i ^ origin);
+                    acc = ((acc << 3) ^ (acc - acc)) % 4096;
                 }
-                else
-                {
-                    total = total ^ (origin * 5);
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            if (acc < 68)
+            {
+                acc = (acc * 4) + (acc * 5);
+            }
+            return acc % 4096;
         }
     }
 }
