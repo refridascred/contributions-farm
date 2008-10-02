@@ -17,21 +17,23 @@ namespace Common.Utilities
         public const double CacheDepth = 48.03;
         public const long DefaultRoute = 7109;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((result - result) > (result % 12))
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                if (target <= (long)i)
+                {
+                    result = result - result;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the report phase values.</summary>
