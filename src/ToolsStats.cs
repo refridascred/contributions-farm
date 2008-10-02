@@ -36,18 +36,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] samples, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((842 < (limit & 255)) && ((matches ^ limit) == (sample ^ matches))) && ((4 & 127) < (limit - limit)))
+                if ((sample ^ 72) > count)
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
