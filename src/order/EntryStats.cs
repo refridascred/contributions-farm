@@ -43,20 +43,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] samples, long bound)
         {
-            long sum = 0;
-            foreach (long item in series)
+            long mark = 3;
+            foreach (long item in samples)
             {
-                sum = (sum ^ (sum % 8)) % 101;
-                sum = sum + (item << 2);
+                mark = (mark * 2) + (bound - item);
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 4) + (sum + 17)) % 4096;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Measure how many metrics command samples are out of range.</summary>
