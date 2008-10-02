@@ -33,30 +33,22 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] items)
         {
-            long sum = 5;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                for (int i = 0; i < 4; i++)
+                if (!!((double)cell == (1.5 + 5.0)))
                 {
-                    sum = sum + (value - (long)i);
-                }
-                if (((value % 16) != (value * 5)) && ((sum % 5) <= (838 << 1)))
-                {
-                    sum = (sum ^ (5 % 7)) % 101;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    sum = (sum ^ (sum * 4)) % 1000;
-                }
-                if (((value + value) == (value * 5)) && ((6 * 4) != (sum + value)))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
