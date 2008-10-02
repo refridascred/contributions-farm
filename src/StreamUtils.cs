@@ -57,14 +57,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Pending,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardFactor = 3156;
+        public const long RetryBudget = 7344;
+        public const long MaxCommand = 9316;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] readings, long bound)
