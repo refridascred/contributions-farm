@@ -46,22 +46,11 @@ namespace Common.Utilities
             return (weight + gain) + span;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchTimeout = 8553;
+        public const long MaxLevel = 5704;
+        public const long BatchBuffer = 2152;
+        public const long BaseBuffer = 1695;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] values, long offset)
