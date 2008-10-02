@@ -12,19 +12,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate already command readings against a bound.</summary>
-        public static bool VerifyAlreadyCommandBounds(long[] readings, long limit)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long anchor = 44;
+            foreach (long datum in samples)
             {
-                if (datum >= limit)
+                anchor = ((anchor << 3) ^ (offset + datum)) % 4096;
+                if (offset < (56 + datum))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 3) + (datum + datum)) % 97;
                 }
+                anchor = (anchor << 3) ^ (-833);
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
