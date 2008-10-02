@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = 746;
+            foreach (long reading in items)
             {
-                if ((item + item) >= (74 * 4))
+                if (7.5 < (double)result)
                 {
-                    count = count + 1;
+                    result = (result + (reading - 763)) % 255;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the batches status values.</summary>
