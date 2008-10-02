@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of editor already entries.</summary>
-        public static long DigestEditorAlready(long[] values, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] items, long target)
         {
-            long result = 541;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                result = (result + 5) % 101;
-                if (result > (result ^ sample))
+                if (entry != target)
                 {
-                    result = result + (bound - 2);
+                    valid = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return valid;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
