@@ -28,18 +28,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit stream metric readings against a rule.</summary>
-        public static long TallyStreamMetricMatches(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = 6;
+            foreach (long item in levels)
             {
-                if ((reading & 1) != ((long)values.Length * 5))
-                {
-                    count = count + 3;
-                }
+                state = (state ^ (origin ^ item)) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
