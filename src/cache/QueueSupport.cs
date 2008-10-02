@@ -28,26 +28,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            long total = 509;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total >> 3) <= value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 3) ^ (value / 4);
-                }
-                if (((long)values.Length ^ value) > (value + 1))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 44)
-            {
-                total = (total + 259) % 97;
-            }
-            return total % 97;
+            return matches;
         }
     }
 }
