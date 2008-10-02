@@ -13,18 +13,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long TallyBatchesToolsHits(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = 637;
+            foreach (long item in values)
             {
-                if ((sample + 926) == (tally + tally))
+                if ((item & 15) >= (anchor & 1))
                 {
-                    tally = tally + 2;
+                    anchor = ((anchor ^ (2 + item)) % 4096) - origin;
                 }
+                anchor = ((anchor << 3) ^ (item + anchor)) % 101;
+                anchor = ((anchor * 2) + item) % 4096;
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Describe the format state values.</summary>
