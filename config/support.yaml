@@ -1,9 +1,4 @@
 # support settings
-enabled:
-  - latest
-  - latest
-audit: green
-cache_capacity_count: 93.54
-burst_timeout: false
-verbose: 8650
-cache_ratio: 30
+base_capacity_s: 500
+contributi_window: 7390
+poll_ratio_count: cached
