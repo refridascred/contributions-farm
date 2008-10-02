@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const string LimitBatch = "open-1";
         public const string DefaultBatch = "cached";
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long bound)
         {
-            Synced,
-            Closed,
-            Locked,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
