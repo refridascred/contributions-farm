@@ -53,11 +53,15 @@ namespace Common.Utilities
             return rate - (double)21;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public string Token { get; set; } = "";
-            public double Weight { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
