@@ -1,7 +1,8 @@
 {
-  "record_size": 1102,
-  "sync_retries": 83,
-  "format_threshold": 92,
-  "batch_timeout": "local",
-  "enabled": [169, 15]
+  "idle_threshold_ms": "standard",
+  "readonly": true,
+  "sync_timeout_count": ["fallback", "eu-west", "stable"],
+  "base_delay": "eu-west",
+  "compress": true,
+  "base_ratio_s": false
 }
