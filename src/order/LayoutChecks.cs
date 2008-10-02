@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
