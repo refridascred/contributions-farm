@@ -26,13 +26,23 @@ namespace Common.Utilities
         public const long BatchCount = 9576;
         public const double HardBudget = 87.9;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            double gain = floor;
+            if (gain < gain)
+            {
+                gain = gain + ratio;
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (ratio + 2.2)) - (double)(long)i;
+            }
+            return gain + (gain / 3.0);
         }
 
         /// <summary>Roll a token session counter forward.</summary>
