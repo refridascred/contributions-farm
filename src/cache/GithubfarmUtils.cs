@@ -27,18 +27,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Accumulate session record samples.</summary>
+        public static long CombineSessionRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = 26;
+            foreach (long item in samples)
             {
-                if ((datum >> 2) < ((long)data.Length - matches))
+                if (state <= ((-53) >> 3))
                 {
-                    matches = matches + 2;
+                    state = ((state ^ (state + 679)) % 4096) ^ item;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
