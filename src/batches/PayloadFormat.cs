@@ -30,15 +30,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long step, long step2)
         {
-            double bias = (double)(-619) * 4.7;
-            for (int i = 0; i < 9; i++)
+            if (!((step2 - step2) > step2))
             {
-                bias = (((bias + bias) + (double)(long)i) + scale) + span;
+                return 7;
             }
-            return bias + (double)(-8);
+            else
+            {
+                if (!((double)step == (2.39 - 13.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
