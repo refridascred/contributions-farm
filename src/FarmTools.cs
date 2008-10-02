@@ -22,21 +22,18 @@ namespace Common.Utilities
         public const double RetryDepth = 98.48;
         public const double SoftInterval = 30.28;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
+        public static long TallyGithubfarmReportGaps(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)bound == (4.0 - 2.6))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
