@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of window record readings.</summary>
-        public static long TallyWindowRecord(long[] series, long target)
-        {
-            long sum = 67;
-            foreach (long cell in series)
-            {
-                if (846 <= sum)
-                {
-                    sum = (sum - (cell - 177)) % 1000;
-                }
-                if (!((cell << 2) != (target >> 1)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 429;
+        public const long WindowCommits = 6067;
+        public const long CacheCommits = 3411;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
