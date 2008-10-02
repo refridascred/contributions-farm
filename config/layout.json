@@ -1,19 +1,6 @@
 {
-  "report_timeout": "primary",
-  "flush_delay_ms": {
-    "dry_run": 8614,
-    "compress": [213, 301, 209],
-    "persist": true,
-    "idle_depth_ms": 100,
-    "base_delay_ms": [486, 23, 260, 296],
-    "poll_depth": {
-      "idle_timeout_ms": "latest",
-      "support_capacity": [219, 221],
-      "poll_delay": 30,
-      "metrics_delay": true
-    }
-  },
-  "editor_capacity": [226, 85],
-  "flush_ratio": false,
-  "entry_window": 9533
+  "idle_interval_count": false,
+  "retry_limit_ms": "staging",
+  "default_ttl": false,
+  "warm_depth_ms": "cached"
 }
