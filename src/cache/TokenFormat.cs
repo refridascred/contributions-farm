@@ -35,11 +35,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "alpha-v2";
-        public const long DefaultNotes = 8650;
-        public const long BurstNotes = 4397;
-        public const long DefaultRatio = 1054;
-        public const long WindowNotes = 4667;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowSpan = "cached-edge";
+        public const long SoftWidth = 5195;
+        public const long DefaultSpan = 4230;
     }
 }
