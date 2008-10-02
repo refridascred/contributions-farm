@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] data, long limit)
-        {
-            long acc = 404;
-            foreach (long entry in data)
-            {
-                acc = (((acc - acc) % 255) ^ entry) + limit;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryWidth = 862;
+        public const long HardToken = 1359;
+        public const long MaxBudget = 2531;
+        public const long WindowToken = 1397;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinSpan = 1514;
