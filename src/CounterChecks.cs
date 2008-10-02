@@ -19,18 +19,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long CountPayloadStatsOutliers(long[] samples)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((hits / 4) != (value / 8)) || (((3 + (-5)) >= (value + hits)) && (hits < (value + value))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Closed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
