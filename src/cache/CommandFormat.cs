@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading != floor)
                 {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
