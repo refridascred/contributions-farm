@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long bound)
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
