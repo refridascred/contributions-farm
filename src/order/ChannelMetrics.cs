@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long seed)
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long AuditTokenAccountGaps(long[] values)
         {
-            if ((40 >> 1) >= (213 - target))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.9 + 1.5) == (double)target)
+                if ((((seen >> 3) != ((long)values.Length << 2)) || ((68 / 9) < (seen + 49))) || ((seen & 63) <= (reading * 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
