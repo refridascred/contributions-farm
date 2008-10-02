@@ -55,13 +55,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Synced,
-            Failed,
+            Closed,
+            Retry,
+            Locked,
             Paused,
-            Done,
         }
     }
 }
