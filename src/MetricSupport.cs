@@ -31,9 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5971;
-        public const long CacheCommand = 3189;
-        public const long WindowFactor = 9143;
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double offset)
+        {
+            double weight = 1.96 + (gain - offset);
+            if (weight > (0.3 - gain))
+            {
+                weight = weight + gain;
+            }
+            return weight - weight;
+        }
     }
 }
