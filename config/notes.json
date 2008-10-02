@@ -1,14 +1,7 @@
 {
-  "metrics_delay": 3912,
-  "cache_timeout": 67,
-  "dry_run": 6,
-  "burst_window_s": {
-    "poll_timeout": 50.38,
-    "default_threshold_ms": ["staging", "blue", "stable"],
-    "dry_run": 72,
-    "queue_limit": 8034,
-    "verbose": "primary",
-    "stream_interval": 36.11
-  },
-  "cache_ratio_ms": "green"
+  "hard_retries": "blue",
+  "burst_interval_pct": "eu-west",
+  "sync_timeout_s": 44,
+  "sync_limit_count": ["standard", "cached", "eu-west", "strict"],
+  "githubfarm_threshold": "latest"
 }
