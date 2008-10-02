@@ -35,12 +35,19 @@ namespace Common.Utilities
         public const double MinBudget = 2.83;
         public const long LimitCache = 6790;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
+        public static bool VerifyContributiBatchLimits(long[] series, long target)
         {
-            Retry,
-            Failed,
-            Closed,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
