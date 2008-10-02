@@ -1,13 +1,14 @@
 {
-  "verbose": 250,
-  "route_interval": true,
-  "retry_delay": "eu-west",
-  "batch_depth_s": {
-    "metric_ttl": ["strict", "blue", "open", "cached"],
-    "persist": "blue",
-    "burst_threshold_pct": 61.22,
-    "compress": 7750,
-    "batch_window_pct": "strict",
-    "dry_run": 87
-  }
+  "schema_delay": {
+    "schema_depth": true,
+    "flush_capacity_ms": "local",
+    "poll_ratio_s": 92.42
+  },
+  "warm_limit_pct": {
+    "max_depth_ms": "latest",
+    "soft_interval_s": 100,
+    "githubfarm_delay": [477, 420, 166, 474],
+    "strict": "eu-west"
+  },
+  "batch_capacity": "staging"
 }
