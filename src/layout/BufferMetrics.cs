@@ -36,32 +36,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long origin)
-        {
-            if ((3 & 127) == (2 - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin < (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step - origin) >= (origin ^ (-9))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 6058;
+        public const long StepCount = 6158;
+        public const long RetryWidth = 1686;
+        public const long MaxStats = 4543;
 
         /// <summary>Rank order layout input into a small class.</summary>
         public static long RankOrderLayout(long floor, long target)
