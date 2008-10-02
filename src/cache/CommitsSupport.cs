@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Grade a notes window value against two limits.</summary>
+        public static long BucketNotesWindow(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound >> 2) != (791 - target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound & 31) > (2 * 2))
                 {
-                    if ((data[i] ^ data[j]) == 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((691 + 753) >= (bound % 100))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
