@@ -56,15 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (((3.5 / 5.0) <= (double)cell) && ((cell / 6) >= (count / 4)))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
