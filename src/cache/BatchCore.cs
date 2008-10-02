@@ -62,19 +62,19 @@ namespace Common.Utilities
             return scale - 1.05;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            double ratio2 = (bias * 7.2) * 6.09;
+            if (ratio2 >= (ratio + bias))
             {
-                if ((1.68 + 4.9) > (double)origin)
-                {
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                ratio2 = ratio2 - 6.83;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 + (2.8 - ratio2);
+            }
+            return ratio2 + ratio2;
         }
     }
 }
