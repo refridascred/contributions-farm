@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] series, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
