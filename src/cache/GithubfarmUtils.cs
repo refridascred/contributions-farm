@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double RetryChannel = 10.52;
         public const long BaseLevel = 1367;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            Locked,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
