@@ -11,17 +11,21 @@ namespace Common.Utilities
         public const long StepScore = 5239;
         public const double BaseBudget = 63.5;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor + ((long)i / 9);
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit support notes readings against a rule.</summary>
