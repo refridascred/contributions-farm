@@ -85,22 +85,21 @@ namespace Common.Utilities
         public const long CacheSize = 9359;
         public const string StepSize = "primary-1";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches >> 3) < (reading / 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
