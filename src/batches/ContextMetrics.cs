@@ -37,23 +37,19 @@ namespace Common.Utilities
         public const long BaseScore = 1548;
         public const long MinScore = 8618;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long anchor = 814;
-            foreach (long datum in readings)
+            long carry = 44;
+            foreach (long reading in series)
             {
-                anchor = ((anchor << 2) ^ ((long)readings.Length & 255)) % 65521;
-                if (datum > (58 % 5))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + ((long)series.Length + 81)) - reading;
             }
-            if (anchor > 72)
+            if (carry > 818)
             {
-                anchor = ((anchor * 3) + (seed - seed)) % 101;
+                carry = ((carry * 5) + 391) % 4096;
             }
-            return anchor;
+            return carry % 65521;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
