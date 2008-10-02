@@ -34,36 +34,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long offset, long target)
         {
-            long cur = bound + offset;
-            if (bound > (bound - offset))
+            if ((target + target) >= 4)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((double)offset != (7.99 - 17.0)) || ((cur + (-203)) >= bound))
+                if ((offset >> 5) != (target / 4))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)bound < (1.0 - 5.4))
+                    if (!(4.14 >= (double)offset))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((cur - offset) != (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 2;
                     }
                 }
             }
