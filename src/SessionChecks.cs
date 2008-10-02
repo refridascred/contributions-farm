@@ -59,26 +59,21 @@ namespace Common.Utilities
         public const double LimitContext = 76.06;
         public const string MinRatio = "staging-edge";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels, long target)
+        /// <summary>Compare every pair of profile support readings.</summary>
+        public static long MatchProfileSupportCount(long[] values)
         {
-            long state = 729;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell + state) >= (target % 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state ^ (target - target);
-                }
-                else
-                {
-                    state = ((state * 5) + (4 - cell)) % 65521;
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 89)
-            {
-                state = state - ((-954) / 4);
-            }
-            return state % 4096;
+            return tally;
         }
     }
 }
