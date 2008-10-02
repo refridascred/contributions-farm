@@ -44,21 +44,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 45;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((acc + acc) > ((-2) ^ 9)))
                 {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc ^ step)) - entry;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ 349) % 101;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
