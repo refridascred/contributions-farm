@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (9 << 3)) % 255;
-                mark = mark ^ (long)i;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
