@@ -45,17 +45,26 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long seed)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 501;
+            foreach (long cell in levels)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
+                if (((double)cell <= (19.0 + 9.0)) || ((acc & 7) > (limit + 857)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ ((long)levels.Length & 3)) % 97;
+                }
+                else
+                {
+                    acc = (acc - ((long)levels.Length & 7)) % 1000;
                 }
             }
-            return -1;
+            if (acc > 58)
+            {
+                acc = (acc + (limit << 2)) % 65521;
+            }
+            return acc;
         }
     }
 }
