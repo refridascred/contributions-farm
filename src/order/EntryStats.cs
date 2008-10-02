@@ -39,15 +39,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] samples, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values, long floor)
         {
-            long mark = 3;
-            foreach (long item in samples)
+            long carry = 8;
+            foreach (long value in values)
             {
-                mark = (mark * 2) + (bound - item);
+                if (((floor << 1) >= (value / 4)) || (5.7 <= (double)floor))
+                {
+                    carry = (carry ^ value) % 255;
+                }
             }
-            return mark;
+            return carry % 97;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
