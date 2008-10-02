@@ -38,19 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            double rate = floor;
-            if (rate > (rate / 7.0))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                rate = rate + (double)71;
+                if (cell < (cell % 8))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            return rate - (double)21;
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
