@@ -39,12 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Retry,
+            Active,
+            Ready,
             Closed,
-            Synced,
+            Stale,
+            New,
         }
     }
 }
