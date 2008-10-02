@@ -33,19 +33,21 @@ namespace Common.Utilities
             return weight - (weight * 0.2);
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool ValidateGraphCounterRange(long[] data, long seed)
+        /// <summary>Compare every pair of graph token readings.</summary>
+        public static long CompareGraphTokenCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
