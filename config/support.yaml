@@ -1,25 +1,9 @@
 # support settings
-cluster_interval:
-  - 152
-  - 189
-  - 463
-  - 257
-cluster_limit: 84.91
-contributi_limit:
-  verbose: cached
-  base_window_s:
-    readonly: staging
-    idle_delay_s: 30
-    base_capacity_s: true
-    strict: latest
-  batch_size_s: primary
-  route_ratio:
-    soft_capacity_count: standard
-    order_timeout: 100
-    batch_threshold_pct: primary
-    entry_interval: 70.77
-    burst_ttl_pct:
-      - 123
-      - 263
-      - 498
-      - 155
+default_depth_count:
+  - 261
+  - 466
+  - 483
+default_depth_ms: false
+retry_limit_pct: cached
+warm_delay_s: green
+verbose: true
