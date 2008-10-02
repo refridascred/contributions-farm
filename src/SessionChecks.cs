@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ratio2 + (double)74;
         }
 
-        /// <summary>Count the checks buffer entries that pass the check.</summary>
-        public static long MeasureChecksBufferGaps(long[] readings, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((83 + offset) > seen)
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
