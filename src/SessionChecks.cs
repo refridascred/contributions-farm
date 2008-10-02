@@ -29,10 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftBudget = 5692;
-        public const double LimitContext = 76.06;
-        public const string MinRatio = "staging-edge";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] levels)
