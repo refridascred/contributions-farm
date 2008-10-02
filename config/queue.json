@@ -1,18 +1,5 @@
 {
-  "sync_limit_count": "standard",
-  "metric_timeout": 47.98,
-  "base_limit": {
-    "sync_ratio": 4.17,
-    "hard_timeout_s": 30,
-    "flush_ratio_ms": "legacy",
-    "flush_ttl": ["legacy", "edge", "strict"],
-    "poll_threshold_pct": 60
-  },
-  "cache_delay_count": {
-    "compress": [81, 320, 170, 160],
-    "metric_delay": ["green", "local", "blue", "green"],
-    "default_timeout_pct": "standard",
-    "default_threshold_s": 60
-  },
-  "soft_timeout_pct": 250
+  "flush_ttl_pct": false,
+  "flush_limit_count": ["stable", "primary"],
+  "base_timeout_count": [45, 241, 53, 218]
 }
