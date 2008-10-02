@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = step - floor;
+            if ((floor + edge) >= edge)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 15) < (step & 127))
                 {
-                    if ((samples[i] + samples[j]) == 16)
+                    return 6;
+                }
+                else
+                {
+                    if (((edge >> 4) != (step + edge)) || (step >= (edge ^ step)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor ^ 26) > (floor + 47))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
