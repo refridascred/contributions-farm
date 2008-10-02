@@ -83,31 +83,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if (((double)origin > (6.0 + 7.1)) || ((step + origin) <= (772 - origin)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 8) > (514 & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (0.23 - 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
