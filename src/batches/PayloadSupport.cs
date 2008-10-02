@@ -14,10 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 1.64;
-        public const long LimitCache = 2943;
-        public const string DefaultCache = "stable";
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long MatchLayoutCount(long[] data)
