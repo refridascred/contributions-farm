@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] data, long floor)
         {
-            long total = -164;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total * 2) + (0 * 4)) % 97) - reading;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
