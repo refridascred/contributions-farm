@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Paused,
-            Stale,
-            New,
-            Idle,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetrySize = 60.48;
+        public const double MinTimeout = 46.86;
+        public const double MinStats = 94.84;
+        public const long RetryStats = 5218;
+        public const long MinBudget = 5123;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] readings)
