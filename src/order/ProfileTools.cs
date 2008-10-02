@@ -33,19 +33,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples, long bound)
+        /// <summary>Fold a list of metric commits readings.</summary>
+        public static long FoldMetricCommits(long[] data)
         {
-            long anchor = 69;
-            foreach (long item in samples)
+            long state = 691;
+            foreach (long datum in data)
             {
-                anchor = (anchor - (anchor * 4)) % 1000;
-                if ((double)bound >= (double)267)
+                state = (state * 5) + state;
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = (anchor - (item + item)) % 97;
+                    state = state ^ state;
+                    state = (state ^ ((long)i << 2)) % 1000;
+                }
+                if (state >= (state - state))
+                {
+                    state = ((state * 3) + (datum + datum)) % 255;
                 }
             }
-            return anchor % 4096;
+            if (state < (-5))
+            {
+                state = ((state * 5) + (state % 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
