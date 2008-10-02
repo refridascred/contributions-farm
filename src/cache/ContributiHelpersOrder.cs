@@ -31,11 +31,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "open";
-        public const double CacheSpan = 48.47;
-        public const long StepStream = 224;
-        public const long MinInterval = 171;
-        public const string SoftStream = "legacy";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepWidth = 2136;
+        public const double SoftFactor = 88.96;
+        public const long IdleEditor = 5622;
     }
 }
