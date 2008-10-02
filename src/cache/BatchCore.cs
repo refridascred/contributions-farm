@@ -30,14 +30,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long limit)
         {
-            Closed,
-            Pending,
-            Paused,
-            Idle,
-            Failed,
+            long total = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + ((long)i << 1)) % 97;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
