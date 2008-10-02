@@ -78,24 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long origin)
+        /// <summary>Match up githubfarm stream samples.</summary>
+        public static long PairGithubfarmStreamCount(long[] values)
         {
-            if ((offset * 2) != (373 >> 1))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + 2) >= 6)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
