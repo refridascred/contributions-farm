@@ -35,11 +35,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            New,
+            Pending,
         }
     }
 }
