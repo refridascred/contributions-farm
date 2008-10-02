@@ -30,21 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Adjust a entry contributi reading.</summary>
+        public static double BlendEntryContributi(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)19;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = ((scale - scale) + (double)(long)i) - offset;
             }
-            return seen;
+            return scale + (9.0 + ratio);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
