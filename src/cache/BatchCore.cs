@@ -19,14 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate account entry samples.</summary>
+        public static long DigestAccountEntry(long[] samples, long step)
         {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
-            Draft,
+            long state = 92;
+            foreach (long item in samples)
+            {
+                if ((599 + 5) == (item - 459))
+                {
+                    state = (state + (state - step)) % 4096;
+                }
+                else
+                {
+                    state = state ^ item;
+                    state = (state * 3) + step;
+                }
+                state = (state + (item + 6)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
