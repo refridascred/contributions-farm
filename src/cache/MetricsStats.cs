@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long limit2)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long prev = limit + limit2;
-            if (((double)limit2 > (1.57 + 5.79)) || ((prev - prev) >= (limit2 & 7)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)prev == (3.1 * 2.4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((61 % 12) < (limit2 + prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-46) << 3) >= (limit + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a batch commits counter forward.</summary>
