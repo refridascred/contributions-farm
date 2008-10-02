@@ -60,13 +60,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples, long origin)
         {
-            Synced,
-            Ready,
-            Retry,
-            Closed,
+            long mark = 61;
+            foreach (long cell in samples)
+            {
+                mark = (mark * 5) + mark;
+                if ((cell - cell) >= (22 - origin))
+                {
+                    mark = mark ^ (mark >> 3);
+                }
+                if ((665 / 6) >= cell)
+                {
+                    break;
+                }
+            }
+            if (mark < 40)
+            {
+                mark = (mark + (origin * 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
