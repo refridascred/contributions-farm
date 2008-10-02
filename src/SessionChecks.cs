@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Count the checks buffer entries that pass the check.</summary>
+        public static long MeasureChecksBufferGaps(long[] readings, long offset)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((83 + offset) > seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
