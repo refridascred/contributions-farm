@@ -48,17 +48,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a stats format sample.</summary>
-        public static long LookupStatsFormatIndex(long[] readings, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] > target)
+                if ((318 >= (tally & 7)) && ((65 >> 2) > (cell >> 1)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
