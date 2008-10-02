@@ -42,19 +42,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Accumulate cluster contributi samples.</summary>
+        public static long TotalClusterContributi(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            long state = 9;
+            foreach (long sample in readings)
             {
-                if (!((score % 100) <= (score ^ limit)))
+                if ((sample % 12) <= (sample >> 5))
                 {
-                    score = (score - score) % 255;
+                    state = (state ^ sample) % 97;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            if (state > 7)
+            {
+                state = ((state << 2) ^ (-415)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
