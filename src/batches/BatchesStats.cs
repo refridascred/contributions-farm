@@ -41,12 +41,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            Active,
-            Dropped,
-            Ready,
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((floor + floor) > ((long)i + (long)i))
+                {
+                    anchor = (anchor - 8) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - floor;
+                }
+                anchor = ((anchor << 2) ^ anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
