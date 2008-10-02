@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 5214;
-        public const double IdleAlready = 26.34;
-        public const double MaxDepth = 8.4;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Done,
+            Pending,
+            Stale,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
