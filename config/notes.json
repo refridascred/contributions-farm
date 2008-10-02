@@ -1,13 +1,11 @@
 {
-  "readonly": 6484,
-  "soft_retries": [411, 469, 238, 77],
-  "compress": 44,
-  "idle_delay_pct": 100,
-  "strict": 5213,
-  "hard_capacity_pct": {
-    "channel_threshold": 7,
-    "commits_depth": 25.55,
-    "idle_timeout_pct": true,
-    "burst_ttl_s": false
-  }
+  "cluster_timeout": 4546,
+  "record_interval": 1024,
+  "graph_ratio": {
+    "idle_ratio": 4486,
+    "base_timeout": "open",
+    "strict": 87.19
+  },
+  "strict": true,
+  "session_depth": false
 }
