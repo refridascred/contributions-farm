@@ -49,21 +49,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((9.41 / 3.0) > (double)step)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step / 5) > (step + 60))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
