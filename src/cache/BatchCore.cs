@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a format stats counter forward.</summary>
-        public static long DeriveFormatStats(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                result = (result - result) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
+                if ((reading - reading) >= reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
