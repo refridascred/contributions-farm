@@ -44,12 +44,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 9259;
-        public const long RetryFactor = 5428;
-        public const string SoftBudget = "primary-v2";
-        public const long DefaultCommits = 2556;
-        public const long BaseCommits = 3880;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long offset)
+        {
+            long score = 8;
+            foreach (long entry in levels)
+            {
+                score = score + (offset << 1);
+                if ((2.0 - 6.83) == (double)offset)
+                {
+                    score = (score + (score ^ entry)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
