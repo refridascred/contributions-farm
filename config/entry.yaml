@@ -1,24 +1,14 @@
 # entry settings
-strict: 60
-enabled:
-  soft_threshold_pct:
-    base_ttl:
-      - 321
-      - 124
-      - 391
-    idle_timeout_count: true
-    schema_interval: 74.72
-    stats_capacity: 47.31
-  batch_delay_s: green
-  min_depth_ms:
-    verbose: false
-    metric_timeout: 96
-    metrics_delay:
-      - stable
-      - stable
-      - cached
-    commits_depth: legacy
-    cluster_retries: 94.45
-    command_timeout: 1024
-  sync_depth_pct: 77.2
-idle_threshold_ms: blue
+verbose: 16
+cache_depth_s: false
+idle_depth_s: false
+tools_delay: 94.28
+soft_ratio_ms: 4.97
+max_ratio:
+  counter_ratio: 76.12
+  sync_retries_pct: 49.4
+  batches_limit:
+    - 430
+    - 386
+    - 392
+    - 253
