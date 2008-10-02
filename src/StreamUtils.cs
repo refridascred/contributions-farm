@@ -13,20 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long anchor = 637;
-            foreach (long item in values)
+            long mix = 65;
+            foreach (long sample in series)
             {
-                if ((item & 15) >= (anchor & 1))
+                if (((mix + mix) >= (441 % 3)) || ((1.3 + 4.0) < (double)mix))
                 {
-                    anchor = ((anchor ^ (2 + item)) % 4096) - origin;
+                    mix = (mix ^ (mix ^ sample)) % 255;
                 }
-                anchor = ((anchor << 3) ^ (item + anchor)) % 101;
-                anchor = ((anchor * 2) + item) % 4096;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
