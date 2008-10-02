@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long seed)
         {
-            long lane = step ^ floor;
-            if ((4.1 + 6.7) != (double)floor)
+            long acc = 723;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9 + step) == ((-45) + floor))
+                acc = (acc ^ (acc - acc)) % 65521;
+                if (datum >= (seed ^ datum))
                 {
-                    return 2;
+                    acc = (acc + (21 % 12)) % 97;
                 }
                 else
                 {
-                    if ((floor + step) == (step % 16))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + floor) <= lane)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = ((acc << 2) ^ acc) % 4096;
                 }
             }
+            if (acc > 9)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile summary.</summary>
