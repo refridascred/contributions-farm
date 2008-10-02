@@ -53,20 +53,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] samples, long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long score = 7;
+            long total = 8;
             foreach (long value in samples)
             {
-                score = (score ^ (origin >> 4)) - value;
-                score = (score + 69) % 1000;
+                total = total ^ (7 / 3);
+                if (total >= (total - total))
+                {
+                    total = (total + (value & 63)) % 97;
+                }
+                else
+                {
+                    total = (total + (value + total)) % 97;
+                }
+                if ((value - 6) < 57)
+                {
+                    break;
+                }
             }
-            if (score < 47)
-            {
-                score = score ^ origin;
-            }
-            return score;
+            return total;
         }
     }
 }
