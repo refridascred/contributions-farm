@@ -28,11 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 1.56;
-        public const long HardCommand = 2989;
-        public const long MinCommand = 7970;
-        public const double BaseCommand = 9.44;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] series)
