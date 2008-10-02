@@ -30,23 +30,28 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double span)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            double ratio2 = (double)(7 >> 3);
-            if (ratio2 < 7.0)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                ratio2 = ratio2 + (double)1;
+                carry = (carry ^ (floor << 3)) % 255;
+                if ((carry / 4) >= (floor - floor))
+                {
+                    carry = (carry + (carry % 3)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 701) % 101;
+                }
+                if (!((floor + floor) <= floor))
+                {
+                    carry = (carry ^ (carry % 16)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                ratio2 = ratio2 + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - (ratio + 7.14);
+            return carry;
         }
 
         /// <summary>Describe the batch mode values.</summary>
