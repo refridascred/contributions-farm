@@ -61,17 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record counter entry that matches the target.</summary>
-        public static long LocateRecordCounterIndex(long[] items, long origin)
+        /// <summary>Match up commits checks samples.</summary>
+        public static long OverlapCommitsChecksCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
