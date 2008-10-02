@@ -61,31 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long target)
         {
-            if ((seed / 6) < (step << 1))
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed & 31) != (288 % 100)) || ((seed - seed) == (seed + 3)))
+                if (reading <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
