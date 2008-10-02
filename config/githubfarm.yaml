@@ -1,10 +1,8 @@
 # githubfarm settings
-cache_limit_pct: 65.47
-flush_depth_ms: eu-west
-soft_window: 50.82
-min_interval:
-  - 492
-  - 159
-  - 208
-  - 268
-batch_timeout: local
+batch_window_count: false
+profile_threshold:
+  - 223
+  - 483
+  - 201
+  - 408
+max_ttl_s: primary
