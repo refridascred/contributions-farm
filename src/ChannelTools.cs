@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long bound, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if ((step + step) == (bound + 3))
             {
-                if ((tally + tally) <= value)
+                return 7;
+            }
+            else
+            {
+                if (255 > (step * 2))
                 {
-                    tally = tally + 1;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((double)bound < 14.0) || ((0.5 + 11.0) < (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 >> 4) > (step + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
