@@ -1,12 +1,6 @@
 # entry settings
-burst_ttl: 5
-queue_delay: 30.37
-max_size_count:
-  githubfarm_interval: 17.13
-  queue_ttl: 60
-  compress: true
-  default_interval:
-    - standard
-    - staging
-    - eu-west
-  cache_window: 49.9
+entry_delay:
+  - 238
+  - 313
+context_ttl: 60
+default_capacity_ms: 500
