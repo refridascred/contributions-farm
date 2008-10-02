@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] series, long bound)
         {
-            double rate = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                rate = ((rate + offset) + (double)(long)i) + gain;
+                if ((sample % 16) < bound)
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate + 0.7;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
