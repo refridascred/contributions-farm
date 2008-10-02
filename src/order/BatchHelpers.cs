@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            double ratio = (double)(1 ^ 397);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio + (offset / 8.0)) + (double)(long)i) - gain;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
