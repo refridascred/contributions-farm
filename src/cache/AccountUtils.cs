@@ -17,11 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "alpha";
-        public const long SoftBuffer = 9611;
-        public const string WindowCount = "staging-edge";
-        public const long BurstBuffer = 6306;
+        /// <summary>Match up layout filter samples.</summary>
+        public static long OverlapLayoutFilterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteBounds(long[] samples, long target)
