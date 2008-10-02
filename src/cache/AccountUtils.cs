@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a stream metrics sample.</summary>
-        public static long FindStreamMetricsIndex(long[] readings, long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
+                if ((8.33 / 6.0) >= (15.0 * 15.0))
                 {
-                    return (long)i;
+                    state = (state ^ (reading >> 2)) % 4096;
                 }
+                else
+                {
+                    state = (state << 2) ^ ((long)samples.Length + state);
+                }
+                state = (state * 4) + (state * 4);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up cache samples.</summary>
