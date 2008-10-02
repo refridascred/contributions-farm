@@ -22,17 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 665;
+            foreach (long sample in values)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                if (anchor > bound)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (bound + bound)) - sample;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + 6) % 255;
+                }
+                anchor = (anchor ^ (bound << 3)) % 1000;
             }
-            return -1;
+            if (anchor < 65)
+            {
+                anchor = anchor + (anchor & 63);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
