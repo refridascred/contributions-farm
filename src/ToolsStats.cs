@@ -39,20 +39,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardWidth = 4331;
+        public const long BatchFilter = 7068;
+        public const long StepFilter = 6557;
+        public const long DefaultFilter = 9783;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long RetryGraph = 2373;
