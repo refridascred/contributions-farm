@@ -79,13 +79,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5481;
+        public const long BatchTimeout = 915;
+        public const double RetryCount = 84.21;
+        public const long WindowAccount = 4895;
+        public const string CacheTimeout = "standard-edge";
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
