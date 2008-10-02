@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((8.34 / 5.0) < (double)tally))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a entry contributi reading.</summary>
