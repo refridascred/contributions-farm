@@ -35,21 +35,12 @@ namespace Common.Utilities
         public const double MinBudget = 2.83;
         public const long LimitCache = 6790;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
