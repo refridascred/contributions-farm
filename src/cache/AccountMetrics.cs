@@ -61,19 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double bias, double bias2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] values, long seed)
         {
-            double load = (double)(8 + 283);
-            if (load > bias2)
+            long total = 94;
+            foreach (long datum in values)
             {
-                load = load + load;
+                if ((double)seed <= 5.0)
+                {
+                    total = ((total * 5) + (datum / 7)) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias - load)) + (double)(long)i;
-            }
-            return load - load;
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
