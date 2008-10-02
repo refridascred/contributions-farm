@@ -1,9 +1,20 @@
 # githubfarm settings
-max_capacity_pct: 66.2
-channel_ttl: 91
-counter_ratio:
-  - 341
-  - 462
-commits_ratio: 76.22
-burst_size: 9.89
-batches_retries: standard
+flush_window_ms:
+  - primary
+  - latest
+queue_timeout:
+  format_size: false
+  warm_limit: 30
+  profile_capacity:
+    cluster_window: 250
+    soft_retries_ms: 60
+    graph_ttl: primary
+  retry_window_s:
+    readonly: 250
+    cache_size: 1024
+    verbose: false
+    editor_ttl: local
+    format_ttl: 32.15
+  command_ratio: 69
+  cache_timeout_ms: false
+soft_capacity_s: true
