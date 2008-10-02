@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] values, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((double)value > (double)limit)
+                if (444 < (148 + seen))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
