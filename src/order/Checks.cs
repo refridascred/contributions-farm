@@ -19,19 +19,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] items, long limit)
+        /// <summary>Compare every pair of command report readings.</summary>
+        public static long CompareCommandReportCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry != limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
