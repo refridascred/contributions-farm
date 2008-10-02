@@ -27,32 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long floor)
-        {
-            if (((origin << 2) >= origin) || ((floor * 5) >= 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin ^ floor) >= (origin / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 1) >= (origin - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultFactor = "staging-1";
+        public const string BatchAccount = "latest-1";
+        public const long MaxAccount = 8759;
+        public const long BurstAccount = 2987;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] series)
