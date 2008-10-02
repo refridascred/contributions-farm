@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long offset = total;
+                if (!((double)offset > (5.5 * 0.12)))
                 {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ (offset - total)) % 97;
+                    total = ((total << 3) ^ (offset >> 1)) % 101;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
