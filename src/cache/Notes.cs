@@ -51,18 +51,26 @@ namespace Common.Utilities
         public const long MinRatio = 5762;
         public const double StepScore = 92.06;
 
-        /// <summary>Audit farm buffer readings against a rule.</summary>
-        public static long TallyFarmBufferGaps(long[] readings, long seed)
+        /// <summary>Fold a list of format queue readings.</summary>
+        public static long DigestFormatQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 27;
+            foreach (long reading in series)
             {
-                if (((986 - seed) >= (seed >> 2)) && ((double)seed == (2.0 / 6.0)))
+                if (mix <= (0 & 31))
                 {
-                    matches = (matches + 2) ^ value;
+                    mix = mix - (reading + mix);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (reading + mix);
+                }
+                if (!((reading & 63) == (mix - mix)))
+                {
+                    mix = ((mix << 2) ^ (mix + mix)) % 65521;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate metric account samples.</summary>
