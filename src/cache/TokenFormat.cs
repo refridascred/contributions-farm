@@ -14,15 +14,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long FoldChecksFarm(long[] levels, long seed)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long result = -86;
-            foreach (long value in levels)
+            double scale = (double)(17 ^ 9);
+            if (scale < floor)
             {
-                result = ((result ^ 119) ^ value) + seed;
+                scale = (scale + (floor - 9.0)) + gain;
             }
-            return result;
+            return scale + (double)74;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
