@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 2677;
-        public const long BatchCommand = 5336;
-        public const long DefaultCommand = 5117;
-        public const double RetryCommand = 96.22;
-        public const string WindowSize = "standard-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "alpha-v2";
+        public const string BatchFilter = "staging";
+        public const string CacheFilter = "fallback-edge";
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorMatches(long[] levels, long origin)
