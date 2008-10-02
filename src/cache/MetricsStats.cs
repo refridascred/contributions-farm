@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
-        {
-            long carry = 481;
-            foreach (long value in items)
-            {
-                carry = (carry ^ (value >> 1)) % 4096;
-            }
-            if (carry > 65)
-            {
-                carry = carry + (163 - carry);
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5614;
+        public const long DefaultScore = 923;
+        public const long RetryFactor = 7118;
+        public const long HardBatch = 1976;
+        public const long BurstBatch = 1651;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] series, long target)
