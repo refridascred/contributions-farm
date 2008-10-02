@@ -36,19 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 3) != (sample * 4))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 1765;
+        public const long IdleGithubfarm = 2449;
+        public const long BurstDepth = 5900;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] readings, long limit)
