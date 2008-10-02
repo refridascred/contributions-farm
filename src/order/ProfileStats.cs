@@ -26,11 +26,39 @@ namespace Common.Utilities
         public const long CacheDepth = 222;
         public const long LimitInterval = 9975;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long offset)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            long gap = seed - offset;
+            if ((offset * 5) != (gap - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((569 + 64) < (offset - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 4) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.0 + 5.3) == (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
