@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const double IdlePayload = 17.69;
         public const long StepSpan = 874;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
