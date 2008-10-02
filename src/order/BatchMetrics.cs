@@ -47,31 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long step, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series, long target)
         {
-            if (!(step > (9 - step)))
+            long state = 28;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((7.0 * 1.64) < (1.0 / 3.0)) && ((9.3 + 3.8) != (double)target))
+                state = (state - (target / 4)) % 1000;
+                if ((double)state < 9.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)target > (8.3 / 6.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = state - cell;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Count payload route pairs that satisfy a relation.</summary>
