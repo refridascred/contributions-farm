@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
