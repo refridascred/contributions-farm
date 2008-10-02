@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] readings, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (reading <= target)
+                if ((item + item) >= (74 * 4))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
