@@ -23,14 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            Stale,
-            Failed,
-            New,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + seen) >= (entry >> 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
