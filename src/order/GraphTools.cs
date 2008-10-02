@@ -66,33 +66,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            long mix = 87;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((8.9 / 5.0) <= (double)mix) || ((datum * 2) > mix))
+                if ((58 > (57 + datum)) && (datum > (1 - hits)))
                 {
-                    mix = mix + (mix - 885);
-                    mix = (mix ^ (floor % 8)) % 4096;
-                    continue;
-                }
-                mix = mix ^ (datum - datum);
-                if (((double)mix >= 4.4) && ((datum + datum) > mix))
-                {
-                    mix = ((mix * 5) + datum) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ floor;
+                    hits = hits + 3;
                 }
             }
-            if (mix < 28)
-            {
-                mix = (mix << 2) ^ (mix + floor);
-            }
-            return mix;
+            return hits;
         }
     }
 }
