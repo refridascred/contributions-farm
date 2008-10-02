@@ -12,30 +12,19 @@ namespace Common.Utilities
         public const double IdleWindow = 86.82;
         public const string MinFactor = "alpha-v2";
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] values, long target)
         {
-            long result = 70;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (entry <= target)
                 {
-                    result = (((result << 2) ^ (result << 3)) % 97) + (long)i;
-                }
-                if (((-40) + datum) < (floor - result))
-                {
-                    result = ((result * 2) + (floor + floor)) % 97;
-                }
-                else
-                {
-                    result = ((result * 2) + 101) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 15)
-            {
-                result = ((result << 3) ^ (floor + floor)) % 97;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the counter class values.</summary>
