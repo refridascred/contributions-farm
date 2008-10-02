@@ -20,32 +20,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long limit, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] levels, long floor)
         {
-            long diff = limit + offset;
-            if (!((1.13 / 2.0) >= (15.0 * 4.0)))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)diff == (0.9 / 3.0))
+                if (cell != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit == (4.08 / 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
