@@ -61,21 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits checks samples.</summary>
-        public static long OverlapCommitsChecksCount(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(8 + 283);
+            if (load > bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + load;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (bias - load)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
