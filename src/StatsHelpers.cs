@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (count <= (cell + count))
+                if ((double)bound > (5.6 + 3.46))
                 {
-                    count = count + 1;
+                    seen = (seen + 2) + value;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
