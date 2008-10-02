@@ -1,4 +1,11 @@
 # support settings
-audit: 250
-account_ttl: 60
-idle_capacity_s: true
+cluster_ttl:
+  - blue
+  - cached
+  - stable
+  - edge
+burst_capacity:
+  - 437
+  - 98
+  - 204
+retry_threshold_s: 84.19
