@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double IdleWindow = 86.82;
         public const string MinFactor = "alpha-v2";
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] values, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the counter class values.</summary>
