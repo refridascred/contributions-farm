@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total << 2) ^ step;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Done,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a metrics stats.</summary>
