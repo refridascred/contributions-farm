@@ -28,15 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] data)
         {
             long matches = 0;
-            foreach (long entry in data)
+            foreach (long datum in data)
             {
-                if (8.97 <= (double)matches)
+                if ((datum >> 2) < ((long)data.Length - matches))
                 {
-                    matches = (matches + 2) ^ entry;
+                    matches = matches + 2;
                 }
             }
             return matches;
