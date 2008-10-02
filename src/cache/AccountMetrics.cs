@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double MaxPayload = 8.24;
         public const double BatchBudget = 2.54;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinLevel = 58.87;
-        public const long DefaultMetrics = 488;
-        public const double BurstCount = 8.21;
-        public const long MaxMetrics = 8684;
-        public const long CacheMetrics = 5973;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long bound, long offset)
