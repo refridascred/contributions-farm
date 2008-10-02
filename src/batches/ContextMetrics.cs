@@ -69,20 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series)
-        {
-            long carry = 44;
-            foreach (long reading in series)
-            {
-                carry = ((carry * 3) + ((long)series.Length + 81)) - reading;
-            }
-            if (carry > 818)
-            {
-                carry = ((carry * 5) + 391) % 4096;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCount = 1237;
+        public const long BaseCount = 2217;
+        public const long BatchSpan = 5426;
+        public const long WindowRatio = 8090;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
