@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 18.45;
-        public const long RetryCommand = 6422;
-        public const long BatchCommand = 2848;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public double Token { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
