@@ -36,15 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
