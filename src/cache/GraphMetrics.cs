@@ -54,20 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long DigestClusterSession(long[] samples, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long total = 9;
-            foreach (long sample in samples)
-            {
-                total = total ^ (total >> 4);
-                total = ((total * 5) + (sample - bound)) % 1000;
-            }
-            if (total < 766)
-            {
-                total = (total ^ (total + total)) % 97;
-            }
-            return total % 65521;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
