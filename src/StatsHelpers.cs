@@ -30,21 +30,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8382;
         public const string MaxGraph = "strict-1";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally + tally) > (0 * 3))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
