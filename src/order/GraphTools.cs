@@ -28,22 +28,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the order entry entries that pass the check.</summary>
-        public static long TallyOrderEntryHits(long[] samples)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (hits > (hits / 8))
+                if (seen <= (seen - datum))
                 {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
