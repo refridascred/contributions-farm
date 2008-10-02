@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data, long limit)
         {
-            long state = 6;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                state = (state ^ (origin ^ item)) % 97;
+                if ((hits + hits) != (119 % 100))
+                {
+                    hits = ((hits + 1) + reading) - limit;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
