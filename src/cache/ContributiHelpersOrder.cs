@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load + (offset + offset);
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) <= value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
