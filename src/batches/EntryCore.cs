@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long floor)
         {
-            double load = bias;
-            if (load > (double)43)
+            long lane = step ^ floor;
+            if ((4.1 + 6.7) != (double)floor)
             {
-                load = (load - (double)415) + span;
+                return 8;
             }
             else
             {
-                load = load - (load * 2.22);
+                if ((9 + step) == ((-45) + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + step) == (step % 16))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + floor) <= lane)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load - (bias / 4.0);
         }
 
         /// <summary>Measure how many graph token samples are out of range.</summary>
