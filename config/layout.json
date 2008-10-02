@@ -1,6 +1,12 @@
 {
-  "sync_interval_pct": 250,
-  "dry_run": 11.37,
-  "idle_capacity_ms": "latest",
-  "warm_capacity": "staging"
+  "payload_ttl": "cached",
+  "batch_capacity_pct": "latest",
+  "poll_ratio": true,
+  "batches_ttl": {
+    "window_timeout": [324, 164],
+    "schema_timeout": 55.99,
+    "sync_delay_pct": 8438,
+    "payload_timeout": 30
+  },
+  "cache_depth": 1024
 }
