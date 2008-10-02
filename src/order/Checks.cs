@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            long total = 5;
-            foreach (long sample in levels)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total * 2) + (total * 4)) ^ sample;
-                total = ((total * 5) + (total & 63)) % 97;
+                mark = mark - (mark << 2);
+                mark = (mark + (step + step)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (total > 50)
-            {
-                total = total - (total & 31);
-            }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Describe the format state values.</summary>
