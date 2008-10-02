@@ -13,20 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long target)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                score = ((score << 2) ^ 577) ^ cell;
-                score = (score + (score + origin)) % 97;
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 7)
-            {
-                score = (score - (origin + 81)) % 65521;
-            }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Project the next context value.</summary>
