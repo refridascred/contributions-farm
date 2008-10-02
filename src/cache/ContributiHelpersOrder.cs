@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long bound)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long total = 23;
+            foreach (long cell in samples)
+            {
+                total = (total + bound) ^ cell;
+                if (652 > (bound ^ total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of commits filter readings.</summary>
