@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long CountOrderQueueOutliers(long[] values, long offset)
         {
-            if ((seed + seed) == (seed - 1))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((7.1 - 8.9) < (double)floor) && ((4 + seed) != (floor >> 1)))
+                if (sample < (6 + sample))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 3) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of counter report readings.</summary>
