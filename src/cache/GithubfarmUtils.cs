@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 59.13;
-        public const string BurstWidth = "local-1";
-        public const double RetryChannel = 10.52;
-        public const long BaseLevel = 1367;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((((0.43 - 6.73) > (double)matches) || ((matches - matches) < (datum & 7))) || ((datum << 1) < (datum - datum)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
