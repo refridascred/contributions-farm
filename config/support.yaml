@@ -1,5 +1,40 @@
 # support settings
-cache_interval_count: 500
-poll_delay_s: true
-burst_retries_count: standard
-enabled: false
+audit: true
+burst_depth_count:
+  - standard
+  - staging
+farm_interval:
+  - 398
+  - 462
+  - 398
+readonly: fallback
+min_window:
+  - 451
+  - 74
+  - 96
+context_size:
+  warm_threshold_count: fallback
+  cache_window_s:
+    - 428
+    - 444
+    - 44
+    - 325
+  flush_threshold_ms:
+    sync_limit_ms: blue
+    cache_size_pct:
+      - standard
+      - eu-west
+      - primary
+      - primary
+    profile_timeout: false
+    min_retries_ms: 37.12
+    min_interval_ms: 83
+  idle_depth_ms: stable
+  record_timeout:
+    flush_ratio_s: fallback
+    warm_ttl_ms: true
+    flush_capacity_ms: true
+    audit: eu-west
+    cache_limit_s: 2693
+    support_size: 40
+  hard_window: 1554
