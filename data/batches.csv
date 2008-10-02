@@ -1,6 +1,7 @@
-id,owner
-1,23.72
-2,latest
-3,fallback
-4,open
-5,76
+id,region,state,ratio
+1,13.14,19.14,1.45
+2,25.13,27.92,223
+3,953,850,159
+4,blue,78.23,268
+5,stable,724,611
+6,legacy,799,47.47
