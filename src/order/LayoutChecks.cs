@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Compare every pair of payload channel readings.</summary>
-        public static long PairPayloadChannelCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 169;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark - mark) - entry;
+                if ((double)mark > 8.0)
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ 2) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark * 4)) % 101;
                 }
             }
-            return hits;
+            if (mark > 1)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
