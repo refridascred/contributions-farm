@@ -20,23 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] samples)
         {
-            double scale2 = (double)(52 & 7);
-            if (scale2 > scale)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                scale2 = (scale2 - scale2) - floor;
+                if (3.0 >= (double)reading)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + 5.51) + (double)(long)i;
-            }
-            return scale2 - (scale / 3.0);
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
