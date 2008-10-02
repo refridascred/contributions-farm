@@ -33,17 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next window profile value from a seed.</summary>
-        public static long DeriveWindowProfile(long offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            double gain = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 3) ^ (long)i) % 97;
-                mark = (mark ^ offset) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                gain = (gain + (floor * 1.9)) - (double)(long)i;
             }
-            return mark;
+            return gain - (weight * 8.9);
         }
     }
 }
