@@ -53,22 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long TallyWindowClusterGaps(long[] series, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double load = ratio;
+            if (load >= bias)
             {
-                if ((entry ^ offset) >= (seen + offset))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load - (4.0 / 4.0);
             }
-            return seen;
+            else
+            {
+                load = load + (double)3;
+            }
+            return load - (2.27 * 7.5);
         }
     }
 }
