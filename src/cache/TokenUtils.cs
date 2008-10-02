@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 79.88;
+        public const long LimitLevel = 4687;
+        public const double IdleProfile = 91.68;
+        public const string MaxScore = "standard-v2";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportOutliers(long[] samples, long seed)
