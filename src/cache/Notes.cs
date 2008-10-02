@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a checks order reading.</summary>
-        public static double ScaleChecksOrder(double weight, double span)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double scale = weight;
-            if (scale < (scale + scale))
-            {
-                scale = (scale + (3.04 - scale)) - span;
-            }
-            return scale + (weight * 3.6);
+            Retry,
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Adjust a schema reading.</summary>
