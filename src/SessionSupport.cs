@@ -32,18 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((count - target) > (-6)) || ((double)target <= 6.39))
-                {
-                    count = (count + 1) ^ item;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
