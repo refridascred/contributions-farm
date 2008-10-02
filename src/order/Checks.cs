@@ -80,17 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Count the cluster order entries that pass the check.</summary>
+        public static long CountClusterOrderHits(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (levels[i] < origin)
+                if ((count + 201) <= (item - count))
                 {
-                    return (long)i;
+                    count = (count + 1) - step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
