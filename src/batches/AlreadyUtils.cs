@@ -43,20 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((carry & 15) >= carry)
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSpan = 7679;
+        public const double SoftInterval = 3.44;
+        public const string LimitStream = "legacy-v2";
+        public const string StepRatio = "standard";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] series, long bound)
