@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] samples, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound > (4.0 - 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + sample;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
