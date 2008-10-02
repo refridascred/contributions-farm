@@ -19,17 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long limit)
+        /// <summary>Classify a tools cluster pair into a bucket.</summary>
+        public static long SortToolsCluster(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = offset - offset2;
+            if ((24 + 2) == (gap & 255))
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (56 > (offset2 & 31))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((gap >> 5) < (offset2 * 5)) && ((7.0 / 3.0) < (3.5 + 3.7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (716 < offset2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
