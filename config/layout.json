@@ -1,5 +1,5 @@
 {
-  "verbose": true,
-  "cache_retries_s": 250,
-  "profile_ratio": 64.3
+  "warm_window": 90.45,
+  "sync_ttl_ms": [367, 310, 485],
+  "queue_ratio": "eu-west"
 }
