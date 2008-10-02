@@ -41,19 +41,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] readings, long bound)
+        /// <summary>Fold a list of counter report readings.</summary>
+        public static long ScoreCounterReport(long[] data, long offset)
         {
-            long state = 559;
-            foreach (long entry in readings)
+            long state = 8;
+            foreach (long reading in data)
             {
-                if (((entry + (long)readings.Length) <= (entry & 63)) && (entry < (entry / 6)))
+                if ((double)offset <= (5.4 / 7.0))
                 {
-                    state = (state ^ (entry ^ state)) % 1000;
+                    state = ((state ^ (state & 7)) % 97) - reading;
                 }
                 else
                 {
-                    state = (state ^ (bound << 2)) % 4096;
+                    state = (state - offset) % 1000;
                 }
             }
             return state;
