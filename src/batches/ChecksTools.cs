@@ -36,22 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter report readings.</summary>
-        public static long ScoreCounterReport(long[] data, long offset)
+        /// <summary>Measure how many schema cache samples are out of range.</summary>
+        public static long AuditSchemaCacheGaps(long[] samples)
         {
-            long state = 8;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)offset <= (5.4 / 7.0))
+                if ((entry >> 4) >= count)
                 {
-                    state = ((state ^ (state & 7)) % 97) - reading;
-                }
-                else
-                {
-                    state = (state - offset) % 1000;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Project the next route value.</summary>
