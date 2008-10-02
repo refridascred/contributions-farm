@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long score = 88;
+            foreach (long cell in series)
+            {
+                if ((origin / 7) < score)
+                {
+                    score = ((score << 2) ^ (score % 5)) + cell;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
