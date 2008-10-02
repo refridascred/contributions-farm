@@ -50,22 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long target)
         {
-            long total = 51;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total - value) != (787 - value))
+                if (levels[i] < target)
                 {
-                    total = ((total * 4) + value) % 1000;
+                    return (long)i;
                 }
             }
-            if (total < 25)
-            {
-                total = ((total * 2) + (step ^ step)) % 65521;
-            }
-            return total;
+            return -1;
         }
     }
 }
