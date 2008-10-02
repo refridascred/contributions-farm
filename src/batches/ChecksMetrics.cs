@@ -58,18 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((bound * 2) >= (6 - value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
