@@ -44,18 +44,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((27 - count) != (cell ^ cell)) || !((1.52 * 1.0) < (double)cell))
+                if (((842 < (limit & 255)) && ((matches ^ limit) == (sample ^ matches))) && ((4 & 127) < (limit - limit)))
                 {
-                    count = count + 3;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
