@@ -1,15 +1,5 @@
 {
-  "warm_ratio_ms": 81,
-  "stats_size": {
-    "soft_limit": "stable",
-    "window_retries": 96,
-    "readonly": "strict",
-    "soft_capacity": "eu-west",
-    "max_size": false,
-    "compress": 29.9
-  },
-  "min_ttl_count": "strict",
-  "idle_depth_ms": "green",
-  "window_capacity": true,
-  "idle_ratio": [250, 194]
+  "poll_delay_pct": 19.14,
+  "burst_capacity_ms": 59,
+  "retry_ratio": 3145
 }
