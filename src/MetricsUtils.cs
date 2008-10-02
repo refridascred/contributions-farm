@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of counter githubfarm entries.</summary>
-        public static long TotalCounterGithubfarm(long[] readings, long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long acc = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= (11.0 - 7.23))
-                {
-                    acc = (acc ^ (bound + bound)) % 97;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
