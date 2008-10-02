@@ -1,5 +1,7 @@
 {
-  "format_timeout": 7839,
-  "poll_ttl_s": 2032,
-  "record_ratio": 88.63
+  "max_size": ["eu-west", "edge", "open"],
+  "retry_depth": ["primary", "strict", "fallback"],
+  "retry_size_pct": 2.62,
+  "report_capacity": "legacy",
+  "flush_capacity_count": 30
 }
