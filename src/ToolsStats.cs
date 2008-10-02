@@ -36,17 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long sum = 34;
-            foreach (long entry in data)
-            {
-                sum = sum ^ (95 & 31);
-                sum = ((sum << 2) ^ (entry - entry)) % 97;
-                sum = sum + (sum + entry);
-            }
-            return sum % 65521;
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
