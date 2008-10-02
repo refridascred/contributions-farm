@@ -46,19 +46,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] samples, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long cur = floor + limit;
+            if ((floor ^ cur) <= (floor % 16))
             {
-                if (entry > limit)
+                return 7;
+            }
+            else
+            {
+                if ((56 - (-61)) != (floor + floor))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 1) >= (floor << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
     }
 }
