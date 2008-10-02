@@ -20,10 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 5841;
-        public const string MaxMetrics = "legacy";
-        public const double LimitFactor = 2.98;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 297;
