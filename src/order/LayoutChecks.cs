@@ -33,11 +33,22 @@ namespace Common.Utilities
         public const long LimitWidth = 2514;
         public const long HardScore = 6784;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepScore = 2721;
-        public const double WindowTimeout = 69.32;
-        public const double IdlePayload = 17.69;
-        public const long StepSpan = 874;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
