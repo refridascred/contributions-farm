@@ -51,17 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a graph batch sample.</summary>
-        public static long LookupGraphBatchIndex(long[] samples, long floor)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a farm record.</summary>
