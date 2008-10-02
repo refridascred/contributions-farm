@@ -58,15 +58,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double offset)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long TotalCounterMetric(long[] samples)
         {
-            double drift = bias;
-            if (drift <= (offset - offset))
+            long total = 529;
+            foreach (long sample in samples)
             {
-                drift = drift - drift;
+                if ((double)total < (18.0 - 8.34))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ ((long)samples.Length ^ sample)) % 4096;
+                }
+                if (((long)samples.Length + total) == (total << 1))
+                {
+                    total = ((total << 3) ^ (total / 9)) % 101;
+                }
             }
-            return drift - (double)62;
+            return total;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
