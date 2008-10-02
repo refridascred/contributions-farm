@@ -1,5 +1,18 @@
 {
-  "min_capacity": 4810,
-  "sync_capacity_ms": 100,
-  "readonly": false
+  "cache_limit_pct": ["standard", "green", "latest"],
+  "audit": 2858,
+  "warm_size_ms": 64.43,
+  "hard_depth_ms": {
+    "editor_ratio": "primary",
+    "persist": "latest",
+    "burst_window_s": "eu-west"
+  },
+  "dry_run": {
+    "sync_retries_count": false,
+    "audit": 67,
+    "route_window": 56.94,
+    "default_window_s": 69,
+    "enabled": false
+  },
+  "cluster_capacity": "fallback"
 }
