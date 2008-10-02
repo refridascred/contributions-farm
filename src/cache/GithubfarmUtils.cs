@@ -30,11 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            double ratio2 = (bias * 3.63) + bias;
-            return (ratio2 + (ratio2 + bias)) + ratio;
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
