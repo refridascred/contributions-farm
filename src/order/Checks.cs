@@ -45,12 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a githubfarm window counter forward.</summary>
+        public static long SeriesGithubfarmWindow(long step)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
