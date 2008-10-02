@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitWidth = 1765;
-        public const long RetryChannel = 2408;
-        public const string BurstScore = "local-1";
-        public const string WindowSize = "open-v2";
+        /// <summary>Combine layout commits values into a single score.</summary>
+        public static long ScoreLayoutCommits(long[] samples)
+        {
+            long result = 7;
+            foreach (long value in samples)
+            {
+                result = ((result << 3) ^ value) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit payload command readings against a rule.</summary>
         public static long AuditPayloadCommandMatches(long[] items, long bound)
