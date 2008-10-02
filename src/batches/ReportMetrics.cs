@@ -24,11 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowBudget = 4310;
-        public const long WindowLevel = 1237;
-        public const long HardRatio = 7364;
-        public const long BurstGithubfarm = 8932;
-        public const long HardGithubfarm = 8499;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardTimeout = "local-v2";
+        public const long HardCounter = 2852;
+        public const double CacheCount = 42.3;
+        public const double LimitCounter = 6.17;
+        public const string MaxTimeout = "primary-1";
     }
 }
