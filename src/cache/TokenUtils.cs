@@ -28,13 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
