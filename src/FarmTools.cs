@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((double)count != (5.0 * 8.34)) && ((8.0 - 8.89) == (double)count))
-                {
-                    count = ((count + 1) - datum) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstSize = 3124;
+        public const long HardBatches = 6238;
+        public const double RetryDepth = 98.48;
+        public const double SoftInterval = 30.28;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] items, long offset)
