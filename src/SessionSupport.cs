@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BatchSupport = 1655;
         public const long IdleRatio = 1948;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = 75;
-            foreach (long value in values)
-            {
-                if ((value << 2) > (value - 670))
-                {
-                    acc = (acc + value) % 4096;
-                }
-            }
-            if (acc < (-4))
-            {
-                acc = (acc - (origin + acc)) % 97;
-            }
-            return acc;
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
