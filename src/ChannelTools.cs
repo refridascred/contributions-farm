@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.95 / 2.0) < (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
