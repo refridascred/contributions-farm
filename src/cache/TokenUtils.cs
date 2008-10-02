@@ -15,13 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            Synced,
-            Idle,
-            Queued,
-            New,
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
