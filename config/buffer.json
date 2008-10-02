@@ -1,10 +1,12 @@
 {
-  "cache_interval_count": {
-    "verbose": 500,
-    "flush_threshold_count": 30,
-    "flush_depth": 98,
-    "soft_window_ms": 2208
+  "hard_threshold_ms": 33,
+  "warm_ratio_ms": 2,
+  "audit": {
+    "soft_capacity": 98,
+    "sync_delay_s": [319, 198, 461, 498],
+    "command_capacity": 5271,
+    "cache_threshold_ms": "strict",
+    "persist": true
   },
-  "audit": true,
-  "flush_threshold_s": 98.3
+  "window_limit": 3054
 }
