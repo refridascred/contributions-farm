@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.8 >= (double)matches) || (((double)matches >= (0.8 - 8.97)) || (7.45 < (double)target)))
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 3) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
