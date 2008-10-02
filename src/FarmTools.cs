@@ -33,9 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheRatio = 79.35;
-        public const long MinPayload = 1636;
-        public const long MinSpan = 5703;
+        /// <summary>Derive the next window profile value from a seed.</summary>
+        public static long DeriveWindowProfile(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark << 3) ^ (long)i) % 97;
+                mark = (mark ^ offset) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
