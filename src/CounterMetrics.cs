@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long result = 43;
-            foreach (long datum in values)
-            {
-                if ((datum >> 2) > (5 % 60))
-                {
-                    result = ((result * 5) + (datum + result)) % 1000;
-                }
-            }
-            if (result < (-369))
-            {
-                result = result + result;
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
