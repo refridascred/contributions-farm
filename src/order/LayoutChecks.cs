@@ -75,39 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long prev = target + floor;
-            if (((449 - target) >= (prev - floor)) || ((target * 5) >= prev))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((prev * 3) >= 561)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (922 >= floor)
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target % 24) >= prev)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of editor cache readings.</summary>
