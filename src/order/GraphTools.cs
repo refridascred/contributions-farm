@@ -16,15 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Iterate the contributi command series from a seed.</summary>
+        public static long DeriveContributiCommand(long offset)
         {
-            double bias = (double)(9 & 3);
-            for (int i = 0; i < 3; i++)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                bias = ((bias + 2.5) + (double)(long)i) - scale;
+                mark = ((mark << 2) ^ (offset & 3)) % 4096;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return bias + (span / 8.0);
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
