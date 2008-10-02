@@ -1,8 +1,18 @@
 {
-  "verbose": [223, 476, 468, 492],
-  "strict": true,
-  "flush_depth_ms": ["green", "local", "stable"],
-  "soft_ttl_count": 93.35,
-  "max_retries_s": "local",
-  "batch_ratio": 22.36
+  "notes_ratio": {
+    "notes_retries": true,
+    "default_ttl": true,
+    "min_ratio_s": {
+      "audit": 22,
+      "context_capacity": 22.91,
+      "default_limit": ["legacy", "latest", "fallback", "latest"],
+      "format_timeout": 7532,
+      "compress": true
+    },
+    "readonly": 30
+  },
+  "route_threshold": "open",
+  "retry_capacity_count": true,
+  "hard_depth": "edge",
+  "enabled": "strict"
 }
