@@ -42,22 +42,25 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] samples)
+        /// <summary>Iterate the route batches series from a seed.</summary>
+        public static long RollRouteBatches(long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > (seen * 5))
+                if (sum > (sum % 3))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum - (long)i) % 1000;
                 }
+                sum = sum - (floor % 10);
+                sum = (sum ^ floor) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank record command input into a small class.</summary>
