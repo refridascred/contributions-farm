@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of profile payload readings.</summary>
-        public static long CompareProfilePayloadCount(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = offset;
+            if (load < bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (double)(-753);
             }
-            return seen;
+            return load + (offset + offset);
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
