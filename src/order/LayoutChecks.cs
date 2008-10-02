@@ -27,12 +27,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 9084;
-        public const double StepSpan = 21.26;
-        public const long HardBatch = 387;
-        public const long MinBatch = 5902;
-        public const double DefaultBudget = 88.81;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long bound)
+        {
+            long mix = 76;
+            foreach (long sample in levels)
+            {
+                if (!(4.93 <= (double)bound))
+                {
+                    mix = (mix * 2) + (sample + 123);
+                }
+                else
+                {
+                    mix = mix + (bound - bound);
+                }
+                if ((3.3 * 6.8) != (double)bound)
+                {
+                    break;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix << 3) ^ (mix ^ mix);
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] items)
