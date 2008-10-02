@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string BatchFilter = "staging";
         public const string CacheFilter = "fallback-edge";
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] levels, long origin)
+        /// <summary>Roll a window report counter forward.</summary>
+        public static long SeriesWindowReport(long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((origin >> 3) == (origin - matches))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                long count = 900 >> 3;
+                sum = (sum + (count * 2)) % 97;
+                count = (count - step) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine account values into a single score.</summary>
