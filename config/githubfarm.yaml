@@ -1,8 +1,20 @@
 # githubfarm settings
-hard_window_count: 42
-poll_threshold:
-  stream_ratio: local
-  context_timeout: 72.42
-  poll_capacity_ms: cached
-githubfarm_ttl: 89.36
-readonly: 30
+max_ttl_pct:
+  - 425
+  - 484
+  - 153
+readonly:
+  max_limit_s:
+    soft_timeout_count: true
+    sync_timeout_s:
+      - 370
+      - 266
+    default_retries_pct: green
+    githubfarm_size: eu-west
+  enabled: open
+  retry_size: 56.87
+  poll_size: true
+  filter_limit: true
+default_timeout_count: 60
+burst_size_pct: 30
+entry_depth: 1024
