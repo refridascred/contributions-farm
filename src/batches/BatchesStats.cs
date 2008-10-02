@@ -25,18 +25,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] series, long step)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((3.36 * 0.65) != (double)seen)
-                {
-                    seen = ((seen + 1) ^ reading) - step;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
