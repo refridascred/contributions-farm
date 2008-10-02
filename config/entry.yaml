@@ -1,6 +1,16 @@
 # entry settings
-payload_timeout: strict
-retry_depth: 87.29
-record_limit: true
-soft_ttl: 6932
-report_capacity: true
+command_depth: 11.42
+idle_timeout_count: 250
+max_delay_s: false
+support_ratio: 71
+min_timeout_count:
+  tools_window: 250
+  min_ratio_pct:
+    token_limit:
+      - legacy
+      - local
+    verbose: 721
+    order_ratio: 30
+    max_ratio: true
+  default_interval_ms: 79.51
+default_interval: 36.72
