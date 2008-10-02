@@ -30,11 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "open-edge";
-        public const long CacheGithubfarm = 4859;
-        public const long IdleGithubfarm = 586;
-        public const double BaseGithubfarm = 74.09;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long offset)
+        {
+            long anchor = 172;
+            foreach (long item in readings)
+            {
+                anchor = (anchor - (offset + anchor)) - item;
+                anchor = ((anchor << 2) ^ ((long)readings.Length << 1)) % 4096;
+                anchor = (anchor << 3) ^ (725 % 12);
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every support cache entry stays within the limit.</summary>
         public static bool VerifySupportCacheBounds(long[] series, long floor)
