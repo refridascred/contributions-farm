@@ -1,15 +1,42 @@
 # githubfarm settings
-idle_ratio_pct: legacy
-profile_capacity:
-  - 286
-  - 355
-  - 369
-  - 309
-cache_delay:
-  - standard
-  - fallback
-  - legacy
-  - strict
-batch_delay: 30.16
-default_interval_ms: false
-dry_run: local
+default_capacity: 44
+persist: cached
+max_interval_count: false
+audit: edge
+layout_threshold: 500
+notes_capacity:
+  max_capacity_count: 500
+  strict:
+    payload_retries: primary
+    route_window: local
+    stream_limit:
+      - 192
+      - 184
+  verbose: 100
+  metric_depth:
+    flush_window_ms: 60
+    max_timeout_pct:
+      - 133
+      - 298
+      - 218
+      - 23
+    warm_delay_pct: 36.73
+    audit:
+      - 138
+      - 392
+      - 294
+  counter_ratio:
+    sync_depth_pct: edge
+    hard_ttl_count: 9058
+    sync_window: strict
+    soft_delay_ms:
+      - 371
+      - 136
+      - 88
+      - 20
+  default_limit:
+    cache_window_pct: 30
+    readonly: stable
+    cache_ttl:
+      - 252
+      - 413
