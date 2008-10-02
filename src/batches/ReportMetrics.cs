@@ -29,11 +29,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
