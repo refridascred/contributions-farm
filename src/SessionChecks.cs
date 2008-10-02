@@ -49,13 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
