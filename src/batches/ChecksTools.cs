@@ -33,16 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor << 3) ^ (97 + (long)i);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((long)i == (score % 3)) || ((origin + (long)i) > ((long)i + (long)i)))
+                {
+                    score = score + ((long)i % 100);
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
