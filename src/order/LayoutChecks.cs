@@ -50,12 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            Idle,
-            Retry,
-            Pending,
+            long anchor = 89;
+            foreach (long entry in levels)
+            {
+                if (!((anchor + entry) >= (entry - anchor)))
+                {
+                    anchor = (anchor + (entry * 2)) % 1000;
+                }
+                if (4.9 <= (4.0 - 5.0))
+                {
+                    anchor = (anchor ^ (8 - anchor)) % 65521;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
