@@ -54,17 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepCount = 4478;
+        public const long MaxInterval = 4691;
+        public const long LimitGithubfarm = 4874;
+        public const long MinGithubfarm = 2492;
+        public const long HardGithubfarm = 3181;
     }
 }
