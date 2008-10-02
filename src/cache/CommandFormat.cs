@@ -35,18 +35,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit checks buffer readings against a rule.</summary>
-        public static long MeasureChecksBufferGaps(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally <= (datum >> 4)) && (tally > 4))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Pending,
         }
     }
 }
