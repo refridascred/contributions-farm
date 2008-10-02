@@ -24,13 +24,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 3025;
+        public const long IdleSpan = 2570;
+        public const long LimitGraph = 1086;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
