@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] levels)
         {
-            long mark = 663;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)276 <= (double)mark)
+                if ((cell << 2) <= (cell + count))
                 {
-                    mark = (((mark << 3) ^ (reading << 3)) % 1000) + target;
+                    count = count + 1;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Describe the window status values.</summary>
