@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric graph value from a seed.</summary>
-        public static long IterateMetricGraph(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 3754;
+        public const long SoftBudget = 544;
+        public const long WindowDepth = 6614;
+        public const long BurstSize = 9467;
+        public const string BatchStats = "latest-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepTools = 161;
