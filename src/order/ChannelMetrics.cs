@@ -19,27 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long bound)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] levels, long seed)
         {
-            long anchor = 665;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor > bound)
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    anchor = ((anchor * 3) + (bound + bound)) - sample;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = ((anchor * 4) + 6) % 255;
-                }
-                anchor = (anchor ^ (bound << 3)) % 1000;
             }
-            if (anchor < 65)
-            {
-                anchor = anchor + (anchor & 63);
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Adjust a format reading.</summary>
