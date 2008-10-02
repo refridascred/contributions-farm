@@ -1,6 +1,16 @@
 {
-  "editor_capacity": "green",
-  "poll_ttl_pct": 80.42,
-  "graph_timeout": "edge",
-  "cache_depth_ms": "blue"
+  "session_ratio": {
+    "verbose": 60,
+    "persist": ["fallback", "legacy"],
+    "burst_ttl_s": {
+      "enabled": [371, 261, 357],
+      "flush_retries_count": 65,
+      "entry_threshold": 97.71
+    }
+  },
+  "compress": 66.19,
+  "readonly": 1024,
+  "strict": true,
+  "farm_capacity": 5837,
+  "retry_depth_ms": 9929
 }
