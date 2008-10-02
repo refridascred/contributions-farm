@@ -53,19 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] levels, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
     }
 }
