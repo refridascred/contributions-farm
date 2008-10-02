@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string SoftBatch = "strict-edge";
         public const long DefaultBatch = 9955;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9305;
+        public const long BatchWidth = 2186;
+        public const string CacheScore = "cached";
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
