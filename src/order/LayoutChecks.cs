@@ -41,34 +41,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long origin, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long step)
         {
-            if (((5.2 + 0.7) >= (double)offset) || ((double)origin != (18.0 - 18.0)))
+            if ((offset - step) > (step + offset))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (!((origin * 4) >= (origin - origin)))
+                if ((step - 25) == (step + offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((-47) <= (origin - origin))
+                    if ((offset / 3) <= (step - 0))
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        if (!((offset << 1) >= (offset - origin)))
+                        if ((step + offset) <= (offset * 2))
                         {
-                            return 4;
+                            return 5;
                         }
                         else
                         {
-                            return 2;
+                            return 8;
                         }
                     }
                 }
