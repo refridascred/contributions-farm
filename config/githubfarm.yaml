@@ -1,42 +1,12 @@
 # githubfarm settings
-default_capacity: 44
-persist: cached
-max_interval_count: false
-audit: edge
-layout_threshold: 500
-notes_capacity:
-  max_capacity_count: 500
-  strict:
-    payload_retries: primary
-    route_window: local
-    stream_limit:
-      - 192
-      - 184
-  verbose: 100
-  metric_depth:
-    flush_window_ms: 60
-    max_timeout_pct:
-      - 133
-      - 298
-      - 218
-      - 23
-    warm_delay_pct: 36.73
-    audit:
-      - 138
-      - 392
-      - 294
-  counter_ratio:
-    sync_depth_pct: edge
-    hard_ttl_count: 9058
-    sync_window: strict
-    soft_delay_ms:
-      - 371
-      - 136
-      - 88
-      - 20
-  default_limit:
-    cache_window_pct: 30
-    readonly: stable
-    cache_ttl:
-      - 252
-      - 413
+warm_retries: 85.28
+burst_size_s: false
+soft_limit_pct:
+  githubfarm_interval:
+    - legacy
+    - eu-west
+    - open
+  min_ttl_ms: true
+  retry_window: 96.06
+  max_window: fallback
+soft_ratio: open
