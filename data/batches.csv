@@ -1,11 +1,6 @@
-id,state,token,count
-1,83.51,11.74,43.18
-2,533,legacy,25
-3,15.1,56.15,85.78
-4,22.34,68.93,14.23
-5,local,staging,cached
-6,fallback,2.38,standard
-7,70.08,416,37.94
-8,262,latest,cached
-9,758,672,4.28
-10,eu-west,39.89,standard
+id,ratio,active,count
+1,49.01,staging,strict
+2,452,59.71,96.59
+3,827,254,362
+4,507,821,303
+5,fallback,180,365
