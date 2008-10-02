@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] series, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (cell > origin)
+                if ((reading & 127) >= reading)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + offset;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
