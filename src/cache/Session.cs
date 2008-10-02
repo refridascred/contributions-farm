@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long floor2)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            long step = floor - floor2;
-            if ((floor - step) <= (floor2 - 63))
+            double load = offset;
+            if (load >= 0.6)
             {
-                return 0;
+                load = (load + load) + rate;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor2 >> 4) != (floor % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)step >= (17.0 * 19.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (16 < (floor / 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = (load - offset) - (double)(long)i;
             }
+            return load + (double)65;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
