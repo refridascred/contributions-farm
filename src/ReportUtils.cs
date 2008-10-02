@@ -37,18 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] values)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!(count >= (count % 16)))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate order cluster samples.</summary>
