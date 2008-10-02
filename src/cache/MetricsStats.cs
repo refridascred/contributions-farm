@@ -59,13 +59,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] samples, long step)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((9 + step) != (sample % 24)) || ((count * 3) != (count + 63)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
