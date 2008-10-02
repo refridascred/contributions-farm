@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading >> 5) > (tally ^ reading)) && !(reading <= (reading + reading)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8104;
+        public const long BurstSpan = 8548;
+        public const string MaxFactor = "strict-edge";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
