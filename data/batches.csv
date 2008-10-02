@@ -1,8 +1,6 @@
-id,active,weight,region
-1,956,26.65,38.55
-2,fallback,979,fallback
-3,561,16.57,fallback
-4,155,49.2,441
-5,edge,913,eu-west
-6,87.15,649,eu-west
-7,575,691,121
+id,state,count,owner
+1,372,25.92,47.45
+2,standard,148,582
+3,618,12.9,172
+4,stable,331,stable
+5,37.99,59.29,stable
