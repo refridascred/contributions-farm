@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many farm tools samples are out of range.</summary>
-        public static long MeasureFarmToolsOutliers(long[] items, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double ratio2 = 6.2;
+            if (ratio2 > floor)
             {
-                if ((double)value >= (5.77 / 2.0))
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return tally;
+            else
+            {
+                ratio2 = ratio2 - (ratio * 19.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 - (ratio2 - 6.2);
         }
 
         /// <summary>Accumulate contributi metrics samples.</summary>
