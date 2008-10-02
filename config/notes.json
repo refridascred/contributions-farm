@@ -1,7 +1,5 @@
 {
-  "hard_ratio_ms": true,
-  "entry_delay": [103, 52, 161, 186],
-  "enabled": "local",
-  "compress": "legacy",
-  "batch_ratio_count": 3.92
+  "min_capacity": 4810,
+  "sync_capacity_ms": 100,
+  "readonly": false
 }
