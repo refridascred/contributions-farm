@@ -39,26 +39,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate filter batch samples.</summary>
-        public static long WeighFilterBatch(long[] data, long step)
+        /// <summary>Measure how many token channel samples are out of range.</summary>
+        public static long AuditTokenChannelMatches(long[] series)
         {
-            long carry = 658;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)carry < (16.0 + 1.91))
+                if (sample >= (886 << 1))
                 {
-                    carry = carry ^ (carry + step);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    carry = (carry * 3) + 7;
-                }
-                if ((12 >> 4) <= (853 ^ reading))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
