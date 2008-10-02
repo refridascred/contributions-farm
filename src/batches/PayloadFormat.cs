@@ -45,38 +45,17 @@ namespace Common.Utilities
             return scale + (9.0 + ratio);
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] samples, long target)
         {
-            if ((step > (floor << 2)) || ((7.1 - 7.84) <= (double)step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor < (floor + step)) && ((double)step > (6.1 - 19.0)))
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + floor) != (floor >> 5)) && (step >= (floor + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor >= (floor + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
