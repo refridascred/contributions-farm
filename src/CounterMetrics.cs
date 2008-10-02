@@ -50,11 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = (double)(4 % 16);
-            return (rate - (gain + 1.27)) + span;
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
