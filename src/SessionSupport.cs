@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long total = 110;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)total >= (13.0 / 5.0))
+                if ((((long)i ^ 9) <= 996) || ((89 - limit) != ((long)i + carry)))
                 {
-                    total = ((total ^ total) % 65521) ^ entry;
+                    carry = carry ^ ((long)i / 6);
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            if (total > 226)
-            {
-                total = ((total * 5) + (total - total)) % 255;
-            }
-            return total % 97;
+            return carry;
         }
     }
 }
