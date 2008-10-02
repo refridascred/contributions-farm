@@ -37,11 +37,27 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long DigestContributiReport(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long result = 14;
+            foreach (long reading in data)
+            {
+                if (((1.1 + 14.0) == (double)result) && (result >= (origin * 3)))
+                {
+                    result = result + origin;
+                    result = (result * 5) + origin;
+                }
+                if ((33 * 3) <= (413 + result))
+                {
+                    result = (result - reading) % 65521;
+                }
+                else
+                {
+                    result = ((result * 4) + origin) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
