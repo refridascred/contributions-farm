@@ -71,13 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data, long limit)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading == (double)limit)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
