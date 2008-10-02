@@ -1,19 +1,14 @@
 {
-  "flush_window_s": {
-    "flush_size": ["green", "cached", "eu-west", "eu-west"],
-    "batch_capacity": {
-      "base_delay_s": 82.66,
-      "strict": "fallback",
-      "farm_depth": "legacy",
-      "compress": 56.84,
-      "batch_retries": [241, 456, 154],
-      "audit": "fallback"
-    },
-    "strict": 26.11,
-    "filter_capacity": "fallback"
-  },
-  "channel_threshold": "stable",
-  "poll_ttl": 16.52,
-  "max_limit_ms": ["green", "green"],
-  "hard_capacity_ms": "local"
+  "audit": false,
+  "hard_delay_pct": 652,
+  "metrics_capacity": [85, 20],
+  "dry_run": "local",
+  "record_window": {
+    "audit": "local",
+    "burst_timeout_count": "staging",
+    "enabled": 9485,
+    "compress": "legacy",
+    "batch_threshold": true,
+    "soft_retries_count": 48.86
+  }
 }
