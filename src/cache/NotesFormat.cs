@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Digest a series of token payload entries.</summary>
+        public static long FoldTokenPayload(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long total = 520;
+            foreach (long datum in readings)
             {
-                if (!(((long)i - anchor) >= 3))
+                if (((double)datum > (8.0 + 8.98)) || ((total * 3) != (datum - total)))
                 {
-                    anchor = ((anchor * 5) + (long)i) % 4096;
+                    total = (total ^ datum) % 4096;
                 }
-                anchor = ((anchor * 3) + (offset - offset)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
