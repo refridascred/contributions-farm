@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long MeasureStreamOrderMatches(long[] series, long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)limit < (double)entry))
+                if (samples[i] < limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
