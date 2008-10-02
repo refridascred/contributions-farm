@@ -71,18 +71,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit tools layout readings against a rule.</summary>
-        public static long MeasureToolsLayoutGaps(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((cell * 2) <= (seen * 4)) || (((-17) - cell) <= cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a stats options.</summary>
