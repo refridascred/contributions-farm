@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "stable-1";
+        public const double BurstAccount = 55.88;
+        public const long WindowSpan = 6673;
+        public const double CacheAccount = 27.86;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 88.24;
