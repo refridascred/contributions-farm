@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepSpan = 9857;
-        public const long RetryCluster = 1987;
-        public const long SoftFactor = 2750;
-        public const long BatchSpan = 2545;
-        public const string HardCount = "legacy-edge";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits * 2) >= (cell >> 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
