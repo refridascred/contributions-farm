@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
             public long Token { get; set; }
         }
 
