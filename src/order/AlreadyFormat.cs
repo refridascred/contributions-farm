@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 9953;
-        public const long DefaultInterval = 7007;
-        public const long BaseSupport = 4759;
-        public const long LimitRatio = 4122;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of stream layout readings.</summary>
         public static long TotalStreamLayout(long[] values)
