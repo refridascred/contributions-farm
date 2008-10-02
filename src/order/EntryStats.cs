@@ -31,19 +31,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate queue profile readings against a bound.</summary>
-        public static bool GuardQueueProfileBounds(long[] readings, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
