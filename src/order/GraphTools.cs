@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Done,
-            Pending,
-            Stale,
-            Dropped,
+            Closed,
             Queued,
+            Locked,
         }
 
         /// <summary>Hold a checks record.</summary>
