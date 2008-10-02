@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            Retry,
-            Draft,
-            Paused,
-            Active,
+            double load = bias;
+            if (load > (double)43)
+            {
+                load = (load - (double)415) + span;
+            }
+            else
+            {
+                load = load - (load * 2.22);
+            }
+            return load - (bias / 4.0);
         }
 
         /// <summary>Measure how many graph token samples are out of range.</summary>
