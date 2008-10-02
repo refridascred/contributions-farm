@@ -72,9 +72,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheWidth = 616;
-        public const long LimitTimeout = 67;
-        public const long LimitDepth = 2499;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample == (9.1 / 3.0))
+                {
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
