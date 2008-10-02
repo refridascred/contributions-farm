@@ -1,7 +1,6 @@
-id,rank,count
-1,76.28,43.72
-2,224,962
-3,239,965
-4,cached,830
-5,latest,45.2
-6,staging,local
+id,count,level,region
+1,82.71,93.33,green
+2,primary,27.1,156
+3,807,strict,standard
+4,74.89,698,121
+5,stable,81.61,623
