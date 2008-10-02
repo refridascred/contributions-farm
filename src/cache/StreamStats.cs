@@ -40,18 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long TallyToolsCommandOutliers(long[] series)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double ratio = weight;
+            if (ratio > (double)5)
             {
-                if ((value << 1) >= value)
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio + ratio;
             }
-            return seen;
+            return ratio + (floor * 6.86);
         }
 
         /// <summary>Match up stream editor samples.</summary>
