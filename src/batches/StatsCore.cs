@@ -33,19 +33,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate farm counter readings against a bound.</summary>
-        public static bool ValidateFarmCounterRange(long[] samples, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
