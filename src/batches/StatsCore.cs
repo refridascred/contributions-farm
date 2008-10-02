@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9278;
-        public const double MinRatio = 60.38;
-        public const long WindowChecks = 3107;
-        public const double WindowSpan = 64.36;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] samples)
