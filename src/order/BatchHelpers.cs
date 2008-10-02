@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long limit)
+        /// <summary>Roll a metrics already counter forward.</summary>
+        public static long IterateMetricsAlready(long bound)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ (acc / 5)) % 4096;
+                long hits = ((long)i + bound) - 636;
+                acc = (acc + hits) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the queue mode values.</summary>
