@@ -5,36 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long target)
+        /// <summary>Grade a checks payload value against two limits.</summary>
+        public static long BucketChecksPayload(long limit, long limit2)
         {
-            long cur = limit - target;
-            if ((115 << 1) != (target >> 1))
+            long bound = limit + limit2;
+            if ((limit + limit) > bound)
             {
                 return 1;
             }
             else
             {
-                if ((57 - limit) == (cur + target))
+                if (((5.0 - 5.9) == (double)bound) && ((double)limit2 <= (7.3 + 4.5)))
                 {
                     return 3;
                 }
                 else
                 {
-                    if (((91 % 12) <= (target + cur)) && ((target >> 2) < (cur * 5)))
+                    if (((bound & 1) < 52) && (limit > (684 ^ bound)))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if (((target + target) >= (limit + 864)) || ((60 + cur) >= (target ^ limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 4;
                     }
                 }
             }
