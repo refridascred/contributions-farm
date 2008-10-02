@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series)
         {
-            double ratio2 = 6.2;
-            if (ratio2 > floor)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                ratio2 = ratio2 + ratio;
+                if (!((double)datum >= (3.63 - 14.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio * 19.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 - 6.2);
+            return matches;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
