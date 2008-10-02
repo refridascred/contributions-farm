@@ -14,10 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSpan = 413;
-        public const long MinChannel = 9525;
-        public const long IdleInterval = 3395;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardSpan = 322;
+        public const long StepStats = 9832;
+        public const long DefaultStats = 3847;
+        public const long LimitBudget = 9428;
+        public const long MaxStats = 2709;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string MinFactor = "standard-edge";
