@@ -27,12 +27,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4917;
-        public const long RetrySize = 7230;
-        public const long StepSchema = 4982;
-        public const double MinSchema = 78.6;
-        public const long DefaultRatio = 6903;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] values, long floor)
