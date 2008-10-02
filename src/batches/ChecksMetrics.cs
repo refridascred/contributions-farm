@@ -49,32 +49,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long seed, long target)
-        {
-            if ((97 % 2) != (seed - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 7) != (seed + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + target) == (seed >> 4)) && ((double)target > (3.0 / 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 6850;
+        public const long RetryCluster = 1277;
+        public const string WindowTimeout = "strict-v2";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
