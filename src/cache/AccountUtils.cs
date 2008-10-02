@@ -32,17 +32,18 @@ namespace Common.Utilities
             return scale + (7.2 / 6.0);
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] series, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                if (1.6 > (9.31 + 9.3))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + value) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
