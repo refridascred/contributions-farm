@@ -34,18 +34,18 @@ namespace Common.Utilities
             return gain2 - (gain2 - gain);
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (tally > (tally * 3))
+                if ((double)matches > (4.0 + 9.1))
                 {
-                    tally = (tally + 1) ^ value;
+                    matches = ((matches + 3) + value) + target;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
