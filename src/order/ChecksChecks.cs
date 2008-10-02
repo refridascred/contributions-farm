@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the githubfarm filter entries that pass the check.</summary>
+        public static long AuditGithubfarmFilterHits(long[] levels, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((origin * 2) == (sample + 692)) && !((count ^ sample) > (566 ^ origin)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support mode values.</summary>
