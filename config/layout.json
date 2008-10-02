@@ -1,8 +1,16 @@
 {
-  "checks_ttl": "blue",
-  "payload_window": 31.54,
-  "poll_timeout_pct": 78,
-  "warm_delay_ms": "eu-west",
-  "verbose": true,
-  "batch_retries": ["fallback", "strict", "strict"]
+  "audit": {
+    "flush_delay": "blue",
+    "verbose": "latest",
+    "counter_threshold": 13.78,
+    "persist": {
+      "idle_limit": 55.86,
+      "stream_ttl": 81,
+      "soft_size_s": 62
+    },
+    "warm_window": 59.97
+  },
+  "burst_delay": 100,
+  "notes_ratio": 56,
+  "burst_window_count": 57
 }
