@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits << 1) < hits) && ((hits << 1) >= item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 5388;
+        public const long SoftLevel = 1176;
+        public const long BaseBudget = 4616;
+        public const double DefaultDepth = 18.24;
+        public const long MaxMetric = 174;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] values)
