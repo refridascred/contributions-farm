@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio + (ratio * 9.0);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 7036;
+        public const long HardWidth = 4593;
+        public const string BatchLevel = "latest-edge";
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
