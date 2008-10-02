@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] levels, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)floor <= 2.67)
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
