@@ -49,11 +49,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((27 - count) != (cell ^ cell)) || !((1.52 * 1.0) < (double)cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
