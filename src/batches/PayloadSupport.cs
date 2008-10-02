@@ -25,15 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Ready,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
