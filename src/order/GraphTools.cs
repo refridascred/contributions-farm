@@ -15,14 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            Ready,
-            Paused,
-            Done,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (4.0 < (double)sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next record route value.</summary>
