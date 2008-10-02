@@ -53,15 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long offset)
         {
-            double ratio = weight;
-            if (ratio > (double)5)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio + ratio;
+                if (!((sum >> 4) <= (sum & 255)))
+                {
+                    sum = (sum - ((long)i << 3)) % 101;
+                }
+                if ((sum + sum) <= (offset ^ offset))
+                {
+                    sum = (sum + (9 / 2)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return ratio + (floor * 6.86);
+            return sum;
         }
 
         /// <summary>Match up stream editor samples.</summary>
