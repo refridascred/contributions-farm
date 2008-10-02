@@ -42,14 +42,32 @@ namespace Common.Utilities
         public const long RetryBatch = 7972;
         public const double IdleBatch = 81.15;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Classify a batch command pair into a bucket.</summary>
+        public static long GradeBatchCommand(long seed, long seed2)
         {
-            Retry,
-            Draft,
-            Locked,
-            Synced,
-            Ready,
+            long diff = seed ^ seed2;
+            if (!((diff + seed) < seed2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed2 << 1) > (diff - diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed2 + seed) > diff) && ((seed % 64) == (seed2 ^ diff)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
