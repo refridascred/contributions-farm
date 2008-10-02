@@ -23,16 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                result = result - ((long)i - seed);
-                result = ((result * 5) + (long)i) % 1000;
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the context state values.</summary>
