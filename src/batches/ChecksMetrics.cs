@@ -40,22 +40,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long score = 611;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((470 + 760) < seed) && ((8.16 - 6.0) < (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score << 2) ^ (seed ^ reading)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (7 * 2)) % 4096;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine counter metric values into a single score.</summary>
