@@ -15,11 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstSize = 3124;
-        public const long HardBatches = 6238;
-        public const double RetryDepth = 98.48;
-        public const double SoftInterval = 30.28;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long bound)
+        {
+            if ((72 ^ bound) != (offset + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < 6.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many githubfarm report samples are out of range.</summary>
         public static long TallyGithubfarmReportGaps(long[] series, long bound)
