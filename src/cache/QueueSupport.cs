@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long seed2)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] items, long seed)
         {
-            if (((double)seed2 == (double)49) || (seed >= (459 >> 3)))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed2 < (seed ^ seed))
+                if ((cell + seed) <= (count & 255))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 + seed2) <= (seed2 + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
