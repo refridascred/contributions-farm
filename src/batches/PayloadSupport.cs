@@ -22,11 +22,31 @@ namespace Common.Utilities
         public const long MaxDepth = 396;
         public const long DefaultReport = 5700;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long seed, long floor)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            if (!(seed >= (seed - seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) >= (997 & 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (984 >= (floor & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
