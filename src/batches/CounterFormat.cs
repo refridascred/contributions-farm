@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings, long step)
+        /// <summary>Rank format githubfarm input into a small class.</summary>
+        public static long GradeFormatGithubfarm(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((offset > (offset >> 1)) && ((3.22 / 6.0) == (double)offset))
             {
-                if ((step >> 3) != (step + step))
+                return 3;
+            }
+            else
+            {
+                if (bound <= (bound - offset))
                 {
-                    matches = (matches + 1) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset < (180 ^ offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6 % 12) > (offset + offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
