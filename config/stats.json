@@ -1,6 +1,14 @@
 {
-  "schema_threshold": "stable",
-  "order_threshold": [206, 170, 358],
-  "compress": true,
-  "readonly": ["eu-west", "strict", "fallback"]
+  "dry_run": [433, 409, 382],
+  "sync_interval_ms": 68.26,
+  "idle_threshold_s": 21,
+  "default_retries": {
+    "strict": 500,
+    "enabled": 500,
+    "dry_run": "legacy",
+    "soft_delay_ms": true,
+    "batch_timeout": "primary"
+  },
+  "cluster_ttl": 69.51,
+  "queue_size": 4004
 }
