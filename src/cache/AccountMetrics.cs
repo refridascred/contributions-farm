@@ -81,21 +81,26 @@ namespace Common.Utilities
             return weight + (weight / 7.0);
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long TotalAccountPayload(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 40;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((44 >> 1) > mix)
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+                if ((mix + 56) >= (datum >> 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix < 0)
+            {
+                mix = (mix << 3) ^ (mix >> 3);
+            }
+            return mix % 97;
         }
     }
 }
