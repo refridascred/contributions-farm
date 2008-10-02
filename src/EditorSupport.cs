@@ -57,21 +57,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = carry - (long)i;
+                if ((677 * 5) <= carry)
                 {
-                    if ((data[i] ^ data[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry * 3) + ((long)i % 16);
                 }
+                else
+                {
+                    carry = carry ^ carry;
+                    carry = (carry - (carry - carry)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Measure how many tools editor samples are out of range.</summary>
