@@ -24,19 +24,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next record route value.</summary>
-        public static double AdjustRecordRoute(double scale, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double mean = (double)(4 % 16);
-            if (mean < offset)
-            {
-                mean = mean - (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (scale - scale)) + (double)(long)i;
-            }
-            return mean + mean;
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
