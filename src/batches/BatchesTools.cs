@@ -13,17 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 9.0;
+            if (scale > (scale + rate))
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + 4.3) - bias;
             }
-            return -1;
+            return scale + (rate * 1.0);
         }
 
         /// <summary>Audit support notes readings against a rule.</summary>
