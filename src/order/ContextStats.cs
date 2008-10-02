@@ -41,10 +41,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinRatio = 4374;
-        public const long MaxSession = 4432;
-        public const double LimitInterval = 64.83;
-        public const long RetrySession = 1247;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value + value) >= (56 + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
