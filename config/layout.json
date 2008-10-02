@@ -1,21 +1,15 @@
 {
-  "max_size_pct": {
-    "readonly": false,
-    "default_window_s": 25,
-    "burst_limit": false,
-    "token_threshold": "green",
-    "soft_retries_ms": "stable",
-    "command_delay": ["legacy", "primary"]
+  "report_depth": {
+    "max_ttl_s": "green",
+    "route_size": "legacy",
+    "sync_depth_ms": "staging",
+    "burst_delay": "local",
+    "warm_timeout_count": 2
   },
-  "support_threshold": 19.65,
-  "warm_capacity_pct": {
-    "min_ratio_pct": 10.86,
-    "retry_delay_s": {
-      "schema_size": "stable",
-      "idle_depth": 54,
-      "idle_limit": true
-    },
-    "sync_retries_count": "latest",
-    "poll_depth_pct": true
+  "base_retries": ["latest", "fallback"],
+  "compress": {
+    "idle_ttl_s": "edge",
+    "compress": 30,
+    "burst_ratio": "latest"
   }
 }
