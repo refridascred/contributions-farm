@@ -32,19 +32,19 @@ namespace Common.Utilities
         public const string SoftSchema = "local-edge";
         public const long IdleSchema = 1899;
 
-        /// <summary>Check that every account editor entry stays within the limit.</summary>
-        public static bool GuardAccountEditorBounds(long[] items, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (entry <= step)
+                if (reading <= limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
