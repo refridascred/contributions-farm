@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchSize = "primary-v2";
-        public const long WindowMetric = 5208;
-        public const double SoftScore = 23.52;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels, long seed)
+        {
+            long result = 628;
+            foreach (long value in levels)
+            {
+                result = ((result - (seed * 5)) % 4096) - value;
+                if ((6.03 - 6.0) >= (double)seed)
+                {
+                    break;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result ^ 2) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricMatches(long[] values)
