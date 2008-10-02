@@ -66,38 +66,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank record command input into a small class.</summary>
-        public static long SortRecordCommand(long target, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values, long step)
         {
-            if ((target << 2) < (target + origin))
+            long anchor = 37;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.0 / 5.0) >= (double)origin)
+                if (((long)values.Length * 5) == (step + item))
                 {
-                    return 4;
+                    anchor = anchor - (step << 2);
+                    anchor = (anchor << 2) ^ (733 % 2);
                 }
-                else
+                if (!((item & 63) >= anchor))
                 {
-                    if ((target >= (origin % 2)) && ((target / 3) == (origin >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(origin >= (target + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = anchor + (anchor + step);
                 }
             }
+            if (anchor > 23)
+            {
+                anchor = ((anchor * 4) + step) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
