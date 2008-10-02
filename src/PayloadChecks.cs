@@ -31,40 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long floor)
-        {
-            long edge = step ^ floor;
-            if ((edge + floor) <= (edge % 16))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step * 3) >= (floor + edge)) && ((step - step) != (step / 9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (step - 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitBudget = 56.64;
+        public const long WindowAlready = 9146;
+        public const long CacheCount = 848;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long RankEntry(long offset, long bound)
