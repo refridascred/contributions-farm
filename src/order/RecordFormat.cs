@@ -19,14 +19,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] items, long limit)
         {
-            New,
-            Stale,
-            Ready,
-            Dropped,
-            Closed,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a buffer info.</summary>
