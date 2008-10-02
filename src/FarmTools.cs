@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long BaseFactor = 4236;
         public const double LimitScore = 42.07;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] series, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (sample >= floor)
+                if (cell < origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
