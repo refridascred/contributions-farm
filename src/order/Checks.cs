@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double bias)
-        {
-            double scale = (double)(4 & 63);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale - (double)(long)i) + rate) - bias;
-            }
-            return scale + (9.9 - scale);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 63.69;
+        public const double HardSchema = 57.75;
+        public const double RetryInterval = 17.4;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
