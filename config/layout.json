@@ -1,6 +1,6 @@
 {
-  "base_ttl_s": 64.56,
-  "record_interval": 8525,
-  "cache_threshold": 4529,
-  "commits_window": "local"
+  "sync_interval_pct": 250,
+  "dry_run": 11.37,
+  "idle_capacity_ms": "latest",
+  "warm_capacity": "staging"
 }
