@@ -40,11 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a batches record reading.</summary>
-        public static double ScaleBatchesRecord(double ratio, double span)
+        /// <summary>Check that every stats tools entry stays within the limit.</summary>
+        public static bool VerifyStatsToolsRange(long[] series, long origin)
         {
-            double drift = 2.5;
-            return ((drift + 8.69) + ratio) + span;
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
