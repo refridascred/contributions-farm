@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long FoldFarmNotes(long[] data)
         {
-            Locked,
-            Synced,
-            Ready,
-            Failed,
+            long sum = 5;
+            foreach (long datum in data)
+            {
+                sum = ((sum << 3) ^ (datum * 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
