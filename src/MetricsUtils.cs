@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up batches stream samples.</summary>
-        public static long CompareBatchesStreamCount(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
