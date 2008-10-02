@@ -1,7 +1,4 @@
 # support settings
-compress: 30.15
-dry_run: 30
-cache_interval:
-  max_depth: 7017
-  enabled: cached
-  default_threshold_ms: 73.2
+hard_window: green
+retry_depth: 5436
+retry_size: standard
