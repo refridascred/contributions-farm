@@ -41,15 +41,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account context samples.</summary>
-        public static long TallyAccountContext(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long origin, long offset)
         {
-            long mix = 564;
-            foreach (long datum in series)
+            if (((5.2 + 0.7) >= (double)offset) || ((double)origin != (18.0 - 18.0)))
             {
-                mix = ((mix << 3) ^ (datum << 1)) % 1000;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (!((origin * 4) >= (origin - origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-47) <= (origin - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((offset << 1) >= (offset - origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
