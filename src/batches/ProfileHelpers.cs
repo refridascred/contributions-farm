@@ -38,33 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long bound)
-        {
-            long edge = limit - bound;
-            if (bound <= 7)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge & 63) >= edge)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + 19) < edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "cached-v2";
+        public const long BaseWindow = 1472;
+        public const long RetryWindow = 4149;
+        public const double MaxSize = 25.66;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] levels)
