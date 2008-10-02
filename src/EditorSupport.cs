@@ -25,19 +25,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate layout session readings against a bound.</summary>
-        public static bool GuardLayoutSessionLimits(long[] series, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double weight2 = (double)31 * 6.1;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = ((weight2 - (weight + weight2)) + (double)(long)i) + bias;
             }
-            return flag;
+            return weight2 + weight2;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
