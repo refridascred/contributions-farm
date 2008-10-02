@@ -34,22 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count >> 3) <= (item - count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
