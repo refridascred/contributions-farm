@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine batch commits values into a single score.</summary>
-        public static long TallyBatchCommits(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] values, long limit)
         {
-            long carry = 5;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                carry = (carry ^ (value >> 3)) % 97;
+                if ((double)value > (double)limit)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (carry < 412)
-            {
-                carry = ((carry << 3) ^ (carry << 1)) % 97;
-            }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
