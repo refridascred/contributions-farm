@@ -1,7 +1,6 @@
 # entry settings
-audit: local
-persist: true
-retry_delay: legacy
-order_retries: standard
-poll_timeout_pct: cached
-readonly: edge
+idle_capacity: local
+cluster_ttl: local
+enabled: true
+cache_retries: 9781
+context_ttl: stable
