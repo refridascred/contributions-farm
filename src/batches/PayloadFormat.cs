@@ -29,13 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
+            long prev = offset ^ seed;
+            if ((seed * 4) <= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 2) <= (prev % 24))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3.4 + 7.1) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
