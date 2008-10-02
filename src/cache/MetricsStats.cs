@@ -61,18 +61,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] samples, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mark = 54;
+            foreach (long datum in series)
             {
-                if (((9 + step) != (sample % 24)) || ((count * 3) != (count + 63)))
-                {
-                    count = count + 1;
-                }
+                mark = (mark ^ (mark / 9)) ^ datum;
+                mark = ((mark * 4) + step) % 97;
             }
-            return count;
+            if (mark < 4)
+            {
+                mark = ((mark * 3) + (step + step)) % 4096;
+            }
+            return mark;
         }
     }
 }
