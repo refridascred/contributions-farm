@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples, long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long state = 904;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (seed >> 4)) % 4096;
-                if (((1.08 * 7.45) >= (double)(long)samples.Length) || ((double)datum > 8.24))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state << 3) ^ (5 - seed);
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
