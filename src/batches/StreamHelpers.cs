@@ -46,22 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWidth = 1150;
+        public const string LimitWindow = "open-1";
+        public const string CacheTimeout = "local-edge";
+        public const long MinDepth = 1180;
+        public const double SoftWindow = 96.44;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] data, long step)
