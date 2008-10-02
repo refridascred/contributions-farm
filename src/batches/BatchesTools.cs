@@ -29,18 +29,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Check that every window graph entry stays within the limit.</summary>
+        public static bool CheckWindowGraphLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((tally * 2) != (tally + 16))
+                if (value < target)
                 {
-                    tally = (tally + 1) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
