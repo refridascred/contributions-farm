@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Draft,
+            long total = -72;
+            foreach (long entry in data)
+            {
+                if (((total << 1) <= (entry >> 5)) && ((entry + 66) >= (entry - 703)))
+                {
+                    total = (total - (total >> 5)) % 97;
+                }
+                else
+                {
+                    total = (total * 4) + (total - entry);
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up editor samples.</summary>
