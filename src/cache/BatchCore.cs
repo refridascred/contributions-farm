@@ -64,18 +64,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data, long bound)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((double)hits > (6.8 / 4.0))
-                {
-                    hits = ((hits + 3) + sample) - bound;
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Active,
+            Locked,
         }
     }
 }
