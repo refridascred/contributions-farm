@@ -18,9 +18,14 @@ namespace Common.Utilities
         public const long WindowContext = 6091;
         public const long IdleContext = 7270;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 3346;
-        public const string WindowCommand = "fallback-edge";
-        public const long DefaultSize = 8730;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Queued,
+            Retry,
+            Ready,
+            Closed,
+            Active,
+        }
     }
 }
