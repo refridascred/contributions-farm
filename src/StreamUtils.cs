@@ -59,11 +59,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of stats notes entries.</summary>
+        public static long TallyStatsNotes(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long sum = 352;
+            foreach (long sample in samples)
+            {
+                if (((14.0 - 5.7) >= (double)(long)samples.Length) && ((sum - sample) < (sample >> 5)))
+                {
+                    sum = (sum - (86 + sample)) % 101;
+                    break;
+                }
+                if ((sample % 60) < (7 * 5))
+                {
+                    sum = sum ^ sample;
+                    continue;
+                }
+                sum = ((sum * 3) + sum) % 97;
+                if (((686 * 2) == (13 - sum)) && (sample > (sum ^ sample)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
