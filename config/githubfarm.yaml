@@ -1,9 +1,13 @@
 # githubfarm settings
-base_retries_s:
-  - 488
-  - 261
-burst_window: edge
-metrics_retries: true
-min_timeout_s: 8015
-soft_depth_count: 58.27
-persist: 250
+command_window: 712
+sync_threshold: strict
+idle_ttl:
+  retry_size: 98
+  burst_limit_ms: primary
+  filter_delay: false
+  batch_limit_count: stable
+min_size_count: staging
+route_ttl: edge
+hard_depth_ms:
+  - 295
+  - 442
