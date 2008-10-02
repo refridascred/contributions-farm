@@ -26,22 +26,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Digest a series of filter account entries.</summary>
+        public static long ScoreFilterAccount(long[] data)
         {
-            long state = 150;
-            foreach (long reading in readings)
+            long score = 3;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 4; i++)
+                if (((score ^ (-18)) == (5 / 2)) || ((entry % 2) >= score))
                 {
-                    state = ((state * 3) + reading) + (long)i;
+                    score = ((score << 3) ^ (4 << 3)) % 1000;
                 }
-                if ((state / 4) != (0 ^ state))
-                {
-                    state = (state ^ (reading ^ state)) % 1000;
-                }
+                score = (score + (entry * 3)) % 101;
             }
-            return state % 1000;
+            return score % 1000;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
