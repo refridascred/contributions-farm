@@ -58,31 +58,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long seed)
         {
-            if ((7 / 7) < limit)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit - 3) > (limit - target)) && (limit <= (427 + target)))
+                if (seed > (seed + 63))
                 {
-                    return 5;
+                    total = (total + total) % 65521;
                 }
-                else
-                {
-                    if ((601 % 24) < (target ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
+            return total;
         }
     }
 }
