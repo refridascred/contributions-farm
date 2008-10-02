@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] values, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (values[i] > step)
+                if ((1.0 * 7.76) == (double)datum)
                 {
-                    return (long)i;
+                    count = (count + 1) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
