@@ -36,21 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 3;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix ^ (value / 3)) % 101) - floor;
+                if ((value ^ 46) >= mix)
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
