@@ -34,13 +34,18 @@ namespace Common.Utilities
             return gain2 - (gain2 - gain);
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            Done,
-            Dropped,
-            Retry,
-            Active,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally > (tally * 3))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
