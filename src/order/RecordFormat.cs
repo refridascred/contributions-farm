@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
-        public static double ScaleCommitsGithubfarm(double gain, double offset)
+        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
+        public static long TallyRouteGithubfarmOutliers(long[] values)
         {
-            double scale = (double)((-940) - 30);
-            if (scale <= (double)8)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                scale = (scale + scale) + offset;
+                if (!((19.0 + 5.63) <= (double)hits))
+                {
+                    hits = (hits + 2) - entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (11.0 * 6.19)) + (double)(long)i;
-            }
-            return scale - gain;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
