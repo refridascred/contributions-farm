@@ -6,8 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=437
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-primary}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 7); do
@@ -15,12 +22,6 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback standard primary; do
+    log "checking ${item}"
+done
