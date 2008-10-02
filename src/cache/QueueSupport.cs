@@ -25,17 +25,11 @@ namespace Common.Utilities
         public const string MaxMetrics = "legacy";
         public const double LimitFactor = 2.98;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 297;
+        public const long HardCommits = 3089;
+        public const long BaseSize = 5237;
+        public const long SoftWidth = 7901;
+        public const long SoftCommits = 6591;
     }
 }
