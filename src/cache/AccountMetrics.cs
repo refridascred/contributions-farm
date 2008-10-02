@@ -66,11 +66,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 3.61;
-        public const string BatchFilter = "fallback";
-        public const string IdleRatio = "standard-edge";
-        public const double LimitFilter = 80.87;
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double span)
+        {
+            double weight = (double)73 / 7.0;
+            if (weight >= weight)
+            {
+                weight = ((weight + (double)5) + scale) - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - 1.93) + (double)(long)i;
+            }
+            return weight + (weight / 7.0);
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] data)
