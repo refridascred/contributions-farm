@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long seed)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a batch commits counter forward.</summary>
