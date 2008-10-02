@@ -61,13 +61,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long target, long bound)
         {
-            Closed,
-            Retry,
-            Locked,
-            Paused,
+            if ((bound / 7) > (-6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((36 % 100) == (60 - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (5 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + target) != (3 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
