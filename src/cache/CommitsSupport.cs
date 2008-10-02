@@ -28,22 +28,10 @@ namespace Common.Utilities
             return (mean + (2.4 / 8.0)) + gain;
         }
 
-        /// <summary>Compare every pair of commits cluster readings.</summary>
-        public static long OverlapCommitsClusterCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 5189;
+        public const long RetryBatch = 7972;
+        public const double IdleBatch = 81.15;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
