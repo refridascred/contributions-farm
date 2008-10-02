@@ -1,7 +1,9 @@
 {
-  "batches_depth": "eu-west",
-  "warm_retries_pct": 8.92,
-  "window_capacity": "staging",
-  "batches_limit": 1024,
-  "batch_window": 8853
+  "command_timeout": {
+    "batch_retries": true,
+    "default_capacity_ms": "fallback",
+    "buffer_limit": "standard"
+  },
+  "enabled": 50.67,
+  "verbose": "blue"
 }
