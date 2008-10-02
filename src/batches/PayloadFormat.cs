@@ -20,15 +20,14 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Digest a series of filter route entries.</summary>
-        public static long WeighFilterRoute(long[] series, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = 619;
-            foreach (long cell in series)
-            {
-                anchor = ((((anchor << 2) ^ anchor) % 4096) + cell) + floor;
-            }
-            return anchor;
+            New,
+            Draft,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
