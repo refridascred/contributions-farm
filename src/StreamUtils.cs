@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 69;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = ((sum << 3) ^ (datum + 239)) % 101;
+                sum = sum + 1;
+                if (7.4 > (double)datum)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum ^ (532 + datum)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Fold a list of route readings.</summary>
