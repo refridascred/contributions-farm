@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long CountFarmSchemaGaps(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((seen % 100) <= (seen % 64)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
