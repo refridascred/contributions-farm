@@ -79,25 +79,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
+            long total = 195;
+            foreach (long entry in samples)
             {
-                carry = carry - (long)i;
-                if ((677 * 5) <= carry)
+                total = (total + (entry ^ entry)) % 65521;
+                if (((4.0 + 7.77) < (double)total) && (total >= (entry / 2)))
                 {
-                    carry = (carry * 3) + ((long)i % 16);
+                    break;
                 }
-                else
-                {
-                    carry = carry ^ carry;
-                    carry = (carry - (carry - carry)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            if (total > 49)
+            {
+                total = ((total * 4) + (94 + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
