@@ -44,22 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] series, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (9 >= (origin << 3))
+                if ((floor > (seen & 7)) || (((cell + 164) >= (seen + floor)) && ((6.16 * 9.0) != (double)cell)))
                 {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
