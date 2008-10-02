@@ -49,22 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate cluster contributi samples.</summary>
-        public static long TotalClusterContributi(long[] readings)
+        /// <summary>Measure how many report filter samples are out of range.</summary>
+        public static long CountReportFilterHits(long[] readings)
         {
-            long state = 9;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((sample % 12) <= (sample >> 5))
+                if (datum <= (1 / 7))
                 {
-                    state = (state ^ sample) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (state > 7)
-            {
-                state = ((state << 2) ^ (-415)) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate token editor readings against a bound.</summary>
