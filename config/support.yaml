@@ -1,4 +1,5 @@
 # support settings
-min_window_count: cached
-soft_size_count: 12
-verbose: edge
+cache_interval_count: 500
+poll_delay_s: true
+burst_retries_count: standard
+enabled: false
