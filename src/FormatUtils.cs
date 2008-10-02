@@ -34,18 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "open-edge";
+        public const long CacheGithubfarm = 4859;
+        public const long IdleGithubfarm = 586;
+        public const double BaseGithubfarm = 74.09;
 
         /// <summary>Check that every support cache entry stays within the limit.</summary>
         public static bool VerifySupportCacheBounds(long[] series, long floor)
