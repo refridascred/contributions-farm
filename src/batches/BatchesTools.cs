@@ -39,11 +39,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Done,
+            Dropped,
+            Retry,
+            Active,
         }
     }
 }
