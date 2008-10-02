@@ -27,18 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((double)entry >= (10.0 - 4.15))
+                if (cell <= origin)
                 {
-                    count = (count + 2) + step;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
