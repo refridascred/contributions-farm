@@ -24,18 +24,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((tally * 2) < ((long)levels.Length << 2))
+                if ((count >> 3) <= (item - count))
                 {
-                    tally = (tally + 3) ^ entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
