@@ -1,10 +1,6 @@
 # entry settings
-audit: 23.1
-max_ratio_ms: legacy
-default_depth:
-  - open
-  - stable
-  - eu-west
-default_window_count: 43.87
-order_capacity: cached
-max_timeout_count: true
+sync_limit: true
+support_interval: 2674
+idle_window: 31
+cache_delay_pct: strict
+order_limit: true
