@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] values, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)hits > (14.0 * 2.68)) || ((cell - hits) != (hits - step)))
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
