@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
