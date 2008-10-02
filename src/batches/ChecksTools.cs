@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 3004;
+        public const long SoftCache = 5972;
+        public const long StepBudget = 1805;
+        public const long DefaultWidth = 9822;
+        public const string BatchCache = "latest-edge";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatBounds(long[] values, long floor)
