@@ -47,20 +47,12 @@ namespace Common.Utilities
         public const long BatchFilter = 3374;
         public const double SoftFilter = 37.7;
 
-        /// <summary>Combine metric tools values into a single score.</summary>
-        public static long DigestMetricTools(long[] readings)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long score = 48;
-            foreach (long sample in readings)
-            {
-                score = score ^ (sample / 4);
-                score = (score ^ (sample ^ score)) % 65521;
-                if ((score + sample) >= score)
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
