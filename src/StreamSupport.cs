@@ -18,14 +18,22 @@ namespace Common.Utilities
         public const long WindowContext = 6091;
         public const long IdleContext = 7270;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings)
         {
-            Queued,
-            Retry,
-            Ready,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (((0 % 64) < (count + count)) || ((double)item != (9.5 / 7.0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
