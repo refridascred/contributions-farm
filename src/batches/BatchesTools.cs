@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 458;
-        public const long IdleWidth = 5197;
-        public const long BatchInterval = 7531;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Draft,
+            Closed,
+            Stale,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Audit support notes readings against a rule.</summary>
         public static long AuditSupportNotesHits(long[] samples)
