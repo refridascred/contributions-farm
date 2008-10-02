@@ -33,17 +33,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] levels, long offset)
+        /// <summary>Combine report cache values into a single score.</summary>
+        public static long TotalReportCache(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 757;
+            foreach (long entry in readings)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + ((-61) & 63)) + entry;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
