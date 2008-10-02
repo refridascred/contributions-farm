@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 5;
-            foreach (long sample in readings)
-            {
-                if ((sample <= (result - sample)) && ((9.0 / 7.0) <= (double)result))
-                {
-                    result = (result ^ (sample + result)) % 1000;
-                }
-                else
-                {
-                    result = (result + result) % 101;
-                }
-            }
-            return result;
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Digest a series of session entries.</summary>
