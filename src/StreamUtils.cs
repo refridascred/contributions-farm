@@ -51,12 +51,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            Draft,
+            Failed,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the already state values.</summary>
