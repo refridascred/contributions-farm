@@ -65,9 +65,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxBudget = 30.97;
-        public const long MinLayout = 8559;
-        public const long BatchLayout = 1181;
+        /// <summary>Count window context pairs that satisfy a relation.</summary>
+        public static long MatchWindowContextCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
