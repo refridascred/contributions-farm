@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Active,
-            Failed,
-            Retry,
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
