@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Check that every already farm entry stays within the limit.</summary>
+        public static bool GuardAlreadyFarmLimits(long[] data, long offset)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Ready,
-            Synced,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stats state values.</summary>
