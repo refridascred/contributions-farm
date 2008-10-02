@@ -1,14 +1,12 @@
 {
-  "cache_depth": [142, 7],
-  "commits_size": 250,
-  "readonly": {
-    "verbose": 7663,
-    "already_delay": "standard",
-    "default_depth_ms": ["staging", "cached", "edge", "blue"],
-    "audit": "primary",
-    "max_window_count": false,
-    "idle_timeout_ms": "standard"
+  "min_capacity_pct": {
+    "notes_size": "latest",
+    "stream_interval": [260, 229],
+    "channel_threshold": "edge",
+    "min_retries": true
   },
-  "default_threshold_ms": 500,
-  "flush_interval_count": [18, 489, 44]
+  "strict": true,
+  "warm_ttl_pct": 4683,
+  "sync_threshold": 34,
+  "default_threshold_count": [292, 242, 463, 175]
 }
