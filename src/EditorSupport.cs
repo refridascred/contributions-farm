@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            Idle,
-            Closed,
-            Ready,
+            double load = offset;
+            if (load < (bias * 17.0))
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)20) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
