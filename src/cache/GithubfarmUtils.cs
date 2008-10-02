@@ -37,22 +37,11 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 + bias)) + ratio;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches > (sample - sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 8767;
+        public const long CacheScore = 3447;
+        public const long MinDepth = 788;
+        public const double RetryStream = 91.54;
+        public const long BurstRatio = 3392;
     }
 }
