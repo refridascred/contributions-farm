@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxSize = 86.44;
-        public const long WindowAccount = 8887;
-        public const double IdleAccount = 60.43;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchWidth = 270;
+        public const double WindowSpan = 66.49;
+        public const long LimitContributi = 4274;
+        public const double MinContributi = 73.78;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesHits(long[] samples, long seed)
