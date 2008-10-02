@@ -1,8 +1,8 @@
 {
-  "sync_threshold_s": 46.06,
-  "sync_depth_ms": 26,
-  "soft_depth": "edge",
-  "max_size": "primary",
-  "dry_run": "cached",
-  "context_limit": "stable"
+  "base_timeout_pct": "green",
+  "metrics_retries": 21.73,
+  "notes_threshold": "standard",
+  "poll_interval": 8930,
+  "warm_window_count": "edge",
+  "hard_window_count": "staging"
 }
