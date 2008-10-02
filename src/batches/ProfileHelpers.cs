@@ -83,11 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long mix = 40;
+            foreach (long sample in readings)
+            {
+                if (sample >= (sample ^ sample))
+                {
+                    mix = ((mix * 4) + (686 * 3)) % 1000;
+                }
+            }
+            if (mix > 37)
+            {
+                mix = (mix - 602) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
