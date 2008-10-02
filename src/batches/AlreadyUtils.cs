@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] levels, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!((6.0 - 13.0) >= (5.8 - 19.0)))
-                {
-                    hits = ((hits + 1) + entry) - offset;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
