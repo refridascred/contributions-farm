@@ -12,22 +12,13 @@ namespace Common.Utilities
             return (weight - (double)109) + span;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long score = 90;
-            foreach (long value in samples)
-            {
-                if (((step >> 2) <= 5) || ((value * 4) > 83))
-                {
-                    score = (score + value) % 65521;
-                }
-            }
-            if (score > 877)
-            {
-                score = (score - (724 & 255)) % 65521;
-            }
-            return score;
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate cache samples.</summary>
