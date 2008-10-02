@@ -60,11 +60,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 713;
-        public const string BurstCluster = "standard";
-        public const long SoftCluster = 4319;
-        public const double CacheCluster = 21.93;
-        public const long LimitCluster = 805;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin > (anchor ^ anchor)) && (anchor < (origin << 1)))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+                if (((origin + origin) >= origin) && (6 >= (anchor << 1)))
+                {
+                    anchor = (anchor ^ ((-263) + origin)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
