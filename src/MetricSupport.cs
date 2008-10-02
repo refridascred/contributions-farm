@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 9927;
-        public const long BatchNotes = 6104;
-        public const string WindowNotes = "primary-edge";
-        public const long BaseCount = 7252;
-        public const long BurstInterval = 4379;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Total { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Match up order batch samples.</summary>
         public static long PairOrderBatchCount(long[] series)
