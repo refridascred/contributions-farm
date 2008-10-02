@@ -1,12 +1,16 @@
 # entry settings
-cluster_delay: 250
-min_threshold_count:
-  stream_delay: 78.34
-  flush_size_pct: staging
-  min_ttl_pct: 6257
-  batch_timeout_pct: true
-cache_window:
-  - fallback
-  - stable
-  - latest
-  - strict
+audit: false
+base_threshold_count: true
+enabled:
+  base_limit:
+    - 309
+    - 482
+  strict: true
+  batch_size_pct: 8720
+  enabled: 56.07
+  warm_retries:
+    - 110
+    - 16
+    - 305
+    - 437
+  audit: legacy
