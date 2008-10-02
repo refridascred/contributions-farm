@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every metric layout entry stays within the limit.</summary>
+        public static bool GuardMetricLayoutBounds(long[] readings, long bound)
         {
-            Closed,
-            Done,
-            New,
-            Queued,
-            Retry,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
