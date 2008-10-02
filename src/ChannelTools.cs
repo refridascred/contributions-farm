@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long bound, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            if ((step + step) == (bound + 3))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (255 > (step * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound < 14.0) || ((0.5 + 11.0) < (double)step))
+                    if ((data[i] - data[j]) != 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 >> 4) > (step + step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
