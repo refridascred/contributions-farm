@@ -49,15 +49,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches githubfarm counter forward.</summary>
-        public static long SeriesBatchesGithubfarm(long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] data, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 18; i++)
+            long anchor = -3;
+            foreach (long cell in data)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                anchor = (((anchor * 4) + ((-394) ^ cell)) % 97) + offset;
+                anchor = anchor - (cell / 6);
+                anchor = (anchor ^ (2 % 2)) % 255;
             }
-            return mix;
+            return anchor % 65521;
         }
     }
 }
