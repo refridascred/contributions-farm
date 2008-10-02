@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double BatchInterval = 84.82;
         public const double StepChecks = 32.11;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Stale,
-            Pending,
-            Closed,
-            Queued,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the layout kind values.</summary>
