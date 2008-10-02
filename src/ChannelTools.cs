@@ -31,22 +31,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = 2;
-            foreach (long entry in data)
-            {
-                if ((14 + entry) > (74 ^ anchor))
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                if (4.09 < (double)entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Failed,
+            Locked,
+            Pending,
+            Paused,
+            Closed,
         }
     }
 }
