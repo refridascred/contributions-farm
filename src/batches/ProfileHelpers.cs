@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] samples, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double offset)
         {
-            long acc = 6;
-            foreach (long item in samples)
+            double rate = offset;
+            for (int i = 0; i < 7; i++)
             {
-                acc = acc + (item ^ acc);
-                if (acc > (736 + bound))
-                {
-                    acc = (acc + 671) % 101;
-                }
+                rate = ((rate + offset) + (double)(long)i) + gain;
             }
-            return acc;
+            return rate + 0.7;
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
