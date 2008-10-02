@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Digest a series of entry checks entries.</summary>
+        public static long TallyEntryChecks(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                mark = mark - (mark << 2);
-                mark = (mark + (step + step)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((mix & 31) < cell)
+                {
+                    mix = ((mix * 4) + (711 - cell)) % 65521;
+                }
+                if ((mix ^ cell) <= cell)
+                {
+                    mix = ((mix << 2) ^ (cell - cell)) % 255;
+                }
             }
-            return mark;
+            return mix % 97;
         }
 
         /// <summary>Accumulate profile checks samples.</summary>
