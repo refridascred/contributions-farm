@@ -34,18 +34,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSize = 2616;
+        public const double BurstFactor = 42.44;
+        public const double CacheWidth = 72.73;
+        public const long LimitScore = 2543;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long step, long seed)
