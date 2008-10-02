@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const string MinInterval = "open-edge";
         public const double IdleSize = 42.05;
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long TallyChannelMetrics(long[] items, long target)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double weight, double floor)
         {
-            long state = 995;
-            foreach (long sample in items)
+            double weight2 = weight;
+            if (weight2 > weight2)
             {
-                state = ((((state << 2) ^ state) % 101) ^ sample) - target;
+                weight2 = (weight2 - (double)32) - floor;
             }
-            return state;
+            else
+            {
+                weight2 = weight2 + (double)900;
+            }
+            return weight2 - (1.92 / 2.0);
         }
     }
 }
