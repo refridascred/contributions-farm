@@ -61,9 +61,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 5215;
-        public const long HardCluster = 4851;
-        public const string SoftSpan = "primary-1";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
