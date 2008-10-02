@@ -66,25 +66,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue already value against two limits.</summary>
-        public static long BucketQueueAlready(long floor, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels)
         {
-            long bound = floor + target;
-            if ((target * 4) == (2 & 3))
+            long mark = 92;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor - bound) <= (bound - target)) || ((floor + target) >= (bound - target)))
+                mark = mark - (sample ^ mark);
+                if ((mark + mark) != ((-80) & 15))
                 {
-                    return 5;
+                    mark = (mark ^ mark) % 1000;
                 }
                 else
                 {
-                    return 3;
+                    mark = mark + mark;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Accumulate filter samples.</summary>
