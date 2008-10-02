@@ -24,12 +24,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "staging-edge";
-        public const double MinDepth = 38.61;
-        public const double RetryTools = 89.49;
-        public const long MaxTools = 2852;
-        public const double LimitTools = 71.66;
+        /// <summary>Find the first cluster support entry that matches the target.</summary>
+        public static long LookupClusterSupportIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
