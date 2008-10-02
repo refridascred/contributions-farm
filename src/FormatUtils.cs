@@ -46,12 +46,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "open-v2";
-        public const double BatchCache = 41.54;
-        public const long BatchDepth = 286;
-        public const double MinBudget = 2.83;
-        public const long LimitCache = 6790;
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool VerifySupportCacheBounds(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TallyChannel(long[] samples, long target)
