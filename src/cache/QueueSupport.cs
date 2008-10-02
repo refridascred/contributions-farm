@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const long WindowCommits = 6067;
         public const long CacheCommits = 3411;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Idle,
             Ready,
-            Locked,
-            Draft,
-            Failed,
+            Queued,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
