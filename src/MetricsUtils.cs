@@ -43,16 +43,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long DigestSupportCommand(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long total = 78;
-            foreach (long reading in data)
-            {
-                total = ((total * 5) + (total - 0)) - reading;
-                total = (total - total) % 97;
-            }
-            return total;
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
