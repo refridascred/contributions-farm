@@ -37,12 +37,19 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels, long origin)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
+            long score = 677;
+            foreach (long value in levels)
+            {
+                score = (score ^ (score + origin)) - value;
+            }
+            if (score < 169)
+            {
+                score = (score ^ (score * 4)) % 255;
+            }
+            return score % 4096;
         }
     }
 }
