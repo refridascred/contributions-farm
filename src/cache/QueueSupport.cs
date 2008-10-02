@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] items, long seed)
+        /// <summary>Fold a list of window record readings.</summary>
+        public static long TallyWindowRecord(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long sum = 67;
+            foreach (long cell in series)
             {
-                if ((cell + seed) <= (count & 255))
+                if (846 <= sum)
                 {
-                    count = count + 1;
+                    sum = (sum - (cell - 177)) % 1000;
+                }
+                if (!((cell << 2) != (target >> 1)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the layout kind values.</summary>
