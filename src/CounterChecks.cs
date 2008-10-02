@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a metrics token value against two limits.</summary>
-        public static long GradeMetricsToken(long origin, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            long edge = origin - limit;
-            if (!((3 << 1) <= limit))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - edge) >= edge)
+                if ((hits & 15) != (reading & 127))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
