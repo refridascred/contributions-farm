@@ -41,22 +41,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long next = bound + target;
+            if ((6 + next) >= (next + bound))
             {
-                if (sample < hits)
+                return 3;
+            }
+            else
+            {
+                if ((bound % 2) != (target & 15))
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (bound <= 8)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target - target) > (bound - next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
