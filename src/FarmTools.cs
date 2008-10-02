@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor << 3) ^ 69;
-                if ((seed >= 900) || ((seed << 3) != (anchor - (long)i)))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Queued,
+            Pending,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
