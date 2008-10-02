@@ -27,18 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate session record samples.</summary>
-        public static long CombineSessionRecord(long[] samples)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            long state = 26;
-            foreach (long item in samples)
-            {
-                if (state <= ((-53) >> 3))
-                {
-                    state = ((state ^ (state + 679)) % 4096) ^ item;
-                }
-            }
-            return state % 97;
+            double ratio2 = (bias * 3.63) + bias;
+            return (ratio2 + (ratio2 + bias)) + ratio;
         }
 
         /// <summary>Accumulate filter samples.</summary>
