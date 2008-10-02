@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3582;
-        public const double SoftSize = 14.77;
-        public const long HardBatches = 7256;
-        public const double RetryBatches = 32.38;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate graph token samples.</summary>
         public static long DigestGraphToken(long[] samples)
