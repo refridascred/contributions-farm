@@ -58,15 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
