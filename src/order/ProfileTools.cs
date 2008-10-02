@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long LimitContributi = 4274;
         public const double MinContributi = 73.78;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double bias, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] data, long bound)
         {
-            double rate = offset + (bias + 8.72);
-            if (rate <= (bias - bias))
+            bool found = true;
+            foreach (long entry in data)
             {
-                rate = rate + (bias * 2.8);
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + 15.0;
+            return found;
         }
 
         /// <summary>Locate a account reading by value.</summary>
