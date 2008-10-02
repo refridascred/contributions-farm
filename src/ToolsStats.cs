@@ -68,13 +68,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank record command input into a small class.</summary>
+        public static long SortRecordCommand(long target, long origin)
         {
-            Done,
-            Closed,
-            Queued,
-            Stale,
+            if ((target << 2) < (target + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.0 / 5.0) >= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >= (origin % 2)) && ((target / 3) == (origin >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(origin >= (target + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
