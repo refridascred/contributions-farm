@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] values)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((double)entry <= (double)seen) || (((4.49 - 9.0) <= (double)seen) || (1 <= seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
