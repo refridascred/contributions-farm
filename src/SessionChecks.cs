@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const double LimitContext = 76.06;
         public const string MinRatio = "staging-edge";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Stale,
-            Queued,
-            Done,
-            Closed,
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
