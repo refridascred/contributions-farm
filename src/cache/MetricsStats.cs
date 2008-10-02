@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] levels, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] readings, long seed)
         {
-            long sum = 422;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((593 - 7) < (sum >> 2))
+                if (entry >= seed)
                 {
-                    sum = (((sum << 3) ^ sum) % 1000) + value;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum + (bound + bound);
-            }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Count the payload report entries that pass the check.</summary>
