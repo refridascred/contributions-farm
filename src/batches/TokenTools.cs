@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank token githubfarm input into a small class.</summary>
-        public static long RankTokenGithubfarm(long origin, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] series, long target)
         {
-            long diff = origin ^ step;
-            if (!((diff % 100) < diff))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((56 < diff) || ((double)origin > (0.78 / 8.0)))
+                if ((1.3 - 12.0) > (double)(long)series.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    matches = ((matches + 1) ^ cell) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine window values into a single score.</summary>
