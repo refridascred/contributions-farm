@@ -42,18 +42,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long seed)
         {
-            long total = 559;
-            foreach (long reading in levels)
+            long edge = limit + seed;
+            if (((limit >> 4) >= ((-471) + limit)) || ((limit >> 1) <= seed))
             {
-                if ((reading >> 4) < total)
+                return 0;
+            }
+            else
+            {
+                if (!((seed * 4) < edge))
                 {
-                    total = total + reading;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return total % 1000;
         }
     }
 }
