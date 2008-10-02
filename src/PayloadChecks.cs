@@ -86,21 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm stream samples.</summary>
-        public static long PairGithubfarmStreamCount(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 13)
+                    if ((levels[i] + levels[j]) != 18)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
