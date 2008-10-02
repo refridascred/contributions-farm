@@ -51,11 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
