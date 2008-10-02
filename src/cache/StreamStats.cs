@@ -51,19 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
-        public static bool VerifyMetricsSchemaBounds(long[] readings, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
     }
 }
