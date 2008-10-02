@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long limit)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] values, long target)
         {
-            if ((7.42 * 6.7) == (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step << 1) < limit) && (limit >= (step + 21)))
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + limit) > (limit * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
