@@ -34,10 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 1951;
-        public const double RetryTimeout = 33.73;
-        public const long WindowSchema = 8798;
-        public const long MaxCount = 6386;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstCommits = 94.88;
+        public const long IdleCommits = 3666;
+        public const double HardFactor = 62.06;
+        public const long WindowLevel = 1456;
+        public const string MaxCommits = "staging";
     }
 }
