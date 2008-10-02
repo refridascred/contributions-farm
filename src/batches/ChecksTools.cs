@@ -40,13 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] values, long floor)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
