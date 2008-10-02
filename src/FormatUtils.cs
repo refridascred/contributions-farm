@@ -39,18 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            long sum = 72;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((sum % 2) > (entry * 5)) || (target <= (sum << 1)))
+                if (tally > 628)
                 {
-                    sum = sum - (entry - entry);
+                    tally = (tally + 2) + cell;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank payload order input into a small class.</summary>
