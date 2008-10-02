@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long origin, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            long diff = origin + bound;
-            if ((bound - bound) < (diff - 14))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(((-47) - diff) == (origin & 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (origin << 3))
+                    if ((data[i] ^ data[j]) < 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((-5) < (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
