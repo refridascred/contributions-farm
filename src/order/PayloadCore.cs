@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            double bias2 = 0.3;
+            if (bias2 < gain)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                bias2 = bias2 - (0.29 - bias);
             }
-            return acc;
+            else
+            {
+                bias2 = bias2 + (9.6 / 7.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (double)587;
         }
 
         /// <summary>Hold a schema header.</summary>
