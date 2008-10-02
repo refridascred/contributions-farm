@@ -36,33 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long bound)
-        {
-            long prev = seed + bound;
-            if (((seed << 3) < (bound % 60)) || ((double)seed != (9.58 * 9.75)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)prev == (8.3 * 8.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (prev < (prev & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5081;
+        public const string SoftSchema = "local-edge";
+        public const long IdleSchema = 1899;
 
         /// <summary>Check that every account editor entry stays within the limit.</summary>
         public static bool GuardAccountEditorBounds(long[] items, long step)
