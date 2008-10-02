@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long WindowRatio = 8780;
         public const long HardSpan = 5447;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long offset)
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
