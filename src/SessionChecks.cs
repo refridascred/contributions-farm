@@ -36,20 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 5.51;
+        public const long HardSpan = 5846;
+        public const long DefaultGithubfarm = 8226;
+        public const string StepDepth = "local-v2";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
