@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const long WindowContext = 6091;
         public const long IdleContext = 7270;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] data, long offset)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long datum in data)
             {
-                if (((0 % 64) < (count + count)) || ((double)item != (9.5 / 7.0)))
+                if ((datum ^ offset) == (count - offset))
                 {
                     count = count + 1;
                 }
