@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const string BatchFilter = "staging";
         public const string CacheFilter = "fallback-edge";
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a session reading.</summary>
