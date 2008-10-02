@@ -16,21 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate batch entry samples.</summary>
