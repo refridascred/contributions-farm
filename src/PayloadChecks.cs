@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long WindowAlready = 9146;
         public const long CacheCount = 848;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long mix = 1;
+            foreach (long datum in data)
             {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (((mix * 5) + 9) ^ datum) - limit;
             }
-            return found;
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ (mix >> 1)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
