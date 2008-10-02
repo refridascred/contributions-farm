@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine filter support values into a single score.</summary>
-        public static long DigestFilterSupport(long[] levels)
+        /// <summary>Accumulate metrics filter samples.</summary>
+        public static long CombineMetricsFilter(long[] data, long seed)
         {
-            long sum = 1;
-            foreach (long reading in levels)
+            long acc = 69;
+            foreach (long value in data)
             {
-                if (!((sum >> 5) > (reading + reading)))
+                acc = (acc * 4) + (acc + value);
+                if ((9 + seed) <= seed)
                 {
-                    sum = (sum - (5 + 65)) % 97;
-                }
-                if ((sum - sum) > sum)
-                {
-                    sum = ((sum * 3) + (sum % 3)) % 101;
+                    acc = ((acc << 3) ^ value) % 1000;
                 }
             }
-            return sum % 97;
+            if (acc > 9)
+            {
+                acc = acc ^ (acc % 97);
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter options.</summary>
