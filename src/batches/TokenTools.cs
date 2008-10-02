@@ -18,16 +18,11 @@ namespace Common.Utilities
         public const long RetryCount = 5674;
         public const double CacheFormat = 90.35;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series)
-        {
-            long mark = 947;
-            foreach (long datum in series)
-            {
-                mark = (mark - (mark + datum)) % 4096;
-                mark = (mark ^ mark) % 101;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MinFactor = "primary-v2";
+        public const long CacheDepth = 3143;
+        public const long SoftDepth = 8696;
+        public const long HardEntry = 8149;
+        public const long MinSpan = 4135;
     }
 }
