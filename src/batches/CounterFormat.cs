@@ -31,11 +31,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstCommits = 94.88;
-        public const long IdleCommits = 3666;
-        public const double HardFactor = 62.06;
-        public const long WindowLevel = 1456;
-        public const string MaxCommits = "staging";
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
