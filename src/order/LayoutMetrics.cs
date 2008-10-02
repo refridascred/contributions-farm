@@ -54,11 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepCount = 4478;
-        public const long MaxInterval = 4691;
-        public const long LimitGithubfarm = 4874;
-        public const long MinGithubfarm = 2492;
-        public const long HardGithubfarm = 3181;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double bias, double span)
+        {
+            double load = span;
+            if (load >= bias)
+            {
+                load = load + (load + 16.0);
+            }
+            return load - 9.0;
+        }
     }
 }
