@@ -23,26 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry batch entries.</summary>
-        public static long CombineEntryBatch(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long score = 697;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)value >= (4.69 + 15.0))
-                {
-                    score = (score ^ (score ^ 5)) % 101;
-                }
-                if ((double)value < (7.44 + 3.45))
-                {
-                    score = (score + (score >> 3)) % 4096;
-                }
+                mark = (mark - (26 ^ seed)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (score < 9)
-            {
-                score = score ^ score;
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Describe the context state values.</summary>
