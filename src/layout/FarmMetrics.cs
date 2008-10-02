@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Measure how many githubfarm queue samples are out of range.</summary>
-        public static long TallyGithubfarmQueueOutliers(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((matches % 97) <= (entry % 97))
+                if (((long)values.Length << 1) <= 2)
                 {
-                    matches = matches + 3;
+                    hits = ((hits + 2) + value) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
