@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleLevel = 8167;
-        public const string BurstChecks = "staging-edge";
-        public const long DefaultChecks = 4130;
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long offset, long target)
+        {
+            if (target > (offset / 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target * 2) >= (target - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-15) * 5) <= (offset + 92))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long ScoreRecord(long[] readings)
