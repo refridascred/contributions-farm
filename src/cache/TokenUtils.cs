@@ -20,11 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 79.88;
-        public const long LimitLevel = 4687;
-        public const double IdleProfile = 91.68;
-        public const string MaxScore = "standard-v2";
+        /// <summary>Grade a notes order value against two limits.</summary>
+        public static long RankNotesOrder(long origin, long target)
+        {
+            if ((532 + origin) < target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-506) <= (target + origin)) && (origin >= (target >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((10 % 3) > (origin - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + 405) <= (target ^ (-327)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportOutliers(long[] samples, long seed)
