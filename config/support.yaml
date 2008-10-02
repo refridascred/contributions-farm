@@ -1,4 +1,7 @@
 # support settings
-soft_size_pct: staging
-audit: false
-flush_capacity_ms: false
+hard_retries: 39.6
+flush_depth_pct:
+  - 446
+  - 470
+  - 289
+hard_ttl: 9
