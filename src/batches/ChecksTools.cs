@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long target, long target2)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples, long limit)
         {
-            if ((target / 9) > (target2 + target))
+            long state = -261;
+            foreach (long cell in samples)
             {
-                return 0;
+                state = (state << 3) ^ (cell + limit);
             }
-            else
-            {
-                if (target2 >= (target2 >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
