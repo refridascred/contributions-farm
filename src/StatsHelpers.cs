@@ -48,22 +48,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long TallyPayloadEntryOutliers(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 83;
+            foreach (long datum in series)
             {
-                if (!((7 & 3) < seen))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc ^ (173 - acc)) ^ datum) - seed;
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
