@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSpan = 1514;
-        public const double LimitSupport = 50.17;
-        public const long HardLevel = 53;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] data)
