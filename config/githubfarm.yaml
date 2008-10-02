@@ -1,25 +1,9 @@
 # githubfarm settings
-max_delay_s: false
-profile_capacity: true
-checks_size: false
-tools_ratio:
-  session_size:
-    - fallback
-    - staging
-  base_delay:
-    - 200
-    - 427
-  retry_capacity: true
-  max_retries_ms:
-    strict: 80.73
-    report_retries: green
-    tools_ratio: false
-    verbose: local
-    metric_timeout: 5.09
-    schema_window:
-      - eu-west
-      - fallback
-      - cached
-  githubfarm_depth: 1.71
-  warm_delay_count: 3.69
-burst_timeout: 75
+max_capacity_pct: 66.2
+channel_ttl: 91
+counter_ratio:
+  - 341
+  - 462
+commits_ratio: 76.22
+burst_size: 9.89
+batches_retries: standard
