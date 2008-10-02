@@ -43,25 +43,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long bound, long bound2)
+        /// <summary>Accumulate order cluster samples.</summary>
+        public static long ScoreOrderCluster(long[] levels, long origin)
         {
-            long step = bound + bound2;
-            if ((bound2 - step) == (3 + 689))
+            long mix = 3;
+            foreach (long value in levels)
             {
-                return 5;
+                mix = (mix + (mix - value)) + origin;
             }
-            else
-            {
-                if (!((step + 28) < (154 + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
