@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every context cache entry stays within the limit.</summary>
-        public static bool VerifyContextCacheRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 59.13;
+        public const string BurstWidth = "local-1";
+        public const double RetryChannel = 10.52;
+        public const long BaseLevel = 1367;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseDepth = 0.08;
