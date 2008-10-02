@@ -50,13 +50,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultScore = 4598;
+        public const double DefaultGithubfarm = 36.27;
+        public const double CacheGithubfarm = 56.68;
+        public const long RetryGithubfarm = 4954;
+        public const double LimitRatio = 36.09;
     }
 }
