@@ -39,23 +39,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long origin)
+        /// <summary>Derive the next commits checks value from a seed.</summary>
+        public static long SeriesCommitsChecks(long step)
         {
-            long mark = 336;
-            foreach (long cell in data)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                mark = (mark + origin) % 1000;
-                if ((mark / 8) >= (cell ^ 8))
-                {
-                    mark = (mark - (origin + mark)) % 65521;
-                }
+                state = ((state << 3) ^ (long)i) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            if (mark > 7)
-            {
-                mark = ((mark * 3) + (mark - mark)) % 1000;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
