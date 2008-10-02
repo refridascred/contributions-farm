@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 63.69;
-        public const double HardSchema = 57.75;
-        public const double RetryInterval = 17.4;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
