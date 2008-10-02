@@ -36,22 +36,12 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Count layout already pairs that satisfy a relation.</summary>
-        public static long MatchLayoutAlreadyCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinOrder = 98.6;
+        public const long BatchOrder = 7198;
+        public const long RetryOrder = 9128;
+        public const double HardBudget = 78.46;
+        public const string BaseOrder = "stable";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long TallyCommitsHits(long[] readings)
