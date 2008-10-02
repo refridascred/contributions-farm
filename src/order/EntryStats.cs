@@ -46,32 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long limit)
-        {
-            long cur = floor + limit;
-            if ((floor ^ cur) <= (floor % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((56 - (-61)) != (floor + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 1) >= (floor << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseDepth = 1879;
+        public const long RetryContext = 1339;
+        public const long LimitContext = 719;
+        public const string BatchContext = "cached-v2";
+        public const long CacheDepth = 1795;
     }
 }
