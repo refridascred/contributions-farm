@@ -58,21 +58,18 @@ namespace Common.Utilities
         public const long RetrySpan = 4996;
         public const double CacheTimeout = 3.38;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((reading + count) > 7) || ((-909) < (reading / 6))))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
