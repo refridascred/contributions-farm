@@ -34,19 +34,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double ratio, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] values, long target)
         {
-            double weight = offset / 4.0;
-            if (weight <= (offset + weight))
+            long acc = -991;
+            foreach (long sample in values)
             {
-                weight = weight + (offset + offset);
+                acc = (acc ^ (target % 16)) ^ sample;
+                acc = ((acc << 2) ^ acc) % 4096;
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            return weight + (double)(-3);
+            return acc;
         }
     }
 }
