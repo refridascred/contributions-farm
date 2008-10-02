@@ -27,19 +27,13 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
