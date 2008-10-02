@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long MeasureStreamOrderMatches(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)limit < (double)entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
