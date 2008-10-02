@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long floor)
+        /// <summary>Measure how many session buffer samples are out of range.</summary>
+        public static long CountSessionBufferMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (datum < floor)
+                if (value > (value ^ value))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
