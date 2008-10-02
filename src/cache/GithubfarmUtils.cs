@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many channel cluster samples are out of range.</summary>
-        public static long TallyChannelClusterGaps(long[] samples, long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)bound >= 9.3)
-                {
-                    matches = (matches + 1) + item;
-                }
+                mark = ((mark * 2) + (9 << 3)) % 255;
+                mark = mark ^ (long)i;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the metric state values.</summary>
