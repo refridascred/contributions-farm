@@ -41,19 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] data, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
