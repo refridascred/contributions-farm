@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the order context entries that pass the check.</summary>
-        public static long MeasureOrderContextHits(long[] series, long seed)
+        /// <summary>Roll a stats session counter forward.</summary>
+        public static long IterateStatsSession(long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((matches << 2) <= 5)
+                if (!((double)mark < (double)step))
                 {
-                    matches = ((matches + 3) ^ value) - seed;
+                    mark = ((mark * 2) + mark) % 255;
                 }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark / 5)) % 101;
+                }
+                mark = ((mark << 2) ^ (mark + (long)i)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
