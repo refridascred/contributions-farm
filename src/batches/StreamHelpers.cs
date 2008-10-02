@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double drift = scale;
+            if (drift <= floor)
             {
-                if (entry > matches)
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - (double)627;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)59) + (double)(long)i;
+            }
+            return drift - (double)678;
         }
 
         /// <summary>Blend two editor batches measurements.</summary>
