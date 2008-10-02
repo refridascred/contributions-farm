@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = -700;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum - 6) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                carry = (carry - (sample - carry)) % 97;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
