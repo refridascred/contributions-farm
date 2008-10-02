@@ -67,38 +67,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long target, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            if ((13.0 / 4.0) <= (double)target)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                score = score + (score + 64);
+                score = (score ^ (floor - floor)) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed ^ seed) < (seed + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed - 2) >= (target >> 2)) || ((57 % 2) < target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5.8 + 6.3) >= (5.17 - 3.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
