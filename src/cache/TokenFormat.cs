@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double scale = (double)(17 ^ 9);
-            if (scale < floor)
-            {
-                scale = (scale + (floor - 9.0)) + gain;
-            }
-            return scale + (double)74;
+            Locked,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
