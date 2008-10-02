@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            Active,
-            Synced,
-            Stale,
+            long score = 144;
+            foreach (long datum in values)
+            {
+                score = (score + (score << 2)) + datum;
+            }
+            if (score > 2)
+            {
+                score = score ^ (score % 64);
+            }
+            return score;
         }
     }
 }
