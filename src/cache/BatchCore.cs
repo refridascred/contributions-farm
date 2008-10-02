@@ -15,11 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 16.24;
-        public const long BatchRoute = 5950;
-        public const long WindowSpan = 5941;
-        public const long LimitRoute = 3159;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 7696;
+        public const long LimitScore = 6815;
+        public const long WindowSize = 413;
+        public const long BaseTimeout = 8103;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
