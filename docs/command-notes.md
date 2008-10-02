@@ -1,10 +1,12 @@
 # Command notes
 
-When a channel fails, the notes handler retries a few times before giving up.
-When a report fails, the notes handler retries a few times before giving up.
+The already report groups every token by order.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the cache check before changing any cluster limits.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate batch input early
-- Document new checks fields
+- Review counter limits each release
+- Keep githubfarm values small
+- Document new schema fields
+- Validate metrics input early
