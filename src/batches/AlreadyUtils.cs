@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 2699;
+        public const double RetryInterval = 30.9;
+        public const long WindowDepth = 876;
+        public const double CacheFactor = 16.9;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitTimeout = 2098;
