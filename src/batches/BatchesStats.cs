@@ -27,18 +27,18 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] items)
         {
-            long total = -142;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!((227 - sample) == (sample - total)))
+                if (!(((0.1 + 5.1) <= 7.2) && ((98 & 31) <= (hits - item))))
                 {
-                    total = ((total << 3) ^ (total % 5)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
