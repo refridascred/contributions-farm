@@ -34,19 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long offset)
         {
-            long anchor = 21;
-            foreach (long entry in series)
+            long cur = bound + offset;
+            if (bound > (bound - offset))
             {
-                anchor = anchor ^ anchor;
-                if (((double)anchor == (double)82) && ((entry + anchor) <= (anchor << 1)))
+                return 4;
+            }
+            else
+            {
+                if (((double)offset != (7.99 - 17.0)) || ((cur + (-203)) >= bound))
                 {
-                    anchor = ((anchor * 3) + anchor) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound < (1.0 - 5.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((cur - offset) != (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
