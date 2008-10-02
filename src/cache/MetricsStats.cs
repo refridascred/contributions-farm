@@ -23,12 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the payload report entries that pass the check.</summary>
+        public static long TallyPayloadReportGaps(long[] values)
         {
-            Queued,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) >= (reading ^ reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the profile phase values.</summary>
