@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            if (bound > (origin ^ 5))
+            double load = (bias - rate) - (double)(-362);
+            if (load > (double)97)
             {
-                return 1;
+                load = load - (rate - rate);
             }
-            else
-            {
-                if (!(290 > (origin + origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((18.0 / 7.0) > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((2.52 - 7.0) >= (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return load - rate;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
