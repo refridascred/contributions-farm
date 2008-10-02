@@ -20,17 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (readings[i] > target)
+                if (!((double)item > (double)35))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
