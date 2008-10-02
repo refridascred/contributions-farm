@@ -16,20 +16,12 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long limit)
-        {
-            long sum = 534;
-            foreach (long cell in readings)
-            {
-                sum = (sum << 2) ^ (cell - sum);
-            }
-            if (sum < 3)
-            {
-                sum = ((sum * 3) + (limit - limit)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 408;
+        public const long MinWidth = 6218;
+        public const string IdleCluster = "latest";
+        public const long MaxCluster = 5543;
+        public const string BaseBudget = "cached";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountRange(long[] data, long step)
