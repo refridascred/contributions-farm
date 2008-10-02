@@ -53,13 +53,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Blend two counter token measurements.</summary>
+        public static double SmoothCounterToken(double scale, double bias)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Pending,
+            double scale2 = (double)(60 + 42);
+            if (scale2 < (scale2 * 2.3))
+            {
+                scale2 = ((scale2 + 7.84) - scale) - bias;
+            }
+            return scale2 - (double)42;
         }
     }
 }
