@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            Active,
-            Closed,
-            Paused,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (hits >= (hits >> 4))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema contributi values into a single score.</summary>
