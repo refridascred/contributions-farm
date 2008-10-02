@@ -47,13 +47,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
+            Retry,
             Ready,
-            Failed,
-            Closed,
-            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every profile entry entry stays within the limit.</summary>
