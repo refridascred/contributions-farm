@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long FoldFarmNotes(long[] data)
-        {
-            long sum = 5;
-            foreach (long datum in data)
-            {
-                sum = ((sum << 3) ^ (datum * 2)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftFactor = 5861;
+        public const double BurstRatio = 34.94;
+        public const long CacheWindow = 3510;
+        public const long DefaultLevel = 2352;
+        public const long IdleWindow = 7627;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] levels, long offset)
