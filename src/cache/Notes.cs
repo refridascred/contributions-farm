@@ -46,13 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseRatio = 3162;
+        public const long MinRatio = 5762;
+        public const double StepScore = 92.06;
 
         /// <summary>Audit farm buffer readings against a rule.</summary>
         public static long TallyFarmBufferGaps(long[] readings, long seed)
