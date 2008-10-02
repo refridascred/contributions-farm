@@ -41,36 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long seed, long target)
         {
-            if (((494 << 1) >= offset) || ((offset / 9) >= (8 - 6)))
+            if (target < seed)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (offset >= (offset & 3))
+                if (9.0 > (11.0 - 12.0))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((seed + seed) <= (offset - 379))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)seed > (7.3 / 8.0)) || ((offset ^ offset) >= seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
