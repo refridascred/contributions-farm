@@ -62,19 +62,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 664;
+        public const string RetryRatio = "stable-v2";
+        public const long BaseSize = 1854;
     }
 }
