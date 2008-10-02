@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 4521;
-        public const long StepLevel = 9458;
-        public const string MaxBuffer = "fallback-1";
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportLimits(long[] items, long origin)
