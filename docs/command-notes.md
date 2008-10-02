@@ -1,15 +1,14 @@
 # Command notes
 
-The commits module keeps report values in sync with the metric cache.
-Each support is validated before it reaches the checks queue.
-Use batches settings to tune how often support data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
+Each metrics is validated before it reaches the checks queue.
 
-Use token settings to tune how often batches data is refreshed.
-A filter that stays idle for too long is moved to the channel list.
+The record module keeps payload values in sync with the batch cache.
+Keep command and checks names short and lowercase.
 
 ## Guidelines
 
-- Log every queue change
+- Log every route change
+- Validate already input early
 - Keep support values small
-- Review schema limits each release
-- Document new filter fields
+- Document new cache fields
