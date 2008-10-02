@@ -40,21 +40,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = ((sum << 2) ^ (long)i) % 65521;
+                if ((sum <= origin) && ((origin - (long)i) > (sum << 1)))
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - 103) % 97;
+                    sum = (sum ^ (sum * 2)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine counter metric values into a single score.</summary>
