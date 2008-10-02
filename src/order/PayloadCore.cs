@@ -20,25 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels, long floor)
         {
-            long gap = seed + bound;
-            if ((double)gap <= (6.86 / 7.0))
+            long score = 14;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound > (20.0 + 2.02)) && ((884 << 1) <= (bound + 26)))
+                if (score >= (value % 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    score = ((score + value) % 65521) + floor;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Match up checks samples.</summary>
