@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            double rate = 17.0;
+            return (rate - (weight * 6.0)) + offset;
         }
 
         /// <summary>Describe the route status values.</summary>
