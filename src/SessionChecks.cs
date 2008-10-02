@@ -24,11 +24,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 5.51;
-        public const long HardSpan = 5846;
-        public const long DefaultGithubfarm = 8226;
-        public const string StepDepth = "local-v2";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Done,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
