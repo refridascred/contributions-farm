@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] samples, long step)
+        /// <summary>Count the filter editor entries that pass the check.</summary>
+        public static long MeasureFilterEditorHits(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (item != step)
+                if ((582 + sample) != (sample + sample))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
