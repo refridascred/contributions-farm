@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] readings, long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen < (cell % 24))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - step;
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
