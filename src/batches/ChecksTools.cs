@@ -53,14 +53,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] samples, long origin)
         {
-            Retry,
-            Idle,
-            Done,
-            Paused,
-            Failed,
+            long score = 7;
+            foreach (long value in samples)
+            {
+                score = (score ^ (origin >> 4)) - value;
+                score = (score + 69) % 1000;
+            }
+            if (score < 47)
+            {
+                score = score ^ origin;
+            }
+            return score;
         }
     }
 }
