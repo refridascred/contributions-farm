@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long AuditTokenAccountGaps(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((seen >> 3) != ((long)values.Length << 2)) || ((68 / 9) < (seen + 49))) || ((seen & 63) <= (reading * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
