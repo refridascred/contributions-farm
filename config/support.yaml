@@ -1,6 +1,5 @@
 # support settings
-soft_timeout_count: false
-base_capacity: primary
-warm_delay_s: standard
-flush_limit_s: 26.87
-sync_delay: false
+dry_run: 47
+audit: edge
+base_limit_count: true
+batch_window_pct: 490
