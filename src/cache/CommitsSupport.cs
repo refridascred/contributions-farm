@@ -55,11 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double scale = (16.0 - offset) - bias;
-            return scale + offset;
+            Done,
+            Active,
+            New,
         }
 
         /// <summary>Audit tools layout readings against a rule.</summary>
