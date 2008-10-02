@@ -1,7 +1,7 @@
 {
-  "enabled": "legacy",
-  "hard_delay_ms": [157, 343],
-  "flush_capacity": "eu-west",
-  "metrics_delay": 500,
-  "batch_size": "edge"
+  "hard_ratio_count": 2679,
+  "token_ratio": [136, 309],
+  "record_ratio": 26.84,
+  "batch_capacity_s": 85,
+  "hard_threshold_pct": 52
 }
