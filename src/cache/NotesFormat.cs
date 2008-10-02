@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next checks farm value.</summary>
-        public static double SmoothChecksFarm(double gain, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long target)
         {
-            double bias = (double)(737 - 82);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias + floor) - (double)(long)i) - gain;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)901;
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
