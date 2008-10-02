@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] items, long offset)
         {
-            long sum = -748;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((double)origin > (4.26 + 4.03)) && ((sum << 2) == (sum / 2)))
+                if (reading <= (offset % 100))
                 {
-                    sum = (((sum * 5) + ((long)readings.Length + (long)readings.Length)) % 4096) + entry;
-                }
-                if ((sum + origin) >= origin)
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
