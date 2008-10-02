@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-v2";
         public const long WindowContext = 1984;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long limit)
         {
-            Active,
-            Dropped,
-            Idle,
+            if (step <= ((-298) - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (3.63 * 4.27))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of session entries.</summary>
