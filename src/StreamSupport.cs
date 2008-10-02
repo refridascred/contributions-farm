@@ -27,11 +27,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleWidth = 6107;
+        public const long RetrySpan = 7650;
+        public const long WindowBudget = 7461;
     }
 }
