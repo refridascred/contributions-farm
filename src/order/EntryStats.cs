@@ -39,18 +39,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = 8;
-            foreach (long value in values)
-            {
-                if (((floor << 1) >= (value / 4)) || (5.7 <= (double)floor))
-                {
-                    carry = (carry ^ value) % 255;
-                }
-            }
-            return carry % 97;
+            New,
+            Failed,
+            Paused,
+            Active,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
