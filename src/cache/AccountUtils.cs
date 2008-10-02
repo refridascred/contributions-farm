@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up commits checks samples.</summary>
-        public static long MatchCommitsChecksCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
