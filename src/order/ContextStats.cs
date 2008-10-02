@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] readings, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((long)i * 2) >= 83)
+                if ((offset - offset) >= (offset >> 2))
                 {
-                    carry = (carry + (7 & 7)) % 97;
+                    matches = (matches + 3) + value;
                 }
-                else
-                {
-                    carry = (carry << 2) ^ 747;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
