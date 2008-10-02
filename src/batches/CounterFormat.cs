@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout commits values into a single score.</summary>
-        public static long ScoreLayoutCommits(long[] samples)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                result = ((result << 3) ^ value) % 65521;
-            }
-            return result;
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
