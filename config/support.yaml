@@ -1,4 +1,9 @@
 # support settings
-cache_depth: cached
-cache_interval_ms: edge
-audit: open
+dry_run: 63
+default_ttl:
+  sync_window: 46
+  warm_ttl_s: true
+  soft_ttl: 1024
+  max_capacity_s: 38.46
+sync_size: false
+flush_retries: 6917
