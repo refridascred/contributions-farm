@@ -33,24 +33,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long floor, long bound)
+        /// <summary>Validate farm counter readings against a bound.</summary>
+        public static bool ValidateFarmCounterRange(long[] samples, long bound)
         {
-            if (((bound * 4) >= (floor / 2)) && ((bound - floor) >= (bound * 5)))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound - floor) > (bound & 7)))
+                if (reading <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
