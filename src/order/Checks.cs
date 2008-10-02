@@ -34,19 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stream notes entry stays within the limit.</summary>
-        public static bool CheckStreamNotesBounds(long[] samples, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long anchor = 834;
+            foreach (long reading in samples)
             {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (((anchor ^ (anchor % 24)) % 4096) ^ reading) + step;
             }
-            return flag;
+            if (anchor < 3)
+            {
+                anchor = (anchor + (anchor - 55)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the notes mode values.</summary>
