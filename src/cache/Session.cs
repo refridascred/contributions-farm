@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - ((long)i / 6)) - (long)i2;
-                }
-                result = (result ^ (long)i) % 101;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
