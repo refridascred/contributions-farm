@@ -25,10 +25,10 @@ namespace Common.Utilities
         public const long WindowSize = 413;
         public const long BaseTimeout = 8103;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCount = 1189;
-        public const long HardCommand = 924;
-        public const string IdleCommand = "fallback-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 6899;
+        public const string SoftDepth = "standard-edge";
+        public const long HardGraph = 7763;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long limit)
