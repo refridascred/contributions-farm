@@ -12,17 +12,35 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 711;
+            foreach (long cell in series)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    acc = ((acc - (acc << 2)) % 65521) ^ (long)i;
+                }
+                if ((bound ^ 496) <= (26 + cell))
+                {
+                    acc = acc ^ (bound << 3);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + (acc / 8)) % 97;
+                }
+                if ((cell + bound) >= (acc - bound))
+                {
+                    acc = ((acc << 3) ^ acc) % 1000;
                 }
             }
-            return -1;
+            if (acc < 27)
+            {
+                acc = (acc - (acc % 60)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine report cache values into a single score.</summary>
