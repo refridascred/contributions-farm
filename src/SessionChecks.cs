@@ -33,19 +33,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((7.43 + 4.5) == (double)cell)
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftBudget = 5692;
+        public const double LimitContext = 76.06;
+        public const string MinRatio = "staging-edge";
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] levels, long target)
