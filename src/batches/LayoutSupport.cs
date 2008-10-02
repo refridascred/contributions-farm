@@ -23,14 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long seed)
         {
-            Locked,
-            Queued,
-            Done,
-            Dropped,
-            Ready,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
