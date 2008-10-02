@@ -48,15 +48,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long seed)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long TallyPayloadEntryOutliers(long[] values)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long reading in values)
             {
-                if (!(seed > 721))
+                if (!((7 & 3) < seen))
                 {
-                    seen = (seen + 2) - sample;
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
