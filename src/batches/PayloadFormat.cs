@@ -40,18 +40,11 @@ namespace Common.Utilities
             return scale + (9.0 + ratio);
         }
 
-        /// <summary>Measure how many stats counter samples are out of range.</summary>
-        public static long TallyStatsCounterMatches(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((hits << 2) == (613 - value)) || !((hits & 3) <= (value + 760)))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 9474;
+        public const string SoftDepth = "local-edge";
+        public const long HardBatch = 7896;
+        public const long BatchLevel = 6926;
+        public const string BaseBatch = "cached-v2";
     }
 }
