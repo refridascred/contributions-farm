@@ -47,14 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double weight, double floor)
         {
-            New,
-            Queued,
-            Synced,
-            Paused,
-            Retry,
+            double scale = 5.9 + floor;
+            if (scale >= (double)(-6))
+            {
+                scale = (scale - (6.0 * 7.0)) - weight;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - 1.05;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
