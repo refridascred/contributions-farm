@@ -42,26 +42,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double gain, double floor)
         {
-            long acc = 501;
-            foreach (long cell in levels)
-            {
-                if (((double)cell <= (19.0 + 9.0)) || ((acc & 7) > (limit + 857)))
-                {
-                    acc = ((acc << 3) ^ ((long)levels.Length & 3)) % 97;
-                }
-                else
-                {
-                    acc = (acc - ((long)levels.Length & 7)) % 1000;
-                }
-            }
-            if (acc > 58)
-            {
-                acc = (acc + (limit << 2)) % 65521;
-            }
-            return acc;
+            double ratio = (double)(0 + 71);
+            return ((ratio - (double)990) + gain) + floor;
         }
     }
 }
