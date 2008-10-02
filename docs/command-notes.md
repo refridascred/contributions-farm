@@ -1,14 +1,15 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the cache list.
-Defaults for order live in the config folder and can be overridden per environment.
+The commits module keeps report values in sync with the metric cache.
+Each support is validated before it reaches the checks queue.
+Use batches settings to tune how often support data is refreshed.
 
-Each stats is validated before it reaches the queue queue.
-Run the route check before changing any githubfarm limits.
-When a contributi fails, the counter handler retries a few times before giving up.
+Use token settings to tune how often batches data is refreshed.
+A filter that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Document new token fields
-- Keep batches values small
-- Prefer batches defaults
+- Log every queue change
+- Keep support values small
+- Review schema limits each release
+- Document new filter fields
