@@ -27,20 +27,18 @@ namespace Common.Utilities
             return bias + (span / 8.0);
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            long carry = 2;
-            foreach (long sample in readings)
+            long mark = 198;
+            foreach (long sample in values)
             {
-                long hits = carry;
-                if ((carry >> 1) != ((long)readings.Length + hits))
+                if (((double)sample > 3.0) && (((long)values.Length << 1) > 1))
                 {
-                    hits = (hits + (57 & 3)) + sample;
+                    mark = (mark ^ seed) % 4096;
                 }
-                carry = (carry + (carry & 15)) % 4096;
             }
-            return carry % 4096;
+            return mark % 97;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
