@@ -49,11 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardWidth = 4331;
-        public const long BatchFilter = 7068;
-        public const long StepFilter = 6557;
-        public const long DefaultFilter = 9783;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] data, long offset)
