@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((-12) * 3) <= seen)
-                {
-                    seen = ((seen + 1) - cell) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 6596;
+        public const string DefaultWidth = "local-1";
+        public const string MaxLayout = "open-1";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long origin)
