@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items)
+        /// <summary>Measure how many channel cluster samples are out of range.</summary>
+        public static long TallyChannelClusterGaps(long[] samples, long bound)
         {
             long matches = 0;
-            foreach (long datum in items)
+            foreach (long item in samples)
             {
-                if ((((0.43 - 6.73) > (double)matches) || ((matches - matches) < (datum & 7))) || ((datum << 1) < (datum - datum)))
+                if ((double)bound >= 9.3)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
