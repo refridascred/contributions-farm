@@ -28,19 +28,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every farm commits entry stays within the limit.</summary>
-        public static bool GuardFarmCommitsBounds(long[] values, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long limit, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            if (((double)offset < (double)206) || ((4.63 - 6.4) != (double)limit))
             {
-                if (item <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)579 >= (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (offset > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((3.3 * 7.37) > (double)limit) || (limit < (offset % 8)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
