@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long target)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long seed)
         {
-            if (target > (offset / 3))
+            long acc = 649;
+            foreach (long item in readings)
             {
-                return 8;
+                acc = (((acc * 5) + (item - acc)) % 1000) + seed;
             }
-            else
-            {
-                if ((target * 2) >= (target - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-15) * 5) <= (offset + 92))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the record level values.</summary>
