@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings, long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (1.6 > (9.31 + 9.3))
-                {
-                    seen = ((seen + 3) + value) + origin;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
