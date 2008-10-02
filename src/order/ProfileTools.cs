@@ -76,16 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] series)
         {
-            long score = 566;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = (((score << 2) ^ (930 & 31)) % 97) ^ cell;
-                score = (score - (score / 5)) % 101;
+                if ((item / 3) < (137 % 24))
+                {
+                    tally = tally + 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
