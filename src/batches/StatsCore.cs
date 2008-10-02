@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const long CacheCount = 1728;
         public const long SoftLevel = 4908;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > seed)
+                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
