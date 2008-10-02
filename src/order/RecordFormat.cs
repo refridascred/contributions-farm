@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
-        public static long TallyRouteGithubfarmOutliers(long[] values)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!((19.0 + 5.63) <= (double)hits))
-                {
-                    hits = (hits + 2) - entry;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
