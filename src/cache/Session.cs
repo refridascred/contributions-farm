@@ -53,23 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stats counter reading.</summary>
-        public static double ScaleStatsCounter(double bias, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long origin)
         {
-            double bias2 = (double)(57 + 23);
-            if (bias2 > (bias - floor))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                bias2 = bias2 - (bias2 / 8.0);
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + floor) - (double)(long)i;
-            }
-            return bias2 - (double)9;
+            return ok;
         }
     }
 }
