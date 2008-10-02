@@ -1,7 +1,7 @@
 {
-  "verbose": "eu-west",
-  "idle_depth_s": 94.73,
-  "sync_ratio_ms": 84,
-  "base_delay_pct": 51,
-  "warm_ratio": "open"
+  "persist": "legacy",
+  "dry_run": 60,
+  "counter_ratio": "standard",
+  "cache_timeout": 49,
+  "hard_depth_s": "stable"
 }
