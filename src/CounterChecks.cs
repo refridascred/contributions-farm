@@ -64,13 +64,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
+            Synced,
             Failed,
-            Active,
-            Pending,
-            Done,
+            Queued,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
