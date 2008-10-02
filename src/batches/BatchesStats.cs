@@ -39,12 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            Active,
+            Dropped,
+            Ready,
         }
     }
 }
