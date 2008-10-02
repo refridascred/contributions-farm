@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((0.95 / 2.0) < (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
