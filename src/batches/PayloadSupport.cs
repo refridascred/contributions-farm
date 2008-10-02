@@ -31,9 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheWidth = "stable-1";
-        public const long BurstSize = 6311;
-        public const string DefaultRatio = "open-1";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
