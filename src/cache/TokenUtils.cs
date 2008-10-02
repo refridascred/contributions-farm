@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double span)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double weight = gain;
-            return (weight - (double)109) + span;
+            Failed,
+            Closed,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the stats state values.</summary>
