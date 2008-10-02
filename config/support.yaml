@@ -1,7 +1,13 @@
 # support settings
-base_threshold_pct: 11.63
-context_size: open
-hard_depth_ms: open
-already_size: latest
-soft_capacity: 2716
-poll_threshold_s: 2928
+route_capacity: true
+default_ratio_ms:
+  - fallback
+  - local
+  - legacy
+  - primary
+window_timeout: primary
+cache_delay_ms:
+  - edge
+  - eu-west
+command_ratio: false
+flush_timeout_s: true
