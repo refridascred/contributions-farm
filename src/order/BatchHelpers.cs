@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
+            Failed,
             Ready,
-            Draft,
-            Locked,
+            Queued,
             New,
-            Active,
         }
 
         /// <summary>Describe the batch mode values.</summary>
