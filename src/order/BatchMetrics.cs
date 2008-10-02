@@ -68,9 +68,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "local-edge";
-        public const double RetrySession = 40.02;
-        public const long DefaultInterval = 3475;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((long)readings.Length > (offset << 3))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
