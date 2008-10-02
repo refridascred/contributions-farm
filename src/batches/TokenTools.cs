@@ -25,21 +25,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up filter already samples.</summary>
-        public static long CompareFilterAlreadyCount(long[] readings)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 0)
+                    if ((data[i] ^ data[j]) > 6)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
