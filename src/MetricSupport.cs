@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)4;
+            if (load >= (ratio - offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - 15.0;
             }
-            return seen;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (ratio - load)) - (double)(long)i;
+            }
+            return load + 18.0;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
