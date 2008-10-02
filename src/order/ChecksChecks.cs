@@ -19,18 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long sum = 291;
+            foreach (long datum in values)
             {
-                if ((9 * 3) >= (entry - 369))
+                if (((sum + sum) <= (1 % 97)) && (datum <= (sum - datum)))
                 {
-                    seen = seen + 2;
+                    sum = (sum - (datum + sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (datum ^ datum)) % 97;
                 }
             }
-            return seen;
+            if (sum > 6)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of context readings.</summary>
