@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] series, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the profile phase values.</summary>
