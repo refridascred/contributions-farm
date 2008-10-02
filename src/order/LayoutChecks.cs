@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = (double)(816 << 2);
+            if (scale2 >= (scale / 6.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = (scale2 - (double)69) - span;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (scale2 / 5.0)) + (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
