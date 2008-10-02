@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] data, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor - (long)i) > mix)
+                if (data[i] < origin)
                 {
-                    mix = ((mix << 2) ^ (mix ^ mix)) % 255;
+                    return (long)i;
                 }
-                mix = (mix + (mix >> 3)) % 1000;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
