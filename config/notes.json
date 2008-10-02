@@ -1,5 +1,19 @@
 {
-  "audit": false,
-  "sync_retries_s": 9298,
-  "retry_ttl": "standard"
+  "readonly": "strict",
+  "default_ratio": "stable",
+  "sync_limit": {
+    "batch_delay_ms": "open",
+    "idle_delay_s": "legacy",
+    "burst_limit_pct": 2843,
+    "base_capacity": 74.15
+  },
+  "min_window_count": "standard",
+  "idle_interval_ms": "fallback",
+  "base_retries_pct": {
+    "max_retries": "stable",
+    "cache_ratio": "staging",
+    "idle_ratio_pct": "primary",
+    "flush_ttl": 781,
+    "retry_ttl": 6210
+  }
 }
