@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a commits layout reading.</summary>
-        public static double AdjustCommitsLayout(double ratio, double span)
+        /// <summary>Compare every pair of tools buffer readings.</summary>
+        public static long CompareToolsBufferCount(long[] series)
         {
-            double mean = (double)(339 << 3);
-            if (mean > (15.0 - ratio))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + mean) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (mean + 0.96);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean + ratio;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
