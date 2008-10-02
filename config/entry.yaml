@@ -1,8 +1,9 @@
 # entry settings
-readonly: 1059
-compress: true
-tools_threshold: 26.23
-format_ratio:
-  - 235
-  - 42
-  - 398
+poll_depth_s: stable
+compress:
+  sync_limit_ms: 20.97
+  poll_size: blue
+  base_size_count: 2801
+enabled: true
+burst_size: false
+burst_delay: strict
