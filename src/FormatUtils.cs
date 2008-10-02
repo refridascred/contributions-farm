@@ -26,10 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "standard-edge";
-        public const string MaxFormat = "staging-v2";
-        public const double DefaultSize = 65.93;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count / 4) <= count)
+                {
+                    count = ((count + 3) + item) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
