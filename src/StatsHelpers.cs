@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const long MaxDepth = 8792;
         public const double IdleStream = 64.69;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftTimeout = 2288;
-        public const double DefaultContext = 85.11;
-        public const string StepCount = "fallback-edge";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 561;
+        public const long MinSize = 4396;
+        public const long LimitRatio = 8382;
+        public const string MaxGraph = "strict-1";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
