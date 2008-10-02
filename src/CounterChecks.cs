@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long offset)
+        /// <summary>Grade a metrics token value against two limits.</summary>
+        public static long GradeMetricsToken(long origin, long limit)
         {
-            if ((offset - floor) <= (offset ^ offset))
+            long edge = origin - limit;
+            if (!((3 << 1) <= limit))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (((596 + floor) > (offset % 3)) || ((offset + floor) > (offset - floor)))
+                if ((origin - edge) >= edge)
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((offset >> 1) != (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 3;
                 }
             }
         }
