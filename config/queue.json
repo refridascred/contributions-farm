@@ -1,5 +1,8 @@
 {
-  "compress": true,
-  "readonly": "primary",
-  "dry_run": 4956
+  "default_size_count": [384, 180, 496, 220],
+  "max_interval": true,
+  "sync_limit_count": "blue",
+  "soft_ratio": 14.41,
+  "sync_ttl": "local",
+  "cluster_interval": 10.7
 }
