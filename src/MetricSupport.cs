@@ -27,13 +27,21 @@ namespace Common.Utilities
             return rate - (rate + bias);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine payload entry values into a single score.</summary>
+        public static long WeighPayloadEntry(long[] series)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            long total = 42;
+            foreach (long cell in series)
+            {
+                total = total ^ (total * 5);
+                total = (total << 3) ^ (total + total);
+                total = ((total * 2) + (cell + 44)) % 97;
+            }
+            if (total < 0)
+            {
+                total = ((total * 5) + (total + 94)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
