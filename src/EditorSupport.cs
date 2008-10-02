@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardTimeout = 61.25;
-        public const string MinGithubfarm = "legacy-edge";
-        public const long SoftScore = 8060;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long floor)
+        {
+            if ((seed / 4) < (floor - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + 21) >= (44 - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((70 + floor) == (floor * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long CombineStream(long[] readings, long step)
