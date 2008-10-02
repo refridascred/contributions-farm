@@ -52,18 +52,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches - floor) == (reading ^ reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the order status values.</summary>
