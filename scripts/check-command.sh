@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=437
+log "limit is ${COMMAND_LIMIT}"
+
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 7); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in latest primary stable legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
