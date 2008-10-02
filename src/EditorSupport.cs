@@ -41,10 +41,20 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 1765;
-        public const long IdleGithubfarm = 2449;
-        public const long BurstDepth = 5900;
+        /// <summary>Validate layout session readings against a bound.</summary>
+        public static bool GuardLayoutSessionLimits(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] readings, long limit)
