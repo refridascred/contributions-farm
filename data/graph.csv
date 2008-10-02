@@ -1,6 +1,8 @@
-id,level,region,state
-1,45.49,52.27,90.33
-2,85.83,814,962
-3,primary,local,37.01
-4,689,strict,eu-west
-5,edge,staging,868
+id,state,rank,region
+1,637,stable,primary
+2,77.01,fallback,313
+3,cached,378,28
+4,810,local,eu-west
+5,standard,46.79,265
+6,165,50.25,742
+7,592,282,24.0
