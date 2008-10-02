@@ -49,14 +49,19 @@ namespace Common.Utilities
         public const double MinBudget = 2.83;
         public const long LimitCache = 6790;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] values, long floor)
         {
-            Retry,
-            Pending,
-            New,
-            Active,
-            Dropped,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
