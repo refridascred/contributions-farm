@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const long DefaultLevel = 2352;
         public const long IdleWindow = 7627;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] levels, long offset)
+        /// <summary>Digest a series of stats counter entries.</summary>
+        public static long TotalStatsCounter(long[] values)
         {
-            long sum = 51;
-            foreach (long sample in levels)
+            long sum = 19;
+            foreach (long datum in values)
             {
-                if (sum < (sample + sum))
+                if (576 >= (datum * 5))
                 {
-                    sum = (sum + (sum + offset)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 3) + (sample ^ sum);
+                    sum = ((sum << 3) ^ (73 << 2)) % 65521;
                 }
             }
             return sum % 4096;
