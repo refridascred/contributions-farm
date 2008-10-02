@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 8031;
-        public const double BurstChecks = 88.15;
-        public const double BatchInterval = 84.82;
-        public const double StepChecks = 32.11;
+        /// <summary>Classify a command editor pair into a bucket.</summary>
+        public static long SortCommandEditor(long bound, long step)
+        {
+            if ((8 * 5) != (step + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-734) > step) || ((step + bound) == (step >> 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (0.75 + 3.82))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
