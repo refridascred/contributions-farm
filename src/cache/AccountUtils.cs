@@ -22,14 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long step)
         {
-            Synced,
-            Pending,
-            Active,
-            Closed,
-            Queued,
+            long result = step;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Hold a report snapshot.</summary>
