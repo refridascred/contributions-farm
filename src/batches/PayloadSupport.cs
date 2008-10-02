@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the order context entries that pass the check.</summary>
+        public static long MeasureOrderContextHits(long[] series, long seed)
         {
-            Closed,
-            Idle,
-            Draft,
-            Active,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches << 2) <= 5)
+                {
+                    matches = ((matches + 3) ^ value) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
