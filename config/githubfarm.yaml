@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_threshold_pct: 54.86
-base_ttl_pct:
-  session_retries: 30
-  already_capacity: 65.35
-  flush_limit: primary
-support_timeout: 66
+warm_interval_pct: 37.48
+cluster_limit: 9842
+sync_interval_ms: edge
