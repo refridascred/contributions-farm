@@ -22,12 +22,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            Dropped,
-            New,
-            Active,
+            long mix = 23;
+            foreach (long sample in levels)
+            {
+                if ((57 % 16) < (mix << 3))
+                {
+                    mix = (mix << 3) ^ 601;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ sample) % 255;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = (mix << 3) ^ (mix * 5);
+            }
+            return mix;
         }
     }
 }
