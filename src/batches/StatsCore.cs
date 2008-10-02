@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long WindowChecks = 3107;
         public const double WindowSpan = 64.36;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 3424;
-        public const long IdleFormat = 7715;
-        public const long MinFormat = 8095;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((hits << 1) < hits) && ((hits << 1) >= item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string DefaultCommand = "strict";
