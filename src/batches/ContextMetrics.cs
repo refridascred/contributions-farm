@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate contributi support samples.</summary>
-        public static long CombineContributiSupport(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] samples)
         {
-            long score = 36;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((score >> 2) > cell)
+                if ((8.0 >= (double)value) || ((value & 255) > (seen % 100)))
                 {
-                    continue;
-                }
-                if ((score >> 5) == (cell * 5))
-                {
-                    score = (score ^ (score & 255)) % 1000;
-                }
-                else
-                {
-                    score = (score * 3) + (cell + cell);
-                }
-                if ((score << 1) < cell)
-                {
-                    score = ((score << 2) ^ 0) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (score < 49)
-            {
-                score = (score * 4) + (score + score);
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
