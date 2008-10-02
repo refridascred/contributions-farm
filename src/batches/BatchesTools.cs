@@ -42,18 +42,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((6.88 / 7.0) < (double)hits)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 2883;
+        public const long RetryRoute = 3878;
+        public const long BatchSpan = 597;
+        public const string RetryWidth = "standard-edge";
     }
 }
