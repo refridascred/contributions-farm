@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate queue checks readings against a bound.</summary>
+        public static bool GuardQueueChecksRange(long[] series, long target)
         {
-            Dropped,
-            Locked,
-            Pending,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a report summary.</summary>
