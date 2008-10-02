@@ -24,22 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Blend two channel report measurements.</summary>
+        public static double SmoothChannelReport(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double ratio = (scale * 14.0) - (double)12;
+            if (ratio >= ratio)
             {
-                if ((8.25 / 4.0) <= (double)value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio + scale) - bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (ratio / 5.0);
         }
 
         /// <summary>Compare every pair of record readings.</summary>
