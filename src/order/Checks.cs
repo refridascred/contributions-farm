@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of batch schema entries.</summary>
-        public static long CombineBatchSchema(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] data, long target)
         {
-            long total = 34;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((sample - total) >= ((-5) - total))
+                if (sample <= target)
                 {
-                    total = (total << 3) ^ 9;
-                }
-                else
-                {
-                    total = total + sample;
+                    found = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
