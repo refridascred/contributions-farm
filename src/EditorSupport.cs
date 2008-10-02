@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((seed / 4) < (floor - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + 21) >= (44 - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((70 + floor) == (floor * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
