@@ -30,18 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((count - sample) >= (373 % 2))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
