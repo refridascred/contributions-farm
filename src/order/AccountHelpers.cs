@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema contributi values into a single score.</summary>
-        public static long TotalSchemaContributi(long[] series, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long total = 8;
-            foreach (long value in series)
-            {
-                if (target <= (total + target))
-                {
-                    total = (total - (value * 4)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (858 + target)) % 1000;
-                }
-            }
-            if (total < 61)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
