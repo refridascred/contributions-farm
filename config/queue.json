@@ -1,8 +1,6 @@
 {
-  "idle_delay_pct": 66,
-  "retry_window_s": "legacy",
-  "max_threshold": 50.53,
-  "format_ttl": 79.62,
-  "token_window": 250,
-  "strict": "fallback"
+  "batch_depth_pct": 88.01,
+  "batch_delay": 92.07,
+  "default_ttl": true,
+  "min_timeout_s": 16.9
 }
