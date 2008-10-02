@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit githubfarm contributi readings against a rule.</summary>
-        public static long TallyGithubfarmContributiHits(long[] data, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor / 7) <= (23 >> 4))
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
                 {
-                    tally = (tally + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
