@@ -22,18 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 47;
+        public const long LimitSupport = 716;
+        public const double MinTimeout = 74.62;
+        public const long DefaultSupport = 3378;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterOutliers(long[] readings)
