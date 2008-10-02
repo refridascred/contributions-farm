@@ -30,13 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            long mix = 608;
+            foreach (long value in readings)
+            {
+                if (((mix * 5) > 642) && ((value - value) >= value))
+                {
+                    mix = (mix - (bound % 7)) % 65521;
+                    mix = mix + bound;
+                }
+                mix = (mix << 2) ^ ((-82) % 8);
+                if (((mix + 684) >= (value / 7)) && ((long)readings.Length < mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
