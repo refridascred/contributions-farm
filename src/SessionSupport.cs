@@ -15,15 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cache support entries that pass the check.</summary>
-        public static long CountCacheSupportMatches(long[] items)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell + seen) != (25 + cell)) && (seen > (cell % 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
