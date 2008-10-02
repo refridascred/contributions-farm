@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double RetryCommand = 96.22;
         public const string WindowSize = "standard-1";
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] readings, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value >= limit)
+                if ((origin >> 3) == (origin - matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
