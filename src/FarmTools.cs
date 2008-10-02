@@ -30,18 +30,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
-        public static long TallyGithubfarmReportGaps(long[] series, long bound)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((double)bound == (4.0 - 2.6))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Ready,
+            Retry,
+            Locked,
+            New,
         }
     }
 }
