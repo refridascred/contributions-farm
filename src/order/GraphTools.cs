@@ -64,39 +64,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a stats notes value against two limits.</summary>
-        public static long SortStatsNotes(long seed, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long offset)
         {
-            long step2 = seed - step;
-            if (!((step & 63) >= (seed << 1)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed & 15) < (step2 + 5))
+                if (samples[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (seed & 127))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed + step) == (step + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
