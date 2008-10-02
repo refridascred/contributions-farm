@@ -103,22 +103,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] data, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count / 9) >= ((-3) + entry))
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
