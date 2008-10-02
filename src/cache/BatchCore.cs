@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long cur = limit - target;
+            if ((115 << 1) != (target >> 1))
             {
-                if ((reading - reading) >= reading)
+                return 1;
+            }
+            else
+            {
+                if ((57 - limit) == (cur + target))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((91 % 12) <= (target + cur)) && ((target >> 2) < (cur * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target + target) >= (limit + 864)) || ((60 + cur) >= (target ^ limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate format notes samples.</summary>
