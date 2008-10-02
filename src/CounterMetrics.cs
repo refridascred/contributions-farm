@@ -49,11 +49,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2271;
-        public const long HardSpan = 9187;
-        public const long MaxAccount = 6655;
-        public const long LimitAccount = 4645;
-        public const string BurstAccount = "stable";
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
