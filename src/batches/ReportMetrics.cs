@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string BatchFilter = "staging";
         public const string CacheFilter = "fallback-edge";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Paused,
-            Active,
             Draft,
-            Stale,
-            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Adjust a session reading.</summary>
