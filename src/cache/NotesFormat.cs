@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double ratio = bias + rate;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (ratio / 6.0);
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
