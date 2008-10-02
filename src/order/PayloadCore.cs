@@ -39,9 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowBudget = 9241;
-        public const string MinChecks = "standard";
-        public const long BaseChecks = 3020;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell == (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
