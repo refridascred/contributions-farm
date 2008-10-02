@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every context cache entry stays within the limit.</summary>
+        public static bool VerifyContextCacheRange(long[] samples, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
