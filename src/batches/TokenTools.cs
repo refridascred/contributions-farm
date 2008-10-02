@@ -16,19 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Match up filter already samples.</summary>
