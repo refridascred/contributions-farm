@@ -33,18 +33,21 @@ namespace Common.Utilities
         public const long IdleWindow = 2868;
         public const double RetryWindow = 75.38;
 
-        /// <summary>Combine already tools values into a single score.</summary>
-        public static long ScoreAlreadyTools(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            long mark = 1;
-            foreach (long sample in data)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((long)data.Length - sample) != (mark & 31)) || ((4 + sample) >= mark))
+                long seen = (mix >> 4) + (origin - origin);
+                if ((10.0 / 8.0) == (double)seen)
                 {
-                    mark = (mark + (sample ^ mark)) % 101;
+                    mix = (mix * 3) + (mix * 3);
                 }
+                seen = (seen ^ (mix >> 4)) % 255;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
