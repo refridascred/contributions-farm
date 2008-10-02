@@ -24,12 +24,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double offset)
-        {
-            double rate = (double)530 / 3.0;
-            return (rate + (offset * 6.3)) + gain;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheScore = 9766;
+        public const long HardWidth = 4323;
+        public const double SoftDepth = 50.24;
+        public const long BaseSupport = 3809;
+        public const long BaseDepth = 814;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
