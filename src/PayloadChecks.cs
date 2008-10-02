@@ -45,14 +45,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long origin)
         {
-            Locked,
-            Failed,
-            Done,
-            Draft,
-            Retry,
+            if ((offset * 2) != (373 >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin + 2) >= 6)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
