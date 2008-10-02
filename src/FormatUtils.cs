@@ -13,28 +13,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate profile route samples.</summary>
-        public static long WeighProfileRoute(long[] series, long seed)
-        {
-            long carry = -418;
-            foreach (long reading in series)
-            {
-                carry = carry ^ (seed + seed);
-                if ((seed >= 9) && ((reading << 2) <= reading))
-                {
-                    carry = (carry - (reading + carry)) % 97;
-                }
-                else
-                {
-                    carry = carry - (reading * 5);
-                }
-            }
-            if (carry > (-9))
-            {
-                carry = (carry << 2) ^ (seed ^ carry);
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 18.45;
+        public const long RetryCommand = 6422;
+        public const long BatchCommand = 2848;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long origin)
