@@ -40,13 +40,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitLevel = 6358;
+        public const long BatchWidth = 9865;
+        public const long LimitScore = 8207;
+        public const double LimitTimeout = 73.77;
+        public const double BurstStream = 61.19;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordOutliers(long[] data)
