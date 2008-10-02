@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long offset)
+        /// <summary>Find the first stream buffer entry that matches the target.</summary>
+        public static long SeekStreamBufferIndex(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= offset)
+                if (data[i] >= offset)
                 {
                     return (long)i;
                 }
