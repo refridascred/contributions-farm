@@ -50,22 +50,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] samples, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long mix = 239;
+            foreach (long datum in values)
             {
-                if ((2 > (seen + bound)) || (bound <= datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix << 3) ^ (datum - datum)) % 255;
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Check that every account editor entry stays within the limit.</summary>
