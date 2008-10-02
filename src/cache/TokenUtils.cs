@@ -14,14 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Draft,
-            Closed,
-            Dropped,
-            Done,
-            Failed,
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
