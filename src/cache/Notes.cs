@@ -29,19 +29,18 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data, long floor)
         {
-            long mix = 2;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix + (seed & 31)) % 65521) ^ sample;
-                if ((seed >> 3) <= (mix + mix))
+                if ((double)entry <= (3.97 - 3.22))
                 {
-                    break;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
