@@ -22,32 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long floor, long target)
+        /// <summary>Derive the next metric graph value from a seed.</summary>
+        public static long IterateMetricGraph(long step)
         {
-            long prev = floor + target;
-            if ((target + target) <= floor)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)prev > 1.0) || ((prev + floor) < (floor / 6)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (42 > (5 - prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
