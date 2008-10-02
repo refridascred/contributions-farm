@@ -36,11 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] data)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((39 * 2) == (sample << 2)) || ((sample ^ sample) <= (sample >> 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a command reading.</summary>
