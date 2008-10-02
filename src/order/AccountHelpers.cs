@@ -62,13 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
