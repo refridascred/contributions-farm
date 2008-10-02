@@ -91,14 +91,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine report checks values into a single score.</summary>
+        public static long ScoreReportChecks(long[] values, long limit)
         {
-            Draft,
-            Closed,
-            Queued,
-            New,
-            Failed,
+            long anchor = 522;
+            foreach (long reading in values)
+            {
+                anchor = ((((anchor << 2) ^ (anchor >> 4)) % 101) ^ reading) + limit;
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor + ((long)values.Length / 8)) % 97;
+            }
+            return anchor % 65521;
         }
     }
 }
