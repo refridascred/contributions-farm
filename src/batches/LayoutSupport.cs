@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long WindowRecord = 2849;
         public const long MinTimeout = 1216;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((double)seen < (12.0 / 3.0)) && ((cell <= 913) && ((seen & 1) >= cell)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Queued,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
