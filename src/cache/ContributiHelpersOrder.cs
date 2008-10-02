@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)hits < 2.86) || ((datum - 759) < (datum + datum)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of commits filter readings.</summary>
