@@ -46,21 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell >> 5) > (cell + cell))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
