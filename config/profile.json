@@ -1,10 +1,6 @@
 {
-  "min_interval_count": 500,
-  "base_depth": 33.56,
-  "max_timeout": {
-    "farm_delay": 1024,
-    "dry_run": 3994,
-    "soft_retries": "local"
-  },
-  "batch_interval_ms": "primary"
+  "cache_interval_s": "blue",
+  "cache_capacity_pct": "local",
+  "hard_depth_ms": "strict",
+  "hard_threshold_s": "edge"
 }
