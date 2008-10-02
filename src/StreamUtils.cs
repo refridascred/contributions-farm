@@ -64,22 +64,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long MeasureMetricLayoutMatches(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                if (matches >= (cell / 8))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark ^ cell) % 65521) - bound;
             }
-            return matches;
+            return mark;
         }
     }
 }
