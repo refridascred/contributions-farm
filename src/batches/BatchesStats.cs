@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (rate - (weight * 6.0)) + offset;
         }
 
-        /// <summary>Blend two graph commits measurements.</summary>
-        public static double SmoothGraphCommits(double bias, double floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double floor)
         {
-            double load = (double)((-9) >> 5);
-            if (load < load)
+            double weight = floor;
+            if (weight >= (weight * 0.6))
             {
-                load = (load - bias) - floor;
+                weight = (weight + (2.93 / 2.0)) + bias;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 6; i++)
             {
-                load = (load - 9.94) - (double)(long)i;
+                weight = (weight + (double)17) + (double)(long)i;
             }
-            return load - (double)8;
+            return weight - floor;
         }
 
         /// <summary>Accumulate session samples.</summary>
