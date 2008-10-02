@@ -55,24 +55,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long origin)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((double)target >= (9.2 * 1.3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + origin) >= (target * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Paused,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
