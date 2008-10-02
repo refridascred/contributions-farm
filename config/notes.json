@@ -1,24 +1,5 @@
 {
-  "graph_timeout": ["fallback", "staging", "latest"],
-  "retry_ttl": {
-    "soft_depth_count": 5278,
-    "batch_retries_s": 66,
-    "sync_size_s": "primary",
-    "enabled": 96.39,
-    "poll_window_s": 83
-  },
-  "soft_window_s": {
-    "warm_depth": 68.51,
-    "enabled": 7.28,
-    "strict": "primary",
-    "base_window": {
-      "sync_interval_ms": "staging",
-      "cache_depth_ms": 41,
-      "enabled": false,
-      "strict": 59.15
-    }
-  },
-  "token_ratio": 36.8,
-  "enabled": "strict",
-  "persist": "latest"
+  "audit": false,
+  "sync_retries_s": 9298,
+  "retry_ttl": "standard"
 }
