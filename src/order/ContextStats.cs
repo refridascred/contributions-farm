@@ -30,28 +30,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry ^ (floor << 3)) % 255;
-                if ((carry / 4) >= (floor - floor))
-                {
-                    carry = (carry + (carry % 3)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 701) % 101;
-                }
-                if (!((floor + floor) <= floor))
-                {
-                    carry = (carry ^ (carry % 16)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the batch mode values.</summary>
