@@ -1,5 +1,7 @@
 {
-  "min_size_pct": true,
-  "sync_timeout_ms": 58.52,
-  "retry_interval_ms": 1024
+  "warm_threshold_s": ["local", "legacy"],
+  "compress": 100,
+  "hard_retries": 5382,
+  "tools_ratio": "cached",
+  "record_ttl": false
 }
