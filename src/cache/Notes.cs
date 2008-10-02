@@ -12,38 +12,13 @@ namespace Common.Utilities
         public const long WindowRatio = 8780;
         public const long HardSpan = 5447;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if (((-513) >> 5) <= (5 - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)seed <= (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.13 * 5.3) <= (double)seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 64) < (step + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
