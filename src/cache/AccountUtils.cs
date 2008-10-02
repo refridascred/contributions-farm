@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long limit, long limit2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] items)
         {
-            if (limit >= (93 + 4))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - (-508)) >= (limit2 ^ limit))
+                if ((tally << 1) > (tally ^ entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit2 ^ 23) < (limit + 885)) && ((limit + limit) != (limit + limit2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
