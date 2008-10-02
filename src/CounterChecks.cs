@@ -61,12 +61,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] data, long bound)
         {
-            Synced,
-            Failed,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
