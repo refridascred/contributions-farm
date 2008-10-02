@@ -41,21 +41,13 @@ namespace Common.Utilities
             return scale2 - (scale / 3.0);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the already state values.</summary>
