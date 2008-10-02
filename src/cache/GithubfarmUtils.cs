@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long BaseNotes = 1982;
         public const long BurstNotes = 8518;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            long acc = 22;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (8.97 <= (double)matches)
                 {
-                    acc = ((acc - (entry * 4)) % 97) ^ (long)i;
-                }
-                if (((double)acc <= (5.82 * 8.28)) || (entry > (53 - acc)))
-                {
-                    acc = ((acc * 4) + entry) % 1000;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of editor batches readings.</summary>
