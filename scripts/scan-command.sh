@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-primary}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=162
+COMMAND_LIMIT=365
 log "limit is ${COMMAND_LIMIT}"
+
+for item in fallback green stable staging; do
+    log "checking ${item}"
+done
