@@ -1,6 +1,8 @@
-id,active,ratio,score,owner
-1,green,blue,57.1,773
-2,323,900,799,839
-3,450,eu-west,263,188
-4,local,21.19,latest,844
-5,214,21.64,stable,open
+id,level,owner
+1,staging,82.59
+2,83.11,local
+3,696,local
+4,stable,edge
+5,815,stable
+6,strict,196
+7,345,894
