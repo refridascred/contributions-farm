@@ -1,8 +1,18 @@
 {
-  "account_capacity": ["primary", "cached"],
-  "sync_limit_pct": 60,
-  "base_window": true,
-  "report_window": [69, 147, 203, 213],
-  "poll_depth_ms": 100,
-  "default_timeout_ms": 36
+  "sync_limit_count": "standard",
+  "metric_timeout": 47.98,
+  "base_limit": {
+    "sync_ratio": 4.17,
+    "hard_timeout_s": 30,
+    "flush_ratio_ms": "legacy",
+    "flush_ttl": ["legacy", "edge", "strict"],
+    "poll_threshold_pct": 60
+  },
+  "cache_delay_count": {
+    "compress": [81, 320, 170, 160],
+    "metric_delay": ["green", "local", "blue", "green"],
+    "default_timeout_pct": "standard",
+    "default_threshold_s": 60
+  },
+  "soft_timeout_pct": 250
 }
