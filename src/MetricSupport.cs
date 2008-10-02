@@ -24,16 +24,18 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                carry = (carry * 3) + ((long)i ^ (long)i);
-                carry = ((carry * 3) + (long)i) % 101;
+                if (count <= origin)
+                {
+                    count = (count + 1) ^ cell;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
