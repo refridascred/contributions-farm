@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long mix = 3;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix ^ (value / 3)) % 101) - floor;
-                if ((value ^ 46) >= mix)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
