@@ -65,11 +65,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a editor queue value against two limits.</summary>
+        public static long GradeEditorQueue(long step, long target)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long delta = step + target;
+            if (((19.0 + 6.7) >= (9.5 - 0.18)) && (target < (target - delta)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta % 97) >= (delta - delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
