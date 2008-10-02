@@ -26,21 +26,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Grade a farm entry value against two limits.</summary>
+        public static long ClassifyFarmEntry(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((1.2 * 5.75) != (double)bound2)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 + bound2) >= (bound * 5))
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
