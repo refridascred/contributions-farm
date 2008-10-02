@@ -16,19 +16,12 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double SmoothMetricLayout(double weight, double offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double gain = (double)473 * 5.0;
-            if (gain > gain)
-            {
-                gain = (gain + offset) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + 17.0;
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
