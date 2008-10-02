@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long TallyReportFarmHits(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mark = 663;
+            foreach (long reading in series)
             {
-                if ((matches << 1) != (reading + 63))
+                if ((double)276 <= (double)mark)
                 {
-                    matches = matches + 3;
+                    mark = (((mark << 3) ^ (reading << 3)) % 1000) + target;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Scale a account schema figure with a bias.</summary>
