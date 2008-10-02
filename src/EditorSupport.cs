@@ -66,19 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 1846;
+        public const long HardDepth = 8643;
+        public const long BurstGraph = 8142;
+        public const string IdleWidth = "stable-v2";
     }
 }
