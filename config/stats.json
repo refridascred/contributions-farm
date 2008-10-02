@@ -1,14 +1,10 @@
 {
-  "format_window": 100,
-  "warm_depth_count": {
-    "soft_retries_count": "legacy",
-    "counter_timeout": 55.33,
-    "window_size": 88,
-    "batch_interval_s": true,
-    "readonly": "eu-west"
+  "readonly": {
+    "soft_ratio_count": 84,
+    "persist": 58,
+    "min_interval_count": "stable"
   },
-  "cache_ttl": "staging",
-  "sync_ratio_pct": 1024,
-  "retry_limit_count": "latest",
-  "batch_delay_ms": [247, 319, 457]
+  "hard_size_pct": 66.93,
+  "hard_limit": 6.46,
+  "strict": "green"
 }
