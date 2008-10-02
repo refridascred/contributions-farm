@@ -29,11 +29,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardTimeout = "local-v2";
-        public const long HardCounter = 2852;
-        public const double CacheCount = 42.3;
-        public const double LimitCounter = 6.17;
-        public const string MaxTimeout = "primary-1";
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Rank { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
