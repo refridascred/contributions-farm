@@ -31,21 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
