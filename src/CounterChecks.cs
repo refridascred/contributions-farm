@@ -64,11 +64,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleInterval = "cached-1";
-        public const string LimitSpan = "fallback-edge";
-        public const long IdleChannel = 8829;
-        public const string RetryChannel = "cached-edge";
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Failed,
+            Active,
+            Pending,
+            Done,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] samples)
