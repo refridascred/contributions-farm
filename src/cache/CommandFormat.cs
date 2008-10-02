@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] levels, long seed)
+        /// <summary>Validate already filter readings against a bound.</summary>
+        public static bool CheckAlreadyFilterBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((double)hits <= (9.89 * 5.11)) && ((seed > entry) || ((double)entry >= 19.0)))
+                if (datum <= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a record record.</summary>
