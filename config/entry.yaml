@@ -1,10 +1,13 @@
 # entry settings
-audit: 48.5
-batch_ttl: stable
-flush_delay: legacy
-compress: 39.99
-retry_delay_pct:
-  sync_timeout_ms: 9072
-  record_depth: staging
-  dry_run: true
-  verbose: green
+strict: 8543
+soft_ttl:
+  - 47
+  - 59
+  - 31
+  - 340
+report_limit: latest
+idle_retries_count: 1024
+retry_window_ms:
+  - stable
+  - local
+cache_delay_s: green
