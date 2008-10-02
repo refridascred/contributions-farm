@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a tools farm counter forward.</summary>
-        public static long StepToolsFarm(long origin)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                mark = (mark * 5) + (mark ^ origin);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every report metric entry stays within the limit.</summary>
