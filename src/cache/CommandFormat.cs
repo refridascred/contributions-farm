@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate already filter readings against a bound.</summary>
-        public static bool CheckAlreadyFilterBounds(long[] series, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
