@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double drift = (bias * 9.2) + (bias * 4.69);
+            if (drift >= (bias / 9.0))
             {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + 18.0) + rate;
             }
-            return ready;
+            return drift - bias;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
