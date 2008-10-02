@@ -27,9 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleWidth = 6107;
-        public const long RetrySpan = 7650;
-        public const long WindowBudget = 7461;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ count) >= (700 + datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
