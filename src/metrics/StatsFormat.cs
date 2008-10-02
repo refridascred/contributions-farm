@@ -53,11 +53,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7965;
-        public const string DefaultRatio = "primary-1";
-        public const long RetrySpan = 3025;
-        public const long BatchMetric = 4499;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
