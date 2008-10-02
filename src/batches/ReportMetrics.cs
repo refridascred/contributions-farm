@@ -31,23 +31,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate graph token samples.</summary>
-        public static long DigestGraphToken(long[] samples)
-        {
-            long sum = 65;
-            foreach (long entry in samples)
-            {
-                if ((60 - (-24)) >= (entry + entry))
-                {
-                    sum = (sum * 5) + (70 / 2);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 65521;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "latest";
+        public const long IdleCluster = 2729;
+        public const string BurstCount = "strict-1";
+        public const string BurstCluster = "strict";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] values, long target)
