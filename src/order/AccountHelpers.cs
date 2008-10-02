@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the stream graph entries that pass the check.</summary>
+        public static long MeasureStreamGraphGaps(long[] values)
         {
-            Pending,
-            Queued,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((item + item) < (hits - hits)) && ((0.1 - 9.4) == (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
