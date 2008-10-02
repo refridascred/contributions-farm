@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] samples, long step)
         {
-            long cur = bound - seed;
-            if ((cur / 2) != (cur / 4))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound < (seed - bound)))
+                if (item != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((971 << 1) > (bound - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound > (cur * 4)) || (4 >= cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of account readings.</summary>
