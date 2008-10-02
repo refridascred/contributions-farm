@@ -1,33 +1,9 @@
 # support settings
-buffer_limit:
-  - 12
-  - 222
-  - 180
-  - 50
-min_ttl: 3768
-queue_retries: 37
-default_threshold_count: primary
-base_ratio:
-  editor_threshold:
-    poll_retries: false
-    base_ttl_s: 72.73
-    soft_ratio_count: standard
-    compress: 41
-  batch_depth_count: local
-  cache_capacity_count: false
-  warm_retries_pct:
-    - standard
-    - local
-  persist: 60
-verbose:
-  default_delay:
-    - cached
-    - local
-  idle_limit_s:
-    - 183
-    - 478
-    - 337
-  poll_window_count: 72
-  default_retries_ms: edge
-  sync_depth: 98.89
-  retry_delay_ms: 250
+farm_window: true
+strict:
+  - open
+  - fallback
+support_delay:
+  min_ttl: cached
+  batch_window: 30
+  stream_ratio: stable
