@@ -27,12 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstCount = 8124;
-        public const long BatchTimeout = 2309;
-        public const double DefaultLevel = 93.1;
-        public const long BatchBudget = 4227;
-        public const long MinBudget = 3468;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long offset)
