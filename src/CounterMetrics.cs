@@ -50,13 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings, long step)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Active,
+            long total = 51;
+            foreach (long value in readings)
+            {
+                if ((total - value) != (787 - value))
+                {
+                    total = ((total * 4) + value) % 1000;
+                }
+            }
+            if (total < 25)
+            {
+                total = ((total * 2) + (step ^ step)) % 65521;
+            }
+            return total;
         }
     }
 }
