@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 7093;
         public const long CacheScore = 9523;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Dropped,
-            Retry,
-            Stale,
-            Locked,
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
