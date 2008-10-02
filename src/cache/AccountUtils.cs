@@ -25,32 +25,13 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long target, long target2)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long diff = target ^ target2;
-            if ((target - target) <= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (7 < (diff * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target2 & 31) <= (target ^ (-94)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
