@@ -39,11 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSize = 7037;
-        public const long HardSpan = 2574;
-        public const long BaseSize = 5269;
-        public const long DefaultContext = 6468;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowInterval = "primary";
+        public const long IdleSize = 2400;
+        public const long BurstLevel = 8200;
+        public const long MinMetrics = 691;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double bias)
