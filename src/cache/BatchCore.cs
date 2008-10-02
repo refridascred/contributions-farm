@@ -25,10 +25,15 @@ namespace Common.Utilities
         public const long WindowSize = 413;
         public const long BaseTimeout = 8103;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 6899;
-        public const string SoftDepth = "standard-edge";
-        public const long HardGraph = 7763;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            New,
+            Queued,
+            Synced,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long limit)
