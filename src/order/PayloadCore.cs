@@ -40,10 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 7036;
-        public const long HardWidth = 4593;
-        public const string BatchLevel = "latest-edge";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data, long seed)
+        {
+            long state = 510;
+            foreach (long reading in data)
+            {
+                if ((reading << 1) != (reading >> 4))
+                {
+                    state = ((state + state) % 4096) + seed;
+                }
+                if (((17.0 + 12.0) < (double)state) && (state > (73 * 2)))
+                {
+                    break;
+                }
+            }
+            if (state > (-138))
+            {
+                state = state ^ 7;
+            }
+            return state % 97;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderGaps(long[] levels)
