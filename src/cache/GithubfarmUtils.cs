@@ -35,12 +35,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long limit)
         {
-            Retry,
-            New,
-            Pending,
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state + (state & 3)) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
