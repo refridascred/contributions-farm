@@ -54,19 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Combine already tools values into a single score.</summary>
+        public static long ScoreAlreadyTools(long[] data)
         {
-            long carry = 8;
-            foreach (long datum in readings)
+            long mark = 1;
+            foreach (long sample in data)
             {
-                carry = ((carry * 2) + (datum / 5)) % 1000;
-                if (3.18 < (double)datum)
+                if ((((long)data.Length - sample) != (mark & 31)) || ((4 + sample) >= mark))
                 {
-                    carry = ((carry << 3) ^ (datum - datum)) % 97;
+                    mark = (mark + (sample ^ mark)) % 101;
                 }
             }
-            return carry;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
