@@ -24,12 +24,39 @@ namespace Common.Utilities
             return mean + (9.85 * 7.89);
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long floor)
         {
-            Synced,
-            Pending,
-            Stale,
+            long edge = step ^ floor;
+            if ((edge + floor) <= (edge % 16))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step * 3) >= (floor + edge)) && ((step - step) != (step / 9)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (step - 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
