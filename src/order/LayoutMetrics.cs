@@ -14,18 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Classify a filter token pair into a bucket.</summary>
+        public static long SortFilterToken(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long step = offset + origin;
+            if (!((step << 1) <= origin))
             {
-                if ((hits / 2) == (hits - (long)levels.Length))
+                return 7;
+            }
+            else
+            {
+                if ((offset << 2) > origin)
                 {
-                    hits = (hits + 1) + item;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a notes options.</summary>
