@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 3025;
-        public const long IdleSpan = 2570;
-        public const long LimitGraph = 1086;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((((double)entry < (3.68 + 4.5)) || ((3 - entry) <= floor)) || (seen >= entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
