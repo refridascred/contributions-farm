@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((reading - seen) > reading) && (((reading & 15) > (reading & 31)) && ((reading & 3) >= (seen >> 2))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchCount = "local-edge";
+        public const long MinAlready = 9646;
+        public const string StepLevel = "fallback";
+        public const string WindowDepth = "stable";
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] data, long step)
