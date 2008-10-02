@@ -63,19 +63,13 @@ namespace Common.Utilities
         public const string IdleRatio = "standard-edge";
         public const double LimitFilter = 80.87;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double mean = floor / 6.0;
-            if (mean >= 8.6)
-            {
-                mean = (mean + 4.03) - scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)9) + (double)(long)i;
-            }
-            return mean + (mean / 4.0);
+            Stale,
+            Ready,
+            Synced,
+            Retry,
         }
     }
 }
