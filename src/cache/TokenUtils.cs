@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] values, long seed)
+        /// <summary>Count the metric checks entries that pass the check.</summary>
+        public static long CountMetricChecksOutliers(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (entry < seed)
+                if (((seen + 9) > (273 / 3)) && ((long)readings.Length >= (seen + step)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
