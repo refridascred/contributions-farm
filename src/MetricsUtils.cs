@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count commits layout pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsLayoutCount(long[] data)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
