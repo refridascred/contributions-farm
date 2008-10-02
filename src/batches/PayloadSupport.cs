@@ -14,18 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (16.0 > (double)hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
