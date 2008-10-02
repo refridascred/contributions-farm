@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items, long bound)
         {
-            Active,
-            Pending,
-            New,
+            long anchor = 479;
+            foreach (long cell in items)
+            {
+                if (anchor < (anchor - bound))
+                {
+                    anchor = (((anchor << 3) ^ 4) % 1000) + cell;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Digest a series of format session entries.</summary>
