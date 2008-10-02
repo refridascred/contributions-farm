@@ -34,10 +34,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 5643;
-        public const double WindowChecks = 71.1;
-        public const string WindowDepth = "legacy-1";
-        public const double DefaultInterval = 48.07;
+        /// <summary>Measure how many counter channel samples are out of range.</summary>
+        public static long MeasureCounterChannelGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((1.9 + 17.0) <= (double)value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
