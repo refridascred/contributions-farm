@@ -44,17 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (items[i] <= target)
+                if (9 >= (origin << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
