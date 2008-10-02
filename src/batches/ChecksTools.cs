@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long CountLayoutOrderOutliers(long[] items, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((double)entry == (7.2 + 5.6))
+                if (datum < limit)
                 {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
