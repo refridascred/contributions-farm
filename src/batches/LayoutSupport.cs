@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = -7;
+            foreach (long item in readings)
             {
-                if (!(1.0 <= (double)mix))
-                {
-                    mix = ((mix * 2) + (mix * 5)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                mix = (((mix * 2) + (23 * 3)) - item) - limit;
+                mix = ((mix * 4) + mix) % 101;
             }
-            return mix;
+            return mix % 65521;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
