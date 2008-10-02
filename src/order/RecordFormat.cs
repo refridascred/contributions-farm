@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] samples, long offset)
         {
-            Queued,
-            Draft,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a tools summary.</summary>
