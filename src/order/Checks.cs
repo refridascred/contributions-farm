@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double bias)
         {
-            long bound2 = bound + offset;
-            if ((4.08 <= (double)bound2) && (bound >= (offset + bound)))
+            double scale = (double)(4 & 63);
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                scale = ((scale - (double)(long)i) + rate) - bias;
             }
-            else
-            {
-                if (72 > (bound2 * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset < bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset ^ bound2) < (bound2 - bound2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return scale + (9.9 - scale);
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
