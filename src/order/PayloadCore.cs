@@ -37,22 +37,12 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items, long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long state = -24;
-            foreach (long item in items)
-            {
-                if ((bound >> 3) > (460 ^ bound))
-                {
-                    state = ((state << 2) ^ (553 / 6)) + item;
-                }
-                else
-                {
-                    state = (state - bound) % 101;
-                }
-            }
-            return state % 97;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
         }
     }
 }
