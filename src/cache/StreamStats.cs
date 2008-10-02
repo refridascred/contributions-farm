@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] data, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long prev = origin - seed;
+            if ((seed + prev) <= (seed / 9))
             {
-                if (((bound / 8) < (bound >> 2)) || (((5 + cell) >= bound) && (bound <= (bound ^ bound))))
+                return 2;
+            }
+            else
+            {
+                if (!((5.4 - 4.18) != (double)seed))
                 {
-                    tally = tally + 3;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin - prev) > (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((origin >> 4) <= (origin >> 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
