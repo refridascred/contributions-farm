@@ -65,15 +65,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two counter token measurements.</summary>
-        public static double SmoothCounterToken(double scale, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long limit)
         {
-            double scale2 = (double)(60 + 42);
-            if (scale2 < (scale2 * 2.3))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = ((scale2 + 7.84) - scale) - bias;
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (double)42;
+            return -1;
         }
     }
 }
