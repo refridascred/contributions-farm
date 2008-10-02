@@ -59,17 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long floor)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
