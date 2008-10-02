@@ -29,14 +29,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            Closed,
-            Paused,
-            Active,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count >> 5) > (item + item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token channel samples are out of range.</summary>
