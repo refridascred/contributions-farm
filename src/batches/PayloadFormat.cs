@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Queued,
-            Closed,
-            Active,
-            New,
+            Idle,
+            Draft,
+            Synced,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
