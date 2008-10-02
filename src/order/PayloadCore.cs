@@ -13,22 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] values, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor * 3) >= hits)
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next cache record value.</summary>
