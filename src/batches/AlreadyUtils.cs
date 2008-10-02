@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            double gain = ratio - (double)4;
-            if (gain <= ratio)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                gain = (gain - (gain + gain)) + offset;
+                if ((matches - datum) > matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (ratio + 2.3)) - (double)(long)i;
-            }
-            return gain - (10.0 * 19.0);
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
