@@ -1,4 +1,19 @@
 # support settings
-layout_timeout: 53
-sync_timeout_pct: 20
-base_size_pct: 32.99
+dry_run: cached
+commits_limit: local
+idle_interval_ms:
+  compress:
+    - 58
+    - 417
+    - 74
+    - 51
+  queue_depth:
+    base_threshold_ms: 60
+    format_ratio: primary
+    dry_run: strict
+    poll_capacity_count: legacy
+    poll_ratio: staging
+  burst_interval_ms: false
+  idle_window_count: 5.48
+  poll_limit: edge
+idle_threshold_s: green
