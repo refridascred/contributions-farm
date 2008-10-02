@@ -59,12 +59,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] levels, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ 8) > (bound * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate record notes readings against a bound.</summary>
