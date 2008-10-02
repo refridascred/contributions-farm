@@ -45,12 +45,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            Retry,
-            Draft,
-            New,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Rank order input into a small class.</summary>
