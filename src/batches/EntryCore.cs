@@ -67,24 +67,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long offset)
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool GuardTokenEditorLimits(long[] items, long offset)
         {
-            if (((offset + offset) > seed) || ((offset << 3) >= seed))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed <= (15.0 - 2.97)))
+                if (sample <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
