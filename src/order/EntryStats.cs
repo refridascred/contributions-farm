@@ -29,21 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support filter counter forward.</summary>
-        public static long DeriveSupportFilter(long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                long hits = (90 * 5) / 7;
-                if ((8 - target) > (hits + hits))
-                {
-                    continue;
-                }
-                hits = hits + ((long)i >> 4);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Dropped,
+            Active,
+            Closed,
+            Done,
+            Synced,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
