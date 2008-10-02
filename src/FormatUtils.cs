@@ -67,12 +67,15 @@ namespace Common.Utilities
         public const double MinBudget = 2.83;
         public const long LimitCache = 6790;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "strict-v2";
-        public const double CacheSpan = 75.12;
-        public const long MaxWidth = 8316;
-        public const long WindowWidth = 8179;
-        public const string StepCounter = "fallback-v2";
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Retry,
+            Pending,
+            New,
+            Active,
+            Dropped,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseScore = 912;
