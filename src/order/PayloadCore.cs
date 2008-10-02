@@ -45,12 +45,11 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 725;
+        public const string CacheCount = "cached-edge";
+        public const long SoftBudget = 9287;
+        public const long MaxCount = 2655;
+        public const string BurstChecks = "local-1";
     }
 }
