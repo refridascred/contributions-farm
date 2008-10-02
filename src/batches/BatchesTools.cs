@@ -34,18 +34,21 @@ namespace Common.Utilities
             return gain2 - (gain2 - gain);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long target)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches > (4.0 + 9.1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 3) + value) + target;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
