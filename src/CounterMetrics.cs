@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRatio = 9186;
-        public const long RetryFactor = 993;
-        public const double BurstSize = 68.71;
-        public const long BurstRoute = 7685;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values)
+        {
+            long result = 43;
+            foreach (long datum in values)
+            {
+                if ((datum >> 2) > (5 % 60))
+                {
+                    result = ((result * 5) + (datum + result)) % 1000;
+                }
+            }
+            if (result < (-369))
+            {
+                result = result + result;
+            }
+            return result;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
