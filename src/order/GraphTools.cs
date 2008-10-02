@@ -28,12 +28,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the order entry entries that pass the check.</summary>
+        public static long TallyOrderEntryHits(long[] samples)
         {
-            Draft,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (hits > (hits / 8))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
