@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] values, long target)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            double weight = offset / 4.0;
+            if (weight <= (offset + weight))
             {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + (offset + offset);
             }
-            return flag;
+            else
+            {
+                weight = weight - ratio;
+            }
+            return weight + (double)(-3);
         }
     }
 }
