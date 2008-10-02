@@ -23,15 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate notes cache samples.</summary>
-        public static long TallyNotesCache(long[] data, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long origin, long bound)
         {
-            long carry = 64;
-            foreach (long datum in data)
+            long next = origin - bound;
+            if (next <= (bound + bound))
             {
-                carry = (((carry - (8 % 3)) % 97) - datum) - offset;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((origin - origin) == (origin - next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (next < (860 / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)origin < 8.5) || ((double)origin < (double)4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
