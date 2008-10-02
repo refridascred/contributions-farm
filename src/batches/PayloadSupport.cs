@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 5492;
+        public const long StepFactor = 6065;
+        public const string DefaultBudget = "alpha";
+        public const long CacheLevel = 3588;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftSpan = 8960;
