@@ -1,9 +1,8 @@
 # githubfarm settings
-burst_timeout: legacy
-sync_timeout_pct: 2943
-cache_retries:
-  - 25
-  - 214
-  - 45
-  - 129
-batch_threshold_pct: 87.62
+stream_ttl:
+  - 273
+  - 473
+  - 293
+  - 105
+account_retries: 9714
+tools_retries: green
