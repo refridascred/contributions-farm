@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy green; do
+for item in eu-west strict; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=118
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-primary}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
