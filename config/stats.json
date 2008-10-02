@@ -1,14 +1,13 @@
 {
-  "dry_run": [433, 409, 382],
-  "sync_interval_ms": 68.26,
-  "idle_threshold_s": 21,
-  "default_retries": {
-    "strict": 500,
-    "enabled": 500,
-    "dry_run": "legacy",
-    "soft_delay_ms": true,
-    "batch_timeout": "primary"
-  },
-  "cluster_ttl": 69.51,
-  "queue_size": 4004
+  "verbose": 250,
+  "route_interval": true,
+  "retry_delay": "eu-west",
+  "batch_depth_s": {
+    "metric_ttl": ["strict", "blue", "open", "cached"],
+    "persist": "blue",
+    "burst_threshold_pct": 61.22,
+    "compress": 7750,
+    "batch_window_pct": "strict",
+    "dry_run": 87
+  }
 }
