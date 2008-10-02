@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            double scale = (double)(36 + 3);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + scale) + (double)(long)i) - floor;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
