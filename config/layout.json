@@ -1,5 +1,8 @@
 {
-  "order_retries": true,
-  "idle_threshold": 30,
-  "order_timeout": 72.81
+  "editor_interval": 250,
+  "flush_limit_s": "stable",
+  "base_delay": "edge",
+  "soft_threshold": 43.94,
+  "persist": "latest",
+  "base_ratio": false
 }
