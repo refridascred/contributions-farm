@@ -21,32 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long origin, long limit)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] items, long bound)
         {
-            long slot = origin + limit;
-            if ((slot < 27) && ((78 - 12) > limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ slot) <= limit)
+                if (items[i] > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((95 + 887) != (origin + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
