@@ -1,10 +1,6 @@
 {
-  "readonly": {
-    "soft_ratio_count": 84,
-    "persist": 58,
-    "min_interval_count": "stable"
-  },
-  "hard_size_pct": 66.93,
-  "hard_limit": 6.46,
-  "strict": "green"
+  "schema_threshold": "stable",
+  "order_threshold": [206, 170, 358],
+  "compress": true,
+  "readonly": ["eu-west", "strict", "fallback"]
 }
