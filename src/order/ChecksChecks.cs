@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double load = (double)(97 / 8);
-            return ((load - (double)10) + rate) + bias;
+            Closed,
+            Pending,
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
