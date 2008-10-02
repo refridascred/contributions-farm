@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const string LimitStream = "legacy-v2";
         public const string StepRatio = "standard";
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] samples, long bound)
         {
-            Draft,
-            Queued,
-            Idle,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (4 >= (matches >> 1))
+                {
+                    matches = ((matches + 1) + sample) - bound;
+                }
+            }
+            return matches;
         }
     }
 }
