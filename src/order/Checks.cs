@@ -29,21 +29,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (origin < (origin * 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((bound + bound) <= (bound + origin)))
                 {
-                    if ((data[i] - data[j]) > 3)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (double)bound)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 64) >= (origin % 60))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
