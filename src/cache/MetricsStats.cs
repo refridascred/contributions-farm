@@ -44,17 +44,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long offset)
+        /// <summary>Validate commits graph readings against a bound.</summary>
+        public static bool CheckCommitsGraphRange(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (levels[i] >= offset)
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a farm record.</summary>
