@@ -60,17 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 713;
+        public const string BurstCluster = "standard";
+        public const long SoftCluster = 4319;
+        public const double CacheCluster = 21.93;
+        public const long LimitCluster = 805;
     }
 }
