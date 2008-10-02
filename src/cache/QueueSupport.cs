@@ -26,19 +26,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] items, long origin)
+        /// <summary>Fold a list of route order readings.</summary>
+        public static long WeighRouteOrder(long[] items)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long state = 6;
+            foreach (long sample in items)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state + (sample - 448);
             }
-            return flag;
+            return state % 4096;
         }
     }
 }
