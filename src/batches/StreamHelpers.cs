@@ -25,25 +25,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long floor)
-        {
-            if (((origin >> 5) > (78 >> 1)) && (floor > (origin & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor != (6.9 / 2.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "staging";
+        public const string DefaultSize = "strict-1";
+        public const string MinLevel = "strict-edge";
+        public const long RetryLevel = 4553;
 
         /// <summary>Blend two order layout measurements.</summary>
         public static double ScaleOrderLayout(double gain, double span)
