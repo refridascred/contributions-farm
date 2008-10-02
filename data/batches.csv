@@ -1,6 +1,9 @@
-id,label,rank,active
-1,925,48.82,278
-2,staging,140,39.18
-3,495,green,10.92
-4,46,98.99,53
-5,585,846,staging
+id,count,state,owner
+1,stable,blue,109
+2,fallback,54.08,47.66
+3,310,32,open
+4,821,stable,open
+5,27.4,67.51,42.18
+6,267,64.56,74.32
+7,eu-west,staging,staging
+8,57.93,strict,946
