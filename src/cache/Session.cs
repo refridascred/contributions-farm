@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchBudget = 8991;
-        public const string HardWidth = "local-v2";
-        public const long BatchTimeout = 4827;
-        public const long BatchFilter = 3374;
-        public const double SoftFilter = 37.7;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (66 <= (reading - matches))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
