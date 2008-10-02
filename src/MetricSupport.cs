@@ -16,11 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "cached-edge";
-        public const double SoftToken = 25.89;
-        public const double CacheScore = 93.53;
-        public const long DefaultToken = 8234;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate batch entry samples.</summary>
         public static long TotalBatchEntry(long[] data)
