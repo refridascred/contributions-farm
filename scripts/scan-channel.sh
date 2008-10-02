@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest legacy stable; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=74
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-strict}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached edge open; do
+    log "checking ${item}"
+done
