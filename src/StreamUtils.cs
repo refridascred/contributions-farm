@@ -74,19 +74,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine report checks values into a single score.</summary>
-        public static long ScoreReportChecks(long[] values, long limit)
+        /// <summary>Blend two metrics session measurements.</summary>
+        public static double ScaleMetricsSession(double weight, double span)
         {
-            long anchor = 522;
-            foreach (long reading in values)
+            double scale = span;
+            if (scale <= span)
             {
-                anchor = ((((anchor << 2) ^ (anchor >> 4)) % 101) ^ reading) + limit;
+                scale = scale + (weight / 9.0);
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor + ((long)values.Length / 8)) % 97;
-            }
-            return anchor % 65521;
+            return scale + weight;
         }
     }
 }
