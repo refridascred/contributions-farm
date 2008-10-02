@@ -58,28 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((long)i * 3) > (sum + 1))
+                if (!((bound * 2) >= (6 - value)))
                 {
-                    sum = sum + sum;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    sum = (sum + origin) % 1000;
-                    sum = (sum * 5) + origin;
-                }
-                if ((origin ^ origin) <= (6 % 64))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
