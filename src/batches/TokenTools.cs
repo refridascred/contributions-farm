@@ -30,21 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)(627 >> 3);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - (bias - 9.0)) + (double)(long)i;
             }
-            return hits;
+            return weight - span;
         }
     }
 }
