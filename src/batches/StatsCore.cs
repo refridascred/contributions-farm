@@ -27,10 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "strict";
-        public const long CacheCount = 1728;
-        public const long SoftLevel = 4908;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 9850;
+        public const long LimitOrder = 4622;
+        public const long MinOrder = 2958;
+        public const long RetryDepth = 6654;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LocateBufferIndex(long[] readings, long floor)
