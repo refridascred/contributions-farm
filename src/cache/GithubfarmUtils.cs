@@ -35,11 +35,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 8767;
-        public const long CacheScore = 3447;
-        public const long MinDepth = 788;
-        public const double RetryStream = 91.54;
-        public const long BurstRatio = 3392;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches - datum) > datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
