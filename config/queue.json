@@ -1,12 +1,12 @@
 {
-  "batch_interval_pct": {
-    "audit": 2596,
-    "soft_retries_s": [494, 458, 307],
-    "max_window_pct": 30.35,
-    "soft_retries": "blue",
-    "batch_ratio_pct": 29.49
+  "persist": false,
+  "flush_capacity_pct": {
+    "command_size": 250,
+    "format_threshold": "local",
+    "batch_ttl_s": false,
+    "max_capacity_pct": 44.38
   },
-  "base_retries_ms": "latest",
-  "sync_timeout_count": 81,
-  "sync_delay_count": 36.61
+  "compress": 6518,
+  "verbose": 66,
+  "stream_depth": "stable"
 }
