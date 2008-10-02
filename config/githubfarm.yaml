@@ -1,13 +1,20 @@
 # githubfarm settings
-min_timeout:
+poll_depth:
+  tools_retries: fallback
+  flush_retries_s: 13.45
+  buffer_depth: 60
+  soft_delay_count: false
+sync_depth_ms: false
+batch_limit:
   - standard
-  - open
-soft_retries_ms:
-  poll_timeout:
-    - 69
-    - 339
-    - 176
-  audit: false
-  burst_window_s: open
-dry_run: true
-stream_interval: fallback
+  - fallback
+  - green
+  - edge
+idle_capacity_count:
+  - staging
+  - stable
+soft_capacity_ms: 4580
+cluster_threshold:
+  - blue
+  - cached
+  - edge
