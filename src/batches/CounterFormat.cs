@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 1765;
+        public const long RetryChannel = 2408;
+        public const string BurstScore = "local-1";
+        public const string WindowSize = "open-v2";
 
         /// <summary>Audit payload command readings against a rule.</summary>
         public static long AuditPayloadCommandMatches(long[] items, long bound)
