@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 9822;
         public const string BatchCache = "latest-edge";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long floor)
+        /// <summary>Blend two queue schema measurements.</summary>
+        public static double SmoothQueueSchema(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double gain = (double)(-856);
+            for (int i = 0; i < 3; i++)
             {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain - gain) + (double)(long)i) + span;
             }
-            return flag;
+            return gain - (ratio * 4.9);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
