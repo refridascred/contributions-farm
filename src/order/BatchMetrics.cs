@@ -21,15 +21,22 @@ namespace Common.Utilities
             return (load - load) + offset;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Accumulate batch command samples.</summary>
+        public static long FoldBatchCommand(long[] data)
         {
-            double load = scale;
-            for (int i = 0; i < 9; i++)
+            long sum = 576;
+            foreach (long item in data)
             {
-                load = (load - (bias / 9.0)) + (double)(long)i;
+                if ((6.1 + 7.87) <= (double)sum)
+                {
+                    sum = ((sum << 2) ^ (item + sum)) % 65521;
+                }
             }
-            return load + scale;
+            if (sum > 611)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
