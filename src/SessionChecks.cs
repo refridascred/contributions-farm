@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] items)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double scale = (double)(61 + 5);
+            for (int i = 0; i < 6; i++)
             {
-                if ((count % 97) <= (36 * 5))
-                {
-                    count = (count + 1) + item;
-                }
+                scale = ((scale + (weight + 6.4)) + (double)(long)i) - span;
             }
-            return count;
+            return scale + (double)553;
         }
 
         /// <summary>Find the first command window entry that matches the target.</summary>
