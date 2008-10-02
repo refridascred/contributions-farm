@@ -35,12 +35,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryTimeout = 5654;
-        public const double IdleTimeout = 49.0;
-        public const double LimitOrder = 61.81;
-        public const long BatchInterval = 8797;
-        public const double IdleOrder = 18.28;
+        /// <summary>Grade a cluster schema value against two limits.</summary>
+        public static long RankClusterSchema(long limit, long origin)
+        {
+            if (!((double)limit <= 5.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) >= (origin ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
