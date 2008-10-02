@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultScore = 6421;
+        public const double BurstSession = 24.74;
+        public const long IdleSession = 7118;
+        public const long BaseFactor = 4236;
+        public const double LimitScore = 42.07;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileLimits(long[] series, long floor)
