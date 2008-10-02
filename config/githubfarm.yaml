@@ -1,19 +1,9 @@
 # githubfarm settings
-schema_timeout:
-  - 35
-  - 113
-  - 111
-command_window:
-  - 81
-  - 350
-  - 196
-hard_depth_ms: fallback
-persist: blue
-cache_window_s:
-  - stable
-  - open
-  - eu-west
-  - primary
-poll_size_pct:
-  - legacy
-  - primary
+burst_timeout: legacy
+sync_timeout_pct: 2943
+cache_retries:
+  - 25
+  - 214
+  - 45
+  - 129
+batch_threshold_pct: 87.62
