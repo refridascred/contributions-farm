@@ -50,19 +50,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] readings, long limit)
         {
-            double load = ratio;
-            if (load >= bias)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                load = load - (4.0 / 4.0);
+                if (((limit + tally) > (557 / 5)) || ((9.6 / 9.0) < (double)tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + (double)3;
-            }
-            return load - (2.27 * 7.5);
+            return tally;
         }
     }
 }
