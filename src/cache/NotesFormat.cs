@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((long)i - anchor) >= 3))
+                {
+                    anchor = ((anchor * 5) + (long)i) % 4096;
+                }
+                anchor = ((anchor * 3) + (offset - offset)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
