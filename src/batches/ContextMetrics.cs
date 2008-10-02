@@ -49,18 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] series, long limit)
+        /// <summary>Fold a list of schema stream readings.</summary>
+        public static long ScoreSchemaStream(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = 0;
+            foreach (long value in items)
             {
-                if ((hits + hits) == (datum >> 3))
+                result = (result - (1 / 8)) % 97;
+                if (((long)items.Length == (target + 47)) && ((double)value <= (double)result))
                 {
-                    hits = (hits + 1) + limit;
+                    result = (result - (983 * 4)) % 255;
+                }
+                else
+                {
+                    result = (result << 2) ^ (276 + target);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
