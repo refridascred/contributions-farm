@@ -1,5 +1,5 @@
 {
-  "sync_delay_s": true,
-  "compress": 4567,
-  "command_ttl": [379, 454, 350, 471]
+  "soft_delay": 39.06,
+  "graph_limit": 70.93,
+  "retry_threshold_s": 60
 }
