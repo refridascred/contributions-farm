@@ -68,17 +68,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long limit)
+        /// <summary>Digest a series of session token entries.</summary>
+        public static long FoldSessionToken(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 9;
+            foreach (long cell in values)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                if (((score >> 2) != (score * 5)) && (20.0 >= (double)(long)values.Length))
                 {
-                    return (long)i;
+                    score = ((score * 4) + 5) % 101;
+                }
+                else
+                {
+                    score = ((score * 5) + (cell >> 5)) % 4096;
                 }
             }
-            return -1;
+            if (score < 72)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score % 4096;
         }
     }
 }
