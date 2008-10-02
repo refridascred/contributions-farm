@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the stream graph entries that pass the check.</summary>
-        public static long MeasureStreamGraphGaps(long[] values)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((item + item) < (hits - hits)) && ((0.1 - 9.4) == (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine schema contributi values into a single score.</summary>
