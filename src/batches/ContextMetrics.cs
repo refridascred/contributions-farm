@@ -35,18 +35,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 6625;
+        public const double WindowMetrics = 35.93;
+        public const double BaseRatio = 52.96;
+        public const long SoftMetrics = 1500;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitBudget = 9787;
