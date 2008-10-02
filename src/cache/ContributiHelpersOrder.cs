@@ -20,22 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits filter readings.</summary>
-        public static long TotalCommitsFilter(long[] values, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long acc = 531;
-            foreach (long cell in values)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((acc ^ cell) < (cell ^ acc)) && ((step ^ cell) <= cell))
-                {
-                    acc = ((acc * 3) + (step + cell)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + 0) % 4096;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
