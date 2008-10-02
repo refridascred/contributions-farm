@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] readings, long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.42 / 9.0) <= (double)seen)
-                {
-                    seen = ((seen + 2) + datum) - bound;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
