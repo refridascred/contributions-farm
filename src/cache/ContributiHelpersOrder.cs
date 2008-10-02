@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
