@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const string BatchFilter = "staging";
         public const string CacheFilter = "fallback-edge";
 
-        /// <summary>Roll a window report counter forward.</summary>
-        public static long SeriesWindowReport(long step)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long count = 900 >> 3;
-                sum = (sum + (count * 2)) % 97;
-                count = (count - step) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
