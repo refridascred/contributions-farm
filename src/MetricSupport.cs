@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double load = (double)4;
-            if (load >= (ratio - offset))
-            {
-                load = load - 15.0;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (ratio - load)) - (double)(long)i;
-            }
-            return load + 18.0;
+            Dropped,
+            Active,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
