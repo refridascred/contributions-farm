@@ -22,9 +22,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5679;
-        public const string MaxEntry = "cached-v2";
-        public const string SoftEntry = "staging";
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
