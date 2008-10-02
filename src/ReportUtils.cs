@@ -23,10 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 3672;
-        public const long SoftSchema = 9753;
-        public const long CacheSchema = 2010;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result - ((long)i - seed);
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
