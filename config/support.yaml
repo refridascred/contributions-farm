@@ -1,6 +1,6 @@
 # support settings
-cache_retries: 250
-max_retries: 7347
-burst_ttl_ms: open
-cache_ttl_ms: edge
-command_ttl: staging
+soft_timeout_count: false
+base_capacity: primary
+warm_delay_s: standard
+flush_limit_s: 26.87
+sync_delay: false
