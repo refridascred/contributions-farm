@@ -1,20 +1,9 @@
 # support settings
-enabled: local
-dry_run: true
-hard_timeout_ms:
-  - 302
-  - 25
-  - 200
-  - 18
-sync_interval:
-  command_timeout: blue
-  soft_retries: false
-  flush_depth_pct: 68
-  retry_ratio_ms: 21
-  default_timeout_s:
-    - 287
-    - 204
-    - 332
-    - 452
-  cache_limit_s: false
-audit: true
+base_interval_ms: 92.81
+idle_window_s: local
+base_depth_ms:
+  - green
+  - staging
+  - eu-west
+batch_capacity: latest
+verbose: 250
