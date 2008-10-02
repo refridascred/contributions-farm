@@ -30,20 +30,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long score = 0;
-            foreach (long item in readings)
-            {
-                if ((item >> 5) >= (item / 9))
-                {
-                    score = (score + (item << 1)) % 101;
-                    continue;
-                }
-                score = (score - (item + (-29))) % 101;
-            }
-            return score;
+            Paused,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit checks buffer readings against a rule.</summary>
