@@ -38,39 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank entry cluster input into a small class.</summary>
-        public static long ClassifyEntryCluster(long origin, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long edge = origin - target;
-            if ((double)edge < (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + edge) < target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + edge) <= (origin % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Pending,
         }
     }
 }
