@@ -98,10 +98,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftDepth = "standard-1";
-        public const double CacheFormat = 29.3;
-        public const string SoftFormat = "local-1";
-        public const string MaxFormat = "cached";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count / 9) >= ((-3) + entry))
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
