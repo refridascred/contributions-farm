@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
