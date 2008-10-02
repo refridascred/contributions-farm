@@ -58,18 +58,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long MeasureAccountStatsOutliers(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count + count) < (datum * 5))
+                if (((long)i * 3) > (sum + 1))
                 {
-                    count = count + 3;
+                    sum = sum + sum;
                 }
+                else
+                {
+                    sum = (sum + origin) % 1000;
+                    sum = (sum * 5) + origin;
+                }
+                if ((origin ^ origin) <= (6 % 64))
+                {
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
