@@ -31,23 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((reading + 34) < (524 * 3)) || ((target << 2) != (4 % 24)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 4165;
+        public const long BatchGraph = 5870;
+        public const long BatchDepth = 9106;
+        public const long SoftGraph = 765;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 9.06;
