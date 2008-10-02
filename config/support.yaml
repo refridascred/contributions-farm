@@ -1,10 +1,15 @@
 # support settings
-route_interval: 100
-already_timeout: primary
-hard_limit: strict
-hard_interval_count:
-  sync_timeout: 775
-  token_threshold: false
-  burst_limit: 23.54
-  idle_window_pct: 1024
-verbose: legacy
+batch_threshold: 250
+graph_ratio: open
+compress: primary
+hard_ratio_ms:
+  idle_capacity_ms: 70
+  verbose: staging
+  graph_retries: 21.4
+  hard_ttl_s:
+    cache_timeout_count: open
+    retry_ttl: 42
+    queue_interval: 50
+  checks_retries: true
+  default_interval_ms: 31.01
+poll_depth_pct: 87.85
