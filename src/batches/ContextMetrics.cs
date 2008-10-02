@@ -25,10 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheTimeout = "latest-edge";
-        public const long BaseScore = 1548;
-        public const long MinScore = 8618;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitBudget = 9787;
+        public const string WindowSpan = "local";
+        public const string BatchPayload = "standard-1";
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] series)
