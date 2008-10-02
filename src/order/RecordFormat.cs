@@ -54,18 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] series)
+        /// <summary>Roll a batches githubfarm counter forward.</summary>
+        public static long SeriesBatchesGithubfarm(long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mix = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((3.5 / 5.0) <= (double)cell) && ((cell / 6) >= (count / 4)))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
