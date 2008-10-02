@@ -1,6 +1,5 @@
 {
-  "payload_timeout": "strict",
-  "enabled": 27.67,
-  "min_depth": "latest",
-  "hard_threshold": "cached"
+  "tools_ttl": [176, 182, 296, 480],
+  "poll_ttl_count": "green",
+  "base_limit_ms": 3265
 }
