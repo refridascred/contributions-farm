@@ -70,15 +70,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double gain = bias / 9.0;
-            if (gain > (bias + gain))
-            {
-                gain = (gain - 0.12) + weight;
-            }
-            return gain - bias;
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
