@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Pending,
+            double load = rate;
+            if (load >= load)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - rate;
+            }
+            return load - span;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
