@@ -58,13 +58,19 @@ namespace Common.Utilities
         public const long BatchBuffer = 2152;
         public const long BaseBuffer = 1695;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
