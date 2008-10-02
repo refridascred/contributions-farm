@@ -1,5 +1,6 @@
 {
-  "warm_window": 90.45,
-  "sync_ttl_ms": [367, 310, 485],
-  "queue_ratio": "eu-west"
+  "payload_timeout": "strict",
+  "enabled": 27.67,
+  "min_depth": "latest",
+  "hard_threshold": "cached"
 }
