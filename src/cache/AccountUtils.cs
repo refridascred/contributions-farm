@@ -25,12 +25,9 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public string Flag { get; set; } = "";
-            public bool Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4251;
+        public const double MinContributi = 89.51;
+        public const double BurstRatio = 10.92;
     }
 }
