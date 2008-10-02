@@ -1,13 +1,11 @@
 {
-  "idle_delay_pct": 51,
-  "batch_depth_ms": "staging",
-  "schema_timeout": {
-    "verbose": 500,
-    "audit": 5700,
-    "route_depth": 30,
-    "counter_interval": true,
-    "retry_delay": 65.22
+  "burst_capacity_pct": 58.99,
+  "idle_timeout_ms": {
+    "soft_ttl": 8832,
+    "flush_timeout_ms": "primary",
+    "dry_run": "standard",
+    "enabled": 26
   },
-  "default_ratio_pct": true,
-  "compress": ["open", "fallback", "edge"]
+  "poll_timeout": [266, 72, 274],
+  "batch_limit": 40
 }
