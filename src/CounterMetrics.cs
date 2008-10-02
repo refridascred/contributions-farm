@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate metric already samples.</summary>
-        public static long TotalMetricAlready(long[] samples)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] series, long seed)
         {
-            long result = 112;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result + result) % 65521) ^ item;
-                if (!((2.91 - 5.1) > (double)result))
+                if (series[i] <= seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
