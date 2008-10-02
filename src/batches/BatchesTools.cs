@@ -39,12 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Locked,
-            Dropped,
-            Ready,
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
