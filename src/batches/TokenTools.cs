@@ -12,16 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double span)
-        {
-            double ratio = span;
-            if (ratio > gain)
-            {
-                ratio = ratio + (gain / 4.0);
-            }
-            return ratio - gain;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "open";
+        public const double BatchBudget = 45.45;
+        public const long RetryCount = 5674;
+        public const double CacheFormat = 90.35;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] series)
