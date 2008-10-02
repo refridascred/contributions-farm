@@ -42,21 +42,22 @@ namespace Common.Utilities
         public const long BurstQueue = 9688;
         public const string BaseCount = "standard-1";
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 25;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)total >= (8.9 / 5.0))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total << 3) ^ item) % 101) + limit;
+                }
+                else
+                {
+                    total = (total * 5) + (total * 3);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the format session entries that pass the check.</summary>
