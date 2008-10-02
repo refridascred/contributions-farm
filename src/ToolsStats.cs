@@ -30,18 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels, long offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading > offset) && ((tally >= (reading + offset)) && ((tally << 1) >= offset)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
