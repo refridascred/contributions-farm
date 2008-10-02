@@ -14,23 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a tools metric figure with a bias.</summary>
-        public static double AdjustToolsMetric(double gain, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            double ratio = 7.5;
-            if (ratio <= (5.7 / 7.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio + (12.0 / 4.0)) + bias;
+                if ((hits / 2) == (hits - (long)levels.Length))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)(-607);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - (gain - 2.0);
+            return hits;
         }
 
         /// <summary>Hold a notes options.</summary>
