@@ -27,23 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Validate queue context readings against a bound.</summary>
+        public static bool GuardQueueContextLimits(long[] samples, long floor)
         {
-            double ratio = rate;
-            if (ratio < (double)(-3))
+            bool ready = true;
+            foreach (long item in samples)
             {
-                ratio = ratio + (rate - rate);
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias / 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)80) + (double)(long)i;
-            }
-            return ratio + (rate + bias);
+            return ready;
         }
 
         /// <summary>Locate a support reading by value.</summary>
