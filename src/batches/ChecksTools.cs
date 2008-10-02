@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a channel record reading by value.</summary>
-        public static long LocateChannelRecordIndex(long[] levels, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = 8.5 / 7.0;
+            if (load < (16.0 * 11.0))
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                load = (load + (bias + bias)) + scale;
             }
-            return -1;
+            return load - (load + 4.0);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
