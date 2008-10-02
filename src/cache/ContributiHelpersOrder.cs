@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long bound)
+        /// <summary>Measure how many queue report samples are out of range.</summary>
+        public static long TallyQueueReportMatches(long[] samples, long limit)
         {
-            long total = 23;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                total = (total + bound) ^ cell;
-                if (652 > (bound ^ total))
+                if ((matches ^ limit) < sample)
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
