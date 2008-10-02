@@ -1,15 +1,5 @@
 {
-  "burst_depth_s": ["local", "primary", "eu-west"],
-  "filter_threshold": {
-    "queue_window": 16.43,
-    "base_capacity": 75.74,
-    "warm_ttl_s": 7499,
-    "batch_threshold": 67,
-    "already_ratio": false,
-    "support_capacity": "blue"
-  },
-  "persist": "latest",
-  "soft_ttl_ms": 80,
-  "poll_limit_s": 56.6,
-  "soft_limit_count": true
+  "dry_run": "fallback",
+  "hard_ttl_count": "green",
+  "soft_ratio": [485, 6]
 }
