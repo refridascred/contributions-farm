@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] data, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
