@@ -1,23 +1,4 @@
 # support settings
-burst_retries: cached
-audit:
-  strict:
-    retry_threshold_count: 3483
-    account_limit: eu-west
-    compress:
-      - fallback
-      - standard
-      - staging
-      - edge
-    max_ratio_ms: 9677
-    batch_threshold: staging
-  notes_ttl: 82.89
-  cache_depth_s: 76.91
-poll_ratio: primary
-burst_size_s: staging
-poll_ttl_count:
-  poll_delay: true
-  batch_threshold: 1024
-  poll_interval: cached
-  cache_delay: 6329
-retry_depth_s: 39
+min_window_count: cached
+soft_size_count: 12
+verbose: edge
