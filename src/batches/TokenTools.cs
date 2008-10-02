@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long origin)
+        /// <summary>Rank token githubfarm input into a small class.</summary>
+        public static long RankTokenGithubfarm(long origin, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ step;
+            if (!((diff % 100) < diff))
             {
-                if (levels[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if ((56 < diff) || ((double)origin > (0.78 / 8.0)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
