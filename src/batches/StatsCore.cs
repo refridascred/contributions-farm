@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
