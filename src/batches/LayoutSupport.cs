@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 5.0;
+            if (mean <= mean)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)190) - bias;
             }
-            return -1;
+            return mean + (weight * 0.5);
         }
 
         /// <summary>Check that every farm commits entry stays within the limit.</summary>
