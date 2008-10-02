@@ -39,11 +39,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
+        /// <summary>Find the first channel format entry that matches the target.</summary>
+        public static long FindChannelFormatIndex(long[] samples, long bound)
         {
-            double mean = (offset * 12.0) * 7.6;
-            return (mean + (2.4 / 8.0)) + gain;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
