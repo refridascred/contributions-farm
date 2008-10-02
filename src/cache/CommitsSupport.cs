@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a notes window value against two limits.</summary>
-        public static long BucketNotesWindow(long target, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            if ((bound >> 2) != (791 - target))
+            long mix = 81;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 31) > (2 * 2))
+                if ((3.8 * 13.0) != (double)seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((691 + 753) >= (bound % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mix = (mix ^ (datum / 3)) % 65521;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
