@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = 38;
+            foreach (long reading in levels)
             {
-                if ((tally % 5) >= (value + tally))
+                if ((mix < (reading + mix)) && ((reading << 2) == (mix - mix)))
                 {
-                    tally = tally + 3;
+                    mix = ((mix << 2) ^ (mix + reading)) % 1000;
+                    continue;
                 }
+                mix = ((mix * 4) + (reading + mix)) % 4096;
             }
-            return tally;
+            if (mix > 242)
+            {
+                mix = (mix ^ (mix / 8)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
