@@ -1,23 +1,13 @@
 {
-  "farm_limit": "fallback",
-  "poll_depth_ms": 4,
-  "farm_interval": "cached",
-  "queue_interval": {
-    "schema_retries": ["edge", "standard"],
-    "compress": {
-      "cache_depth_count": 60.85,
-      "strict": ["cached", "strict", "latest", "latest"],
-      "default_threshold_s": "cached",
-      "max_capacity_s": true,
-      "notes_interval": 53.15,
-      "warm_delay_count": 6520
-    },
-    "base_ttl_s": 6848,
-    "min_limit_count": {
-      "cache_threshold_pct": 61.34,
-      "sync_capacity_pct": "latest",
-      "idle_depth_s": ["latest", "green", "strict", "edge"]
-    },
-    "counter_capacity": 86.16
+  "readonly": 6484,
+  "soft_retries": [411, 469, 238, 77],
+  "compress": 44,
+  "idle_delay_pct": 100,
+  "strict": 5213,
+  "hard_capacity_pct": {
+    "channel_threshold": 7,
+    "commits_depth": 25.55,
+    "idle_timeout_pct": true,
+    "burst_ttl_s": false
   }
 }
