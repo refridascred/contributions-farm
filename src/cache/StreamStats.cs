@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            long anchor = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + anchor) + value;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 14)
-            {
-                anchor = anchor + (anchor + 30);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up window samples.</summary>
