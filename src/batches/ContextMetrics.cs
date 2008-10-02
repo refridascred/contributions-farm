@@ -50,23 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema stream readings.</summary>
-        public static long ScoreSchemaStream(long[] items, long target)
+        /// <summary>Blend two session support measurements.</summary>
+        public static double SmoothSessionSupport(double ratio, double span)
         {
-            long result = 0;
-            foreach (long value in items)
+            double bias = (ratio / 5.0) / 4.0;
+            if (bias <= span)
             {
-                result = (result - (1 / 8)) % 97;
-                if (((long)items.Length == (target + 47)) && ((double)value <= (double)result))
-                {
-                    result = (result - (983 * 4)) % 255;
-                }
-                else
-                {
-                    result = (result << 2) ^ (276 + target);
-                }
+                bias = bias - ratio;
             }
-            return result;
+            return bias - (span + bias);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
