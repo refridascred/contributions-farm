@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long bound, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long floor)
         {
-            if ((7.2 + 6.95) != (double)bound)
+            long bound = offset + floor;
+            if (!((765 % 7) >= (bound + bound)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (bound >= 3)
+                if ((double)offset != (double)bound)
                 {
                     return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((bound * 5) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((96 - floor) > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
