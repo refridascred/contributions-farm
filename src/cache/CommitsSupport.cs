@@ -37,12 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxFactor = 7652;
-        public const long BaseScore = 9754;
-        public const long MinBudget = 6905;
-        public const long BurstEditor = 261;
-        public const double LimitSpan = 56.48;
+        /// <summary>Match up tools filter samples.</summary>
+        public static long CompareToolsFilterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cache already reading by value.</summary>
         public static long LookupCacheAlreadyIndex(long[] values, long seed)
