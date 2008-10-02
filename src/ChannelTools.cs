@@ -16,19 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (9.69 * 5.7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSpan = 1514;
+        public const double LimitSupport = 50.17;
+        public const long HardLevel = 53;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long step, long step2)
