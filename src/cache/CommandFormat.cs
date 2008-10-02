@@ -23,12 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
