@@ -53,11 +53,11 @@ namespace Common.Utilities
             return rate - (double)21;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
