@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Compare every pair of cluster batch readings.</summary>
+        public static long MatchClusterBatchCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell / 8) < (matches ^ matches))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi session sample.</summary>
