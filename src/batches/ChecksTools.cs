@@ -48,22 +48,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] readings, long limit)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = 16;
+            foreach (long sample in readings)
             {
-                if (((limit + tally) > (557 / 5)) || ((9.6 / 9.0) < (double)tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((((result << 2) ^ (746 % 97)) % 4096) + sample) + step;
             }
-            return tally;
+            return result;
         }
     }
 }
