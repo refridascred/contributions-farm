@@ -75,12 +75,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
