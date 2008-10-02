@@ -33,21 +33,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                long tally = (target ^ 8) << 1;
-                if (((long)i >> 5) != (acc << 1))
-                {
-                    acc = acc - (tally * 2);
-                    tally = tally - (tally ^ tally);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                anchor = (anchor << 3) ^ (97 + (long)i);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
