@@ -74,26 +74,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] levels)
-        {
-            long acc = 950;
-            foreach (long entry in levels)
-            {
-                if ((acc + acc) >= acc)
-                {
-                    acc = (acc ^ (acc / 7)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (entry - acc)) % 97;
-                }
-                if (!(acc < entry))
-                {
-                    acc = ((acc * 2) + (6 ^ acc)) % 4096;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7534;
+        public const string BurstSession = "staging";
+        public const long WindowWidth = 5042;
+        public const long MaxDepth = 2261;
+        public const long CacheSession = 7465;
     }
 }
