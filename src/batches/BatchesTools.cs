@@ -42,10 +42,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 2883;
-        public const long RetryRoute = 3878;
-        public const long BatchSpan = 597;
-        public const string RetryWidth = "standard-edge";
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Locked,
+            Dropped,
+            Ready,
+        }
     }
 }
