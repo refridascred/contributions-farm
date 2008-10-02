@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (rate2 - (rate + 12.0)) + offset;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Synced,
-            Paused,
-            Done,
+            Locked,
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
