@@ -60,26 +60,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long TotalAccountPayload(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long offset)
         {
-            long mix = 40;
-            foreach (long datum in data)
+            long step = target - offset;
+            if ((target / 2) > (offset + 120))
             {
-                if ((44 >> 1) > mix)
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= (9.2 / 6.0))
                 {
-                    mix = ((mix << 3) ^ mix) % 255;
+                    return 6;
                 }
-                if ((mix + 56) >= (datum >> 3))
+                else
                 {
-                    break;
+                    if ((target * 3) <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step <= 1.9)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix << 3) ^ (mix >> 3);
-            }
-            return mix % 97;
         }
     }
 }
