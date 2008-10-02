@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryDepth = 53.45;
-        public const double BatchBuffer = 32.96;
-        public const long BurstCount = 9749;
-        public const double HardCount = 51.87;
-        public const long DefaultFactor = 4539;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSpan = 8960;
+        public const double BatchReport = 81.62;
+        public const double MinReport = 2.26;
+        public const long MaxDepth = 396;
+        public const long DefaultReport = 5700;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
