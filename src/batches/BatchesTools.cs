@@ -19,24 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            double gain2 = 8.0;
+            if (gain2 >= (gain2 - gain2))
             {
-                if (!((origin - score) == (origin + score)))
-                {
-                    score = (score << 2) ^ (score % 5);
-                    break;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + score)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                gain2 = (gain2 + (gain * 5.0)) - span;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - (gain2 - gain);
         }
 
         /// <summary>Describe the payload phase values.</summary>
