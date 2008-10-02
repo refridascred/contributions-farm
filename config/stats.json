@@ -1,8 +1,15 @@
 {
-  "batch_ratio": 73.09,
-  "burst_ratio_count": "staging",
-  "batch_limit_ms": false,
-  "notes_limit": 8999,
-  "retry_window": true,
-  "burst_ratio_s": false
+  "filter_window": 85.23,
+  "hard_interval_count": 71,
+  "retry_interval_count": 20.08,
+  "poll_timeout_ms": {
+    "buffer_size": "strict",
+    "cluster_timeout": 30,
+    "payload_depth": 93,
+    "flush_ratio_pct": "strict",
+    "retry_size_s": 100,
+    "batch_limit": 7286
+  },
+  "min_delay_count": "fallback",
+  "readonly": 86
 }
