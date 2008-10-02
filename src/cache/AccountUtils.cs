@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] readings, long step)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((11 + (long)readings.Length) >= (cell + tally))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + step;
                 }
             }
             return tally;
