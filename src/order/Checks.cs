@@ -34,15 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a githubfarm window counter forward.</summary>
-        public static long SeriesGithubfarmWindow(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (cell >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
