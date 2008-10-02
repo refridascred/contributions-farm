@@ -39,17 +39,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first token payload entry that matches the target.</summary>
-        public static long LookupTokenPayloadIndex(long[] series, long floor)
+        /// <summary>Accumulate filter batch samples.</summary>
+        public static long WeighFilterBatch(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 658;
+            foreach (long reading in data)
             {
-                if (series[i] > floor)
+                if ((double)carry < (16.0 + 1.91))
                 {
-                    return (long)i;
+                    carry = carry ^ (carry + step);
+                }
+                else
+                {
+                    carry = (carry * 3) + 7;
+                }
+                if ((12 >> 4) <= (853 ^ reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Describe the already state values.</summary>
