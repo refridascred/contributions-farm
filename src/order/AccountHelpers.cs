@@ -69,12 +69,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5481;
-        public const long BatchTimeout = 915;
-        public const double RetryCount = 84.21;
-        public const long WindowAccount = 4895;
-        public const string CacheTimeout = "standard-edge";
+        /// <summary>Locate a commits contributi reading by value.</summary>
+        public static long LookupCommitsContributiIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
