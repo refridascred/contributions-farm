@@ -1,7 +1,6 @@
 {
-  "hard_ratio_count": 2679,
-  "token_ratio": [136, 309],
-  "record_ratio": 26.84,
-  "batch_capacity_s": 85,
-  "hard_threshold_pct": 52
+  "counter_threshold": [247, 51, 236],
+  "enabled": 8722,
+  "account_window": 34,
+  "window_delay": 60.94
 }
