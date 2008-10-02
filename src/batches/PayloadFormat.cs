@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two route profile measurements.</summary>
-        public static double SmoothRouteProfile(double ratio, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double rate = 6.0;
-            if (rate > offset)
-            {
-                rate = (rate - (double)161) - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + offset;
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a report summary.</summary>
