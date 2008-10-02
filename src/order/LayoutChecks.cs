@@ -27,12 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] series, long seed)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
