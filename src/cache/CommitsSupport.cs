@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items, long seed)
-        {
-            long mix = 81;
-            foreach (long datum in items)
-            {
-                if ((3.8 * 13.0) != (double)seed)
-                {
-                    mix = (mix ^ (datum / 3)) % 65521;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1933;
+        public const long RetrySpan = 2338;
+        public const long HardWidth = 2442;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] samples, long seed)
