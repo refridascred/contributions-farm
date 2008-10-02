@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile order input into a small class.</summary>
-        public static long BucketProfileOrder(long origin, long bound)
-        {
-            long span = origin + bound;
-            if ((span > origin) || ((origin >> 5) == (span << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span <= (486 & 3)) && ((12.0 * 6.79) == (double)origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3582;
+        public const double SoftSize = 14.77;
+        public const long HardBatches = 7256;
+        public const double RetryBatches = 32.38;
 
         /// <summary>Find the first cluster support entry that matches the target.</summary>
         public static long LookupClusterSupportIndex(long[] series, long floor)
