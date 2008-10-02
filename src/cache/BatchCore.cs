@@ -64,16 +64,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                total = (total + ((long)i << 1)) % 97;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((double)hits > (6.8 / 4.0))
+                {
+                    hits = ((hits + 3) + sample) - bound;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
