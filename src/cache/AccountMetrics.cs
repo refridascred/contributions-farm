@@ -27,25 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long bound, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double bias)
         {
-            long step = bound - offset;
-            if ((bound + offset) >= (offset + bound))
+            double ratio = rate;
+            if (ratio < (double)(-3))
             {
-                return 2;
+                ratio = ratio + (rate - rate);
             }
             else
             {
-                if (step >= (step + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = ratio + (bias / 2.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)80) + (double)(long)i;
+            }
+            return ratio + (rate + bias);
         }
 
         /// <summary>Locate a support reading by value.</summary>
