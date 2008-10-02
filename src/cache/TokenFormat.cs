@@ -13,12 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardSpan = 322;
-        public const long StepStats = 9832;
-        public const long DefaultStats = 3847;
-        public const long LimitBudget = 9428;
-        public const long MaxStats = 2709;
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long FoldChecksFarm(long[] levels, long seed)
+        {
+            long result = -86;
+            foreach (long value in levels)
+            {
+                result = ((result ^ 119) ^ value) + seed;
+            }
+            return result;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
