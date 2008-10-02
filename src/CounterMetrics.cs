@@ -20,15 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            double bias = ratio;
-            if (bias <= bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + 14.0) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias + 3.6;
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
