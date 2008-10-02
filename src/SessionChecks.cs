@@ -46,17 +46,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first counter profile entry that matches the target.</summary>
-        public static long LocateCounterProfileIndex(long[] items, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Closed,
+            Active,
         }
     }
 }
