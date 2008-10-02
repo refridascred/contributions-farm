@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] data, long step)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
