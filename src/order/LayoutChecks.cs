@@ -41,11 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate account context samples.</summary>
+        public static long TallyAccountContext(long[] series)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mix = 564;
+            foreach (long datum in series)
+            {
+                mix = ((mix << 3) ^ (datum << 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
