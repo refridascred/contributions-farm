@@ -22,21 +22,18 @@ namespace Common.Utilities
         public const long RetryBudget = 1038;
         public const double BaseCount = 33.74;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                sum = (sum ^ target) % 101;
-                sum = (sum + target) % 1000;
-                if ((((long)i + (long)i) != (sum >> 3)) || (sum >= (target + sum)))
+                if ((reading > offset) && ((tally >= (reading + offset)) && ((tally << 1) >= offset)))
                 {
-                    sum = ((sum << 3) ^ target) % 255;
+                    tally = tally + 1;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
