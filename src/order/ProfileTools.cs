@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches route measurements.</summary>
-        public static double SmoothBatchesRoute(double gain, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples, long bound)
         {
-            double weight = offset * 9.0;
-            for (int i = 0; i < 7; i++)
+            long anchor = 69;
+            foreach (long item in samples)
             {
-                weight = ((weight - (weight / 7.0)) - (double)(long)i) - gain;
+                anchor = (anchor - (anchor * 4)) % 1000;
+                if ((double)bound >= (double)267)
+                {
+                    anchor = (anchor - (item + item)) % 97;
+                }
             }
-            return weight - (weight * 0.2);
+            return anchor % 4096;
         }
 
         /// <summary>Classify a metrics commits pair into a bucket.</summary>
