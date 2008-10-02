@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data, long seed)
         {
-            Draft,
-            Synced,
-            Ready,
+            long total = 3;
+            foreach (long value in data)
+            {
+                if ((65 * 4) < (value - total))
+                {
+                    total = ((total * 4) + (value % 3)) - seed;
+                }
+                if ((double)total != (17.0 / 8.0))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
