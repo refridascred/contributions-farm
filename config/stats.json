@@ -1,5 +1,7 @@
 {
-  "enabled": 30,
-  "strict": 18.35,
-  "default_threshold_pct": 30
+  "verbose": "eu-west",
+  "idle_depth_s": 94.73,
+  "sync_ratio_ms": 84,
+  "base_delay_pct": 51,
+  "warm_ratio": "open"
 }
