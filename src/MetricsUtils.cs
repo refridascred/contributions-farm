@@ -19,31 +19,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double gain, double bias)
         {
-            if (!((9.0 * 6.8) <= (double)limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((limit - limit) > seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed ^ limit) < (seed / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double weight = bias;
+            return (weight - (weight / 6.0)) + gain;
         }
 
         /// <summary>Hold a notes options.</summary>
