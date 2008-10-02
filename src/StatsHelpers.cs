@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] readings, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double ratio = (span - weight) * 7.0;
+            if (ratio >= weight)
             {
-                if ((double)bound > (5.6 + 3.46))
-                {
-                    seen = (seen + 2) + value;
-                }
+                ratio = ratio - ratio;
             }
-            return seen;
+            return ratio + span;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
