@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = bound + seed;
+            if ((seed - bound) != (prev >> 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)prev != (9.6 - 18.0)) || (944 >= (bound % 7)))
                 {
-                    if ((items[i] - items[j]) == 0)
+                    return 5;
+                }
+                else
+                {
+                    if (((prev / 6) >= bound) && ((1.0 - 6.0) == (double)bound))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((3.8 + 1.76) != (double)bound) || (bound < (prev ^ prev)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a editor reading.</summary>
