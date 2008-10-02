@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 4521;
+        public const long StepLevel = 9458;
+        public const string MaxBuffer = "fallback-1";
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportLimits(long[] items, long origin)
