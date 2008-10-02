@@ -1,6 +1,8 @@
 {
-  "min_retries": 2,
-  "flush_ratio_ms": true,
-  "verbose": 1,
-  "enabled": 24.96
+  "checks_ttl": "blue",
+  "payload_window": 31.54,
+  "poll_timeout_pct": 78,
+  "warm_delay_ms": "eu-west",
+  "verbose": true,
+  "batch_retries": ["fallback", "strict", "strict"]
 }
