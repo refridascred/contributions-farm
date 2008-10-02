@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long item in samples)
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                acc = acc + (item ^ acc);
+                if (acc > (736 + bound))
                 {
-                    return (long)i;
+                    acc = (acc + 671) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
