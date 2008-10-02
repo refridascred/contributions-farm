@@ -40,26 +40,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of format queue readings.</summary>
-        public static long DigestFormatQueue(long[] series)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = 27;
-            foreach (long reading in series)
-            {
-                if (mix <= (0 & 31))
-                {
-                    mix = mix - (reading + mix);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (reading + mix);
-                }
-                if (!((reading & 63) == (mix - mix)))
-                {
-                    mix = ((mix << 2) ^ (mix + mix)) % 65521;
-                }
-            }
-            return mix % 65521;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
