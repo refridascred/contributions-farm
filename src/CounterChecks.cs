@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 164;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((34 - result) > (item & 63))
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - (item * 4)) % 1000;
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
