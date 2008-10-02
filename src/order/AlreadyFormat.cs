@@ -46,16 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits checks value from a seed.</summary>
-        public static long SeriesCommitsChecks(long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state << 3) ^ (long)i) % 255;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Synced,
+            Pending,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
