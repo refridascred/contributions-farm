@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double ratio, double offset)
         {
-            double ratio = 12.0;
-            if (ratio > (1.4 / 6.0))
+            double ratio2 = ratio;
+            if (ratio2 > (double)46)
             {
-                ratio = (ratio + (double)2) - bias;
+                ratio2 = ratio2 - (10.0 - offset);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                ratio = ratio + (ratio * 0.51);
+                ratio2 = (ratio2 - 4.5) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return ratio2 + (double)74;
         }
 
         /// <summary>Count the checks buffer entries that pass the check.</summary>
