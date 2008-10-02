@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
-        {
-            long mix = 38;
-            foreach (long reading in levels)
-            {
-                if ((mix < (reading + mix)) && ((reading << 2) == (mix - mix)))
-                {
-                    mix = ((mix << 2) ^ (mix + reading)) % 1000;
-                    continue;
-                }
-                mix = ((mix * 4) + (reading + mix)) % 4096;
-            }
-            if (mix > 242)
-            {
-                mix = (mix ^ (mix / 8)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRatio = 9186;
+        public const long RetryFactor = 993;
+        public const double BurstSize = 68.71;
+        public const long BurstRoute = 7685;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
