@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state << 3) ^ 121;
-                if (((13.0 / 4.0) < (double)state) && (((long)i ^ floor) > (state << 2)))
-                {
-                    state = ((state << 3) ^ (state + state)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
