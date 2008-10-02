@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate context format readings against a bound.</summary>
-        public static bool VerifyContextFormatBounds(long[] levels, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
