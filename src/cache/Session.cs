@@ -21,17 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
+                if ((tally ^ 365) > (datum + tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the batches kind values.</summary>
