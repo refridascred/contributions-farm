@@ -27,30 +27,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long floor)
         {
-            long mix = 76;
-            foreach (long sample in levels)
+            if (((origin << 2) >= origin) || ((floor * 5) >= 6))
             {
-                if (!(4.93 <= (double)bound))
+                return 2;
+            }
+            else
+            {
+                if ((origin ^ floor) >= (origin / 5))
                 {
-                    mix = (mix * 2) + (sample + 123);
+                    return 7;
                 }
                 else
                 {
-                    mix = mix + (bound - bound);
-                }
-                if ((3.3 * 6.8) != (double)bound)
-                {
-                    break;
+                    if ((floor << 1) >= (origin - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix << 3) ^ (mix ^ mix);
-            }
-            return mix;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
