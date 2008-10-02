@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of payload schema readings.</summary>
-        public static long CombinePayloadSchema(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] levels, long floor)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor + (value >> 1)) % 65521;
-                anchor = ((anchor * 3) + (value << 2)) % 65521;
+                if ((double)floor != (double)(long)levels.Length)
+                {
+                    hits = (hits + 1) - cell;
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
