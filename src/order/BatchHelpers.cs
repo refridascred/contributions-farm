@@ -20,13 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Classify a channel cluster pair into a bucket.</summary>
+        public static long SortChannelCluster(long seed, long floor)
         {
-            Failed,
-            Ready,
-            Queued,
-            New,
+            long offset = seed + floor;
+            if (1.0 <= (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset / 2) <= (offset >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed < (5 << 2)) || ((seed & 127) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch mode values.</summary>
