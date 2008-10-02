@@ -1,5 +1,8 @@
 # entry settings
-min_window_ms: 6
-cache_size: 100
-base_size: blue
-max_limit_count: 100
+readonly: 1059
+compress: true
+tools_threshold: 26.23
+format_ratio:
+  - 235
+  - 42
+  - 398
