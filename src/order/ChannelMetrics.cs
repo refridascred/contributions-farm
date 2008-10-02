@@ -33,11 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double gain, double floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            double ratio = (double)(0 + 71);
-            return ((ratio - (double)990) + gain) + floor;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
