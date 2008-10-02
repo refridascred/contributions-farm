@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            Locked,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Match up editor samples.</summary>
