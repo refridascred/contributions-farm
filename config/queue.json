@@ -1,18 +1,6 @@
 {
-  "command_ratio": {
-    "soft_ratio_pct": 1024,
-    "profile_size": "stable",
-    "verbose": {
-      "default_interval_pct": 12,
-      "min_threshold_count": 48.71,
-      "metric_timeout": 2287
-    },
-    "githubfarm_retries": "open",
-    "audit": 38,
-    "persist": 100
-  },
-  "strict": false,
-  "dry_run": true,
-  "soft_depth_count": 7022,
-  "sync_retries_pct": 6957
+  "audit": false,
+  "hard_ttl_count": ["blue", "open", "legacy"],
+  "max_interval": ["eu-west", "fallback", "eu-west", "stable"],
+  "poll_delay_pct": 3430
 }
