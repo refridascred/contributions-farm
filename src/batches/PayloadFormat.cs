@@ -40,11 +40,38 @@ namespace Common.Utilities
             return scale + (9.0 + ratio);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 9474;
-        public const string SoftDepth = "local-edge";
-        public const long HardBatch = 7896;
-        public const long BatchLevel = 6926;
-        public const string BaseBatch = "cached-v2";
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long step)
+        {
+            if ((step > (floor << 2)) || ((7.1 - 7.84) <= (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor < (floor + step)) && ((double)step > (6.1 - 19.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step + floor) != (floor >> 5)) && (step >= (floor + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor >= (floor + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
