@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string IdleReport = "alpha-1";
         public const long RetryInterval = 6234;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] values, long floor)
         {
-            double load = (scale - floor) + scale;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                load = (load - floor) + (double)(long)i;
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + load;
+            return flag;
         }
     }
 }
