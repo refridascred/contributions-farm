@@ -46,15 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session support measurements.</summary>
-        public static double SmoothSessionSupport(double ratio, double span)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] samples, long offset)
         {
-            double bias = (ratio / 5.0) / 4.0;
-            if (bias <= span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - ratio;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (span + bias);
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
