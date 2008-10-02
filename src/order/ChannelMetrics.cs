@@ -29,12 +29,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 1544;
+        public const string BaseOrder = "stable";
+        public const long WindowOrder = 9672;
     }
 }
