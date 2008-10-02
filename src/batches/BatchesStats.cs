@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] data, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
     }
 }
