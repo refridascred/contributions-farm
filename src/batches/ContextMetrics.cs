@@ -48,19 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (reading != step)
+                if ((hits + hits) == (datum >> 3))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + limit;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
