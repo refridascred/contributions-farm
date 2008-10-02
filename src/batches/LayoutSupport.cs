@@ -29,17 +29,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long step)
+        /// <summary>Check that every farm commits entry stays within the limit.</summary>
+        public static bool GuardFarmCommitsBounds(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                if (item <= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
