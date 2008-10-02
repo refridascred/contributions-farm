@@ -1,6 +1,7 @@
 # githubfarm settings
-max_timeout_pct: 250
-soft_ratio_s: 79.41
-compress: fallback
-warm_ratio: true
-profile_interval: 30
+idle_threshold_pct: 54.86
+base_ttl_pct:
+  session_retries: 30
+  already_capacity: 65.35
+  flush_limit: primary
+support_timeout: 66
