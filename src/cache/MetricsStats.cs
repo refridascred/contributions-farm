@@ -56,19 +56,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stats tools entry stays within the limit.</summary>
-        public static bool VerifyStatsToolsRange(long[] series, long origin)
+        /// <summary>Check that every profile entry entry stays within the limit.</summary>
+        public static bool VerifyProfileEntryLimits(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (item >= origin)
+                if (item > bound)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Hold a token header.</summary>
