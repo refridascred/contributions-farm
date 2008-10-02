@@ -18,14 +18,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Dropped,
-            Locked,
-            Closed,
-            Failed,
-            Retry,
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
