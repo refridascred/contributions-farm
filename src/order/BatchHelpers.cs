@@ -48,16 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] values, long target)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long item in values)
             {
-                sum = ((sum + (sum << 3)) + entry) + limit;
-                sum = ((sum << 3) ^ (98 % 2)) % 1000;
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
