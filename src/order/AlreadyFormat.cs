@@ -65,10 +65,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardScore = "open-v2";
-        public const double BaseFactor = 54.44;
-        public const long IdleScore = 3992;
-        public const long LimitSupport = 7681;
+        /// <summary>Roll a entry already counter forward.</summary>
+        public static long IterateEntryAlready(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total << 2) ^ (269 << 1);
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
