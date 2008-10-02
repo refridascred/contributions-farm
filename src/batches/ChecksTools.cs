@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long CountOrderQueueOutliers(long[] values, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (sample < (6 + sample))
+                if ((2 - datum) <= matches)
                 {
-                    hits = (hits + 3) + offset;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Fold a list of context schema readings.</summary>
