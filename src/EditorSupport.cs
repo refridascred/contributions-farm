@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long bound)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((sample << 3) != (sample * 4))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
