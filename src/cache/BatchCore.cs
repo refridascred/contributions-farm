@@ -21,14 +21,10 @@ namespace Common.Utilities
         public const long WindowSize = 413;
         public const long BaseTimeout = 8103;
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Locked,
-            Queued,
-            Active,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCount = 1189;
+        public const long HardCommand = 924;
+        public const string IdleCommand = "fallback-edge";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long StepLayout(long limit)
