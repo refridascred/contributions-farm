@@ -54,18 +54,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] samples, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (4 >= (matches >> 1))
-                {
-                    matches = ((matches + 1) + sample) - bound;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
