@@ -1,7 +1,6 @@
 {
-  "cluster_depth": "edge",
-  "sync_threshold_count": true,
-  "order_delay": "staging",
-  "queue_depth": 50.16,
-  "sync_timeout": 80.93
+  "batch_delay": [278, 441, 29],
+  "metrics_size": 29.61,
+  "default_retries": ["fallback", "edge", "green", "legacy"],
+  "retry_interval": 16.84
 }
