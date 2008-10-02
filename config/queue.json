@@ -1,13 +1,7 @@
 {
-  "persist": 903,
-  "batch_timeout": "legacy",
-  "warm_window": "fallback",
-  "min_size": {
-    "default_ttl": ["latest", "staging"],
-    "contributi_threshold": 55,
-    "base_retries_ms": "local",
-    "warm_window": 8526
-  },
-  "layout_ttl": "stable",
-  "audit": 44.38
+  "batches_depth": "eu-west",
+  "warm_retries_pct": 8.92,
+  "window_capacity": "staging",
+  "batches_limit": 1024,
+  "batch_window": 8853
 }
