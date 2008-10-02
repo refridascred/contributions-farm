@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepScore = 7430;
-        public const string SoftContext = "latest-edge";
-        public const double BaseContext = 23.85;
-        public const long LimitFactor = 5634;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double ratio, double bias)
+        {
+            double load = (double)(-925) - (9.32 + bias);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + ratio;
+        }
 
         /// <summary>Match up metrics cluster samples.</summary>
         public static long PairMetricsClusterCount(long[] data)
