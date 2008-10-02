@@ -50,18 +50,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many graph contributi samples are out of range.</summary>
-        public static long TallyGraphContributiOutliers(long[] items, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((matches + 93) >= cell)
+                if (entry > origin)
                 {
-                    matches = (matches + 1) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
