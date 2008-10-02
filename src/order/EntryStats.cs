@@ -31,19 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout readings.</summary>
