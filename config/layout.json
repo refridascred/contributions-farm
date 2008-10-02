@@ -1,5 +1,24 @@
 {
-  "tools_ttl": [176, 182, 296, 480],
-  "poll_ttl_count": "green",
-  "base_limit_ms": 3265
+  "route_threshold": {
+    "token_timeout": false,
+    "dry_run": 83,
+    "min_capacity": {
+      "token_interval": 7248,
+      "audit": "open",
+      "retry_limit": ["eu-west", "latest", "staging", "open"],
+      "compress": 75
+    },
+    "hard_capacity": {
+      "max_retries_s": 60,
+      "warm_limit_s": "local",
+      "flush_capacity_count": 10,
+      "audit": "fallback",
+      "retry_timeout_pct": "standard",
+      "context_ttl": 69.59
+    },
+    "min_interval_pct": 4128
+  },
+  "retry_timeout_pct": "edge",
+  "tools_ratio": "standard",
+  "stats_capacity": 250
 }
