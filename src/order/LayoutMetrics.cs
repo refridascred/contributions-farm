@@ -19,16 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] levels, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 4) + (841 / 2)) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
