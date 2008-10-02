@@ -61,19 +61,17 @@ namespace Common.Utilities
         public const string LimitCount = "latest-v2";
         public const long MaxBatch = 8360;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] samples, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != seed)
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
