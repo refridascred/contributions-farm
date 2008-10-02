@@ -21,10 +21,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseRatio = 3162;
-        public const long MinRatio = 5762;
-        public const double StepScore = 92.06;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] samples)
+        {
+            long score = -45;
+            foreach (long sample in samples)
+            {
+                score = (score << 2) ^ (score - sample);
+                if (!((sample - (long)samples.Length) < (sample + score)))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Fold a list of format queue readings.</summary>
         public static long DigestFormatQueue(long[] series)
