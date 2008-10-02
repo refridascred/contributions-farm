@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of contributi token readings.</summary>
-        public static long OverlapContributiTokenCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 9953;
+        public const long DefaultInterval = 7007;
+        public const long BaseSupport = 4759;
+        public const long LimitRatio = 4122;
 
         /// <summary>Fold a list of stream layout readings.</summary>
         public static long TotalStreamLayout(long[] values)
