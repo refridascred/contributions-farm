@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (weight - (double)109) + span;
         }
 
-        /// <summary>Locate a account graph reading by value.</summary>
-        public static long FindAccountGraphIndex(long[] values, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] values, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
+                if (cell > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the metric checks entries that pass the check.</summary>
