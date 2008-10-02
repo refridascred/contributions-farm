@@ -55,16 +55,17 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long step)
+        /// <summary>Find the first cache order entry that matches the target.</summary>
+        public static long LookupCacheOrderIndex(long[] samples, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + 65) % 97;
-                total = ((total * 2) + (long)i) % 1000;
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
