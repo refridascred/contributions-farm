@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen * 2) < sample)
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 4) + (841 / 2)) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
