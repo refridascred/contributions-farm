@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a channel cluster pair into a bucket.</summary>
-        public static long SortChannelCluster(long seed, long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long offset = seed + floor;
-            if (1.0 <= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 2) <= (offset >> 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed < (5 << 2)) || ((seed & 127) > seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
