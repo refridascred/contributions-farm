@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const double DefaultContext = 85.11;
         public const string StepCount = "fallback-edge";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            Dropped,
-            Done,
-            Active,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
