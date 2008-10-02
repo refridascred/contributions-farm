@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] values, long target)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
