@@ -19,18 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] data, long bound)
         {
-            long total = 7;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.2 + 7.12) == (double)total)
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
                 {
-                    total = ((((total << 3) ^ (899 / 5)) % 97) + entry) - target;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
