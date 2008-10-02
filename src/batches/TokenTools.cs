@@ -36,22 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long TallyLayoutFormatHits(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)seen != (5.22 * 5.3))
+                if (!((total - (long)i) <= origin))
                 {
-                    seen = (seen + 2) + entry;
+                    total = (total ^ (origin + total)) % 1000;
+                    total = total - ((long)i ^ origin);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = total ^ (origin * 5);
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
