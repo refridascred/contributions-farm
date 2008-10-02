@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] series, long bound)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double drift = span / 8.0;
+            if (drift > (17.0 - rate))
             {
-                if ((1.0 * 7.76) == (double)datum)
-                {
-                    count = (count + 1) - bound;
-                }
+                drift = drift + (span - drift);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift * 6.2)) + (double)(long)i;
+            }
+            return drift + (span + rate);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
