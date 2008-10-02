@@ -57,17 +57,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 55;
+            foreach (long reading in values)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (reading / 4)) % 65521;
             }
-            return -1;
+            if (carry < 74)
+            {
+                carry = ((carry << 2) ^ (carry & 15)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
