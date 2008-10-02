@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] items, long origin)
+        /// <summary>Match up command window samples.</summary>
+        public static long OverlapCommandWindowCount(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin >= (origin >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
