@@ -50,18 +50,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long prev = target + floor;
+            if (((449 - target) >= (prev - floor)) || ((target * 5) >= prev))
             {
-                if (!(((15.0 + 13.0) < (double)bound) || ((5.38 * 2.64) < (double)datum)))
+                return 6;
+            }
+            else
+            {
+                if ((prev * 3) >= 561)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (922 >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target % 24) >= prev)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up channel samples.</summary>
