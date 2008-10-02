@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long seed)
         {
-            double ratio = bias;
-            return (ratio - (double)4) + gain;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
