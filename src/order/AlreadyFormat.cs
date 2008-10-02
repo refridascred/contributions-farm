@@ -90,18 +90,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long cur = step ^ offset;
+            if ((9.8 + 3.07) > (double)step)
             {
-                if (!(((reading + count) > 7) || ((-909) < (reading / 6))))
+                return 5;
+            }
+            else
+            {
+                if ((step << 3) == (offset - cur))
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset + 6) != (offset + cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (step - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
