@@ -27,11 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultFactor = "staging-1";
-        public const string BatchAccount = "latest-1";
-        public const long MaxAccount = 8759;
-        public const long BurstAccount = 2987;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] series)
