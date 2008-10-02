@@ -36,18 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema cache samples are out of range.</summary>
-        public static long AuditSchemaCacheGaps(long[] samples)
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long DigestContextSchema(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 73;
+            foreach (long value in readings)
             {
-                if ((entry >> 4) >= count)
+                if (!((double)value <= 11.0))
                 {
-                    count = count + 2;
+                    state = state - floor;
                 }
             }
-            return count;
+            return state % 65521;
         }
 
         /// <summary>Project the next route value.</summary>
