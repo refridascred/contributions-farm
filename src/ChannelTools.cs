@@ -20,19 +20,22 @@ namespace Common.Utilities
             return drift + (double)(-781);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] readings, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] levels, long target)
         {
-            long carry = 2;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry << 3) ^ (bound ^ 32)) ^ reading;
+                if ((25 / 5) != (target >> 2))
+                {
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry < 0)
-            {
-                carry = ((carry * 2) + (carry << 3)) % 101;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
