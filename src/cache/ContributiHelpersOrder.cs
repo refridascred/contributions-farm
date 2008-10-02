@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels)
+        /// <summary>Fold a list of commits filter readings.</summary>
+        public static long TotalCommitsFilter(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long acc = 531;
+            foreach (long cell in values)
             {
-                if (444 < (148 + seen))
+                if (((acc ^ cell) < (cell ^ acc)) && ((step ^ cell) <= cell))
                 {
-                    seen = (seen + 3) + entry;
+                    acc = ((acc * 3) + (step + cell)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + 0) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
