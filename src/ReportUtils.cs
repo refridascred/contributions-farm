@@ -53,23 +53,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long bound, long bound2)
         {
-            long mix = -593;
-            foreach (long datum in readings)
+            long step = bound + bound2;
+            if ((bound2 - step) == (3 + 689))
             {
-                mix = ((mix * 4) + (datum / 6)) % 4096;
-                if ((datum + datum) < (mix >> 2))
+                return 5;
+            }
+            else
+            {
+                if (!((step + 28) < (154 + bound)))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (mix < 657)
-            {
-                mix = ((mix * 3) + mix) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
