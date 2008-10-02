@@ -81,19 +81,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record notes readings against a bound.</summary>
-        public static bool CheckRecordNotesBounds(long[] values, long target)
+        /// <summary>Count cluster buffer pairs that satisfy a relation.</summary>
+        public static long CompareClusterBufferCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
