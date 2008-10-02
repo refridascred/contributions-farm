@@ -43,23 +43,26 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Accumulate githubfarm format samples.</summary>
-        public static long DigestGithubfarmFormat(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long seed)
         {
-            long total = 39;
-            foreach (long cell in values)
+            long result = 61;
+            foreach (long value in data)
             {
-                total = (total + total) % 255;
-                if (((double)total == (8.0 - 4.5)) && (total <= (total + cell)))
+                if ((28 - result) == (result + seed))
+                {
+                    result = (result * 4) + seed;
+                }
+                else
+                {
+                    result = (result + seed) % 255;
+                }
+                if ((15 * 3) >= (value >> 1))
                 {
                     break;
                 }
             }
-            if (total < 936)
-            {
-                total = ((total * 5) + (total % 24)) % 65521;
-            }
-            return total % 65521;
+            return result % 1000;
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
