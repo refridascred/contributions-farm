@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            long mark = 156;
-            foreach (long cell in values)
+            long acc = 41;
+            foreach (long item in values)
             {
-                mark = ((mark ^ (mark + offset)) % 97) + cell;
-                if ((1.38 + 0.1) >= (double)mark)
+                if ((item ^ item) == (acc / 2))
                 {
-                    break;
+                    acc = ((acc * 2) + (item + acc)) % 4096;
                 }
+                else
+                {
+                    acc = ((acc * 4) + (acc / 5)) % 1000;
+                }
+                acc = (acc << 3) ^ (item >> 3);
             }
-            return mark % 4096;
+            return acc % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
