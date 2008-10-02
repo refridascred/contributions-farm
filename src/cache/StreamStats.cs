@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi support entries.</summary>
-        public static long DigestContributiSupport(long[] data)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long TallyToolsCommandOutliers(long[] series)
         {
-            long state = 49;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (((32 + datum) > (state + state)) || ((state + datum) == (state & 63)))
+                if ((value << 1) >= value)
                 {
-                    state = (state - (datum & 7)) % 65521;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up stream editor samples.</summary>
