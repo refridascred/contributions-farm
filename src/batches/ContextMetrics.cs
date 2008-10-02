@@ -36,16 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter route series from a seed.</summary>
-        public static long SeriesFilterRoute(long seed)
+        /// <summary>Locate a session format reading by value.</summary>
+        public static long LocateSessionFormatIndex(long[] samples, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum + (84 / 4);
-                sum = ((sum * 5) + (long)i) % 97;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
