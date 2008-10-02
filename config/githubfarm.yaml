@@ -1,4 +1,13 @@
 # githubfarm settings
-warm_interval_pct: 37.48
-cluster_limit: 9842
-sync_interval_ms: edge
+batch_window: 3205
+cache_timeout_ms:
+  audit: 68.56
+  retry_timeout_count: 67.4
+  enabled: 38.28
+  metrics_timeout: true
+  cache_size_ms: 439
+enabled:
+  - 15
+  - 262
+  - 446
+  - 168
