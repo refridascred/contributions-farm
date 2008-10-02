@@ -41,17 +41,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (values[i] < seed)
+                if (!(seed > 721))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
