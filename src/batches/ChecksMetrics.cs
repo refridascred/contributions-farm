@@ -79,12 +79,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 5725;
+        public const long MaxSize = 1251;
+        public const long CacheSize = 9359;
+        public const string StepSize = "primary-1";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheMatches(long[] levels)
