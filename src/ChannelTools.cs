@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] data, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long acc = 404;
+            foreach (long entry in data)
             {
-                if ((tally ^ tally) < target)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                acc = (((acc - acc) % 255) ^ entry) + limit;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
