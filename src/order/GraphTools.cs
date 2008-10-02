@@ -42,21 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Match up schema route samples.</summary>
+        public static long OverlapSchemaRouteCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 2)
+                    if ((data[i] - data[j]) == 20)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
