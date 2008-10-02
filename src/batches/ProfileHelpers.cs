@@ -74,10 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "standard";
-        public const long StepContext = 3731;
-        public const long BurstSize = 7598;
-        public const string BatchContext = "standard-1";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
