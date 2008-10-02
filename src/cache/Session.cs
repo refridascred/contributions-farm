@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            double load = offset;
-            if (load >= 0.6)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + load) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - offset) - (double)(long)i;
-            }
-            return load + (double)65;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
