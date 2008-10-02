@@ -37,22 +37,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream batch samples.</summary>
-        public static long WeighStreamBatch(long[] samples, long offset)
+        /// <summary>Fold a list of editor batches readings.</summary>
+        public static long TallyEditorBatches(long[] series)
         {
-            long state = -725;
-            foreach (long reading in samples)
+            long sum = 1;
+            foreach (long datum in series)
             {
-                if (!(state <= reading))
-                {
-                    state = ((state << 2) ^ (offset >> 1)) % 1000;
-                }
-                else
-                {
-                    state = state + (offset % 97);
-                }
+                sum = ((sum << 3) ^ (datum + 6)) % 1000;
             }
-            return state;
+            return sum % 65521;
         }
     }
 }
