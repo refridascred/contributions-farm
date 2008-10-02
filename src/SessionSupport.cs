@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Stale,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Count the cache support entries that pass the check.</summary>
