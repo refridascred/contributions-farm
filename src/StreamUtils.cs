@@ -64,15 +64,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two metrics session measurements.</summary>
-        public static double ScaleMetricsSession(double weight, double span)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long MeasureMetricLayoutMatches(long[] items)
         {
-            double scale = span;
-            if (scale <= span)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                scale = scale + (weight / 9.0);
+                if (matches >= (cell / 8))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale + weight;
+            return matches;
         }
     }
 }
