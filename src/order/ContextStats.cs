@@ -22,19 +22,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
