@@ -1,6 +1,8 @@
 {
-  "flush_depth": 60,
-  "retry_delay_pct": "fallback",
-  "buffer_window": true,
-  "filter_limit": 79.61
+  "soft_ratio": 48.2,
+  "enabled": 5734,
+  "warm_window": [275, 66, 275, 354],
+  "persist": "stable",
+  "strict": "fallback",
+  "max_ttl": 100
 }
