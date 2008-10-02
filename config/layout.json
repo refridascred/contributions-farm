@@ -1,8 +1,16 @@
 {
-  "editor_interval": 250,
-  "flush_limit_s": "stable",
-  "base_delay": "edge",
-  "soft_threshold": 43.94,
-  "persist": "latest",
-  "base_ratio": false
+  "cache_delay_s": 44.65,
+  "filter_limit": 1743,
+  "entry_capacity": {
+    "retry_window_ms": [43, 254],
+    "cache_timeout": 500,
+    "audit": {
+      "retry_depth": ["standard", "strict", "standard"],
+      "burst_window_ms": false,
+      "compress": 90.18,
+      "stats_depth": 3.99,
+      "soft_limit": "edge",
+      "flush_capacity_pct": "open"
+    }
+  }
 }
