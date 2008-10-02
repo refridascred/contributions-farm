@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long limit)
+        /// <summary>Combine metric channel values into a single score.</summary>
+        public static long TotalMetricChannel(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 46;
+            foreach (long sample in levels)
             {
-                if (samples[i] < limit)
+                if (!((double)94 > (double)mix))
                 {
-                    return (long)i;
+                    mix = (mix * 4) + sample;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
