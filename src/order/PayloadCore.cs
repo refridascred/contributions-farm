@@ -29,18 +29,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long AuditBatchChannelOutliers(long[] readings, long limit)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((limit * 5) > 5)
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
