@@ -28,17 +28,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((494 << 1) >= offset) || ((offset / 9) >= (8 - 6)))
             {
-                if (values[i] >= step)
+                return 1;
+            }
+            else
+            {
+                if (offset >= (offset & 3))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) <= (offset - 379))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)seed > (7.3 / 8.0)) || ((offset ^ offset) >= seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
