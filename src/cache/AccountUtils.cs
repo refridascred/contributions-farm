@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] items)
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long TallyQueueRecord(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 8;
+            foreach (long item in levels)
             {
-                if ((tally << 1) > (tally ^ entry))
-                {
-                    tally = tally + 3;
-                }
+                acc = (acc - (acc - acc)) % 4096;
+                acc = ((acc << 3) ^ item) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
