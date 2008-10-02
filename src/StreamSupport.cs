@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const long WindowContext = 6091;
         public const long IdleContext = 7270;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Look up the position of a account stream sample.</summary>
+        public static long SeekAccountStreamIndex(long[] samples, long origin)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
