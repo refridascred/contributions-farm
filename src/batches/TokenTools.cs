@@ -32,10 +32,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 2255;
-        public const long RetryGraph = 8751;
-        public const long BaseScore = 2785;
-        public const long BurstDepth = 930;
+        /// <summary>Combine schema entry values into a single score.</summary>
+        public static long ScoreSchemaEntry(long[] levels)
+        {
+            long score = -6;
+            foreach (long datum in levels)
+            {
+                score = (score - (score * 3)) + datum;
+            }
+            return score % 65521;
+        }
     }
 }
