@@ -1,13 +1,9 @@
 {
-  "burst_delay_count": 60,
-  "hard_limit_ms": {
-    "audit": "open",
-    "max_delay_s": false,
-    "soft_limit_s": ["staging", "eu-west", "cached", "eu-west"],
-    "flush_delay_s": 4773,
-    "editor_retries": 85.4
-  },
-  "poll_timeout": 538,
-  "filter_ttl": 70.99,
-  "idle_size_pct": 4532
+  "batch_ttl_pct": [366, 329],
+  "queue_timeout": "stable",
+  "hard_depth_pct": {
+    "soft_ratio_count": 100,
+    "poll_interval": "edge",
+    "payload_ratio": false
+  }
 }
