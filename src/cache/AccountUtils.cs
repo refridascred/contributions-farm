@@ -26,19 +26,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= target)
+                if (items[i] <= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
