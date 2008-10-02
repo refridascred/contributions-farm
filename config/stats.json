@@ -1,16 +1,5 @@
 {
-  "hard_ratio_s": 30,
-  "min_threshold_ms": "stable",
-  "context_window": false,
-  "compress": {
-    "filter_ratio": true,
-    "dry_run": "edge",
-    "soft_depth_count": {
-      "audit": 100,
-      "session_capacity": 2781,
-      "cluster_retries": 6361
-    },
-    "session_ratio": true
-  },
-  "verbose": true
+  "sync_delay_s": true,
+  "compress": 4567,
+  "command_ttl": [379, 454, 350, 471]
 }
