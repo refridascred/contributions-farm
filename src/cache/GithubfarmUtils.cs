@@ -26,17 +26,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] samples, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long bound, long bound2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((601 % 60) > bound)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((93 - bound2) != (bound & 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound < (7.63 * 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
