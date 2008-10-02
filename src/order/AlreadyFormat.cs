@@ -26,17 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (series[i] >= limit)
+                if ((cell / 8) < (matches ^ matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a contributi session sample.</summary>
