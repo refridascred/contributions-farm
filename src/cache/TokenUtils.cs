@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Locate a account graph reading by value.</summary>
+        public static long FindAccountGraphIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(seen >= (long)series.Length))
+                if ((values[i] < seed) && ((values[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
