@@ -36,19 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell >= step)
+                if (((score << 3) < score) && ((double)step <= (7.14 / 8.0)))
                 {
-                    ok = false;
-                    break;
+                    score = score - (score - score);
                 }
+                else
+                {
+                    score = (score - (step + (long)i)) % 65521;
+                }
+                score = (score * 3) + ((long)i << 3);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
