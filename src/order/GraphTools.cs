@@ -64,17 +64,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] series, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 87;
+            foreach (long datum in readings)
             {
-                if (series[i] == seed)
+                if (((8.9 / 5.0) <= (double)mix) || ((datum * 2) > mix))
                 {
-                    return (long)i;
+                    mix = mix + (mix - 885);
+                    mix = (mix ^ (floor % 8)) % 4096;
+                    continue;
+                }
+                mix = mix ^ (datum - datum);
+                if (((double)mix >= 4.4) && ((datum + datum) > mix))
+                {
+                    mix = ((mix * 5) + datum) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ floor;
                 }
             }
-            return -1;
+            if (mix < 28)
+            {
+                mix = (mix << 2) ^ (mix + floor);
+            }
+            return mix;
         }
     }
 }
