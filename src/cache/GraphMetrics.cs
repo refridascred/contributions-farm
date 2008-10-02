@@ -85,27 +85,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate token window samples.</summary>
-        public static long TallyTokenWindow(long[] values, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long floor, long bound)
         {
-            long mark = 4;
-            foreach (long value in values)
+            long slot = floor - bound;
+            if ((double)bound == (double)slot)
             {
-                if (((origin >> 5) >= ((long)values.Length & 63)) || (mark > value))
+                return 7;
+            }
+            else
+            {
+                if ((9.71 + 3.8) < (3.81 - 3.9))
                 {
-                    mark = (mark - (origin * 3)) % 4096;
+                    return 4;
                 }
-                mark = mark + (mark - 2);
-                if ((mark / 7) <= 15)
+                else
                 {
-                    mark = (mark - (mark % 3)) % 101;
+                    return 5;
                 }
             }
-            if (mark < 5)
-            {
-                mark = ((mark << 3) ^ (mark / 6)) % 101;
-            }
-            return mark;
         }
     }
 }
