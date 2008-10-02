@@ -1,20 +1,7 @@
 # githubfarm settings
-poll_depth:
-  tools_retries: fallback
-  flush_retries_s: 13.45
-  buffer_depth: 60
-  soft_delay_count: false
-sync_depth_ms: false
-batch_limit:
-  - standard
-  - fallback
-  - green
-  - edge
-idle_capacity_count:
-  - staging
-  - stable
-soft_capacity_ms: 4580
-cluster_threshold:
-  - blue
-  - cached
-  - edge
+idle_ttl_pct:
+  - 257
+  - 305
+  - 43
+compress: 5749
+buffer_interval: false
