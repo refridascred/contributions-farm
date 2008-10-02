@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] data, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long total = 5;
+            foreach (long sample in levels)
             {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 2) + (total * 4)) ^ sample;
+                total = ((total * 5) + (total & 63)) % 97;
             }
-            return found;
+            if (total > 50)
+            {
+                total = total - (total & 31);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
