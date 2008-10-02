@@ -1,15 +1,9 @@
 # support settings
 enabled:
-  base_ratio_ms: false
-  already_delay: 69.66
-  layout_threshold: local
-  burst_ttl: 49
-  entry_size: 30
-contributi_interval: green
-metrics_window:
-  readonly: 5606
-  strict: 50.76
-  cache_size: true
-  max_size_count: 33
-burst_capacity_s: false
-hard_ttl_ms: false
+  - latest
+  - latest
+audit: green
+cache_capacity_count: 93.54
+burst_timeout: false
+verbose: 8650
+cache_ratio: 30
