@@ -33,21 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.43 + 4.5) == (double)cell)
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + floor;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
