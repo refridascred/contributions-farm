@@ -28,21 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric payload pairs that satisfy a relation.</summary>
-        public static long PairMetricPayloadCount(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 48;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score - (67 >> 3)) - sample;
             }
-            return tally;
+            if (score > 9)
+            {
+                score = (score ^ (score * 5)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
