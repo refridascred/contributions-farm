@@ -1,9 +1,7 @@
 # entry settings
-poll_depth_s: stable
-compress:
-  sync_limit_ms: 20.97
-  poll_size: blue
-  base_size_count: 2801
-enabled: true
-burst_size: false
-burst_delay: strict
+audit: local
+persist: true
+retry_delay: legacy
+order_retries: standard
+poll_timeout_pct: cached
+readonly: edge
