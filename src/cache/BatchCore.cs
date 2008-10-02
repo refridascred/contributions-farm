@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a format stats counter forward.</summary>
+        public static long DeriveFormatStats(long seed)
         {
-            Ready,
-            Locked,
-            Idle,
-            Paused,
-            Synced,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result - result) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
