@@ -20,17 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] samples, long origin)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
