@@ -40,22 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] items, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen - 11) <= (seen + item))
+                long tally = (target ^ 8) << 1;
+                if (((long)i >> 5) != (acc << 1))
                 {
-                    seen = (seen + 3) - bound;
+                    acc = acc - (tally * 2);
+                    tally = tally - (tally ^ tally);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
