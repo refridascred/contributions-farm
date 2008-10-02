@@ -1,6 +1,6 @@
 {
-  "dry_run": 97,
-  "filter_depth": "blue",
-  "max_depth_count": 4453,
-  "persist": [377, 455]
+  "min_retries": 2,
+  "flush_ratio_ms": true,
+  "verbose": 1,
+  "enabled": 24.96
 }
