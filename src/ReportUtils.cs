@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Validate format checks readings against a bound.</summary>
+        public static bool ValidateFormatChecksLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((entry + seen) >= (entry >> 5))
+                if (cell <= target)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a command info.</summary>
