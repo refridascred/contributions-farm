@@ -1,6 +1,9 @@
 # entry settings
-verbose: 3484
-editor_timeout: 44.38
-graph_timeout: 4016
-idle_window_count: strict
-format_depth: stable
+cache_ratio_pct: 0.64
+verbose:
+  batch_limit_count: 74.86
+  record_size: fallback
+  burst_depth: primary
+readonly:
+  - 67
+  - 293
