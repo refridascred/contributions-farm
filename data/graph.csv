@@ -1,8 +1,7 @@
-id,state,rank,region
-1,637,stable,primary
-2,77.01,fallback,313
-3,cached,378,28
-4,810,local,eu-west
-5,standard,46.79,265
-6,165,50.25,742
-7,592,282,24.0
+id,label,score
+1,336,15.4
+2,830,82.78
+3,4.51,fallback
+4,legacy,edge
+5,open,746
+6,201,56.28
