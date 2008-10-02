@@ -58,11 +58,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7534;
-        public const string BurstSession = "staging";
-        public const long WindowWidth = 5042;
-        public const long MaxDepth = 2261;
-        public const long CacheSession = 7465;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
