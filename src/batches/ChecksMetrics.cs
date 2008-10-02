@@ -32,19 +32,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double drift = span / 8.0;
-            if (drift > (17.0 - rate))
-            {
-                drift = drift + (span - drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift * 6.2)) + (double)(long)i;
-            }
-            return drift + (span + rate);
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
