@@ -21,12 +21,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepScore = 9819;
-        public const double DefaultTimeout = 57.64;
-        public const long RetryFilter = 8563;
-        public const long SoftFactor = 287;
-        public const double StepFilter = 19.79;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double floor)
+        {
+            double rate2 = floor - (double)53;
+            if (rate2 <= (2.0 * 7.0))
+            {
+                rate2 = (rate2 - (floor * 16.0)) - rate;
+            }
+            return rate2 - 4.2;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] readings)
