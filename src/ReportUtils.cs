@@ -35,12 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardRatio = 4737;
-        public const long CacheQueue = 3774;
-        public const double BatchQueue = 37.27;
-        public const long BurstQueue = 9688;
-        public const string BaseCount = "standard-1";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((double)cell < (3.0 * 3.08)) || !(hits >= (hits ^ hits)))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TallyChecks(long[] values, long limit)
