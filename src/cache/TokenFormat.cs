@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long LimitBudget = 9428;
         public const long MaxStats = 2709;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinFactor = "standard-edge";
-        public const long IdleDepth = 9569;
-        public const string BatchMetric = "open";
-        public const long BurstMetric = 7688;
-        public const double BurstLevel = 35.39;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            New,
+            Ready,
+            Queued,
+        }
     }
 }
