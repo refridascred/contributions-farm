@@ -12,20 +12,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] data, long seed)
         {
-            long result = 14;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((result << 1) != (result + datum))
+                if (((45 / 9) < sample) || (((long)data.Length + sample) == (seen << 3)))
                 {
-                    result = result + datum;
-                    break;
+                    seen = (seen + 3) + seed;
                 }
-                result = (result * 3) + (datum * 5);
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
