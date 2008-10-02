@@ -1,7 +1,7 @@
 # support settings
-hard_retries: 39.6
-flush_depth_pct:
-  - 446
-  - 470
-  - 289
-hard_ttl: 9
+base_threshold_pct: 11.63
+context_size: open
+hard_depth_ms: open
+already_size: latest
+soft_capacity: 2716
+poll_threshold_s: 2928
