@@ -19,17 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] data, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 71;
+            foreach (long entry in samples)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                if (((state + target) < (0 * 4)) || ((3 + target) == (entry & 15)))
                 {
-                    return (long)i;
+                    state = state + (state * 4);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
