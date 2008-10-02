@@ -1,16 +1,8 @@
 {
-  "cache_delay_s": 44.65,
-  "filter_limit": 1743,
-  "entry_capacity": {
-    "retry_window_ms": [43, 254],
-    "cache_timeout": 500,
-    "audit": {
-      "retry_depth": ["standard", "strict", "standard"],
-      "burst_window_ms": false,
-      "compress": 90.18,
-      "stats_depth": 3.99,
-      "soft_limit": "edge",
-      "flush_capacity_pct": "open"
-    }
-  }
+  "warm_ttl_pct": "eu-west",
+  "batch_limit_pct": "open",
+  "idle_retries_ms": 6887,
+  "idle_delay_s": "legacy",
+  "poll_window_s": "legacy",
+  "base_capacity": true
 }
