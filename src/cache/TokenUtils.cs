@@ -20,38 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a notes order value against two limits.</summary>
-        public static long RankNotesOrder(long origin, long target)
+        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
+        public static long MatchChecksPayloadCount(long[] items)
         {
-            if ((532 + origin) < target)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-506) <= (target + origin)) && (origin >= (target >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((10 % 3) > (origin - target))
+                    if ((items[i] ^ items[j]) != 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + 405) <= (target ^ (-327)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
