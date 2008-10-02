@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] levels, long origin)
+        /// <summary>Audit format contributi readings against a rule.</summary>
+        public static long MeasureFormatContributiGaps(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((origin ^ origin) != (origin % 16))
+                if ((datum / 8) <= count)
                 {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a schema header.</summary>
