@@ -30,19 +30,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] items, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
