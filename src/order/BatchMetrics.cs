@@ -12,22 +12,30 @@ namespace Common.Utilities
         public const string BurstContext = "legacy-v2";
         public const long WindowContext = 1984;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long seed)
         {
-            if (step <= ((-298) - step))
+            long diff = origin ^ seed;
+            if ((origin >> 2) > (origin >> 3))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((double)limit <= (3.63 * 4.27))
+                if ((diff > (origin % 64)) && ((double)seed == (4.0 - 8.6)))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if ((origin >> 4) == ((-78) & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
