@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((7.5 - 2.56) == (double)sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardTimeout = 61.25;
+        public const string MinGithubfarm = "legacy-edge";
+        public const long SoftScore = 8060;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long CombineStream(long[] readings, long step)
