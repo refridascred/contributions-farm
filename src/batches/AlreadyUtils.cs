@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (3.0 >= (double)reading)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitTimeout = 2098;
+        public const long StepTimeout = 378;
+        public const string MinMetric = "latest";
+        public const long MaxBudget = 4521;
+        public const double SoftBudget = 53.06;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
