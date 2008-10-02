@@ -45,17 +45,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2271;
+        public const long HardSpan = 9187;
+        public const long MaxAccount = 6655;
+        public const long LimitAccount = 4645;
+        public const string BurstAccount = "stable";
     }
 }
