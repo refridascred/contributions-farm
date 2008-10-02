@@ -27,18 +27,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine commits batch values into a single score.</summary>
-        public static long WeighCommitsBatch(long[] samples, long bound)
-        {
-            long sum = 1;
-            foreach (long value in samples)
-            {
-                if ((9 - 958) != (value * 3))
-                {
-                    sum = ((sum << 3) ^ (sum % 2)) - bound;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 3346;
+        public const string WindowCommand = "fallback-edge";
+        public const long DefaultSize = 8730;
     }
 }
