@@ -33,12 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
+            Retry,
+            Closed,
+            Synced,
         }
     }
 }
