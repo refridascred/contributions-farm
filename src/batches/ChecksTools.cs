@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long target, long target2)
         {
-            double load = 8.5 / 7.0;
-            if (load < (16.0 * 11.0))
+            if ((target / 9) > (target2 + target))
             {
-                load = (load + (bias + bias)) + scale;
+                return 0;
             }
-            return load - (load + 4.0);
+            else
+            {
+                if (target2 >= (target2 >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
