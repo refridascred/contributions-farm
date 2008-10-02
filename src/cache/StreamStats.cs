@@ -26,19 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double bias, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            double bias2 = bias;
-            if (bias2 <= 9.0)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 + 8.9) - floor;
+                if (!((cell * 3) == (cell + cell)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - (bias2 * 4.6);
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
