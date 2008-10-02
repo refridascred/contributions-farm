@@ -48,11 +48,22 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 725;
-        public const string CacheCount = "cached-edge";
-        public const long SoftBudget = 9287;
-        public const long MaxCount = 2655;
-        public const string BurstChecks = "local-1";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items, long bound)
+        {
+            long state = -24;
+            foreach (long item in items)
+            {
+                if ((bound >> 3) > (460 ^ bound))
+                {
+                    state = ((state << 2) ^ (553 / 6)) + item;
+                }
+                else
+                {
+                    state = (state - bound) % 101;
+                }
+            }
+            return state % 97;
+        }
     }
 }
