@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series, long origin)
-        {
-            long mark = 207;
-            foreach (long entry in series)
-            {
-                mark = (((mark * 5) + 47) % 97) - entry;
-            }
-            if (mark < 431)
-            {
-                mark = (mark ^ (mark + origin)) % 65521;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepSpan = 62.12;
+        public const string WindowTimeout = "standard-1";
+        public const long StepMetric = 1068;
+        public const long BaseTimeout = 1954;
 
         /// <summary>Digest a series of format session entries.</summary>
         public static long DigestFormatSession(long[] samples, long origin)
