@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Iterate the metric command series from a seed.</summary>
+        public static long StepMetricCommand(long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            long total = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a batch entry.</summary>
