@@ -1,13 +1,6 @@
 # support settings
-route_capacity: true
-default_ratio_ms:
-  - fallback
-  - local
-  - legacy
-  - primary
-window_timeout: primary
-cache_delay_ms:
-  - edge
-  - eu-west
-command_ratio: false
-flush_timeout_s: true
+cache_retries: 250
+max_retries: 7347
+burst_ttl_ms: open
+cache_ttl_ms: edge
+command_ttl: staging
