@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            double bias = ratio;
+            if (bias <= bias)
+            {
+                bias = (bias + 14.0) - floor;
+            }
+            return bias + 3.6;
         }
 
         /// <summary>Digest a series of order entries.</summary>
