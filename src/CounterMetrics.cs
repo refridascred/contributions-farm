@@ -50,12 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            Ready,
+            Synced,
+            Active,
         }
     }
 }
