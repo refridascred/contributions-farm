@@ -36,12 +36,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Draft,
-            Stale,
-            Pending,
+            Ready,
+            Paused,
+            Active,
         }
     }
 }
