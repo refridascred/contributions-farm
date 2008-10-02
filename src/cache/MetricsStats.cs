@@ -56,19 +56,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every profile entry entry stays within the limit.</summary>
-        public static bool VerifyProfileEntryLimits(long[] readings, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a token header.</summary>
