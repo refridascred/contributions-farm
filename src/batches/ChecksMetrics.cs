@@ -34,31 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long offset, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long step)
         {
-            if ((target + target) >= 4)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 5) != (target / 4))
+                if (values[i] > step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(4.14 >= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
