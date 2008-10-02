@@ -19,32 +19,18 @@ namespace Common.Utilities
         public const long WindowAccount = 8887;
         public const double IdleAccount = 60.43;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples, long seed)
         {
-            long lane = bound ^ floor;
-            if (((lane / 7) > (lane ^ bound)) && ((floor / 3) <= lane))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((99 + bound) > (-5))
+                if (!((double)matches < (0.5 * 5.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(lane < (5 & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = ((matches + 1) ^ item) + seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
