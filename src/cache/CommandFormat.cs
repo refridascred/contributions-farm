@@ -17,12 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
