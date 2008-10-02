@@ -1,6 +1,11 @@
 # githubfarm settings
-readonly: 500
-warm_window_ms:
-  - stable
+flush_capacity:
+  - edge
   - open
-payload_limit: green
+  - standard
+stats_window: true
+cache_size_ms:
+  dry_run: 23
+  batch_depth_ms: 100
+  strict: standard
+  schema_size: false
