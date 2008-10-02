@@ -47,19 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double span)
+        /// <summary>Find the first record counter entry that matches the target.</summary>
+        public static long LocateRecordCounterIndex(long[] items, long origin)
         {
-            double weight = (double)73 / 7.0;
-            if (weight >= weight)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + (double)5) + scale) - span;
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 1.93) + (double)(long)i;
-            }
-            return weight + (weight / 7.0);
+            return -1;
         }
 
         /// <summary>Accumulate account payload samples.</summary>
