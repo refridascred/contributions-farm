@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up command window samples.</summary>
-        public static long OverlapCommandWindowCount(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i * 2) >= 83)
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry + (7 & 7)) % 97;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ 747;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a order stats.</summary>
