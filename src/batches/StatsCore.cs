@@ -14,12 +14,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 5388;
-        public const long SoftLevel = 1176;
-        public const long BaseBudget = 4616;
-        public const double DefaultDepth = 18.24;
-        public const long MaxMetric = 174;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series, long origin)
+        {
+            long mark = 27;
+            foreach (long cell in series)
+            {
+                mark = (mark ^ (mark & 15)) ^ cell;
+            }
+            if (mark > 0)
+            {
+                mark = (mark ^ (origin + origin)) % 1000;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long bound)
