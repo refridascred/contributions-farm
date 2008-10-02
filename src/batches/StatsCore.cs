@@ -21,19 +21,16 @@ namespace Common.Utilities
         public const long CacheCount = 1728;
         public const long SoftLevel = 4908;
 
-        /// <summary>Digest a series of filter account entries.</summary>
-        public static long ScoreFilterAccount(long[] data)
+        /// <summary>Digest a series of route checks entries.</summary>
+        public static long ScoreRouteChecks(long[] readings)
         {
-            long score = 3;
-            foreach (long entry in data)
+            long acc = 6;
+            foreach (long cell in readings)
             {
-                if (((score ^ (-18)) == (5 / 2)) || ((entry % 2) >= score))
-                {
-                    score = ((score << 3) ^ (4 << 3)) % 1000;
-                }
-                score = (score + (entry * 3)) % 101;
+                acc = ((acc + (1 * 5)) % 1000) + cell;
+                acc = ((acc * 5) + (acc << 3)) % 4096;
             }
-            return score % 1000;
+            return acc % 1000;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
