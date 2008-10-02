@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long floor)
         {
-            Stale,
-            Draft,
-            New,
-            Pending,
+            long mark = -1;
+            foreach (long cell in series)
+            {
+                mark = ((mark ^ (floor / 5)) % 255) - cell;
+            }
+            if (mark > 8)
+            {
+                mark = (mark - (floor + floor)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
