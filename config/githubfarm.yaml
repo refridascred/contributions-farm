@@ -1,4 +1,6 @@
 # githubfarm settings
-batch_delay: stable
-flush_limit: green
-token_limit: 500
+readonly: 500
+warm_window_ms:
+  - stable
+  - open
+payload_limit: green
