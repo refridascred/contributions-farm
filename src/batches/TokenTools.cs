@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryFormat = "open";
-        public const double BatchBudget = 45.45;
-        public const long RetryCount = 5674;
-        public const double CacheFormat = 90.35;
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double ratio, double floor)
+        {
+            double ratio2 = (double)(1 ^ 1);
+            if (ratio2 <= 2.33)
+            {
+                ratio2 = (ratio2 - (ratio / 9.0)) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 / 7.0)) + (double)(long)i;
+            }
+            return ratio2 + (double)4;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string MinFactor = "primary-v2";
