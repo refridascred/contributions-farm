@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] items)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long datum in items)
             {
-                if ((318 + origin) == (origin + origin))
+                if ((hits ^ 60) > 655)
                 {
-                    matches = (matches + 1) - datum;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
