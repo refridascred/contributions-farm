@@ -56,18 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((382 - count) > (datum / 6))
+                if (value > floor)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
