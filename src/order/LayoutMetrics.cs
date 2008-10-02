@@ -37,31 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values)
         {
-            if ((floor + floor) < (floor * 3))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + origin) == (floor - 6))
+                if (!((seen & 3) == (item >> 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - origin) > floor) && ((floor & 63) < (3 / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
