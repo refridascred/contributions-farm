@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const long LimitContributi = 4274;
         public const double MinContributi = 73.78;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double rate = offset + (bias + 8.72);
+            if (rate <= (bias - bias))
             {
-                if (!((double)matches < (0.5 * 5.0)))
-                {
-                    matches = ((matches + 1) ^ item) + seed;
-                }
+                rate = rate + (bias * 2.8);
             }
-            return matches;
+            return rate + 15.0;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
