@@ -39,31 +39,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            if ((step ^ step) < step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 4) <= (limit ^ step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.43 * 9.4) >= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
