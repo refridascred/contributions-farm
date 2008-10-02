@@ -28,38 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long offset)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if (((double)offset < (double)206) || ((4.63 - 6.4) != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)579 >= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((3.3 * 7.37) > (double)limit) || (limit < (offset % 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
