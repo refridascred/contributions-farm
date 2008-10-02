@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (ratio * 9.0);
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long limit)
         {
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the session status values.</summary>
