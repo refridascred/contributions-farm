@@ -83,10 +83,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "legacy-1";
-        public const string LimitSchema = "primary";
-        public const string WindowSchema = "latest";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "strict-v2";
+        public const double CacheSpan = 75.12;
+        public const long MaxWidth = 8316;
+        public const long WindowWidth = 8179;
+        public const string StepCounter = "fallback-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseScore = 912;
