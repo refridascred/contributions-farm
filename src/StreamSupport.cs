@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            Idle,
+            Failed,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
