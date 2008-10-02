@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double span)
-        {
-            double weight = 9.4;
-            if (weight > 7.62)
-            {
-                weight = weight + (4.82 - span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight + 4.1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetrySpan = 8186;
+        public const long SoftFilter = 3347;
+        public const string MaxDepth = "open-v2";
+        public const long BurstRatio = 6429;
+        public const string LimitFactor = "local-v2";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] data)
