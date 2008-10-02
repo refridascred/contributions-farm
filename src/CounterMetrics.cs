@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] data, long step)
         {
-            long total = 8;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((4.25 * 9.0) <= (double)cell)
+                if (9.0 > (double)sample)
                 {
-                    total = ((total << 3) ^ (total + total)) % 65521;
+                    matches = (matches + 1) - step;
                 }
             }
-            if (total > 4)
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
