@@ -16,12 +16,13 @@ namespace Common.Utilities
             return load + (offset + offset);
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            Dropped,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
