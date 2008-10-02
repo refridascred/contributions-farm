@@ -1,8 +1,5 @@
 {
-  "base_timeout_pct": "green",
-  "metrics_retries": 21.73,
-  "notes_threshold": "standard",
-  "poll_interval": 8930,
-  "warm_window_count": "edge",
-  "hard_window_count": "staging"
+  "strict": "staging",
+  "min_depth_count": 3469,
+  "idle_size": 24.49
 }
