@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long step)
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool GuardCacheAccountLimits(long[] samples, long target)
         {
-            long mark = 398;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if (sample != target)
                 {
-                    mark = ((mark * 4) + ((long)i % 5)) - entry;
-                }
-                if (step >= mark)
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return valid;
         }
 
         /// <summary>Validate layout session readings against a bound.</summary>
