@@ -42,19 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] values, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (entry >= floor)
+                if ((9 + count) >= count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a order options.</summary>
