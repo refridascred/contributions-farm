@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long anchor = 1;
+            foreach (long item in items)
+            {
+                anchor = ((anchor - (anchor % 10)) % 255) - item;
+            }
+            if (anchor < 77)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
