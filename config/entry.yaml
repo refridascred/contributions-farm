@@ -1,7 +1,10 @@
 # entry settings
-stats_limit: 1931
-context_capacity: 24.19
-cache_ttl: cached
-persist: false
-base_retries: 12.38
-soft_delay_pct: 100
+audit: 23.1
+max_ratio_ms: legacy
+default_depth:
+  - open
+  - stable
+  - eu-west
+default_window_count: 43.87
+order_capacity: cached
+max_timeout_count: true
