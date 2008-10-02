@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] items, long floor)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (floor < (92 + sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Draft,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Describe the batch mode values.</summary>
