@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long floor)
         {
-            New,
-            Synced,
-            Idle,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((-12) * 3) <= seen)
+                {
+                    seen = ((seen + 1) - cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
