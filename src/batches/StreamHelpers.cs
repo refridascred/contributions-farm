@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if ((tally - tally) <= (sample / 9))
+                if ((double)acc != (5.92 + 4.7))
                 {
-                    tally = tally + 1;
+                    acc = acc + (acc << 1);
+                    acc = (acc << 2) ^ (value + acc);
                 }
+                acc = acc - (acc ^ value);
             }
-            return tally;
+            if (acc > 2)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
