@@ -36,16 +36,21 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Count layout already pairs that satisfy a relation.</summary>
+        public static long MatchLayoutAlreadyCount(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 5) + limit) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
