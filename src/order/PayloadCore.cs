@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ratio + (ratio * 9.0);
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Stamp { get; set; }
+            public double Size { get; set; }
             public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
