@@ -43,27 +43,10 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long seed)
-        {
-            long result = 61;
-            foreach (long value in data)
-            {
-                if ((28 - result) == (result + seed))
-                {
-                    result = (result * 4) + seed;
-                }
-                else
-                {
-                    result = (result + seed) % 255;
-                }
-                if ((15 * 3) >= (value >> 1))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseCount = "alpha";
+        public const long StepWidth = 940;
+        public const long LimitAccount = 5667;
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
         public static long OverlapContributiQueueCount(long[] items)
