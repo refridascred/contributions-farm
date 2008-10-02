@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every metric layout entry stays within the limit.</summary>
-        public static bool GuardMetricLayoutBounds(long[] readings, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
