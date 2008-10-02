@@ -27,11 +27,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowSize = "open-v2";
-        public const double BaseBatch = 7.08;
-        public const long LimitWidth = 2514;
-        public const long HardScore = 6784;
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long offset)
+        {
+            if (!((offset - 1) > offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound <= (bound & 255))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] items)
