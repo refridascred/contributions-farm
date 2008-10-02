@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples, long origin)
+        /// <summary>Find the first contributi batch entry that matches the target.</summary>
+        public static long LocateContributiBatchIndex(long[] series, long bound)
         {
-            long total = 8;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((19.0 / 6.0) < (double)reading) || ((double)total == (double)origin))
+                if (series[i] <= bound)
                 {
-                    total = ((total * 5) + ((long)samples.Length << 2)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Describe the channel mode values.</summary>
