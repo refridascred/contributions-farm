@@ -1,12 +1,15 @@
 {
-  "persist": false,
-  "flush_capacity_pct": {
-    "command_size": 250,
-    "format_threshold": "local",
-    "batch_ttl_s": false,
-    "max_capacity_pct": 44.38
+  "burst_depth_s": ["local", "primary", "eu-west"],
+  "filter_threshold": {
+    "queue_window": 16.43,
+    "base_capacity": 75.74,
+    "warm_ttl_s": 7499,
+    "batch_threshold": 67,
+    "already_ratio": false,
+    "support_capacity": "blue"
   },
-  "compress": 6518,
-  "verbose": 66,
-  "stream_depth": "stable"
+  "persist": "latest",
+  "soft_ttl_ms": 80,
+  "poll_limit_s": 56.6,
+  "soft_limit_count": true
 }
