@@ -27,26 +27,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
-        {
-            long mix = 23;
-            foreach (long sample in levels)
-            {
-                if ((57 % 16) < (mix << 3))
-                {
-                    mix = (mix << 3) ^ 601;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ sample) % 255;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix << 3) ^ (mix * 5);
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheWidth = "stable-1";
+        public const long BurstSize = 6311;
+        public const string DefaultRatio = "open-1";
     }
 }
