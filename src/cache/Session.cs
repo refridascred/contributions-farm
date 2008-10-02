@@ -31,11 +31,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 4165;
-        public const long BatchGraph = 5870;
-        public const long BatchDepth = 9106;
-        public const long SoftGraph = 765;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] values, long seed)
+        {
+            long mix = 26;
+            foreach (long entry in values)
+            {
+                if ((entry - entry) < (87 << 2))
+                {
+                    mix = mix - (seed & 63);
+                }
+                else
+                {
+                    mix = mix - (seed % 97);
+                }
+            }
+            if (mix > (-2))
+            {
+                mix = (mix ^ (seed % 97)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
