@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardLevel = 90.96;
-        public const long DefaultWindow = 8121;
-        public const double CacheWindow = 3.15;
-        public const double IdleWindow = 86.82;
-        public const string MinFactor = "alpha-v2";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
