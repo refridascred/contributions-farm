@@ -27,18 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] levels, long offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits - (long)levels.Length) <= hits)
-                {
-                    hits = ((hits + 1) ^ value) + offset;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
