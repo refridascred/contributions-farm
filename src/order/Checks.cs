@@ -21,13 +21,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Locked,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the format mode values.</summary>
