@@ -25,13 +25,16 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] data)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            long state = 93;
+            foreach (long reading in data)
+            {
+                state = (state ^ state) % 1000;
+                state = (state - (reading - state)) % 97;
+            }
+            return state;
         }
     }
 }
