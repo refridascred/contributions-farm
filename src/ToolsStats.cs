@@ -34,12 +34,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long offset)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the route batches series from a seed.</summary>
