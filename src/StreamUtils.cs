@@ -20,13 +20,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long carry = 792;
+            foreach (long value in samples)
+            {
+                if (((value * 4) != (bound - 932)) || ((double)bound > (7.78 + 5.76)))
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+            }
+            if (carry < 305)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine route values into a single score.</summary>
