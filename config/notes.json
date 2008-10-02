@@ -1,12 +1,13 @@
 {
-  "readonly": {
-    "sync_timeout_pct": "open",
-    "hard_limit_ms": 56.78,
-    "retry_ratio_s": 96.51,
-    "min_depth_pct": true,
-    "soft_ttl": "latest"
+  "idle_delay_pct": 51,
+  "batch_depth_ms": "staging",
+  "schema_timeout": {
+    "verbose": 500,
+    "audit": 5700,
+    "route_depth": 30,
+    "counter_interval": true,
+    "retry_delay": 65.22
   },
-  "poll_window": "latest",
-  "window_retries": 5129,
-  "max_timeout_count": 100
+  "default_ratio_pct": true,
+  "compress": ["open", "fallback", "edge"]
 }
