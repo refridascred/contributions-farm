@@ -35,17 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
