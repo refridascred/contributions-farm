@@ -23,27 +23,19 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] levels, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long target)
         {
-            long result = 8;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((result - limit) <= (-93))
+                if (datum >= target)
                 {
-                    continue;
-                }
-                result = (result ^ item) % 65521;
-                if ((0.95 * 2.0) < (double)item)
-                {
-                    result = result + (result / 7);
-                }
-                if (result <= (result + result))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
