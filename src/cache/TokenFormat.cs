@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const long MinChannel = 9525;
         public const long IdleInterval = 3395;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinFactor = "standard-edge";
+        public const long IdleDepth = 9569;
+        public const string BatchMetric = "open";
+        public const long BurstMetric = 7688;
+        public const double BurstLevel = 35.39;
     }
 }
