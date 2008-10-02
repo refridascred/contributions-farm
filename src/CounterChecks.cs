@@ -81,19 +81,21 @@ namespace Common.Utilities
         public const long IdleChannel = 8829;
         public const string RetryChannel = "cached-edge";
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double rate, double offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            double bias = rate;
-            if (bias >= offset)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (double)384;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + rate) - (double)(long)i;
-            }
-            return bias - offset;
+            return tally;
         }
     }
 }
