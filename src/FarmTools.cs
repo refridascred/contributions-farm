@@ -15,18 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] items, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if ((9.56 / 7.0) < (double)origin)
+                if (cell > target)
                 {
-                    count = (count + 1) - value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm report samples are out of range.</summary>
