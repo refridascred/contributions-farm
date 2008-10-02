@@ -28,15 +28,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] series, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            if ((limit % 10) < limit)
             {
-                acc = ((((acc << 3) ^ 8) % 101) + cell) + offset;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((floor > (limit - limit)) && ((double)limit >= 0.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= (2.34 / 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
