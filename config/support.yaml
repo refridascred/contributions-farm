@@ -1,11 +1,4 @@
 # support settings
-max_ratio: 7350
-persist: true
-sync_delay: false
-hard_retries_pct:
-  poll_timeout_count: 77.21
-  compress: 4432
-  retry_interval_s:
-    default_interval_ms: 2
-    flush_window_s: 51.84
-    base_limit_count: 20
+layout_timeout: 53
+sync_timeout_pct: 20
+base_size_pct: 32.99
