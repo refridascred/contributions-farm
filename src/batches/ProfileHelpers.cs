@@ -54,23 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mark = 92;
-            foreach (long sample in levels)
-            {
-                mark = mark - (sample ^ mark);
-                if ((mark + mark) != ((-80) & 15))
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            return mark % 97;
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
