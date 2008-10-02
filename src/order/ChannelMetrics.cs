@@ -19,15 +19,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a account schema figure with a bias.</summary>
-        public static double AdjustAccountSchema(double weight, double bias)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double rate = (weight * 5.0) * 4.27;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate + (double)53) + (double)(long)i) + bias;
-            }
-            return rate + rate;
+            Stale,
+            Ready,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Match up batches samples.</summary>
