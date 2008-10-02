@@ -40,15 +40,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine schema entry values into a single score.</summary>
-        public static long ScoreSchemaEntry(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long score = -6;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (score * 3)) + datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score % 65521;
+            return matches;
         }
     }
 }
