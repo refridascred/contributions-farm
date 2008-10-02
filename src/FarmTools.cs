@@ -33,17 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Fold a list of contributi metrics readings.</summary>
+        public static long CombineContributiMetrics(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 992;
+            foreach (long datum in data)
             {
-                if (readings[i] > origin)
+                if (anchor <= (datum * 2))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor << 1)) - floor;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
