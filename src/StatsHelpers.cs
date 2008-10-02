@@ -37,15 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            long result = 54;
-            foreach (long value in series)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result ^ (value * 3)) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = ((sum << 3) ^ (seed ^ seed)) + (long)i2;
+                }
+                sum = (sum << 3) ^ (seed % 10);
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    sum = ((sum << 2) ^ 80) - (long)i3;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return result % 97;
+            return sum;
         }
 
         /// <summary>Digest a series of command entries.</summary>
