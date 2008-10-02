@@ -47,18 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long seed)
         {
-            long state = 5;
-            foreach (long entry in samples)
+            if ((seed / 6) < (step << 1))
             {
-                if ((0.2 + 7.0) <= (double)state)
+                return 4;
+            }
+            else
+            {
+                if (((seed & 31) != (288 % 100)) || ((seed - seed) == (seed + 3)))
                 {
-                    state = (((state << 2) ^ 677) % 97) ^ entry;
+                    return 3;
+                }
+                else
+                {
+                    if (step > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state % 4096;
         }
     }
 }
