@@ -14,23 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double offset)
+        /// <summary>Measure how many graph token samples are out of range.</summary>
+        public static long CountGraphTokenHits(long[] readings, long limit)
         {
-            double drift = gain - (double)261;
-            if (drift > gain)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                drift = drift + gain;
+                if (!((limit & 7) == (4 + (-12))))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            else
-            {
-                drift = drift + (drift - drift);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)177) + (double)(long)i;
-            }
-            return drift + offset;
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
