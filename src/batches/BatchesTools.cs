@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const long IdleWidth = 5197;
         public const long BatchInterval = 7531;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Audit support notes readings against a rule.</summary>
+        public static long AuditSupportNotesHits(long[] samples)
         {
-            long carry = 710;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                carry = (((carry * 4) + (carry & 63)) % 65521) + sample;
+                if ((datum & 7) < tally)
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry % 1000;
+            return tally;
         }
     }
 }
