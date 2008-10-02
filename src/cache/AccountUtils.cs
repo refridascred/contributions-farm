@@ -19,11 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream kind values.</summary>
