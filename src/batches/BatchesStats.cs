@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4629;
-        public const long CacheLayout = 1707;
-        public const long MinBudget = 5376;
-        public const string LimitScore = "stable-edge";
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double weight, double offset)
