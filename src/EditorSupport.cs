@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings, long step)
         {
-            double load = offset;
-            if (load < (bias * 17.0))
+            long mark = 398;
+            foreach (long entry in readings)
             {
-                load = load - offset;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark * 4) + ((long)i % 5)) - entry;
+                }
+                if (step >= mark)
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)20) + (double)(long)i;
-            }
-            return load + load;
+            return mark % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
