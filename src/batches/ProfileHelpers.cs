@@ -43,11 +43,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "cached-v2";
-        public const long BaseWindow = 1472;
-        public const long RetryWindow = 4149;
-        public const double MaxSize = 25.66;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] levels)
