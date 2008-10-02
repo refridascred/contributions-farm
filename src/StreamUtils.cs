@@ -44,19 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!!((offset ^ offset) > seen))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 9259;
+        public const long RetryFactor = 5428;
+        public const string SoftBudget = "primary-v2";
+        public const long DefaultCommits = 2556;
+        public const long BaseCommits = 3880;
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
