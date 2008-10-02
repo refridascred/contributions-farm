@@ -25,13 +25,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Paused,
-            Stale,
-            Draft,
-            Idle,
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
