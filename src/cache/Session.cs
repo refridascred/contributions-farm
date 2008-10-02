@@ -35,15 +35,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long origin, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            if ((origin - seed) != (origin + seed))
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (origin >= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
