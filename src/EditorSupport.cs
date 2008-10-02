@@ -78,22 +78,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long MeasureToolsEditorMatches(long[] levels)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (230 <= (datum ^ tally))
+                if (reading <= limit)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
