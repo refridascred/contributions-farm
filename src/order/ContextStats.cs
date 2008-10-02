@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
+        public static long RollCacheGithubfarm(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a schema options.</summary>
