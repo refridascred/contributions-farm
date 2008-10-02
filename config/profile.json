@@ -1,7 +1,12 @@
 {
-  "retry_timeout_s": ["eu-west", "eu-west", "primary", "stable"],
-  "default_ratio_count": 60,
-  "max_size_pct": ["fallback", "strict", "green"],
-  "min_size": [244, 69, 355],
-  "hard_window_s": 83.88
+  "warm_limit": "staging",
+  "flush_threshold_s": ["eu-west", "green", "local"],
+  "poll_ratio_pct": {
+    "verbose": 2,
+    "persist": 5998,
+    "retry_retries_count": true,
+    "sync_interval_pct": ["blue", "open", "green"],
+    "soft_delay_pct": "local",
+    "idle_size": 2912
+  }
 }
