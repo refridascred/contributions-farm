@@ -16,12 +16,23 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 408;
-        public const long MinWidth = 6218;
-        public const string IdleCluster = "latest";
-        public const long MaxCluster = 5543;
-        public const string BaseBudget = "cached";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!(cell >= (cell - count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] values, long floor)
