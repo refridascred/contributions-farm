@@ -16,24 +16,12 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long limit)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            if ((limit + 506) <= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) >= (bound % 64))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
