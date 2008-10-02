@@ -46,19 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (reading != target)
+                if (cell != seed)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
