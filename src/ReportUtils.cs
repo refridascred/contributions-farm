@@ -47,22 +47,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] values, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long target, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((13.0 / 4.0) <= (double)target)
             {
-                if ((double)sample == (9.1 / 3.0))
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ seed) < (seed + seed))
                 {
-                    count = (count + 3) - step;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((seed - 2) >= (target >> 2)) || ((57 % 2) < target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.8 + 6.3) >= (5.17 - 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
