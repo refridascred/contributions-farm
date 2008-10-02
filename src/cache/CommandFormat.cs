@@ -40,11 +40,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            Retry,
+            Ready,
+            Idle,
+            Synced,
         }
     }
 }
