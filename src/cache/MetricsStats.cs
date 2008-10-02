@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheInterval = "cached-1";
-        public const double RetryFilter = 45.44;
-        public const long StepBudget = 8267;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits < 70)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] series, long target)
