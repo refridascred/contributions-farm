@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Locate a support cache reading by value.</summary>
+        public static long LocateSupportCacheIndex(long[] samples, long offset)
         {
-            double load = offset;
-            if (load < bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)(-753);
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (offset + offset);
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
