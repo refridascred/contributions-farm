@@ -1,9 +1,7 @@
 {
-  "hard_ttl_ms": {
-    "enabled": "edge",
-    "verbose": 500,
-    "cache_limit_count": "cached"
-  },
-  "idle_limit_s": true,
-  "cache_ttl": "stable"
+  "idle_interval": "eu-west",
+  "support_threshold": 6809,
+  "burst_window_s": "staging",
+  "hard_window_count": 52.04,
+  "retry_ttl_s": "cached"
 }
