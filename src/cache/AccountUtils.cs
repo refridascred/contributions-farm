@@ -17,21 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up layout filter samples.</summary>
-        public static long OverlapLayoutFilterCount(long[] samples)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
