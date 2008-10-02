@@ -83,19 +83,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] levels, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (item > origin)
+                if ((6.71 * 3.61) >= (9.19 * 6.4))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 2) - datum) - limit;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
