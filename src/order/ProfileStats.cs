@@ -33,11 +33,11 @@ namespace Common.Utilities
         public const string IdleReport = "alpha-1";
         public const long RetryInterval = 6234;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
