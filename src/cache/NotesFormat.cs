@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
