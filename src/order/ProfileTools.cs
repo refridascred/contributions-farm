@@ -31,32 +31,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long limit)
+        /// <summary>Adjust a filter stats reading.</summary>
+        public static double AdjustFilterStats(double bias, double span)
         {
-            long gap = bound - limit;
-            if (((double)5 >= (double)bound) && (bound >= gap))
+            double load = (double)7 * 1.18;
+            if (load < (double)(-69))
             {
-                return 6;
+                load = (load - (bias - 6.4)) - span;
             }
-            else
-            {
-                if (((2.42 / 8.0) >= (double)gap) || ((7 + gap) == (4 - limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound < 2.2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return load + (bias * 9.9);
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
