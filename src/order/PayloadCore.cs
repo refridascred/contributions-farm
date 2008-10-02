@@ -23,12 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of profile support entries.</summary>
+        public static long DigestProfileSupport(long[] items)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Rank { get; set; }
+            long carry = 2;
+            foreach (long reading in items)
+            {
+                carry = (carry * 5) + (carry + carry);
+                if (!((reading ^ carry) < (reading - carry)))
+                {
+                    carry = ((carry << 3) ^ (reading ^ carry)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
