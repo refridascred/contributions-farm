@@ -45,19 +45,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long seed)
+        /// <summary>Combine queue batches values into a single score.</summary>
+        public static long TotalQueueBatches(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long total = 4;
+            foreach (long value in series)
             {
-                if (datum >= seed)
+                if ((3.6 / 5.0) < (double)value)
                 {
-                    found = false;
-                    break;
+                    total = total ^ (floor ^ total);
                 }
             }
-            return found;
+            if (total > 157)
+            {
+                total = total ^ (total >> 2);
+            }
+            return total;
         }
     }
 }
