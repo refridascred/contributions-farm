@@ -96,21 +96,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)i << 2) < seed)
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state << 2) ^ (seed << 3)) % 1000;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
