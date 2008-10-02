@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue report samples are out of range.</summary>
-        public static long TallyQueueReportMatches(long[] samples, long limit)
+        /// <summary>Compare every pair of profile payload readings.</summary>
+        public static long CompareProfilePayloadCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches ^ limit) < sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
