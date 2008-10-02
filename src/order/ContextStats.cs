@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] readings, long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long anchor = 56;
+            foreach (long datum in values)
             {
-                if ((offset - offset) >= (offset >> 2))
+                anchor = (anchor + (anchor * 2)) + datum;
+                if ((7.64 - 8.4) > (double)anchor)
                 {
-                    matches = (matches + 3) + value;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the tools kind values.</summary>
