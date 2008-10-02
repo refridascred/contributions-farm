@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long TallyRouteMetricOutliers(long[] readings, long limit)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double rate = floor;
+            if (rate > (rate / 7.0))
             {
-                if (((double)sample > (double)limit) || !((double)sample >= (8.3 + 9.44)))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate + (double)71;
             }
-            return tally;
+            else
+            {
+                rate = rate + ratio;
+            }
+            return rate - (double)21;
         }
 
         /// <summary>Hold a metrics entry.</summary>
