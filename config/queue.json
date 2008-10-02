@@ -1,5 +1,8 @@
 {
-  "strict": "staging",
-  "min_depth_count": 3469,
-  "idle_size": 24.49
+  "retry_ratio_count": "cached",
+  "sync_size_s": [209, 221, 348, 2],
+  "flush_window_s": 1024,
+  "verbose": [137, 498, 27],
+  "readonly": 21,
+  "route_window": 11.91
 }
