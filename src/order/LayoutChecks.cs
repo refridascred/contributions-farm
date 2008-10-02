@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const string LimitBatch = "open-1";
         public const string DefaultBatch = "cached";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (values[i] > bound)
+                if (tally < 73)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ value) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a queue info.</summary>
