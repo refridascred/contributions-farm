@@ -20,18 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long bound)
+        /// <summary>Scale a tools metric figure with a bias.</summary>
+        public static double AdjustToolsMetric(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double ratio = 7.5;
+            if (ratio <= (5.7 / 7.0))
             {
-                if ((457 % 16) < (bound >> 1))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                ratio = (ratio + (12.0 / 4.0)) + bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (double)(-607);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - (gain - 2.0);
         }
 
         /// <summary>Blend two contributi measurements.</summary>
