@@ -20,14 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Locked,
-            Closed,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftFactor = 5062;
+        public const long DefaultInterval = 2470;
+        public const long BatchCount = 9576;
+        public const double HardBudget = 87.9;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
