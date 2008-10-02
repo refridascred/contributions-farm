@@ -21,15 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples, long seed)
         {
-            long result = 26;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = result + (sample % 60);
+                if ((28 ^ count) <= (value + count))
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
