@@ -39,13 +39,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] readings, long offset)
         {
-            New,
-            Failed,
-            Paused,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
