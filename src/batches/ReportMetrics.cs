@@ -15,12 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples, long limit)
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 1;
+            foreach (long datum in samples)
+            {
+                if (((double)datum >= (3.3 - 19.0)) || ((double)limit > (8.2 / 7.0)))
+                {
+                    mix = mix - (limit + limit);
+                }
+            }
+            if (mix < 29)
+            {
+                mix = ((mix << 2) ^ mix) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a session reading.</summary>
