@@ -22,13 +22,22 @@ namespace Common.Utilities
             return bias + (weight / 8.0);
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples, long limit)
         {
-            Retry,
-            Draft,
-            Locked,
-            Ready,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (16.0 < (double)tally)
+                {
+                    tally = ((tally + 2) - datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
