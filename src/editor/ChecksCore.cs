@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a booking summary.</summary>
+        public sealed class BookingSummary
         {
-            Stale,
-            Queued,
-            Failed,
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Rank already route input into a small class.</summary>
