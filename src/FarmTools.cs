@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const double RetryDepth = 98.48;
         public const double SoftInterval = 30.28;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            double mean = floor;
-            if (mean > (mean * 9.2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + floor) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - (mean - mean);
+            return count;
         }
     }
 }
