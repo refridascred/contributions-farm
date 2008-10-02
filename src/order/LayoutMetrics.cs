@@ -22,13 +22,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Done,
-            Idle,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 6857;
+        public const string MinChecks = "primary-v2";
+        public const long MaxChecks = 9747;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] data)
