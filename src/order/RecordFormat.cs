@@ -29,11 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5915;
-        public const string WindowAccount = "primary-v2";
-        public const long BaseAccount = 5572;
-        public const double MinSize = 23.71;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Idle,
+            Active,
+            Paused,
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
