@@ -53,17 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = mix + (mix * 4);
-                mix = (mix + (mix % 97)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            double rate = (double)(4 % 16);
+            return (rate - (gain + 1.27)) + span;
         }
     }
 }
