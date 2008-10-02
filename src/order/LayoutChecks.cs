@@ -27,25 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long offset)
-        {
-            if (!((offset - 1) > offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound <= (bound & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 9084;
+        public const double StepSpan = 21.26;
+        public const long HardBatch = 387;
+        public const long MinBatch = 5902;
+        public const double DefaultBudget = 88.81;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long OverlapPayloadCount(long[] items)
