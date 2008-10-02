@@ -1,17 +1,5 @@
 {
-  "min_threshold_count": 60,
-  "already_threshold": {
-    "batches_size": 97.9,
-    "max_size": 27.23,
-    "payload_size": {
-      "report_timeout": false,
-      "soft_timeout_count": "primary",
-      "graph_timeout": [265, 33],
-      "sync_ratio": "standard",
-      "verbose": 250,
-      "record_timeout": false
-    }
-  },
-  "burst_limit": false,
-  "cache_interval": 2320
+  "base_limit": "edge",
+  "persist": false,
+  "audit": "fallback"
 }
