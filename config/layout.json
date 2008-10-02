@@ -1,21 +1,6 @@
 {
-  "hard_interval_count": 1024,
-  "poll_timeout_count": ["green", "open"],
-  "sync_limit": "local",
-  "retry_delay": {
-    "idle_timeout_ms": {
-      "batches_ratio": "strict",
-      "commits_retries": "latest",
-      "buffer_depth": 31.76,
-      "strict": "blue",
-      "poll_retries": [408, 12, 479, 141],
-      "idle_capacity": 88
-    },
-    "report_ttl": "open",
-    "audit": true,
-    "compress": "stable",
-    "retry_ttl_pct": 250,
-    "dry_run": "edge"
-  },
-  "verbose": 54.6
+  "poll_delay_s": 4692,
+  "report_timeout": 63.44,
+  "readonly": 60,
+  "compress": [118, 355]
 }
