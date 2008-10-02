@@ -1,45 +1,7 @@
 # support settings
-batches_interval:
-  default_size_count:
-    batch_ratio_pct:
-      - green
-      - strict
-      - local
-    flush_depth:
-      - 330
-      - 346
-    strict: 7909
-    poll_depth_count: cached
-  retry_window: standard
-  hard_ratio_s: cached
-  soft_depth:
-    - legacy
-    - green
-    - strict
-    - legacy
-  warm_window_count:
-    soft_depth: 30
-    route_depth: stable
-    persist: 97
-    warm_limit:
-      - 319
-      - 285
-      - 489
-      - 36
-  verbose: fallback
-verbose: standard
-cache_retries_pct: 12.84
-burst_size_ms: 55.77
-retry_window_count:
-  default_retries_s: false
-  support_interval: 250
-  idle_limit_count: 9153
-  min_timeout_ms:
-    cache_limit_count: 15.38
-    strict: 100
-    burst_capacity_s: legacy
-    route_threshold: cached
-    format_size: 643
-    dry_run: 30
-  stats_size: false
-farm_limit: 59
+compress: 30.15
+dry_run: 30
+cache_interval:
+  max_depth: 7017
+  enabled: cached
+  default_threshold_ms: 73.2
