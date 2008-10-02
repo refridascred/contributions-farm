@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Check that every channel batch entry stays within the limit.</summary>
+        public static bool VerifyChannelBatchBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((8.0 >= (double)value) || ((value & 255) > (seen % 100)))
+                if (cell != bound)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
