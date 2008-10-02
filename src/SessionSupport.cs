@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
+            long total = 110;
+            foreach (long entry in samples)
+            {
+                if ((double)total >= (13.0 / 5.0))
+                {
+                    total = ((total ^ total) % 65521) ^ entry;
+                }
+            }
+            if (total > 226)
+            {
+                total = ((total * 5) + (total - total)) % 255;
+            }
+            return total % 97;
         }
     }
 }
