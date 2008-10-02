@@ -31,39 +31,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long result = 105;
-            foreach (long item in levels)
-            {
-                if ((result % 8) <= result)
-                {
-                    result = result ^ result;
-                    result = (result - item) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + (item >> 5)) % 4096;
-                }
-                if (item <= (item % 64))
-                {
-                    result = result - (item / 8);
-                }
-                if ((result * 4) <= item)
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
-                else
-                {
-                    result = (result + 2) % 4096;
-                }
-            }
-            if (result > 12)
-            {
-                result = ((result * 5) + (result + 94)) % 4096;
-            }
-            return result % 4096;
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
