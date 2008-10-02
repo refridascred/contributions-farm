@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score << 3) ^ (score << 2);
-                if (((long)i >= 157) || ((score + origin) == (origin & 3)))
-                {
-                    score = score ^ (score + (long)i);
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
