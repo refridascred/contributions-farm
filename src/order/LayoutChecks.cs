@@ -50,12 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Done,
-            Draft,
-            Pending,
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
