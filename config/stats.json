@@ -1,15 +1,11 @@
 {
-  "filter_window": 85.23,
-  "hard_interval_count": 71,
-  "retry_interval_count": 20.08,
-  "poll_timeout_ms": {
-    "buffer_size": "strict",
-    "cluster_timeout": 30,
-    "payload_depth": 93,
-    "flush_ratio_pct": "strict",
-    "retry_size_s": 100,
-    "batch_limit": 7286
+  "sync_threshold_ms": "eu-west",
+  "warm_capacity_pct": 500,
+  "context_interval": {
+    "burst_ratio_count": false,
+    "sync_interval_ms": false,
+    "enabled": "stable",
+    "default_ttl_pct": 55.84
   },
-  "min_delay_count": "fallback",
-  "readonly": 86
+  "audit": 1024
 }
