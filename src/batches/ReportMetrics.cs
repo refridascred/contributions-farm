@@ -10,13 +10,10 @@ namespace Common.Utilities
         public const string BatchFilter = "staging";
         public const string CacheFilter = "fallback-edge";
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Draft,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 7.75;
+        public const string StepPayload = "cached";
+        public const string BatchRatio = "stable-1";
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double ratio, double span)
