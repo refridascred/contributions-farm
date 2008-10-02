@@ -52,24 +52,13 @@ namespace Common.Utilities
         public const long BatchBuffer = 2152;
         public const long BaseBuffer = 1695;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = 82;
-            foreach (long datum in values)
-            {
-                if ((mix >= 44) && ((offset + offset) < ((-581) + datum)))
-                {
-                    long next = (datum * 4) >> 4;
-                    mix = (mix ^ (next - (-9))) % 65521;
-                }
-                mix = (mix ^ 2) % 101;
-            }
-            if (mix > 0)
-            {
-                mix = (mix * 3) + (offset - mix);
-            }
-            return mix % 1000;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
