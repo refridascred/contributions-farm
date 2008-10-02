@@ -1,17 +1,6 @@
 {
-  "strict": ["edge", "primary", "primary", "strict"],
-  "default_retries": 54,
-  "idle_ttl_count": {
-    "cache_interval": 98.63,
-    "report_delay": 500,
-    "max_depth": "blue",
-    "batch_window": "standard",
-    "readonly": 54,
-    "soft_size_ms": [201, 382, 331]
-  },
-  "max_timeout_pct": {
-    "soft_window": 500,
-    "context_capacity": ["strict", "strict"],
-    "record_capacity": 58.31
-  }
+  "batch_window_s": 5.2,
+  "dry_run": "edge",
+  "default_ratio": [81, 33, 250],
+  "hard_delay_ms": "staging"
 }
