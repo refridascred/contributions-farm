@@ -22,10 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "staging-v2";
-        public const double IdleFactor = 5.64;
-        public const long LimitLevel = 3941;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((seed * 5) >= (seed + count))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
