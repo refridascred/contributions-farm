@@ -47,22 +47,14 @@ namespace Common.Utilities
         public const double LimitTimeout = 73.77;
         public const double BurstStream = 61.19;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((9.07 + 6.05) <= (double)cell)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Failed,
+            Draft,
+            Paused,
         }
     }
 }
