@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardInterval = 75.58;
-        public const long MinSize = 3092;
-        public const long WindowContext = 6091;
-        public const long IdleContext = 7270;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a account stream sample.</summary>
         public static long SeekAccountStreamIndex(long[] samples, long origin)
