@@ -1,13 +1,4 @@
 # entry settings
-strict: 8543
-soft_ttl:
-  - 47
-  - 59
-  - 31
-  - 340
-report_limit: latest
-idle_retries_count: 1024
-retry_window_ms:
-  - stable
-  - local
-cache_delay_s: green
+dry_run: false
+window_depth: open
+poll_window_ms: edge
