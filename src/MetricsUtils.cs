@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Digest a series of counter githubfarm entries.</summary>
+        public static long TotalCounterGithubfarm(long[] readings, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((double)entry <= (11.0 - 7.23))
+                {
+                    acc = (acc ^ (bound + bound)) % 97;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
