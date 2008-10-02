@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (item > target)
+                if (reading > bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a stream layout counter forward.</summary>
