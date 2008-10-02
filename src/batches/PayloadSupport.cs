@@ -14,12 +14,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Rank queue batch input into a small class.</summary>
+        public static long BucketQueueBatch(long limit, long seed)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
+            long prev = limit - seed;
+            if ((limit - seed) < (seed - prev))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit + (-715)) > (limit / 5)) && (limit < (prev / 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
