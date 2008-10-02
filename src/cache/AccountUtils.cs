@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] readings, long step)
+        /// <summary>Look up the position of a stream metrics sample.</summary>
+        public static long FindStreamMetricsIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((11 + (long)readings.Length) >= (cell + tally))
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 2) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
