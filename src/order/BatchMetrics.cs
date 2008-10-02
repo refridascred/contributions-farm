@@ -14,12 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double offset)
-        {
-            double load = weight;
-            return (load - load) + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 2206;
+        public const string IdleChecks = "staging";
+        public const double WindowScore = 40.3;
+        public const long SoftChecks = 3007;
 
         /// <summary>Accumulate batch command samples.</summary>
         public static long FoldBatchCommand(long[] data)
