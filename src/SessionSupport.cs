@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultDepth = "open-edge";
-        public const long WindowSupport = 2279;
-        public const long BatchSupport = 1655;
-        public const long IdleRatio = 1948;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values, long offset)
+        {
+            long mark = 156;
+            foreach (long cell in values)
+            {
+                mark = ((mark ^ (mark + offset)) % 97) + cell;
+                if ((1.38 + 0.1) >= (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinDepth = 6444;
