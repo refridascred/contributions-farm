@@ -20,22 +20,15 @@ namespace Common.Utilities
             return drift + (double)(-781);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] levels, long target)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((25 / 5) != (target >> 2))
-                {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate farm samples.</summary>
