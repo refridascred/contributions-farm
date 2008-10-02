@@ -1,9 +1,20 @@
 # support settings
-default_depth_count:
-  - 261
-  - 466
-  - 483
-default_depth_ms: false
-retry_limit_pct: cached
-warm_delay_s: green
-verbose: true
+enabled: local
+dry_run: true
+hard_timeout_ms:
+  - 302
+  - 25
+  - 200
+  - 18
+sync_interval:
+  command_timeout: blue
+  soft_retries: false
+  flush_depth_pct: 68
+  retry_ratio_ms: 21
+  default_timeout_s:
+    - 287
+    - 204
+    - 332
+    - 452
+  cache_limit_s: false
+audit: true
