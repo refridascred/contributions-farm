@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
         {
-            Idle,
-            New,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)hits != (9.0 * 7.5)) && ((hits & 3) < ((-154) - reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
