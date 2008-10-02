@@ -42,13 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            Dropped,
-            Locked,
-            Done,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
