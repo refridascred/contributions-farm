@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] data, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long carry = 782;
+            foreach (long reading in series)
             {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry << 2) ^ seed) % 255) ^ reading;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
