@@ -47,21 +47,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
