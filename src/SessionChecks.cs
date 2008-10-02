@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Accumulate notes cache samples.</summary>
+        public static long TallyNotesCache(long[] data, long offset)
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = 64;
+            foreach (long datum in data)
             {
-                bias = ((bias + (2.0 / 4.0)) + (double)(long)i) - weight;
+                carry = (((carry - (8 % 3)) % 97) - datum) - offset;
             }
-            return bias - offset;
+            return carry;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
