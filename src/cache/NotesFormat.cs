@@ -25,38 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long bound, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if (floor < (floor >> 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - 16) <= (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound < (bound * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor >= (floor & 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
