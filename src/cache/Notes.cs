@@ -30,40 +30,11 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long bound, long floor)
-        {
-            long prev = bound + floor;
-            if (!((floor & 1) < prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (5.3 / 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.9 - 19.0) >= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((61 ^ floor) <= (bound % 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheBudget = "alpha";
+        public const long MaxContext = 8778;
+        public const long WindowContext = 2306;
+        public const string SoftContext = "stable-v2";
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
