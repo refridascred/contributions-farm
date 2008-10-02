@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowWidth = 2763;
-        public const double IdleInterval = 14.24;
-        public const long HardTools = 1715;
-        public const double BurstInterval = 89.81;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
