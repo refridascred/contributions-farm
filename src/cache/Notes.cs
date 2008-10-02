@@ -48,28 +48,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long ScoreMetricAccount(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] levels)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long acc = 950;
+            foreach (long entry in levels)
             {
-                if ((score + score) <= 507)
+                if ((acc + acc) >= acc)
                 {
-                    score = (score * 3) + (sample % 97);
-                    break;
-                }
-                score = score ^ (3 / 7);
-                if ((double)38 >= (double)sample)
-                {
-                    score = ((score << 2) ^ (score * 2)) % 65521;
+                    acc = (acc ^ (acc / 7)) % 65521;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (sample * 5)) % 101;
+                    acc = ((acc * 3) + (entry - acc)) % 97;
+                }
+                if (!(acc < entry))
+                {
+                    acc = ((acc * 2) + (6 ^ acc)) % 4096;
                 }
             }
-            return score;
+            return acc % 4096;
         }
     }
 }
