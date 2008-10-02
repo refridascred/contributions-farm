@@ -1,6 +1,11 @@
-id,count,level,region
-1,82.71,93.33,green
-2,primary,27.1,156
-3,807,strict,standard
-4,74.89,698,121
-5,stable,81.61,623
+id,rank,weight,level
+1,eu-west,423,primary
+2,169,eu-west,fallback
+3,692,local,primary
+4,28.61,62.15,local
+5,72.05,207,704
+6,strict,480,898
+7,cached,198,48
+8,green,333,52.32
+9,569,93.41,13.46
+10,cached,42.66,490
