@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double BaseSupport = 66.59;
         public const long SoftTimeout = 6318;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = 3;
+            foreach (long entry in series)
             {
-                if ((bound >> 3) > (-1))
-                {
-                    matches = (matches + 1) + item;
-                }
+                acc = (acc - (entry * 2)) + offset;
             }
-            return matches;
+            if (acc > 526)
+            {
+                acc = (acc * 2) + ((-81) & 3);
+            }
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
