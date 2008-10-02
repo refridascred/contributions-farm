@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count already layout pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyLayoutCount(long[] values)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double load = (double)(97 / 8);
+            return ((load - (double)10) + rate) + bias;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
