@@ -1,13 +1,7 @@
 {
-  "burst_depth_s": {
-    "compress": "edge",
-    "enabled": {
-      "stream_ratio": "legacy",
-      "max_capacity_count": ["primary", "primary", "staging", "fallback"],
-      "base_ttl_s": ["legacy", "fallback", "latest", "strict"]
-    },
-    "warm_size_count": 2285
-  },
-  "strict": false,
-  "idle_window_ms": "strict"
+  "contributi_delay": 37,
+  "sync_window": 93.42,
+  "hard_retries_ms": 8241,
+  "flush_size_count": ["standard", "local", "strict", "standard"],
+  "buffer_size": ["fallback", "legacy", "fallback"]
 }
