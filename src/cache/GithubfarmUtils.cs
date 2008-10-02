@@ -31,15 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor batches readings.</summary>
-        public static long TallyEditorBatches(long[] series)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long target)
         {
-            long sum = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 3) ^ (datum + 6)) % 1000;
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
