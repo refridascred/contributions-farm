@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((bound / 8) < (bound >> 2)) || (((5 + cell) >= bound) && (bound <= (bound ^ bound))))
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many tools command samples are out of range.</summary>
