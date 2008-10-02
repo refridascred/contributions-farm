@@ -33,21 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > origin)
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a token header.</summary>
