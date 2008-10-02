@@ -46,10 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseCount = "alpha";
-        public const long StepWidth = 940;
-        public const long LimitAccount = 5667;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "legacy-1";
+        public const string LimitCount = "latest-v2";
+        public const long MaxBatch = 8360;
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
         public static long OverlapContributiQueueCount(long[] items)
