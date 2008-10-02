@@ -68,21 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream checks readings.</summary>
-        public static long OverlapStreamChecksCount(long[] readings)
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long SeriesQueueContributi(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
