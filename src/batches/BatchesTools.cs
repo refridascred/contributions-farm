@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long offset)
         {
-            Draft,
-            Closed,
-            Stale,
-            Failed,
-            Retry,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit support notes readings against a rule.</summary>
