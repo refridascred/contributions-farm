@@ -60,19 +60,12 @@ namespace Common.Utilities
             return rate - (bias / 8.0);
         }
 
-        /// <summary>Measure how many format buffer samples are out of range.</summary>
-        public static long TallyFormatBufferGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((5.28 / 8.0) > (double)seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 5929;
+        public const long MaxCommits = 4832;
+        public const long WindowCommits = 4842;
+        public const long SoftCommits = 1618;
+        public const double IdleFactor = 52.25;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] data, long step)
