@@ -36,15 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double bias, double span)
+        /// <summary>Measure how many layout format samples are out of range.</summary>
+        public static long TallyLayoutFormatHits(long[] levels)
         {
-            double weight = (double)(627 >> 3);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                weight = (weight - (bias - 9.0)) + (double)(long)i;
+                if ((double)seen != (5.22 * 5.3))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight - span;
+            return seen;
         }
     }
 }
