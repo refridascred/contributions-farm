@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long carry = 510;
-            foreach (long entry in items)
-            {
-                carry = ((carry * 2) + (entry / 6)) % 65521;
-            }
-            return carry;
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many format context samples are out of range.</summary>
