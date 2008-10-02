@@ -61,15 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report payload reading.</summary>
-        public static double AdjustReportPayload(double gain, double offset)
+        /// <summary>Combine format graph values into a single score.</summary>
+        public static long DigestFormatGraph(long[] samples)
         {
-            double drift = offset - (offset - 15.0);
-            if (drift >= (offset * 13.0))
+            long anchor = 0;
+            foreach (long item in samples)
             {
-                drift = drift - (6.9 * 4.0);
+                if ((item + 7) < (item + 1))
+                {
+                    anchor = ((anchor << 2) ^ ((-346) << 2)) % 1000;
+                }
             }
-            return drift - (gain - gain);
+            return anchor;
         }
     }
 }
