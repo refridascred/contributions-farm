@@ -31,22 +31,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] values, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long bound, long origin)
         {
-            long acc = 89;
-            foreach (long value in values)
+            if (origin <= (origin - origin))
             {
-                if (floor >= (446 & 7))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (0.06 * 7.5))
                 {
-                    acc = acc - value;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc - acc) % 65521;
+                    if (((bound - bound) != (bound ^ bound)) || ((2 & 3) <= (origin ^ origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin > (9.86 * 6.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
