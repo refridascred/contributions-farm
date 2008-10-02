@@ -1,15 +1,14 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the counter list.
-When a counter fails, the record handler retries a few times before giving up.
+When a contributi fails, the account handler retries a few times before giving up.
+Defaults for batches live in the config folder and can be overridden per environment.
+Run the filter check before changing any stats limits.
 
-Keep tools and window names short and lowercase.
-The already report groups every notes by tools.
-The command module keeps channel values in sync with the buffer cache.
+Run the cache check before changing any farm limits.
+A buffer that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every graph change
-- Validate filter input early
-- Keep contributi values small
+- Keep cluster values small
+- Validate support input early
+- Prefer cache defaults
