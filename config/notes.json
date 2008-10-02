@@ -1,6 +1,25 @@
 {
-  "idle_timeout_count": "staging",
-  "batch_capacity_s": "edge",
-  "tools_timeout": "open",
-  "channel_window": true
+  "retry_ttl_pct": {
+    "tools_window": false,
+    "readonly": [385, 270, 128, 461],
+    "support_capacity": {
+      "poll_threshold_ms": 0.81,
+      "poll_ttl": false,
+      "payload_ratio": "local",
+      "verbose": 1024,
+      "batch_timeout": "blue",
+      "min_retries_ms": "green"
+    },
+    "audit": 84.99
+  },
+  "dry_run": ["open", "eu-west"],
+  "sync_limit_s": 4223,
+  "cache_timeout": 57.17,
+  "batch_retries": true,
+  "max_retries_s": {
+    "burst_depth": "fallback",
+    "contributi_ttl": "latest",
+    "idle_size_count": "eu-west",
+    "persist": [69, 255]
+  }
 }
