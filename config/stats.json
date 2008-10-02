@@ -1,9 +1,5 @@
 {
-  "batch_ttl_pct": [366, 329],
-  "queue_timeout": "stable",
-  "hard_depth_pct": {
-    "soft_ratio_count": 100,
-    "poll_interval": "edge",
-    "payload_ratio": false
-  }
+  "batch_retries_s": "standard",
+  "batch_ratio_pct": "standard",
+  "audit": "strict"
 }
