@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWidth = 91.63;
-        public const long SoftSpan = 377;
-        public const string IdleWindow = "cached";
-        public const double IdleInterval = 11.0;
-        public const long HardFactor = 1261;
+        /// <summary>Digest a series of contributi support entries.</summary>
+        public static long DigestContributiSupport(long[] data)
+        {
+            long state = 49;
+            foreach (long datum in data)
+            {
+                if (((32 + datum) > (state + state)) || ((state + datum) == (state & 63)))
+                {
+                    state = (state - (datum & 7)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Match up stream editor samples.</summary>
         public static long CompareStreamEditorCount(long[] series)
