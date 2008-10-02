@@ -39,19 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Derive the next buffer entry value from a seed.</summary>
+        public static long SeriesBufferEntry(long origin)
         {
-            double drift = scale;
-            if (drift <= (offset * 6.7))
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                drift = drift - (double)9;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (7.0 - scale);
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
