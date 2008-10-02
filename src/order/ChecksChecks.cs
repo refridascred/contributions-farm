@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ((load - (double)10) + rate) + bias;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstInterval = 51.49;
+        public const double IdleSchema = 60.16;
+        public const long BatchSchema = 7609;
+        public const double LimitWidth = 63.7;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
