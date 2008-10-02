@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout payload entry stays within the limit.</summary>
-        public static bool ValidateLayoutPayloadLimits(long[] data, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (datum < bound)
+                if (((double)step <= (5.04 / 9.0)) || (4.0 >= (double)step))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
