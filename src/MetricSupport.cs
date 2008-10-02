@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BaseCount = 7252;
         public const long BurstInterval = 4379;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double rate = bias;
-            if (rate <= offset)
-            {
-                rate = rate - 4.54;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (rate / 9.0)) + (double)(long)i;
-            }
-            return rate - (rate + bias);
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the support tools entries that pass the check.</summary>
