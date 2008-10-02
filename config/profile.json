@@ -1,10 +1,6 @@
 {
-  "already_timeout": 1785,
-  "retry_ratio": "strict",
-  "counter_retries": "open",
-  "min_capacity_pct": {
-    "persist": false,
-    "audit": 8325,
-    "session_interval": ["strict", "cached", "stable", "open"]
-  }
+  "poll_capacity_s": "eu-west",
+  "audit": 81.34,
+  "max_delay": "green",
+  "commits_depth": ["staging", "eu-west", "blue", "staging"]
 }
