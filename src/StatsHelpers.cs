@@ -54,13 +54,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "primary-edge";
+        public const long BurstFilter = 4613;
+        public const long LimitDepth = 3346;
+        public const long DefaultFilter = 731;
     }
 }
