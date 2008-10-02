@@ -68,22 +68,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long limit)
         {
-            long mix = 40;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= (sample ^ sample))
+                if (values[i] <= limit)
                 {
-                    mix = ((mix * 4) + (686 * 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 37)
-            {
-                mix = (mix - 602) % 255;
-            }
-            return mix % 1000;
+            return -1;
         }
     }
 }
