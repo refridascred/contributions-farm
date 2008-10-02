@@ -1,11 +1,5 @@
 {
-  "sync_threshold_ms": "eu-west",
-  "warm_capacity_pct": 500,
-  "context_interval": {
-    "burst_ratio_count": false,
-    "sync_interval_ms": false,
-    "enabled": "stable",
-    "default_ttl_pct": 55.84
-  },
-  "audit": 1024
+  "idle_ttl_count": true,
+  "warm_retries_pct": "eu-west",
+  "compress": 6272
 }
