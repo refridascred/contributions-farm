@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter channel samples are out of range.</summary>
-        public static long MeasureCounterChannelGaps(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((1.9 + 17.0) <= (double)value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
