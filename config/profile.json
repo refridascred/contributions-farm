@@ -1,6 +1,5 @@
 {
-  "cache_interval_s": "blue",
-  "cache_capacity_pct": "local",
-  "hard_depth_ms": "strict",
-  "hard_threshold_s": "edge"
+  "max_capacity_s": 46,
+  "dry_run": [162, 198],
+  "max_retries_s": 5874
 }
