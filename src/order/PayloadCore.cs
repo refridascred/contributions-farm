@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] values, long floor)
         {
-            long score = 14;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (score >= (value % 3))
+                if ((floor * 3) >= hits)
                 {
-                    score = ((score + value) % 65521) + floor;
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Project the next cache record value.</summary>
