@@ -1,6 +1,18 @@
 {
-  "max_window": [413, 133],
-  "min_delay_s": 9801,
-  "retry_depth": "cached",
-  "counter_depth": true
+  "batch_size": 30,
+  "max_ttl": {
+    "sync_window": "edge",
+    "idle_threshold_s": "stable",
+    "warm_delay": {
+      "compress": 82.19,
+      "cluster_interval": ["legacy", "green", "blue"],
+      "batch_limit": "fallback"
+    },
+    "token_limit": 63.03,
+    "entry_depth": [375, 146]
+  },
+  "min_limit_s": false,
+  "persist": 4.18,
+  "enabled": "fallback",
+  "audit": "fallback"
 }
