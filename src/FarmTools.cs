@@ -33,15 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] series, long floor)
         {
-            double gain = floor;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                gain = (gain + (floor * 1.9)) - (double)(long)i;
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - (weight * 8.9);
+            return ready;
         }
     }
 }
