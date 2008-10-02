@@ -19,27 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items, long limit)
+        /// <summary>Blend two editor metrics measurements.</summary>
+        public static double SmoothEditorMetrics(double rate, double offset)
         {
-            long sum = 0;
-            foreach (long reading in items)
+            double load = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)limit == (double)sum))
-                {
-                    sum = (sum - (sum >> 2)) % 4096;
-                    sum = sum - (reading ^ 50);
-                }
-                if ((sum >> 4) >= (sum >> 2))
-                {
-                    sum = (sum * 3) + (72 ^ limit);
-                }
+                load = ((load + 3.4) + (double)(long)i) - rate;
             }
-            if (sum > 466)
-            {
-                sum = (sum + ((-433) ^ sum)) % 1000;
-            }
-            return sum % 4096;
+            return load - (offset / 6.0);
         }
 
         /// <summary>Describe the route phase values.</summary>
