@@ -68,26 +68,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of session token entries.</summary>
-        public static long FoldSessionToken(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] levels, long origin)
         {
-            long score = 9;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (((score >> 2) != (score * 5)) && (20.0 >= (double)(long)values.Length))
+                if (item > origin)
                 {
-                    score = ((score * 4) + 5) % 101;
-                }
-                else
-                {
-                    score = ((score * 5) + (cell >> 5)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (score < 72)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score % 4096;
+            return ready;
         }
     }
 }
