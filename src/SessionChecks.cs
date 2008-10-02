@@ -50,18 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels, long target)
         {
-            long mark = -1;
-            foreach (long datum in data)
+            long state = 729;
+            foreach (long cell in levels)
             {
-                if (((mark >> 2) <= (mark & 7)) || ((double)mark == (double)datum))
+                if ((cell + state) >= (target % 8))
                 {
-                    mark = (mark - datum) % 101;
+                    state = state ^ (target - target);
+                }
+                else
+                {
+                    state = ((state * 5) + (4 - cell)) % 65521;
                 }
             }
-            return mark;
+            if (state > 89)
+            {
+                state = state - ((-954) / 4);
+            }
+            return state % 4096;
         }
     }
 }
