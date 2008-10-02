@@ -34,16 +34,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] values, long target)
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long CountChecksContextMatches(long[] items)
         {
-            long acc = -991;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                acc = (acc ^ (target % 16)) ^ sample;
-                acc = ((acc << 2) ^ acc) % 4096;
+                if ((double)sample >= (9.0 + 0.2))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
