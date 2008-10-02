@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] data, long limit)
+        /// <summary>Classify a counter stream pair into a bucket.</summary>
+        public static long ClassifyCounterStream(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset - floor) > (floor & 127))
             {
-                if (data[i] >= limit)
+                return 1;
+            }
+            else
+            {
+                if (((159 ^ floor) <= offset) || ((floor + 418) < floor))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((1 / 4) < (offset * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a context entry.</summary>
