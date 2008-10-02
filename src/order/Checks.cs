@@ -16,18 +16,13 @@ namespace Common.Utilities
             return scale + (9.9 - scale);
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long score = -182;
-            foreach (long sample in samples)
-            {
-                if ((score >= (sample - sample)) || ((4 - sample) < 575))
-                {
-                    score = score + ((long)samples.Length * 5);
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
