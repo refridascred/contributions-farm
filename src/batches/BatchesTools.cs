@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            New,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 7315;
+        public const long MaxReport = 1854;
+        public const long StepScore = 5239;
+        public const double BaseBudget = 63.5;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long origin)
