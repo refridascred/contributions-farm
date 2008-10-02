@@ -12,10 +12,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardScore = 9151;
-        public const double CacheDepth = 48.03;
-        public const long DefaultRoute = 7109;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] series, long offset)
