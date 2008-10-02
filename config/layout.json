@@ -1,7 +1,20 @@
 {
-  "contributi_delay": 37,
-  "sync_window": 93.42,
-  "hard_retries_ms": 8241,
-  "flush_size_count": ["standard", "local", "strict", "standard"],
-  "buffer_size": ["fallback", "legacy", "fallback"]
+  "dry_run": 500,
+  "route_retries": ["cached", "eu-west", "local", "staging"],
+  "sync_threshold_pct": 500,
+  "profile_ratio": "legacy",
+  "cache_interval_count": {
+    "max_capacity_pct": "edge",
+    "idle_retries_pct": 500,
+    "batch_window_count": false,
+    "dry_run": {
+      "strict": 64,
+      "cache_threshold": [282, 154, 227, 245],
+      "soft_depth_s": "standard",
+      "cache_capacity": 73.93,
+      "batch_capacity_s": 1.32,
+      "retry_interval_ms": 89.92
+    }
+  },
+  "compress": 7
 }
