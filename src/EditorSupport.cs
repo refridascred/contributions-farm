@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every cache account entry stays within the limit.</summary>
-        public static bool GuardCacheAccountLimits(long[] samples, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate layout session readings against a bound.</summary>
