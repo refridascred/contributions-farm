@@ -23,14 +23,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Locked,
-            Retry,
-            Failed,
-            Draft,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
