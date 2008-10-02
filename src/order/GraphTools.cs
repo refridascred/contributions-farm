@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values, long target)
         {
-            Closed,
-            Queued,
-            Locked,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - 6) > (5 & 15))
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
