@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every already farm entry stays within the limit.</summary>
-        public static bool GuardAlreadyFarmLimits(long[] data, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Hold a session snapshot.</summary>
