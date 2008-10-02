@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            Dropped,
-            Active,
-            Closed,
-            Idle,
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum - 6) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Scale a farm editor figure with a bias.</summary>
