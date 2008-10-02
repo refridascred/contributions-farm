@@ -23,19 +23,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] data, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (entry < bound)
+                if (1.0 > (double)reading)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
