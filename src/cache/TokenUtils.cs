@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count checks payload pairs that satisfy a relation.</summary>
-        public static long MatchChecksPayloadCount(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < step)
                 {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
