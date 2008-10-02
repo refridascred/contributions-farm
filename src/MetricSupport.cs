@@ -19,18 +19,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the support tools entries that pass the check.</summary>
-        public static long MeasureSupportToolsMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen << 3) > seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 7537;
+        public const double LimitTimeout = 57.62;
+        public const long BatchSize = 8271;
+        public const double StepFilter = 9.9;
     }
 }
