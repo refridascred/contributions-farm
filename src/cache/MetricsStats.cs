@@ -48,12 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] data)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches >> 5) < 60)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm record.</summary>
