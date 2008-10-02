@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long bound)
         {
-            Draft,
-            Ready,
-            Closed,
-            Stale,
+            if ((double)origin >= (double)39)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2 < bound) && ((bound % 8) == (bound % 64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >= (337 + origin)) || ((bound - bound) == (7 + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
