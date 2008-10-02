@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two batches route measurements.</summary>
+        public static double SmoothBatchesRoute(double gain, double offset)
         {
-            Locked,
-            Paused,
-            Retry,
-            Stale,
+            double weight = offset * 9.0;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - (weight / 7.0)) - (double)(long)i) - gain;
+            }
+            return weight - (weight * 0.2);
         }
 
         /// <summary>Adjust a filter stats reading.</summary>
