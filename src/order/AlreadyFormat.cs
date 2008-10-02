@@ -52,11 +52,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowSpan = 54.36;
-        public const string SoftFactor = "legacy";
-        public const long RetrySpan = 4996;
-        public const double CacheTimeout = 3.38;
+        /// <summary>Classify a payload order pair into a bucket.</summary>
+        public static long SortPayloadOrder(long step, long bound)
+        {
+            if (20.0 > (double)step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 4) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-844) + bound) > (bound + 87))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.1 + 16.0) == (double)step)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportHits(long[] readings)
