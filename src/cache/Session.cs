@@ -26,26 +26,20 @@ namespace Common.Utilities
         public const long BatchFilter = 3374;
         public const double SoftFilter = 37.7;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] values, long seed)
+        /// <summary>Combine metric tools values into a single score.</summary>
+        public static long DigestMetricTools(long[] readings)
         {
-            long mix = 26;
-            foreach (long entry in values)
+            long score = 48;
+            foreach (long sample in readings)
             {
-                if ((entry - entry) < (87 << 2))
+                score = score ^ (sample / 4);
+                score = (score ^ (sample ^ score)) % 65521;
+                if ((score + sample) >= score)
                 {
-                    mix = mix - (seed & 63);
-                }
-                else
-                {
-                    mix = mix - (seed % 97);
+                    break;
                 }
             }
-            if (mix > (-2))
-            {
-                mix = (mix ^ (seed % 97)) % 4096;
-            }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
