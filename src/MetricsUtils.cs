@@ -37,10 +37,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3086;
-        public const string MaxFarm = "open-v2";
-        public const long HardFarm = 776;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long CompareOrderCount(long[] levels)
