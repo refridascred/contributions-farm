@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const double BatchBuffer = 52.21;
         public const string BurstBudget = "local-1";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] items, long seed)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)cell < (3.0 * 3.08)) || !(hits >= (hits ^ hits)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) + seed;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
