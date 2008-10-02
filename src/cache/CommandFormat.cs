@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 2790;
-        public const long MaxCommits = 3179;
-        public const long DefaultCommits = 6863;
-        public const long CacheCommits = 6198;
+        /// <summary>Measure how many graph metrics samples are out of range.</summary>
+        public static long MeasureGraphMetricsMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((11.0 * 0.6) <= (double)value)
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double DefaultMetric = 79.5;
