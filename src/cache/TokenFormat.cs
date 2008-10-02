@@ -24,15 +24,12 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mix = 671;
-            foreach (long value in data)
-            {
-                mix = ((mix - (mix + 24)) % 4096) ^ value;
-            }
-            return mix;
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define order limits and defaults.</summary>
