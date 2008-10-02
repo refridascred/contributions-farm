@@ -23,22 +23,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long gap = bound - limit;
+            if (((double)5 >= (double)bound) && (bound >= gap))
             {
-                if (1.0 > (double)reading)
+                return 6;
+            }
+            else
+            {
+                if (((2.42 / 8.0) >= (double)gap) || ((7 + gap) == (4 - limit)))
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)bound < 2.2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
