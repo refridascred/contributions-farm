@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            Idle,
+            Ready,
+            Locked,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of route order readings.</summary>
