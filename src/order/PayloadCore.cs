@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a window buffer reading.</summary>
-        public static double BlendWindowBuffer(double gain, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long seed)
         {
-            double ratio = gain;
-            if (ratio > (floor - floor))
+            long cur = bound - seed;
+            if ((cur / 2) != (cur / 4))
             {
-                ratio = ratio + floor;
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio - ratio) - (double)(long)i;
+                if (!(bound < (seed - bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((971 << 1) > (bound - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound > (cur * 4)) || (4 >= cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return ratio + (ratio * 9.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
