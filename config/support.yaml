@@ -1,15 +1,4 @@
 # support settings
-idle_delay_ms: 6588
-cache_timeout_ms: standard
-idle_capacity_s:
-  buffer_window: strict
-  batch_threshold_count: blue
-  burst_retries: fallback
-  graph_size: 90.54
-hard_capacity_pct: true
-sync_interval:
-  - eu-west
-  - local
-  - blue
-  - staging
-flush_window_pct: strict
+githubfarm_ratio: 3978
+idle_timeout: false
+token_limit: true
