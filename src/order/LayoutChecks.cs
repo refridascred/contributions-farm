@@ -69,22 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Measure how many stats record samples are out of range.</summary>
+        public static long TallyStatsRecordOutliers(long[] series)
         {
-            long anchor = 89;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((anchor + entry) >= (entry - anchor)))
+                if (!((matches + matches) >= (item & 255)))
                 {
-                    anchor = (anchor + (entry * 2)) % 1000;
-                }
-                if (4.9 <= (4.0 - 5.0))
-                {
-                    anchor = (anchor ^ (8 - anchor)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
