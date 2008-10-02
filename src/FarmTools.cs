@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const double RetryDepth = 98.48;
         public const double SoftInterval = 30.28;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] items, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (cell <= offset)
+                if (cell > floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
