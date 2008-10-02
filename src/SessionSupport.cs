@@ -42,15 +42,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            long anchor = step;
+            long state = floor;
             for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (((long)i ^ state) >= floor)
+                {
+                    state = state - (floor * 2);
+                    state = ((state << 3) ^ (254 - state)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
     }
 }
