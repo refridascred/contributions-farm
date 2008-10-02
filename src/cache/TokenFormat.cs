@@ -14,12 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Synced,
-            Ready,
+            Active,
             Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define order limits and defaults.</summary>
