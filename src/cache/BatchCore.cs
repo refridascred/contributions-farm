@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a checks payload value against two limits.</summary>
-        public static long BucketChecksPayload(long limit, long limit2)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long bound = limit + limit2;
-            if ((limit + limit) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((5.0 - 5.9) == (double)bound) && ((double)limit2 <= (7.3 + 4.5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound & 1) < 52) && (limit > (684 ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Accumulate format notes samples.</summary>
