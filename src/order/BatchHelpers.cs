@@ -19,31 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long ScoreBatchWindow(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] items, long floor)
         {
-            long carry = 56;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                carry = (carry ^ (datum & 255)) % 65521;
-                if ((datum + carry) <= (carry % 12))
+                if (floor < (92 + sample))
                 {
-                    carry = carry + (datum % 8);
-                }
-                else
-                {
-                    carry = (carry ^ (carry - carry)) % 1000;
-                }
-                if (carry > (datum % 8))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (carry > 37)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a schema stats.</summary>
