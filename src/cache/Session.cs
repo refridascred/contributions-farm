@@ -44,21 +44,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Adjust a stats counter reading.</summary>
+        public static double ScaleStatsCounter(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)(57 + 23);
+            if (bias2 > (bias - floor))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 - (bias2 / 8.0);
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + floor) - (double)(long)i;
+            }
+            return bias2 - (double)9;
         }
     }
 }
