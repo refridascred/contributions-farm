@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 8031;
+        public const double BurstChecks = 88.15;
+        public const double BatchInterval = 84.82;
+        public const double StepChecks = 32.11;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
