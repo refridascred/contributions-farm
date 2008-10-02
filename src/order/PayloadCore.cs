@@ -42,18 +42,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if (((8.2 + 10.0) < (double)cell) || ((cell << 3) == (cell ^ hits)))
+                if (datum != floor)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the notes kind values.</summary>
