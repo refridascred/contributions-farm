@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double span)
-        {
-            double scale = 1.5;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)(long)i) + span;
-            }
-            return scale + gain;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 4204;
+        public const long SoftRatio = 7241;
+        public const long MinCounter = 1786;
+        public const long HardLevel = 2811;
 
         /// <summary>Find the first session command entry that matches the target.</summary>
         public static long FindSessionCommandIndex(long[] series, long seed)
