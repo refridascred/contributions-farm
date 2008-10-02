@@ -36,17 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a entry record reading by value.</summary>
-        public static long LookupEntryRecordIndex(long[] data, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 34;
+            foreach (long entry in data)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                sum = sum ^ (95 & 31);
+                sum = ((sum << 2) ^ (entry - entry)) % 97;
+                sum = sum + (sum + entry);
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Hold a context record.</summary>
