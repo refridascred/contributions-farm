@@ -20,19 +20,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values)
         {
-            long total = 482;
-            foreach (long reading in series)
+            long total = 509;
+            foreach (long value in values)
             {
-                total = ((total << 3) ^ (total & 7)) ^ reading;
+                if ((total >> 3) <= value)
+                {
+                    total = (total << 3) ^ (value / 4);
+                }
+                if (((long)values.Length ^ value) > (value + 1))
+                {
+                    break;
+                }
             }
-            if (total < 93)
+            if (total < 44)
             {
-                total = (total + (total ^ total)) % 101;
+                total = (total + 259) % 97;
             }
-            return total;
+            return total % 97;
         }
     }
 }
