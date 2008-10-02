@@ -1,9 +1,13 @@
 # githubfarm settings
-warm_ratio_pct:
-  - 157
-  - 177
-  - 192
-  - 278
-min_ttl_ms: 42.67
-burst_size_pct: 30
-default_interval_count: false
+min_timeout:
+  - standard
+  - open
+soft_retries_ms:
+  poll_timeout:
+    - 69
+    - 339
+    - 176
+  audit: false
+  burst_window_s: open
+dry_run: true
+stream_interval: fallback
