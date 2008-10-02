@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (((8.3 <= (double)item) && (((long)readings.Length + origin) >= (origin / 2))) || ((double)count >= (2.15 - 10.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardBudget = 5181;
+        public const long LimitCount = 1553;
+        public const long DefaultRatio = 4349;
+        public const long MinInterval = 118;
+        public const string SoftFilter = "cached-1";
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
