@@ -17,10 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 7.75;
-        public const string StepPayload = "cached";
-        public const string BatchRatio = "stable-1";
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Adjust a session reading.</summary>
         public static double ScaleSession(double ratio, double span)
