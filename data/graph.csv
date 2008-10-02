@@ -1,9 +1,8 @@
-id,score,level,active,owner
-1,staging,standard,47.34,554
-2,36.52,75.0,871,537
-3,817,stable,local,open
-4,55.47,46.99,strict,strict
-5,eu-west,491,blue,422
-6,cached,62.66,380,159
-7,local,556,35.8,73.72
-8,stable,868,159,8.48
+id,weight,state
+1,221,blue
+2,250,617
+3,edge,30.0
+4,451,784
+5,188,54.92
+6,45.49,31.3
+7,797,905
