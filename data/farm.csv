@@ -1,7 +1,10 @@
-id,region,token,state
-1,local,25.22,483
-2,79.88,537,52.89
-3,178,stable,28.82
-4,378,stable,open
-5,734,641,48.43
-6,78.17,598,standard
+id,level,weight
+1,legacy,560
+2,886,49.7
+3,516,52.25
+4,42.76,31.79
+5,strict,397
+6,81.79,edge
+7,stable,primary
+8,586,strict
+9,224,86.93
