@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every report metric entry stays within the limit.</summary>
-        public static bool VerifyReportMetricLimits(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 5841;
+        public const string MaxMetrics = "legacy";
+        public const double LimitFactor = 2.98;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] data, long origin)
