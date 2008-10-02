@@ -38,24 +38,26 @@ namespace Common.Utilities
             return scale + (9.0 + ratio);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long step, long step2)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            if (!((step2 - step2) > step2))
+            long total = 342;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step == (2.39 - 13.0)))
+                if ((total + 447) >= total)
                 {
-                    return 1;
+                    total = ((total << 3) ^ ((-9) - 2)) % 1000;
                 }
                 else
                 {
-                    return 2;
+                    total = (total ^ (item - total)) % 1000;
                 }
             }
+            if (total > 1)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
         }
     }
 }
