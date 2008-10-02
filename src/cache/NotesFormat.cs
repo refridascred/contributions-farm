@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] series, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (((5 ^ value) > ((long)series.Length + value)) && (value <= (offset % 64)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
