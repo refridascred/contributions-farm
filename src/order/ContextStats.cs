@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] data, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)entry < (3.68 + 4.5)) || ((3 - entry) <= floor)) || (seen >= entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
