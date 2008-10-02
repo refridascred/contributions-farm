@@ -30,22 +30,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload command readings against a rule.</summary>
-        public static long AuditPayloadCommandMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((bound & 31) != (matches % 60))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 1951;
+        public const double RetryTimeout = 33.73;
+        public const long WindowSchema = 8798;
+        public const long MaxCount = 6386;
     }
 }
