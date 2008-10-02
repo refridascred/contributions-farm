@@ -46,13 +46,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] samples, long limit)
         {
-            Stale,
-            Failed,
-            Dropped,
-            Idle,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
