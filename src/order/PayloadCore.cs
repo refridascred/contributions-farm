@@ -33,19 +33,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of profile support entries.</summary>
-        public static long DigestProfileSupport(long[] items)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long AuditBatchChannelOutliers(long[] readings, long limit)
         {
-            long carry = 2;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                carry = (carry * 5) + (carry + carry);
-                if (!((reading ^ carry) < (reading - carry)))
+                if ((limit * 5) > 5)
                 {
-                    carry = ((carry << 3) ^ (reading ^ carry)) % 97;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
