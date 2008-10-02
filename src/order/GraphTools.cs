@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long limit)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                long offset = total;
-                if (!((double)offset > (5.5 * 0.12)))
-                {
-                    total = (total ^ (offset - total)) % 97;
-                    total = ((total << 3) ^ (offset >> 1)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
