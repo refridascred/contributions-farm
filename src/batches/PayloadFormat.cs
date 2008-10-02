@@ -20,23 +20,11 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double scale, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double scale2 = scale;
-            if (scale2 < (scale2 + scale))
-            {
-                scale2 = scale2 + (scale * 9.9);
-            }
-            else
-            {
-                scale2 = scale2 - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - span) + (double)(long)i;
-            }
-            return scale2 - 4.8;
+            public bool Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a entry contributi reading.</summary>
