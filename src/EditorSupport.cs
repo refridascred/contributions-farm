@@ -81,19 +81,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((long)i << 2) < seed)
-                {
-                    state = ((state << 2) ^ (seed << 3)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            double load = (double)31 / 5.0;
+            return load - (gain + span);
         }
     }
 }
