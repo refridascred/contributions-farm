@@ -39,10 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 20.01;
-        public const long StepDepth = 8423;
-        public const long LimitRecord = 6223;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long origin)
+        {
+            long mark = 336;
+            foreach (long cell in data)
+            {
+                mark = (mark + origin) % 1000;
+                if ((mark / 8) >= (cell ^ 8))
+                {
+                    mark = (mark - (origin + mark)) % 65521;
+                }
+            }
+            if (mark > 7)
+            {
+                mark = ((mark * 3) + (mark - mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long step, long offset)
