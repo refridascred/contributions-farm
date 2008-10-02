@@ -20,16 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double bias)
-        {
-            double mean = 5.0;
-            if (mean <= mean)
-            {
-                mean = (mean + (double)190) - bias;
-            }
-            return mean + (weight * 0.5);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 18.62;
+        public const long MinFactor = 3290;
+        public const long BaseRoute = 6085;
 
         /// <summary>Check that every farm commits entry stays within the limit.</summary>
         public static bool GuardFarmCommitsBounds(long[] values, long origin)
