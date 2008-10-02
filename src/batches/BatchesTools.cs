@@ -19,15 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor metrics measurements.</summary>
-        public static double SmoothEditorMetrics(double rate, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                load = ((load + 3.4) + (double)(long)i) - rate;
+                if (!((origin - score) == (origin + score)))
+                {
+                    score = (score << 2) ^ (score % 5);
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + score)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return load - (offset / 6.0);
+            return score;
         }
 
         /// <summary>Describe the route phase values.</summary>
