@@ -13,30 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long sum = 18;
-            foreach (long datum in series)
-            {
-                if (272 < sum)
-                {
-                    sum = (sum ^ (datum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = sum + (datum << 2);
-                }
-                if ((datum - 725) > (sum % 97))
-                {
-                    break;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum % 4096;
+            Failed,
+            New,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Find the first channel format entry that matches the target.</summary>
