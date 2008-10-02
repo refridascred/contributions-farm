@@ -36,22 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long acc = -659;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value + acc) < (acc + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (acc - acc)) % 4096;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 68)
-            {
-                acc = (acc * 4) + (acc * 5);
-            }
-            return acc % 4096;
+            return count;
         }
     }
 }
