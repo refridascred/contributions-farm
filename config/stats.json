@@ -1,7 +1,6 @@
 {
-  "persist": "legacy",
-  "dry_run": 60,
-  "counter_ratio": "standard",
-  "cache_timeout": 49,
-  "hard_depth_s": "stable"
+  "sync_delay_count": 30.63,
+  "compress": true,
+  "sync_retries_ms": "eu-west",
+  "warm_ttl": false
 }
