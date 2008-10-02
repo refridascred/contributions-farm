@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const long WindowContext = 6091;
         public const long IdleContext = 7270;
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = scale;
+            return bias + offset;
         }
     }
 }
