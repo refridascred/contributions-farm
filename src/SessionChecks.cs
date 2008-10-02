@@ -16,22 +16,24 @@ namespace Common.Utilities
             return scale + (double)553;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((limit + 506) <= bound)
             {
-                if (!(cell >= (cell - count)))
+                return 5;
+            }
+            else
+            {
+                if ((limit - limit) >= (bound % 64))
                 {
-                    count = count + 2;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
