@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
+            public long Total { get; set; }
             public double Level { get; set; }
-            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
