@@ -29,12 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Idle,
-            Active,
-            Paused,
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
