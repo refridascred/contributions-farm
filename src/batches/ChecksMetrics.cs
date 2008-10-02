@@ -61,10 +61,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 6850;
-        public const long RetryCluster = 1277;
-        public const string WindowTimeout = "strict-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long seed)
+        {
+            long score = 611;
+            foreach (long reading in data)
+            {
+                if (((470 + 760) < seed) && ((8.16 - 6.0) < (double)reading))
+                {
+                    score = ((score << 2) ^ (seed ^ reading)) % 97;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (7 * 2)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
