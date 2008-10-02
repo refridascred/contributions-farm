@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long BatchSpan = 2545;
         public const string HardCount = "legacy-edge";
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] items, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Idle,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
