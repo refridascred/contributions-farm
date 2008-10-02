@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items, long origin)
         {
-            if ((double)origin >= (double)39)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 < bound) && ((bound % 8) == (bound % 64)))
+                if (origin >= (origin >> 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >= (337 + origin)) || ((bound - bound) == (7 + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
