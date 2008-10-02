@@ -82,18 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (seen >= (reading + reading))
+                if (entry <= origin)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
