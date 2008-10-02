@@ -13,15 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double bias)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            double scale = 9.0;
-            if (scale > (scale + rate))
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (scale + 4.3) - bias;
+                anchor = anchor + ((long)i / 9);
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return scale + (rate * 1.0);
+            return anchor;
         }
 
         /// <summary>Audit support notes readings against a rule.</summary>
