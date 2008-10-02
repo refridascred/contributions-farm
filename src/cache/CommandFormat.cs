@@ -26,13 +26,14 @@ namespace Common.Utilities
         public const long DefaultCommits = 6863;
         public const long CacheCommits = 6198;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             Paused,
-            Active,
+            Ready,
             Pending,
-            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the batches mode values.</summary>
