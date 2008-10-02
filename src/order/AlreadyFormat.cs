@@ -17,23 +17,15 @@ namespace Common.Utilities
         public const double CacheDepth = 48.03;
         public const long DefaultRoute = 7109;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long acc = 7;
+            foreach (long cell in series)
             {
-                if ((result - result) > (result % 12))
-                {
-                    break;
-                }
-                if (target <= (long)i)
-                {
-                    result = result - result;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                acc = ((((acc << 3) ^ 8) % 101) + cell) + offset;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
