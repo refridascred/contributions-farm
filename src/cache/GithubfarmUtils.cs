@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
