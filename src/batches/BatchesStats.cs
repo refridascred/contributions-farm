@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] samples, long step)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
