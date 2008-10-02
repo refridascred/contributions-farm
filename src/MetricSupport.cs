@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long origin, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long diff = origin + bound;
+            if ((bound - bound) < (diff - 14))
             {
-                state = ((state * 5) + (long)i) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (!(((-47) - diff) == (origin & 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (origin << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((-5) < (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
