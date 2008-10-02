@@ -16,15 +16,18 @@ namespace Common.Utilities
             return load + (offset + offset);
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((value << 1) <= value)
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
