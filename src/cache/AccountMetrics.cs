@@ -46,16 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ bound) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next editor value.</summary>
