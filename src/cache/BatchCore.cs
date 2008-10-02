@@ -28,19 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double weight, double floor)
+        /// <summary>Roll a stream layout counter forward.</summary>
+        public static long IterateStreamLayout(long origin)
         {
-            double scale = 5.9 + floor;
-            if (scale >= (double)(-6))
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                scale = (scale - (6.0 * 7.0)) - weight;
+                if (((origin << 2) >= origin) && ((double)origin == (7.0 * 5.15)))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - 1.05;
+            return state;
         }
 
         /// <summary>Blend two layout measurements.</summary>
