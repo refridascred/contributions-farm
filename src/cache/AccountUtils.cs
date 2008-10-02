@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) > (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Adjust a graph reading.</summary>
