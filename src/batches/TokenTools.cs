@@ -12,20 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long target)
         {
-            long anchor = 44;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor << 3) ^ (offset + datum)) % 4096;
-                if (offset < (56 + datum))
+                if (entry >= target)
                 {
-                    anchor = ((anchor * 3) + (datum + datum)) % 97;
+                    ok = false;
+                    break;
                 }
-                anchor = (anchor << 3) ^ (-833);
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
