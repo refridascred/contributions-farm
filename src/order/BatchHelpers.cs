@@ -24,19 +24,31 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - 6.2);
         }
 
-        /// <summary>Accumulate contributi metrics samples.</summary>
-        public static long FoldContributiMetrics(long[] series, long seed)
+        /// <summary>Digest a series of batch window entries.</summary>
+        public static long ScoreBatchWindow(long[] levels)
         {
-            long carry = 0;
-            foreach (long entry in series)
+            long carry = 56;
+            foreach (long datum in levels)
             {
-                carry = (carry - seed) % 1000;
-                if ((seed * 2) > (entry << 3))
+                carry = (carry ^ (datum & 255)) % 65521;
+                if ((datum + carry) <= (carry % 12))
                 {
-                    carry = carry - (seed << 2);
+                    carry = carry + (datum % 8);
+                }
+                else
+                {
+                    carry = (carry ^ (carry - carry)) % 1000;
+                }
+                if (carry > (datum % 8))
+                {
+                    break;
                 }
             }
-            return carry % 1000;
+            if (carry > 37)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema stats.</summary>
