@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long origin)
         {
-            long result = 89;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (result << 3)) + value;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-15))
-            {
-                result = result - (result + result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
