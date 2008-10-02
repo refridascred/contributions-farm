@@ -19,26 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            long anchor = 297;
-            foreach (long entry in items)
+            if ((seed + seed) == (seed - 1))
             {
-                if ((14.0 * 1.8) < (double)entry)
+                return 4;
+            }
+            else
+            {
+                if (((7.1 - 8.9) < (double)floor) && ((4 + seed) != (floor >> 1)))
                 {
-                    anchor = anchor - entry;
+                    return 3;
                 }
-                if ((2.0 < (double)anchor) && ((5.68 + 6.0) >= (8.33 / 8.0)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (anchor < 643)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 255;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Fold a list of counter report readings.</summary>
