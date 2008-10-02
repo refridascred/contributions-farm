@@ -12,22 +12,18 @@ namespace Common.Utilities
             return (weight - (double)109) + span;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((cell << 1) == (cell + hits))
+                if ((item % 2) == (item ^ item))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
