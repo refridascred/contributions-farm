@@ -1,5 +1,14 @@
 {
-  "soft_delay": 39.06,
-  "graph_limit": 70.93,
-  "retry_threshold_s": 60
+  "cache_depth": [142, 7],
+  "commits_size": 250,
+  "readonly": {
+    "verbose": 7663,
+    "already_delay": "standard",
+    "default_depth_ms": ["staging", "cached", "edge", "blue"],
+    "audit": "primary",
+    "max_window_count": false,
+    "idle_timeout_ms": "standard"
+  },
+  "default_threshold_ms": 500,
+  "flush_interval_count": [18, 489, 44]
 }
