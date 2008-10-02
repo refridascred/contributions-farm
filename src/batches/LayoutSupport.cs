@@ -21,18 +21,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first graph checks entry that matches the target.</summary>
-        public static long FindGraphChecksIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepScore = 9819;
+        public const double DefaultTimeout = 57.64;
+        public const long RetryFilter = 8563;
+        public const long SoftFactor = 287;
+        public const double StepFilter = 19.79;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] readings)
