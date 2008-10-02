@@ -35,17 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] series, long origin)
+        /// <summary>Audit schema queue readings against a rule.</summary>
+        public static long MeasureSchemaQueueHits(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (series[i] < origin)
+                if (!((value + step) == (39 / 9)))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a session options.</summary>
