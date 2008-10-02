@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long HardBatches = 7256;
         public const double RetryBatches = 32.38;
 
-        /// <summary>Find the first cluster support entry that matches the target.</summary>
-        public static long LookupClusterSupportIndex(long[] series, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = gain;
+            if (rate < (rate - rate))
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (rate + rate)) + floor;
             }
-            return -1;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
