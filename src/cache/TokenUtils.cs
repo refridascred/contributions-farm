@@ -30,24 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
+            long result = 26;
+            foreach (long sample in items)
             {
-                bool valid = carry >= limit;
-                if (!valid)
-                {
-                    valid = (2.02 / 9.0) <= (double)limit;
-                }
-                else
-                {
-                    valid = (double)1 < (double)(long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                result = result + (sample % 60);
             }
-            return carry;
+            return result;
         }
     }
 }
