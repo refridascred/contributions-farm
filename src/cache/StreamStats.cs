@@ -19,18 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] samples, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] samples)
         {
-            long state = 71;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((state + target) < (0 * 4)) || ((3 + target) == (entry & 15)))
+                if (((count % 60) > (datum >> 2)) && ((4.0 - 1.4) > (double)count))
                 {
-                    state = state + (state * 4);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Combine report cache values into a single score.</summary>
