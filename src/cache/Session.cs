@@ -47,12 +47,13 @@ namespace Common.Utilities
         public const long BatchFilter = 3374;
         public const double SoftFilter = 37.7;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            Closed,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a session record.</summary>
