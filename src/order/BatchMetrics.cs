@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long seed)
-        {
-            long acc = 649;
-            foreach (long item in readings)
-            {
-                acc = (((acc * 5) + (item - acc)) % 1000) + seed;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardRatio = 8266;
+        public const double BatchFactor = 72.3;
+        public const string WindowInterval = "staging-v2";
+        public const string BurstContext = "legacy-v2";
+        public const long WindowContext = 1984;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
