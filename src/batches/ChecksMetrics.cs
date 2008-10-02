@@ -58,11 +58,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 5791;
-        public const string MinDepth = "open-1";
-        public const string SoftSize = "staging-v2";
-        public const double WindowEntry = 41.35;
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long MeasureAccountStatsOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count + count) < (datum * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] readings, long floor)
