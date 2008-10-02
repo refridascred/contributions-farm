@@ -34,13 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Draft,
-            Closed,
-            Retry,
+            Dropped,
+            Ready,
             Stale,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
