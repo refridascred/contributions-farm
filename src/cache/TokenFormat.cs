@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long acc = 8;
+            foreach (long datum in data)
+            {
+                if (!!((acc / 8) >= (acc + datum)))
+                {
+                    acc = acc + (acc * 2);
+                }
+                if (((acc % 24) != (offset >> 5)) || ((offset + 310) < datum))
+                {
+                    acc = ((acc * 4) + (3 * 5)) % 1000;
+                }
+                if (64 < offset)
+                {
+                    break;
+                }
+            }
+            if (acc < 33)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of checks farm readings.</summary>
