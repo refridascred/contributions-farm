@@ -1,8 +1,8 @@
-id,owner,weight
-1,914,fallback
-2,565,open
-3,green,229
-4,153,strict
-5,open,58.76
-6,523,open
-7,140,open
+id,score,state,token
+1,43.24,strict,196
+2,latest,57.33,11.92
+3,legacy,31.2,29.46
+4,37.91,72.35,994
+5,33.41,staging,cached
+6,52.22,69.66,424
+7,497,153,62.44
