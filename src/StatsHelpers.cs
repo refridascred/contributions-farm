@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const double DefaultContext = 85.11;
         public const string StepCount = "fallback-edge";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
