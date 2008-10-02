@@ -65,11 +65,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 5725;
-        public const long MaxSize = 1251;
-        public const long CacheSize = 9359;
-        public const string StepSize = "primary-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 790;
+        public const long BurstTimeout = 8606;
+        public const long BurstQueue = 4034;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] data)
