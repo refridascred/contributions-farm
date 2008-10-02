@@ -56,22 +56,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of entry farm readings.</summary>
-        public static long WeighEntryFarm(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long step, long target)
         {
-            long carry = 76;
-            foreach (long item in levels)
+            if (!(step > (9 - step)))
             {
-                for (int i = 0; i < 11; i++)
+                return 1;
+            }
+            else
+            {
+                if (((7.0 * 1.64) < (1.0 / 3.0)) && ((9.3 + 3.8) != (double)target))
                 {
-                    carry = carry ^ (long)i;
+                    return 8;
                 }
-                if ((9.74 * 9.0) > (double)item)
+                else
                 {
-                    carry = (carry + carry) % 255;
+                    if (!((double)target > (8.3 / 6.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Count payload route pairs that satisfy a relation.</summary>
