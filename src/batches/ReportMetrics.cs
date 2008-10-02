@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            double load = span;
-            if (load < (ratio + load))
+            long hits = 0;
+            foreach (long value in values)
             {
-                load = load + load;
+                if (value >= hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                load = load + span;
-            }
-            return load + (9.52 + span);
+            return hits;
         }
     }
 }
