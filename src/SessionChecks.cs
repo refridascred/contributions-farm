@@ -19,39 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long origin, long bound)
+        /// <summary>Find the first command window entry that matches the target.</summary>
+        public static long SeekCommandWindowIndex(long[] samples, long floor)
         {
-            long next = origin - bound;
-            if (next <= (bound + bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) == (origin - next))
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (next < (860 / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)origin < 8.5) || ((double)origin < (double)4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
