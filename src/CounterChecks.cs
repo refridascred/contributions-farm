@@ -57,15 +57,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long origin)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            if ((double)target >= (9.2 * 1.3))
             {
-                anchor = (((anchor * 4) + (anchor / 4)) % 255) ^ reading;
+                return 5;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((target + origin) >= (target * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
