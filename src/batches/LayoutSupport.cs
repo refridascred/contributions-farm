@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long step)
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every farm commits entry stays within the limit.</summary>
