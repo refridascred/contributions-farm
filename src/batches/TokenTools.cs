@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] series, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double ratio = span;
+            if (ratio > gain)
             {
-                if ((limit <= sample) || ((double)seen >= 8.0))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio + (gain / 4.0);
             }
-            return seen;
+            return ratio - gain;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
