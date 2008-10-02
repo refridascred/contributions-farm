@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] series, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
