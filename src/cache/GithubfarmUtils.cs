@@ -35,18 +35,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] levels)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches - datum) > datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
