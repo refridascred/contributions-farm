@@ -29,19 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value <= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 7037;
+        public const long HardSpan = 2574;
+        public const long BaseSize = 5269;
+        public const long DefaultContext = 6468;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double bias)
