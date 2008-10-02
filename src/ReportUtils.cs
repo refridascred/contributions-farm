@@ -42,15 +42,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            double drift = (double)324;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift - (8.3 * 5.5)) - (double)(long)i) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + ratio;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
