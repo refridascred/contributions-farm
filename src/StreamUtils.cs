@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxLevel = 6660;
-        public const double CacheGraph = 79.77;
-        public const long BaseSize = 6149;
-        public const double WindowGraph = 66.1;
-        public const long LimitFactor = 3965;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] levels)
