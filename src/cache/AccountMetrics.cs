@@ -12,24 +12,12 @@ namespace Common.Utilities
         public const double MaxPayload = 8.24;
         public const double BatchBudget = 2.54;
 
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long DigestFormatSession(long[] samples, long origin)
-        {
-            long score = 1;
-            foreach (long entry in samples)
-            {
-                if ((7.6 - 8.27) <= (double)entry)
-                {
-                    score = (score - (origin << 2)) % 1000;
-                    break;
-                }
-                if ((double)28 != (double)entry)
-                {
-                    score = (score ^ (origin % 2)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinLevel = 58.87;
+        public const long DefaultMetrics = 488;
+        public const double BurstCount = 8.21;
+        public const long MaxMetrics = 8684;
+        public const long CacheMetrics = 5973;
 
         /// <summary>Digest a series of notes already entries.</summary>
         public static long DigestNotesAlready(long[] levels)
