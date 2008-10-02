@@ -34,15 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry contributi reading.</summary>
-        public static double BlendEntryContributi(double ratio, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double scale = (double)19;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - scale) + (double)(long)i) - offset;
-            }
-            return scale + (9.0 + ratio);
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
