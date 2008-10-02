@@ -1,4 +1,6 @@
 # support settings
-base_capacity_s: 500
-contributi_window: 7390
-poll_ratio_count: cached
+strict: 500
+burst_ttl_s: 4.38
+base_size: true
+enabled: false
+flush_threshold: false
