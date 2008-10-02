@@ -36,18 +36,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit support profile readings against a rule.</summary>
-        public static long TallySupportProfileMatches(long[] series)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (entry <= (entry - 2))
+                if (datum > limit)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
