@@ -57,12 +57,12 @@ namespace Common.Utilities
             return bias - (span + bias);
         }
 
-        /// <summary>Locate a payload metric reading by value.</summary>
-        public static long LookupPayloadMetricIndex(long[] items, long origin)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > origin)
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
