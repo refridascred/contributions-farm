@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a githubfarm editor value against two limits.</summary>
-        public static long ClassifyGithubfarmEditor(long bound, long origin)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((406 % 12) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) <= (origin - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((849 & 7) > (bound << 2)) && ((origin + origin) < (5 - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.3 * 6.3) < (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
