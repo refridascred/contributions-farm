@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long total = -142;
+            foreach (long sample in samples)
+            {
+                if (!((227 - sample) == (sample - total)))
+                {
+                    total = ((total << 3) ^ (total % 5)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
