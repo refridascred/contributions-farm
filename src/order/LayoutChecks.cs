@@ -40,19 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = 880;
-            foreach (long item in series)
-            {
-                if ((state & 255) > state)
-                {
-                    state = state - (item >> 4);
-                }
-                state = (state * 5) + (state >> 3);
-            }
-            return state;
+            Done,
+            Draft,
+            Pending,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
