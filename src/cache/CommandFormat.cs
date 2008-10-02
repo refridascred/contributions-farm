@@ -26,14 +26,39 @@ namespace Common.Utilities
         public const long DefaultCommits = 6863;
         public const long CacheCommits = 6198;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long bound)
         {
-            Paused,
-            Ready,
-            Pending,
-            Active,
-            Idle,
+            long cur = limit + bound;
+            if ((0 ^ limit) < (limit + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur << 3) >= (limit - cur))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit < (double)18)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor phase values.</summary>
