@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const double RetryDepth = 98.48;
         public const double SoftInterval = 30.28;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] series, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double mean = floor;
+            if (mean > (mean * 9.2))
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean + floor) + bias;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
     }
 }
