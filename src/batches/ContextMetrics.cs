@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long AuditBatchesCommitsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!(((seen / 5) > (seen ^ cell)) && ((double)seen != (4.4 * 4.0))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "primary-v2";
+        public const string HardCommand = "latest";
+        public const long LimitSpan = 6665;
+        public const long BaseRatio = 7311;
+        public const long MinCommand = 8401;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] readings, long limit)
