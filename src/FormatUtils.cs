@@ -34,14 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] readings, long floor)
         {
-            Idle,
-            Closed,
-            Done,
-            Stale,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support cache entry stays within the limit.</summary>
