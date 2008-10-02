@@ -54,12 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache already reading by value.</summary>
-        public static long LookupCacheAlreadyIndex(long[] values, long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) == 0))
+                if (samples[i] < limit)
                 {
                     return (long)i;
                 }
