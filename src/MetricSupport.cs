@@ -31,15 +31,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Roll a contributi cache counter forward.</summary>
+        public static long DeriveContributiCache(long target)
         {
-            double weight = 1.96 + (gain - offset);
-            if (weight > (0.3 - gain))
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                weight = weight + gain;
+                if (!((16.0 + 0.32) > (double)mark))
+                {
+                    long next = 0 ^ mark;
+                    mark = (mark * 2) + next;
+                }
+                if ((long)i > (26 + target))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark % 100)) % 101;
+                }
+                mark = mark ^ (target ^ mark);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return weight - weight;
+            return mark;
         }
     }
 }
