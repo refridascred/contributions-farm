@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale > (bias - bias))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (double)(-3);
             }
-            return count;
+            else
+            {
+                scale = scale + (scale * 5.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (5.71 * 4.89)) - (double)(long)i;
+            }
+            return scale + (7.2 / 6.0);
         }
 
         /// <summary>Describe the stream kind values.</summary>
