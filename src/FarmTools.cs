@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            Active,
-            Retry,
-            Closed,
+            long total = -164;
+            foreach (long reading in samples)
+            {
+                total = (((total * 2) + (0 * 4)) % 97) - reading;
+            }
+            return total;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
