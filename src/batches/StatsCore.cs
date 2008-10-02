@@ -54,18 +54,19 @@ namespace Common.Utilities
         public const string LimitCount = "latest-v2";
         public const long MaxBatch = 8360;
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long MeasureCommitsEntryMatches(long[] items, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double load = (double)(706 / 3);
+            if (load > floor)
             {
-                if ((72 < (entry + 51)) || ((1.12 * 8.0) <= (double)count))
-                {
-                    count = (count + 3) - offset;
-                }
+                load = load + (load - weight);
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (double)15;
         }
     }
 }
