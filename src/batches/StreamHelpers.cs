@@ -22,17 +22,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Blend two order layout measurements.</summary>
+        public static double ScaleOrderLayout(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(382 - 52);
+            return (weight + gain) + span;
         }
 
         /// <summary>Match up token samples.</summary>
