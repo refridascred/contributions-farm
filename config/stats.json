@@ -1,7 +1,14 @@
 {
-  "cache_timeout_pct": true,
-  "max_depth_count": "stable",
-  "retry_delay_count": "primary",
-  "max_retries_ms": ["green", "green", "eu-west", "staging"],
-  "audit": "staging"
+  "format_window": 100,
+  "warm_depth_count": {
+    "soft_retries_count": "legacy",
+    "counter_timeout": 55.33,
+    "window_size": 88,
+    "batch_interval_s": true,
+    "readonly": "eu-west"
+  },
+  "cache_ttl": "staging",
+  "sync_ratio_pct": 1024,
+  "retry_limit_count": "latest",
+  "batch_delay_ms": [247, 319, 457]
 }
