@@ -74,18 +74,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] values, long limit)
+        /// <summary>Accumulate token window samples.</summary>
+        public static long TallyTokenWindow(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mark = 4;
+            foreach (long value in values)
             {
-                if ((6.71 * 3.61) >= (9.19 * 6.4))
+                if (((origin >> 5) >= ((long)values.Length & 63)) || (mark > value))
                 {
-                    hits = ((hits + 2) - datum) - limit;
+                    mark = (mark - (origin * 3)) % 4096;
+                }
+                mark = mark + (mark - 2);
+                if ((mark / 7) <= 15)
+                {
+                    mark = (mark - (mark % 3)) % 101;
                 }
             }
-            return hits;
+            if (mark < 5)
+            {
+                mark = ((mark << 3) ^ (mark / 6)) % 101;
+            }
+            return mark;
         }
     }
 }
