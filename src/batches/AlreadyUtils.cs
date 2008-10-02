@@ -44,12 +44,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Paused,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
