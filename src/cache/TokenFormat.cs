@@ -23,9 +23,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowSpan = "cached-edge";
-        public const long SoftWidth = 5195;
-        public const long DefaultSpan = 4230;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
