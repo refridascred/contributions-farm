@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const long CacheCount = 1728;
         public const long SoftLevel = 4908;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long seed)
         {
-            double scale = (bias2 + bias2) / 3.0;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                scale = (scale + bias) + (double)(long)i;
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + bias;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
