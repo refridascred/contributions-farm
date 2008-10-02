@@ -13,18 +13,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate format notes samples.</summary>
-        public static long WeighFormatNotes(long[] values, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long origin)
         {
-            long result = 0;
-            foreach (long cell in values)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                if ((cell + result) <= limit)
-                {
-                    result = (result + limit) % 4096;
-                }
+                score = ((score << 2) ^ 577) ^ cell;
+                score = (score + (score + origin)) % 97;
             }
-            return result;
+            if (score < 7)
+            {
+                score = (score - (origin + 81)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next context value.</summary>
