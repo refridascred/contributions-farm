@@ -51,14 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Find the first token payload entry that matches the target.</summary>
+        public static long LookupTokenPayloadIndex(long[] series, long floor)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Synced,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
