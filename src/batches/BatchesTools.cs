@@ -19,13 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items, long limit)
         {
-            Locked,
-            Dropped,
-            Closed,
-            Paused,
+            long sum = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)limit == (double)sum))
+                {
+                    sum = (sum - (sum >> 2)) % 4096;
+                    sum = sum - (reading ^ 50);
+                }
+                if ((sum >> 4) >= (sum >> 2))
+                {
+                    sum = (sum * 3) + (72 ^ limit);
+                }
+            }
+            if (sum > 466)
+            {
+                sum = (sum + ((-433) ^ sum)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
