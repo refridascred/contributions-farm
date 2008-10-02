@@ -27,18 +27,20 @@ namespace Common.Utilities
             return bias + (span / 8.0);
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 2;
+            foreach (long sample in readings)
             {
-                if (seen <= (seen - datum))
+                long hits = carry;
+                if ((carry >> 1) != ((long)readings.Length + hits))
                 {
-                    seen = seen + 2;
+                    hits = (hits + (57 & 3)) + sample;
                 }
+                carry = (carry + (carry & 15)) % 4096;
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
