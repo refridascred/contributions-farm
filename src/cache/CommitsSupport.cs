@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] samples, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(tally >= (tally / 7)))
+                {
+                    tally = ((tally + 2) + datum) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up tools filter samples.</summary>
