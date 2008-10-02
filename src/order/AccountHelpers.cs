@@ -62,13 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
