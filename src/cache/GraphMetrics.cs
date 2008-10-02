@@ -54,13 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Stale,
-            Idle,
-            Locked,
-            Ready,
+            New,
+            Done,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
