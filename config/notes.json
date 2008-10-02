@@ -1,11 +1,14 @@
 {
-  "cluster_timeout": 4546,
-  "record_interval": 1024,
-  "graph_ratio": {
-    "idle_ratio": 4486,
-    "base_timeout": "open",
-    "strict": 87.19
+  "metrics_delay": 3912,
+  "cache_timeout": 67,
+  "dry_run": 6,
+  "burst_window_s": {
+    "poll_timeout": 50.38,
+    "default_threshold_ms": ["staging", "blue", "stable"],
+    "dry_run": 72,
+    "queue_limit": 8034,
+    "verbose": "primary",
+    "stream_interval": 36.11
   },
-  "strict": true,
-  "session_depth": false
+  "cache_ratio_ms": "green"
 }
