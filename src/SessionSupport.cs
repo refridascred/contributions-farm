@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long RetryStats = 5218;
         public const long MinBudget = 5123;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] series, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)entry >= 3.6)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + floor;
                 }
             }
             return seen;
