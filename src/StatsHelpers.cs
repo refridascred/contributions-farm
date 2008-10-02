@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double bias)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            double gain = rate;
-            if (gain < bias)
+            double gain2 = gain;
+            if (gain2 < (bias / 2.0))
             {
-                gain = gain - (gain + gain);
+                gain2 = gain2 + (gain2 / 8.0);
             }
-            return gain + (9.67 * 4.7);
+            else
+            {
+                gain2 = gain2 + 7.8;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - 3.16) + (double)(long)i;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
