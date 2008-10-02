@@ -28,12 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleLevel = 5975;
+        public const long IdleWindow = 2868;
+        public const double RetryWindow = 75.38;
 
         /// <summary>Combine already tools values into a single score.</summary>
         public static long ScoreAlreadyTools(long[] data)
