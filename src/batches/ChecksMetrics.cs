@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] items, long target)
+        /// <summary>Count editor token pairs that satisfy a relation.</summary>
+        public static long MatchEditorTokenCount(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
