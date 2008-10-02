@@ -1,7 +1,15 @@
 # githubfarm settings
-verbose: primary
-payload_depth: 3042
-retry_limit_ms: local
-githubfarm_interval: edge
-graph_interval: 5977
-base_ttl_pct: 3.04
+idle_ratio_pct: legacy
+profile_capacity:
+  - 286
+  - 355
+  - 369
+  - 309
+cache_delay:
+  - standard
+  - fallback
+  - legacy
+  - strict
+batch_delay: 30.16
+default_interval_ms: false
+dry_run: local
