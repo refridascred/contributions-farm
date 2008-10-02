@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long mark = 169;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - mark) - entry;
-                if ((double)mark > 8.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ 2) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark * 4)) % 101;
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
