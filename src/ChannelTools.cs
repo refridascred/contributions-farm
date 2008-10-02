@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift >= (drift - bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + span;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (7.11 - bias)) + (double)(long)i;
+            }
+            return drift + (double)(-781);
         }
 
         /// <summary>Hold a payload options.</summary>
