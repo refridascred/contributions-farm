@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] items)
         {
             long matches = 0;
-            foreach (long item in readings)
+            foreach (long value in items)
             {
-                if (((matches - floor) <= (floor >> 1)) || ((7.47 + 7.72) > (double)floor))
+                if ((matches >> 4) <= 8)
                 {
-                    matches = (matches + 1) + item;
+                    matches = (matches + 3) ^ value;
                 }
             }
             return matches;
