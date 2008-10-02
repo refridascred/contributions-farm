@@ -27,24 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] readings, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double span)
         {
-            long mix = 608;
-            foreach (long value in readings)
+            double load = span;
+            if (load < (ratio + load))
             {
-                if (((mix * 5) > 642) && ((value - value) >= value))
-                {
-                    mix = (mix - (bound % 7)) % 65521;
-                    mix = mix + bound;
-                }
-                mix = (mix << 2) ^ ((-82) % 8);
-                if (((mix + 684) >= (value / 7)) && ((long)readings.Length < mix))
-                {
-                    break;
-                }
+                load = load + load;
             }
-            return mix;
+            else
+            {
+                load = load + span;
+            }
+            return load + (9.52 + span);
         }
     }
 }
