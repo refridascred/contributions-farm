@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.8 >= (double)matches) || (((double)matches >= (0.8 - 8.97)) || (7.45 < (double)target)))
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next metric graph value from a seed.</summary>
