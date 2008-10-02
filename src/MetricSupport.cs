@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long BaseCount = 7252;
         public const long BurstInterval = 4379;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Match up order batch samples.</summary>
+        public static long PairOrderBatchCount(long[] series)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
