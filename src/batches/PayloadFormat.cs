@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long bound)
+        /// <summary>Blend two route profile measurements.</summary>
+        public static double SmoothRouteProfile(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 6.0;
+            if (rate > offset)
             {
-                if ((data[i] <= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)161) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Describe the tools status values.</summary>
