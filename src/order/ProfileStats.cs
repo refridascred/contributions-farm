@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 626;
-        public const double IdleProfile = 82.44;
-        public const string BatchProfile = "staging";
-        public const long BurstProfile = 9249;
-        public const string CacheRatio = "stable";
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
