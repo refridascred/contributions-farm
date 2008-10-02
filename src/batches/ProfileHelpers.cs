@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 3754;
-        public const long SoftBudget = 544;
-        public const long WindowDepth = 6614;
-        public const long BurstSize = 9467;
-        public const string BatchStats = "latest-v2";
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double SmoothMetricLayout(double weight, double offset)
+        {
+            double gain = (double)473 * 5.0;
+            if (gain > gain)
+            {
+                gain = (gain + offset) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + 17.0;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long StepTools = 161;
