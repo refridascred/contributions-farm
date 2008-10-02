@@ -37,21 +37,21 @@ namespace Common.Utilities
         public const double LimitContext = 76.06;
         public const string MinRatio = "staging-edge";
 
-        /// <summary>Compare every pair of profile support readings.</summary>
-        public static long MatchProfileSupportCount(long[] values)
+        /// <summary>Match up cache route samples.</summary>
+        public static long PairCacheRouteCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 19)
+                    if ((levels[i] ^ levels[j]) > 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
