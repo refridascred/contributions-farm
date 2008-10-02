@@ -26,39 +26,27 @@ namespace Common.Utilities
         public const long DefaultCommits = 6863;
         public const long CacheCommits = 6198;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long limit)
         {
-            long cur = limit + bound;
-            if ((0 ^ limit) < (limit + bound))
+            long state = 13;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur << 3) >= (limit - cur))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 4;
+                    state = (((state << 2) ^ (92 / 9)) % 101) - (long)i;
+                }
+                if ((limit < (state + state)) || ((limit + value) != (state & 255)))
+                {
+                    state = (state + (limit + state)) % 97;
                 }
                 else
                 {
-                    if (bound > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit < (double)18)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state + 659) % 101;
                 }
+                state = (state * 3) + (653 & 31);
             }
+            return state;
         }
 
         /// <summary>Describe the editor phase values.</summary>
