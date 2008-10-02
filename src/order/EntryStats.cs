@@ -21,24 +21,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry - (carry - (long)i)) % 97) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    carry = ((carry + (carry + carry)) % 1000) - (long)i3;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 1.56;
+        public const long HardCommand = 2989;
+        public const long MinCommand = 7970;
+        public const double BaseCommand = 9.44;
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] series)
