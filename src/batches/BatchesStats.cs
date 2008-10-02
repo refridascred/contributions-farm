@@ -22,12 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 6815;
-        public const long WindowRoute = 9012;
-        public const string HardDepth = "primary-1";
-        public const long DefaultInterval = 4781;
-        public const long RetrySize = 6372;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] levels, long step)
+        {
+            long result = 540;
+            foreach (long cell in levels)
+            {
+                result = ((result + (cell << 1)) % 255) - step;
+            }
+            return result;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] samples, long limit)
