@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            double rate = bias;
+            if (rate <= offset)
+            {
+                rate = rate - 4.54;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate / 9.0)) + (double)(long)i;
+            }
+            return rate - (rate + bias);
         }
 
         /// <summary>Hold a payload stats.</summary>
