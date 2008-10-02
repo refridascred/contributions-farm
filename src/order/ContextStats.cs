@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache githubfarm value from a seed.</summary>
-        public static long RollCacheGithubfarm(long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a schema options.</summary>
