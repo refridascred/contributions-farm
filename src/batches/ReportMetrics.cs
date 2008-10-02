@@ -24,12 +24,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheScore = 9766;
-        public const long HardWidth = 4323;
-        public const double SoftDepth = 50.24;
-        public const long BaseSupport = 3809;
-        public const long BaseDepth = 814;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "staging-edge";
+        public const double MinDepth = 38.61;
+        public const double RetryTools = 89.49;
+        public const long MaxTools = 2852;
+        public const double LimitTools = 71.66;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
