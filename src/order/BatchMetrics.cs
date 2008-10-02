@@ -56,13 +56,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of entry farm readings.</summary>
+        public static long WeighEntryFarm(long[] levels)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long carry = 76;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = carry ^ (long)i;
+                }
+                if ((9.74 * 9.0) > (double)item)
+                {
+                    carry = (carry + carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count payload route pairs that satisfy a relation.</summary>
