@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultCount = 5253;
-        public const long StepProfile = 3611;
-        public const double BurstProfile = 92.7;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum >= (9.69 * 5.7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool VerifyReportLimits(long[] items, long limit)
