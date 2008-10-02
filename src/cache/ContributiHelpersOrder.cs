@@ -38,12 +38,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Ready,
-            Done,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "open";
+        public const double CacheSpan = 48.47;
+        public const long StepStream = 224;
+        public const long MinInterval = 171;
+        public const string SoftStream = "legacy";
     }
 }
