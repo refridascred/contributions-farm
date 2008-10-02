@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] series, long floor)
         {
-            long total = 3;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((65 * 4) < (value - total))
+                if (cell > floor)
                 {
-                    total = ((total * 4) + (value % 3)) - seed;
-                }
-                if ((double)total != (17.0 / 8.0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
