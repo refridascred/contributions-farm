@@ -91,12 +91,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Validate cache entry readings against a bound.</summary>
+        public static bool CheckCacheEntryBounds(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
