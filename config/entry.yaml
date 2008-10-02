@@ -1,5 +1,5 @@
 # entry settings
-cache_ratio: legacy
-batch_interval_ms: green
-report_window: standard
-compress: 5509
+min_window_ms: 6
+cache_size: 100
+base_size: blue
+max_limit_count: 100
