@@ -33,18 +33,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + tally) > (0 * 3))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the cluster phase values.</summary>
