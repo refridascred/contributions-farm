@@ -22,14 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Ready,
-            Active,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryDepth = 53.45;
+        public const double BatchBuffer = 32.96;
+        public const long BurstCount = 9749;
+        public const double HardCount = 51.87;
+        public const long DefaultFactor = 4539;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
