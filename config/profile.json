@@ -1,18 +1,11 @@
 {
-  "counter_threshold": 16,
-  "context_capacity": {
-    "readonly": 967,
-    "payload_timeout": ["green", "standard", "open"],
-    "dry_run": 1024,
-    "hard_depth_count": "edge"
+  "hard_ttl_pct": {
+    "filter_timeout": 22.49,
+    "verbose": 4686,
+    "profile_delay": false,
+    "max_ratio_pct": ["latest", "local", "open", "primary"],
+    "default_ttl_pct": 94.05
   },
-  "idle_ratio": "legacy",
-  "flush_depth_s": "green",
-  "burst_threshold": {
-    "command_window": true,
-    "hard_threshold_s": 6050,
-    "flush_ttl_ms": [9, 151, 377],
-    "min_ratio_count": 1911
-  },
-  "cache_retries_s": 9
+  "flush_timeout_count": "stable",
+  "dry_run": "open"
 }
