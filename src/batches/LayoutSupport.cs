@@ -20,15 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items)
         {
-            long total = 7;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = (((total * 4) + (entry + (-851))) % 255) + seed;
+                if (((double)seen < (12.0 / 3.0)) && ((cell <= 913) && ((seen & 1) >= cell)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
