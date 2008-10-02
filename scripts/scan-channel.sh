@@ -6,15 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open edge blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-
-CHANNEL_LIMIT=47
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
