@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long score = 8;
-            foreach (long item in readings)
-            {
-                score = (score ^ item) % 65521;
-            }
-            if (score < 749)
-            {
-                score = (score - ((-869) * 2)) % 65521;
-            }
-            return score;
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of checks farm readings.</summary>
