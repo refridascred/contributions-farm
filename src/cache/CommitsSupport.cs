@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally & 3) > datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxFactor = 7652;
+        public const long BaseScore = 9754;
+        public const long MinBudget = 6905;
+        public const long BurstEditor = 261;
+        public const double LimitSpan = 56.48;
 
         /// <summary>Locate a cache already reading by value.</summary>
         public static long LookupCacheAlreadyIndex(long[] values, long seed)
