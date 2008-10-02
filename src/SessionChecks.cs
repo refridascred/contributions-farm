@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long MaxCluster = 5543;
         public const string BaseBudget = "cached";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] data, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (value != step)
+                if (item < floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a entry header.</summary>
