@@ -1,8 +1,17 @@
 {
-  "base_delay": 6125,
-  "hard_limit_pct": "staging",
-  "batch_ratio_pct": 1560,
-  "idle_ttl": true,
-  "editor_size": "edge",
-  "hard_timeout_pct": "edge"
+  "cache_depth_pct": 316,
+  "base_interval_s": "primary",
+  "base_timeout_pct": {
+    "support_retries": "stable",
+    "idle_interval_pct": {
+      "base_delay": 100,
+      "cache_depth": ["blue", "latest", "green", "eu-west"],
+      "window_depth": "standard"
+    },
+    "verbose": 7608,
+    "audit": 29.6,
+    "soft_capacity_pct": ["stable", "stable", "local"],
+    "dry_run": "fallback"
+  },
+  "warm_capacity_ms": "strict"
 }
