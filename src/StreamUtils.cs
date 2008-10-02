@@ -43,22 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token channel samples are out of range.</summary>
-        public static long AuditTokenChannelMatches(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= (886 << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
