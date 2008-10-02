@@ -35,11 +35,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long state = 35;
+            foreach (long entry in data)
+            {
+                if ((double)entry > (8.28 / 9.0))
+                {
+                    state = state + (entry << 1);
+                }
+                else
+                {
+                    state = state - 0;
+                }
+            }
+            if (state < 5)
+            {
+                state = (state * 4) + (long)data.Length;
+            }
+            return state;
         }
     }
 }
