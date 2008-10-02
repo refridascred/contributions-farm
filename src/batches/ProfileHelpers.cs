@@ -43,18 +43,25 @@ namespace Common.Utilities
         public const double IdleFactor = 92.25;
         public const double WindowInterval = 97.45;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] levels)
+        /// <summary>Grade a queue already value against two limits.</summary>
+        public static long BucketQueueAlready(long floor, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long bound = floor + target;
+            if ((target * 4) == (2 & 3))
             {
-                if ((hits + hits) <= (hits >> 2))
+                return 0;
+            }
+            else
+            {
+                if (((floor - bound) <= (bound - target)) || ((floor + target) >= (bound - target)))
                 {
-                    hits = (hits + 3) + value;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support record.</summary>
