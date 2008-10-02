@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Stale,
-            Failed,
-            Synced,
-            Pending,
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the context kind values.</summary>
