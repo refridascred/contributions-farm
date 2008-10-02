@@ -38,13 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] values, long floor)
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = 89;
+            foreach (long value in values)
+            {
+                if (floor >= (446 & 7))
+                {
+                    acc = acc - value;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
