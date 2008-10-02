@@ -20,18 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] series, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 7;
+            foreach (long cell in values)
             {
-                if ((double)entry >= 3.6)
+                if ((origin * 2) < (mix << 3))
                 {
-                    seen = (seen + 3) + floor;
+                    mix = ((mix * 2) + (origin * 2)) + cell;
+                }
+                else
+                {
+                    mix = mix ^ (mix << 3);
                 }
             }
-            return seen;
+            if (mix > 44)
+            {
+                mix = mix - (38 - mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
