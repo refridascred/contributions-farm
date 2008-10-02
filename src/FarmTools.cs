@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long BaseFactor = 4236;
         public const double LimitScore = 42.07;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] readings, long offset)
         {
             bool ok = true;
-            foreach (long cell in data)
+            foreach (long entry in readings)
             {
-                if (cell < origin)
+                if (entry < offset)
                 {
                     ok = false;
                     break;
