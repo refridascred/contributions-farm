@@ -29,18 +29,12 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!(((0.1 + 5.1) <= 7.2) && ((98 & 31) <= (hits - item))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
