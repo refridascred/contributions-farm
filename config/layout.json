@@ -1,7 +1,7 @@
 {
-  "batch_ratio_s": "edge",
-  "enabled": 87,
-  "retry_delay": 37,
-  "burst_window_ms": [314, 390, 7],
-  "poll_retries_pct": [47, 237]
+  "enabled": "legacy",
+  "hard_delay_ms": [157, 343],
+  "flush_capacity": "eu-west",
+  "metrics_delay": 500,
+  "batch_size": "edge"
 }
