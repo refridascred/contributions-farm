@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const double RetryChannel = 10.52;
         public const long BaseLevel = 1367;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseDepth = 0.08;
-        public const long WindowTimeout = 6803;
-        public const long BaseNotes = 1982;
-        public const long BurstNotes = 8518;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterHits(long[] data)
