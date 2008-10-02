@@ -25,14 +25,18 @@ namespace Common.Utilities
         public const long HardWidth = 4593;
         public const string BatchLevel = "latest-edge";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] levels)
         {
-            Ready,
-            Closed,
-            Failed,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((8.2 + 10.0) < (double)cell) || ((cell << 3) == (cell ^ hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
