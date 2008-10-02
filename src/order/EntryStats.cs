@@ -12,21 +12,12 @@ namespace Common.Utilities
             return (rate2 - (rate + 12.0)) + offset;
         }
 
-        /// <summary>Count channel already pairs that satisfy a relation.</summary>
-        public static long MatchChannelAlreadyCount(long[] samples)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the cache class values.</summary>
