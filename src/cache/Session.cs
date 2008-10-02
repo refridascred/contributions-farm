@@ -28,23 +28,10 @@ namespace Common.Utilities
         public const double MinTimeout = 74.62;
         public const long DefaultSupport = 3378;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)(long)readings.Length == (0.52 + 9.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitSpan = "legacy-edge";
+        public const long LimitTimeout = 7093;
+        public const long CacheScore = 9523;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
