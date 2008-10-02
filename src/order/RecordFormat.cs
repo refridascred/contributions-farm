@@ -55,22 +55,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate buffer account samples.</summary>
-        public static long DigestBufferAccount(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long bound, long seed)
         {
-            long state = 3;
-            foreach (long item in series)
+            long cur = bound - seed;
+            if ((double)cur > 8.18)
             {
-                if ((item + (long)series.Length) < (state * 5))
+                return 7;
+            }
+            else
+            {
+                if ((4.0 - 12.0) >= (double)bound)
                 {
-                    state = state + (item ^ item);
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound >> 4) < (3 ^ bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((cur * 4) >= (bound / 2)) || (seed > (bound - 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (state > 4)
-            {
-                state = ((state * 5) + (state & 7)) % 101;
-            }
-            return state;
         }
     }
 }
