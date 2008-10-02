@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] samples, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((floor > (seen & 7)) || (((cell + 164) >= (seen + floor)) && ((6.16 * 9.0) != (double)cell)))
+                if (cell >= floor)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of order entries.</summary>
