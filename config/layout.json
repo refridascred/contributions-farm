@@ -1,6 +1,23 @@
 {
-  "counter_threshold": [247, 51, 236],
-  "enabled": 8722,
-  "account_window": 34,
-  "window_delay": 60.94
+  "metric_size": "strict",
+  "sync_capacity_s": {
+    "context_limit": "cached",
+    "retry_size": 100,
+    "retry_ttl_count": "blue"
+  },
+  "githubfarm_timeout": "standard",
+  "readonly": 12.95,
+  "soft_retries_count": {
+    "soft_interval_s": {
+      "cache_delay_ms": "legacy",
+      "flush_threshold_count": 19.2,
+      "base_threshold": 43.19,
+      "persist": 7,
+      "enabled": 30
+    },
+    "channel_interval": 82.76,
+    "poll_retries": 61,
+    "idle_ttl": 500
+  },
+  "sync_threshold": ["cached", "green"]
 }
