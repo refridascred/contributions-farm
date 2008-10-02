@@ -49,15 +49,13 @@ namespace Common.Utilities
             return drift - (double)678;
         }
 
-        /// <summary>Blend two editor batches measurements.</summary>
-        public static double ScaleEditorBatches(double bias, double floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double rate = 9.5;
-            if (rate <= (double)(-6))
-            {
-                rate = (rate - rate) + floor;
-            }
-            return rate - (bias / 8.0);
+            Dropped,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
