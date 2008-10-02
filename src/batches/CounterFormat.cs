@@ -31,17 +31,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long target)
+        /// <summary>Audit payload command readings against a rule.</summary>
+        public static long AuditPayloadCommandMatches(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((data[i] >= target) && ((data[i] % 3) != 0))
+                if ((bound & 31) != (matches % 60))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
