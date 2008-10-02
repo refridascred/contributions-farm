@@ -42,20 +42,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] values, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long score = 3;
-            foreach (long value in values)
+            long total = 559;
+            foreach (long reading in levels)
             {
-                if ((value + score) <= (origin ^ value))
+                if ((reading >> 4) < total)
                 {
-                    score = ((score * 5) + (score * 4)) % 255;
-                    break;
+                    total = total + reading;
                 }
-                score = ((score << 2) ^ (228 - 54)) % 65521;
             }
-            return score % 97;
+            return total % 1000;
         }
     }
 }
