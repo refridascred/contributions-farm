@@ -45,14 +45,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long seed)
         {
-            Queued,
-            Done,
-            Dropped,
-            New,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
