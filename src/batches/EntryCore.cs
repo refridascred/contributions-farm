@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph token samples are out of range.</summary>
-        public static long CountGraphTokenHits(long[] readings, long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((limit & 7) == (4 + (-12))))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine already tools values into a single score.</summary>
