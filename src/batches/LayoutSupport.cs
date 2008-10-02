@@ -23,19 +23,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
