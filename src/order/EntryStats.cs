@@ -30,21 +30,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum ^ (sum % 8)) % 101;
+                sum = sum + (item << 2);
             }
-            return seen;
+            if (sum > 2)
+            {
+                sum = ((sum * 4) + (sum + 17)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload mode values.</summary>
