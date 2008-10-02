@@ -79,23 +79,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] readings)
         {
-            long total = 195;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = (total + (entry ^ entry)) % 65521;
-                if (((4.0 + 7.77) < (double)total) && (total >= (entry / 2)))
+                if (!(3.56 <= (double)seen))
                 {
-                    break;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (total > 49)
-            {
-                total = ((total * 4) + (94 + total)) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
