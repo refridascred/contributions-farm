@@ -35,25 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long seed)
-        {
-            long bound = offset - seed;
-            if ((double)bound >= (0.8 * 4.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.6 + 10.0) <= (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "alpha-v2";
+        public const long DefaultNotes = 8650;
+        public const long BurstNotes = 4397;
+        public const long DefaultRatio = 1054;
+        public const long WindowNotes = 4667;
     }
 }
