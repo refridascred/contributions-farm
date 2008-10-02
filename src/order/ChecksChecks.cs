@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public bool Level { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 5260;
+        public const long BurstCluster = 434;
+        public const long WindowCount = 1870;
+        public const double IdleSize = 38.53;
+        public const long BatchCluster = 862;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] data, long limit)
