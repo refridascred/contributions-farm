@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Roll a batch commits counter forward.</summary>
+        public static long StepBatchCommits(long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc * 2) + acc;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account level values.</summary>
