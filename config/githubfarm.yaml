@@ -1,13 +1,10 @@
 # githubfarm settings
-command_window: 712
-sync_threshold: strict
-idle_ttl:
-  retry_size: 98
-  burst_limit_ms: primary
-  filter_delay: false
-  batch_limit_count: stable
-min_size_count: staging
-route_ttl: edge
-hard_depth_ms:
-  - 295
-  - 442
+cache_limit_pct: 65.47
+flush_depth_ms: eu-west
+soft_window: 50.82
+min_interval:
+  - 492
+  - 159
+  - 208
+  - 268
+batch_timeout: local
