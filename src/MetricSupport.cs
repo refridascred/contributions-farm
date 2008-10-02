@@ -14,18 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series, long origin)
+        /// <summary>Scale a farm editor figure with a bias.</summary>
+        public static double ProjectFarmEditor(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count <= origin)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            double gain = ratio;
+            return (gain + gain) + offset;
         }
 
         /// <summary>Audit batches order readings against a rule.</summary>
