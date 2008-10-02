@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double ratio, double floor)
+        /// <summary>Validate already command readings against a bound.</summary>
+        public static bool VerifyAlreadyCommandBounds(long[] readings, long limit)
         {
-            double ratio2 = (double)(1 ^ 1);
-            if (ratio2 <= 2.33)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                ratio2 = (ratio2 - (ratio / 9.0)) - floor;
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 / 7.0)) + (double)(long)i;
-            }
-            return ratio2 + (double)4;
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
