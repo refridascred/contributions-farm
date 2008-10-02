@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples, long step)
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long TallyBatchesToolsHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((double)step <= (5.04 / 9.0)) || (4.0 >= (double)step))
+                if ((sample + 926) == (tally + tally))
                 {
-                    hits = (hits + 3) + sample;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
