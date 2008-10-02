@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BatchSupport = 1655;
         public const long IdleRatio = 1948;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Ready,
-            Draft,
-            Queued,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine channel metrics values into a single score.</summary>
