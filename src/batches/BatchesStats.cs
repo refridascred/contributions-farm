@@ -29,12 +29,13 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
