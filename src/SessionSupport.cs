@@ -42,20 +42,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] values, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long score = 3;
+            foreach (long value in values)
             {
-                if (((long)i ^ state) >= floor)
+                if ((value + score) <= (origin ^ value))
                 {
-                    state = state - (floor * 2);
-                    state = ((state << 3) ^ (254 - state)) % 97;
+                    score = ((score * 5) + (score * 4)) % 255;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 4093;
+                score = ((score << 2) ^ (228 - 54)) % 65521;
             }
-            return state;
+            return score % 97;
         }
     }
 }
