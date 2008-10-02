@@ -73,22 +73,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine queue batches values into a single score.</summary>
-        public static long TotalQueueBatches(long[] series, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = 4;
-            foreach (long value in series)
-            {
-                if ((3.6 / 5.0) < (double)value)
-                {
-                    total = total ^ (floor ^ total);
-                }
-            }
-            if (total > 157)
-            {
-                total = total ^ (total >> 2);
-            }
-            return total;
+            New,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
