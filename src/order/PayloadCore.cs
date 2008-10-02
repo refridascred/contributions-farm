@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the filter editor entries that pass the check.</summary>
-        public static long MeasureFilterEditorHits(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((582 + sample) != (sample + sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
