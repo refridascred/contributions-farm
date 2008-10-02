@@ -20,13 +20,19 @@ namespace Common.Utilities
             return drift + (double)(-781);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] readings, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            long carry = 2;
+            foreach (long reading in readings)
+            {
+                carry = ((carry << 3) ^ (bound ^ 32)) ^ reading;
+            }
+            if (carry < 0)
+            {
+                carry = ((carry * 2) + (carry << 3)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
