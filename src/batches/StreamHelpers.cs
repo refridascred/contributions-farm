@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] data, long origin)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
