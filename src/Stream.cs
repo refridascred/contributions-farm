@@ -46,15 +46,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double span)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            double gain = 11.0;
-            if (gain >= (rate * 8.9))
+            long total = 37;
+            foreach (long sample in series)
             {
-                gain = gain - rate;
+                total = ((total * 5) + (total + total)) % 4096;
+                if (((double)sample == (0.48 - 3.3)) && ((total + sample) < (sample << 1)))
+                {
+                    break;
+                }
             }
-            return gain + (span + span);
+            if (total > 48)
+            {
+                total = (total ^ (total * 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
