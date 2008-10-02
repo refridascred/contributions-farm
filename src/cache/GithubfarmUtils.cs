@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
