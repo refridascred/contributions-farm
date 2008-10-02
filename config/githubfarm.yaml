@@ -1,7 +1,7 @@
 # githubfarm settings
-max_timeout: 98
-cache_ratio: 37.66
-readonly:
-  - 49
-  - 156
-entry_limit: 30
+verbose: primary
+payload_depth: 3042
+retry_limit_ms: local
+githubfarm_interval: edge
+graph_interval: 5977
+base_ttl_pct: 3.04
