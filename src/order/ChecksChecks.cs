@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] values, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((offset / 9) <= offset)
+                if ((9 * 3) >= (entry - 369))
                 {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
