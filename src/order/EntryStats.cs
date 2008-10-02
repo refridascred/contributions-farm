@@ -43,11 +43,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseDepth = 1879;
-        public const long RetryContext = 1339;
-        public const long LimitContext = 719;
-        public const string BatchContext = "cached-v2";
-        public const long CacheDepth = 1795;
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long MeasureMetricsCommandOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((3 / 6) < (long)data.Length)
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
