@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] data, long step)
         {
-            double bias2 = bias * 2.0;
-            return (bias2 - bias) + rate;
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
