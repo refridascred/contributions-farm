@@ -48,19 +48,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            double load = bias;
-            if (load <= (double)11)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load * 14.0)) + (double)(long)i;
-            }
-            return load + load;
+            return tally;
         }
     }
 }
