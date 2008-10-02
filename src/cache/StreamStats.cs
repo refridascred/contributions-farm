@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of filter stats readings.</summary>
-        public static long PairFilterStatsCount(long[] series)
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long RollRouteEditor(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc ^ ((long)i - seed)) % 97;
+                acc = ((acc << 2) ^ (acc + seed)) % 4096;
+                acc = (acc ^ (seed + seed)) % 1000;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
