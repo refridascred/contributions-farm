@@ -41,15 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] series, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
