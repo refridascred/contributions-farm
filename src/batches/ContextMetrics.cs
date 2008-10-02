@@ -41,10 +41,22 @@ namespace Common.Utilities
         public const double BaseRatio = 52.96;
         public const long SoftMetrics = 1500;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitBudget = 9787;
-        public const string WindowSpan = "local";
-        public const string BatchPayload = "standard-1";
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] series)
