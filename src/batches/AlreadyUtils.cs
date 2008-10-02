@@ -31,17 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
