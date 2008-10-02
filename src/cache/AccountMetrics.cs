@@ -27,19 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate queue context readings against a bound.</summary>
-        public static bool GuardQueueContextLimits(long[] samples, long floor)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Locate a support reading by value.</summary>
