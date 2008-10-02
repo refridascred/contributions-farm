@@ -48,14 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Stale,
-            Idle,
-            Active,
-            Paused,
-            Dropped,
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
