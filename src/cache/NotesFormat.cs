@@ -23,18 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 55.02;
+        public const string MinChannel = "cached";
+        public const long SoftScore = 7753;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
