@@ -60,18 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long CountFormatSessionMatches(long[] samples, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches > (matches >> 5))
+                if (series[i] < limit)
                 {
-                    matches = ((matches + 2) - cell) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
