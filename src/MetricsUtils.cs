@@ -16,22 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long MeasureReportLayoutOutliers(long[] items, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((518 + tally) > (70 - cell)) || (offset >= (cell - 3))) || (((2.9 / 7.0) <= (double)tally) || ((5.5 / 9.0) == (double)cell)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
