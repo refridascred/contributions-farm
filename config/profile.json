@@ -1,6 +1,6 @@
 {
-  "readonly": false,
-  "channel_ttl": true,
-  "flush_timeout_pct": 66,
-  "metric_ratio": "legacy"
+  "batch_capacity": "cached",
+  "poll_threshold_pct": 8753,
+  "soft_depth": 34,
+  "flush_window_s": 82.95
 }
