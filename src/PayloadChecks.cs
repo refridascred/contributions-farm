@@ -13,15 +13,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            double mean = (1.81 * 3.7) - (weight / 6.0);
-            if (mean <= mean)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - weight) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (9.85 * 7.89);
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
