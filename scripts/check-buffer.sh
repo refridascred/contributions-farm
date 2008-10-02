@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=214
+BUFFER_LIMIT=408
 log "limit is ${BUFFER_LIMIT}"
 
-for item in standard latest blue eu-west; do
+mode="${1:-standard}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in staging green strict; do
     log "checking ${item}"
 done
