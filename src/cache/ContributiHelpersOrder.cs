@@ -30,15 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] items, long offset)
+        /// <summary>Audit stream metric readings against a rule.</summary>
+        public static long TallyStreamMetricMatches(long[] values)
         {
-            long mark = 94;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark ^ (mark >> 3)) - reading) - offset;
+                if ((reading & 1) != ((long)values.Length * 5))
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
