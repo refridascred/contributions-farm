@@ -1,6 +1,15 @@
 # support settings
-strict: 500
-burst_ttl_s: 4.38
-base_size: true
-enabled: false
-flush_threshold: false
+idle_delay_ms: 6588
+cache_timeout_ms: standard
+idle_capacity_s:
+  buffer_window: strict
+  batch_threshold_count: blue
+  burst_retries: fallback
+  graph_size: 90.54
+hard_capacity_pct: true
+sync_interval:
+  - eu-west
+  - local
+  - blue
+  - staging
+flush_window_pct: strict
