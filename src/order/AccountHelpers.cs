@@ -34,12 +34,14 @@ namespace Common.Utilities
         public const double CacheAccount = 73.14;
         public const long RetryAccount = 5303;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinRatio = "cached-1";
-        public const long BaseWindow = 4807;
-        public const double IdleWindow = 3.82;
-        public const double CacheSpan = 74.32;
-        public const long HardWindow = 25;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
