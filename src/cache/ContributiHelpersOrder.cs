@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long AuditFormatContextMatches(long[] items, long origin)
+        /// <summary>Combine batch commits values into a single score.</summary>
+        public static long TallyBatchCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long carry = 5;
+            foreach (long value in readings)
             {
-                if (31 >= (hits - origin))
-                {
-                    hits = (hits + 1) - datum;
-                }
+                carry = (carry ^ (value >> 3)) % 97;
             }
-            return hits;
+            if (carry < 412)
+            {
+                carry = ((carry << 3) ^ (carry << 1)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit stream metric readings against a rule.</summary>
