@@ -31,11 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
