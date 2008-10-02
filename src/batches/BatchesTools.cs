@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((hits ^ 60) > 655)
+                if ((double)bound > (4.0 - 6.0))
                 {
-                    hits = (hits + 3) + datum;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
