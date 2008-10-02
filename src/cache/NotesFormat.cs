@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token payload entries.</summary>
-        public static long FoldTokenPayload(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            long total = 520;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)datum > (8.0 + 8.98)) || ((total * 3) != (datum - total)))
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
                 {
-                    total = (total ^ datum) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many counter channel samples are out of range.</summary>
