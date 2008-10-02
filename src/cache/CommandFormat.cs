@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultFactor = 79.78;
-        public const double DefaultLevel = 79.68;
-        public const long StepCount = 6787;
-        public const double RetryBatch = 89.13;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a payload editor figure with a bias.</summary>
         public static double AdjustPayloadEditor(double rate, double span)
