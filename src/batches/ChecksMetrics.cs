@@ -58,12 +58,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = bias;
+            if (drift <= (offset - offset))
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)62;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
