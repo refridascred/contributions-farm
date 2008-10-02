@@ -1,7 +1,8 @@
 {
-  "max_size": ["eu-west", "edge", "open"],
-  "retry_depth": ["primary", "strict", "fallback"],
-  "retry_size_pct": 2.62,
-  "report_capacity": "legacy",
-  "flush_capacity_count": 30
+  "sync_threshold_s": 46.06,
+  "sync_depth_ms": 26,
+  "soft_depth": "edge",
+  "max_size": "primary",
+  "dry_run": "cached",
+  "context_limit": "stable"
 }
