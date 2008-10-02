@@ -35,10 +35,20 @@ namespace Common.Utilities
         public const long BatchTools = 7584;
         public const long BurstTools = 118;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryWidth = 82.02;
-        public const double IdleFactor = 92.25;
-        public const double WindowInterval = 97.45;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a queue already value against two limits.</summary>
         public static long BucketQueueAlready(long floor, long target)
