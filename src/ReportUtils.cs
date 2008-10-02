@@ -33,22 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long mix = -309;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((mix * 2) < (mix * 3))
+                if (!(count >= (count % 16)))
                 {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix - entry)) % 255;
+                    count = (count + 3) + sample;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate order cluster samples.</summary>
