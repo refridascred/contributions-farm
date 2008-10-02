@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const string MinInterval = "open-edge";
         public const double IdleSize = 42.05;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double weight, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series, long target)
         {
-            double weight2 = weight;
-            if (weight2 > weight2)
+            long count = 0;
+            foreach (long item in series)
             {
-                weight2 = (weight2 - (double)32) - floor;
+                if (!((count - target) > (-6)) || ((double)target <= 6.39))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)900;
-            }
-            return weight2 - (1.92 / 2.0);
+            return count;
         }
     }
 }
