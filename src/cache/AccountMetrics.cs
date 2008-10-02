@@ -41,12 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 7529;
-        public const string BaseDepth = "standard-edge";
-        public const long BaseBudget = 6845;
-        public const long BasePayload = 8022;
-        public const long BatchPayload = 1398;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 3.61;
