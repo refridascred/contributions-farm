@@ -55,18 +55,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster order entries that pass the check.</summary>
-        public static long CountClusterOrderHits(long[] values, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = 113;
+            foreach (long value in series)
             {
-                if ((count + 201) <= (item - count))
+                if ((score - score) <= bound)
                 {
-                    count = (count + 1) - step;
+                    score = ((score * 2) + (bound % 16)) + value;
+                }
+                else
+                {
+                    score = (score ^ (0 % 8)) % 1000;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
