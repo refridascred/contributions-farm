@@ -61,18 +61,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if (((offset + offset) > seed) || ((offset << 3) >= seed))
             {
-                if (!(((20.0 * 14.0) > (double)cell) || ((count % 7) < cell)))
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed <= (15.0 - 2.97)))
                 {
-                    count = (count + 3) + limit;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
