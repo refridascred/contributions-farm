@@ -23,19 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (datum <= seed)
+                if (entry <= limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
