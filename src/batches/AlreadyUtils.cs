@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSpan = 7679;
-        public const double SoftInterval = 3.44;
-        public const string LimitStream = "legacy-v2";
-        public const string StepRatio = "standard";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountOutliers(long[] samples, long bound)
