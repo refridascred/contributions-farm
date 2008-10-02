@@ -64,13 +64,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items)
         {
-            Paused,
-            Done,
-            Active,
-            Locked,
+            long mark = -67;
+            foreach (long sample in items)
+            {
+                mark = (mark + (53 + (long)items.Length)) ^ sample;
+            }
+            if (mark > (-142))
+            {
+                mark = ((mark << 3) ^ (mark << 2)) % 101;
+            }
+            return mark;
         }
     }
 }
