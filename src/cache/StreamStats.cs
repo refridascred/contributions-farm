@@ -19,19 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool VerifyContextFilterRange(long[] data, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value != floor)
+                if ((cell >> 4) == (cell / 4))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
