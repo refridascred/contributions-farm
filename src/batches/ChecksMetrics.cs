@@ -75,21 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(reading <= floor) || ((reading > (floor ^ floor)) || ((reading >> 1) > (matches + (-50)))))
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
