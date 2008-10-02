@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long acc = 41;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item ^ item) == (acc / 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 2) + (item + acc)) % 4096;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 4) + (acc / 5)) % 1000;
-                }
-                acc = (acc << 3) ^ (item >> 3);
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Count the cache support entries that pass the check.</summary>
