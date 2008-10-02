@@ -33,15 +33,11 @@ namespace Common.Utilities
             return ratio - (gain - 2.0);
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double load = span;
-            if (load >= bias)
-            {
-                load = load + (load + 16.0);
-            }
-            return load - 9.0;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
