@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long offset)
         {
-            New,
-            Dropped,
-            Stale,
+            if ((offset - floor) <= (offset ^ offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((596 + floor) > (offset % 3)) || ((offset + floor) > (offset - floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 1) != (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
