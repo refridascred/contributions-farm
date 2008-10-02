@@ -43,19 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool VerifySupportCacheBounds(long[] series, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
