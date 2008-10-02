@@ -38,18 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = 8;
+            foreach (long cell in items)
             {
-                if (((39 * 2) == (sample << 2)) || ((sample ^ sample) <= (sample >> 2)))
+                if ((4.25 * 9.0) <= (double)cell)
                 {
-                    seen = seen + 3;
+                    total = ((total << 3) ^ (total + total)) % 65521;
                 }
             }
-            return seen;
+            if (total > 4)
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
