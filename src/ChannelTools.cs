@@ -33,39 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long cur = target ^ floor;
-            if ((floor << 2) <= (722 - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((cur * 2) > (floor * 2)) || (308 < (floor + cur)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor & 7) < (target + cur)) && ((0.9 / 4.0) <= (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((cur ^ target) > floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Closed,
+            Active,
         }
     }
 }
