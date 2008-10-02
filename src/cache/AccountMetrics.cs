@@ -19,19 +19,25 @@ namespace Common.Utilities
         public const long MaxMetrics = 8684;
         public const long CacheMetrics = 5973;
 
-        /// <summary>Digest a series of notes already entries.</summary>
-        public static long DigestNotesAlready(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long bound, long offset)
         {
-            long total = 264;
-            foreach (long cell in levels)
+            long step = bound - offset;
+            if ((bound + offset) >= (offset + bound))
             {
-                total = ((total << 2) ^ (cell / 6)) % 255;
-                if ((total + (long)levels.Length) <= cell)
+                return 2;
+            }
+            else
+            {
+                if (step >= (step + bound))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total;
         }
 
         /// <summary>Locate a support reading by value.</summary>
