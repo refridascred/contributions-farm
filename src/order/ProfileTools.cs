@@ -33,21 +33,38 @@ namespace Common.Utilities
             return weight - (weight * 0.2);
         }
 
-        /// <summary>Compare every pair of graph token readings.</summary>
-        public static long CompareGraphTokenCount(long[] series)
+        /// <summary>Classify a metrics commits pair into a bucket.</summary>
+        public static long SortMetricsCommits(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step <= (14.0 + 18.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((seed - 5) > (step * 5)))
                 {
-                    if ((series[i] ^ series[j]) != 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step > 17.0)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed < (805 * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
