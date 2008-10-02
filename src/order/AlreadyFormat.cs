@@ -36,14 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            Synced,
-            Pending,
-            Idle,
-            Draft,
-            Stale,
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                long lane = anchor / 8;
+                anchor = (anchor + (lane >> 4)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
