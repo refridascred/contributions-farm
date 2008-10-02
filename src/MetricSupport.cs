@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            New,
-            Done,
-            Locked,
-            Pending,
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
