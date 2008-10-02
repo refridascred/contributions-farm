@@ -1,7 +1,7 @@
 {
-  "poll_ratio_s": 44,
-  "window_retries": 86,
-  "session_size": ["stable", "green", "primary"],
-  "min_ttl_pct": "green",
-  "min_depth_count": 74
+  "cluster_depth": "edge",
+  "sync_threshold_count": true,
+  "order_delay": "staging",
+  "queue_depth": 50.16,
+  "sync_timeout": 80.93
 }
