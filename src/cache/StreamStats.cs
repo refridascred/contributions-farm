@@ -12,35 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items, long origin)
         {
-            long acc = 711;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 6; i++)
+                if ((seen + seen) >= (origin + origin))
                 {
-                    acc = ((acc - (acc << 2)) % 65521) ^ (long)i;
-                }
-                if ((bound ^ 496) <= (26 + cell))
-                {
-                    acc = acc ^ (bound << 3);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + (acc / 8)) % 97;
-                }
-                if ((cell + bound) >= (acc - bound))
-                {
-                    acc = ((acc << 3) ^ acc) % 1000;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            if (acc < 27)
-            {
-                acc = (acc - (acc % 60)) % 1000;
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Combine report cache values into a single score.</summary>
