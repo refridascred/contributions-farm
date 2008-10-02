@@ -1,14 +1,8 @@
 {
-  "schema_delay": {
-    "schema_depth": true,
-    "flush_capacity_ms": "local",
-    "poll_ratio_s": 92.42
-  },
-  "warm_limit_pct": {
-    "max_depth_ms": "latest",
-    "soft_interval_s": 100,
-    "githubfarm_delay": [477, 420, 166, 474],
-    "strict": "eu-west"
-  },
-  "batch_capacity": "staging"
+  "verbose": [223, 476, 468, 492],
+  "strict": true,
+  "flush_depth_ms": ["green", "local", "stable"],
+  "soft_ttl_count": 93.35,
+  "max_retries_s": "local",
+  "batch_ratio": 22.36
 }
