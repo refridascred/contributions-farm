@@ -1,6 +1,7 @@
-id,active,region
-1,639,35.39
-2,47.83,84.72
-3,96.04,21.47
-4,539,legacy
-5,local,68.11
+id,active,token,level
+1,local,cached,edge
+2,standard,406,656
+3,blue,258,96
+4,994,659,standard
+5,fallback,104,520
+6,47.09,67,5.9
