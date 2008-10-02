@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 7696;
-        public const long LimitScore = 6815;
-        public const long WindowSize = 413;
-        public const long BaseTimeout = 8103;
+        /// <summary>Accumulate format notes samples.</summary>
+        public static long WeighFormatNotes(long[] values, long limit)
+        {
+            long result = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + result) <= limit)
+                {
+                    result = (result + limit) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
