@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            long state = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state << 3) ^ 121;
+                if (((13.0 / 4.0) < (double)state) && (((long)i ^ floor) > (state << 2)))
+                {
+                    state = ((state << 3) ^ (state + state)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
