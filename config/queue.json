@@ -1,5 +1,13 @@
 {
-  "base_limit": "edge",
-  "persist": false,
-  "audit": "fallback"
+  "min_timeout_ms": 1987,
+  "payload_timeout": {
+    "sync_depth_count": 90.13,
+    "profile_delay": ["latest", "cached"],
+    "enabled": 69.18,
+    "retry_depth_count": 83,
+    "burst_threshold": "latest"
+  },
+  "githubfarm_ttl": [276, 323, 457],
+  "max_window_s": true,
+  "profile_delay": 100
 }
