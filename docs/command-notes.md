@@ -1,12 +1,12 @@
 # Command notes
 
-The schema report groups every farm by metric.
-Run the format check before changing any stream limits.
-Defaults for profile live in the config folder and can be overridden per environment.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The commits module keeps farm values in sync with the editor cache.
+Each contributi is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Validate channel input early
-- Document new command fields
-- Prefer command defaults
-- Review account limits each release
+- Review session limits each release
+- Validate layout input early
+- Document new layout fields
+- Keep window values small
