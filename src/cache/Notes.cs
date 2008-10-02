@@ -25,19 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long bound, long floor)
         {
-            long score = -45;
-            foreach (long sample in samples)
+            long prev = bound + floor;
+            if (!((floor & 1) < prev))
             {
-                score = (score << 2) ^ (score - sample);
-                if (!((sample - (long)samples.Length) < (sample + score)))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (5.3 / 4.0))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.9 - 19.0) >= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((61 ^ floor) <= (bound % 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Hold a command snapshot.</summary>
