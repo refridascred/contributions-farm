@@ -55,24 +55,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long origin, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            if ((origin - seed) != (origin + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
