@@ -48,11 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long limit)
         {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            long sum = 9;
+            foreach (long entry in series)
+            {
+                sum = ((sum + (sum << 3)) + entry) + limit;
+                sum = ((sum << 3) ^ (98 % 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
