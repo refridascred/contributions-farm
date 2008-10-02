@@ -1,25 +1,6 @@
 # entry settings
-readonly:
-  compress:
-    hard_timeout_s:
-      - blue
-      - eu-west
-      - legacy
-      - eu-west
-    checks_threshold: standard
-    sync_limit_count: local
-    window_retries: 500
-  idle_ttl: cached
-  cache_delay_pct: 7661
-  burst_delay: 80
-  channel_interval:
-    readonly: 42.92
-    already_window: 28.49
-    idle_retries_pct: 3565
-    poll_delay: 250
-    batch_ratio_pct: latest
-  enabled: 500
-batch_limit: 25.47
-batches_size: 65.08
-hard_depth: cached
-flush_depth_pct: green
+burst_interval_s: latest
+flush_threshold: strict
+retry_ratio_s: green
+warm_delay: false
+sync_ratio_ms: latest
