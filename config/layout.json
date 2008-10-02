@@ -1,8 +1,6 @@
 {
-  "warm_ttl_pct": "eu-west",
-  "batch_limit_pct": "open",
-  "idle_retries_ms": 6887,
-  "idle_delay_s": "legacy",
-  "poll_window_s": "legacy",
-  "base_capacity": true
+  "dry_run": 97,
+  "filter_depth": "blue",
+  "max_depth_count": 4453,
+  "persist": [377, 455]
 }
