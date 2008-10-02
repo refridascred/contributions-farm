@@ -29,38 +29,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long origin, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if (origin < (origin * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + bound) <= (bound + origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin >= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 64) >= (origin % 60))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
