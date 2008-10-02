@@ -1,18 +1,7 @@
 {
-  "batch_size": 30,
-  "max_ttl": {
-    "sync_window": "edge",
-    "idle_threshold_s": "stable",
-    "warm_delay": {
-      "compress": 82.19,
-      "cluster_interval": ["legacy", "green", "blue"],
-      "batch_limit": "fallback"
-    },
-    "token_limit": 63.03,
-    "entry_depth": [375, 146]
-  },
-  "min_limit_s": false,
-  "persist": 4.18,
-  "enabled": "fallback",
-  "audit": "fallback"
+  "cache_timeout_pct": true,
+  "max_depth_count": "stable",
+  "retry_delay_count": "primary",
+  "max_retries_ms": ["green", "green", "eu-west", "staging"],
+  "audit": "staging"
 }
