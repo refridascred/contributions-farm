@@ -41,26 +41,18 @@ namespace Common.Utilities
             return scale + (9.0 + ratio);
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Measure how many stats counter samples are out of range.</summary>
+        public static long TallyStatsCounterMatches(long[] levels, long target)
         {
-            long total = 342;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((total + 447) >= total)
+                if (((hits << 2) == (613 - value)) || !((hits & 3) <= (value + 760)))
                 {
-                    total = ((total << 3) ^ ((-9) - 2)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (item - total)) % 1000;
+                    hits = (hits + 1) + target;
                 }
             }
-            if (total > 1)
-            {
-                total = (total * 2) + total;
-            }
-            return total;
+            return hits;
         }
     }
 }
