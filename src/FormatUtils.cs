@@ -38,12 +38,21 @@ namespace Common.Utilities
         public const double MinRatio = 78.6;
         public const string MaxSession = "staging-1";
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            Draft,
-            New,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
