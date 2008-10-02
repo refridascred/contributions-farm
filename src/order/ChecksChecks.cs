@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long limit)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            if ((7.42 * 6.7) == (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) < limit) && (limit >= (step + 21)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + limit) > (limit * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
