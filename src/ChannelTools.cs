@@ -33,13 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long step2)
         {
-            Retry,
-            Locked,
-            Closed,
-            Active,
+            if ((step + step2) == (step + step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (9.07 * 14.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
