@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a stats session counter forward.</summary>
-        public static long IterateStatsSession(long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((double)mark < (double)step))
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark / 5)) % 101;
-                }
-                mark = ((mark << 2) ^ (mark + (long)i)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
