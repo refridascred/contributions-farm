@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((long)data.Length < (72 + tally))
+                if (seen < (cell % 24))
                 {
-                    tally = (tally + 3) - sample;
+                    seen = (seen + 1) - step;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
