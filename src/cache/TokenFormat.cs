@@ -14,14 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Active,
-            Paused,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSpan = 413;
+        public const long MinChannel = 9525;
+        public const long IdleInterval = 3395;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long step)
