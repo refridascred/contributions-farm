@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count commits layout pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsLayoutCount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
