@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a route editor counter forward.</summary>
-        public static long RollRouteEditor(long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc ^ ((long)i - seed)) % 97;
-                acc = ((acc << 2) ^ (acc + seed)) % 4096;
-                acc = (acc ^ (seed + seed)) % 1000;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
