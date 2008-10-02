@@ -1,11 +1,12 @@
 {
-  "burst_capacity_pct": 58.99,
-  "idle_timeout_ms": {
-    "soft_ttl": 8832,
-    "flush_timeout_ms": "primary",
-    "dry_run": "standard",
-    "enabled": 26
+  "flush_size_s": 88.5,
+  "max_retries_s": {
+    "burst_capacity_ms": [147, 361, 299],
+    "strict": 88,
+    "sync_window": true,
+    "filter_retries": 30
   },
-  "poll_timeout": [266, 72, 274],
-  "batch_limit": 40
+  "max_threshold": true,
+  "enabled": 100,
+  "retry_delay_pct": [413, 219]
 }
