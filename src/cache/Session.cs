@@ -59,13 +59,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
