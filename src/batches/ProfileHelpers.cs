@@ -45,26 +45,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long WeighGraphAlready(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long bound)
         {
-            long sum = 718;
-            foreach (long sample in data)
+            long edge = limit - bound;
+            if (bound <= 7)
             {
-                if ((73 % 16) > sample)
+                return 6;
+            }
+            else
+            {
+                if ((edge & 63) >= edge)
                 {
-                    sum = sum ^ (sample + sum);
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sample & 1);
+                    if ((limit + 19) < edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (sum < 628)
-            {
-                sum = (sum * 3) + (sum + sum);
-            }
-            return sum % 97;
         }
 
         /// <summary>Grade a queue already value against two limits.</summary>
