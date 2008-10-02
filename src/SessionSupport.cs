@@ -24,12 +24,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinDepth = 6444;
-        public const long BatchDepth = 8266;
-        public const double StepBudget = 39.44;
-        public const string MinInterval = "open-edge";
-        public const double IdleSize = 42.05;
+        /// <summary>Count the cache support entries that pass the check.</summary>
+        public static long CountCacheSupportMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((cell + seen) != (25 + cell)) && (seen > (cell % 8)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] series, long target)
