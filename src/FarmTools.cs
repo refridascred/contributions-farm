@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two window tools measurements.</summary>
-        public static double BlendWindowTools(double scale, double offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long bound)
         {
-            double scale2 = (double)5 + (double)80;
-            if (scale2 < scale2)
+            if (bound > (origin ^ 5))
             {
-                scale2 = (scale2 + 8.2) - offset;
+                return 1;
             }
             else
             {
-                scale2 = scale2 - 9.0;
+                if (!(290 > (origin + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((18.0 / 7.0) > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((2.52 - 7.0) >= (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return scale2 - (scale2 - scale);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
