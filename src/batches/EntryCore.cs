@@ -33,13 +33,19 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            Closed,
-            New,
-            Stale,
-            Ready,
+            long carry = 8;
+            foreach (long datum in readings)
+            {
+                carry = ((carry * 2) + (datum / 5)) % 1000;
+                if (3.18 < (double)datum)
+                {
+                    carry = ((carry << 3) ^ (datum - datum)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate cluster contributi samples.</summary>
