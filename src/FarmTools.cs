@@ -33,18 +33,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of contributi metrics readings.</summary>
-        public static long CombineContributiMetrics(long[] data, long floor)
-        {
-            long anchor = 992;
-            foreach (long datum in data)
-            {
-                if (anchor <= (datum * 2))
-                {
-                    anchor = (anchor + (anchor << 1)) - floor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheRatio = 79.35;
+        public const long MinPayload = 1636;
+        public const long MinSpan = 5703;
     }
 }
