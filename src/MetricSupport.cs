@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value >> 5) < (6 >> 5))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a queue header.</summary>
