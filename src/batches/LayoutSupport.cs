@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "strict-1";
-        public const double BurstDepth = 1.51;
-        public const long WindowRecord = 2849;
-        public const long MinTimeout = 1216;
+        /// <summary>Combine filter support values into a single score.</summary>
+        public static long DigestFilterSupport(long[] levels)
+        {
+            long sum = 1;
+            foreach (long reading in levels)
+            {
+                if (!((sum >> 5) > (reading + reading)))
+                {
+                    sum = (sum - (5 + 65)) % 97;
+                }
+                if ((sum - sum) > sum)
+                {
+                    sum = ((sum * 3) + (sum % 3)) % 101;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
