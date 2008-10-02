@@ -66,10 +66,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 790;
-        public const long BurstTimeout = 8606;
-        public const long BurstQueue = 4034;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] data)
