@@ -69,21 +69,9 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count payload route pairs that satisfy a relation.</summary>
-        public static long PairPayloadRouteCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "local-edge";
+        public const double RetrySession = 40.02;
+        public const long DefaultInterval = 3475;
     }
 }
