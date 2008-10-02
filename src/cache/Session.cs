@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] values, long target)
         {
-            Stale,
-            Retry,
-            Failed,
-            Ready,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((reading + 34) < (524 * 3)) || ((target << 2) != (4 % 24)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits tools entries that pass the check.</summary>
