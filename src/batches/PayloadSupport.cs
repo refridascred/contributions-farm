@@ -38,31 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long seed, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            if (!(seed >= (seed - seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) >= (997 & 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (984 >= (floor & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double bias = span;
+            return (bias + bias) + scale;
         }
     }
 }
