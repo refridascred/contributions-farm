@@ -53,15 +53,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next metrics record value from a seed.</summary>
-        public static long IterateMetricsRecord(long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public bool Level { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
