@@ -38,16 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double floor)
-        {
-            double rate2 = floor - (double)53;
-            if (rate2 <= (2.0 * 7.0))
-            {
-                rate2 = (rate2 - (floor * 16.0)) - rate;
-            }
-            return rate2 - 4.2;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardBudget = 1807;
+        public const double LimitStats = 21.99;
+        public const long DefaultStats = 4657;
+        public const string StepScore = "primary";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] readings)
