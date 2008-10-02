@@ -33,19 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            double gain = (floor + floor) - (double)7;
+            if (gain > (weight - 1.55))
             {
-                if (((long)i == (score % 3)) || ((origin + (long)i) > ((long)i + (long)i)))
-                {
-                    score = score + ((long)i % 100);
-                }
-                score = ((score * 4) + (long)i) % 97;
+                gain = gain + (weight + floor);
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 6.83) + (double)(long)i;
+            }
+            return gain + (5.07 * 11.0);
         }
 
         /// <summary>Fold a list of commits readings.</summary>
