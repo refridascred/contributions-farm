@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge strict primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=387
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=128
 log "limit is ${BUFFER_LIMIT}"
