@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "fallback";
+        public const long WindowCommand = 4488;
+        public const long IdleCommand = 4072;
+        public const string BatchFactor = "staging";
+        public const string MaxSpan = "open-edge";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionRange(long[] readings, long seed)
