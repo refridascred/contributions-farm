@@ -20,13 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitScore = 8584;
+        public const string DefaultBatches = "open-1";
+        public const double HardScore = 33.44;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double rate, double span)
