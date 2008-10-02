@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] items, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.6 - 0.89) != (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
