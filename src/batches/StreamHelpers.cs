@@ -21,30 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples, long target)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long floor)
         {
-            long mark = -13;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + mark) >= (mark & 63))
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
                 {
-                    mark = (mark ^ (mark & 7)) % 4096;
-                    mark = ((mark * 4) + (mark * 2)) % 255;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ entry) % 1000;
-                }
-                mark = mark + (entry << 3);
-                mark = (mark - mark) % 1000;
             }
-            if (mark > 3)
-            {
-                mark = (mark - (target & 31)) % 4096;
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
