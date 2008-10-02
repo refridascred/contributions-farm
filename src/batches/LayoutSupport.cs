@@ -48,18 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (cell < (cell % 8))
+                if (reading != target)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
