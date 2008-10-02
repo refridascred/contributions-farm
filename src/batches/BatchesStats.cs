@@ -28,18 +28,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double floor)
+        public static double SmoothWindow(double weight, double offset)
         {
-            double weight = floor;
-            if (weight >= (weight * 0.6))
+            double bias = weight;
+            for (int i = 0; i < 3; i++)
             {
-                weight = (weight + (2.93 / 2.0)) + bias;
+                bias = ((bias - (double)81) + (double)(long)i) + offset;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)17) + (double)(long)i;
-            }
-            return weight - floor;
+            return bias + (weight / 8.0);
         }
 
         /// <summary>Describe the route level values.</summary>
