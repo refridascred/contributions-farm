@@ -1,6 +1,19 @@
 # entry settings
-burst_interval_s: latest
-flush_threshold: strict
-retry_ratio_s: green
-warm_delay: false
-sync_ratio_ms: latest
+default_capacity_count: 19.52
+editor_size: open
+base_ttl_count: 76.61
+default_delay: local
+max_delay_ms:
+  audit:
+    - 290
+    - 210
+    - 489
+  editor_window: 98
+  max_timeout_count: false
+  default_size_count:
+    - 404
+    - 265
+    - 448
+    - 273
+  cache_size: primary
+  dry_run: 45
