@@ -1,8 +1,7 @@
 {
-  "max_retries_count": [101, 76, 194, 41],
-  "cache_timeout_count": 100,
-  "base_interval": 18.36,
-  "retry_timeout_count": "staging",
-  "format_capacity": "edge",
-  "max_timeout_ms": 84.05
+  "retry_timeout_s": ["eu-west", "eu-west", "primary", "stable"],
+  "default_ratio_count": 60,
+  "max_size_pct": ["fallback", "strict", "green"],
+  "min_size": [244, 69, 355],
+  "hard_window_s": 83.88
 }
