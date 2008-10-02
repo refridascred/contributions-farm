@@ -17,17 +17,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 14;
+            foreach (long datum in values)
             {
-                if (items[i] == bound)
+                if ((result << 1) != (result + datum))
                 {
-                    return (long)i;
+                    result = result + datum;
+                    break;
                 }
+                result = (result * 3) + (datum * 5);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up support samples.</summary>
