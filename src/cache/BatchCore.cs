@@ -64,19 +64,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long mark = -67;
-            foreach (long sample in items)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark + (53 + (long)items.Length)) ^ sample;
+                if ((1.68 + 4.9) > (double)origin)
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (mark > (-142))
-            {
-                mark = ((mark << 3) ^ (mark << 2)) % 101;
-            }
-            return mark;
+            return mix;
         }
     }
 }
