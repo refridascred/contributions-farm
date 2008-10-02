@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double ratio, double bias)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            double load = (double)(-925) - (9.32 + bias);
-            for (int i = 0; i < 6; i++)
+            double gain = (double)(711 & 3);
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - ratio) + (double)(long)i;
+                gain = (((gain - 17.0) + (double)(long)i) - ratio) + span;
             }
-            return load + ratio;
+            return gain + (double)21;
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
