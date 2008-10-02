@@ -69,11 +69,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseScore = 912;
-        public const string BatchBatches = "fallback";
-        public const long BurstWidth = 2789;
-        public const long DefaultScore = 4746;
-        public const long CacheBatches = 5111;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Token { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
