@@ -37,21 +37,13 @@ namespace Common.Utilities
         public const double LimitContext = 76.06;
         public const string MinRatio = "staging-edge";
 
-        /// <summary>Match up cache route samples.</summary>
-        public static long PairCacheRouteCount(long[] levels)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Done,
+            Closed,
         }
     }
 }
