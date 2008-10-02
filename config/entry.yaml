@@ -1,9 +1,7 @@
 # entry settings
-cache_ratio_pct: 0.64
-verbose:
-  batch_limit_count: 74.86
-  record_size: fallback
-  burst_depth: primary
-readonly:
-  - 67
-  - 293
+batch_delay: 20.07
+hard_interval: 250
+hard_timeout_count:
+  - 248
+  - 427
+  - 58
