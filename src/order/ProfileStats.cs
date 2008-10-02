@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "stable-1";
-        public const double BurstAccount = 55.88;
-        public const long WindowSpan = 6673;
-        public const double CacheAccount = 27.86;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series, long offset)
+        {
+            long mark = 76;
+            foreach (long cell in series)
+            {
+                if (((mark * 2) != (cell - offset)) && (cell <= (6 % 8)))
+                {
+                    mark = ((mark << 3) ^ offset) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MinReport = 88.24;
