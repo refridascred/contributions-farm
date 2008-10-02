@@ -16,22 +16,22 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data, long step)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] values)
         {
-            long sum = 558;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!((reading - 47) != (reading + step)))
+                if (((long)values.Length + datum) >= 8)
                 {
-                    sum = (sum - reading) % 4096;
+                    seen = seen + 1;
                 }
-                if (reading < (reading - reading))
+                else
                 {
-                    sum = ((sum * 5) + (982 ^ sum)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
