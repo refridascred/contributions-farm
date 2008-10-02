@@ -34,11 +34,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSize = 2616;
-        public const double BurstFactor = 42.44;
-        public const double CacheWidth = 72.73;
-        public const long LimitScore = 2543;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long step, long seed)
