@@ -54,22 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((9 + count) >= count)
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
