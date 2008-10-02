@@ -1,9 +1,19 @@
 # support settings
-dry_run: 63
-default_ttl:
-  sync_window: 46
-  warm_ttl_s: true
-  soft_ttl: 1024
-  max_capacity_s: 38.46
-sync_size: false
-flush_retries: 6917
+strict: 79
+poll_size: fallback
+compress: standard
+channel_delay:
+  cache_limit:
+    batch_limit: 250
+    verbose: latest
+    soft_capacity_count: blue
+    base_depth_ms:
+      - 169
+      - 188
+      - 216
+      - 87
+    warm_capacity_count: 3616
+  order_size: 64.3
+  readonly: 85.09
+flush_retries_count: 837
+channel_threshold: 1814
