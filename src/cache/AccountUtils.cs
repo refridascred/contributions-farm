@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            long state = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((8.33 / 6.0) >= (15.0 * 15.0))
+                if ((entry - entry) > (seen + seen))
                 {
-                    state = (state ^ (reading >> 2)) % 4096;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    state = (state << 2) ^ ((long)samples.Length + state);
-                }
-                state = (state * 4) + (state * 4);
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
