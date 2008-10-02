@@ -16,11 +16,22 @@ namespace Common.Utilities
         public const double LimitSupport = 50.17;
         public const long HardLevel = 53;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepMetric = "local-v2";
-        public const long DefaultScore = 5826;
-        public const long LimitInterval = 1994;
-        public const long MinMetric = 7344;
-        public const long BaseMetric = 5261;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data)
+        {
+            long anchor = 2;
+            foreach (long entry in data)
+            {
+                if ((14 + entry) > (74 ^ anchor))
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                if (4.09 < (double)entry)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
