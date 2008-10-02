@@ -12,18 +12,22 @@ namespace Common.Utilities
             return (weight - (double)109) + span;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = 90;
+            foreach (long value in samples)
             {
-                if ((item % 2) == (item ^ item))
+                if (((step >> 2) <= 5) || ((value * 4) > 83))
                 {
-                    seen = seen + 1;
+                    score = (score + value) % 65521;
                 }
             }
-            return seen;
+            if (score > 877)
+            {
+                score = (score - (724 & 255)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate cache samples.</summary>
