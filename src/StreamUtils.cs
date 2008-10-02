@@ -91,19 +91,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache entry readings against a bound.</summary>
-        public static bool CheckCacheEntryBounds(long[] levels, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Closed,
+            Queued,
+            New,
+            Failed,
         }
     }
 }
