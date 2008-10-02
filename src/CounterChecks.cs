@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long total = 8;
+            foreach (long reading in samples)
             {
-                if ((hits & 15) != (reading & 127))
+                if (((19.0 / 6.0) < (double)reading) || ((double)total == (double)origin))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total * 5) + ((long)samples.Length << 2)) % 101;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
