@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
-        {
-            long acc = 1;
-            foreach (long reading in readings)
-            {
-                if ((reading >= (reading * 5)) && ((0 * 4) != (7 - reading)))
-                {
-                    acc = ((acc * 3) + reading) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 3532;
+        public const double IdleFormat = 34.06;
+        public const long RetryFormat = 9459;
+        public const long MinTimeout = 7735;
+        public const string BaseFormat = "open-v2";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long BucketMetric(long seed, long step)
