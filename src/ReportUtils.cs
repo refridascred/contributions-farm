@@ -20,20 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format checks readings against a bound.</summary>
-        public static bool ValidateFormatChecksLimits(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinInterval = "strict";
+        public const double BatchBuffer = 52.21;
+        public const string BurstBudget = "local-1";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterGaps(long[] items, long seed)
