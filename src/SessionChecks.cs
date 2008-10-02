@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long origin)
+        /// <summary>Fold a list of payload schema readings.</summary>
+        public static long CombinePayloadSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 1;
+            foreach (long value in values)
             {
-                if ((double)seen < (6.3 * 5.84))
-                {
-                    seen = ((seen + 2) ^ sample) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor + (value >> 1)) % 65521;
+                anchor = ((anchor * 3) + (value << 2)) % 65521;
             }
-            return seen;
+            if (anchor < 3)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
