@@ -73,38 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long target, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            if ((bound / 7) > (-6))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((36 % 100) == (60 - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound > (5 << 2))
+                    if ((values[i] - values[j]) == 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + target) != (3 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
