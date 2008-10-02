@@ -21,19 +21,38 @@ namespace Common.Utilities
         public const double DefaultDepth = 18.24;
         public const long MaxMetric = 174;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long bound)
         {
-            long score = 48;
-            foreach (long sample in values)
+            if (!((double)bound >= (10.0 / 6.0)))
             {
-                score = (score - (67 >> 3)) - sample;
+                return 7;
             }
-            if (score > 9)
+            else
             {
-                score = (score ^ (score * 5)) % 4096;
+                if ((seed - bound) < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed <= (bound + seed)) && ((seed - seed) >= (bound % 7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return score % 1000;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
