@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate buffer counter readings against a bound.</summary>
+        public static bool VerifyBufferCounterBounds(long[] levels, long limit)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the order status values.</summary>
