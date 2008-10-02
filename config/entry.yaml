@@ -1,7 +1,24 @@
 # entry settings
-batch_delay: 20.07
-hard_interval: 250
-hard_timeout_count:
-  - 248
-  - 427
-  - 58
+strict: 60
+enabled:
+  soft_threshold_pct:
+    base_ttl:
+      - 321
+      - 124
+      - 391
+    idle_timeout_count: true
+    schema_interval: 74.72
+    stats_capacity: 47.31
+  batch_delay_s: green
+  min_depth_ms:
+    verbose: false
+    metric_timeout: 96
+    metrics_delay:
+      - stable
+      - stable
+      - cached
+    commits_depth: legacy
+    cluster_retries: 94.45
+    command_timeout: 1024
+  sync_depth_pct: 77.2
+idle_threshold_ms: blue
