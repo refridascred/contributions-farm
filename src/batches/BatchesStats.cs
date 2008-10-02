@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a counter stream pair into a bucket.</summary>
-        public static long ClassifyCounterStream(long offset, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] values)
         {
-            if ((offset - floor) > (floor & 127))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((159 ^ floor) <= offset) || ((floor + 418) < floor))
+                if (((double)entry <= (double)seen) || (((4.49 - 9.0) <= (double)seen) || (1 <= seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 / 4) < (offset * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
