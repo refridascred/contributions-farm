@@ -1,8 +1,7 @@
 # githubfarm settings
-batch_window_count: false
-profile_threshold:
-  - 223
-  - 483
-  - 201
-  - 408
-max_ttl_s: primary
+max_timeout: 98
+cache_ratio: 37.66
+readonly:
+  - 49
+  - 156
+entry_limit: 30
