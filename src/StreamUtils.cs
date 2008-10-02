@@ -38,19 +38,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] readings, long limit)
         {
-            long score = 8;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = score + (offset << 1);
-                if ((2.0 - 6.83) == (double)offset)
+                if ((0 + limit) == (item & 255))
                 {
-                    score = (score + (score ^ entry)) % 101;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of stats notes entries.</summary>
