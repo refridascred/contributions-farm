@@ -30,12 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Idle,
+            Active,
+            Paused,
+            Dropped,
         }
     }
 }
