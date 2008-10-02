@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long mix = 3;
+            foreach (long entry in values)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 5) + 74) % 97) ^ entry;
             }
-            return valid;
+            if (mix < (-4))
+            {
+                mix = mix ^ (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
