@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count editor token pairs that satisfy a relation.</summary>
-        public static long MatchEditorTokenCount(long[] series)
+        /// <summary>Digest a series of payload filter entries.</summary>
+        public static long CombinePayloadFilter(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 95;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total ^ (total + total)) % 65521) + reading;
             }
-            return count;
+            if (total < 54)
+            {
+                total = total + 3;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
