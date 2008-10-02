@@ -41,12 +41,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRatio = 9358;
-        public const long SoftRoute = 6798;
-        public const double BaseRoute = 93.17;
-        public const double DefaultRoute = 49.6;
-        public const long MaxBudget = 6916;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double span)
+        {
+            double drift = (double)324;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - (8.3 * 5.5)) - (double)(long)i) + span;
+            }
+            return drift + ratio;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long floor)
