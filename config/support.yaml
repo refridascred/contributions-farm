@@ -1,9 +1,4 @@
 # support settings
-farm_window: true
-strict:
-  - open
-  - fallback
-support_delay:
-  min_ttl: cached
-  batch_window: 30
-  stream_ratio: stable
+audit: 250
+account_ttl: 60
+idle_capacity_s: true
