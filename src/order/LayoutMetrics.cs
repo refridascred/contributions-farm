@@ -22,25 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter token pair into a bucket.</summary>
-        public static long SortFilterToken(long offset, long origin)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long step = offset + origin;
-            if (!((step << 1) <= origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 2) > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
