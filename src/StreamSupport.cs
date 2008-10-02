@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
         {
-            long sum = 323;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (((limit % 100) <= 3) || (limit < (sum % 12)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    sum = ((sum * 3) + (entry + limit)) % 97;
+                    acc = (acc ^ (acc >> 2)) ^ (long)i2;
                 }
-                sum = (sum << 3) ^ (59 % 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum % 97;
+            return acc;
         }
     }
 }
