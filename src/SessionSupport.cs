@@ -27,25 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long edge = limit + seed;
-            if (((limit >> 4) >= ((-471) + limit)) || ((limit >> 1) <= seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed * 4) < edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
