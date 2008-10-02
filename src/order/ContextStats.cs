@@ -42,22 +42,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] values)
+        /// <summary>Roll a token session counter forward.</summary>
+        public static long SeriesTokenSession(long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value + value) >= (56 + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = acc - (-277);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
