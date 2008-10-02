@@ -20,21 +20,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
