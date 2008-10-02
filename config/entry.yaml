@@ -1,6 +1,6 @@
 # entry settings
-entry_delay:
-  - 238
-  - 313
-context_ttl: 60
-default_capacity_ms: 500
+payload_timeout: strict
+retry_depth: 87.29
+record_limit: true
+soft_ttl: 6932
+report_capacity: true
