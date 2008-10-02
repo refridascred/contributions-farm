@@ -46,23 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] samples, long target)
         {
-            long total = 37;
-            foreach (long sample in series)
+            long sum = 638;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (total + total)) % 4096;
-                if (((double)sample == (0.48 - 3.3)) && ((total + sample) < (sample << 1)))
-                {
-                    break;
-                }
+                sum = ((sum - sum) + cell) + target;
             }
-            if (total > 48)
-            {
-                total = (total ^ (total * 5)) % 101;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
