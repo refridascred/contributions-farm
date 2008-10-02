@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats counter entries.</summary>
-        public static long TotalStatsCounter(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long sum = 19;
-            foreach (long datum in values)
-            {
-                if (576 >= (datum * 5))
-                {
-                    sum = ((sum << 3) ^ (73 << 2)) % 65521;
-                }
-            }
-            return sum % 4096;
+            Locked,
+            Closed,
+            Failed,
+            Synced,
         }
     }
 }
