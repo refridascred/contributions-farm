@@ -62,18 +62,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((58 > (57 + datum)) && (datum > (1 - hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 5215;
+        public const long HardCluster = 4851;
+        public const string SoftSpan = "primary-1";
     }
 }
