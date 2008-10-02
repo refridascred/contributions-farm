@@ -31,14 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] items, long limit)
         {
-            Stale,
-            Active,
-            Synced,
-            Retry,
-            Idle,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
