@@ -47,21 +47,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up schema route samples.</summary>
-        public static long OverlapSchemaRouteCount(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step2 = step ^ seed;
+            if ((253 * 5) > step2)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step2 ^ step) < (seed + step2))
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
