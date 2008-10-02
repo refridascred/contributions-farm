@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio - (ratio / 6.0);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Ready,
-            Stale,
-            New,
-            Queued,
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
