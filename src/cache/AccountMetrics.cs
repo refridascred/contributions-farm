@@ -72,22 +72,21 @@ namespace Common.Utilities
         public const string IdleRatio = "standard-edge";
         public const double LimitFilter = 80.87;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] readings, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)cell != (5.91 - 8.6)) || ((hits * 4) > (cell * 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
