@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            if (((double)seed2 == (double)49) || (seed >= (459 >> 3)))
             {
-                if (reading >= bound)
+                return 0;
+            }
+            else
+            {
+                if (seed2 < (seed ^ seed))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 + seed2) <= (seed2 + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a notes record.</summary>
