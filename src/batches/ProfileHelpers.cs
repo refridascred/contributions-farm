@@ -35,19 +35,26 @@ namespace Common.Utilities
         public const long BatchTools = 7584;
         public const long BurstTools = 118;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long floor)
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long WeighGraphAlready(long[] data)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long sum = 718;
+            foreach (long sample in data)
             {
-                if (datum < floor)
+                if ((73 % 16) > sample)
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ (sample + sum);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sample & 1);
                 }
             }
-            return found;
+            if (sum < 628)
+            {
+                sum = (sum * 3) + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a queue already value against two limits.</summary>
