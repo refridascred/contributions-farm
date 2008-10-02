@@ -22,19 +22,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
-        {
-            long acc = 786;
-            foreach (long value in values)
-            {
-                acc = (acc - (acc << 1)) ^ value;
-            }
-            if (acc > 694)
-            {
-                acc = (acc - (201 ^ acc)) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowWidth = 2763;
+        public const double IdleInterval = 14.24;
+        public const long HardTools = 1715;
+        public const double BurstInterval = 89.81;
     }
 }
