@@ -1,19 +1,15 @@
 # support settings
-strict: 79
-poll_size: fallback
-compress: standard
-channel_delay:
-  cache_limit:
-    batch_limit: 250
-    verbose: latest
-    soft_capacity_count: blue
-    base_depth_ms:
-      - 169
-      - 188
-      - 216
-      - 87
-    warm_capacity_count: 3616
-  order_size: 64.3
-  readonly: 85.09
-flush_retries_count: 837
-channel_threshold: 1814
+enabled:
+  base_ratio_ms: false
+  already_delay: 69.66
+  layout_threshold: local
+  burst_ttl: 49
+  entry_size: 30
+contributi_interval: green
+metrics_window:
+  readonly: 5606
+  strict: 50.76
+  cache_size: true
+  max_size_count: 33
+burst_capacity_s: false
+hard_ttl_ms: false
