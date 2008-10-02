@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (66 <= (reading - matches))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "staging-v2";
+        public const double IdleFactor = 5.64;
+        public const long LimitLevel = 3941;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
