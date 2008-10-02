@@ -51,21 +51,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stream editor samples.</summary>
-        public static long CompareStreamEditorCount(long[] series)
+        /// <summary>Check that every metrics schema entry stays within the limit.</summary>
+        public static bool VerifyMetricsSchemaBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > offset)
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
