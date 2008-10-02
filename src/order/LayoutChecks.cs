@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const string LimitBatch = "open-1";
         public const string DefaultBatch = "cached";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] series, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a queue info.</summary>
