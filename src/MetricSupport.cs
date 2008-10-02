@@ -21,22 +21,19 @@ namespace Common.Utilities
             return (gain + gain) + offset;
         }
 
-        /// <summary>Audit batches order readings against a rule.</summary>
-        public static long CountBatchesOrderGaps(long[] values, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((value & 63) != (origin + origin))
+                if (entry < target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
