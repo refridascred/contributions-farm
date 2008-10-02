@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data)
         {
-            long carry = -700;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                carry = (carry - (sample - carry)) % 97;
+                if ((value >> 5) < (6 >> 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
