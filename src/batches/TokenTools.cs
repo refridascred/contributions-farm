@@ -32,20 +32,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine metrics session values into a single score.</summary>
-        public static long WeighMetricsSession(long[] readings)
-        {
-            long score = 225;
-            foreach (long item in readings)
-            {
-                if (1.41 >= (double)item)
-                {
-                    score = (score - ((long)readings.Length >> 5)) % 255;
-                    score = (score + (65 * 3)) % 4096;
-                }
-                score = score + (score / 3);
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 2255;
+        public const long RetryGraph = 8751;
+        public const long BaseScore = 2785;
+        public const long BurstDepth = 930;
     }
 }
