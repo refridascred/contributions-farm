@@ -1,8 +1,16 @@
 {
-  "soft_ratio": 48.2,
-  "enabled": 5734,
-  "warm_window": [275, 66, 275, 354],
-  "persist": "stable",
-  "strict": "fallback",
-  "max_ttl": 100
+  "hard_ratio_s": 30,
+  "min_threshold_ms": "stable",
+  "context_window": false,
+  "compress": {
+    "filter_ratio": true,
+    "dry_run": "edge",
+    "soft_depth_count": {
+      "audit": 100,
+      "session_capacity": 2781,
+      "cluster_retries": 6361
+    },
+    "session_ratio": true
+  },
+  "verbose": true
 }
