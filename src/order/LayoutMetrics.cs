@@ -19,39 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools cluster pair into a bucket.</summary>
-        public static long SortToolsCluster(long offset, long offset2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long bound)
         {
-            long gap = offset - offset2;
-            if ((24 + 2) == (gap & 255))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (56 > (offset2 & 31))
+                if ((457 % 16) < (bound >> 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((gap >> 5) < (offset2 * 5)) && ((7.0 / 3.0) < (3.5 + 3.7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (716 < offset2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
