@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long total = 2;
+            foreach (long cell in series)
             {
-                if (datum <= seed)
+                if ((double)cell > (9.53 - 6.61))
                 {
-                    ready = false;
-                    break;
+                    total = (total + origin) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (3 + total)) % 65521;
                 }
             }
-            return ready;
+            return total % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
