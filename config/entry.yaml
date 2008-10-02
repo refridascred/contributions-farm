@@ -1,18 +1,7 @@
 # entry settings
-flush_delay_s: true
-idle_size_count: false
-account_ratio: stable
-cache_retries_s:
-  verbose: 250
-  layout_delay:
-    - standard
-    - cached
-  stats_ttl: 25.53
-  burst_window_s: 87.58
-default_ratio:
-  max_depth_ms: 3453
-  max_depth: 250
-  verbose: 53.11
-  hard_capacity_count: false
-  min_capacity: 31.56
-  min_capacity_count: 68
+stats_limit: 1931
+context_capacity: 24.19
+cache_ttl: cached
+persist: false
+base_retries: 12.38
+soft_delay_pct: 100
