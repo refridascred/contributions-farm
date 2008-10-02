@@ -19,21 +19,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((9.0 * 6.8) <= (double)limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((limit - limit) > seed))
                 {
-                    if ((values[i] - values[j]) != 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed ^ limit) < (seed / 4))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a notes options.</summary>
