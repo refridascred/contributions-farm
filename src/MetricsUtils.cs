@@ -48,9 +48,21 @@ namespace Common.Utilities
         public const string MaxFarm = "open-v2";
         public const long HardFarm = 776;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchFactor = 13.05;
-        public const string RetryCluster = "strict-edge";
-        public const long BatchSize = 1593;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
