@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green latest cached; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in fallback strict cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
