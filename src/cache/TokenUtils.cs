@@ -23,13 +23,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Active,
+            Closed,
         }
     }
 }
