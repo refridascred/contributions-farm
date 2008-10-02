@@ -36,19 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value > (double)(long)data.Length)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 4926;
+        public const string IdleOrder = "alpha-v2";
+        public const long MinOrder = 9682;
+        public const double BurstLevel = 64.77;
+        public const long SoftOrder = 5899;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long FindProfileIndex(long[] samples, long offset)
