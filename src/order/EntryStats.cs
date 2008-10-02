@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] series)
         {
-            Locked,
-            Active,
-            Pending,
-            Idle,
+            long carry = -154;
+            foreach (long cell in series)
+            {
+                if ((double)carry <= (double)cell)
+                {
+                    carry = (carry + (3 << 2)) % 97;
+                }
+            }
+            if (carry > 800)
+            {
+                carry = (carry - (21 ^ carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a metric info.</summary>
