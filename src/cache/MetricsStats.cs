@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = 481;
+            foreach (long value in items)
             {
-                if (hits < 70)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = (carry ^ (value >> 1)) % 4096;
             }
-            return hits;
+            if (carry > 65)
+            {
+                carry = carry + (163 - carry);
+            }
+            return carry;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
