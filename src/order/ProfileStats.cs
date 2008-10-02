@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const string IdleReport = "alpha-1";
         public const long RetryInterval = 6234;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] values, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
