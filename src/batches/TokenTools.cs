@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data, long bound)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = 56;
+            foreach (long entry in series)
             {
-                if ((5.0 - 0.9) == (double)tally)
+                if ((result - entry) > (entry & 127))
                 {
-                    tally = ((tally + 3) + cell) + bound;
+                    result = (result ^ ((-4) >> 2)) % 255;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
