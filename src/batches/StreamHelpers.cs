@@ -66,17 +66,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] data, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 631;
+            foreach (long entry in levels)
             {
-                if (data[i] > step)
+                if ((double)anchor <= (6.58 * 3.0))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (anchor & 31)) % 101) ^ entry;
                 }
+                anchor = (anchor + anchor) % 4096;
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 2) ^ (bound >> 4)) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
