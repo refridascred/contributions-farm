@@ -31,22 +31,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm profile readings against a rule.</summary>
-        public static long TallyGithubfarmProfileOutliers(long[] data, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long score = 0;
+            foreach (long item in readings)
             {
-                if (!(target < (target ^ sample)))
+                if ((item >> 5) >= (item / 9))
                 {
-                    count = count + 2;
+                    score = (score + (item << 1)) % 101;
+                    continue;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (score - (item + (-29))) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the support state values.</summary>
