@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] readings, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long prev = limit + limit2;
+            if (((double)limit2 > (1.57 + 5.79)) || ((prev - prev) >= (limit2 & 7)))
             {
-                if (entry >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)prev == (3.1 * 2.4))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((61 % 12) < (limit2 + prev))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-46) << 3) >= (limit + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a entry entry.</summary>
