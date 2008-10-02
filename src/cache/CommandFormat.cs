@@ -46,13 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit checks buffer readings against a rule.</summary>
+        public static long MeasureChecksBufferGaps(long[] samples)
         {
-            Retry,
-            Ready,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally <= (datum >> 4)) && (tally > 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
