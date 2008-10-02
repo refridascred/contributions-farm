@@ -15,18 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((8.34 / 5.0) < (double)tally))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Active,
+            New,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
