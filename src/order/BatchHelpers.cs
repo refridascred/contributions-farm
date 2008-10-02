@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double ratio = (double)(1 ^ 397);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + (offset / 8.0)) + (double)(long)i) - gain;
-            }
-            return ratio + offset;
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
