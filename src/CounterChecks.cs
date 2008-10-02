@@ -83,18 +83,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] items, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double bias = rate;
+            if (bias >= offset)
             {
-                if (sample < (tally & 127))
-                {
-                    tally = (tally + 2) - seed;
-                }
+                bias = bias + (double)384;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + rate) - (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
