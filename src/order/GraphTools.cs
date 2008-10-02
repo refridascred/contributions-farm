@@ -42,31 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((floor & 127) > (floor / 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (4 < (floor + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(floor < (floor - floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
