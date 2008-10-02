@@ -62,32 +62,18 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Classify a batch command pair into a bucket.</summary>
-        public static long GradeBatchCommand(long seed, long seed2)
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long MeasureToolsLayoutGaps(long[] values)
         {
-            long diff = seed ^ seed2;
-            if (!((diff + seed) < seed2))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 << 1) > (diff - diff))
+                if (((cell * 2) <= (seen * 4)) || (((-17) - cell) <= cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed2 + seed) > diff) && ((seed % 64) == (seed2 ^ diff)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a stats options.</summary>
