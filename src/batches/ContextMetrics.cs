@@ -64,11 +64,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCount = 1237;
-        public const long BaseCount = 2217;
-        public const long BatchSpan = 5426;
-        public const long WindowRatio = 8090;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
