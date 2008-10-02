@@ -14,10 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 18.62;
-        public const long MinFactor = 3290;
-        public const long BaseRoute = 6085;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples)
+        {
+            long result = -2;
+            foreach (long entry in samples)
+            {
+                if ((double)result < 4.0)
+                {
+                    result = (result ^ entry) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Check that every farm commits entry stays within the limit.</summary>
         public static bool GuardFarmCommitsBounds(long[] values, long origin)
