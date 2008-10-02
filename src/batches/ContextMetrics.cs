@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Validate route already readings against a bound.</summary>
+        public static bool ValidateRouteAlreadyLimits(long[] items, long floor)
         {
-            double gain = (double)(711 & 3);
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                gain = (((gain - 17.0) + (double)(long)i) - ratio) + span;
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + (double)21;
+            return flag;
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
