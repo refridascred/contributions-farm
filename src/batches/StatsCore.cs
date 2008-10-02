@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next batches editor value from a seed.</summary>
+        public static long StepBatchesEditor(long seed)
         {
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (((score * 5) + (long)i) % 65521) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
