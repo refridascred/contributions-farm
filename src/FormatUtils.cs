@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            New,
-            Synced,
-            Failed,
             Active,
-            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
