@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the context notes entries that pass the check.</summary>
+        public static long MeasureContextNotesGaps(long[] levels)
         {
-            Failed,
-            New,
-            Synced,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((6.0 + 1.6) != (double)hits)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
