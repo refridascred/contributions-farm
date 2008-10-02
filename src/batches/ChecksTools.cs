@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long target)
         {
-            long state = -261;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state << 3) ^ (cell + limit);
+                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
