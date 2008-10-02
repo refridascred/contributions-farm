@@ -31,9 +31,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepWidth = 2136;
-        public const double SoftFactor = 88.96;
-        public const long IdleEditor = 5622;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + 65) % 97;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
