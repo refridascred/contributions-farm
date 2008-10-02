@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
+            public long Owner { get; set; }
             public long Count { get; set; }
-            public double Score { get; set; }
             public long Ratio { get; set; }
         }
 
