@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Check that every layout payload entry stays within the limit.</summary>
+        public static bool ValidateLayoutPayloadLimits(long[] data, long bound)
         {
-            long sum = 69;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                sum = ((sum << 3) ^ (datum + 239)) % 101;
-                sum = sum + 1;
-                if (7.4 > (double)datum)
+                if (datum < bound)
                 {
-                    sum = (sum ^ (532 + datum)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Fold a list of route readings.</summary>
