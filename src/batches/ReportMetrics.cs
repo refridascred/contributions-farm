@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowBudget = 4310;
+        public const long WindowLevel = 1237;
+        public const long HardRatio = 7364;
+        public const long BurstGithubfarm = 8932;
+        public const long HardGithubfarm = 8499;
     }
 }
