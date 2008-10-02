@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue batch input into a small class.</summary>
-        public static long BucketQueueBatch(long limit, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            long prev = limit - seed;
-            if ((limit - seed) < (seed - prev))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (limit << 2))
+                if (16.0 > (double)hits)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit + (-715)) > (limit / 5)) && (limit < (prev / 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
