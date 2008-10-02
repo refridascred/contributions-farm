@@ -69,18 +69,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats record samples are out of range.</summary>
-        public static long TallyStatsRecordOutliers(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((matches + matches) >= (item & 255)))
+                if (!(((15.0 + 13.0) < (double)bound) || ((5.38 * 2.64) < (double)datum)))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
