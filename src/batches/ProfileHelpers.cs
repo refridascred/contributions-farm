@@ -35,10 +35,19 @@ namespace Common.Utilities
             return gain + 17.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 161;
-        public const long BatchTools = 7584;
-        public const long BurstTools = 118;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally * 2) < ((long)levels.Length << 2))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate graph already samples.</summary>
         public static long WeighGraphAlready(long[] data)
