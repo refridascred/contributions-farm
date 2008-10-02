@@ -33,22 +33,13 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] items)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!!((double)cell == (1.5 + 5.0)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
