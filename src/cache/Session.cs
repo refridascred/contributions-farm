@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] items)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value > (value - 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
