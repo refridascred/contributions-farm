@@ -43,12 +43,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
         {
-            Draft,
-            Failed,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
