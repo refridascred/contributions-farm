@@ -33,16 +33,12 @@ namespace Common.Utilities
             return scale + (7.2 / 6.0);
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc << 3) ^ (acc % 12)) % 65521;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
