@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] values)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (count <= (cell + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
