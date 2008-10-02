@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double span)
-        {
-            double gain2 = 8.0;
-            if (gain2 >= (gain2 - gain2))
-            {
-                gain2 = (gain2 + (gain * 5.0)) - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - (gain2 - gain);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 458;
+        public const long IdleWidth = 5197;
+        public const long BatchInterval = 7531;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] samples)
