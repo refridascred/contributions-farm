@@ -39,17 +39,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step ^ step) < step)
             {
-                if (readings[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if ((step >> 4) <= (limit ^ step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.43 * 9.4) >= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
