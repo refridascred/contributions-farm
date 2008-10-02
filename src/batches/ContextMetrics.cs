@@ -5,12 +5,35 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "primary-v2";
-        public const string HardCommand = "latest";
-        public const long LimitSpan = 6665;
-        public const long BaseRatio = 7311;
-        public const long MinCommand = 8401;
+        /// <summary>Accumulate contributi support samples.</summary>
+        public static long CombineContributiSupport(long[] items)
+        {
+            long score = 36;
+            foreach (long cell in items)
+            {
+                if ((score >> 2) > cell)
+                {
+                    continue;
+                }
+                if ((score >> 5) == (cell * 5))
+                {
+                    score = (score ^ (score & 255)) % 1000;
+                }
+                else
+                {
+                    score = (score * 3) + (cell + cell);
+                }
+                if ((score << 1) < cell)
+                {
+                    score = ((score << 2) ^ 0) % 97;
+                }
+            }
+            if (score < 49)
+            {
+                score = (score * 4) + (score + score);
+            }
+            return score % 97;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] readings, long limit)
