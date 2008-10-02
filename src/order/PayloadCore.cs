@@ -51,13 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Paused,
-            Draft,
-            Failed,
-            Retry,
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
