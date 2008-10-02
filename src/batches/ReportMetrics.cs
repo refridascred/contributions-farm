@@ -46,17 +46,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (values[i] > target)
+                if ((count - sample) >= (373 % 2))
                 {
-                    return (long)i;
+                    count = (count + 1) + floor;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
