@@ -18,28 +18,14 @@ namespace Common.Utilities
         public const long RetryCommand = 6422;
         public const long BatchCommand = 2848;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i + (long)i) <= (71 << 1))
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-                else
-                {
-                    state = (state * 2) + ((long)i % 8);
-                }
-                if (!(((double)origin > 6.31) || ((state - state) > state)))
-                {
-                    state = ((state << 2) ^ origin) % 255;
-                }
-                state = (state + state) % 97;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Closed,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
