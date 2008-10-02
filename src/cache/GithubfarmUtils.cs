@@ -34,9 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxBudget = 9932;
-        public const long MaxLevel = 1636;
-        public const long DefaultProfile = 8128;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data, long step)
+        {
+            long total = 65;
+            foreach (long sample in data)
+            {
+                total = ((total * 5) + (sample + sample)) + step;
+            }
+            return total % 4096;
+        }
     }
 }
