@@ -67,19 +67,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long origin)
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long MeasureToolsEditorMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (entry < origin)
+                if (230 <= (datum ^ tally))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
