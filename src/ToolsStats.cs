@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Roll a channel token counter forward.</summary>
+        public static long DeriveChannelToken(long target)
         {
-            double bias = (double)(82 ^ 0);
-            if (bias > 19.0)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                bias = bias - (floor / 9.0);
+                if (167 < (target + total))
+                {
+                    total = ((total * 2) + (-17)) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - rate;
+            return total;
         }
 
         /// <summary>Combine record values into a single score.</summary>
