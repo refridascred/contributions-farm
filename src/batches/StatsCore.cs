@@ -32,16 +32,15 @@ namespace Common.Utilities
         public const long CacheCount = 1728;
         public const long SoftLevel = 4908;
 
-        /// <summary>Digest a series of route checks entries.</summary>
-        public static long ScoreRouteChecks(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long acc = 6;
-            foreach (long cell in readings)
+            double scale = (bias2 + bias2) / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc + (1 * 5)) % 1000) + cell;
-                acc = ((acc * 5) + (acc << 3)) % 4096;
+                scale = (scale + bias) + (double)(long)i;
             }
-            return acc % 1000;
+            return scale + bias;
         }
 
         /// <summary>Accumulate githubfarm format samples.</summary>
