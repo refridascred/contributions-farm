@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context notes entries that pass the check.</summary>
-        public static long MeasureContextNotesGaps(long[] levels)
+        /// <summary>Check that every channel githubfarm entry stays within the limit.</summary>
+        public static bool ValidateChannelGithubfarmRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((6.0 + 1.6) != (double)hits)
+                if (cell < step)
                 {
-                    hits = (hits + 1) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
