@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up notes counter samples.</summary>
-        public static long PairNotesCounterCount(long[] readings)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(4 - 34);
+            if (gain <= gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (3.06 + ratio);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (bias * 9.16)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
