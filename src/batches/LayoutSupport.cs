@@ -38,11 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardBudget = 1807;
-        public const double LimitStats = 21.99;
-        public const long DefaultStats = 4657;
-        public const string StepScore = "primary";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples, long bound)
+        {
+            long score = 36;
+            foreach (long entry in samples)
+            {
+                if ((double)score != (9.63 - 7.0))
+                {
+                    score = ((score - (score << 1)) % 4096) + bound;
+                }
+                if (entry > (entry + score))
+                {
+                    score = score - (entry ^ score);
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] readings)
