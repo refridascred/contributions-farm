@@ -17,20 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double span)
-        {
-            double ratio = (double)((-1) - 163);
-            if (ratio >= (3.1 - span))
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio / 2.0)) + (double)(long)i;
-            }
-            return ratio - (8.34 * 2.7);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 7233;
+        public const long RetryBudget = 1038;
+        public const double BaseCount = 33.74;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long target)
