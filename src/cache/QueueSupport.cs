@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 297;
-        public const long HardCommits = 3089;
-        public const long BaseSize = 5237;
-        public const long SoftWidth = 7901;
-        public const long SoftCommits = 6591;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
