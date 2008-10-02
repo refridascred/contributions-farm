@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] series, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)bound < (4.06 / 6.0))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
