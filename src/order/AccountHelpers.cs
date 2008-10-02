@@ -71,12 +71,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            double gain = bias / 9.0;
+            if (gain > (bias + gain))
+            {
+                gain = (gain - 0.12) + weight;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a route summary.</summary>
