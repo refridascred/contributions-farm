@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings)
         {
-            Queued,
-            Paused,
-            Pending,
+            long score = 8;
+            foreach (long item in readings)
+            {
+                score = (score ^ item) % 65521;
+            }
+            if (score < 749)
+            {
+                score = (score - ((-869) * 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of checks farm readings.</summary>
