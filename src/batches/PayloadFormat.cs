@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate queue checks readings against a bound.</summary>
-        public static bool GuardQueueChecksRange(long[] series, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Locked,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
