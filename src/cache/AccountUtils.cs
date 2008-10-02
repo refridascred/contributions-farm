@@ -13,24 +13,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale > (bias - bias))
-            {
-                scale = scale + (double)(-3);
-            }
-            else
-            {
-                scale = scale + (scale * 5.1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (5.71 * 4.89)) - (double)(long)i;
-            }
-            return scale + (7.2 / 6.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "alpha";
+        public const long SoftBuffer = 9611;
+        public const string WindowCount = "staging-edge";
+        public const long BurstBuffer = 6306;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] readings, long origin)
