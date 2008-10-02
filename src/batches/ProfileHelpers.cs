@@ -16,12 +16,22 @@ namespace Common.Utilities
             return rate + 0.7;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data, long step)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long sum = 558;
+            foreach (long reading in data)
+            {
+                if (!((reading - 47) != (reading + step)))
+                {
+                    sum = (sum - reading) % 4096;
+                }
+                if (reading < (reading - reading))
+                {
+                    sum = ((sum * 5) + (982 ^ sum)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
