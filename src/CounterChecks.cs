@@ -47,22 +47,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long origin)
         {
-            long result = 19;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result * 5) != (entry % 64))
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
                 {
-                    result = (result * 3) + (845 & 15);
-                }
-                if (((636 << 2) != (entry >> 5)) && ((1.47 * 4.3) == (double)entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
