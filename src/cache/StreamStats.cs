@@ -19,22 +19,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] samples)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((count % 60) > (datum >> 2)) && ((4.0 - 1.4) > (double)count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine report cache values into a single score.</summary>
