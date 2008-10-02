@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] levels, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)floor != (double)(long)levels.Length)
+                if ((count % 97) <= (36 * 5))
                 {
-                    hits = (hits + 1) - cell;
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
