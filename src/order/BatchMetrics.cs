@@ -61,11 +61,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowDepth = 3238;
-        public const double CacheRatio = 29.05;
-        public const double RetryLayout = 89.26;
-        public const long RetryFactor = 3097;
-        public const double MaxLayout = 90.49;
+        /// <summary>Count payload route pairs that satisfy a relation.</summary>
+        public static long PairPayloadRouteCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
