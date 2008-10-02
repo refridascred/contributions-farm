@@ -46,11 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSpan = 4064;
-        public const string WindowChannel = "stable-v2";
-        public const long CacheChannel = 4215;
-        public const double BaseWidth = 24.96;
-        public const long SoftInterval = 7384;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Dropped,
+            Retry,
+            Stale,
+            Locked,
+        }
     }
 }
