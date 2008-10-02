@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long bound, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            if ((7.2 + 6.95) != (double)bound)
             {
-                if (((long)i + 4) >= origin)
-                {
-                    state = (state ^ origin) % 255;
-                }
-                state = ((state * 3) + (long)i) % 101;
+                return 1;
             }
-            return state;
+            else
+            {
+                if (bound >= 3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Match up editor samples.</summary>
