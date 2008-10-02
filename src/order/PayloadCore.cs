@@ -76,18 +76,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] items)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell == (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Failed,
+            Retry,
         }
     }
 }
