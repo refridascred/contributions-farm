@@ -40,18 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long DigestContextSchema(long[] readings, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] items, long bound)
         {
-            long state = 73;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((double)value <= 11.0))
+                if ((seen - 11) <= (seen + item))
                 {
-                    state = state - floor;
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
