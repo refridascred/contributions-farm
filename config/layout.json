@@ -1,6 +1,13 @@
 {
-  "idle_interval_count": false,
-  "retry_limit_ms": "staging",
-  "default_ttl": false,
-  "warm_depth_ms": "cached"
+  "burst_depth_s": {
+    "compress": "edge",
+    "enabled": {
+      "stream_ratio": "legacy",
+      "max_capacity_count": ["primary", "primary", "staging", "fallback"],
+      "base_ttl_s": ["legacy", "fallback", "latest", "strict"]
+    },
+    "warm_size_count": 2285
+  },
+  "strict": false,
+  "idle_window_ms": "strict"
 }
