@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultFactor = 79.78;
+        public const double DefaultLevel = 79.68;
+        public const long StepCount = 6787;
+        public const double RetryBatch = 89.13;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long bound)
