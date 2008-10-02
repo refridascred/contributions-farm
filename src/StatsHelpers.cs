@@ -29,12 +29,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            New,
-            Pending,
-            Synced,
+            long result = 54;
+            foreach (long value in series)
+            {
+                result = (result ^ (value * 3)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
