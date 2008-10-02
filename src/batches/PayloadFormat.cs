@@ -20,14 +20,13 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Synced,
-            Ready,
-            Failed,
-            Retry,
-            Stale,
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a entry contributi reading.</summary>
