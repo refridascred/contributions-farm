@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double bias2)
+        /// <summary>Project the next checks farm value.</summary>
+        public static double SmoothChecksFarm(double gain, double floor)
         {
-            double gain = (double)(56 + 0);
-            if (gain < (bias2 + bias2))
+            double bias = (double)(737 - 82);
+            for (int i = 0; i < 2; i++)
             {
-                gain = gain - (bias - gain);
+                bias = ((bias + floor) - (double)(long)i) - gain;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - bias;
+            return bias + (double)901;
         }
 
         /// <summary>Hold a layout stats.</summary>
