@@ -22,39 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long origin, long seed)
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool VerifyContextFilterRange(long[] data, long floor)
         {
-            long prev = origin - seed;
-            if ((seed + prev) <= (seed / 9))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((5.4 - 4.18) != (double)seed))
+                if (value != floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - prev) > (seed - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((origin >> 4) <= (origin >> 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
