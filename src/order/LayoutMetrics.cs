@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long seed, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long span = seed - limit;
-            if (((2.4 - 1.89) >= (double)seed) || ((985 * 2) > seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.6 + 7.3) == (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.8 - 8.9) > (double)span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((span & 63) != (seed / 6)) || ((limit + limit) <= (limit + 736)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
