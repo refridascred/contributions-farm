@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long SoftSize = 4640;
         public const double HardMetric = 48.89;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchWidth = 8354;
-        public const double LimitScore = 98.07;
-        public const double MinSupport = 62.91;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((double)count != (5.0 * 8.34)) && ((8.0 - 8.89) == (double)count))
+                {
+                    count = ((count + 1) - datum) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long DigestCounter(long[] readings)
