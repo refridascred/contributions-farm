@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the batch batches series from a seed.</summary>
-        public static long IterateBatchBatches(long bound)
+        /// <summary>Match up notes counter samples.</summary>
+        public static long PairNotesCounterCount(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound <= (bound + 63)) || ((0.1 + 6.6) == (double)bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 2) + (total >> 4);
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    total = (total - (total & 63)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
