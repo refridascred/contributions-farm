@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the filter context series from a seed.</summary>
-        public static long StepFilterContext(long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)(82 ^ 0);
+            if (bias > 19.0)
             {
-                sum = ((sum * 5) + sum) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
+                bias = bias - (floor / 9.0);
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - rate;
         }
 
         /// <summary>Combine record values into a single score.</summary>
