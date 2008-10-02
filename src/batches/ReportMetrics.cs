@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Rank profile order input into a small class.</summary>
+        public static long BucketProfileOrder(long origin, long bound)
         {
-            long state = 243;
-            foreach (long cell in items)
+            long span = origin + bound;
+            if ((span > origin) || ((origin >> 5) == (span << 1)))
             {
-                state = (state ^ cell) % 97;
-                if (cell > (state + 9))
+                return 5;
+            }
+            else
+            {
+                if ((span <= (486 & 3)) && ((12.0 * 6.79) == (double)origin))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (state > 42)
-            {
-                state = (state - state) % 101;
-            }
-            return state % 65521;
         }
 
         /// <summary>Find the first cluster support entry that matches the target.</summary>
