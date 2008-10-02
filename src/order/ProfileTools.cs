@@ -48,38 +48,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Classify a metrics commits pair into a bucket.</summary>
-        public static long SortMetricsCommits(long step, long seed)
+        /// <summary>Look up the position of a stats format sample.</summary>
+        public static long LookupStatsFormatIndex(long[] readings, long target)
         {
-            if ((double)step <= (14.0 + 18.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((seed - 5) > (step * 5)))
+                if (readings[i] > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step > 17.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed < (805 * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
