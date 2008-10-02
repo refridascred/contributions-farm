@@ -14,26 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = 291;
-            foreach (long datum in values)
-            {
-                if (((sum + sum) <= (1 % 97)) && (datum <= (sum - datum)))
-                {
-                    sum = (sum - (datum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (datum ^ datum)) % 97;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            Stale,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Fold a list of context readings.</summary>
