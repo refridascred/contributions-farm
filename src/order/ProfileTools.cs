@@ -33,15 +33,19 @@ namespace Common.Utilities
             return weight - (weight * 0.2);
         }
 
-        /// <summary>Adjust a filter stats reading.</summary>
-        public static double AdjustFilterStats(double bias, double span)
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool ValidateGraphCounterRange(long[] data, long seed)
         {
-            double load = (double)7 * 1.18;
-            if (load < (double)(-69))
+            bool flag = true;
+            foreach (long reading in data)
             {
-                load = (load - (bias - 6.4)) - span;
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load + (bias * 9.9);
+            return flag;
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
