@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph metrics samples are out of range.</summary>
-        public static long MeasureGraphMetricsMatches(long[] levels, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((11.0 * 0.6) <= (double)value)
+                if ((mix >= (mix & 127)) && ((mix - 2) == ((long)i % 24)))
                 {
-                    hits = (hits + 3) + limit;
+                    mix = (mix ^ (-89)) % 101;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
