@@ -65,17 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((offset >> 5) >= (offset + offset)) || (374 > (offset + offset)))
             {
-                if (data[i] >= step)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (8.0 * 14.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up githubfarm stream samples.</summary>
