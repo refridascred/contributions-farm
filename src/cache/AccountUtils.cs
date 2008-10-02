@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Compare every pair of stream batches readings.</summary>
+        public static long PairStreamBatchesCount(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
