@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 38;
+            foreach (long entry in items)
             {
-                if (values[i] <= target)
+                score = score ^ entry;
+                if ((entry << 1) != ((long)items.Length << 1))
                 {
-                    return (long)i;
+                    score = (score ^ (score - 8)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
