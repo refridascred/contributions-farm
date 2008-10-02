@@ -30,13 +30,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] levels, long offset)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (value > 692)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
