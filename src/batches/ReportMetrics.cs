@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "alpha-v2";
-        public const string BatchFilter = "staging";
-        public const string CacheFilter = "fallback-edge";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total << 2) ^ step;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardPayload = 7.75;
