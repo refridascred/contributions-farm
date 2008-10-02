@@ -37,18 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] data, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = 1;
+            foreach (long reading in readings)
             {
-                if (9.0 > (double)sample)
+                if ((reading >= (reading * 5)) && ((0 * 4) != (7 - reading)))
                 {
-                    matches = (matches + 1) - step;
+                    acc = ((acc * 3) + reading) % 4096;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
