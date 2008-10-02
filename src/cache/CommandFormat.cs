@@ -25,13 +25,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Done,
-            Draft,
-            Locked,
-            New,
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the support state values.</summary>
