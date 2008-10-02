@@ -1,8 +1,6 @@
 {
-  "flush_interval": 43.29,
-  "max_ratio_s": 86.3,
-  "soft_size_ms": 53,
-  "sync_ttl_count": 2.27,
-  "compress": 22.06,
-  "base_interval_pct": 8650
+  "flush_depth": 60,
+  "retry_delay_pct": "fallback",
+  "buffer_window": true,
+  "filter_limit": 79.61
 }
