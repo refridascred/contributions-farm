@@ -1,12 +1,9 @@
 # githubfarm settings
-warm_retries: 85.28
-burst_size_s: false
-soft_limit_pct:
-  githubfarm_interval:
-    - legacy
-    - eu-west
-    - open
-  min_ttl_ms: true
-  retry_window: 96.06
-  max_window: fallback
-soft_ratio: open
+idle_threshold_pct: standard
+soft_window_pct: true
+warm_delay_ms: false
+editor_delay: false
+audit:
+  - green
+  - latest
+  - legacy
