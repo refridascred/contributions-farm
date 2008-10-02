@@ -1,6 +1,11 @@
-id,ratio,active,weight,level
-1,125,966,792,293
-2,827,610,standard,28
-3,916,966,85.36,661
-4,135,49.28,primary,476
-5,97.25,577,eu-west,982
+id,ratio,active,level
+1,45.17,74.92,39.17
+2,51.22,25.08,42.47
+3,759,legacy,green
+4,latest,306,strict
+5,local,471,eu-west
+6,edge,636,884
+7,316,22.45,legacy
+8,87.44,81.13,strict
+9,eu-west,staging,726
+10,legacy,6.47,93.06
