@@ -19,10 +19,9 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 7537;
-        public const double LimitTimeout = 57.62;
-        public const long BatchSize = 8271;
-        public const double StepFilter = 9.9;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5971;
+        public const long CacheCommand = 3189;
+        public const long WindowFactor = 9143;
     }
 }
