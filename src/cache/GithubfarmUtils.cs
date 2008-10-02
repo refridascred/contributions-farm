@@ -35,16 +35,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = (state + (state & 3)) % 65521;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((sample & 3) > matches)
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
