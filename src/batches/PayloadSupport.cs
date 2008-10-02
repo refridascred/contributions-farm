@@ -38,11 +38,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            double bias = span;
-            return (bias + bias) + scale;
+            long total = 242;
+            foreach (long entry in levels)
+            {
+                total = (total ^ (total - 56)) - entry;
+                total = (total - total) % 65521;
+            }
+            if (total > 35)
+            {
+                total = ((total * 4) + (total - total)) % 65521;
+            }
+            return total;
         }
     }
 }
