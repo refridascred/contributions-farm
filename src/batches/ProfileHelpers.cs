@@ -54,12 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] series, long floor)
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
