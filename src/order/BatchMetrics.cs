@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 4204;
-        public const long SoftRatio = 7241;
-        public const long MinCounter = 1786;
-        public const long HardLevel = 2811;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(12.0 > (double)item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first session command entry that matches the target.</summary>
         public static long FindSessionCommandIndex(long[] series, long seed)
