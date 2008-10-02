@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long bound)
         {
-            long total = 2;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell > (9.53 - 6.61))
+                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
                 {
-                    total = (total + origin) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (3 + total)) % 65521;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
