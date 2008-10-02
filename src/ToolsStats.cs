@@ -34,18 +34,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long CountEntryCacheMatches(long[] items)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits <= (sample + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
