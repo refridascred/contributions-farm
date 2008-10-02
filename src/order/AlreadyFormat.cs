@@ -46,38 +46,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long step)
         {
-            if ((double)step < (5.31 - 9.0))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(offset >= (step + step)))
+                if (datum <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 100) >= (offset % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((605 - 19) < step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
