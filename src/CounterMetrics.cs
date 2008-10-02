@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster batch readings against a rule.</summary>
-        public static long CountClusterBatchMatches(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!(sample < (sample - matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
