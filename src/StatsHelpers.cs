@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] samples, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long floor)
         {
             bool ready = true;
-            foreach (long item in samples)
+            foreach (long value in levels)
             {
-                if (item != bound)
+                if (value <= floor)
                 {
                     ready = false;
                     break;
