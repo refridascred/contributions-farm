@@ -52,13 +52,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardScore = "open-v2";
+        public const double BaseFactor = 54.44;
+        public const long IdleScore = 3992;
+        public const long LimitSupport = 7681;
     }
 }
