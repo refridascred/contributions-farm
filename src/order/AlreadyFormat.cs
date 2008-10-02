@@ -52,18 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                long lane = anchor / 8;
-                anchor = (anchor + (lane >> 4)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowSpan = 54.36;
+        public const string SoftFactor = "legacy";
+        public const long RetrySpan = 4996;
+        public const double CacheTimeout = 3.38;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] readings)
