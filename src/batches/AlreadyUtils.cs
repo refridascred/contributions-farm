@@ -38,13 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Idle,
-            Dropped,
-            Failed,
-            Active,
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the already state values.</summary>
