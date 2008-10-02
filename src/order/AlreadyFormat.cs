@@ -39,31 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Look up the position of a contributi session sample.</summary>
+        public static long LookupContributiSessionIndex(long[] series, long step)
         {
-            if ((limit % 10) < limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor > (limit - limit)) && ((double)limit >= 0.9))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit <= (2.34 / 3.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
