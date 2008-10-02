@@ -16,32 +16,17 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long seed)
+        /// <summary>Find the first session command entry that matches the target.</summary>
+        public static long FindSessionCommandIndex(long[] series, long seed)
         {
-            long diff = origin ^ seed;
-            if ((origin >> 2) > (origin >> 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff > (origin % 64)) && ((double)seed == (4.0 - 8.6)))
+                if (series[i] >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 4) == ((-78) & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
