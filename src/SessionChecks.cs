@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            double scale = (double)(61 + 5);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                scale = ((scale + (weight + 6.4)) + (double)(long)i) - span;
+                if ((seen * 5) < cell)
+                {
+                    seen = seen + 1;
+                }
             }
-            return scale + (double)553;
+            return seen;
         }
 
         /// <summary>Hold a commits stats.</summary>
