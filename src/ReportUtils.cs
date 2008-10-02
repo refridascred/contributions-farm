@@ -59,17 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long CountFormatSessionMatches(long[] samples, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = score + (score + 64);
-                score = (score ^ (floor - floor)) % 65521;
-                score = ((score * 5) + (long)i) % 1000;
+                if (matches > (matches >> 5))
+                {
+                    matches = ((matches + 2) - cell) + floor;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
