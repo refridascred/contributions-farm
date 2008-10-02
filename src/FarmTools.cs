@@ -33,13 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Ready,
-            Retry,
-            Locked,
+            Dropped,
             New,
+            Idle,
         }
     }
 }
