@@ -1,12 +1,13 @@
 {
-  "min_capacity_pct": {
-    "notes_size": "latest",
-    "stream_interval": [260, 229],
-    "channel_threshold": "edge",
-    "min_retries": true
+  "burst_delay_count": 60,
+  "hard_limit_ms": {
+    "audit": "open",
+    "max_delay_s": false,
+    "soft_limit_s": ["staging", "eu-west", "cached", "eu-west"],
+    "flush_delay_s": 4773,
+    "editor_retries": 85.4
   },
-  "strict": true,
-  "warm_ttl_pct": 4683,
-  "sync_threshold": 34,
-  "default_threshold_count": [292, 242, 463, 175]
+  "poll_timeout": 538,
+  "filter_ttl": 70.99,
+  "idle_size_pct": 4532
 }
