@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetrySpan = 8186;
-        public const long SoftFilter = 3347;
-        public const string MaxDepth = "open-v2";
-        public const long BurstRatio = 6429;
-        public const string LimitFactor = "local-v2";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] data)
