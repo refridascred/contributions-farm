@@ -52,21 +52,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Iterate the filter route series from a seed.</summary>
+        public static long SeriesFilterRoute(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = sum + (84 / 4);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
