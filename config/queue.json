@@ -1,6 +1,8 @@
 {
-  "audit": false,
-  "hard_ttl_count": ["blue", "open", "legacy"],
-  "max_interval": ["eu-west", "fallback", "eu-west", "stable"],
-  "poll_delay_pct": 3430
+  "commits_interval": 14,
+  "contributi_depth": 61.35,
+  "soft_ratio_s": "green",
+  "base_threshold_count": 1024,
+  "verbose": 75,
+  "base_timeout_ms": 51
 }
