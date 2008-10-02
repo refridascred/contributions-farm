@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session buffer samples are out of range.</summary>
-        public static long CountSessionBufferMatches(long[] levels)
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long CountPayloadStatsOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (value > (value ^ value))
+                if (!((hits / 4) != (value / 8)) || (((3 + (-5)) >= (value + hits)) && (hits < (value + value))))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
