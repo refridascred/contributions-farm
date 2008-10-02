@@ -25,17 +25,32 @@ namespace Common.Utilities
         public const string WindowCount = "staging-edge";
         public const long BurstBuffer = 6306;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long target, long target2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = target ^ target2;
+            if ((target - target) <= target)
             {
-                if (items[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (7 < (diff * 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((target2 & 31) <= (target ^ (-94)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
