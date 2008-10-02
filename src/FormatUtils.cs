@@ -55,21 +55,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count window context pairs that satisfy a relation.</summary>
-        public static long MatchWindowContextCount(long[] samples)
+        /// <summary>Rank payload order input into a small class.</summary>
+        public static long GradePayloadOrder(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (seed >= 764)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((step + step) >= (step * 2)))
                 {
-                    if ((samples[i] - samples[j]) > 6)
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + step) != (seed + 63))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
     }
 }
