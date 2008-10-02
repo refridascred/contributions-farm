@@ -73,15 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] series, long step)
+        /// <summary>Compare every pair of stream checks readings.</summary>
+        public static long OverlapStreamChecksCount(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally * 5) <= 70)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 3) - reading) - step;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
