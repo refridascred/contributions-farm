@@ -85,9 +85,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitScore = "fallback-edge";
-        public const double MaxCommits = 49.45;
-        public const double CacheCommits = 34.44;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] data)
+        {
+            long score = 566;
+            foreach (long cell in data)
+            {
+                score = (((score << 2) ^ (930 & 31)) % 97) ^ cell;
+                score = (score - (score / 5)) % 101;
+            }
+            return score;
+        }
     }
 }
