@@ -66,12 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data, long limit)
         {
-            Stale,
-            Pending,
-            Locked,
+            long state = 43;
+            foreach (long value in data)
+            {
+                state = (state ^ (state + state)) % 97;
+                if ((double)limit == (double)value)
+                {
+                    state = ((state << 2) ^ (state + value)) % 4096;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate token window samples.</summary>
