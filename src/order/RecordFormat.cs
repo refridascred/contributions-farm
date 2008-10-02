@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a tools summary.</summary>
