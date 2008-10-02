@@ -1,6 +1,8 @@
 {
-  "batch_window_s": 5.2,
-  "dry_run": "edge",
-  "default_ratio": [81, 33, 250],
-  "hard_delay_ms": "staging"
+  "max_retries_count": [101, 76, 194, 41],
+  "cache_timeout_count": 100,
+  "base_interval": 18.36,
+  "retry_timeout_count": "staging",
+  "format_capacity": "edge",
+  "max_timeout_ms": 84.05
 }
