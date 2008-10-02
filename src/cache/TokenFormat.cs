@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] items)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)hits != (9.0 * 7.5)) && ((hits & 3) < ((-154) - reading)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
