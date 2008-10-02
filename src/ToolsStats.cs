@@ -64,15 +64,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate record notes readings against a bound.</summary>
