@@ -41,14 +41,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Queued,
-            Dropped,
-            Failed,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinRatio = 4374;
+        public const long MaxSession = 4432;
+        public const double LimitInterval = 64.83;
+        public const long RetrySession = 1247;
     }
 }
