@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=466
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
-    green)
+    strict)
         log "fast path"
         ;;
     *)
