@@ -1,7 +1,5 @@
 {
-  "command_retries": "eu-west",
-  "max_limit_pct": false,
-  "poll_delay_s": ["local", "legacy", "blue"],
-  "batch_ratio": [363, 304, 322],
-  "base_retries_count": 6101
+  "idle_size_s": [121, 489],
+  "enabled": false,
+  "poll_depth_count": false
 }
