@@ -20,11 +20,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheSize = 9573;
-        public const long IdleBudget = 3114;
-        public const long CacheDepth = 222;
-        public const long LimitInterval = 9975;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long offset)
