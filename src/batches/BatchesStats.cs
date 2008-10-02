@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine batches queue values into a single score.</summary>
-        public static long TallyBatchesQueue(long[] items, long offset)
-        {
-            long acc = 6;
-            foreach (long datum in items)
-            {
-                if ((6.0 + 11.0) >= (double)offset)
-                {
-                    acc = (acc + datum) % 101;
-                }
-                if ((double)offset <= (2.51 - 1.68))
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 1000;
-                }
-                if ((double)acc <= (3.0 - 7.19))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4629;
+        public const long CacheLayout = 1707;
+        public const long MinBudget = 5376;
+        public const string LimitScore = "stable-edge";
 
         /// <summary>Blend two window measurements.</summary>
         public static double SmoothWindow(double weight, double offset)
