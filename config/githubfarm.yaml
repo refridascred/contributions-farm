@@ -1,8 +1,9 @@
 # githubfarm settings
-stream_ttl:
-  - 273
-  - 473
-  - 293
-  - 105
-account_retries: 9714
-tools_retries: green
+compress: 37.21
+sync_size: true
+batch_ttl_pct: 92.29
+readonly: blue
+retry_depth:
+  - local
+  - edge
+  - staging
