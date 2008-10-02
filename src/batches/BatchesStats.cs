@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine batches queue values into a single score.</summary>
+        public static long TallyBatchesQueue(long[] items, long offset)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            long acc = 6;
+            foreach (long datum in items)
+            {
+                if ((6.0 + 11.0) >= (double)offset)
+                {
+                    acc = (acc + datum) % 101;
+                }
+                if ((double)offset <= (2.51 - 1.68))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 1000;
+                }
+                if ((double)acc <= (3.0 - 7.19))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two window measurements.</summary>
