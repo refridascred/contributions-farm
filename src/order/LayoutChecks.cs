@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long seed)
-        {
-            long carry = 782;
-            foreach (long reading in series)
-            {
-                carry = (((carry << 2) ^ seed) % 255) ^ reading;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 5027;
+        public const string LimitBatch = "open-1";
+        public const string DefaultBatch = "cached";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] series, long seed)
