@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every channel batch entry stays within the limit.</summary>
-        public static bool VerifyChannelBatchBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepScore = 7430;
+        public const string SoftContext = "latest-edge";
+        public const double BaseContext = 23.85;
+        public const long LimitFactor = 5634;
 
         /// <summary>Match up metrics cluster samples.</summary>
         public static long PairMetricsClusterCount(long[] data)
