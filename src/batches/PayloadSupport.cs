@@ -15,12 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSpan = 8960;
-        public const double BatchReport = 81.62;
-        public const double MinReport = 2.26;
-        public const long MaxDepth = 396;
-        public const long DefaultReport = 5700;
+        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
+        public static bool ValidateStatsContributiLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long SortStats(long seed, long floor)
