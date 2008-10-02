@@ -32,13 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] levels, long offset)
         {
-            Retry,
-            Ready,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value << 1) >= (5 << 1))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
