@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((hits % 60) > (datum * 2)) || (hits < (datum << 2))))
-                {
-                    hits = hits + 3;
-                }
+                score = (score ^ ((long)i >> 4)) % 4096;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a farm summary.</summary>
