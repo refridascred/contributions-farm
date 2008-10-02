@@ -28,15 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support notes readings against a rule.</summary>
-        public static long AuditSupportNotesHits(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long cell in readings)
             {
-                if ((datum & 7) < tally)
+                if ((tally * 2) != (tally + 16))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) + cell;
                 }
             }
             return tally;
