@@ -54,16 +54,12 @@ namespace Common.Utilities
             return drift - (7.0 - scale);
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
-        {
-            long result = 47;
-            foreach (long entry in items)
-            {
-                result = ((result ^ (result << 3)) % 4096) ^ entry;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7529;
+        public const string BaseDepth = "standard-edge";
+        public const long BaseBudget = 6845;
+        public const long BasePayload = 8022;
+        public const long BatchPayload = 1398;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 3.61;
