@@ -1,13 +1,6 @@
 # githubfarm settings
-batch_window: 3205
-cache_timeout_ms:
-  audit: 68.56
-  retry_timeout_count: 67.4
-  enabled: 38.28
-  metrics_timeout: true
-  cache_size_ms: 439
-enabled:
-  - 15
-  - 262
-  - 446
-  - 168
+cache_ratio_s: local
+metric_ttl: false
+default_capacity_s: 589
+readonly: false
+retry_ttl_ms: 3410
