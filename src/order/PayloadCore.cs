@@ -34,21 +34,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Project the next cache record value.</summary>
+        public static double ProjectCacheRecord(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(680 & 255);
+            if (ratio >= weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio - (5.3 - weight);
             }
-            return seen;
+            return ratio + offset;
         }
 
         /// <summary>Hold a buffer stats.</summary>
