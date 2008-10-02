@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (data[i] > seed)
+                if (sample >= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
