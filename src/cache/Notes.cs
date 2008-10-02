@@ -30,11 +30,20 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 68.72;
-        public const long DefaultRecord = 5919;
-        public const long IdleRecord = 6632;
-        public const long BatchTimeout = 1296;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings, long seed)
+        {
+            long mix = 2;
+            foreach (long sample in readings)
+            {
+                mix = ((mix + (seed & 31)) % 65521) ^ sample;
+                if ((seed >> 3) <= (mix + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsRange(long[] series, long origin)
