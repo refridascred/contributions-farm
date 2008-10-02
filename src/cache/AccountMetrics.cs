@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items, long bound)
-        {
-            long anchor = 479;
-            foreach (long cell in items)
-            {
-                if (anchor < (anchor - bound))
-                {
-                    anchor = (((anchor << 3) ^ 4) % 1000) + cell;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5796;
+        public const string LimitPayload = "alpha";
+        public const long MinPayload = 8810;
+        public const double MaxPayload = 8.24;
+        public const double BatchBudget = 2.54;
 
         /// <summary>Digest a series of format session entries.</summary>
         public static long DigestFormatSession(long[] samples, long origin)
