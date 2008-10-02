@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BurstProfile = 9249;
         public const string CacheRatio = "stable";
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = 76;
-            foreach (long cell in series)
-            {
-                if (((mark * 2) != (cell - offset)) && (cell <= (6 % 8)))
-                {
-                    mark = ((mark << 3) ^ offset) % 101;
-                }
-            }
-            return mark;
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
