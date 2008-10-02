@@ -1,6 +1,10 @@
 {
-  "batch_delay": [278, 441, 29],
-  "metrics_size": 29.61,
-  "default_retries": ["fallback", "edge", "green", "legacy"],
-  "retry_interval": 16.84
+  "already_timeout": 1785,
+  "retry_ratio": "strict",
+  "counter_retries": "open",
+  "min_capacity_pct": {
+    "persist": false,
+    "audit": 8325,
+    "session_interval": ["strict", "cached", "stable", "open"]
+  }
 }
