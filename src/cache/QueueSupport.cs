@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long limit)
         {
-            Pending,
-            Ready,
-            New,
+            if ((floor << 1) >= (limit * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit > floor) || ((double)floor <= (7.5 * 7.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a session queue reading.</summary>
