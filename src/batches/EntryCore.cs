@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] data, long floor)
         {
-            long acc = 723;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                acc = (acc ^ (acc - acc)) % 65521;
-                if (datum >= (seed ^ datum))
+                if (cell != floor)
                 {
-                    acc = (acc + (21 % 12)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc > 9)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
