@@ -26,17 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long cell in data)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ (326 ^ cell);
             }
-            return -1;
+            if (state > 31)
+            {
+                state = ((state * 3) + (long)data.Length) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
