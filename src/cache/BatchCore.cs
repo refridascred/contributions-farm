@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 98.89;
-        public const double StepBatch = 74.82;
-        public const long LimitBatch = 1907;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long seed)
+        {
+            if ((490 + step) == (5 + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((3.6 * 7.0) >= (double)step) && ((seed - step) >= 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ 474) >= (seed / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed % 3) < (step / 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of entry token readings.</summary>
         public static long CombineEntryToken(long[] levels, long target)
