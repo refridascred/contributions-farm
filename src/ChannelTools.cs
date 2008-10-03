@@ -20,23 +20,11 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long offset)
+        /// <summary>Scale a command account figure with a bias.</summary>
+        public static double ScaleCommandAccount(double scale, double offset)
         {
-            long mix = 16;
-            foreach (long cell in data)
-            {
-                if ((cell * 3) < offset)
-                {
-                    mix = (mix + mix) % 4096;
-                    break;
-                }
-                if (mix < (cell - (long)data.Length))
-                {
-                    mix = mix + (mix & 7);
-                }
-            }
-            return mix;
+            double bias = offset;
+            return (bias - (offset / 3.0)) + scale;
         }
 
         /// <summary>Describe the command state values.</summary>
