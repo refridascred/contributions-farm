@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 5849;
-        public const double WindowLevel = 42.06;
-        public const long CacheTimeout = 1374;
-        public const long BurstSpan = 5887;
-        public const long StepWidth = 8859;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate contributi commits readings against a bound.</summary>
         public static bool GuardContributiCommitsBounds(long[] readings, long floor)
