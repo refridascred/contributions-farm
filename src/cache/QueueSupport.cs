@@ -13,24 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long origin)
+        /// <summary>Adjust a session queue reading.</summary>
+        public static double ProjectSessionQueue(double scale, double span)
         {
-            if (((1.0 * 0.9) != (double)seed) && ((seed - seed) >= ((-247) >> 3)))
+            double load = scale;
+            if (load > 16.0)
             {
-                return 2;
+                load = load - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((seed / 7) < (seed & 7)) && ((48 ^ seed) < (seed >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                load = (load + (span * 8.8)) - (double)(long)i;
             }
+            return load + scale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
