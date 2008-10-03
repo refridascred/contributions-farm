@@ -85,18 +85,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double weight = (6.31 / 3.0) + (floor + ratio);
+            if (weight > floor)
             {
-                if ((step ^ value) <= (step ^ step))
-                {
-                    tally = tally + 2;
-                }
+                weight = weight - 3.0;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (floor * 0.5)) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Describe the format phase values.</summary>
