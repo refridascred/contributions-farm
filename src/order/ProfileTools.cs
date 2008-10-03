@@ -38,18 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] readings, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 7;
+            foreach (long value in samples)
             {
-                if (!!((step - entry) < (hits + step)))
+                if ((target % 100) <= (target ^ value))
                 {
-                    hits = hits + 3;
+                    result = result + (target - result);
                 }
             }
-            return hits;
+            if (result < 6)
+            {
+                result = (result * 5) + (target + target);
+            }
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
