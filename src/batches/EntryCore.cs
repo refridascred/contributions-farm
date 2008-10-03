@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double bias)
         {
-            double scale = (floor + 7.0) + (floor - floor);
-            if (scale > ratio)
+            double weight = 0.2;
+            for (int i = 0; i < 8; i++)
             {
-                scale = scale + (double)(-3);
+                weight = ((weight + (double)(long)i) - gain) - bias;
             }
-            return scale - (ratio - scale);
+            return weight + weight;
         }
 
         /// <summary>Define support limits and defaults.</summary>
