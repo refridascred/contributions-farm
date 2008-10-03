@@ -34,10 +34,33 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitBudget = 56.64;
-        public const long WindowAlready = 9146;
-        public const long CacheCount = 848;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long limit)
+        {
+            long delta = seed - limit;
+            if ((3.23 + 7.5) > (double)delta)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7 * 4) < (delta ^ limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed < (8.0 - 7.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] data, long limit)
