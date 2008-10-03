@@ -1,13 +1,8 @@
 # support settings
-audit:
-  batch_delay: true
-  readonly: strict
-  support_interval: 46.58
-  enabled: 66
-  window_size: cached
-  verbose:
-    - cached
-    - primary
-    - legacy
-compress: 3474
-retry_threshold_pct: latest
+sync_delay_s: 1050
+hard_capacity_count:
+  - eu-west
+  - strict
+flush_ttl_s: 85
+hard_interval: false
+route_retries: 46
