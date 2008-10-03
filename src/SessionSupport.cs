@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinCount = 7030;
-        public const long CacheBudget = 5306;
-        public const string BaseInterval = "cached-1";
-        public const long BaseRecord = 3372;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
