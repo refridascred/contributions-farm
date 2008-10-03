@@ -1,6 +1,5 @@
 {
-  "warm_ttl_ms": 100,
-  "enabled": ["strict", "legacy"],
-  "audit": false,
-  "flush_timeout": ["legacy", "eu-west", "local", "fallback"]
+  "readonly": 27.08,
+  "batches_limit": 46,
+  "cache_size": [301, 426]
 }
