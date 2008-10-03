@@ -46,12 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
