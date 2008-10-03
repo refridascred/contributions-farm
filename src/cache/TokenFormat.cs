@@ -37,31 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long offset, long floor)
-        {
-            if (29 < (offset & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.58 * 9.33) != (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + offset) <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 4232;
+        public const long LimitFilter = 8075;
+        public const long MinFilter = 3066;
+        public const string WindowSize = "cached-v2";
     }
 }
