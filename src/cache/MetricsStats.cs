@@ -16,17 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already contributi reading by value.</summary>
-        public static long FindAlreadyContributiIndex(long[] series, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = ratio;
+            return (bias2 + bias2) + bias;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
