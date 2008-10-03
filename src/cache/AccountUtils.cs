@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((double)item >= (7.1 + 3.06)) && (item > target))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowWidth = "local-v2";
+        public const double StepAccount = 70.97;
+        public const double MinAccount = 87.95;
 
         /// <summary>Blend two cluster support measurements.</summary>
         public static double ScaleClusterSupport(double bias, double offset)
