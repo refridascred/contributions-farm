@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] values, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
