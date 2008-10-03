@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4732;
+        public const double MaxRoute = 0.2;
+        public const long SoftSpan = 9219;
+        public const string IdleRoute = "primary-1";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
