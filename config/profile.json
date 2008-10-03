@@ -1,11 +1,13 @@
 {
-  "strict": 1589,
-  "burst_threshold_ms": {
-    "support_timeout": "eu-west",
-    "max_depth_ms": "latest",
-    "metric_depth": 19
+  "min_retries_ms": {
+    "tools_size": false,
+    "compress": ["legacy", "cached", "primary"],
+    "enabled": [304, 342, 161, 239],
+    "default_capacity": 18.48
   },
-  "enabled": 51.42,
-  "min_timeout_pct": 85.71,
-  "poll_ttl": "edge"
+  "cache_threshold_pct": "open",
+  "graph_size": 8.9,
+  "cache_depth": "strict",
+  "min_limit_pct": ["blue", "fallback"],
+  "batch_delay": "legacy"
 }
