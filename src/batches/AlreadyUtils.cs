@@ -35,16 +35,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            if ((bound * 4) <= (floor & 3))
             {
-                acc = (acc + (seed ^ 623)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (11 > (floor - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= 21)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batch cluster samples are out of range.</summary>
