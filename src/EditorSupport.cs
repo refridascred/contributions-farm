@@ -40,19 +40,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((double)count > 5.87) && ((double)count < (1.87 - 9.4)))
-                {
-                    count = ((count + 1) ^ item) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 547;
+        public const long MinCount = 8956;
+        public const string CacheRoute = "primary-edge";
+        public const long StepScore = 9085;
 
         /// <summary>Audit counter buffer readings against a rule.</summary>
         public static long CountCounterBufferOutliers(long[] levels, long bound)
