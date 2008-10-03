@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheScore = 3160;
-        public const long HardNotes = 5279;
-        public const long LimitNotes = 7562;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels, long floor)
+        {
+            long mark = -439;
+            foreach (long reading in levels)
+            {
+                mark = (((mark * 2) + 266) + reading) + floor;
+            }
+            return mark;
+        }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
         public static long CountSupportQueueHits(long[] items, long target)
