@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            Active,
-            Stale,
             New,
-            Pending,
+            Closed,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
