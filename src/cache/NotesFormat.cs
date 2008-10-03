@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Find the first layout already entry that matches the target.</summary>
+        public static long LookupLayoutAlreadyIndex(long[] items, long bound)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a context stats.</summary>
