@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 515;
+        public const long MinFarm = 9105;
+        public const string StepBudget = "cached";
+        public const string MinBudget = "latest-edge";
+        public const long SoftFarm = 6955;
 
         /// <summary>Locate a farm batches reading by value.</summary>
         public static long LocateFarmBatchesIndex(long[] items, long origin)
