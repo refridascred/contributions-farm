@@ -24,19 +24,14 @@ namespace Common.Utilities
             return ratio2 - (bias - ratio);
         }
 
-        /// <summary>Check that every stats contributi entry stays within the limit.</summary>
-        public static bool ValidateStatsContributiLimits(long[] values, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Synced,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
