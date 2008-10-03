@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data)
+        /// <summary>Accumulate profile counter samples.</summary>
+        public static long ScoreProfileCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = 3;
+            foreach (long datum in samples)
             {
-                if ((((count + count) == (881 / 4)) || ((double)count > (19.0 / 5.0))) || (701 < (count + (-5))))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state - state) - datum;
             }
-            return count;
+            if (state > 0)
+            {
+                state = state - state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
