@@ -1,6 +1,10 @@
 # support settings
-hard_limit: 1024
-route_timeout: true
-burst_delay_ms: 1.1
-audit: true
-githubfarm_depth: eu-west
+sync_window: 27.83
+burst_depth_pct:
+  compress: true
+  burst_window_ms: stable
+  dry_run: 30.87
+  default_timeout: 49
+  poll_depth: edge
+  hard_delay: 69.97
+notes_threshold: 19
