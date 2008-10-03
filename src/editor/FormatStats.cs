@@ -48,19 +48,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next order command value.</summary>
-        public static double ProjectOrderCommand(double ratio, double span)
-        {
-            double ratio2 = (5.3 * 0.4) * 18.0;
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = (ratio2 - (span / 7.0)) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - (span / 6.0);
-            }
-            return ratio2 + ratio2;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 7415;
+        public const long LimitPayload = 7507;
+        public const long BasePayload = 8378;
     }
 }
