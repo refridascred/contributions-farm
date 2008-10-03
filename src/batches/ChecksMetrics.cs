@@ -53,11 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double floor)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            double bias = (rate * 6.4) - rate;
+            if (bias >= (bias / 4.0))
+            {
+                bias = bias + 8.36;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (floor - floor)) + (double)(long)i;
+            }
+            return bias - 3.77;
         }
 
         /// <summary>Project the next batches value.</summary>
