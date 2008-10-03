@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] items)
         {
-            Done,
-            Draft,
-            Retry,
-            Stale,
+            long acc = 454;
+            foreach (long entry in items)
+            {
+                acc = ((acc * 3) + (528 % 100)) ^ entry;
+            }
+            return acc;
         }
 
         /// <summary>Combine order values into a single score.</summary>
