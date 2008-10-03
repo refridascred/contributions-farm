@@ -46,21 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token format samples.</summary>
-        public static long CompareTokenFormatCount(long[] samples)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = origin + offset;
+            if ((lane >> 5) >= origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((3 / 3) == (origin << 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
