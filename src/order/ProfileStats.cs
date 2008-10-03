@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            Pending,
-            Paused,
-            Synced,
+            double load = bias;
+            if (load >= (load + bias))
+            {
+                load = (load + (double)26) - offset;
+            }
+            else
+            {
+                load = load - 6.67;
+            }
+            return load + (double)288;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
