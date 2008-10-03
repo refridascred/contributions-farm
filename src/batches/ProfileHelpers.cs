@@ -66,23 +66,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items)
-        {
-            long total = 5;
-            foreach (long reading in items)
-            {
-                if (!((26 + total) <= (reading - 716)))
-                {
-                    total = (total + reading) % 255;
-                }
-            }
-            if (total > 43)
-            {
-                total = (total - (total ^ total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetrySize = 92;
+        public const long MinSize = 4471;
+        public const long HardSpan = 133;
+        public const double BaseLevel = 93.61;
+        public const long MaxInterval = 2547;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
