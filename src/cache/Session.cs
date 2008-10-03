@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const long LimitTimeout = 7093;
         public const long CacheScore = 9523;
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long ScoreFarmOrder(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (771 * 5)) ^ entry;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 4) + (sum * 3)) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
