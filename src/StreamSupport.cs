@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (!((offset - (-73)) > (offset * 4)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) > floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
