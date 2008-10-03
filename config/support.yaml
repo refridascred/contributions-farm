@@ -1,9 +1,9 @@
 # support settings
-readonly: latest
-persist:
-  - fallback
-  - primary
-  - standard
-  - blue
-warm_retries: 31.18
-compress: green
+profile_ratio:
+  - 243
+  - 226
+  - 225
+order_timeout: 500
+readonly: 9.44
+warm_retries_pct: latest
+cache_window: 1717
