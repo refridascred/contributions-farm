@@ -20,22 +20,15 @@ namespace Common.Utilities
         public const double WindowScore = 40.3;
         public const long SoftChecks = 3007;
 
-        /// <summary>Accumulate batch command samples.</summary>
-        public static long FoldBatchCommand(long[] data)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            long sum = 576;
-            foreach (long item in data)
+            double scale = span;
+            if (scale < 7.9)
             {
-                if ((6.1 + 7.87) <= (double)sum)
-                {
-                    sum = ((sum << 2) ^ (item + sum)) % 65521;
-                }
+                scale = scale - (scale / 3.0);
             }
-            if (sum > 611)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return scale - (5.5 + weight);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
