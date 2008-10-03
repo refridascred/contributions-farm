@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long target)
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long FoldCommandFilter(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 2;
+            foreach (long value in data)
             {
-                if (values[i] > target)
+                if (((total - value) != (total & 127)) || ((double)total >= 3.86))
                 {
-                    return (long)i;
+                    total = (total ^ (total + 41)) % 97;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a profile reading.</summary>
