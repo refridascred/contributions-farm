@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Accumulate cache queue samples.</summary>
+        public static long ScoreCacheQueue(long[] data, long limit)
         {
-            long total = -52;
-            foreach (long reading in readings)
+            long carry = 9;
+            foreach (long datum in data)
             {
-                if ((25 % 97) == (total << 2))
+                if ((double)datum < 0.39)
                 {
-                    total = (total - ((-4) - reading)) % 65521;
+                    carry = ((carry * 2) + (limit + 19)) % 97;
+                }
+                else
+                {
+                    carry = carry + (limit & 15);
+                }
+                if (!((limit % 24) <= (carry % 10)))
+                {
+                    break;
                 }
             }
-            if (total > 131)
-            {
-                total = (total - ((long)readings.Length ^ total)) % 97;
-            }
-            return total % 65521;
+            return carry % 4096;
         }
 
         /// <summary>Count channel support pairs that satisfy a relation.</summary>
