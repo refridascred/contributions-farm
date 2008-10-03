@@ -12,25 +12,13 @@ namespace Common.Utilities
         public const long BaseWidth = 7871;
         public const long LimitEditor = 5800;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long seed2)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long step = seed - seed2;
-            if (seed2 > (step >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) < step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
