@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values, long target)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 4;
-            foreach (long value in values)
-            {
-                total = ((total * 4) + target) - value;
-            }
-            return total % 65521;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
