@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double floor)
         {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            double drift = (double)((-13) - 43);
+            if (drift <= (double)9)
+            {
+                drift = ((drift - drift) - scale) + floor;
+            }
+            else
+            {
+                drift = drift - (double)8;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the account level values.</summary>
