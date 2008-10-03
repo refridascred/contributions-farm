@@ -33,21 +33,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
