@@ -1,6 +1,6 @@
-id,rank,weight,count
-1,stable,959,533
-2,57.74,408,24
-3,open,837,134
-4,595,345,0.91
-5,open,81.54,edge
+id,ratio,count
+1,450,65.14
+2,29.49,green
+3,edge,cached
+4,fallback,378
+5,274,latest
