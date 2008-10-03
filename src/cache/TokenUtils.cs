@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 32.33;
-        public const long BaseDepth = 6191;
-        public const string StepDepth = "primary-edge";
-        public const double MinContributi = 21.28;
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double floor)
+        {
+            double bias = rate + (floor + rate);
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - 8.3;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] items, long step)
