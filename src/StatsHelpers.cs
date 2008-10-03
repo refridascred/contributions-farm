@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long offset)
         {
-            double ratio = (double)(16 + 77);
-            if (ratio > 6.9)
+            if ((offset + offset) <= offset)
             {
-                ratio = ((ratio + (double)84) - bias) + span;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio - (double)666) - (double)(long)i;
+                if ((offset << 3) > (step << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((2.25 * 8.5) >= (double)offset) && (step >= (step + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio + (double)9;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
