@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank channel context input into a small class.</summary>
-        public static long GradeChannelContext(long offset, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long cur = offset ^ origin;
-            if (((double)offset >= (double)cur) || ((offset & 1) <= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur & 127) < 60)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Combine channel batches values into a single score.</summary>
