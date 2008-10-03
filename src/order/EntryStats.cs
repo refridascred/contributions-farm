@@ -50,31 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings)
         {
-            if ((double)offset == (double)floor)
+            long anchor = -32;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >= (offset << 2)) && ((floor >> 1) >= (floor >> 3)))
+                if (((double)reading > (7.9 + 3.0)) || (anchor < (anchor * 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (995 <= (floor >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = anchor - ((long)readings.Length % 5);
                 }
             }
+            return anchor;
         }
     }
 }
