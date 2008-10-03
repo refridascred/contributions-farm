@@ -40,19 +40,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] items, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
