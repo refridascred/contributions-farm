@@ -54,11 +54,19 @@ namespace Common.Utilities
         public const double HardBudget = 78.46;
         public const string BaseOrder = "stable";
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a record window counter forward.</summary>
+        public static long StepRecordWindow(long bound)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((mark / 3) < mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
