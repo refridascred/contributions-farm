@@ -34,19 +34,32 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] values, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long mark = 910;
+            foreach (long value in data)
             {
-                if (cell > offset)
+                if ((double)value <= (double)99)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 2) + (mark & 7)) % 255;
+                    mark = (mark ^ 60) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark + (value % 60)) % 4096;
+                }
+                if (target > (mark - mark))
+                {
+                    mark = mark + (16 ^ value);
                 }
             }
-            return ok;
+            if (mark > (-702))
+            {
+                mark = (mark << 3) ^ (target >> 2);
+            }
+            return mark % 1000;
         }
     }
 }
