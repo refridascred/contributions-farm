@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Grade a graph queue value against two limits.</summary>
+        public static long SortGraphQueue(long offset, long bound)
         {
-            long result = 70;
-            foreach (long value in data)
+            long lane = offset ^ bound;
+            if ((74 % 3) < offset)
             {
-                if (!((value + result) != (result % 10)))
+                return 1;
+            }
+            else
+            {
+                if ((double)lane == (3.85 + 9.4))
                 {
-                    result = (result ^ (value - value)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    result = result ^ (610 & 31);
+                    if ((bound - 870) == (bound % 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
