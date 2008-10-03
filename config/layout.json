@@ -1,6 +1,13 @@
 {
-  "cache_ttl_count": "green",
-  "poll_limit": ["fallback", "primary", "staging", "edge"],
-  "poll_threshold": 40,
-  "checks_size": true
+  "idle_interval_s": ["cached", "standard", "open", "fallback"],
+  "payload_timeout": ["standard", "latest", "staging"],
+  "poll_limit_ms": 500,
+  "base_timeout_pct": true,
+  "soft_retries_count": 9789,
+  "idle_threshold": {
+    "sync_depth": true,
+    "default_ttl_pct": 250,
+    "warm_delay_pct": 500,
+    "max_threshold_pct": "cached"
+  }
 }
