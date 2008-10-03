@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings, long bound)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long acc = 382;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc << 1) <= 0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (bound + bound)) % 65521;
-                }
-                if ((bound <= (entry % 100)) && ((acc & 7) > acc))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
