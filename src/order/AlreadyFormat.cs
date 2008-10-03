@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit context already readings against a rule.</summary>
-        public static long CountContextAlreadyHits(long[] series, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double weight = (double)(845 % 10);
+            if (weight > weight)
             {
-                if (sample < (sample - sample))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight - (double)79) + scale;
             }
-            return seen;
+            else
+            {
+                weight = weight - (4.14 + span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)458) + (double)(long)i;
+            }
+            return weight + (weight * 20.0);
         }
 
         /// <summary>Describe the command kind values.</summary>
