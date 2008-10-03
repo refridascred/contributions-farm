@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            double bias = 2.12;
+            if (bias > (double)85)
+            {
+                bias = (bias + (bias - offset)) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a metric header.</summary>
