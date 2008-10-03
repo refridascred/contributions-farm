@@ -49,21 +49,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of githubfarm schema readings.</summary>
-        public static long CompareGithubfarmSchemaCount(long[] readings)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > step)
                 {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
