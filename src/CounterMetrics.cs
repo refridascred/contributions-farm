@@ -31,13 +31,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Compare every pair of support schema readings.</summary>
+        public static long OverlapSupportSchemaCount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
