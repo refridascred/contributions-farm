@@ -41,32 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long bound)
-        {
-            if (!((bound + bound) <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0.76 - 6.0) > (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 2) <= (603 / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1443;
+        public const long RetrySize = 151;
+        public const long BaseAlready = 3480;
+        public const string BurstWidth = "alpha-1";
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long offset)
