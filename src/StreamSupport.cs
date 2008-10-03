@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            Queued,
-            Locked,
-            Failed,
+            double mean = floor;
+            if (mean > (double)3)
+            {
+                mean = mean + ratio;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
