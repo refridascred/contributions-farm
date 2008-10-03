@@ -44,18 +44,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels, long step)
+        /// <summary>Iterate the schema layout series from a seed.</summary>
+        public static long DeriveSchemaLayout(long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally >> 5) > (datum * 2))
-                {
-                    tally = (tally + 1) + step;
-                }
+                mark = (mark + (bound + bound)) % 65521;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
     }
 }
