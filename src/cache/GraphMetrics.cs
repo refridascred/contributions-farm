@@ -44,25 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long floor, long bound)
-        {
-            long slot = floor - bound;
-            if ((double)bound == (double)slot)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.71 + 3.8) < (3.81 - 3.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "legacy-edge";
+        public const double SoftCommand = 36.11;
+        public const double IdleCommand = 23.86;
+        public const string RetryWidth = "strict-edge";
+        public const long LimitCommand = 3025;
     }
 }
