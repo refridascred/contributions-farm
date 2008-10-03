@@ -56,9 +56,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 13.62;
-        public const long BurstWindow = 4534;
-        public const long BaseBudget = 8345;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 87.89;
+        public const string BaseCount = "standard-1";
+        public const double StepSupport = 20.85;
     }
 }
