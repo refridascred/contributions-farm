@@ -31,28 +31,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token report input into a small class.</summary>
-        public static long GradeTokenReport(long origin, long limit)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long seed)
         {
-            if ((limit % 5) != (40 * 4))
+            long delta = offset - seed;
+            if ((offset << 1) >= delta)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((limit % 2) <= (limit + origin))
+                if ((779 / 8) > offset)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((792 + limit) == (891 % 100))
+                    if ((offset ^ 8) >= (-65))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 8;
                     }
                 }
             }
