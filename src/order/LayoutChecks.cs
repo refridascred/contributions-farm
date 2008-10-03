@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of contributi farm entries.</summary>
-        public static long FoldContributiFarm(long[] readings)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long result = 2;
-            foreach (long datum in readings)
+            long mark = 8;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result ^ datum) % 255;
-                    result = ((result << 2) ^ ((long)i + 9)) % 97;
-                }
-                result = (result ^ (result >> 5)) % 101;
+                mark = ((mark * 4) + (entry + 3)) % 101;
             }
-            return result % 97;
+            return mark;
         }
 
         /// <summary>Roll a order counter counter forward.</summary>
