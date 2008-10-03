@@ -71,11 +71,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 4.73;
-        public const double WindowEntry = 7.51;
-        public const long WindowScore = 5922;
-        public const long MaxEntry = 2241;
-        public const double CacheDepth = 32.67;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry - (floor ^ carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
