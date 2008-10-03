@@ -42,17 +42,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long origin)
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long MeasureBatchSupportMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if ((seen + reading) != (seen / 5))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
