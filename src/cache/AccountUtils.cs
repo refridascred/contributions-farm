@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = seed + target;
+            if (((double)target <= (9.96 * 0.05)) || ((target / 3) <= diff))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target - diff) > seed)
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
+                    return 7;
+                }
+                else
+                {
+                    if (7.41 >= (double)seed)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((0 - diff) == (3 + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
