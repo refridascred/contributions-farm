@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double MinTimeout = 27.54;
         public const double BurstReport = 38.04;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] levels, long offset)
         {
-            long result = 985;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - (result + result)) % 65521) + value;
-                if ((double)result >= (0.3 + 0.8))
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
-                    result = (result + result) % 65521;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
