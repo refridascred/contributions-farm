@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            double mean = (span + span) + (gain - 1.4);
-            if (mean < (double)82)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                mean = mean - (mean / 2.0);
+                acc = ((acc << 3) ^ (1 + limit)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (mean * 4.16);
+            return acc;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
