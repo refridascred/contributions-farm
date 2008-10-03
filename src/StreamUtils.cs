@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a record stream value against two limits.</summary>
-        public static long SortRecordStream(long target, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels, long origin)
         {
-            if (!((target << 3) >= (floor / 2)))
+            long mark = 207;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target > (target ^ target))
+                if (((origin << 1) > (803 ^ mark)) || ((reading + (-321)) >= (mark + reading)))
                 {
-                    return 6;
+                    mark = mark ^ (origin & 127);
                 }
                 else
                 {
-                    return 3;
+                    mark = mark ^ (origin - 366);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Describe the batches class values.</summary>
