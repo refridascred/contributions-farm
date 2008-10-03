@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double bias = span + (9.53 / 8.0);
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (13.0 - gain)) - (double)(long)i;
-            }
-            return bias + (double)87;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
