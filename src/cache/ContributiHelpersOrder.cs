@@ -41,23 +41,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings)
         {
-            double load = (floor + floor) / 8.0;
-            if (load > (scale + load))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                load = load - floor;
+                if ((double)datum > (9.0 - 1.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load - (scale + floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (load / 4.0);
+            return seen;
         }
     }
 }
