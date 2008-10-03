@@ -25,20 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Validate account notes readings against a bound.</summary>
+        public static bool ValidateAccountNotesLimits(long[] levels, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (!((result - 7) == (result ^ limit)))
+                if (datum >= origin)
                 {
-                    result = (result ^ (long)i) % 65521;
+                    ok = false;
+                    break;
                 }
-                result = result - (limit << 2);
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
     }
 }
