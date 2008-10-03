@@ -44,10 +44,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 4448;
-        public const long BurstTimeout = 256;
-        public const long IdleRatio = 9078;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftInterval = "legacy-edge";
+        public const double SoftWidth = 39.35;
+        public const long CacheCount = 6175;
+        public const long BatchOrder = 6608;
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] readings)
