@@ -56,18 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (result / 7)) % 1000;
-                result = (result * 5) + 319;
-                result = (result - (857 - result)) % 65521;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Ready,
+            Pending,
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define session limits and defaults.</summary>
