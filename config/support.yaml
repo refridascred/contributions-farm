@@ -1,18 +1,16 @@
 # support settings
-cache_retries_count:
-  min_capacity: latest
-  poll_delay_count:
-    soft_capacity_s:
-      - 273
-      - 160
-      - 498
-    poll_timeout_ms: fallback
-    compress: false
-    flush_capacity_count: open
-  filter_ratio: strict
-  default_retries: local
-account_depth: 69
-max_size_pct:
-  idle_ttl_s: local
-  hard_window_ms: 9953
-  poll_interval_s: 30
+batch_limit_count: standard
+hard_window_count: blue
+poll_ttl_count: 906
+strict:
+  - 100
+  - 352
+  - 293
+  - 337
+sync_ratio_ms:
+  retry_retries_count: 1024
+  account_window: latest
+  min_size_s: 1024
+  already_limit: 7433
+  context_ratio: 11.13
+cache_capacity_ms: cached
