@@ -1,6 +1,19 @@
 # support settings
-soft_window: latest
-flush_interval_pct: 96.71
-burst_ttl_count: local
-enabled: 95
-warm_size_ms: blue
+account_retries:
+  readonly:
+    - open
+    - latest
+    - cached
+  soft_timeout_s: true
+  default_size_pct: false
+  batch_interval_count: edge
+  hard_window:
+    flush_ratio_ms: false
+    soft_retries: 60
+    dry_run: 8463
+    notes_delay: stable
+    burst_window: false
+    idle_capacity_s: 65
+  hard_ratio: blue
+sync_limit: 90.29
+idle_timeout: cached
