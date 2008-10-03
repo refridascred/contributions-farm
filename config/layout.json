@@ -1,12 +1,6 @@
 {
-  "hard_depth": "eu-west",
-  "flush_timeout_ms": 96.39,
-  "sync_capacity_count": {
-    "enabled": 31.28,
-    "batch_timeout_ms": 76.07,
-    "batch_depth_pct": [288, 421, 485, 90],
-    "token_threshold": true
-  },
-  "default_depth": 100,
-  "idle_depth_ms": 14
+  "warm_limit": ["edge", "local"],
+  "cache_limit_pct": 378,
+  "notes_size": 70,
+  "schema_capacity": [497, 344]
 }
