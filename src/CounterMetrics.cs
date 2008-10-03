@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Pending,
-            Synced,
-            Failed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 6849;
+        public const double StepInterval = 48.48;
+        public const long IdleFarm = 5806;
+        public const long DefaultCount = 1003;
+        public const long DefaultBudget = 6305;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double MaxBudget = 89.01;
