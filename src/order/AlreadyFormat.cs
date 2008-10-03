@@ -16,21 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of cluster batch readings.</summary>
-        public static long MatchClusterBatchCount(long[] data)
+        /// <summary>Derive the next command buffer value from a seed.</summary>
+        public static long IterateCommandBuffer(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)(long)i <= (17.0 + 9.7)) && (result >= (54 + 66)))
                 {
-                    if ((data[i] - data[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a contributi session sample.</summary>
