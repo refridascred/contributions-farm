@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 2080;
-        public const string BatchWidth = "strict";
-        public const long DefaultScore = 7747;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "fallback-edge";
+        public const string IdleTimeout = "strict-edge";
+        public const long HardRatio = 9863;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryHits(long[] data)
