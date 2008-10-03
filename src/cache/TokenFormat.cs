@@ -15,13 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every payload stats entry stays within the limit.</summary>
+        public static bool GuardPayloadStatsRange(long[] readings, long seed)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Draft,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
