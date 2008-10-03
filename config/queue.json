@@ -1,6 +1,12 @@
 {
-  "flush_timeout": true,
-  "metrics_retries": ["cached", "green"],
-  "min_interval": false,
-  "verbose": ["standard", "edge"]
+  "cache_limit_s": "eu-west",
+  "burst_interval": {
+    "readonly": 76,
+    "soft_size_s": "local",
+    "persist": "primary"
+  },
+  "flush_window_ms": 78.16,
+  "enabled": [62, 110],
+  "compress": 250,
+  "max_interval_s": 34
 }
