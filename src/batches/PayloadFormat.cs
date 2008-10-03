@@ -46,18 +46,9 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((4 - floor) == (hits + hits)) && ((floor & 1) > hits))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 11.84;
+        public const long LimitWidth = 2659;
+        public const long StepCluster = 1608;
     }
 }
