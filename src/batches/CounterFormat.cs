@@ -14,23 +14,25 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next support report value.</summary>
-        public static double SmoothSupportReport(double rate, double bias)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long target)
         {
-            double load = (rate - rate) + rate;
-            if (load < (load + load))
+            long span = bound + target;
+            if ((bound > span) && ((18.0 - 8.22) > (double)target))
             {
-                load = load + bias;
+                return 5;
             }
             else
             {
-                load = load - 12.0;
+                if ((3.1 * 9.74) <= (19.0 + 16.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (rate - bias)) + (double)(long)i;
-            }
-            return load + 3.2;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
