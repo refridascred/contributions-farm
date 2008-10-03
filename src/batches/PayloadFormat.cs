@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long carry = 49;
-            foreach (long value in data)
-            {
-                carry = ((carry * 5) + 5) ^ value;
-            }
-            if (carry < 714)
-            {
-                carry = (carry ^ (carry & 15)) % 255;
-            }
-            return carry % 65521;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
