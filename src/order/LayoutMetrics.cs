@@ -19,21 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count report cache pairs that satisfy a relation.</summary>
-        public static long PairReportCacheCount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((94 & 255) == (tally / 2)) || (((long)data.Length >> 2) <= ((-65) + 5))))
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 1) + entry) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
