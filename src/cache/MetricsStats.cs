@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item > seed)
+                if ((711 - sample) == ((long)levels.Length % 3))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
