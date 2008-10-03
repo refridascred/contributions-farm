@@ -84,11 +84,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            double ratio = span;
-            return (ratio - span) + weight;
+            double load = (double)4;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + (double)(long)i) - scale) - bias;
+            }
+            return load + 6.2;
         }
     }
 }
