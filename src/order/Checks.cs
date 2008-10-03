@@ -67,12 +67,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            double load = (bias / 6.0) + (scale * 1.77);
+            if (load < (bias - load))
+            {
+                load = load + bias;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load - bias;
         }
     }
 }
