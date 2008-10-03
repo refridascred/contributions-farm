@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Iterate the session account series from a seed.</summary>
+        public static long DeriveSessionAccount(long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    acc = ((acc + (target + target)) % 1000) - (long)i2;
-                }
-                acc = (acc ^ ((long)i - acc)) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
