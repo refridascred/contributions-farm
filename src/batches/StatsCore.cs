@@ -74,10 +74,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "legacy-1";
-        public const string LimitCount = "latest-v2";
-        public const long MaxBatch = 8360;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double floor)
