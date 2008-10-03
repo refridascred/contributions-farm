@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryDepth = 4116;
-        public const long CacheStream = 2111;
-        public const string HardTimeout = "standard-edge";
-        public const long IdleScore = 8343;
-        public const string WindowSize = "latest-1";
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardDepth = 9100;
