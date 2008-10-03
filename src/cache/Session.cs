@@ -42,17 +42,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 7093;
         public const long CacheScore = 9523;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 2754;
+        public const string CacheFactor = "strict";
+        public const long CacheCount = 7973;
+        public const double CacheRatio = 72.02;
+        public const string IdleScore = "staging";
     }
 }
