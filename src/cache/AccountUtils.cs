@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long bound)
         {
-            long mark = 80;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
                 {
-                    mark = (mark ^ mark) - (long)i;
-                }
-                if (((15.0 * 15.0) <= (double)datum) && ((mark % 8) == (mark - mark)))
-                {
-                    mark = (mark + (datum >> 3)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > (-6))
-            {
-                mark = ((mark << 3) ^ mark) % 255;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Validate githubfarm account readings against a bound.</summary>
