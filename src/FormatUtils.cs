@@ -25,12 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings, long seed)
         {
-            New,
-            Queued,
-            Failed,
+            long anchor = 7;
+            foreach (long cell in readings)
+            {
+                if (((seed % 64) >= (cell / 8)) && ((seed - seed) > seed))
+                {
+                    anchor = ((anchor * 4) + anchor) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
