@@ -41,18 +41,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] series, long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally * 3) < (limit * 4))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
