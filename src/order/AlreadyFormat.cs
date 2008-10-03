@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = 47;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((anchor % 12) <= anchor) || (3.0 <= (double)reading))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
             }
-            return carry;
+            return anchor % 97;
         }
 
         /// <summary>Derive the next command buffer value from a seed.</summary>
