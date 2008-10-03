@@ -39,12 +39,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "legacy-1";
-        public const long CacheCount = 8987;
-        public const long RetryCache = 3341;
-        public const long SoftCache = 6813;
-        public const double BatchCount = 12.23;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long bound)
+        {
+            long edge = limit + bound;
+            if (!((limit + limit) <= edge))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit + 421) <= limit) || (4.23 <= (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 7) != (20 - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double BlendChecks(double scale, double span)
