@@ -29,19 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= target)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Adjust a batches reading.</summary>
