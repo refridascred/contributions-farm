@@ -95,24 +95,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch window value against two limits.</summary>
-        public static long BucketBatchWindow(long limit, long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            if (((limit >> 1) == (limit * 3)) || ((floor * 2) >= (5 + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 1) != (floor + 877)) && ((22 + floor) == (floor / 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Synced,
+            Dropped,
+            Ready,
+            Queued,
         }
     }
 }
