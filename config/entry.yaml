@@ -1,6 +1,17 @@
 # entry settings
-base_retries_pct: 3.76
-cache_capacity_ms: 6724
-min_interval_ms: true
-burst_ratio_count: 4635
-cache_window: true
+flush_retries: 57
+max_timeout_s: 40
+compress:
+  report_depth: fallback
+  soft_interval_s:
+    - 415
+    - 476
+    - 122
+  default_delay_count: 62.76
+  account_interval: eu-west
+  idle_limit:
+    poll_interval: cached
+    persist: green
+    readonly: 65.29
+    hard_timeout_pct: 250
+    enabled: 11
