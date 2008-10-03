@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 195;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((result * 4) != (result & 31)) || ((result + result) <= (item % 12)))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 5) + (item * 4)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (result << 2)) % 1000;
                 }
             }
-            return count;
+            if (result > 104)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
