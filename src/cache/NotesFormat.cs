@@ -14,16 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            long score = 5;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if (((4.55 / 5.0) != (double)score) && (sample < score))
+                {
+                    score = (score ^ 548) % 4096;
+                    score = (score + (bound << 1)) % 4096;
+                }
+                score = (score - (bound ^ bound)) % 65521;
             }
-            return anchor;
+            if (score < 9)
+            {
+                score = (score + (356 - score)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
