@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    label TEXT,
-    level INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    rank INTEGER,
+    token TEXT,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
-
-INSERT INTO commits_records (score, label, level) VALUES (82.06, 'blue', 5);
-INSERT INTO commits_records (score, label, level) VALUES (68.84, 'open', 31);
-INSERT INTO commits_records (score, label, level) VALUES (70.33, 'open', 32);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
