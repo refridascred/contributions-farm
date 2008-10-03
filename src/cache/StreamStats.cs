@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] levels, long target)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + 2) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
