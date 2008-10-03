@@ -29,11 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long total = 92;
+            foreach (long entry in values)
+            {
+                if ((6.41 + 17.0) >= (double)entry)
+                {
+                    total = (total + (entry << 3)) % 1000;
+                }
+            }
+            if (total > 2)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
