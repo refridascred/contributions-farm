@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Failed,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 2232;
+        public const double IdleEntry = 79.79;
+        public const long WindowEntry = 6006;
+        public const long CacheEntry = 4462;
 
         /// <summary>Find the first stats session entry that matches the target.</summary>
         public static long LocateStatsSessionIndex(long[] levels, long origin)
