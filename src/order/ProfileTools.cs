@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Done,
-            Ready,
-            Draft,
-            Idle,
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric commits readings.</summary>
