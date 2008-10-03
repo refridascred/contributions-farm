@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] samples, long target)
         {
-            double weight = (double)(845 % 10);
-            if (weight > weight)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                weight = (weight - (double)79) + scale;
+                if (!(((9.92 / 5.0) > (double)target) && ((hits >> 3) >= (reading * 4))))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight = weight - (4.14 + span);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (double)458) + (double)(long)i;
-            }
-            return weight + (weight * 20.0);
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
