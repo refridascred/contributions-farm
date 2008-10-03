@@ -35,11 +35,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long step, long seed)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            long slot = step ^ seed;
+            if ((step & 127) <= slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((0 + seed) > (55 ^ 0)) && ((20 - slot) != (step - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed ^ seed) != (slot & 255)) || ((slot * 4) == (step - 993)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed < (seed + slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
