@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] series, long step)
+        /// <summary>Audit profile entry readings against a rule.</summary>
+        public static long CountProfileEntryHits(long[] readings, long seed)
         {
-            long result = 8;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                result = ((((result * 3) + result) % 101) + reading) + step;
+                if (((-67) << 3) >= (seen + 67))
+                {
+                    seen = ((seen + 2) ^ sample) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
