@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchEditor = 51.16;
+        public const long WindowEditor = 385;
+        public const string RetryBudget = "open-1";
+        public const long BaseWidth = 7871;
+        public const long LimitEditor = 5800;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long seed, long seed2)
