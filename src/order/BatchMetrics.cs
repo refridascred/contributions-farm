@@ -52,10 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "cached-1";
-        public const double MinDepth = 58.31;
-        public const long IdleCounter = 165;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] readings, long origin)
