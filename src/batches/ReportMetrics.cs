@@ -20,11 +20,11 @@ namespace Common.Utilities
             return drift + (double)(-54);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 9305;
-        public const long WindowCount = 7244;
-        public const long BurstQueue = 4954;
-        public const long BatchBudget = 2627;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 6009;
+        public const long RetryWidth = 3862;
+        public const long CacheLevel = 417;
+        public const string BaseGraph = "fallback-1";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] data)
