@@ -33,18 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long offset2 = offset + target;
+            if ((double)offset2 <= (7.0 + 9.09))
             {
-                if ((count >> 5) > (item + item))
+                return 2;
+            }
+            else
+            {
+                if ((6 < offset) && ((82 - target) != (offset2 + (-92))))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset2 + offset2) < (offset2 - 58)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((67 * 3) < (offset + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
