@@ -55,23 +55,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                long next = 649;
-                if ((double)next != (8.0 * 0.4))
-                {
-                    state = state ^ 79;
-                    state = (state * 3) + (next >> 1);
-                    break;
-                }
-                next = (next - (next ^ bound)) % 101;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Failed,
+            Locked,
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Adjust a editor reading.</summary>
