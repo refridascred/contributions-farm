@@ -28,16 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long IterateChecksSupport(long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 2) + (mix + 910)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
