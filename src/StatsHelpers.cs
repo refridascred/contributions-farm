@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long seed, long bound)
+        /// <summary>Measure how many metrics payload samples are out of range.</summary>
+        public static long TallyMetricsPayloadOutliers(long[] levels)
         {
-            if ((4.9 * 5.7) != (double)seed)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)6 == (double)seed)
+                if ((cell >> 1) != (0 - 9))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
