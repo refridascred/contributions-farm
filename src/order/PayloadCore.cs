@@ -36,9 +36,22 @@ namespace Common.Utilities
         public const string HardCommand = "stable-1";
         public const long LimitCommand = 894;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "latest-edge";
-        public const string HardAlready = "legacy-v2";
-        public const string StepAlready = "latest-1";
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long bound)
+        {
+            long sum = 1;
+            foreach (long value in samples)
+            {
+                if (11.0 >= (double)sum)
+                {
+                    sum = ((sum + 12) - value) - bound;
+                }
+            }
+            if (sum < 21)
+            {
+                sum = ((sum * 5) + (sum >> 5)) % 65521;
+            }
+            return sum;
+        }
     }
 }
