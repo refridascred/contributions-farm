@@ -35,20 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples, long floor)
-        {
-            long state = 133;
-            foreach (long datum in samples)
-            {
-                state = ((state << 3) ^ (floor - state)) % 1000;
-                if (((floor + datum) == (floor % 7)) || ((51 >> 5) >= state))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseLevel = "standard-v2";
+        public const long BaseGithubfarm = 5547;
+        public const long IdleScore = 6246;
+        public const double BurstGithubfarm = 4.04;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmLimits(long[] readings, long bound)
