@@ -1,6 +1,13 @@
 {
-  "default_limit_pct": 81.42,
-  "flush_ratio": "green",
-  "tools_capacity": 56.62,
-  "base_timeout_ms": 296
+  "min_timeout_pct": 9940,
+  "payload_limit": 13.97,
+  "idle_threshold_pct": [79, 352, 2, 349],
+  "route_timeout": {
+    "strict": 4.0,
+    "idle_timeout_s": "open",
+    "commits_capacity": 83.57,
+    "default_threshold_ms": 64.59,
+    "cache_capacity_ms": "eu-west",
+    "batch_size_ms": 1656
+  }
 }
