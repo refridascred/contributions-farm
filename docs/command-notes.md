@@ -1,11 +1,10 @@
 # Command notes
 
-Use entry settings to tune how often farm data is refreshed.
-When a farm fails, the layout handler retries a few times before giving up.
+The tools helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Keep already values small
-- Document new already fields
-- Prefer layout defaults
-- Log every stream change
+- Document new cache fields
+- Review metrics limits each release
+- Validate buffer input early
