@@ -28,21 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up already token samples.</summary>
-        public static long MatchAlreadyTokenCount(long[] samples)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
