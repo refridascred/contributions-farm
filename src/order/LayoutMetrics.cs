@@ -33,23 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] samples, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long total = -5;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (((mix << 2) ^ (55 + 32)) % 65521) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    mix = (((mix * 3) + seed) % 4096) + (long)i3;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                total = (((total * 2) + total) - sample) - bound;
             }
-            return mix;
+            return total % 97;
         }
     }
 }
