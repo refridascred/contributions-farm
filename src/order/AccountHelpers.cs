@@ -49,17 +49,26 @@ namespace Common.Utilities
         public const long LimitInterval = 2570;
         public const string BurstSupport = "local-edge";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 875;
+            foreach (long entry in samples)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                if ((double)score >= 1.7)
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ score) % 255;
+                }
+                else
+                {
+                    score = (score ^ (entry / 7)) % 101;
                 }
             }
-            return -1;
+            if (score < 88)
+            {
+                score = (score - 16) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
