@@ -36,15 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout command series from a seed.</summary>
-        public static long IterateLayoutCommand(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseInterval = 6356;
+        public const long SoftStream = 1054;
+        public const long BurstTimeout = 9868;
+        public const long MinStream = 184;
     }
 }
