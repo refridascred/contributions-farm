@@ -83,19 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi graph figure with a bias.</summary>
-        public static double BlendContributiGraph(double ratio, double span)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double weight = span;
-            if (weight >= (double)23)
-            {
-                weight = weight - (double)187;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (ratio + ratio)) + (double)(long)i;
-            }
-            return weight - 2.4;
+            Paused,
+            Stale,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
