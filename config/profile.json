@@ -1,17 +1,7 @@
 {
-  "farm_retries": false,
-  "idle_limit_ms": 14.96,
-  "cache_limit_count": {
-    "strict": 96,
-    "min_threshold_pct": 71.57,
-    "idle_delay_pct": "fallback",
-    "token_threshold": 250,
-    "warm_ttl_pct": {
-      "warm_interval_count": "strict",
-      "support_delay": 30,
-      "route_size": "blue",
-      "notes_interval": "standard",
-      "default_limit_ms": ["local", "local", "strict"]
-    }
-  }
+  "verbose": [138, 484, 154],
+  "min_capacity_pct": 13.86,
+  "base_window": 74,
+  "retry_limit_ms": true,
+  "max_limit_pct": ["stable", "primary", "legacy", "blue"]
 }
