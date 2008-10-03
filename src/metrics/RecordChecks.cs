@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items, long target)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = 684;
-            foreach (long sample in items)
-            {
-                sum = ((sum - (sum ^ 634)) ^ sample) + target;
-            }
-            if (sum > 452)
-            {
-                sum = ((sum << 3) ^ (sum << 3)) % 97;
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
