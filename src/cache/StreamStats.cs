@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the layout support series from a seed.</summary>
+        public static long SeriesLayoutSupport(long floor)
         {
-            Pending,
-            Failed,
-            Done,
-            Closed,
-            Idle,
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
