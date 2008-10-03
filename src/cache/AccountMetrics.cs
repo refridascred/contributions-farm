@@ -49,10 +49,22 @@ namespace Common.Utilities
         public const long StepFactor = 4938;
         public const long SoftBudget = 7146;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 1871;
-        public const double BatchSize = 12.19;
-        public const long WindowEntry = 1403;
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long SeekChannelIndex(long[] series, long target)
