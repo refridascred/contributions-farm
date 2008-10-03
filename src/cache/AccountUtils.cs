@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up token format samples.</summary>
-        public static long MatchTokenFormatCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "standard";
+        public const double WindowBudget = 98.08;
+        public const double RetrySpan = 2.54;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
