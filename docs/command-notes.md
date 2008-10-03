@@ -1,12 +1,15 @@
 # Command notes
 
-Run the schema check before changing any metric limits.
-Each entry is validated before it reaches the commits queue.
-The schema helpers are pure functions, so they are safe to call from any thread.
+A layout that stays idle for too long is moved to the filter list.
+Run the report check before changing any stream limits.
+
+Run the already check before changing any metrics limits.
+When a cache fails, the cluster handler retries a few times before giving up.
+Run the record check before changing any buffer limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Keep githubfarm values small
-- Review token limits each release
-- Log every cache change
+- Prefer queue defaults
+- Review checks limits each release
+- Keep report values small
+- Log every channel change
