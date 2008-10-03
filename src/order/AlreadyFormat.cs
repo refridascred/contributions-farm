@@ -72,19 +72,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout batches readings against a bound.</summary>
-        public static bool GuardLayoutBatchesBounds(long[] samples, long step)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
