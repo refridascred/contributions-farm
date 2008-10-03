@@ -1,4 +1,6 @@
 # support settings
-githubfarm_ratio: 3978
-idle_timeout: false
-token_limit: true
+hard_limit: 1024
+route_timeout: true
+burst_delay_ms: 1.1
+audit: true
+githubfarm_depth: eu-west
