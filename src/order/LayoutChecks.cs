@@ -40,14 +40,13 @@ namespace Common.Utilities
         public const string LimitOrder = "open-1";
         public const string IdleBudget = "staging-edge";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Queued,
-            New,
-            Failed,
-            Ready,
-            Retry,
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
