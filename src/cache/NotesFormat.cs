@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9692;
-        public const long SoftWindow = 7158;
-        public const string BurstWindow = "latest-1";
-        public const long HardWindow = 2917;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two contributi batch measurements.</summary>
         public static double ProjectContributiBatch(double weight, double offset)
