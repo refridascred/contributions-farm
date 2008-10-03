@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count - 468) > (origin << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) ^ item;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
