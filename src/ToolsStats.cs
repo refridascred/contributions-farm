@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate already token readings against a bound.</summary>
-        public static bool GuardAlreadyTokenBounds(long[] levels, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (entry > offset)
+                if (datum != offset)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Digest a series of token entries.</summary>
