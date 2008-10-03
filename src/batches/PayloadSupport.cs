@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (ratio + bias2);
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long bound)
         {
-            Ready,
-            Paused,
-            Pending,
-            Synced,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
