@@ -1,7 +1,20 @@
 # entry settings
-burst_threshold_ms: 60
-retry_capacity_pct: true
-default_limit: 46.91
-format_capacity: 34
-base_size_pct: 30
-idle_depth_pct: 35
+strict: primary
+idle_threshold_count:
+  notes_limit:
+    idle_delay: 1293
+    burst_threshold: 98
+    max_depth_s: 75
+  compress:
+    - 360
+    - 498
+  hard_limit_pct:
+    strict:
+      - stable
+      - strict
+      - primary
+    burst_interval: 98.57
+    retry_limit_count: 70.56
+  base_capacity: 1024
+sync_capacity: 19.42
+retry_retries: legacy
