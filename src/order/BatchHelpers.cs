@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long step)
         {
-            long score = 3;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((double)score < (6.7 + 6.87))
+                if (reading > step)
                 {
-                    score = (score - 436) - sample;
-                }
-                else
-                {
-                    score = ((score << 3) ^ ((long)data.Length ^ score)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            if (score < 9)
-            {
-                score = ((score << 3) ^ (score ^ score)) % 4096;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Hold a already header.</summary>
