@@ -77,13 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            Synced,
-            Dropped,
-            Ready,
-            Queued,
+            double drift = offset;
+            if (drift <= gain)
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift - offset;
+            }
+            return drift - (gain + offset);
         }
     }
 }
