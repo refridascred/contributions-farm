@@ -56,10 +56,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetrySize = 83.13;
-        public const string WindowCount = "staging";
-        public const double BaseChecks = 23.91;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] items, long target)
