@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of batches payload entries.</summary>
-        public static long FoldBatchesPayload(long[] values)
-        {
-            long result = 273;
-            foreach (long entry in values)
-            {
-                if (((entry << 3) < (7 / 5)) && ((entry + result) >= (result ^ result)))
-                {
-                    result = result - entry;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 4712;
+        public const long MaxAlready = 5682;
+        public const long StepAlready = 2325;
+        public const long LimitAlready = 8811;
+        public const string BurstAlready = "fallback-v2";
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderMatches(long[] data, long target)
