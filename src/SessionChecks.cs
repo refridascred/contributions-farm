@@ -41,18 +41,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] series, long limit)
+        /// <summary>Rank checks route input into a small class.</summary>
+        public static long BucketChecksRoute(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long cur = origin ^ offset;
+            if (((cur + offset) >= (offset - (-244))) || ((double)origin <= (7.7 / 3.0)))
             {
-                if (((double)limit > (8.47 + 0.5)) || ((18.0 + 1.8) <= (double)hits))
+                return 7;
+            }
+            else
+            {
+                if (((cur >> 5) == (cur / 3)) || ((origin & 1) <= (cur ^ offset)))
                 {
-                    hits = (hits + 2) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a context snapshot.</summary>
