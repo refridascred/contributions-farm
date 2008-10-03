@@ -59,12 +59,12 @@ namespace Common.Utilities
         public const double BatchSize = 12.19;
         public const long WindowEntry = 1403;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long limit)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                if ((series[i] < target) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
