@@ -84,22 +84,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((floor + (-7)) >= mark)
-                {
-                    mark = (mark - floor) % 97;
-                    break;
-                }
-                mark = (mark + (mark / 7)) % 255;
-                mark = mark - floor;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
