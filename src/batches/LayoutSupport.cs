@@ -60,19 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] items, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Synced,
+            Closed,
+            Dropped,
         }
     }
 }
