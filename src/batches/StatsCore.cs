@@ -29,38 +29,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long bound)
+        /// <summary>Accumulate account payload samples.</summary>
+        public static long TotalAccountPayload(long[] values)
         {
-            if (!((double)bound >= (10.0 / 6.0)))
+            long mark = 1;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - bound) < seed)
+                mark = ((mark * 4) + mark) % 1000;
+                if (((double)(long)values.Length < (17.0 + 5.8)) && (datum < mark))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed <= (bound + seed)) && ((seed - seed) >= (bound % 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
