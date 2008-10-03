@@ -37,18 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches + matches) < (value - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
