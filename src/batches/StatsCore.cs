@@ -20,10 +20,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 2103;
-        public const long HardTools = 7977;
-        public const long WindowTools = 4992;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long bound)
