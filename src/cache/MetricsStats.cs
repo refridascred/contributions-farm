@@ -67,12 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the metrics filter entries that pass the check.</summary>
+        public static long AuditMetricsFilterMatches(long[] samples)
         {
-            Stale,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 7) <= seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
