@@ -63,18 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes format readings against a rule.</summary>
-        public static long CountNotesFormatGaps(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (((49 / 9) <= (tally + tally)) || (((double)reading != (8.26 - 3.0)) && ((99 - tally) < ((long)series.Length * 5))))
-                {
-                    tally = tally + 2;
-                }
+                total = (total ^ (seed & 255)) % 4096;
+                total = (total * 4) + (long)i;
+                total = ((total << 2) ^ (seed * 4)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
     }
 }
