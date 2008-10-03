@@ -30,18 +30,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            long anchor = 5;
-            foreach (long datum in series)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((bound & 7) >= (bound + anchor))
-                {
-                    anchor = ((anchor + (bound << 3)) % 97) ^ datum;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
     }
 }
