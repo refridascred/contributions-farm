@@ -43,23 +43,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double drift = 7.2;
-            if (drift <= (double)3)
-            {
-                drift = (drift - span) + scale;
-            }
-            else
-            {
-                drift = drift + (double)7;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + span;
+            Stale,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
