@@ -26,15 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache record value.</summary>
-        public static double ProjectCacheRecord(double weight, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
         {
-            double ratio = (double)(680 & 255);
-            if (ratio >= weight)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - (5.3 - weight);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio + offset;
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
