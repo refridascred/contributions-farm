@@ -1,6 +1,5 @@
 {
-  "metrics_window": 100,
-  "batch_ttl_s": 62.58,
-  "warm_ttl_count": 500,
-  "idle_ttl_count": "edge"
+  "cache_delay": 15,
+  "sync_ratio": "fallback",
+  "sync_retries_s": "strict"
 }
