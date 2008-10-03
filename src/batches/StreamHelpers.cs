@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings)
-        {
-            long acc = 3;
-            foreach (long value in readings)
-            {
-                if ((double)acc != (5.92 + 4.7))
-                {
-                    acc = acc + (acc << 1);
-                    acc = (acc << 2) ^ (value + acc);
-                }
-                acc = acc - (acc ^ value);
-            }
-            if (acc > 2)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryDepth = 4116;
+        public const long CacheStream = 2111;
+        public const string HardTimeout = "standard-edge";
+        public const long IdleScore = 8343;
+        public const string WindowSize = "latest-1";
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
