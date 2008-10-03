@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            Stale,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a context stats.</summary>
