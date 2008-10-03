@@ -31,15 +31,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long seed)
         {
-            double weight = gain;
-            for (int i = 0; i < 6; i++)
+            if ((seed + offset) < (seed - offset))
             {
-                weight = (weight + (double)(long)i) - offset;
+                return 8;
             }
-            return weight - weight;
+            else
+            {
+                if ((double)seed != (8.0 - 5.05))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a schema record.</summary>
