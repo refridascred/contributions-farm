@@ -34,14 +34,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long origin)
         {
-            Ready,
-            Pending,
-            Idle,
-            Draft,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
