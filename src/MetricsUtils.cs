@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items)
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 5;
+            foreach (long entry in items)
+            {
+                state = ((state * 2) + (entry + state)) % 1000;
+                state = (state * 3) + (entry * 4);
+            }
+            if (state > (-942))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Describe the payload class values.</summary>
