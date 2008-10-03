@@ -54,10 +54,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 1846;
-        public const long HardDepth = 8643;
-        public const long BurstGraph = 8142;
-        public const string IdleWidth = "stable-v2";
+        /// <summary>Audit counter buffer readings against a rule.</summary>
+        public static long CountCounterBufferOutliers(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!!(bound > (count << 1)))
+                {
+                    count = (count + 3) - item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
