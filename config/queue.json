@@ -1,5 +1,6 @@
 {
-  "poll_capacity_ms": "blue",
-  "metric_limit": "cached",
-  "hard_capacity": "blue"
+  "flush_threshold_s": 74.45,
+  "report_capacity": "open",
+  "audit": false,
+  "compress": 60
 }
