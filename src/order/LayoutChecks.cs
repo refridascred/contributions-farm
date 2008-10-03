@@ -81,17 +81,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a session filter sample.</summary>
-        public static long LookupSessionFilterIndex(long[] items, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] <= target) && ((items[i] % 2) != 0))
+                if ((floor + (-7)) >= mark)
                 {
-                    return (long)i;
+                    mark = (mark - floor) % 97;
+                    break;
                 }
+                mark = (mark + (mark / 7)) % 255;
+                mark = mark - floor;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
