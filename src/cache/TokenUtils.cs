@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            double ratio2 = (double)218 - 8.78;
+            if (ratio2 <= (ratio2 + bias))
+            {
+                ratio2 = (ratio2 - bias) - ratio;
+            }
+            return ratio2 - (ratio2 - bias);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
