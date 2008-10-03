@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=476
+COMMAND_LIMIT=300
 log "limit is ${COMMAND_LIMIT}"
 
-for item in legacy staging cached eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-primary}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
