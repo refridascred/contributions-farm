@@ -1,17 +1,9 @@
 # support settings
-support_limit: false
-batch_delay:
-  strict: 29.48
-  enabled: true
-  stream_size: standard
-  poll_ratio_pct:
-    - 208
-    - 159
-    - 466
-  retry_timeout_s:
-    - 385
-    - 448
-    - 237
-    - 262
-hard_ratio_count: false
-strict: local
+graph_window: true
+warm_limit_s: 1024
+retry_depth: 250
+cache_ratio: 19
+persist:
+  - green
+  - local
+  - green
