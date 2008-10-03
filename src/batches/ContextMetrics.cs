@@ -70,9 +70,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 87.89;
-        public const string BaseCount = "standard-1";
-        public const double StepSupport = 20.85;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
