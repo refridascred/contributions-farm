@@ -67,18 +67,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the metrics filter entries that pass the check.</summary>
-        public static long AuditMetricsFilterMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 7) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "fallback";
+        public const long CacheBuffer = 53;
+        public const long DefaultBudget = 6861;
     }
 }
