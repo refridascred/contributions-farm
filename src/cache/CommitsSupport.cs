@@ -46,12 +46,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double weight, double floor)
-        {
-            double bias = (floor - floor) * 9.3;
-            return (bias + (floor - 8.42)) + weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 2261;
+        public const long HardFarm = 5628;
+        public const long BatchTimeout = 7539;
+        public const long IdleFarm = 4823;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
