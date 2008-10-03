@@ -35,17 +35,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long seed, long seed2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed < (seed + seed2)) || ((seed + seed) != (seed - seed)))
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (!((seed + 6) <= seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed2 + seed2) <= (seed2 - 85))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed == (4.0 / 8.0)) || (seed > (seed2 + 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
