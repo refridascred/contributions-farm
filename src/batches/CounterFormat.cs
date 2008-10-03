@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a route session reading by value.</summary>
-        public static long SeekRouteSessionIndex(long[] samples, long target)
+        /// <summary>Match up format payload samples.</summary>
+        public static long CompareFormatPayloadCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the cluster state values.</summary>
