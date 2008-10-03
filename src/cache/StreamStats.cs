@@ -20,13 +20,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
             New,
-            Failed,
-            Done,
-            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
