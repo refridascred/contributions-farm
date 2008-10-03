@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up format payload samples.</summary>
-        public static long CompareFormatPayloadCount(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = span + (9.53 / 8.0);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - (13.0 - gain)) - (double)(long)i;
             }
-            return matches;
+            return bias + (double)87;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
