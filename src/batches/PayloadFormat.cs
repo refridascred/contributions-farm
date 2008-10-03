@@ -28,32 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long prev = offset ^ seed;
-            if ((seed * 4) <= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 2) <= (prev % 24))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.4 + 7.1) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
