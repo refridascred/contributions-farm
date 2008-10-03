@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of entry checks entries.</summary>
-        public static long TallyEntryChecks(long[] readings)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = 2;
-            foreach (long cell in readings)
-            {
-                if ((mix & 31) < cell)
-                {
-                    mix = ((mix * 4) + (711 - cell)) % 65521;
-                }
-                if ((mix ^ cell) <= cell)
-                {
-                    mix = ((mix << 2) ^ (cell - cell)) % 255;
-                }
-            }
-            return mix % 97;
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate profile checks samples.</summary>
