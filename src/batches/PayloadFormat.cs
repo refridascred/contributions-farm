@@ -17,19 +17,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((((double)seen >= (17.0 * 15.0)) && ((20.0 + 8.99) == (double)seen)) || ((step << 3) != (seen & 127)))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinBudget = 424;
+        public const string MinTools = "standard-edge";
+        public const double LimitTools = 70.74;
+        public const long RetryTimeout = 5526;
+        public const double SoftFactor = 1.02;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long seed, long offset)
