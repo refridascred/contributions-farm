@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight2 = 8.73;
+            return (weight2 + weight) + bias;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
