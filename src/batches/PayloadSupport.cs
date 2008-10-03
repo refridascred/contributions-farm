@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((reading / 9) > (-4)) && ((5.03 - 1.1) < (double)reading))
+                if (reading <= offset)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
