@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] levels, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((711 - sample) == ((long)levels.Length % 3))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
