@@ -13,14 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 90.85;
+        public const double SoftCount = 64.0;
+        public const double HardDepth = 70.72;
+        public const long MinLayout = 1463;
+        public const long WindowLevel = 9;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long CompareMetricCount(long[] values)
