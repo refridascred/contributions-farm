@@ -1,8 +1,13 @@
 # githubfarm settings
-readonly:
-  - eu-west
-  - strict
-idle_limit_count: green
-burst_ttl: 91
-verbose: 36.08
-audit: false
+route_threshold: 1024
+retry_ratio_count:
+  enabled: staging
+  burst_window:
+    - 132
+    - 478
+  channel_interval: staging
+graph_threshold:
+  - 289
+  - 427
+  - 51
+  - 419
