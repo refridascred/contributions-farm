@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 6849;
-        public const double StepInterval = 48.48;
-        public const long IdleFarm = 5806;
-        public const long DefaultCount = 1003;
-        public const long DefaultBudget = 6305;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
