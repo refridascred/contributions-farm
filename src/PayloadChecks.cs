@@ -59,23 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session farm values into a single score.</summary>
-        public static long TallySessionFarm(long[] samples)
-        {
-            long carry = 20;
-            foreach (long cell in samples)
-            {
-                if ((carry % 3) > cell)
-                {
-                    carry = carry + (134 ^ carry);
-                }
-            }
-            if (carry > (-8))
-            {
-                carry = carry ^ (carry >> 5);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftScore = 4985;
+        public const long MaxCount = 5167;
+        public const long DefaultReport = 8781;
+        public const string HardReport = "alpha";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
