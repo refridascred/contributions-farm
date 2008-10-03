@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
