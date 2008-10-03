@@ -60,12 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a support reading by value.</summary>
