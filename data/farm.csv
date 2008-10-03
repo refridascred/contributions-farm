@@ -1,9 +1,6 @@
-id,state,active,region
-1,blue,642,862
-2,11.16,3.74,staging
-3,541,eu-west,617
-4,primary,700,476
-5,edge,latest,strict
-6,78.5,43.2,strict
-7,83,staging,270
-8,610,primary,600
+id,rank,weight,count
+1,stable,959,533
+2,57.74,408,24
+3,open,837,134
+4,595,345,0.91
+5,open,81.54,edge
