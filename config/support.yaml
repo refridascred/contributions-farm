@@ -1,7 +1,11 @@
 # support settings
-hard_timeout_ms: eu-west
-batches_interval: local
-layout_timeout: true
-context_window: strict
-readonly: cached
-audit: 7308
+record_depth:
+  - 217
+  - 285
+verbose: latest
+soft_limit:
+  stream_threshold: true
+  flush_window: 250
+  batch_threshold_count: standard
+persist: 7.25
+route_delay: local
