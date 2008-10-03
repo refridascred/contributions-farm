@@ -38,21 +38,12 @@ namespace Common.Utilities
             return rate - 18.0;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
