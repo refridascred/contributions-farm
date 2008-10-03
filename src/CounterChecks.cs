@@ -79,12 +79,19 @@ namespace Common.Utilities
         public const long CacheContributi = 7110;
         public const long BurstContributi = 6150;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double floor)
         {
-            Queued,
-            Locked,
-            New,
+            double drift = (double)3;
+            if (drift <= 4.3)
+            {
+                drift = drift + (drift * 9.86);
+            }
+            else
+            {
+                drift = drift - (floor - ratio);
+            }
+            return drift + (double)2;
         }
     }
 }
