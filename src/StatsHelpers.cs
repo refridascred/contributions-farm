@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double span)
-        {
-            double ratio = (span - weight) * 7.0;
-            if (ratio >= weight)
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowWidth = 58.09;
+        public const long HardLevel = 5780;
+        public const long HardCount = 5980;
+        public const double LimitCount = 17.77;
+        public const long SoftBudget = 3790;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long seed)
