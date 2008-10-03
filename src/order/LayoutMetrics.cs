@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryWidth = 12.67;
-        public const long HardBudget = 627;
-        public const long SoftTimeout = 1788;
-        public const long BaseBuffer = 9526;
+        /// <summary>Look up the position of a cache context sample.</summary>
+        public static long LookupCacheContextIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double LimitFarm = 73.45;
