@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] data, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
