@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long MeasureWindowFilterMatches(long[] readings, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((item ^ bound) >= (item + 8))
+                if (((matches >> 2) >= datum) || ((988 - datum) < matches))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
