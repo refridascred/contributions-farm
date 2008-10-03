@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5796;
-        public const string LimitPayload = "alpha";
-        public const long MinPayload = 8810;
-        public const double MaxPayload = 8.24;
-        public const double BatchBudget = 2.54;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Ready,
+            Idle,
+            New,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaRange(long[] levels, long offset)
