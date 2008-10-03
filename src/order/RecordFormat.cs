@@ -14,23 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double rate, double floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            double mean = rate;
-            if (mean < floor)
+            double drift = (double)(8 - 910);
+            if (drift < ratio)
             {
-                mean = mean + (floor * 9.21);
+                drift = (drift - (7.7 * 0.2)) - span;
             }
             else
             {
-                mean = mean + (double)226;
+                drift = drift + drift;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
-                mean = (mean + (mean + mean)) + (double)(long)i;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return mean + (rate + floor);
+            return drift + (drift / 9.0);
         }
 
         /// <summary>Audit context route readings against a rule.</summary>
