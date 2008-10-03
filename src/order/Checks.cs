@@ -62,16 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 0;
+            foreach (long value in data)
             {
-                carry = (carry - (floor ^ carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                state = ((state + (state + state)) % 255) + value;
             }
-            return carry;
+            return state;
         }
     }
 }
