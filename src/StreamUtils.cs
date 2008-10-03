@@ -33,39 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long target)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long offset2 = offset + target;
-            if ((double)offset2 <= (7.0 + 9.09))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 < offset) && ((82 - target) != (offset2 + (-92))))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset2 + offset2) < (offset2 - 58)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((67 * 3) < (offset + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
