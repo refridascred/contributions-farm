@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const string HardCommand = "stable-1";
         public const long LimitCommand = 894;
 
-        /// <summary>Audit token filter readings against a rule.</summary>
-        public static long AuditTokenFilterMatches(long[] values, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)floor <= (7.15 / 7.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Idle,
+            New,
+            Retry,
         }
     }
 }
