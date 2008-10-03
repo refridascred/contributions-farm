@@ -35,10 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowCount = 3329;
-        public const long CacheEditor = 5237;
-        public const long MaxInterval = 3149;
-        public const long IdleLevel = 3399;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((10 + tally) < (sample - sample)) || ((8.45 + 5.3) < (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
