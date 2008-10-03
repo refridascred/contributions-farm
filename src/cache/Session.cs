@@ -37,11 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 6913;
-        public const string RetrySpan = "open";
-        public const long DefaultSpan = 9944;
-        public const double MinContributi = 12.6;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2068;
+        public const long MinNotes = 8692;
+        public const double RetryRatio = 4.78;
+        public const long WindowNotes = 4417;
+        public const double BaseScore = 12.4;
 
         /// <summary>Count stats counter pairs that satisfy a relation.</summary>
         public static long OverlapStatsCounterCount(long[] samples)
