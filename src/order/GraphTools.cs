@@ -37,23 +37,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items, long seed)
         {
-            long mark = 757;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark * 4) + reading) % 4096;
-                if ((reading / 5) > (659 + (-305)))
+                if (((sample ^ seed) > (-1)) || ((74 - 8) < (seed / 9)))
                 {
-                    mark = ((mark * 3) + (161 + mark)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (mark < 94)
-            {
-                mark = mark + (mark / 9);
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
