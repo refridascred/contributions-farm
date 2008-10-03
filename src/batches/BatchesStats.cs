@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] series, long bound)
         {
-            long result = 965;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result * 3) <= offset)
+                if ((series[i] == bound) && ((series[i] % 5) != 0))
                 {
-                    result = (((result * 2) + (offset / 8)) % 65521) ^ item;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
