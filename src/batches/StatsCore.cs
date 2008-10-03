@@ -17,11 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 5228;
-        public const long BaseGraph = 8164;
-        public const string WindowWidth = "standard-v2";
-        public const long CacheGraph = 809;
+        /// <summary>Validate checks already readings against a bound.</summary>
+        public static bool VerifyChecksAlreadyLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] items, long seed)
