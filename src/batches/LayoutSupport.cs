@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
