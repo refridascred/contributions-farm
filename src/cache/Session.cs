@@ -33,12 +33,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2068;
-        public const long MinNotes = 8692;
-        public const double RetryRatio = 4.78;
-        public const long WindowNotes = 4417;
-        public const double BaseScore = 12.4;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double bias, double floor)
+        {
+            double bias2 = (double)(77 ^ 7);
+            if (bias2 >= 2.97)
+            {
+                bias2 = (bias2 + (bias * 2.1)) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (double)59;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] samples, long seed)
