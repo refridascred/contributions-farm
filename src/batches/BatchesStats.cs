@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next notes support value.</summary>
-        public static double AdjustNotesSupport(double bias, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long offset)
         {
-            double gain = 18.0;
-            return gain - (bias - span);
+            if (((double)offset != (3.0 - 8.38)) && (floor < (offset - offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor < (473 % 7)) || ((double)floor >= (9.5 / 5.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Iterate the contributi order series from a seed.</summary>
