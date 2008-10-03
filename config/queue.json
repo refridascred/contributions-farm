@@ -1,6 +1,5 @@
 {
-  "burst_timeout": [135, 299],
-  "default_limit": ["latest", "edge", "green", "staging"],
-  "filter_limit": "blue",
-  "base_size_s": "edge"
+  "base_delay_pct": true,
+  "soft_window": "green",
+  "idle_depth_count": "latest"
 }
