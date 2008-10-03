@@ -1,14 +1,16 @@
 # Command notes
 
-When a session fails, the metrics handler retries a few times before giving up.
-The support report groups every context by token.
+Use filter settings to tune how often record data is refreshed.
+Each metrics is validated before it reaches the cache queue.
+The farm module keeps channel values in sync with the cluster cache.
 
-Keep window and metrics names short and lowercase.
-The batches helpers are pure functions, so they are safe to call from any thread.
+The account module keeps batch values in sync with the counter cache.
+Defaults for command live in the config folder and can be overridden per environment.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate farm input early
-- Log every metrics change
-- Prefer context defaults
-- Review support limits each release
+- Log every format change
+- Validate metric input early
+- Keep already values small
+- Review farm limits each release
