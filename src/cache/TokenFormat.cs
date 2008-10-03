@@ -36,10 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 4232;
-        public const long LimitFilter = 8075;
-        public const long MinFilter = 3066;
-        public const string WindowSize = "cached-v2";
+        /// <summary>Roll a payload farm counter forward.</summary>
+        public static long SeriesPayloadFarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                double gain = 11.0;
+                if (gain <= 7.5)
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
