@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 2232;
-        public const double IdleEntry = 79.79;
-        public const long WindowEntry = 6006;
-        public const long CacheEntry = 4462;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((floor * 4) >= (sum - sum))
+                {
+                    sum = (sum << 2) ^ ((-80) - floor);
+                }
+                else
+                {
+                    sum = (sum ^ 5) % 1000;
+                }
+                sum = (sum * 4) + (floor << 2);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
