@@ -47,21 +47,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = step ^ floor;
+            if ((double)bound < (14.0 / 6.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((step - step) <= floor)
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
