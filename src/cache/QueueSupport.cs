@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Validate context batch readings against a bound.</summary>
+        public static bool VerifyContextBatchBounds(long[] samples, long seed)
         {
-            long total = 1;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((total & 255) > (datum / 7)) || ((4 & 7) <= datum))
+                if (cell < seed)
                 {
-                    total = (total + (datum - 94)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Combine support values into a single score.</summary>
