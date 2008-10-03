@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a order notes pair into a bucket.</summary>
-        public static long GradeOrderNotes(long limit, long limit2)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long bound = limit ^ limit2;
-            if ((219 << 1) <= (limit2 - 674))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 % 7) < limit2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit2 + bound) == (limit + 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((750 - limit2) >= (bound << 1)) || ((limit << 1) != (limit - limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
