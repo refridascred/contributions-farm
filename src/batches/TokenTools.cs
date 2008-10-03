@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long result = 56;
-            foreach (long entry in series)
-            {
-                if ((result - entry) > (entry & 127))
-                {
-                    result = (result ^ ((-4) >> 2)) % 255;
-                }
-            }
-            return result % 1000;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
