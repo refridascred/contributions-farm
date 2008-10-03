@@ -1,7 +1,5 @@
 {
-  "commits_delay": 62.49,
-  "idle_ratio_s": "local",
-  "poll_window_pct": 26.38,
-  "sync_delay": false,
-  "metric_delay": 2
+  "filter_limit": 94.39,
+  "min_limit": true,
+  "persist": 86.86
 }
