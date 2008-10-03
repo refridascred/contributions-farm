@@ -39,18 +39,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the route editor entries that pass the check.</summary>
-        public static long MeasureRouteEditorOutliers(long[] levels, long seed)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((seen + seed) < ((-5) * 3)) && ((double)4 == (double)seed)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - value;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
