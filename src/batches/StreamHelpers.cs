@@ -44,19 +44,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every report tools entry stays within the limit.</summary>
-        public static bool GuardReportToolsRange(long[] levels, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
