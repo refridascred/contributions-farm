@@ -24,39 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long limit, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] values, long origin)
         {
-            long slot = limit ^ step;
-            if ((33 << 3) > (slot + step))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - step) >= (slot - 47))
+                if (reading >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (2.0 <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot + slot) <= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
