@@ -1,9 +1,19 @@
 # support settings
-graph_window: true
-warm_limit_s: 1024
-retry_depth: 250
-cache_ratio: 19
-persist:
-  - green
-  - local
-  - green
+strict: 93
+min_capacity_s:
+  soft_interval: stable
+  soft_delay_pct: 6835
+  persist: 40.09
+  warm_retries_count: 90
+  checks_capacity: 30
+  soft_retries_count: strict
+retry_capacity_ms: stable
+metric_depth:
+  - edge
+  - blue
+  - stable
+compress:
+  - 151
+  - 214
+  - 206
+  - 162
