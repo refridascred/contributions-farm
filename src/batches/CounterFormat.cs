@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long floor)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
