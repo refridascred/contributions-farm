@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate account payload samples.</summary>
-        public static long TotalAccountPayload(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] items, long seed)
         {
-            long mark = 1;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + mark) % 1000;
-                if (((double)(long)values.Length < (17.0 + 5.8)) && (datum < mark))
+                if (!((matches & 1) != (seed >> 1)))
                 {
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
