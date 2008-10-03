@@ -14,22 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long bound)
         {
-            long mix = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)datum >= (3.3 - 19.0)) || ((double)limit > (8.2 / 7.0)))
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
                 {
-                    mix = mix - (limit + limit);
+                    return (long)i;
                 }
             }
-            if (mix < 29)
-            {
-                mix = ((mix << 2) ^ mix) % 255;
-            }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
