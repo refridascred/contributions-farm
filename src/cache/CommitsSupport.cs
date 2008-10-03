@@ -61,11 +61,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next buffer value.</summary>
