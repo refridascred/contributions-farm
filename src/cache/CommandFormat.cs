@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long TallyChecksSupport(long[] samples, long target)
+        /// <summary>Blend two metrics queue measurements.</summary>
+        public static double BlendMetricsQueue(double scale, double bias)
         {
-            long acc = 57;
-            foreach (long datum in samples)
+            double mean = scale;
+            if (mean < (double)251)
             {
-                acc = (acc - (75 ^ target)) ^ datum;
+                mean = mean + (mean + bias);
             }
-            return acc;
+            else
+            {
+                mean = mean + (double)5;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (mean - scale);
         }
 
         /// <summary>Combine already values into a single score.</summary>
