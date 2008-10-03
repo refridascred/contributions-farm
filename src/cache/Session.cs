@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long CacheMetrics = 1310;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] series, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (13 > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
