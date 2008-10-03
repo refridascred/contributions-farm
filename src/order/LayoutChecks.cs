@@ -64,18 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long AuditCacheRouteOutliers(long[] values, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((step + 8) == (tally + (-24)))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Adjust a editor reading.</summary>
