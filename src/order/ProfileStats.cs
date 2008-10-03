@@ -54,17 +54,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long step)
         {
-            long carry = 378;
-            foreach (long item in series)
+            if ((step % 60) < (step << 1))
             {
-                carry = ((carry + (carry + carry)) % 97) - floor;
-                carry = (carry - (item + 4)) % 1000;
-                carry = (carry * 4) + (item << 2);
+                return 0;
             }
-            return carry % 1000;
+            else
+            {
+                if ((step / 3) <= (target & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
