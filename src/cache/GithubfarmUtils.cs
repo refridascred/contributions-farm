@@ -39,11 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Limit { get; set; } = "";
-            public string Label { get; set; } = "";
+            Paused,
+            Synced,
+            Locked,
+            Stale,
         }
     }
 }
