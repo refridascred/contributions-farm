@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Pending,
-            Locked,
-            Draft,
-            Stale,
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
