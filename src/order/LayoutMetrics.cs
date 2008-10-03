@@ -23,10 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9609;
-        public const string HardTools = "staging-v2";
-        public const double IdleTools = 1.78;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total * 2) + 481;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesGaps(long[] items, long target)
