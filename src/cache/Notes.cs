@@ -30,22 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch command samples.</summary>
-        public static long DigestBatchCommand(long[] readings, long limit)
+        /// <summary>Look up the position of a window metrics sample.</summary>
+        public static long SeekWindowMetricsIndex(long[] data, long step)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample - sample) < result) && ((1.4 / 6.0) >= (double)result))
+                if (data[i] <= step)
                 {
-                    result = ((result * 2) + (limit ^ (-42))) % 65521;
+                    return (long)i;
                 }
             }
-            if (result < 170)
-            {
-                result = result + (limit - limit);
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Rank support batches input into a small class.</summary>
