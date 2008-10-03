@@ -1,5 +1,8 @@
 {
-  "farm_depth": 45.26,
-  "warm_timeout": 8.26,
-  "flush_ttl": "open"
+  "cache_retries": 52.92,
+  "sync_window": "stable",
+  "entry_depth": 500,
+  "min_capacity": "edge",
+  "soft_size_count": ["primary", "local", "green", "primary"],
+  "tools_depth": "fallback"
 }
