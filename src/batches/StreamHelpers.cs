@@ -71,23 +71,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long bound)
+        /// <summary>Find the first githubfarm queue entry that matches the target.</summary>
+        public static long LookupGithubfarmQueueIndex(long[] series, long offset)
         {
-            long anchor = 631;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)anchor <= (6.58 * 3.0))
+                if (series[i] < offset)
                 {
-                    anchor = ((anchor + (anchor & 31)) % 101) ^ entry;
+                    return (long)i;
                 }
-                anchor = (anchor + anchor) % 4096;
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 2) ^ (bound >> 4)) % 101;
-            }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
