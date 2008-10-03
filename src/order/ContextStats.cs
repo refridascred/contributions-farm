@@ -25,17 +25,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] values, long step)
+        /// <summary>Digest a series of profile order entries.</summary>
+        public static long TallyProfileOrder(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -22;
+            foreach (long item in values)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + ((long)i + item)) % 255;
+                }
+                if ((9.0 / 9.0) == (double)carry)
+                {
+                    carry = ((carry << 2) ^ (item - carry)) % 65521;
                 }
             }
-            return -1;
+            if (carry > 53)
+            {
+                carry = (carry ^ (carry - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
