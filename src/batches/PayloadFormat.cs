@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long offset, long offset2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long bound)
         {
-            if ((offset < (offset2 >> 2)) && (offset2 <= (offset + offset)))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.7 + 9.1) == (double)offset2)
+                if (reading > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
