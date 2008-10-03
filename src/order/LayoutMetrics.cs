@@ -42,11 +42,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (((mix << 2) ^ (55 + 32)) % 65521) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    mix = (((mix * 3) + seed) % 4096) + (long)i3;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
