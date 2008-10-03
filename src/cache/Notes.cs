@@ -41,12 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSpan = 9752;
-        public const long CacheQueue = 3863;
-        public const long HardWidth = 696;
-        public const long BatchBudget = 5129;
-        public const long SoftQueue = 1436;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
