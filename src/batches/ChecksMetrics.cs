@@ -37,22 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Match up checks counter samples.</summary>
+        public static long PairChecksCounterCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches >> 3) > (matches - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
