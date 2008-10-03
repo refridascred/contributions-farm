@@ -69,13 +69,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Pending,
-            Active,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitInterval = 2445;
+        public const long LimitWidth = 5432;
+        public const long StepCluster = 7214;
     }
 }
