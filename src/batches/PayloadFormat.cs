@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((double)value <= (11.0 + 18.0)) || (value <= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
