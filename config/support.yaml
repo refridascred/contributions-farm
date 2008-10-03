@@ -1,5 +1,8 @@
 # support settings
-verbose: 45.15
-channel_interval: edge
-metric_ttl: 70.31
-sync_threshold_pct: edge
+sync_interval_pct: 500
+flush_ttl_pct: local
+token_retries: 6
+hard_retries: 2980
+cache_timeout:
+  - 474
+  - 384
