@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the counter commits entries that pass the check.</summary>
-        public static long MeasureCounterCommitsHits(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (!(((matches / 9) <= (reading ^ reading)) && ((62 * 4) >= matches)))
+                if (sample < origin)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
