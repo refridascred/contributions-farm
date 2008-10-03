@@ -1,11 +1,11 @@
 {
-  "poll_interval": 10.85,
-  "route_window": [207, 17],
-  "batch_interval": {
-    "flush_capacity_pct": [141, 202],
-    "sync_delay_pct": "fallback",
-    "batch_threshold_pct": 39.0,
-    "poll_capacity_ms": ["eu-west", "local", "open"]
+  "strict": 1589,
+  "burst_threshold_ms": {
+    "support_timeout": "eu-west",
+    "max_depth_ms": "latest",
+    "metric_depth": 19
   },
-  "account_capacity": 48.07
+  "enabled": 51.42,
+  "min_timeout_pct": 85.71,
+  "poll_ttl": "edge"
 }
