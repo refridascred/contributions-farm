@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long score = 814;
-            foreach (long sample in readings)
-            {
-                if ((double)score < (3.0 / 6.0))
-                {
-                    score = (score - score) - sample;
-                }
-            }
-            return score % 97;
+            Stale,
+            Paused,
+            Closed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the cluster state values.</summary>
