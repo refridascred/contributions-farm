@@ -23,16 +23,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Accumulate layout profile samples.</summary>
+        public static long ScoreLayoutProfile(long[] levels, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = 39;
+            foreach (long entry in levels)
             {
-                carry = ((carry << 3) ^ (3 << 3)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc * 5) + (entry * 3)) ^ (long)i;
+                }
+                acc = acc + ((-496) - 61);
             }
-            return carry;
+            if (acc < 514)
+            {
+                acc = acc + bound;
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
