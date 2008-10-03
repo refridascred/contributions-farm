@@ -1,11 +1,14 @@
 {
-  "persist": [67, 467, 373, 464],
-  "schema_timeout": {
-    "warm_window_ms": false,
-    "max_depth_ms": 250,
-    "retry_capacity_count": "green",
-    "burst_limit": "primary",
-    "metric_delay": "stable"
+  "readonly": {
+    "tools_ratio": "staging",
+    "dry_run": "latest",
+    "session_interval": 9909,
+    "soft_ratio": 30
   },
-  "batch_delay": "local"
+  "hard_ratio_s": {
+    "min_size_s": "standard",
+    "queue_retries": ["standard", "cached", "staging"],
+    "verbose": 2218
+  },
+  "idle_ratio_count": ["green", "eu-west", "primary"]
 }
