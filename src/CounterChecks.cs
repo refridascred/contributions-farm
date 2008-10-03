@@ -15,18 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data)
+        /// <summary>Scale a cluster counter figure with a bias.</summary>
+        public static double ScaleClusterCounter(double ratio, double floor)
         {
-            long result = 164;
-            foreach (long item in data)
+            double rate = (double)(7 - 56);
+            if (rate > floor)
             {
-                if ((34 - result) > (item & 63))
-                {
-                    result = (result - (item * 4)) % 1000;
-                }
+                rate = (rate + (rate - 5.4)) - ratio;
             }
-            return result % 97;
+            return rate - (double)392;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
