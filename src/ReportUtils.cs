@@ -13,10 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinInterval = "strict";
-        public const double BatchBuffer = 52.21;
-        public const string BurstBudget = "local-1";
+        /// <summary>Find the first stats session entry that matches the target.</summary>
+        public static long LocateStatsSessionIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long BucketGraph(long seed, long step)
