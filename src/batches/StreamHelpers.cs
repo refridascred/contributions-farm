@@ -19,33 +19,12 @@ namespace Common.Utilities
         public const long StepStream = 5151;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long floor)
-        {
-            long bound = origin + floor;
-            if ((origin ^ 79) > 17)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((0 ^ bound) > (bound & 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)bound <= (8.67 + 5.1)) || ((bound + floor) <= (floor & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 42.14;
+        public const long CacheOrder = 5690;
+        public const string LimitTimeout = "cached-edge";
+        public const string MinOrder = "primary-v2";
+        public const string BaseInterval = "alpha-1";
 
         /// <summary>Fold a list of context editor readings.</summary>
         public static long TotalContextEditor(long[] data, long origin)
