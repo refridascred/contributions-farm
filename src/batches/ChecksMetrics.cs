@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a graph queue value against two limits.</summary>
-        public static long SortGraphQueue(long offset, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            long lane = offset ^ bound;
-            if ((74 % 3) < offset)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)lane == (3.85 + 9.4))
+                if (!((7.3 * 0.83) > (double)acc))
                 {
-                    return 6;
+                    acc = (acc + (limit & 15)) % 1000;
                 }
-                else
-                {
-                    if ((bound - 870) == (bound % 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Accumulate checks samples.</summary>
