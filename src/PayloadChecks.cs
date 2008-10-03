@@ -65,19 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mix = 1;
-            foreach (long datum in data)
-            {
-                mix = (((mix * 5) + 9) ^ datum) - limit;
-            }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ (mix >> 1)) % 1000;
-            }
-            return mix % 97;
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
