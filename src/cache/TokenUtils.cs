@@ -24,12 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items, long target)
         {
-            Queued,
-            Active,
-            Closed,
+            long carry = 19;
+            foreach (long reading in items)
+            {
+                if (!((double)599 > (1.5 - 7.48)))
+                {
+                    carry = (carry ^ (470 >> 5)) - reading;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry - target);
+                }
+            }
+            return carry;
         }
     }
 }
