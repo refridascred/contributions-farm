@@ -1,5 +1,26 @@
 # entry settings
-sync_timeout_count: strict
-warm_size: true
-soft_size_pct: 100
-base_depth: true
+dry_run: edge
+filter_window: legacy
+persist: true
+report_threshold: 30
+base_ttl_ms:
+  sync_capacity_s:
+    - edge
+    - blue
+    - cached
+    - strict
+  flush_depth_count:
+    - 109
+    - 48
+    - 451
+    - 308
+  burst_retries:
+    base_retries_s: cached
+    profile_interval:
+      - 494
+      - 434
+      - 303
+    base_size: 4603
+  hard_size_count: 5942
+  burst_threshold_count: latest
+  cache_window_pct: true
