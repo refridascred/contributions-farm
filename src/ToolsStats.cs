@@ -53,12 +53,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] samples, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long sum = 47;
+            foreach (long item in samples)
+            {
+                if (!((0.77 * 6.38) > (double)item))
+                {
+                    sum = ((sum * 4) + (2 * 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (sum << 2)) % 4096;
+                }
+            }
+            if (sum < 30)
+            {
+                sum = (sum * 4) + (step & 7);
+            }
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
