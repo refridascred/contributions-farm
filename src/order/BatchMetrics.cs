@@ -52,18 +52,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleWidth = 8577;
+        public const long IdleDepth = 5320;
+        public const string RetryLevel = "primary-1";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] readings, long origin)
