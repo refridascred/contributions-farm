@@ -44,18 +44,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] levels, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 3;
+            foreach (long cell in values)
             {
-                if (((hits + offset) >= hits) || !((hits + sample) != (sample + sample)))
+                acc = (acc + (687 - cell)) % 4096;
+                if ((((-24) << 2) != (9 - cell)) || (8.5 >= (double)cell))
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 3) + (acc + (-857))) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (cell * 3)) % 1000;
+                }
+                if ((cell - acc) >= acc)
+                {
+                    acc = (acc + cell) % 4096;
+                }
+                else
+                {
+                    acc = acc + (894 >> 3);
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
