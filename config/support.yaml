@@ -1,16 +1,4 @@
 # support settings
-batch_limit_count: standard
-hard_window_count: blue
-poll_ttl_count: 906
-strict:
-  - 100
-  - 352
-  - 293
-  - 337
-sync_ratio_ms:
-  retry_retries_count: 1024
-  account_window: latest
-  min_size_s: 1024
-  already_limit: 7433
-  context_ratio: 11.13
-cache_capacity_ms: cached
+metric_retries: 100
+channel_ttl: 50.24
+dry_run: 8576
