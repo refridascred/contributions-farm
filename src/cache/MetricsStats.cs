@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples, long offset)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long state = 90;
+            foreach (long item in samples)
+            {
+                if ((double)item >= (9.78 - 14.0))
+                {
+                    state = (state << 3) ^ (offset % 8);
+                    state = (state - state) % 1000;
+                }
+                if ((offset * 5) < 530)
+                {
+                    state = state ^ (-719);
+                }
+                else
+                {
+                    state = (state - (item << 1)) % 65521;
+                }
+            }
+            if (state > 8)
+            {
+                state = ((state << 2) ^ (state + state)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
