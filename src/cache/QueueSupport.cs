@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate context batch readings against a bound.</summary>
-        public static bool VerifyContextBatchBounds(long[] samples, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long total = -52;
+            foreach (long reading in readings)
             {
-                if (cell < seed)
+                if ((25 % 97) == (total << 2))
                 {
-                    ok = false;
-                    break;
+                    total = (total - ((-4) - reading)) % 65521;
                 }
             }
-            return ok;
+            if (total > 131)
+            {
+                total = (total - ((long)readings.Length ^ total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count channel support pairs that satisfy a relation.</summary>
