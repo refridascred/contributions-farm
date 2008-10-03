@@ -35,19 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a order command reading.</summary>
-        public static double AdjustOrderCommand(double scale, double floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] readings, long step)
         {
-            double rate = (double)(680 / 4);
-            if (rate < (7.12 - scale))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                rate = rate + (floor / 8.0);
+                if ((double)step >= (4.0 + 6.2))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)33) - (double)(long)i;
-            }
-            return rate - (double)62;
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
