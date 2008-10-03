@@ -67,19 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long bound)
         {
-            double bias = span;
-            if (bias <= bias)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                bias = bias + (span * 1.69);
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (scale + span);
-            }
-            return bias + (double)672;
+            return valid;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
