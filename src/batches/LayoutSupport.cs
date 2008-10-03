@@ -17,10 +17,14 @@ namespace Common.Utilities
         public const long StepContributi = 1517;
         public const long DefaultContributi = 4967;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryBudget = "alpha";
-        public const long StepStream = 4965;
-        public const long CacheFactor = 6121;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Pending,
+            Closed,
+            Failed,
+            Done,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] data, long bound)
