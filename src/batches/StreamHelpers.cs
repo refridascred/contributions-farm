@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context editor readings.</summary>
-        public static long TotalContextEditor(long[] data, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long mix = 2;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((origin * 5) <= 9) || ((mix >> 1) != (item << 1)))
-                {
-                    mix = ((mix * 5) + (item - item)) % 101;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (mix < 78)
-            {
-                mix = mix ^ (origin + 23);
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a stream options.</summary>
