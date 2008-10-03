@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] series, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long total = -87;
+            foreach (long reading in values)
             {
-                if ((matches + matches) == (datum / 4))
+                total = ((total * 2) + (reading + 230)) % 255;
+                total = (total + reading) % 65521;
+                if (((double)reading > 8.5) || ((565 / 4) != (reading % 24)))
                 {
-                    matches = (matches + 1) + offset;
+                    total = (total * 5) + total;
                 }
             }
-            return matches;
+            if (total < 56)
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
