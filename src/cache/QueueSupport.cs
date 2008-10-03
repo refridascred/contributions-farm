@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate cache queue samples.</summary>
-        public static long ScoreCacheQueue(long[] data, long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long carry = 9;
-            foreach (long datum in data)
+            double load = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)datum < 0.39)
-                {
-                    carry = ((carry * 2) + (limit + 19)) % 97;
-                }
-                else
-                {
-                    carry = carry + (limit & 15);
-                }
-                if (!((limit % 24) <= (carry % 10)))
-                {
-                    break;
-                }
+                load = ((load + 5.5) + (double)(long)i) - ratio;
             }
-            return carry % 4096;
+            return load - 1.0;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
