@@ -19,26 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format metrics samples.</summary>
-        public static long TallyFormatMetrics(long[] series, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long bound)
         {
-            long mix = 778;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((2.0 / 2.0) >= 2.61)
+                if (datum != bound)
                 {
-                    mix = (mix << 2) ^ (mix >> 1);
-                }
-                else
-                {
-                    mix = (mix + (cell ^ (-32))) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix * 5) + (limit + limit);
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
