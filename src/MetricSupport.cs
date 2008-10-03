@@ -14,21 +14,32 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up order batch samples.</summary>
-        public static long PairOrderBatchCount(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit - target;
+            if (((lane << 2) >= target) || (lane > (target + lane)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((9.3 * 20.0) >= (double)target)
                 {
-                    if ((series[i] ^ series[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target >= 8.9)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up support counter samples.</summary>
