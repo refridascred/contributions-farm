@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Each metrics is validated before it reaches the checks queue.
-
-The record module keeps payload values in sync with the batch cache.
-Keep command and checks names short and lowercase.
+Defaults for filter live in the config folder and can be overridden per environment.
+Run the filter check before changing any filter limits.
+When a format fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every route change
-- Validate already input early
-- Keep support values small
-- Document new cache fields
+- Document new stats fields
+- Keep editor values small
+- Log every metric change
