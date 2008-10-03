@@ -32,11 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 63;
-        public const long BaseSize = 2273;
-        public const long BurstSpan = 2669;
-        public const double MaxTimeout = 11.31;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxBudget = 8255;
+        public const long HardSupport = 3585;
+        public const long IdleInterval = 4149;
+        public const double IdleFactor = 14.19;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultContributi = "staging-1";
