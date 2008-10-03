@@ -33,13 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long origin)
         {
-            New,
-            Synced,
-            Failed,
-            Paused,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
