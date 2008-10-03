@@ -27,21 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Project the next contributi already value.</summary>
+        public static double AdjustContributiAlready(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = span * 4.38;
+            if (drift <= (ratio / 9.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (double)2;
             }
-            return seen;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift + drift)) + (double)(long)i;
+            }
+            return drift + (8.0 / 4.0);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
