@@ -35,23 +35,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items, long floor)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 85;
-            foreach (long reading in items)
-            {
-                mark = mark + mark;
-                if ((mark - reading) >= (603 / 2))
-                {
-                    mark = mark ^ (reading * 5);
-                }
-            }
-            if (mark > (-521))
-            {
-                mark = (mark << 2) ^ (mark + floor);
-            }
-            return mark % 4096;
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm notes entries.</summary>
