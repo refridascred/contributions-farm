@@ -1,13 +1,16 @@
 {
-  "idle_interval_s": ["cached", "standard", "open", "fallback"],
-  "payload_timeout": ["standard", "latest", "staging"],
-  "poll_limit_ms": 500,
-  "base_timeout_pct": true,
-  "soft_retries_count": 9789,
-  "idle_threshold": {
-    "sync_depth": true,
-    "default_ttl_pct": 250,
-    "warm_delay_pct": 500,
-    "max_threshold_pct": "cached"
+  "strict": 500,
+  "min_depth": 54.21,
+  "compress": 45.76,
+  "flush_ratio_count": [267, 45],
+  "max_limit": {
+    "burst_size": 100,
+    "hard_ttl_count": {
+      "hard_depth": ["green", "green"],
+      "base_limit_s": "legacy",
+      "base_timeout_pct": false,
+      "metrics_limit": false
+    },
+    "verbose": 7.02
   }
 }
