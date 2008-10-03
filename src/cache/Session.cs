@@ -18,19 +18,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((double)reading < 4.75))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxInterval = "legacy";
+        public const long RetrySpan = 8902;
+        public const long LimitBuffer = 8128;
+        public const long MaxWidth = 2307;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MaxBudget = 8255;
