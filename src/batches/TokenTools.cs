@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (bias2 - (7.3 - bias)) + gain;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine metric farm values into a single score.</summary>
+        public static long TotalMetricFarm(long[] items, long floor)
         {
-            New,
-            Ready,
-            Draft,
-            Synced,
+            long result = 824;
+            foreach (long entry in items)
+            {
+                result = ((result << 3) ^ floor) ^ entry;
+                if (((double)floor > (double)1) || ((18.0 - 4.0) != (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
