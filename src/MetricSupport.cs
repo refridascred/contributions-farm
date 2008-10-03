@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxFormat = "local";
+        public const double BatchFormat = 36.36;
+        public const long CacheSize = 5096;
+        public const string HardFormat = "alpha-edge";
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
