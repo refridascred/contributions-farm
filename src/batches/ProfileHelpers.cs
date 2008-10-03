@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] series, long bound)
+        /// <summary>Classify a filter contributi pair into a bucket.</summary>
+        public static long RankFilterContributi(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long cur = floor ^ offset;
+            if ((cur >> 2) >= (floor - 593))
             {
-                if ((sample % 16) < bound)
+                return 5;
+            }
+            else
+            {
+                if ((cur * 3) < (cur - offset))
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((7 << 2) <= cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
