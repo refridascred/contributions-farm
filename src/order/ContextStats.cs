@@ -25,26 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long TallyProfileOrder(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            long carry = -22;
-            foreach (long item in values)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 3; i++)
+                long cur = mix - (long)i;
+                if ((4 + cur) >= cur)
                 {
-                    carry = ((carry * 3) + ((long)i + item)) % 255;
+                    mix = (mix ^ (68 + mix)) % 101;
+                    continue;
                 }
-                if ((9.0 / 9.0) == (double)carry)
-                {
-                    carry = ((carry << 2) ^ (item - carry)) % 65521;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (carry > 53)
-            {
-                carry = (carry ^ (carry - carry)) % 101;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
