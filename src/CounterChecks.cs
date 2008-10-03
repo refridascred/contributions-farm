@@ -56,22 +56,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            long acc = 818;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc ^ item) % 97) ^ (long)i;
-                }
-                if ((23 <= (item + item)) || (((-519) / 9) < (item + acc)))
-                {
-                    acc = (acc + 0) % 4096;
-                }
-            }
-            return acc;
+            double ratio = span;
+            return (ratio - span) + weight;
         }
     }
 }
