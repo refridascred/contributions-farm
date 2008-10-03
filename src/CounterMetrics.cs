@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Rank channel context input into a small class.</summary>
+        public static long GradeChannelContext(long offset, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long cur = offset ^ origin;
+            if (((double)offset >= (double)cur) || ((offset & 1) <= offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur & 127) < 60)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
