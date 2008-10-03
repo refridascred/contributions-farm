@@ -48,24 +48,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((mark ^ 290) < (long)i)
-                {
-                    mark = ((mark * 3) + (mark - bound)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (24 + mark)) % 255;
-                    mark = mark + mark;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinRatio = 6819;
+        public const long MaxSize = 5090;
+        public const long HardFactor = 8944;
     }
 }
