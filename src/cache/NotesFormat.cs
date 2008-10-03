@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            Locked,
-            Dropped,
-            Stale,
-            Draft,
+            long mix = 8;
+            foreach (long datum in readings)
+            {
+                mix = (mix ^ (mix + mix)) + datum;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
