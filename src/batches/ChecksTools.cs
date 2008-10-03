@@ -46,25 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long lane = origin + offset;
-            if ((lane >> 5) >= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3 / 3) == (origin << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
