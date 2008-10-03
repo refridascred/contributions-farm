@@ -38,10 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseInterval = 6356;
-        public const long SoftStream = 1054;
-        public const long BurstTimeout = 9868;
-        public const long MinStream = 184;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
