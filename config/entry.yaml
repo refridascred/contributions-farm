@@ -1,8 +1,13 @@
 # entry settings
-notes_retries: true
-max_delay_s:
-  - strict
-  - standard
-  - local
-  - legacy
-token_ratio: open
+burst_ttl:
+  dry_run:
+    record_timeout: blue
+    idle_depth: true
+    max_timeout_count: edge
+  readonly: 92.1
+  retry_window: 8117
+support_retries: 1872
+burst_ratio_ms: stable
+report_delay: 30
+soft_timeout: 60
+retry_threshold_pct: 250
