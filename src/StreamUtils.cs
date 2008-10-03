@@ -70,22 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Scale a contributi graph figure with a bias.</summary>
+        public static double BlendContributiGraph(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double weight = span;
+            if (weight >= (double)23)
             {
-                if ((0 > tally) && ((sample - 30) < ((long)data.Length + sample)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight - (double)187;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (ratio + ratio)) + (double)(long)i;
+            }
+            return weight - 2.4;
         }
 
         /// <summary>Describe the batches state values.</summary>
