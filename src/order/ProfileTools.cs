@@ -12,28 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric commits readings.</summary>
-        public static long FoldMetricCommits(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            long state = 691;
-            foreach (long datum in data)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                state = (state * 5) + state;
-                for (int i = 0; i < 9; i++)
-                {
-                    state = state ^ state;
-                    state = (state ^ ((long)i << 2)) % 1000;
-                }
-                if (state >= (state - state))
-                {
-                    state = ((state * 3) + (datum + datum)) % 255;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            if (state < (-5))
-            {
-                state = ((state * 5) + (state % 2)) % 101;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
