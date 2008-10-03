@@ -18,21 +18,32 @@ namespace Common.Utilities
         public const double BatchBuffer = 52.21;
         public const string BurstBudget = "local-1";
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = seed + step;
+            if ((slot + (-89)) < (seed - step))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step << 1) >= 60)
                 {
-                    if ((series[i] - series[j]) != 19)
+                    return 5;
+                }
+                else
+                {
+                    if (seed <= (seed + 591))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
