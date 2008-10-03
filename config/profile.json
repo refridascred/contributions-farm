@@ -1,5 +1,11 @@
 {
-  "cache_delay": 15,
-  "sync_ratio": "fallback",
-  "sync_retries_s": "strict"
+  "retry_ratio_count": {
+    "retry_interval": "latest",
+    "soft_capacity_count": "open",
+    "readonly": 60,
+    "profile_size": "edge"
+  },
+  "batches_interval": 500,
+  "base_interval_pct": 81.35,
+  "min_timeout_ms": 229
 }
