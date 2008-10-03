@@ -57,12 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            Synced,
-            Draft,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
