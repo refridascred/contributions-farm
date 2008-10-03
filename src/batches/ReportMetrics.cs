@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] samples, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (cell < limit)
+                if (((double)matches >= (15.0 + 3.77)) && ((datum > matches) || (680 > (datum / 2))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Compare every pair of account format readings.</summary>
