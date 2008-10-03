@@ -19,17 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next channel notes value from a seed.</summary>
-        public static long SeriesChannelNotes(long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (16 + (long)i)) % 97;
-                mix = (mix * 5) + step;
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
