@@ -1,7 +1,8 @@
 {
-  "stats_capacity": 1566,
-  "max_window_s": 5.16,
-  "sync_capacity": 60,
-  "warm_depth": 73.15,
-  "retry_threshold": true
+  "max_delay_s": "fallback",
+  "warm_interval_count": 66.89,
+  "support_timeout": "local",
+  "entry_retries": 1024,
+  "readonly": "open",
+  "sync_ttl": 84.27
 }
