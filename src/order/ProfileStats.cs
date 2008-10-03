@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long result = 746;
-            foreach (long reading in items)
-            {
-                if (7.5 < (double)result)
-                {
-                    result = (result + (reading - 763)) % 255;
-                }
-            }
-            return result;
+            Active,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the batches status values.</summary>
