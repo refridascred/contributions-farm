@@ -1,8 +1,7 @@
 {
-  "burst_interval_s": "fallback",
-  "hard_ratio_s": "local",
-  "max_timeout_s": "primary",
-  "payload_delay": 7378,
-  "batch_timeout_count": [458, 423],
-  "hard_capacity": 30
+  "flush_interval_pct": "fallback",
+  "command_interval": 41.18,
+  "default_limit_s": "fallback",
+  "idle_timeout_s": true,
+  "warm_depth": 44
 }
