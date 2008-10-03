@@ -54,12 +54,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Idle,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 1464;
+        public const long BaseCommits = 8539;
+        public const long LimitCount = 4784;
     }
 }
