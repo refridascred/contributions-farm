@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate metrics profile readings against a bound.</summary>
-        public static bool VerifyMetricsProfileLimits(long[] values, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
