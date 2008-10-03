@@ -24,18 +24,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long total = 47;
+            foreach (long datum in series)
             {
-                if (((((long)series.Length + seen) <= (reading * 3)) && ((37 / 7) > reading)) && (((-76) % 10) >= (reading & 127)))
+                if ((0.6 >= (double)datum) || ((datum & 255) == (total + total)))
                 {
-                    seen = seen + 3;
+                    total = (total * 3) + datum;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return seen;
+            if (total < 71)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Hold a commits record.</summary>
