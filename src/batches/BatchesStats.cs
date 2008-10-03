@@ -50,15 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values)
-        {
-            long anchor = 700;
-            foreach (long sample in values)
-            {
-                anchor = ((anchor - (15 ^ anchor)) % 65521) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 33.44;
+        public const double BaseBuffer = 87.72;
+        public const long CacheBuffer = 3044;
+        public const long IdleBudget = 2329;
+        public const double DefaultTimeout = 88.14;
     }
 }
