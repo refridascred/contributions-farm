@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 4610;
-        public const long DefaultMetric = 3456;
-        public const long BatchBudget = 5656;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] readings, long offset)
+        {
+            long mark = 1;
+            foreach (long cell in readings)
+            {
+                mark = (((mark << 2) ^ offset) % 97) + cell;
+            }
+            return mark;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] data, long seed)
