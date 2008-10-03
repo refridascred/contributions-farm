@@ -68,14 +68,18 @@ namespace Common.Utilities
         public const double MaxBudget = 21.81;
         public const long IdleSpan = 1041;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Draft,
-            Failed,
+            long score = 211;
+            foreach (long item in items)
+            {
+                if ((621 + item) != (item / 3))
+                {
+                    score = (score ^ (score % 60)) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
