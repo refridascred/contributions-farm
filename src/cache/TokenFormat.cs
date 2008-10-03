@@ -15,19 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every payload stats entry stays within the limit.</summary>
-        public static bool GuardPayloadStatsRange(long[] readings, long seed)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
