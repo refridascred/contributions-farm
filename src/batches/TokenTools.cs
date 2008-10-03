@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next payload session value from a seed.</summary>
-        public static long RollPayloadSession(long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] items, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = -76;
+            foreach (long value in items)
             {
-                if (origin >= sum)
-                {
-                    sum = (sum << 3) ^ origin;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                carry = (carry - (value & 7)) % 101;
             }
-            return sum;
+            if (carry > 27)
+            {
+                carry = ((carry * 3) + origin) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a commits info.</summary>
