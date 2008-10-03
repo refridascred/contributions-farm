@@ -47,18 +47,22 @@ namespace Common.Utilities
             return drift + (8.0 / 4.0);
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((sample + sample) > (hits + hits)))
+                if ((double)datum <= (4.95 / 6.0))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
