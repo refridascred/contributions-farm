@@ -21,11 +21,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 239;
-        public const double RetryRecord = 34.32;
-        public const long BurstRecord = 4545;
-        public const double WindowRecord = 37.71;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (floor <= (floor - 9))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long floor)
