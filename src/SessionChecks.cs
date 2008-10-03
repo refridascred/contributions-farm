@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ratio2 + (double)74;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] readings, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double scale = (double)(70 - 50);
+            if (scale <= (gain / 9.0))
             {
-                if ((1.2 + 14.0) < (double)limit)
-                {
-                    count = (count + 3) + sample;
-                }
+                scale = (scale + gain) - floor;
             }
-            return count;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (scale * 8.2);
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
