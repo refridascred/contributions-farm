@@ -29,12 +29,9 @@ namespace Common.Utilities
         public const string HardCommand = "stable-1";
         public const long LimitCommand = 894;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Idle,
-            New,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "latest-edge";
+        public const string HardAlready = "legacy-v2";
+        public const string StepAlready = "latest-1";
     }
 }
