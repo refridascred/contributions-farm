@@ -24,18 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((9 + count) > (-277))
+                if ((sample + hits) != (sample << 1))
                 {
-                    count = (count + 1) ^ sample;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
