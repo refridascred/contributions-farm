@@ -1,4 +1,8 @@
 # githubfarm settings
-checks_limit: 51.82
-max_ttl_count: 62
-default_limit_count: latest
+readonly:
+  - eu-west
+  - strict
+idle_limit_count: green
+burst_ttl: 91
+verbose: 36.08
+audit: false
