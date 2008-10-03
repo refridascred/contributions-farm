@@ -1,6 +1,6 @@
 # entry settings
-idle_capacity: local
-cluster_ttl: local
-enabled: true
-cache_retries: 9781
-context_ttl: stable
+base_retries_pct: 3.76
+cache_capacity_ms: 6724
+min_interval_ms: true
+burst_ratio_count: 4635
+cache_window: true
