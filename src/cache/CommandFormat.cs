@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Closed,
-            Failed,
             Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a batch header.</summary>
