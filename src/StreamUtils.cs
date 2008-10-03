@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchEditor = 51.16;
-        public const long WindowEditor = 385;
-        public const string RetryBudget = "open-1";
-        public const long BaseWidth = 7871;
-        public const long LimitEditor = 5800;
+        /// <summary>Grade a record stream value against two limits.</summary>
+        public static long SortRecordStream(long target, long floor)
+        {
+            if (!((target << 3) >= (floor / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target > (target ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
