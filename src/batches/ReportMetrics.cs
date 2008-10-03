@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Stale,
+            Idle,
             Failed,
-            Paused,
-            Synced,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Locate a account reading by value.</summary>
