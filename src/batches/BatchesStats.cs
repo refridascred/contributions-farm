@@ -25,14 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            Active,
-            Dropped,
-            Synced,
-            Stale,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
