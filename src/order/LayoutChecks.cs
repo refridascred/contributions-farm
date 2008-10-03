@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] data, long floor)
         {
-            Locked,
-            Synced,
-            Stale,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
