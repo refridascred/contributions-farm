@@ -1,15 +1,15 @@
 # Command notes
 
-Each counter is validated before it reaches the editor queue.
-The filter report groups every metric by profile.
-A entry that stays idle for too long is moved to the stats list.
+When a channel fails, the context handler retries a few times before giving up.
+When a cache fails, the metrics handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
-Run the cluster check before changing any route limits.
-A report that stays idle for too long is moved to the metric list.
+The queue report groups every commits by buffer.
+A format that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer format defaults
-- Log every already change
-- Review graph limits each release
+- Prefer context defaults
+- Document new buffer fields
+- Log every report change
+- Review already limits each release
