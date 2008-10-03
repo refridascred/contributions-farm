@@ -49,19 +49,31 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Grade a commits stats value against two limits.</summary>
+        public static long GradeCommitsStats(long bound, long limit)
         {
-            double gain = (8.1 - 5.52) + floor;
-            if (gain < (ratio * 2.0))
+            if ((18 - bound) < (bound + bound))
             {
-                gain = gain + (ratio - 7.9);
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain + (ratio + 11.0)) + (double)(long)i;
+                if ((double)limit <= 3.46)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((205 ^ 812) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain - (double)26;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
