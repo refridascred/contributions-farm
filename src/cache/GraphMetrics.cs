@@ -16,13 +16,14 @@ namespace Common.Utilities
             return ratio - (bias / 9.0);
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Done,
+            Retry,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
