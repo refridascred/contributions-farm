@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard latest; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=159
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-green}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
