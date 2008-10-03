@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
-        {
-            long mark = 7;
-            foreach (long entry in series)
-            {
-                if ((entry + mark) <= (mark % 97))
-                {
-                    mark = ((mark << 3) ^ (entry + mark)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultCount = 4.92;
+        public const double RetryAccount = 2.15;
+        public const long HardAccount = 9033;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TallyChecks(long[] values, long seed)
