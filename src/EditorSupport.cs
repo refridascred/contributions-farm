@@ -54,10 +54,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 27.99;
-        public const long CacheMetrics = 2868;
-        public const double HardMetrics = 42.95;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1846;
