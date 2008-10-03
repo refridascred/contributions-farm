@@ -14,12 +14,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((4 / 8) < (state / 7)) || ((3 + bound) >= 58))
+                {
+                    state = (state << 2) ^ (bound - (long)i);
+                }
+                else
+                {
+                    state = (state - (state % 64)) % 101;
+                    state = state ^ (state - state);
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
