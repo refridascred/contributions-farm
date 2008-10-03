@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const double MinRatio = 78.6;
         public const string MaxSession = "staging-1";
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry ^ (origin + reading)) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
