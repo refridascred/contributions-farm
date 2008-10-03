@@ -20,22 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] readings)
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long SeriesStreamEditor(long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item - count) >= (49 ^ item))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
