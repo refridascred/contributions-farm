@@ -64,19 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long seed)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Closed,
+            Idle,
+            Stale,
         }
     }
 }
