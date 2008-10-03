@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 8;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((((result * 3) + result) % 101) + reading) + step;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
