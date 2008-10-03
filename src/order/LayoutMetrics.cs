@@ -17,17 +17,15 @@ namespace Common.Utilities
         public const double HardTimeout = 18.71;
         public const double MaxInterval = 43.08;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 23;
+            foreach (long value in samples)
             {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 3) ^ (value - limit)) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
