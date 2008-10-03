@@ -58,17 +58,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 6821;
+        public const long MinSize = 3969;
+        public const double BaseRatio = 52.65;
+        public const long SoftEntry = 965;
+        public const long SoftScore = 2802;
     }
 }
