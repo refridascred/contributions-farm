@@ -41,11 +41,15 @@ namespace Common.Utilities
         public const long HardCommits = 7575;
         public const long BaseCommits = 31;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 33.44;
-        public const double BaseBuffer = 87.72;
-        public const long CacheBuffer = 3044;
-        public const long IdleBudget = 2329;
-        public const double DefaultTimeout = 88.14;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double bias)
+        {
+            double load = 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (scale / 9.0)) + (double)(long)i;
+            }
+            return load - (load + bias);
+        }
     }
 }
