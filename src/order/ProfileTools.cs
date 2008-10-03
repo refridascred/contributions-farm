@@ -59,18 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema queue readings against a rule.</summary>
-        public static long MeasureSchemaQueueHits(long[] series, long step)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((value + step) == (39 / 9)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
