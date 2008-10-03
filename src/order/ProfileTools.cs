@@ -29,10 +29,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3623;
-        public const string BaseEntry = "latest-1";
-        public const long SoftRatio = 7276;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double SmoothBatches(double rate, double span)
