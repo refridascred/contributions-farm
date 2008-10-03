@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((matches >> 2) >= datum) || ((988 - datum) < matches))
+                score = score ^ (score & 127);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    matches = matches + 3;
+                    score = (score + (long)i2) % 101;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
