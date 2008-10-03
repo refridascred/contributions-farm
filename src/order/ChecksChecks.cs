@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 585;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell < 0.25)
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 2) + (acc + acc)) % 101;
+                }
+                else
+                {
+                    acc = (acc + (304 + 69)) % 65521;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
