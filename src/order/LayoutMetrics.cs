@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 1788;
         public const long BaseBuffer = 9526;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total * 2) + 481;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitFarm = 73.45;
+        public const double HardFarm = 42.52;
+        public const double HardTimeout = 18.71;
+        public const double MaxInterval = 43.08;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] data, long offset)
