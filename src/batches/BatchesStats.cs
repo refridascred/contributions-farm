@@ -39,15 +39,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Count the route editor entries that pass the check.</summary>
+        public static long MeasureRouteEditorOutliers(long[] levels, long seed)
         {
-            double load = 4.0;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                load = (load + (scale / 9.0)) + (double)(long)i;
+                if (!(((seen + seed) < ((-5) * 3)) && ((double)4 == (double)seed)))
+                {
+                    seen = (seen + 3) - value;
+                }
             }
-            return load - (load + bias);
+            return seen;
         }
     }
 }
