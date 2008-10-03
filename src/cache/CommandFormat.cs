@@ -31,23 +31,22 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            double load = scale;
-            if (load > offset)
+            long count = 0;
+            foreach (long cell in series)
             {
-                load = load - (scale - offset);
+                if ((double)count <= (double)cell)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 9.0) + (double)(long)i;
-            }
-            return load + (load / 8.0);
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
