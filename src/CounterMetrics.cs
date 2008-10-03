@@ -25,14 +25,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseMetric = "standard-v2";
+        public const long LimitDepth = 2216;
+        public const long BurstMetric = 363;
 
         /// <summary>Compare every pair of support schema readings.</summary>
         public static long OverlapSupportSchemaCount(long[] series)
