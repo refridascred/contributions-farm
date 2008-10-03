@@ -50,13 +50,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] values, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((double)count > 5.87) && ((double)count < (1.87 - 9.4)))
+                {
+                    count = ((count + 1) ^ item) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit counter buffer readings against a rule.</summary>
