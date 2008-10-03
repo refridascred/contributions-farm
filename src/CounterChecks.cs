@@ -67,15 +67,12 @@ namespace Common.Utilities
             return scale + (double)32;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double scale, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double load = (double)4;
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load + (double)(long)i) - scale) - bias;
-            }
-            return load + 6.2;
+            Queued,
+            Locked,
+            New,
         }
     }
 }
