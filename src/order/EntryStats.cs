@@ -32,18 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            long mark = 178;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((1.56 * 4.05) >= (double)origin) && (item <= (item >> 3)))
+                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
                 {
-                    mark = (mark - (item - origin)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
