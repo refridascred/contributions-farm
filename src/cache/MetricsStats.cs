@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits * 5) == (cell + hits))
-                {
-                    hits = (hits + 3) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
