@@ -14,20 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate githubfarm account readings against a bound.</summary>
-        public static bool ValidateGithubfarmAccountRange(long[] samples, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 854;
+        public const long MinBuffer = 5528;
+        public const long MaxDepth = 4978;
+        public const double RetryBuffer = 71.16;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] readings)
