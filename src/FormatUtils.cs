@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
-        public static long PairCommitsChecksCount(long[] readings)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 24;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state * 5) + (5 ^ (long)series.Length)) % 255) + entry;
+                state = (state ^ (state - (-89))) % 97;
             }
-            return tally;
+            if (state > (-883))
+            {
+                state = ((state << 2) ^ (state + 9)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Match up order samples.</summary>
