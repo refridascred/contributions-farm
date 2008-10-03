@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long DigestRouteRecord(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long acc = 279;
+            foreach (long reading in readings)
+            {
+                acc = acc + acc;
+                if ((reading ^ reading) <= (reading / 6))
+                {
+                    acc = (acc << 2) ^ (reading + acc);
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 595)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a editor stats.</summary>
