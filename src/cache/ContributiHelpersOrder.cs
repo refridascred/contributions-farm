@@ -28,23 +28,18 @@ namespace Common.Utilities
         public const long DefaultSize = 5670;
         public const long BaseToken = 210;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] readings, long floor)
         {
-            double weight = bias;
-            if (weight > (ratio * 2.07))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                weight = weight - ratio;
+                if (((reading >> 3) == (count << 1)) && ((double)reading > 9.1))
+                {
+                    count = (count + 2) + floor;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)92) - (double)(long)i;
-            }
-            return weight - ratio;
+            return count;
         }
     }
 }
