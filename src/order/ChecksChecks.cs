@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up command editor samples.</summary>
-        public static long MatchCommandEditorCount(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading < floor)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the account level values.</summary>
