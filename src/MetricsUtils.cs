@@ -69,9 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 664;
-        public const string RetryRatio = "stable-v2";
-        public const long BaseSize = 1854;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
