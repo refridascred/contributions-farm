@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 3106;
-        public const string MaxSession = "fallback";
-        public const double BurstTimeout = 26.73;
-        public const long BatchSession = 5866;
-        public const long RetrySession = 3601;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Active,
+            Dropped,
+            Synced,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
