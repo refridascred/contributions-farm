@@ -1,22 +1,5 @@
 {
-  "soft_threshold_s": "eu-west",
-  "command_ttl": {
-    "session_ttl": {
-      "enabled": 96,
-      "account_capacity": false,
-      "strict": 49,
-      "poll_retries_s": 78,
-      "verbose": "latest",
-      "buffer_threshold": 20.62
-    },
-    "min_threshold": 500,
-    "soft_depth_pct": 97.04,
-    "filter_capacity": false,
-    "readonly": [499, 125, 138],
-    "persist": false
-  },
-  "batch_retries_pct": 20.29,
-  "min_limit_ms": 902,
-  "strict": true,
-  "cache_delay": ["local", "primary", "open"]
+  "flush_threshold_s": false,
+  "burst_delay_ms": false,
+  "sync_timeout_ms": 4.96
 }
