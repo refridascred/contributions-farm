@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Adjust a format schema reading.</summary>
+        public static double SmoothFormatSchema(double scale, double span)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = scale;
+            if (gain >= (scale - span))
+            {
+                gain = gain - 5.2;
+            }
+            else
+            {
+                gain = gain - (19.0 - gain);
+            }
+            return gain + 2.39;
         }
 
         /// <summary>Hold a already record.</summary>
