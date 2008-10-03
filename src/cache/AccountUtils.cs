@@ -22,31 +22,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a checks batch pair into a bucket.</summary>
-        public static long SortChecksBatch(long floor, long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            if (((double)offset > (7.8 * 8.0)) && ((floor + floor) > (offset % 3)))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - 953) != (offset >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((1 ^ offset) <= (offset << 3)))
+                    if ((samples[i] - samples[j]) == 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
