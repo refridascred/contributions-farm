@@ -34,12 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 6295;
-        public const long BurstRatio = 722;
-        public const string SoftRatio = "local-1";
-        public const long BurstFactor = 6820;
-        public const double BurstWindow = 63.41;
+        /// <summary>Count metric schema pairs that satisfy a relation.</summary>
+        public static long OverlapMetricSchemaCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
