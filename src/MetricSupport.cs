@@ -20,12 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items, long offset)
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long sum = 63;
+            foreach (long value in items)
+            {
+                if (!((offset >> 2) != (8 << 3)))
+                {
+                    sum = (sum - (value << 3)) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a format stats.</summary>
