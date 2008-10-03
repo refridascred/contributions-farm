@@ -1,17 +1,18 @@
 # support settings
-enabled:
-  - 301
-  - 171
-  - 308
-  - 497
-batch_interval_count:
-  buffer_size: 21.28
-  hard_capacity:
-    - 278
-    - 382
-  verbose: edge
-  retry_depth_pct: 30.49
-idle_depth_pct: 59.08
-audit:
-  - 56
-  - 302
+cache_retries_count:
+  min_capacity: latest
+  poll_delay_count:
+    soft_capacity_s:
+      - 273
+      - 160
+      - 498
+    poll_timeout_ms: fallback
+    compress: false
+    flush_capacity_count: open
+  filter_ratio: strict
+  default_retries: local
+account_depth: 69
+max_size_pct:
+  idle_ttl_s: local
+  hard_window_ms: 9953
+  poll_interval_s: 30
