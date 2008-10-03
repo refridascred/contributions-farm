@@ -17,26 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((total / 9) < (703 + total))
-                {
-                    total = total ^ limit;
-                    total = (total + (total + (long)i)) % 4096;
-                }
-                if (9 > (limit % 16))
-                {
-                    total = ((total * 3) + (total + total)) % 255;
-                    total = ((total << 3) ^ (total + limit)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "alpha";
+        public const long RetryTimeout = 3562;
+        public const double LimitSession = 53.66;
+        public const long BaseSession = 2287;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstProfile = "open-v2";
