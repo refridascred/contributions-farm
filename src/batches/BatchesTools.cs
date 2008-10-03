@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 811;
+            foreach (long item in values)
             {
-                if (series[i] <= bound)
+                if ((15.0 * 8.0) <= (double)item)
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ offset) % 4096;
+                }
+                else
+                {
+                    acc = (acc + acc) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
