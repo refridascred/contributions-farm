@@ -1,10 +1,8 @@
 {
-  "schema_window": 4405,
-  "base_interval": {
-    "verbose": 80.33,
-    "base_ratio": "local",
-    "hard_capacity": false,
-    "cache_interval": 60
-  },
-  "strict": true
+  "cache_limit": 100,
+  "audit": ["stable", "cached"],
+  "counter_size": 1930,
+  "counter_interval": "legacy",
+  "min_delay_ms": 89,
+  "metric_ttl": 100
 }
