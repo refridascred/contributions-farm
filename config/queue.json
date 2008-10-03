@@ -1,19 +1,5 @@
 {
-  "window_retries": ["local", "latest", "eu-west"],
-  "max_limit_pct": {
-    "default_depth_s": "staging",
-    "warm_capacity_s": {
-      "already_ratio": 1154,
-      "hard_size_pct": 4970,
-      "editor_limit": "staging",
-      "tools_limit": [433, 250, 29],
-      "poll_ratio": 1024
-    },
-    "enabled": 46,
-    "cache_interval_pct": "edge",
-    "format_window": 60,
-    "audit": "fallback"
-  },
-  "schema_timeout": 9.13,
-  "retry_capacity_ms": "edge"
+  "batch_capacity_s": 19.21,
+  "batch_retries_ms": "blue",
+  "readonly": "blue"
 }
