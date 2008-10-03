@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!((7.3 * 0.83) > (double)acc))
+                if (entry >= limit)
                 {
-                    acc = (acc + (limit & 15)) % 1000;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Accumulate checks samples.</summary>
