@@ -23,11 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 7022;
-        public const long CacheScore = 2724;
-        public const double BatchSize = 23.55;
-        public const long RetryContributi = 6638;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values)
+        {
+            long score = 9;
+            foreach (long entry in values)
+            {
+                score = (score + (entry % 7)) % 65521;
+                if ((double)score != (9.3 + 4.2))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] levels, long offset)
