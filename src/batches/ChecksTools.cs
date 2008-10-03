@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 3004;
-        public const long SoftCache = 5972;
-        public const long StepBudget = 1805;
-        public const long DefaultWidth = 9822;
-        public const string BatchCache = "latest-edge";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Paused,
+            Active,
+            New,
+        }
 
         /// <summary>Blend two queue schema measurements.</summary>
         public static double SmoothQueueSchema(double ratio, double span)
