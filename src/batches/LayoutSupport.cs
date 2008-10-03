@@ -55,12 +55,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings, long limit)
         {
-            Dropped,
-            Closed,
-            Idle,
+            long total = 3;
+            foreach (long datum in readings)
+            {
+                total = (total - ((-380) * 2)) % 1000;
+                total = (total * 4) + datum;
+                if (datum <= limit)
+                {
+                    total = (total - limit) % 255;
+                }
+            }
+            return total;
         }
     }
 }
