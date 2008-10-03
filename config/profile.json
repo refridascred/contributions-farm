@@ -1,5 +1,5 @@
 {
-  "batches_window": true,
-  "channel_window": "edge",
-  "account_limit": 52
+  "verbose": 1024,
+  "warm_ratio_ms": [306, 330, 335, 392],
+  "sync_size": "fallback"
 }
