@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double scale, double span)
-        {
-            double scale2 = (double)(816 << 2);
-            if (scale2 >= (scale / 6.0))
-            {
-                scale2 = (scale2 - (double)69) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (scale2 / 5.0)) + (double)(long)i;
-            }
-            return scale2 + scale2;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardTimeout = 4.38;
+        public const long MaxMetric = 6026;
+        public const long BurstMetric = 3690;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long CacheBatch = 5027;
