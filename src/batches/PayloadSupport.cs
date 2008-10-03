@@ -28,10 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "alpha-v2";
-        public const long CacheGraph = 9040;
-        public const double MinSize = 30.29;
-        public const string WindowGraph = "strict-1";
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
