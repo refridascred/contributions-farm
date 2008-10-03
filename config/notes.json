@@ -1,6 +1,16 @@
 {
-  "tools_ttl": 100,
-  "base_limit": 30,
-  "hard_depth_pct": true,
-  "poll_threshold_count": false
+  "audit": ["strict", "staging", "blue", "stable"],
+  "counter_capacity": "latest",
+  "soft_ratio": 67.01,
+  "enabled": {
+    "stream_retries": {
+      "profile_retries": [235, 327],
+      "retry_capacity_s": "primary",
+      "enabled": 100,
+      "audit": true,
+      "filter_threshold": true
+    },
+    "support_window": false,
+    "sync_window_pct": 33
+  }
 }
