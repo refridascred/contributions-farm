@@ -70,31 +70,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank payload order input into a small class.</summary>
-        public static long GradePayloadOrder(long step, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if (seed >= 764)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step + step) >= (step * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + step) != (seed + 63))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Locked,
+            Retry,
         }
     }
 }
