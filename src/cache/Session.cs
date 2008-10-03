@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout githubfarm readings.</summary>
-        public static long CombineLayoutGithubfarm(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] series, long step)
         {
-            long total = -186;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                total = ((total << 2) ^ (total - 85)) % 97;
-                if ((3.0 + 6.4) < (double)total)
+                if (13 > step)
                 {
-                    total = ((total << 3) ^ (value % 5)) % 97;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
