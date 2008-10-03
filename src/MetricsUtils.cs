@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] values, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= (double)offset)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
