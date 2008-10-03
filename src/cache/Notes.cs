@@ -42,14 +42,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Stale,
-            Done,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 92.1;
+        public const double IdleWidth = 17.78;
+        public const long MaxAccount = 7027;
+        public const long BurstDepth = 1797;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinRatio = 6819;
