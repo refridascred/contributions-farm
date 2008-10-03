@@ -34,27 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long ScoreLayoutCache(long[] readings, long limit)
+        /// <summary>Validate context stream readings against a bound.</summary>
+        public static bool ValidateContextStreamBounds(long[] series, long target)
         {
-            long mix = 837;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                mix = (mix + item) % 65521;
-                if ((double)item < 9.51)
+                if (datum > target)
                 {
-                    mix = (mix + (limit >> 2)) % 4096;
-                }
-                else
-                {
-                    mix = mix + limit;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 23)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
+            return stale;
         }
     }
 }
