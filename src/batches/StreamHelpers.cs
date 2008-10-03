@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long IdleScore = 8343;
         public const string WindowSize = "latest-1";
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Ready,
-            Draft,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 9100;
+        public const double DefaultStream = 3.09;
+        public const string MinDepth = "staging-edge";
+        public const long StepStream = 5151;
+        public const string DefaultSize = "local-edge";
 
         /// <summary>Blend two order layout measurements.</summary>
         public static double ScaleOrderLayout(double gain, double span)
