@@ -14,11 +14,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double rate, double floor)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
+            double mean = rate;
+            if (mean < floor)
+            {
+                mean = mean + (floor * 9.21);
+            }
+            else
+            {
+                mean = mean + (double)226;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean + (rate + floor);
         }
 
         /// <summary>Define record limits and defaults.</summary>
