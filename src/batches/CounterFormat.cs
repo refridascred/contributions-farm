@@ -27,20 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((long)i - (long)i) == ((long)i - offset)))
+                if (!(4.35 > (double)offset))
                 {
-                    state = state + (state >> 1);
-                    state = ((state << 3) ^ (offset >> 5)) % 1000;
+                    mark = ((mark * 5) + (offset * 4)) % 97;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
     }
 }
