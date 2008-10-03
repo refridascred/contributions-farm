@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values, long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally * 2) > tally)
-                {
-                    tally = ((tally + 1) - reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Active,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
