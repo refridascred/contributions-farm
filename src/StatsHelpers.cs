@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 4111;
-        public const string DefaultSize = "alpha";
-        public const long StepSize = 4975;
-        public const long BaseLevel = 9890;
-        public const string BurstSize = "strict-v2";
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double span)
+        {
+            double ratio = (double)(16 + 77);
+            if (ratio > 6.9)
+            {
+                ratio = ((ratio + (double)84) - bias) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (double)666) - (double)(long)i;
+            }
+            return ratio + (double)9;
+        }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
         public static long MeasureGithubfarmStatsMatches(long[] samples)
