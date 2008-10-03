@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a command editor pair into a bucket.</summary>
-        public static long SortCommandEditor(long bound, long step)
+        /// <summary>Compare every pair of notes layout readings.</summary>
+        public static long CompareNotesLayoutCount(long[] samples)
         {
-            if ((8 * 5) != (step + bound))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-734) > step) || ((step + bound) == (step >> 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step != (0.75 + 3.82))
+                    if ((samples[i] + samples[j]) < 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up token samples.</summary>
