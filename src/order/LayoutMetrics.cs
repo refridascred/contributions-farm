@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a cache context sample.</summary>
-        public static long LookupCacheContextIndex(long[] series, long seed)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long MeasureAlreadyNotesGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (series[i] <= seed)
+                if (((513 >= ((long)series.Length % 5)) && (3.0 > (double)cell)) || !((cell ^ cell) > seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
