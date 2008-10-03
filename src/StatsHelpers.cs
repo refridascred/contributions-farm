@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3539;
+        public const long SoftCluster = 9143;
+        public const double StepCluster = 15.24;
+        public const long StepWidth = 3421;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MaxInterval = "latest";
