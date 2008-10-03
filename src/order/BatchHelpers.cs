@@ -34,22 +34,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 % 16) > (12 + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
