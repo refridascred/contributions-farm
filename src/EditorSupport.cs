@@ -54,20 +54,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 27.99;
+        public const long CacheMetrics = 2868;
+        public const double HardMetrics = 42.95;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 1846;
