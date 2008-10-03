@@ -44,18 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm batches values into a single score.</summary>
-        public static long FoldGithubfarmBatches(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long floor)
         {
-            long mark = -14;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((5.56 / 9.0) != (double)mark) && (mark <= (mark + mark)))
+                if ((tally + (-4)) == (entry << 2))
                 {
-                    mark = (mark + (87 * 2)) - reading;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return mark;
+            return tally;
         }
     }
 }
