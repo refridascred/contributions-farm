@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits already readings.</summary>
-        public static long TotalCommitsAlready(long[] values)
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long CombineEntryToken(long[] levels, long target)
         {
-            long mark = 56;
-            foreach (long cell in values)
+            long score = 81;
+            foreach (long value in levels)
             {
-                mark = ((mark + (mark - mark)) % 1000) + cell;
+                score = (score - (value + 2)) - target;
             }
-            if (mark > 22)
-            {
-                mark = mark ^ (mark ^ mark);
-            }
-            return mark;
+            return score % 1000;
         }
 
         /// <summary>Validate contributi commits readings against a bound.</summary>
