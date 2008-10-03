@@ -44,10 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinLevel = 6223;
-        public const long SoftRatio = 9530;
-        public const long HardBudget = 6342;
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long LocateWindowLayoutIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long seed, long origin)
