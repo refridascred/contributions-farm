@@ -30,12 +30,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheDepth = "legacy-edge";
-        public const long StepCache = 4066;
-        public const long BatchWidth = 3318;
-        public const long MaxCache = 2315;
-        public const long SoftSize = 9547;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
