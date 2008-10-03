@@ -31,13 +31,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] series, long limit)
         {
-            Closed,
-            Stale,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((limit - 52) <= (limit + 75))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
     }
 }
