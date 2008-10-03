@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next batches editor value from a seed.</summary>
-        public static long StepBatchesEditor(long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (((score * 5) + (long)i) % 65521) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
