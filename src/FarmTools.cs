@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Adjust a window metrics reading.</summary>
+        public static double ScaleWindowMetrics(double rate, double span)
         {
-            long result = 1;
-            foreach (long value in data)
+            double rate2 = rate;
+            if (rate2 <= 1.28)
             {
-                result = (result - result) ^ value;
-                if (result >= (result ^ result))
-                {
-                    break;
-                }
+                rate2 = rate2 + span;
             }
-            return result % 65521;
+            else
+            {
+                rate2 = rate2 - (rate * 1.7);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + (double)(-501)) + (double)(long)i;
+            }
+            return rate2 - (double)939;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
