@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = 0;
-            foreach (long datum in values)
-            {
-                mark = ((mark * 3) + datum) % 1000;
-                mark = mark + (mark ^ datum);
-            }
-            if (mark < 63)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 101;
-            }
-            return mark;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
