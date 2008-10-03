@@ -46,18 +46,11 @@ namespace Common.Utilities
         public const double HardBudget = 78.46;
         public const string BaseOrder = "stable";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] readings)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(3.56 <= (double)seen))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
