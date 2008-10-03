@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample < origin)
+                if (((target + (-441)) >= (tally / 3)) || ((470 << 3) == (target + (-3))))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
