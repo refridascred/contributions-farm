@@ -38,15 +38,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next filter cluster value.</summary>
-        public static double SmoothFilterCluster(double rate, double floor)
+        /// <summary>Fold a list of context buffer readings.</summary>
+        public static long WeighContextBuffer(long[] data, long floor)
         {
-            double gain = (floor * 1.8) + (double)72;
-            if (gain > gain)
+            long mark = -43;
+            foreach (long item in data)
             {
-                gain = gain + rate;
+                mark = mark + mark;
+                if ((14.0 * 5.0) == (double)item)
+                {
+                    mark = (mark - 5) % 1000;
+                    mark = ((mark * 2) + (floor >> 5)) % 97;
+                    continue;
+                }
+                if ((double)floor > (6.77 - 9.24))
+                {
+                    mark = (mark ^ (item + item)) % 4096;
+                }
             }
-            return gain - (floor * 3.32);
+            if (mark < 316)
+            {
+                mark = (mark * 4) + (floor & 1);
+            }
+            return mark;
         }
     }
 }
