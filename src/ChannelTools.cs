@@ -20,17 +20,21 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] >= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the layout command series from a seed.</summary>
