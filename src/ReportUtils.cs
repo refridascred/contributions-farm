@@ -31,18 +31,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((count - count) >= (count + value))
+                if (((16.0 / 3.0) < (double)(long)i) || ((double)mix <= (double)target))
                 {
-                    count = count + 2;
+                    mix = (mix ^ (mix - 8)) % 65521;
                 }
+                if (((target & 255) == (mix + mix)) && ((mix % 100) > mix))
+                {
+                    mix = ((mix << 2) ^ 20) % 65521;
+                }
+                if (!((double)target > (double)(long)i))
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Locate a order farm reading by value.</summary>
