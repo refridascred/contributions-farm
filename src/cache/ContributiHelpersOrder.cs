@@ -24,19 +24,13 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double load = rate;
-            if (load >= load)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - rate;
-            }
-            return load - span;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
