@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long WindowNotes = 4417;
         public const double BaseScore = 12.4;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                if (samples[i] > seed)
                 {
                     return (long)i;
                 }
