@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count % 7) < (count * 2))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryWidth = 12.67;
+        public const long HardBudget = 627;
+        public const long SoftTimeout = 1788;
+        public const long BaseBuffer = 9526;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long origin)
