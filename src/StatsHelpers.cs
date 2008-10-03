@@ -62,25 +62,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a editor queue value against two limits.</summary>
-        public static long GradeEditorQueue(long step, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            long delta = step + target;
-            if (((19.0 + 6.7) >= (9.5 - 0.18)) && (target < (target - delta)))
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((delta % 97) >= (delta - delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix;
         }
     }
 }
