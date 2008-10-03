@@ -1,6 +1,9 @@
-id,label,level
-1,open,188
-2,725,51.29
-3,41.56,latest
-4,35.69,94.59
-5,79.34,556
+id,ratio,token,score
+1,green,831,82.65
+2,560,73.37,873
+3,83.86,158,246
+4,fallback,82.7,standard
+5,open,72.22,293
+6,standard,65.99,602
+7,latest,open,584
+8,cached,green,36.43
