@@ -24,19 +24,39 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] samples, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long offset2 = offset - bound;
+            if (((offset2 * 3) != (64 * 4)) || ((bound + (-68)) > (50 / 6)))
             {
-                if (reading <= offset)
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) > (offset - offset2))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >= (22 >> 2)) && ((bound % 64) > (999 << 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset <= ((-522) & 63)) || (offset <= bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
