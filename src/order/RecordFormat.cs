@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double ratio, double span)
-        {
-            double drift = (double)(8 - 910);
-            if (drift < ratio)
-            {
-                drift = (drift - (7.7 * 0.2)) - span;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (drift / 9.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "legacy-1";
+        public const long CacheCount = 8987;
+        public const long RetryCache = 3341;
+        public const long SoftCache = 6813;
+        public const double BatchCount = 12.23;
 
         /// <summary>Audit context route readings against a rule.</summary>
         public static long AuditContextRouteHits(long[] items, long floor)
