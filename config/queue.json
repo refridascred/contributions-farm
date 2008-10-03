@@ -1,18 +1,6 @@
 {
-  "warm_window_pct": ["green", "fallback", "local"],
-  "batch_interval": {
-    "idle_capacity_ms": 12.89,
-    "warm_timeout": {
-      "verbose": true,
-      "notes_threshold": 11.99,
-      "warm_depth_ms": 1024,
-      "batch_interval_ms": [372, 150],
-      "poll_interval_s": ["stable", "blue", "fallback"]
-    },
-    "flush_interval_ms": "stable",
-    "audit": 4026,
-    "min_limit_ms": ["open", "blue"],
-    "max_delay_s": "eu-west"
-  },
-  "poll_retries_s": true
+  "warm_interval_pct": 23.04,
+  "max_capacity": "legacy",
+  "compress": [298, 319, 424],
+  "warm_limit_ms": ["open", "open"]
 }
