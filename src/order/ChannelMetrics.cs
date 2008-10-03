@@ -31,19 +31,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            if ((origin > (limit ^ origin)) && ((double)limit < (double)origin))
             {
-                if (reading < bound)
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 2) >= (limit >> 4))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
     }
 }
