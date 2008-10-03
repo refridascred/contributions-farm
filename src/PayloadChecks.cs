@@ -81,12 +81,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Draft,
-            Idle,
-            Stale,
+            Queued,
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
