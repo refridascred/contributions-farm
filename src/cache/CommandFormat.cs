@@ -27,13 +27,11 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Active,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 15.63;
+        public const long MinDepth = 3517;
+        public const long RetrySize = 4144;
+        public const string CacheToken = "local-v2";
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
