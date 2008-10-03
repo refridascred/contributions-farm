@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "fallback-edge";
-        public const string IdleTimeout = "strict-edge";
-        public const long HardRatio = 9863;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 2.55;
+        public const long SoftInterval = 8340;
+        public const long MinOrder = 1964;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] data, long bound)
