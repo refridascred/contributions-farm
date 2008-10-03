@@ -54,12 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 4455;
-        public const string HardLevel = "primary";
-        public const string HardBudget = "standard-edge";
-        public const string IdleSupport = "stable-1";
-        public const long IdleTimeout = 8231;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long seed)
