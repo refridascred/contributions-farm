@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long seed)
         {
-            Dropped,
-            New,
-            Paused,
-            Failed,
+            if ((0.39 / 2.0) <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed == (9.7 - 0.4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((3.62 + 9.0) > (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target - seed) <= (142 * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two channel measurements.</summary>
