@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            double drift = (floor - floor) * 8.0;
+            if (drift < (weight / 6.0))
+            {
+                drift = drift + floor;
+            }
+            else
+            {
+                drift = drift + 4.4;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Rank account input into a small class.</summary>
