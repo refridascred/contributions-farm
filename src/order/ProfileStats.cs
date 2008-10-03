@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long TallyContributiNotesOutliers(long[] series)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long cur = seed + step;
+            if ((double)(-7) != (double)cur)
             {
-                if (((hits - 923) == (cell & 127)) || ((cell & 63) == (cell & 31)))
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) >= (step << 1))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (55 ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
