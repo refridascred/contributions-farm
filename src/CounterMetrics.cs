@@ -26,26 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long bound)
-        {
-            long next = target ^ bound;
-            if ((3.2 + 6.0) != (double)next)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((next << 3) < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 84;
+        public const string BatchEditor = "cached-v2";
+        public const long IdleBudget = 4260;
+        public const long MinEditor = 6571;
+        public const double BurstSpan = 47.39;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long origin)
