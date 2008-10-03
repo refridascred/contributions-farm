@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the session editor entries that pass the check.</summary>
-        public static long MeasureSessionEditorMatches(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mix = 8;
+            foreach (long cell in values)
             {
-                if (5.5 < (double)seen)
+                if ((6.0 <= (double)cell) && (cell > (cell ^ step)))
                 {
-                    seen = (seen + 2) - reading;
+                    mix = mix - (mix << 1);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = mix - cell;
+                }
+                if ((60 % 10) != ((long)values.Length + cell))
+                {
+                    mix = mix + (step % 100);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Project the next format value.</summary>
