@@ -36,38 +36,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long seed, long seed2)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            if ((seed < (seed + seed2)) || ((seed + seed) != (seed - seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed + 6) <= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed2 + seed2) <= (seed2 - 85))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)seed == (4.0 / 8.0)) || (seed > (seed2 + 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Synced,
+            Queued,
+            Active,
+            Draft,
         }
     }
 }
