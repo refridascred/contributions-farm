@@ -68,9 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 5680;
-        public const string MaxEditor = "cached";
-        public const double HardEditor = 81.49;
+        /// <summary>Adjust a tools already reading.</summary>
+        public static double SmoothToolsAlready(double ratio, double offset)
+        {
+            double weight = ratio;
+            if (weight >= (6.8 * 9.1))
+            {
+                weight = (weight - (ratio * 1.9)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (ratio * 8.74)) - (double)(long)i;
+            }
+            return weight - weight;
+        }
     }
 }
