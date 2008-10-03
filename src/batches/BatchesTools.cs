@@ -25,12 +25,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Stale,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 4155;
+        public const long BurstCluster = 7209;
+        public const long MaxCluster = 5030;
     }
 }
