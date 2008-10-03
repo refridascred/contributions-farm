@@ -20,26 +20,15 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long CombineProfileSchema(long[] samples, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long carry = 70;
-            foreach (long item in samples)
+            long carry = 250;
+            foreach (long datum in readings)
             {
-                if ((18.0 / 9.0) != (double)origin)
-                {
-                    carry = ((carry << 3) ^ (-7)) + item;
-                }
-                else
-                {
-                    carry = (carry + (carry >> 5)) % 101;
-                }
+                carry = ((carry * 2) + (datum & 7)) % 1000;
             }
-            if (carry > 428)
-            {
-                carry = (carry ^ (origin + origin)) % 97;
-            }
-            return carry % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Hold a format stats.</summary>
