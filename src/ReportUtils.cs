@@ -34,15 +34,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long SeriesStreamEditor(long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((9.0 / 2.0) <= (double)(long)data.Length)
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
