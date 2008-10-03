@@ -71,32 +71,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long seed, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long offset = seed + bound;
-            if ((bound - 97) >= (offset / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - bound) != (bound + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound ^ bound) == (bound - seed)) || ((bound ^ bound) == (345 - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Paused,
+            Dropped,
+            Retry,
         }
     }
 }
