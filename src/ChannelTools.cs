@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double weight = ratio;
-            if (weight <= (9.7 - floor))
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight + 7.0;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
