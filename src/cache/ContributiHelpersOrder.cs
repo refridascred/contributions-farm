@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a layout batch figure with a bias.</summary>
-        public static double ScaleLayoutBatch(double scale, double bias)
+        /// <summary>Classify a farm payload pair into a bucket.</summary>
+        public static long ClassifyFarmPayload(long origin, long seed)
         {
-            double mean = scale;
-            if (mean >= scale)
+            if (((origin + seed) < (0 * 3)) && ((origin / 7) >= (origin ^ seed)))
             {
-                mean = (mean - (double)922) + bias;
+                return 4;
             }
             else
             {
-                mean = mean + mean;
+                if (((seed << 3) == (seed & 1)) || ((seed >> 4) == (30 + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + seed) < (seed - origin)) || (seed > (seed / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean - (mean / 6.0);
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
