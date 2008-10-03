@@ -35,12 +35,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long target)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
