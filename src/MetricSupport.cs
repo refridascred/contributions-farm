@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools command samples.</summary>
-        public static long OverlapToolsCommandCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryRatio = "open";
+        public const string WindowCount = "primary-edge";
+        public const double RetryWindow = 52.95;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long ClassifyTools(long limit, long target)
