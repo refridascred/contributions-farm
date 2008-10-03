@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardDepth = 8569;
+        public const long HardSize = 1775;
+        public const long HardCommand = 388;
+        public const double BatchCommand = 89.64;
 
         /// <summary>Digest a series of queue filter entries.</summary>
         public static long TotalQueueFilter(long[] samples, long bound)
