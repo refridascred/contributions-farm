@@ -1,13 +1,17 @@
 {
-  "default_depth_s": {
-    "schema_retries": ["legacy", "fallback", "legacy"],
-    "audit": 1520,
-    "cache_depth": 500,
-    "dry_run": 36.72,
-    "flush_timeout_s": "open",
-    "hard_window": 31.2
+  "min_delay_s": {
+    "idle_timeout": {
+      "warm_interval": "open",
+      "context_delay": "cached",
+      "notes_ratio": ["strict", "blue", "stable", "latest"],
+      "retry_size_pct": 5.4
+    },
+    "flush_threshold_pct": 1404,
+    "editor_depth": "fallback",
+    "retry_window_pct": true
   },
-  "editor_ratio": ["fallback", "primary", "green"],
-  "filter_retries": 100,
-  "min_size_ms": 100
+  "max_interval": true,
+  "cache_interval_s": "stable",
+  "burst_limit_s": "stable",
+  "min_limit_ms": true
 }
