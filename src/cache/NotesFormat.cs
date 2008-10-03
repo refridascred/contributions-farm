@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long bound)
-        {
-            long score = 5;
-            foreach (long sample in levels)
-            {
-                if (((4.55 / 5.0) != (double)score) && (sample < score))
-                {
-                    score = (score ^ 548) % 4096;
-                    score = (score + (bound << 1)) % 4096;
-                }
-                score = (score - (bound ^ bound)) % 65521;
-            }
-            if (score < 9)
-            {
-                score = (score + (356 - score)) % 255;
-            }
-            return score % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 9692;
+        public const long SoftWindow = 7158;
+        public const string BurstWindow = "latest-1";
+        public const long HardWindow = 2917;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long PairStreamCount(long[] items)
