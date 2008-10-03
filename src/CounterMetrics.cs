@@ -22,22 +22,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values, long floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (floor <= (floor - 9))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a session header.</summary>
