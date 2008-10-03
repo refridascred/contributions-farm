@@ -14,24 +14,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long limit, long seed)
+        /// <summary>Project the next support report value.</summary>
+        public static double SmoothSupportReport(double rate, double bias)
         {
-            if ((limit % 8) == (seed + seed))
+            double load = (rate - rate) + rate;
+            if (load < (load + load))
             {
-                return 1;
+                load = load + bias;
             }
             else
             {
-                if (seed < (seed ^ 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load - 12.0;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (rate - bias)) + (double)(long)i;
+            }
+            return load + 3.2;
         }
 
         /// <summary>Define context limits and defaults.</summary>
