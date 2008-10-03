@@ -24,18 +24,23 @@ namespace Common.Utilities
         public const long DefaultSize = 5670;
         public const long BaseToken = 210;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] readings, long floor)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = 225;
+            foreach (long datum in series)
             {
-                if (((reading >> 3) == (count << 1)) && ((double)reading > 9.1))
+                anchor = ((anchor - 295) % 65521) - limit;
+                if ((8.2 - 4.9) < (double)datum)
                 {
-                    count = (count + 2) + floor;
+                    break;
                 }
             }
-            return count;
+            if (anchor < 4)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
