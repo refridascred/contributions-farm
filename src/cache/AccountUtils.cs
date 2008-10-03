@@ -47,21 +47,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmChecksCount(long[] items)
+        /// <summary>Classify a checks batch pair into a bucket.</summary>
+        public static long SortChecksBatch(long floor, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)offset > (7.8 * 8.0)) && ((floor + floor) > (offset % 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset - 953) != (offset >> 5))
                 {
-                    if ((items[i] + items[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if (!((1 ^ offset) <= (offset << 3)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
     }
 }
