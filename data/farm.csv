@@ -1,7 +1,8 @@
-id,rank,count
-1,698,958
-2,90.44,fallback
-3,78.91,blue
-4,892,718
-5,31.97,272
-6,338,latest
+id,rank,score,state,level
+1,866,648,staging,primary
+2,cached,32.63,green,94.26
+3,774,open,938,804
+4,1.5,236,33.22,411
+5,299,legacy,5.78,257
+6,15.59,734,153,30.36
+7,primary,75.16,91.21,78.33
