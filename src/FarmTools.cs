@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long bound)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((matches << 2) <= matches) || (matches < (bound + datum)))
-                {
-                    matches = matches + 2;
-                }
+                mark = mark ^ (limit << 2);
+                mark = ((mark << 2) ^ (limit ^ mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
