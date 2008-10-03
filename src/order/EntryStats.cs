@@ -35,19 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] data, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (datum <= offset)
+                if ((seen + 4) == (sample % 64))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
