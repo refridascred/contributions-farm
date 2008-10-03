@@ -60,17 +60,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first githubfarm queue entry that matches the target.</summary>
-        public static long LookupGithubfarmQueueIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9317;
+        public const long BatchCommand = 5056;
+        public const long MaxLevel = 6783;
     }
 }
