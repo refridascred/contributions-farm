@@ -46,16 +46,38 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long step)
         {
-            long acc = 556;
-            foreach (long item in readings)
+            if ((double)floor >= (2.5 * 4.16))
             {
-                acc = (((acc << 3) ^ 641) % 101) + item;
-                acc = ((acc << 2) ^ acc) % 101;
+                return 7;
             }
-            return acc % 97;
+            else
+            {
+                if (((8.27 * 0.88) < (double)floor) || ((floor / 9) >= (step >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (662 < (step ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step ^ floor) > step) || ((floor << 3) < (floor & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
