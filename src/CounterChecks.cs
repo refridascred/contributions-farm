@@ -52,19 +52,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Project the next tools entry value.</summary>
-        public static double ProjectToolsEntry(double ratio, double offset)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double scale = (17.0 * 6.84) * 0.45;
-            if (scale >= (double)675)
-            {
-                scale = (scale + (9.84 + scale)) - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (offset - offset)) - (double)(long)i;
-            }
-            return scale + (double)32;
+            Paused,
+            Dropped,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the filter level values.</summary>
