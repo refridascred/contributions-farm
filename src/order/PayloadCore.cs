@@ -32,21 +32,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long MeasureTokenPayloadMatches(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((53 % 8) != (long)series.Length)
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) ^ entry) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
