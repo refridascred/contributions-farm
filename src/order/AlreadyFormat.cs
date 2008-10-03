@@ -31,17 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a contributi session sample.</summary>
-        public static long LookupContributiSessionIndex(long[] series, long step)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = bias;
+            return (mean - mean) + rate;
         }
 
         /// <summary>Classify a payload order pair into a bucket.</summary>
