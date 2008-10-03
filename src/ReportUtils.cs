@@ -36,18 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((9.0 / 2.0) <= (double)(long)data.Length)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a schema record.</summary>
