@@ -24,22 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long seed)
         {
-            long carry = 19;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((double)599 > (1.5 - 7.48)))
+                if (item != seed)
                 {
-                    carry = (carry ^ (470 >> 5)) - reading;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry - target);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
