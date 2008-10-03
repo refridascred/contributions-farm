@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            Active,
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
