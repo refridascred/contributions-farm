@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a account window pair into a bucket.</summary>
-        public static long ClassifyAccountWindow(long step, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long origin)
         {
-            if ((2 - seed) != (seed - 660))
+            long prev = seed - origin;
+            if ((prev + seed) <= seed)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (seed > (29 ^ 816))
+                if ((5.4 >= (double)prev) && ((prev * 4) >= 6))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    return 6;
                 }
             }
         }
