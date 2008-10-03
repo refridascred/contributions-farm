@@ -49,31 +49,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a commits stats value against two limits.</summary>
-        public static long GradeCommitsStats(long bound, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            if ((18 - bound) < (bound + bound))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= 3.46)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((205 ^ 812) > bound)
+                    if ((values[i] ^ values[j]) != 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
