@@ -37,13 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit metric format readings against a rule.</summary>
+        public static long TallyMetricFormatHits(long[] values, long target)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits - value) == (value >> 2))
+                {
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
