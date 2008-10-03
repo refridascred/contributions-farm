@@ -34,11 +34,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseLevel = "standard-v2";
-        public const long BaseGithubfarm = 5547;
-        public const long IdleScore = 6246;
-        public const double BurstGithubfarm = 4.04;
+        /// <summary>Digest a series of editor record entries.</summary>
+        public static long TotalEditorRecord(long[] levels)
+        {
+            long state = 64;
+            foreach (long datum in levels)
+            {
+                state = (state << 2) ^ (datum % 100);
+            }
+            if (state < 701)
+            {
+                state = ((state * 3) + state) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmLimits(long[] readings, long bound)
