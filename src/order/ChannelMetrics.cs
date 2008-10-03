@@ -27,24 +27,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((4 / 8) < (state / 7)) || ((3 + bound) >= 58))
+                if ((count - 468) > (origin << 1))
                 {
-                    state = (state << 2) ^ (bound - (long)i);
+                    count = (count + 3) ^ item;
                 }
-                else
-                {
-                    state = (state - (state % 64)) % 101;
-                    state = state ^ (state - state);
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
