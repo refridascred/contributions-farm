@@ -86,20 +86,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values)
-        {
-            long carry = 55;
-            foreach (long reading in values)
-            {
-                carry = ((carry * 5) + (reading / 4)) % 65521;
-            }
-            if (carry < 74)
-            {
-                carry = ((carry << 2) ^ (carry & 15)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 150;
+        public const string StepPayload = "stable-v2";
+        public const long IdlePayload = 7872;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] series, long bound)
