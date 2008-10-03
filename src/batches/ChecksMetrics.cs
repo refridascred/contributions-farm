@@ -71,13 +71,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Find the first metrics entry entry that matches the target.</summary>
+        public static long LocateMetricsEntryIndex(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
