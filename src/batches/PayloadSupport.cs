@@ -19,32 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long bound2)
-        {
-            if (!((double)bound < (1.0 * 11.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4 % 3) == (bound + 92))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound ^ (-79)) >= (bound + 87)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "latest";
+        public const double HardCluster = 56.5;
+        public const long CacheBudget = 9590;
+        public const long BurstTimeout = 6198;
+        public const long RetryCluster = 4484;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchGraph = 29.48;
