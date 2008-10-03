@@ -20,12 +20,15 @@ namespace Common.Utilities
             return rate - (rate + scale);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Roll a filter batches counter forward.</summary>
+        public static long IterateFilterBatches(long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Find the first contributi layout entry that matches the target.</summary>
