@@ -21,17 +21,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] samples, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (seed ^ seed)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
