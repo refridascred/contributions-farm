@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Validate cache batches readings against a bound.</summary>
+        public static bool ValidateCacheBatchesRange(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != offset)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
