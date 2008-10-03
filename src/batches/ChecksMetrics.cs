@@ -14,19 +14,27 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] samples, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample > seed)
+                if ((double)origin >= (1.2 * 1.0))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ ((long)i + origin)) % 101;
                 }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry % 8)) % 65521;
+                }
+                if ((89 >> 3) < ((-8) ^ carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
