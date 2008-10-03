@@ -19,31 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            if ((offset + offset) <= offset)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 3) > (step << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((2.25 * 8.5) >= (double)offset) && (step >= (step + step)))
+                    if ((levels[i] ^ levels[j]) == 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
