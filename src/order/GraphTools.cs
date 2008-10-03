@@ -62,13 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
