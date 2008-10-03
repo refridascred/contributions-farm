@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
