@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            long result = 730;
+            foreach (long value in data)
+            {
+                if (((result + limit) >= value) || ((value + value) != ((long)data.Length >> 2)))
+                {
+                    result = result + (result << 1);
+                }
+                else
+                {
+                    result = (result * 4) + (0 + 21);
+                }
+                if ((limit & 127) >= result)
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
