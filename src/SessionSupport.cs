@@ -27,15 +27,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            double gain2 = span;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain2 = ((gain2 + span) + (double)(long)i) + gain;
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (double)998;
+            return -1;
         }
     }
 }
