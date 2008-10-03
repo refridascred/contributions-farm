@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long WindowSession = 202;
         public const long LimitSession = 2363;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ origin) % 101) ^ (long)i2;
+                }
+                if (!((origin + origin) <= (origin - (long)i)))
+                {
+                    score = ((score << 3) ^ (origin >> 5)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
