@@ -47,19 +47,22 @@ namespace Common.Utilities
         public const double MinDepth = 58.31;
         public const long IdleCounter = 165;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] levels, long target)
         {
-            long state = 28;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = (state - (target / 4)) % 1000;
-                if ((double)state < 9.0)
+                if ((8.49 / 2.0) < (double)target)
                 {
-                    state = state - cell;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Roll a stats support counter forward.</summary>
