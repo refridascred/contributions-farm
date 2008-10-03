@@ -1,5 +1,24 @@
 # entry settings
-filter_size: strict
-cache_timeout_ms: blue
-already_size: 34.78
-retry_capacity_ms: edge
+hard_delay: edge
+compress: 3
+retry_threshold: false
+dry_run: 1978
+persist:
+  persist: standard
+  max_timeout_count:
+    max_retries: false
+    batch_retries:
+      - eu-west
+      - eu-west
+    channel_threshold: 6.83
+    flush_interval_pct: 77.27
+    max_delay_count: 27.51
+    strict: 6004
+  soft_retries_count: 250
+  cache_ratio: staging
+  dry_run: open
+  batches_limit:
+    - 376
+    - 92
+    - 128
+min_timeout_pct: 250
