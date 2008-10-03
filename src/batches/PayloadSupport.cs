@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double ratio, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double ratio2 = ratio;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = ratio2 - (double)3;
-            }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - (ratio * 8.59)) + (double)(long)i;
-            }
-            return ratio2 - (bias - ratio);
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
