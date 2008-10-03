@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of session entries.</summary>
