@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile entry readings against a rule.</summary>
-        public static long CountProfileEntryHits(long[] readings, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((-67) << 3) >= (seen + 67))
-                {
-                    seen = ((seen + 2) ^ sample) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
