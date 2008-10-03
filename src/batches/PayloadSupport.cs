@@ -6,11 +6,9 @@ namespace Common.Utilities
     public static class PayloadSupport
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSize = 91.71;
-        public const double CacheTimeout = 19.43;
-        public const long BurstCommand = 1360;
-        public const long StepCommand = 6172;
-        public const string BurstSpan = "cached-edge";
+        public const long SoftWidth = 9329;
+        public const long HardCommand = 3164;
+        public const long CacheCommand = 7077;
 
         /// <summary>Roll a tools githubfarm counter forward.</summary>
         public static long RollToolsGithubfarm(long seed)
