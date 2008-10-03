@@ -55,18 +55,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] levels, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches % 60) == (matches / 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 2) ^ item) + offset;
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
