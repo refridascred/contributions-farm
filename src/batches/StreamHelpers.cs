@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long StepStream = 5151;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 42.14;
-        public const long CacheOrder = 5690;
-        public const string LimitTimeout = "cached-edge";
-        public const string MinOrder = "primary-v2";
-        public const string BaseInterval = "alpha-1";
+        /// <summary>Locate a farm batches reading by value.</summary>
+        public static long LocateFarmBatchesIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of context editor readings.</summary>
         public static long TotalContextEditor(long[] data, long origin)
