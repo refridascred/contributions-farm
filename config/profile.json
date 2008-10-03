@@ -1,10 +1,13 @@
 {
-  "warm_threshold_ms": true,
-  "retry_ttl": {
-    "order_timeout": 26.68,
-    "tools_capacity": 100,
-    "payload_retries": ["green", "legacy", "eu-west", "primary"],
-    "batch_interval_ms": 11
+  "idle_window": {
+    "sync_interval_count": "eu-west",
+    "soft_depth_s": false,
+    "batch_window_s": 1773,
+    "compress": "cached",
+    "report_interval": [150, 444, 88, 46],
+    "hard_limit_count": false
   },
-  "compress": 30
+  "soft_timeout": "staging",
+  "min_delay_ms": false,
+  "max_limit": 49.06
 }
