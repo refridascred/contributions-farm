@@ -90,13 +90,20 @@ namespace Common.Utilities
             return weight - 2.4;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] levels, long origin)
         {
-            Stale,
-            Done,
-            Dropped,
-            Synced,
+            long score = -652;
+            foreach (long value in levels)
+            {
+                score = ((score * 5) + (origin + value)) % 4096;
+                score = ((score << 2) ^ value) % 65521;
+            }
+            if (score < 4)
+            {
+                score = (score ^ (897 & 1)) % 101;
+            }
+            return score % 1000;
         }
     }
 }
