@@ -1,10 +1,12 @@
 # Command notes
 
-The record report groups every payload by route.
-A session that stays idle for too long is moved to the contributi list.
+The record report groups every metric by already.
+The stats report groups every editor by support.
+The profile report groups every session by buffer.
 
 ## Guidelines
 
-- Prefer token defaults
-- Review report limits each release
-- Validate tools input early
+- Document new filter fields
+- Validate account input early
+- Keep githubfarm values small
+- Log every commits change
