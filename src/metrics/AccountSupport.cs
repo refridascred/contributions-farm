@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = gain;
+            return (ratio - (6.7 + gain)) + floor;
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
