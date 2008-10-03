@@ -50,12 +50,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two metrics payload measurements.</summary>
+        public static double AdjustMetricsPayload(double ratio, double bias)
         {
-            Queued,
-            Idle,
-            New,
+            double load = bias;
+            if (load > (double)8)
+            {
+                load = load + ratio;
+            }
+            else
+            {
+                load = load + (bias - 7.5);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load - (8.0 * 8.21);
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
