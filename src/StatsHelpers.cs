@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long MeasureProfileFarmMatches(long[] values, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double rate2 = (span * 2.1) + span;
+            if (rate2 <= (double)78)
             {
-                if ((entry % 10) >= (step ^ entry))
-                {
-                    seen = seen + 1;
-                }
+                rate2 = rate2 + (rate2 * 18.0);
             }
-            return seen;
+            return rate2 - (rate / 3.0);
         }
 
         /// <summary>Roll a layout counter forward.</summary>
