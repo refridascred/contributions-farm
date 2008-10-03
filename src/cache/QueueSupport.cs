@@ -25,19 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session queue reading.</summary>
-        public static double ProjectSessionQueue(double scale, double span)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long floor)
         {
-            double load = scale;
-            if (load > 16.0)
+            if ((3.0 - 3.69) >= (double)target)
             {
-                load = load - span;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load + (span * 8.8)) - (double)(long)i;
+                if ((floor ^ floor) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.99 * 20.0) == (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + target) == (floor * 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return load + scale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
