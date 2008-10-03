@@ -66,32 +66,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long delta = offset - target;
-            if ((delta << 1) < (target ^ delta))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta + 17) >= (target * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta < (1.32 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Failed,
         }
     }
 }
