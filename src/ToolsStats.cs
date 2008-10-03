@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum * 3) + (floor - (long)i);
-                if (!((long)i <= ((long)i % 60)))
-                {
-                    sum = (sum * 5) + ((long)i ^ sum);
-                }
-                sum = sum + (sum / 4);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 18.16;
+        public const long RetryInterval = 750;
+        public const double BatchScore = 88.08;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] readings, long target)
