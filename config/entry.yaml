@@ -1,4 +1,6 @@
 # entry settings
-base_size: true
-sync_ratio_count: 3937
-context_window: 1878
+session_window:
+  - 435
+  - 487
+retry_limit_s: edge
+sync_ttl: 68.8
