@@ -36,11 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            double weight = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (double)(long)i) - offset;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a schema record.</summary>
