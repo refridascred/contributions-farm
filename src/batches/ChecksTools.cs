@@ -19,22 +19,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples, long target)
+        /// <summary>Match up token format samples.</summary>
+        public static long CompareTokenFormatCount(long[] samples)
         {
-            long sum = 612;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((target >> 2) >= (target / 3)) && ((4 + target) >= (target - entry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (254 >> 1)) % 65521;
-                }
-                else
-                {
-                    sum = sum + target;
+                    if ((samples[i] ^ samples[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the route githubfarm entries that pass the check.</summary>
