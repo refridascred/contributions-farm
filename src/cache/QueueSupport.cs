@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long target)
         {
-            double load = floor;
-            for (int i = 0; i < 9; i++)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                load = ((load + 5.5) + (double)(long)i) - ratio;
+                total = (total + (total % 60)) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return load - 1.0;
+            return total;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
