@@ -57,24 +57,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((mark + mark) <= target)
+                if (sample <= seed)
                 {
-                    mark = ((mark * 2) + mark) % 4096;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 2) ^ target;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
     }
 }
