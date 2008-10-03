@@ -38,15 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double weight2 = (double)31 * 6.1;
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = ((weight2 - (weight + weight2)) + (double)(long)i) + bias;
-            }
-            return weight2 + weight2;
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
