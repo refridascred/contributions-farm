@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardLevel = 1501;
+        public const double HardInterval = 41.05;
+        public const long HardCommand = 981;
+        public const long CacheWidth = 3948;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LookupAccountIndex(long[] samples, long target)
