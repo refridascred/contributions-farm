@@ -72,13 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Paused,
-            Dropped,
-            Active,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 7446;
+        public const long LimitMetric = 6351;
+        public const long MinTimeout = 6891;
+        public const string HardMetric = "strict-edge";
     }
 }
