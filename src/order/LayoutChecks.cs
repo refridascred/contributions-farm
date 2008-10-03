@@ -33,12 +33,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchBudget = "alpha-edge";
-        public const double HardOrder = 31.25;
-        public const long BurstFactor = 9983;
-        public const string LimitOrder = "open-1";
-        public const string IdleBudget = "staging-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinLevel = 6223;
+        public const long SoftRatio = 9530;
+        public const long HardBudget = 6342;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
