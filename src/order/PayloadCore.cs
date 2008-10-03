@@ -20,21 +20,23 @@ namespace Common.Utilities
         public const long MinLayout = 1463;
         public const long WindowLevel = 9;
 
-        /// <summary>Count graph format pairs that satisfy a relation.</summary>
-        public static long OverlapGraphFormatCount(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 407;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc + acc) % 97;
+                if ((cell - acc) == (acc ^ acc))
                 {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ (cell & 15)) % 255;
                 }
             }
-            return matches;
+            if (acc < 2)
+            {
+                acc = (acc + (acc & 63)) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
