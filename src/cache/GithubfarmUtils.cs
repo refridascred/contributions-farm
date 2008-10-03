@@ -26,16 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats metrics counter forward.</summary>
-        public static long SeriesStatsMetrics(long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long mark = 99;
+            foreach (long reading in series)
             {
-                total = ((total * 2) + (85 / 8)) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
+                mark = ((mark << 2) ^ (reading - reading)) + target;
             }
-            return total;
+            if (mark < 69)
+            {
+                mark = (mark ^ (544 * 4)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of context buffer readings.</summary>
