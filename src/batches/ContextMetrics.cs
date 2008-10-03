@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] levels)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + (-31)) == (datum / 8))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
