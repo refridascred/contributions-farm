@@ -39,12 +39,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            Queued,
+            Synced,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the notes status values.</summary>
