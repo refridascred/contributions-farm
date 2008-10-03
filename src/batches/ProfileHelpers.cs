@@ -39,19 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] samples, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
