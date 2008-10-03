@@ -15,12 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many queue tools samples are out of range.</summary>
+        public static long MeasureQueueToolsHits(long[] items)
         {
-            Ready,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!(((4.0 * 2.7) > (double)entry) && ((double)entry >= 3.7)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
