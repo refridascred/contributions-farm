@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultScore = 6421;
-        public const double BurstSession = 24.74;
-        public const long IdleSession = 7118;
-        public const long BaseFactor = 4236;
-        public const double LimitScore = 42.07;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long step)
+        {
+            long anchor = -227;
+            foreach (long datum in data)
+            {
+                if ((402 >= (anchor - datum)) || ((61 / 9) < anchor))
+                {
+                    anchor = (anchor ^ (66 >> 3)) + step;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string SoftFactor = "legacy";
