@@ -35,18 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long CountReportFilterHits(long[] readings)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (1 / 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
