@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = -439;
-            foreach (long reading in levels)
-            {
-                mark = (((mark * 2) + 266) + reading) + floor;
-            }
-            return mark;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
