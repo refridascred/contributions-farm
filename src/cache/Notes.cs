@@ -61,18 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = (total ^ (seed & 255)) % 4096;
-                total = (total * 4) + (long)i;
-                total = ((total << 2) ^ (seed * 4)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((3.63 * 7.0) >= (double)item)
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
