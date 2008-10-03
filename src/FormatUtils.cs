@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] readings, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long item in samples)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                result = (((result * 5) + (bound >> 4)) % 65521) + item;
             }
-            return -1;
+            if (result < 75)
+            {
+                result = (result * 5) + (bound + result);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
