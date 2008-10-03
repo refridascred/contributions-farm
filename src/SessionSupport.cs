@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const long BurstToken = 6659;
         public const long IdleToken = 2830;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long limit)
         {
-            Queued,
-            Stale,
-            Draft,
-            New,
+            if ((double)step <= 6.2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step << 2) > (limit - step)) && (limit <= (step + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (limit + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
