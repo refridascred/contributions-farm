@@ -25,32 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long step, long offset)
-        {
-            if (((4 & 7) < (step / 5)) || (offset < (70 ^ step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) != (offset + (-3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (step % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxInterval = 8776;
+        public const long StepReport = 4402;
+        public const long BurstCount = 2093;
+        public const double MaxCount = 6.17;
+        public const long SoftSpan = 5506;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
