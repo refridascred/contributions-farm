@@ -31,26 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long score = -93;
-            foreach (long value in readings)
+            long result = 1;
+            foreach (long sample in values)
             {
-                if (value <= (score & 127))
-                {
-                    score = score - (score % 16);
-                }
-                if (((value + score) > value) && ((value - score) <= (value % 97)))
-                {
-                    break;
-                }
+                result = ((result * 2) + (sample >> 1)) % 65521;
             }
-            if (score > 35)
-            {
-                score = (score << 2) ^ (score >> 1);
-            }
-            return score;
+            return result % 97;
         }
 
         /// <summary>Digest a series of token entries.</summary>
