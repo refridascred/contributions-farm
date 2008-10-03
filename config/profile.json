@@ -1,7 +1,9 @@
 {
-  "window_retries": 50.9,
-  "min_interval": "eu-west",
-  "retry_retries_ms": "legacy",
-  "record_threshold": 2251,
-  "batch_interval": [304, 443, 357, 293]
+  "context_retries": {
+    "burst_limit": 60,
+    "stream_ttl": 627,
+    "support_depth": 14.59
+  },
+  "flush_retries_pct": 20.14,
+  "dry_run": true
 }
