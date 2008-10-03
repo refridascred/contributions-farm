@@ -27,18 +27,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long bound, long step)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if ((bound & 3) > 28)
             {
-                if (sample >= (sample >> 1))
+                return 0;
+            }
+            else
+            {
+                if ((step + step) > step)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
