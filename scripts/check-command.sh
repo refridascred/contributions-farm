@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary local; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=439
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=324
-log "limit is ${COMMAND_LIMIT}"
+for item in edge standard; do
+    log "checking ${item}"
+done
