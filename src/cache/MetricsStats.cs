@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long AuditQueueCommandOutliers(long[] items, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((tally + origin) != (datum - origin))
+                if ((hits * 5) == (cell + hits))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
