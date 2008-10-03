@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            double rate = gain;
+            if (rate < (gain - offset))
+            {
+                rate = rate + offset;
+            }
+            else
+            {
+                rate = rate - (offset - rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (offset * 10.0);
         }
 
         /// <summary>Match up stats samples.</summary>
