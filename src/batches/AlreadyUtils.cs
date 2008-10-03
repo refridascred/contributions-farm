@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const string BurstSchema = "standard-1";
         public const long MaxFactor = 4961;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long bound)
         {
-            Pending,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >= (entry + matches)) && ((matches >> 1) <= ((-45) ^ bound)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report session reading by value.</summary>
