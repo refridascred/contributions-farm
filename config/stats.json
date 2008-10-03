@@ -1,9 +1,8 @@
 {
-  "cache_timeout": "stable",
-  "min_limit": {
-    "idle_threshold": ["green", "eu-west"],
-    "min_retries": false,
-    "verbose": false
-  },
-  "batch_limit_s": 100
+  "command_ttl": "blue",
+  "already_interval": [193, 314, 412],
+  "readonly": false,
+  "retry_threshold_count": 19.71,
+  "enabled": "open",
+  "soft_capacity_ms": ["strict", "latest", "latest"]
 }
