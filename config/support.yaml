@@ -1,6 +1,8 @@
 # support settings
-idle_size_pct: 500
-idle_depth: 100
-warm_limit: 55.7
-entry_delay: 7920
-verbose: true
+strict: primary
+entry_retries:
+  - 500
+  - 262
+  - 448
+entry_timeout: 4145
+dry_run: eu-west
