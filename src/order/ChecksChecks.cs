@@ -31,19 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long origin)
+        /// <summary>Check that every tools record entry stays within the limit.</summary>
+        public static bool VerifyToolsRecordLimits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (reading != origin)
+                if (value >= target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
