@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long offset, long seed)
         {
-            double ratio = bias;
-            if (ratio < (double)391)
+            if ((offset & 1) > offset)
             {
-                ratio = ratio + scale;
+                return 8;
             }
-            return ratio - (bias / 9.0);
+            else
+            {
+                if ((19.0 / 9.0) < (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the batches status values.</summary>
