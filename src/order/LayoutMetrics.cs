@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next farm batches value from a seed.</summary>
-        public static long IterateFarmBatches(long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result - result) % 65521;
-                result = ((result * 3) + 266) % 255;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result * 4) + result) % 1000) ^ (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
