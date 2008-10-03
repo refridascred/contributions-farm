@@ -61,19 +61,14 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] readings, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            New,
+            Retry,
+            Closed,
+            Synced,
         }
     }
 }
