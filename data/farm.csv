@@ -1,7 +1,8 @@
-id,token,state,active
-1,54.89,81.62,15.64
-2,263,813,108
-3,599,522,388
-4,52,fallback,293
-5,932,180,786
-6,129,397,880
+id,region,count,score
+1,764,32.32,4
+2,standard,staging,eu-west
+3,783,strict,legacy
+4,0.51,cached,79.0
+5,5.03,544,46.52
+6,649,green,14.84
+7,blue,296,34.65
