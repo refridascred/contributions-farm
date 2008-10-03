@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((floor / 7) > (seed + 50))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (floor / 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
