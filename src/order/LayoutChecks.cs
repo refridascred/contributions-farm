@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardTimeout = 4.38;
-        public const long MaxMetric = 6026;
-        public const long BurstMetric = 3690;
+        /// <summary>Digest a series of contributi farm entries.</summary>
+        public static long FoldContributiFarm(long[] readings)
+        {
+            long result = 2;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (result ^ datum) % 255;
+                    result = ((result << 2) ^ ((long)i + 9)) % 97;
+                }
+                result = (result ^ (result >> 5)) % 101;
+            }
+            return result % 97;
+        }
 
         /// <summary>Roll a order counter counter forward.</summary>
         public static long DeriveOrderCounter(long origin)
