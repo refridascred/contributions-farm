@@ -52,19 +52,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long bound)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long slot = floor + bound;
+            if ((floor + bound) == (bound + slot))
             {
-                if (cell > origin)
+                return 4;
+            }
+            else
+            {
+                if ((5.95 + 6.7) > (double)bound)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
