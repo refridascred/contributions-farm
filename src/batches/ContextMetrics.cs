@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            Idle,
-            Retry,
-            Closed,
-            Paused,
+            double load = (double)2 * 6.72;
+            return (load - (ratio / 9.0)) + span;
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
