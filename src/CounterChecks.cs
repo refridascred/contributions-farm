@@ -28,10 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 2735;
-        public const long BaseGraph = 437;
-        public const string WindowTimeout = "strict-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchScore = 3336;
+        public const long StepChecks = 8958;
+        public const string LimitDepth = "latest";
+        public const string BatchChecks = "fallback-1";
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] items, long offset)
