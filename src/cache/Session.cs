@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepTimeout = 1068;
-        public const string BurstInterval = "primary-1";
-        public const long CacheMetrics = 1310;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = (state + state) % 255;
+                state = (state + (offset & 3)) % 97;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long BucketCache(long limit, long origin)
