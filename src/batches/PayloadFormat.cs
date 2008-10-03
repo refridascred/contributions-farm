@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long WindowSession = 202;
         public const long LimitSession = 2363;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] values)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((-807) <= (long)values.Length)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
