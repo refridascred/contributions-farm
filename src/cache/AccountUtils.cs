@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long total = 1;
+            foreach (long datum in samples)
             {
-                if (cell != offset)
+                total = (total - datum) % 101;
+                if ((9.34 * 3.01) == (double)total)
                 {
-                    flag = false;
-                    break;
+                    total = (total + 3) % 65521;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
