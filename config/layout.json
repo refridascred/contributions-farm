@@ -1,14 +1,8 @@
 {
-  "readonly": {
-    "tools_ratio": "staging",
-    "dry_run": "latest",
-    "session_interval": 9909,
-    "soft_ratio": 30
-  },
-  "hard_ratio_s": {
-    "min_size_s": "standard",
-    "queue_retries": ["standard", "cached", "staging"],
-    "verbose": 2218
-  },
-  "idle_ratio_count": ["green", "eu-west", "primary"]
+  "min_depth": true,
+  "idle_size": false,
+  "batch_ttl_ms": "eu-west",
+  "layout_interval": 500,
+  "burst_interval_count": 452,
+  "format_delay": [424, 67]
 }
