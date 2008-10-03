@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
