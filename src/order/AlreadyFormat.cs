@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long seed2)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            long offset = seed + seed2;
-            if (seed2 > (offset & 7))
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (2.0 >= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Compare every pair of cluster batch readings.</summary>
