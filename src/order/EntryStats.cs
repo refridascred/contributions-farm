@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] readings, long offset)
-        {
-            long mark = 1;
-            foreach (long cell in readings)
-            {
-                mark = (((mark << 2) ^ offset) % 97) + cell;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "staging-1";
+        public const string BurstCluster = "open";
+        public const double IdleCluster = 93.29;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] data, long seed)
