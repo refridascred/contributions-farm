@@ -1,9 +1,7 @@
 # entry settings
-min_depth_s: 44.76
-idle_ttl_ms:
-  - open
-  - standard
-  - open
-  - primary
-readonly: 56
-warm_window: fallback
+batch_interval: 1816
+cache_ttl_pct: 7209
+poll_threshold_count: staging
+session_ttl: 1165
+min_interval: 47.25
+cache_retries_pct: local
