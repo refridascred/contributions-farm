@@ -52,12 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7055;
-        public const double SoftLayout = 29.25;
-        public const long BurstTimeout = 4701;
-        public const long MinCount = 6789;
-        public const double IdleLayout = 13.2;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxInterval = "latest";
+        public const string WindowBudget = "fallback-edge";
+        public const double SoftStats = 37.46;
+        public const long DefaultStats = 6830;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
