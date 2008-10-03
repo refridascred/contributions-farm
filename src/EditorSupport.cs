@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the metric command series from a seed.</summary>
-        public static long StepMetricCommand(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitBudget = "primary-1";
+        public const long HardToken = 1871;
+        public const long MaxToken = 8990;
+        public const long RetryCount = 1028;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
