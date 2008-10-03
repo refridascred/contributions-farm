@@ -39,38 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long offset, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if ((9.1 + 15.0) >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target + 36) > (offset - offset)) || ((target ^ offset) >= offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset % 5) == (target & 3)) && ((offset + 994) >= target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset != (11.0 + 1.96))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
