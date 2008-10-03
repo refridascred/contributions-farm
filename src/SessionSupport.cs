@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long IdleChecks = 6061;
         public const string CacheChecks = "cached-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowScore = 2691;
-        public const long DefaultSchema = 581;
-        public const long StepInterval = 3858;
-        public const long MinRatio = 5686;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Queued,
+            Stale,
+            Draft,
+            New,
+        }
 
         /// <summary>Derive the next channel notes value from a seed.</summary>
         public static long SeriesChannelNotes(long step)
