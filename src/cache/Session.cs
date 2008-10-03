@@ -18,24 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] levels, long origin)
         {
-            if (limit < (origin / 2))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(origin > (limit ^ limit)))
+                if (!((double)reading < 4.75))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 2) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
