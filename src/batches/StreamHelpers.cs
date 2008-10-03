@@ -32,15 +32,23 @@ namespace Common.Utilities
         public const double LimitBudget = 60.22;
         public const long LimitSize = 2232;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = 12;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                sum = sum ^ (sum + sum);
+                if ((6.7 - 7.0) >= (double)value)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (sum < 804)
+            {
+                sum = ((sum << 2) ^ (sum * 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
