@@ -43,21 +43,10 @@ namespace Common.Utilities
         public const long MinLayout = 5939;
         public const long StepCount = 1813;
 
-        /// <summary>Match up order account samples.</summary>
-        public static long OverlapOrderAccountCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 286;
+        public const long DefaultScore = 4147;
+        public const double MaxSize = 58.26;
+        public const long SoftDepth = 1284;
     }
 }
