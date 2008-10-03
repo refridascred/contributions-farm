@@ -17,38 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long floor)
         {
-            if (((bound - bound) == (bound + (-3))) && (seed >= (bound >> 2)))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (2.0 + 1.35))
+                if (sample > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((6.9 + 14.0) <= (double)seed) && ((double)bound <= (0.8 + 4.2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > (43 << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
