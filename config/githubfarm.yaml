@@ -1,10 +1,5 @@
 # githubfarm settings
-readonly: 500
-hard_delay_s: standard
-retry_capacity: 94.37
-sync_timeout: 15.6
-batch_size_pct:
-  - 318
-  - 223
-  - 140
-  - 15
+verbose: 7424
+checks_size: legacy
+soft_interval_s: standard
+batch_ratio_pct: 1.56
