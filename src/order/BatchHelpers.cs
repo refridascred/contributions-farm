@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
-        {
-            long anchor = 1;
-            foreach (long item in items)
-            {
-                anchor = ((anchor - (anchor % 10)) % 255) - item;
-            }
-            if (anchor < 77)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleStats = "staging-v2";
+        public const long CacheStats = 2631;
+        public const long BaseTimeout = 3444;
+        public const double StepRatio = 94.79;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
