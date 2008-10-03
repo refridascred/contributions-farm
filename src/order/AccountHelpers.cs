@@ -27,32 +27,19 @@ namespace Common.Utilities
         public const long WindowScore = 8562;
         public const long CacheSize = 6577;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            long anchor = 746;
-            foreach (long value in series)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + 400) < (value + value))
+                if (!((7 ^ 578) > offset))
                 {
-                    anchor = (anchor ^ (value & 63)) % 101;
-                    break;
+                    total = (total << 3) ^ (2 >> 5);
                 }
-                if (!(((long)series.Length + anchor) <= anchor))
-                {
-                    anchor = ((anchor * 4) + value) % 4096;
-                    anchor = anchor - value;
-                }
-                if ((double)anchor != (1.2 / 4.0))
-                {
-                    anchor = ((anchor << 3) ^ (value - value)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + (-81));
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
