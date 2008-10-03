@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] series, long origin)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            double mean = (span - rate) + (span - 6.0);
+            if (mean < mean)
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - rate;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (6.2 * 1.5)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
