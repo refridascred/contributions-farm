@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const double MinDepth = 58.31;
         public const long IdleCounter = 165;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] readings, long origin)
         {
-            long carry = 838;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                carry = (carry - (long)values.Length) - sample;
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry < 252)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Digest a series of format entries.</summary>
