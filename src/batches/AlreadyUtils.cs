@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const long WindowDepth = 876;
         public const double CacheFactor = 16.9;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long target)
         {
-            Retry,
-            Locked,
-            Done,
-            Stale,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits summary.</summary>
