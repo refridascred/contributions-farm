@@ -29,12 +29,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 47.76;
-        public const string HardBudget = "alpha";
-        public const long CacheCommand = 7540;
-        public const string HardCommand = "stable-1";
-        public const long LimitCommand = 894;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long FoldCommand(long[] samples, long bound)
