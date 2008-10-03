@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine editor payload values into a single score.</summary>
-        public static long TotalEditorPayload(long[] levels)
-        {
-            long anchor = 4;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor << 2) ^ (sample + sample)) % 65521;
-            }
-            if (anchor > 0)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 97;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "open-v2";
+        public const double RetrySpan = 84.38;
+        public const string MinWidth = "primary-v2";
+        public const long IdlePayload = 5854;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
