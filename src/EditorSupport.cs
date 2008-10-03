@@ -30,12 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every cluster channel entry stays within the limit.</summary>
+        public static bool ValidateClusterChannelLimits(long[] items, long origin)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cache mode values.</summary>
