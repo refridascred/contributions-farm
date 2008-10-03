@@ -1,6 +1,5 @@
 {
-  "warm_interval_pct": 23.04,
-  "max_capacity": "legacy",
-  "compress": [298, 319, 424],
-  "warm_limit_ms": ["open", "open"]
+  "readonly": 45.93,
+  "base_delay": 32.52,
+  "payload_depth": "standard"
 }
