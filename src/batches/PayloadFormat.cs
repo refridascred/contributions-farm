@@ -20,12 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] values)
         {
-            Idle,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (2 > (count << 2))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
