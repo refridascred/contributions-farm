@@ -23,16 +23,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] values, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (seed ^ seed)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if (!((3.6 - 1.8) >= (double)hits))
+                {
+                    hits = ((hits + 2) + sample) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
