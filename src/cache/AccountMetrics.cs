@@ -28,13 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] data, long bound)
         {
-            Queued,
-            Synced,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((double)count < (4.6 + 7.22)) || ((double)bound > (19.0 - 1.7)))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
