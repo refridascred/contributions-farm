@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)limit >= (6.0 / 5.0))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitDepth = 8077;
+        public const long IdleChecks = 6061;
+        public const string CacheChecks = "cached-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowScore = 2691;
