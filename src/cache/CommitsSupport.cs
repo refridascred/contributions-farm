@@ -46,11 +46,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 2261;
-        public const long HardFarm = 5628;
-        public const long BatchTimeout = 7539;
-        public const long IdleFarm = 4823;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            New,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
