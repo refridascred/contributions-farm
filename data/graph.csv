@@ -1,9 +1,8 @@
-id,region,level,label,count
-1,649,998,14.84,94
-2,64,909,36,staging
-3,58.49,fallback,219,389
-4,58.75,33,56.86,37.84
-5,69.1,44.94,stable,edge
-6,611,fallback,27.02,47
-7,629,808,green,448
-8,301,72.18,56.58,423
+id,active,state,label,weight
+1,404,464,494,497
+2,913,418,28.09,624
+3,primary,10.78,96.25,982
+4,strict,25.85,49,921
+5,132,496,legacy,edge
+6,203,green,open,edge
+7,staging,597,657,707
