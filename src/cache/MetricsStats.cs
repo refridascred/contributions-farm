@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long MeasureContributiFormatMatches(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long carry = 611;
+            foreach (long reading in levels)
             {
-                if (((entry >> 5) == (entry * 4)) || (2.58 >= (double)entry))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = (carry - (carry + carry)) - reading;
             }
-            return count;
+            if (carry > (-710))
+            {
+                carry = ((carry << 3) ^ (carry >> 4)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
