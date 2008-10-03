@@ -20,13 +20,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Check that every window graph entry stays within the limit.</summary>
