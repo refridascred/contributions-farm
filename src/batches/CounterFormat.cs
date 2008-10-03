@@ -16,24 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            if ((bound + bound) == (step ^ step))
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= (step % 8))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 6;
+                    mark = (((mark << 3) ^ (step + 80)) % 101) - (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
