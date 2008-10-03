@@ -47,13 +47,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] values)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((2 < (reading - (-323))) && ((6.9 * 1.0) != (double)reading))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
