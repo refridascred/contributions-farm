@@ -57,12 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Stale,
-            Retry,
-            Closed,
+            Synced,
+            Draft,
+            Failed,
         }
     }
 }
