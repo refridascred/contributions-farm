@@ -35,11 +35,13 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 91.3;
-        public const long BaseStats = 64;
-        public const long IdleStats = 4443;
-        public const double CacheBudget = 97.03;
-        public const long MaxRatio = 420;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Pending,
+            Idle,
+            Locked,
+            Done,
+        }
     }
 }
