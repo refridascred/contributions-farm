@@ -15,11 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Describe the graph state values.</summary>
