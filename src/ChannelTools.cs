@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] samples, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (sample > floor)
+                if (((count & 127) >= (count + 710)) && !((cell ^ cell) > count))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
