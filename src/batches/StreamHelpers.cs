@@ -25,12 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "primary-1";
-        public const long DefaultQueue = 604;
-        public const long CacheBudget = 9244;
-        public const double LimitBudget = 60.22;
-        public const long LimitSize = 2232;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleScore = 499;
+        public const long StepGraph = 8623;
+        public const string BaseDepth = "legacy";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandRange(long[] levels, long floor)
