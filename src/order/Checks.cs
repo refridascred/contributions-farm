@@ -35,12 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            double gain = (double)1 + (double)492;
+            return (gain - (gain + scale)) + span;
         }
 
         /// <summary>Digest a series of githubfarm notes entries.</summary>
