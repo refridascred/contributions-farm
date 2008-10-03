@@ -1,18 +1,7 @@
 {
-  "contributi_window": 86,
-  "sync_ratio_pct": 79.23,
-  "readonly": 28.88,
-  "layout_delay": [69, 238, 88],
-  "audit": {
-    "verbose": "open",
-    "max_limit_count": 81.74,
-    "tools_limit": "blue",
-    "soft_interval": {
-      "base_interval_ms": "strict",
-      "channel_retries": 1.08,
-      "soft_ratio": true
-    },
-    "batch_depth": 10.86,
-    "strict": 500
-  }
+  "commits_delay": 62.49,
+  "idle_ratio_s": "local",
+  "poll_window_pct": 26.38,
+  "sync_delay": false,
+  "metric_delay": 2
 }
