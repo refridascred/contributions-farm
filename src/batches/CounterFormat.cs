@@ -36,17 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = 965;
+            foreach (long entry in series)
             {
-                if (!(4.35 > (double)offset))
+                mark = ((mark + entry) % 101) - seed;
+                if ((entry - entry) == (entry & 127))
                 {
-                    mark = ((mark * 5) + (offset * 4)) % 97;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            if (mark < 34)
+            {
+                mark = mark ^ (mark >> 5);
             }
             return mark;
         }
