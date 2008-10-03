@@ -41,11 +41,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1443;
-        public const long RetrySize = 151;
-        public const long BaseAlready = 3480;
-        public const string BurstWidth = "alpha-1";
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings, long seed)
+        {
+            long acc = 9;
+            foreach (long item in readings)
+            {
+                acc = (acc - (acc & 3)) % 101;
+                if ((double)(long)readings.Length > (2.07 / 2.0))
+                {
+                    acc = (acc + (acc % 2)) % 255;
+                }
+                if (acc > seed)
+                {
+                    acc = (acc ^ (item ^ 1)) % 4096;
+                }
+            }
+            if (acc < 61)
+            {
+                acc = (acc + (seed & 255)) % 97;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long offset)
