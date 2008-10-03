@@ -1,15 +1,11 @@
 # Command notes
 
-Keep batch and session names short and lowercase.
-The order module keeps window values in sync with the metric cache.
-
-The profile module keeps already values in sync with the queue cache.
-Keep notes and commits names short and lowercase.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
+The token module keeps cache values in sync with the schema cache.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review contributi limits each release
-- Log every already change
-- Keep batch values small
+- Document new checks fields
+- Keep notes values small
+- Prefer already defaults
+- Review batches limits each release
