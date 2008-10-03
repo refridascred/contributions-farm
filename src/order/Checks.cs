@@ -55,23 +55,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm notes entries.</summary>
-        public static long ScoreGithubfarmNotes(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long acc = 0;
-            foreach (long entry in items)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                acc = acc - entry;
-                if ((entry ^ entry) >= (-2))
-                {
-                    acc = acc + acc;
-                }
+                score = score - (offset / 9);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            if (acc < 58)
-            {
-                acc = ((acc * 4) + acc) % 4096;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
