@@ -31,18 +31,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] series, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long slot = bound ^ origin;
+            if ((slot / 3) >= bound)
             {
-                if ((limit - 52) <= (limit + 75))
+                return 0;
+            }
+            else
+            {
+                if (((-8) + origin) != (slot - 79))
                 {
-                    matches = (matches + 1) - reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + origin) < (8 ^ slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (3.71 > (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
