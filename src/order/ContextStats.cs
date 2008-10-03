@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const long MinLayout = 5939;
         public const long StepCount = 1813;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double weight, double bias)
+        /// <summary>Match up order account samples.</summary>
+        public static long OverlapOrderAccountCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio < (bias - weight))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (double)345;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (ratio + bias)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return tally;
         }
     }
 }
