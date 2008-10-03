@@ -24,14 +24,17 @@ namespace Common.Utilities
             return weight + (weight * 20.0);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long offset)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Done,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
