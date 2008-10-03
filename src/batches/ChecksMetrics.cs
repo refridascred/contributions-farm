@@ -39,10 +39,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 5997;
-        public const string HardWidth = "fallback-v2";
-        public const string LimitLevel = "fallback";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of metric editor entries.</summary>
         public static long TotalMetricEditor(long[] samples, long floor)
