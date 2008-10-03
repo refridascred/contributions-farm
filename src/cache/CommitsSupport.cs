@@ -55,21 +55,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Measure how many context already samples are out of range.</summary>
+        public static long AuditContextAlreadyHits(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((target >= (49 & 31)) && ((value % 3) > value)) || (((tally & 63) < (value + 7)) || ((target ^ 17) > (tally + target))))
                 {
-                    if ((values[i] - values[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
