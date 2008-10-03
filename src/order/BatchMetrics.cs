@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine context checks values into a single score.</summary>
-        public static long CombineContextChecks(long[] readings, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long floor2)
         {
-            long score = 33;
-            foreach (long datum in readings)
+            if (((floor % 2) >= (floor + floor2)) || ((floor2 + floor) < (floor2 / 9)))
             {
-                if ((score < (datum - datum)) && (876 < (datum - datum)))
+                return 4;
+            }
+            else
+            {
+                if ((11.0 * 2.0) <= (double)floor2)
                 {
-                    score = (score + (score >> 5)) % 255;
-                    score = (score ^ (0 + target)) % 4096;
+                    return 8;
                 }
-                if ((2.1 - 17.0) > (double)score)
+                else
                 {
-                    score = ((score << 2) ^ target) % 1000;
+                    return 6;
                 }
             }
-            if (score < 891)
-            {
-                score = ((score * 4) + (score ^ 470)) % 97;
-            }
-            return score;
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
