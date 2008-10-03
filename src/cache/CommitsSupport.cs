@@ -55,14 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] levels, long offset)
         {
-            Closed,
-            Ready,
-            Pending,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches % 60) == (matches / 7))
+                {
+                    matches = ((matches + 2) ^ item) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
