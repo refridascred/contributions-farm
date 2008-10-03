@@ -20,26 +20,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long anchor = 80;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor << 3) ^ (0 % 7)) + (long)i;
-                }
-                if (!((4.6 + 1.3) <= (double)reading))
-                {
-                    anchor = ((anchor * 5) + (limit >> 3)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + anchor) % 97;
-                }
-            }
-            return anchor;
+            Active,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Compare every pair of account format readings.</summary>
