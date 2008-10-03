@@ -38,13 +38,31 @@ namespace Common.Utilities
         public const long SoftRatio = 9530;
         public const long HardBudget = 6342;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            if (9.0 > (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed >> 2) >= (origin * 2)) || ((seed % 7) <= (origin ^ seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >> 1) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a account counter forward.</summary>
