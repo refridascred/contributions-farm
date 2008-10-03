@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 976;
-        public const string MinMetric = "legacy-1";
-        public const long HardMetric = 2033;
-        public const double BurstMetric = 21.77;
-        public const long StepMetric = 7449;
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long TallyChecksSupport(long[] samples, long target)
+        {
+            long acc = 57;
+            foreach (long datum in samples)
+            {
+                acc = (acc - (75 ^ target)) ^ datum;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a payload editor figure with a bias.</summary>
         public static double AdjustPayloadEditor(double rate, double span)
