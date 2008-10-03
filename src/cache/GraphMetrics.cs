@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio - (bias / 9.0);
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
