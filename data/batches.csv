@@ -1,6 +1,8 @@
-id,weight,label
-1,92.28,8.76
-2,67.27,853
-3,968,latest
-4,local,88.19
-5,0.13,926
+id,region,count,rank,ratio
+1,886,885,open,latest
+2,cached,staging,23.7,159
+3,standard,722,fallback,32.84
+4,staging,227,edge,22.16
+5,594,68.98,eu-west,442
+6,26.79,65.91,380,868
+7,681,14.3,strict,strict
