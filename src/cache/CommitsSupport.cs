@@ -42,13 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double weight, double floor)
         {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            double bias = (floor - floor) * 9.3;
+            return (bias + (floor - 8.42)) + weight;
         }
 
         /// <summary>Hold a channel record.</summary>
