@@ -22,20 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            long state = 5;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                state = ((state * 2) + (entry + state)) % 1000;
-                state = (state * 3) + (entry * 4);
+                if ((count << 1) <= (count >> 3))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            if (state > (-942))
-            {
-                state = state + state;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the tools phase values.</summary>
