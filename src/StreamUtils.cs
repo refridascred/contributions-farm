@@ -23,13 +23,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long seed)
         {
-            Failed,
-            Closed,
-            Retry,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
