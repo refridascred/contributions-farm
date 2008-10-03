@@ -40,15 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools command value from a seed.</summary>
-        public static long StepToolsCommand(long target)
+        /// <summary>Look up the position of a token support sample.</summary>
+        public static long LocateTokenSupportIndex(long[] items, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
