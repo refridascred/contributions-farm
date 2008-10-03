@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long acc = 2;
-            foreach (long entry in levels)
-            {
-                acc = (acc + (acc + entry)) % 101;
-                if (!(entry > acc))
-                {
-                    acc = (acc * 4) + entry;
-                }
-                else
-                {
-                    acc = acc - 2;
-                }
-            }
-            return acc % 1000;
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
