@@ -45,22 +45,24 @@ namespace Common.Utilities
         public const double MinDepth = 58.31;
         public const long IdleCounter = 165;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] levels, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((8.49 / 2.0) < (double)target)
+                if (!((double)mark == (double)origin))
                 {
-                    hits = (hits + 3) + datum;
+                    mark = (mark * 2) + (581 * 2);
+                    break;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark << 3) ^ (mark ^ 793);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Digest a series of format entries.</summary>
