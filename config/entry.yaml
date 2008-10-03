@@ -1,29 +1,4 @@
 # entry settings
-cache_capacity_pct: edge
-warm_window:
-  compress:
-    route_delay: true
-    support_window: 79
-    report_window:
-      - 373
-      - 432
-      - 262
-      - 178
-    enabled: 18
-    order_depth: 4684
-    base_limit: 2335
-  already_limit: 55
-  default_depth_pct:
-    idle_timeout: local
-    payload_timeout: 500
-    strict:
-      - 26
-      - 268
-    batch_interval_ms: 30
-    cluster_ratio:
-      - 266
-      - 199
-      - 41
-      - 6
-  idle_delay_pct: false
-flush_capacity_s: true
+persist: 500
+cache_ttl_ms: standard
+queue_depth: 49
