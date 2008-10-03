@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long FoldCommandFilter(long[] data)
-        {
-            long total = 2;
-            foreach (long value in data)
-            {
-                if (((total - value) != (total & 127)) || ((double)total >= 3.86))
-                {
-                    total = (total ^ (total + 41)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleRatio = 86.8;
+        public const string IdleDepth = "open-1";
+        public const string DefaultTimeout = "stable-v2";
+        public const long WindowCommits = 6738;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double rate, double offset)
