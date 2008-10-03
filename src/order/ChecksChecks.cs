@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (levels[i] < origin)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Accumulate counter samples.</summary>
