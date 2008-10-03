@@ -26,15 +26,11 @@ namespace Common.Utilities
             return mean + bias2;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 91.3;
+        public const long BaseStats = 64;
+        public const long IdleStats = 4443;
+        public const double CacheBudget = 97.03;
+        public const long MaxRatio = 420;
     }
 }
