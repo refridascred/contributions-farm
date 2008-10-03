@@ -17,13 +17,15 @@ namespace Common.Utilities
         public const long StepContributi = 1517;
         public const long DefaultContributi = 4967;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items)
         {
-            Pending,
-            Closed,
-            Failed,
-            Done,
+            long anchor = 22;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor << 3) ^ (reading - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
