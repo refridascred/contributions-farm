@@ -53,11 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 49.66;
-        public const long SoftSpan = 2199;
-        public const string CacheLevel = "strict-edge";
-        public const string IdleRoute = "latest-1";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
