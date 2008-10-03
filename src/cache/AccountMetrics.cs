@@ -23,13 +23,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc * 4) + (step + (long)i);
+                if (!(acc < (step >> 2)))
+                {
+                    acc = acc + (acc + acc);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (step + step);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a githubfarm entry reading.</summary>
