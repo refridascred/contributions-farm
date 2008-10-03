@@ -41,16 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum ^ (offset + offset)) % 4096;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((bound * 5) > (mix ^ (long)i)) || (bound > (76 * 4)))
+                {
+                    mix = ((mix << 2) ^ (bound ^ (long)i)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
