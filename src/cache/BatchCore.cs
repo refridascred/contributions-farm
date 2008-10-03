@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Validate contributi commits readings against a bound.</summary>
+        public static bool GuardContributiCommitsBounds(long[] readings, long floor)
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the filter state values.</summary>
