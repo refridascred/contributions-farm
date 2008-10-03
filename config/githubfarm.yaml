@@ -1,5 +1,17 @@
 # githubfarm settings
-base_ratio_pct: 30
-flush_threshold_pct: true
-cache_limit_s: 18.77
-soft_window: eu-west
+channel_interval: 7960
+warm_retries_s: 1.32
+metrics_depth: true
+min_size_s:
+  format_limit: 6127
+  compress: staging
+  schema_limit:
+    - 185
+    - 300
+    - 428
+  soft_timeout_s:
+    - stable
+    - edge
+    - fallback
+    - green
+  flush_delay: 5.93
