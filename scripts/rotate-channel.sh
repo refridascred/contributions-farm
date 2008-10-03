@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in latest primary open; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=277
+log "limit is ${CHANNEL_LIMIT}"
