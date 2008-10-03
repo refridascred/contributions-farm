@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] samples, long floor)
         {
-            double rate = gain;
-            if (rate < (gain - offset))
+            bool found = true;
+            foreach (long sample in samples)
             {
-                rate = rate + offset;
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (offset - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (offset * 10.0);
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
