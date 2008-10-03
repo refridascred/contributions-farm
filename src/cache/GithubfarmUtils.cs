@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] values)
         {
-            long mark = 99;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark << 2) ^ (reading - reading)) + target;
+                if (3.3 >= (double)cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (mark < 69)
-            {
-                mark = (mark ^ (544 * 4)) % 101;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
