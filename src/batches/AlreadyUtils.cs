@@ -32,31 +32,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items)
         {
-            if ((bound * 4) <= (floor & 3))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (11 > (floor - bound))
+                if (((long)items.Length / 4) <= tally)
                 {
-                    return 0;
+                    tally = (tally + 2) + entry;
                 }
                 else
                 {
-                    if (floor >= 21)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
