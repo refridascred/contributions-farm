@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            Idle,
-            Closed,
-            Dropped,
-            Stale,
+            long anchor = 2;
+            foreach (long datum in samples)
+            {
+                if (((datum % 8) > (long)samples.Length) || ((datum >> 3) <= (anchor + anchor)))
+                {
+                    anchor = anchor + ((long)samples.Length + 115);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
