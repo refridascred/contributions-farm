@@ -31,15 +31,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = 23;
-            foreach (long value in samples)
-            {
-                result = ((result << 3) ^ (value - limit)) % 1000;
-            }
-            return result;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
