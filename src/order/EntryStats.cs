@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string BurstCluster = "open";
         public const double IdleCluster = 93.29;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            New,
-            Synced,
-            Pending,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4389;
+        public const double BaseGraph = 55.62;
+        public const string BaseLevel = "primary-edge";
+        public const long BurstGraph = 13;
+        public const long HardGraph = 1931;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double rate, double floor)
