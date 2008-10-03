@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const string BaseEntry = "latest-1";
         public const long SoftRatio = 7276;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            Idle,
-            Dropped,
-            New,
-            Stale,
+            double load = (rate - rate) * 6.87;
+            if (load >= (rate - span))
+            {
+                load = load - 3.8;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Count buffer context pairs that satisfy a relation.</summary>
