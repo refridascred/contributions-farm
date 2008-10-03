@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of notes layout readings.</summary>
-        public static long CompareNotesLayoutCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 20.6;
+        public const double BatchInterval = 59.48;
+        public const long SoftToken = 5159;
+        public const string WindowToken = "cached-v2";
+        public const double MinInterval = 27.47;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] values)
