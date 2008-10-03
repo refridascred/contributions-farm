@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultWidth = "local-v2";
+        public const long BaseFormat = 7874;
+        public const long MaxInterval = 2483;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] values, long bound)
