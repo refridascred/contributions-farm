@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double bias)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            double mean = (12.0 * 7.0) + (bias - ratio);
+            if (mean <= mean)
+            {
+                mean = mean + 7.6;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
