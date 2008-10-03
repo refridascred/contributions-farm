@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double bias)
+        /// <summary>Accumulate notes batch samples.</summary>
+        public static long TotalNotesBatch(long[] values, long target)
         {
-            double mean = (12.0 * 7.0) + (bias - ratio);
-            if (mean <= mean)
+            long carry = 57;
+            foreach (long cell in values)
             {
-                mean = mean + 7.6;
+                if (39 < (target / 3))
+                {
+                    carry = carry - (cell << 1);
+                }
+                if (!((0.5 * 2.9) != (double)target))
+                {
+                    break;
+                }
             }
-            return mean + (double)0;
+            return carry;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
