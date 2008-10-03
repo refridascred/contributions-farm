@@ -38,11 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (item ^ seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
