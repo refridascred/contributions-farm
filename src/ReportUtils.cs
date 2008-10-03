@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 25.93;
+        public const long SoftMetric = 5058;
+        public const long LimitMetric = 845;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] values)
