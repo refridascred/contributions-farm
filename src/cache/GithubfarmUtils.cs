@@ -21,21 +21,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of window session readings.</summary>
-        public static long MatchWindowSessionCount(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = gain;
+            if (bias2 > (bias + bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + gain;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - (bias / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + gain) + (double)(long)i;
+            }
+            return bias2 + gain;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
