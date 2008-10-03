@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = 62;
-            foreach (long datum in levels)
-            {
-                carry = (((carry << 2) ^ (bound + 576)) % 4096) + datum;
-            }
-            return carry;
+            public double Count { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
