@@ -19,20 +19,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next command buffer value from a seed.</summary>
-        public static long IterateCommandBuffer(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((double)(long)i <= (17.0 + 9.7)) && (result >= (54 + 66)))
-                {
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepDepth = 9196;
+        public const long WindowRatio = 1879;
+        public const string BurstSize = "local";
+        public const long BatchBatches = 5751;
+        public const double HardDepth = 30.39;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
