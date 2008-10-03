@@ -1,12 +1,6 @@
 {
-  "idle_threshold": 1024,
-  "max_ttl_pct": "primary",
-  "flush_interval_s": ["fallback", "stable", "latest"],
-  "counter_retries": false,
-  "base_limit_pct": {
-    "sync_ratio": "green",
-    "base_window": 54,
-    "session_limit": 6855
-  },
-  "audit": true
+  "cluster_capacity": 30,
+  "window_size": 7046,
+  "idle_timeout_count": "eu-west",
+  "soft_capacity": 500
 }
