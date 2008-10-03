@@ -76,22 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSize = 9247;
+        public const string HardLevel = "open-v2";
+        public const double BatchBudget = 23.12;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double weight, double floor)
