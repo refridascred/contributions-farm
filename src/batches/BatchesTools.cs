@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 5509;
-        public const long WindowSpan = 5198;
-        public const long StepSchema = 235;
-        public const long MinSchema = 6609;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long origin)
+        {
+            long span = bound ^ origin;
+            if (((bound * 2) <= 7) && (bound > (9 ^ origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (span < (origin * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] values, long origin)
