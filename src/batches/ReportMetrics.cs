@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            Idle,
-            Failed,
-            New,
-            Stale,
-            Closed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (matches >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a account reading by value.</summary>
