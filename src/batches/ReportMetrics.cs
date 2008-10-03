@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long origin)
         {
-            double weight = (4.9 + bias) + gain;
-            if (weight > 4.0)
+            bool found = true;
+            foreach (long sample in items)
             {
-                weight = weight - (bias * 8.0);
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + 5.0)) + (double)(long)i;
-            }
-            return weight - (double)138;
+            return found;
         }
 
         /// <summary>Compare every pair of account format readings.</summary>
