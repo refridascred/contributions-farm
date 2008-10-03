@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Roll a tools githubfarm counter forward.</summary>
+        public static long RollToolsGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Rank context input into a small class.</summary>
