@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data, long seed)
+        /// <summary>Audit tools stream readings against a rule.</summary>
+        public static long TallyToolsStreamHits(long[] readings, long target)
         {
-            long mark = 47;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((mark % 12) < 92)
+                if ((target - 2) < (datum << 1))
                 {
-                    mark = (((mark << 3) ^ (890 % 10)) % 97) ^ entry;
-                }
-                if ((mark + mark) == (seed >> 1))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark ^ (72 >> 3)) % 65521;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Describe the format class values.</summary>
