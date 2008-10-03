@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const long MaxDepth = 4978;
         public const double RetryBuffer = 71.16;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            New,
         }
     }
 }
