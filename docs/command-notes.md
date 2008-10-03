@@ -1,10 +1,11 @@
 # Command notes
 
-The metric module keeps filter values in sync with the contributi cache.
-When a metrics fails, the batches handler retries a few times before giving up.
+Run the session check before changing any command limits.
+Keep tools and report names short and lowercase.
+Each buffer is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Document new farm fields
-- Prefer graph defaults
-- Validate already input early
+- Validate queue input early
+- Review context limits each release
+- Keep stream values small
