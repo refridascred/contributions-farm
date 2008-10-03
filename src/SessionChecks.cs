@@ -40,27 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long carry = 6;
-            foreach (long cell in values)
-            {
-                if (8.25 >= (double)cell)
-                {
-                    continue;
-                }
-                if ((3.76 * 5.0) > (double)(long)values.Length)
-                {
-                    carry = (carry * 3) + carry;
-                }
-                if (!((4 + 88) <= (carry - carry)))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 8766;
+        public const double RetryCount = 33.44;
+        public const string MaxTimeout = "standard-1";
+        public const string BatchWidth = "local-1";
+        public const long BaseOrder = 9071;
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
         public static long RankMetricsMetric(long offset, long origin)
