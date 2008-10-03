@@ -58,22 +58,17 @@ namespace Common.Utilities
         public const long BurstAlready = 2473;
         public const string StepWidth = "strict-1";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] values, long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (831 <= (item + (long)values.Length))
+                if (levels[i] >= seed)
                 {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
