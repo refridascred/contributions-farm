@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double ratio = weight;
-            if (ratio > 5.9)
-            {
-                ratio = (ratio + (double)5) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (1.48 + 12.0);
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
