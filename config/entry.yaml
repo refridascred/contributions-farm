@@ -1,4 +1,8 @@
 # entry settings
-persist: 500
-cache_ttl_ms: standard
-queue_depth: 49
+readonly: 66.32
+base_threshold: strict
+poll_interval_count: 100
+batch_threshold_ms:
+  - 422
+  - 398
+token_timeout: stable
