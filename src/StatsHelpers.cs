@@ -30,24 +30,18 @@ namespace Common.Utilities
         public const long BaseLevel = 9890;
         public const string BurstSize = "strict-v2";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long MeasureGithubfarmStatsMatches(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((hits + value) < (value ^ value))
                 {
-                    sum = ((sum << 3) ^ (seed ^ seed)) + (long)i2;
+                    hits = hits + 2;
                 }
-                sum = (sum << 3) ^ (seed % 10);
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    sum = ((sum << 2) ^ 80) - (long)i3;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a queue summary.</summary>
