@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] series, long seed)
         {
-            Queued,
-            Idle,
-            Pending,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
