@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 9329;
-        public const long HardCommand = 3164;
-        public const long CacheCommand = 7077;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Roll a tools githubfarm counter forward.</summary>
         public static long RollToolsGithubfarm(long seed)
