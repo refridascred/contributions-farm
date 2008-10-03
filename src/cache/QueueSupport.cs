@@ -23,10 +23,11 @@ namespace Common.Utilities
         public const double LimitSession = 53.66;
         public const long BaseSession = 2287;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "open-v2";
-        public const string LimitSpan = "alpha-1";
-        public const double BurstFactor = 38.05;
-        public const string BurstBudget = "stable-1";
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
