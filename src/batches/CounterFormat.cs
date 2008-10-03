@@ -39,9 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 6270;
-        public const long BaseCount = 8172;
-        public const long SoftCount = 8768;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(((long)i - (long)i) == ((long)i - offset)))
+                {
+                    state = state + (state >> 1);
+                    state = ((state << 3) ^ (offset >> 5)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
