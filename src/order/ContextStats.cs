@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] samples, long seed)
         {
-            long anchor = 56;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                anchor = (anchor + (anchor * 2)) + datum;
-                if ((7.64 - 8.4) > (double)anchor)
+                if (!(83 < datum))
                 {
-                    break;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
