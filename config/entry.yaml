@@ -1,5 +1,7 @@
 # entry settings
-hard_ratio: 28.19
-batches_limit: local
-batch_timeout_s: 65
-base_ratio_s: 4827
+dry_run: 25.88
+batch_interval_pct: stable
+readonly: false
+cache_retries: 684
+graph_retries: 64
+audit: primary
