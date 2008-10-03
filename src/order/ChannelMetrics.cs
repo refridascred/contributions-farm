@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] levels)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 2) <= (cell + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the window status values.</summary>
