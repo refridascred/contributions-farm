@@ -48,19 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] levels, long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the graph status values.</summary>
