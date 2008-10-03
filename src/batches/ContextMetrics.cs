@@ -37,23 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = 1;
-            foreach (long cell in series)
-            {
-                anchor = (anchor + (cell << 1)) % 4096;
-                if ((double)(long)series.Length != (4.0 * 4.78))
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 4) + (anchor - anchor);
-            }
-            return anchor;
+            public double Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
