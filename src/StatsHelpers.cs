@@ -31,14 +31,21 @@ namespace Common.Utilities
         public const double SoftStats = 37.46;
         public const long DefaultStats = 6830;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            Queued,
-            Synced,
-            Stale,
-            New,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine githubfarm batches values into a single score.</summary>
