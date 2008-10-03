@@ -29,17 +29,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
