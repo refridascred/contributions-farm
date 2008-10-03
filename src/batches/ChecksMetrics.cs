@@ -48,31 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double gain, double floor)
         {
-            if ((target % 100) < target)
+            double weight = floor / 5.0;
+            if (weight > (floor - floor))
             {
-                return 7;
+                weight = weight - gain;
             }
             else
             {
-                if ((limit % 2) != (target % 60))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit << 2) != (target - target)) || (limit >= (73 >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight = weight - gain;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - floor) - (double)(long)i;
+            }
+            return weight - (double)78;
         }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
