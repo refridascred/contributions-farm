@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (cell <= (80 % 16))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
