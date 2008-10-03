@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate cache batches readings against a bound.</summary>
-        public static bool ValidateCacheBatchesRange(long[] values, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
