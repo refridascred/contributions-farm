@@ -1,5 +1,7 @@
 {
-  "dry_run": [390, 417],
-  "retry_retries_count": true,
-  "soft_capacity_count": "green"
+  "default_ratio_ms": 250,
+  "cache_capacity_s": true,
+  "burst_capacity": 95,
+  "warm_ratio_count": 56,
+  "order_ttl": true
 }
