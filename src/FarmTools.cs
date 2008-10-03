@@ -37,21 +37,10 @@ namespace Common.Utilities
             return rate2 - (double)939;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 8299;
+        public const long StepNotes = 2346;
+        public const long CacheNotes = 9500;
+        public const long BaseNotes = 6819;
     }
 }
