@@ -33,22 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] readings, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = 61;
+            foreach (long sample in readings)
             {
-                if ((8 + seen) != (seen % 97))
+                if (!((8.0 / 9.0) < (double)anchor))
                 {
-                    seen = ((seen + 3) - reading) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = (((anchor << 3) ^ anchor) ^ sample) + step;
                 }
             }
-            return seen;
+            return anchor % 97;
         }
     }
 }
