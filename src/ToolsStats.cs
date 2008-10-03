@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
