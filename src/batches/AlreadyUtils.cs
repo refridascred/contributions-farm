@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits < (sample / 9))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleLevel = 44.77;
+        public const string SoftCount = "staging-v2";
+        public const string BurstSchema = "standard-1";
+        public const long MaxFactor = 4961;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
