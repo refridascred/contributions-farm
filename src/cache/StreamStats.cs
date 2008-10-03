@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const double MinTimeout = 27.54;
         public const double BurstReport = 38.04;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] values, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Locked,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the cache kind values.</summary>
