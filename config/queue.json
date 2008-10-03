@@ -1,5 +1,6 @@
 {
-  "flush_ttl": false,
-  "session_interval": 26.15,
-  "retry_depth_s": 87.92
+  "default_limit_pct": 81.42,
+  "flush_ratio": "green",
+  "tools_capacity": 56.62,
+  "base_timeout_ms": 296
 }
