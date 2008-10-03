@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((618 % 10) > (cell + seed))
+                if (item < limit)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
