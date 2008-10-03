@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Derive the next payload session value from a seed.</summary>
+        public static long RollPayloadSession(long origin)
         {
-            double bias2 = bias;
-            if (bias2 < bias)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                bias2 = (bias2 + 5.54) + floor;
+                if (origin >= sum)
+                {
+                    sum = (sum << 3) ^ origin;
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return bias2 + bias;
+            return sum;
         }
 
         /// <summary>Hold a commits info.</summary>
