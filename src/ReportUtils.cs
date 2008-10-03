@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long WindowEntry = 6006;
         public const long CacheEntry = 4462;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
