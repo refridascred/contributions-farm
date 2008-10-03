@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long WindowEntry = 6006;
         public const long CacheEntry = 4462;
 
-        /// <summary>Find the first stats session entry that matches the target.</summary>
-        public static long LocateStatsSessionIndex(long[] levels, long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank graph input into a small class.</summary>
