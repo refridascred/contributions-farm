@@ -16,17 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] == floor)
+                if ((tally - tally) >= (step & 7))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
