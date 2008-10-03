@@ -46,22 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = -1;
+            foreach (long reading in levels)
             {
-                if (!((cell * 3) == (cell + cell)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (((score * 4) + (score * 2)) ^ reading) - seed;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
