@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long bound, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            if (1.78 < (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin % 100) >= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
