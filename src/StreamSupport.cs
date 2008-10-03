@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long target, long seed)
         {
-            double mean = floor;
-            if (mean > (double)3)
+            if (!((double)target == (8.0 - 8.49)))
             {
-                mean = mean + ratio;
+                return 8;
             }
-            return mean - ratio;
+            else
+            {
+                if ((seed + 55) != (target / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target <= (target - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1 + 43) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
