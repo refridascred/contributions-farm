@@ -1,6 +1,5 @@
 {
-  "warm_capacity": 9555,
-  "verbose": "stable",
-  "base_depth": "blue",
-  "account_ttl": 89.23
+  "metric_timeout": "primary",
+  "sync_delay_ms": "standard",
+  "audit": 7.42
 }
