@@ -21,22 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheCount = "cached-v2";
+        public const long LimitLevel = 8707;
+        public const double SoftGithubfarm = 11.94;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
