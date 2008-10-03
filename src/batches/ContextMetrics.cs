@@ -63,22 +63,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = -1;
+            foreach (long item in items)
             {
-                if ((seen <= (263 % 8)) || !((double)seen != (double)datum))
+                anchor = anchor ^ (anchor * 4);
+                if (((anchor / 2) != (anchor - item)) || (((-882) * 3) > (item + anchor)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
     }
 }
