@@ -1,14 +1,15 @@
 # Command notes
 
-The token module keeps command values in sync with the metric cache.
-Each cluster is validated before it reaches the stats queue.
+The payload module keeps route values in sync with the batches cache.
+When a metrics fails, the queue handler retries a few times before giving up.
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep metrics and checks names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
+Each tools is validated before it reaches the tools queue.
+Use context settings to tune how often record data is refreshed.
+A notes that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every cache change
-- Keep account values small
+- Log every metrics change
+- Prefer profile defaults
+- Validate notes input early
+- Keep cluster values small
