@@ -25,11 +25,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "staging";
-        public const string DefaultSize = "strict-1";
-        public const string MinLevel = "strict-edge";
-        public const long RetryLevel = 4553;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Ready,
+            Draft,
+            Done,
+        }
 
         /// <summary>Blend two order layout measurements.</summary>
         public static double ScaleOrderLayout(double gain, double span)
