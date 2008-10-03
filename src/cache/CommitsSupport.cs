@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Fold a list of already notes readings.</summary>
+        public static long FoldAlreadyNotes(long[] items)
         {
-            long acc = 454;
-            foreach (long entry in items)
+            long mark = 351;
+            foreach (long reading in items)
             {
-                acc = ((acc * 3) + (528 % 100)) ^ entry;
+                if (!((reading * 5) >= mark))
+                {
+                    mark = ((mark << 2) ^ (mark + reading)) % 97;
+                }
+                else
+                {
+                    mark = (mark - (mark ^ mark)) % 97;
+                }
             }
-            return acc;
+            if (mark > 4)
+            {
+                mark = (mark + (69 - mark)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine order values into a single score.</summary>
