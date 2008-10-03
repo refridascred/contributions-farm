@@ -25,17 +25,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] samples, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 99;
+            foreach (long cell in data)
             {
-                if (samples[i] < floor)
+                total = (total - (cell + 464)) % 255;
+                if ((double)total <= (2.02 + 18.0))
                 {
-                    return (long)i;
+                    total = (total + offset) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
