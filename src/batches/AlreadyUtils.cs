@@ -32,22 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items)
+        /// <summary>Locate a report session reading by value.</summary>
+        public static long LocateReportSessionIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)items.Length / 4) <= tally)
+                if (series[i] == floor)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
