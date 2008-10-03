@@ -34,32 +34,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long mark = 910;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value <= (double)99)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 2) + (mark & 7)) % 255;
-                    mark = (mark ^ 60) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark + (value % 60)) % 4096;
-                }
-                if (target > (mark - mark))
-                {
-                    mark = mark + (16 ^ value);
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > (-702))
-            {
-                mark = (mark << 3) ^ (target >> 2);
-            }
-            return mark % 1000;
+            return count;
         }
     }
 }
