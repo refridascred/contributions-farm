@@ -1,4 +1,9 @@
 # entry settings
-base_depth_count: standard
-burst_ttl_count: 37.95
-batch_threshold_s: 5.73
+min_depth_s: 44.76
+idle_ttl_ms:
+  - open
+  - standard
+  - open
+  - primary
+readonly: 56
+warm_window: fallback
