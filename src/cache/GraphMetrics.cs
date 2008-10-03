@@ -41,17 +41,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = floor;
+            return (drift + drift) + scale;
         }
     }
 }
