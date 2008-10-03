@@ -20,11 +20,17 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Scale a command account figure with a bias.</summary>
-        public static double ScaleCommandAccount(double scale, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] data, long origin)
         {
-            double bias = offset;
-            return (bias - (offset / 3.0)) + scale;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
