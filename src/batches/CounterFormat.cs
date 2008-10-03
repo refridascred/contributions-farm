@@ -31,28 +31,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score - (origin + origin)) % 1000) ^ (long)i2;
-                }
-                if ((origin - 0) <= score)
-                {
-                    score = ((score * 4) + (score * 2)) % 1000;
-                    break;
-                }
-                if ((long)i > 0)
-                {
-                    score = score - ((long)i ^ score);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
