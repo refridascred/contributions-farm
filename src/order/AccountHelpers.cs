@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Check that every account stream entry stays within the limit.</summary>
+        public static bool VerifyAccountStreamLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((data[i] + data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
