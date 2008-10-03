@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster commits value from a seed.</summary>
-        public static long StepClusterCommits(long bound)
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long MeasureFormatReportHits(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (value <= 25)
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
