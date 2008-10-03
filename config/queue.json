@@ -1,20 +1,8 @@
 {
-  "payload_timeout": "standard",
-  "dry_run": {
-    "enabled": {
-      "stream_limit": 1024,
-      "persist": 250,
-      "commits_size": 84.44
-    },
-    "tools_window": 56.52,
-    "batch_limit_ms": "cached",
-    "warm_timeout_s": 97
-  },
-  "flush_size": {
-    "base_ttl": true,
-    "burst_timeout": "cached",
-    "burst_threshold_s": "primary"
-  },
-  "verbose": "open",
-  "account_interval": true
+  "persist": "fallback",
+  "cache_threshold_count": "stable",
+  "flush_timeout": 204,
+  "sync_threshold": 94,
+  "max_retries": 100,
+  "readonly": 3510
 }
