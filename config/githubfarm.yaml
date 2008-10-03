@@ -1,4 +1,6 @@
 # githubfarm settings
-batch_limit: 1259
-idle_timeout_ms: legacy
-sync_ratio_pct: fallback
+compress: green
+base_window: blue
+command_delay: 10.95
+batch_depth_ms: 49
+poll_threshold_ms: 28.19
