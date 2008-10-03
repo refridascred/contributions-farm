@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The token module keeps cache values in sync with the schema cache.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+
+Use report settings to tune how often format data is refreshed.
+Keep batches and window names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new checks fields
-- Keep notes values small
-- Prefer already defaults
-- Review batches limits each release
+- Keep entry values small
+- Document new window fields
+- Prefer stream defaults
+- Log every checks change
