@@ -1,9 +1,13 @@
 # githubfarm settings
-sync_depth_pct: 13.51
-min_depth_pct: blue
-persist: open
-session_timeout: true
-max_delay_s:
-  - green
-  - local
-default_threshold_s: 3.24
+default_window_count: local
+retry_interval_ms: 19.88
+sync_size_pct:
+  compress: cached
+  readonly:
+    - strict
+    - green
+  retry_size_pct:
+    - 232
+    - 240
+  strict: blue
+batch_ttl: primary
