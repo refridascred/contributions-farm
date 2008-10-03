@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftSpan = 9219;
         public const string IdleRoute = "primary-1";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a notes route reading.</summary>
+        public static double ProjectNotesRoute(double bias, double bias2)
         {
-            Closed,
-            Retry,
-            New,
-            Ready,
+            double mean = (double)94;
+            if (mean > (mean / 9.0))
+            {
+                mean = (mean + (1.1 - mean)) + bias;
+            }
+            else
+            {
+                mean = mean - bias2;
+            }
+            return mean + bias2;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
