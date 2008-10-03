@@ -53,12 +53,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Derive the next token entry value from a seed.</summary>
+        public static long StepTokenEntry(long limit)
         {
-            New,
-            Queued,
-            Retry,
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 5) + limit) % 65521;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
