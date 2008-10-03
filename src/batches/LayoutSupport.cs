@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Check that every window command entry stays within the limit.</summary>
+        public static bool CheckWindowCommandRange(long[] samples, long bound)
         {
-            double ratio = (offset + scale) - scale;
-            if (ratio > (offset - offset))
+            bool found = true;
+            foreach (long value in samples)
             {
-                ratio = ratio - (scale * 8.2);
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio + (ratio / 8.0);
+            return found;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
