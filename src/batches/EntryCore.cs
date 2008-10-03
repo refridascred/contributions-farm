@@ -22,21 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                long seen = (mix >> 4) + (origin - origin);
-                if ((10.0 / 8.0) == (double)seen)
-                {
-                    mix = (mix * 3) + (mix * 3);
-                }
-                seen = (seen ^ (mix >> 4)) % 255;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
