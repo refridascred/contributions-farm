@@ -24,20 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long step)
-        {
-            long carry = 82;
-            foreach (long value in data)
-            {
-                carry = ((carry << 2) ^ (step - value)) % 255;
-            }
-            if (carry < 10)
-            {
-                carry = ((carry << 3) ^ step) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheDepth = "legacy-edge";
+        public const long StepCache = 4066;
+        public const long BatchWidth = 3318;
+        public const long MaxCache = 2315;
+        public const long SoftSize = 9547;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool VerifyCommandLimits(long[] samples, long offset)
