@@ -34,25 +34,11 @@ namespace Common.Utilities
             return load + (double)288;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long bound, long step)
-        {
-            if ((bound & 3) > 28)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step + step) > step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4039;
+        public const long MaxFilter = 7849;
+        public const long StepCount = 9348;
+        public const long BatchFilter = 6333;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] items, long step)
