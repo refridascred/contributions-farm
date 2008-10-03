@@ -13,16 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter channel series from a seed.</summary>
-        public static long StepFilterChannel(long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = sum ^ ((long)i + (long)i);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            double ratio = offset / 3.0;
+            return (ratio - (double)69) + bias;
         }
 
         /// <summary>Hold a format stats.</summary>
