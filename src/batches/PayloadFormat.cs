@@ -20,23 +20,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long offset, long offset2)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            if ((offset < (offset2 >> 2)) && (offset2 <= (offset + offset)))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score ^ origin) % 101) ^ (long)i2;
-                }
-                if (!((origin + origin) <= (origin - (long)i)))
-                {
-                    score = ((score << 3) ^ (origin >> 5)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((9.7 + 9.1) == (double)offset2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
