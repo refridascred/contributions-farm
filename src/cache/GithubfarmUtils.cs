@@ -12,25 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long origin, long origin2)
+        /// <summary>Count the command queue entries that pass the check.</summary>
+        public static long CountCommandQueueOutliers(long[] samples, long step)
         {
-            long step = origin ^ origin2;
-            if (((origin2 - 2) <= (origin << 1)) && (origin2 < (2 >> 5)))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (5.8 + 7.7))
+                if (2.27 > (double)entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 1) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
