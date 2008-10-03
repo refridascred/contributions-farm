@@ -39,17 +39,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] == bound)
+                if ((origin << 2) < (212 + origin))
                 {
-                    return (long)i;
+                    sum = sum - sum;
                 }
+                else
+                {
+                    sum = ((sum << 2) ^ (origin - (long)i)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two layout measurements.</summary>
