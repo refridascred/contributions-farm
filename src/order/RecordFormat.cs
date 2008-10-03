@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            if ((0.39 / 2.0) <= (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed == (9.7 - 0.4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((3.62 + 9.0) > (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target - seed) <= (142 * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a order summary.</summary>
