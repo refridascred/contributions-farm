@@ -40,14 +40,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            Queued,
-            Synced,
-            Idle,
-            Done,
-            Locked,
+            double weight2 = weight;
+            if (weight2 < weight)
+            {
+                weight2 = (weight2 - 9.32) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (8.9 * 13.0)) + (double)(long)i;
+            }
+            return weight2 + (double)95;
         }
 
         /// <summary>Blend two metrics payload measurements.</summary>
