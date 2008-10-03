@@ -1,10 +1,6 @@
 # githubfarm settings
-soft_limit_s: true
-notes_window:
-  poll_retries: true
-  max_retries_pct: 2
-  persist: true
-metric_timeout: true
-strict: strict
-queue_window: 44.63
-sync_interval_ms: 1024
+strict: 57.53
+compress: true
+stream_threshold: 83
+burst_retries: 24.84
+min_delay: stable
