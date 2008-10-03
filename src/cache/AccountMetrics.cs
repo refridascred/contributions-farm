@@ -61,20 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 1871;
+        public const double BatchSize = 12.19;
+        public const long WindowEntry = 1403;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] data, long limit)
