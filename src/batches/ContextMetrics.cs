@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] values, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long step = bound - floor;
+            if ((step % 64) > bound)
             {
-                if ((values[i] < offset) && ((values[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step >= (bound ^ step)) || ((bound >> 3) != (step << 1)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
