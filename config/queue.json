@@ -1,5 +1,17 @@
 {
-  "dry_run": 60,
-  "githubfarm_depth": "green",
-  "idle_threshold": true
+  "window_size": false,
+  "hard_window_pct": "blue",
+  "route_ratio": "fallback",
+  "max_limit_s": {
+    "sync_timeout_pct": true,
+    "readonly": 15.76,
+    "max_capacity": 42.61,
+    "cache_window_count": {
+      "batches_ratio": "standard",
+      "dry_run": true,
+      "soft_depth_s": 46.4,
+      "poll_timeout": [352, 156, 432, 209],
+      "graph_ttl": 555
+    }
+  }
 }
