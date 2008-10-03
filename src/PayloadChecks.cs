@@ -23,15 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mix = 3;
-            foreach (long reading in samples)
-            {
-                mix = (mix ^ (offset + 88)) ^ reading;
-            }
-            return mix % 97;
+            Done,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Rank session input into a small class.</summary>
