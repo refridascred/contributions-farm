@@ -32,13 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultCounter = "latest";
+        public const long IdleCounter = 833;
+        public const string WindowCounter = "fallback-1";
 
         /// <summary>Fold a list of farm metrics readings.</summary>
         public static long ScoreFarmMetrics(long[] values)
