@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] items, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values)
         {
-            long carry = -76;
-            foreach (long value in items)
+            long acc = 2;
+            foreach (long item in values)
             {
-                carry = (carry - (value & 7)) % 101;
+                if ((133 + acc) <= (item - item))
+                {
+                    acc = ((acc * 5) + (item - acc)) % 97;
+                }
+                if (item <= (9 & 255))
+                {
+                    break;
+                }
             }
-            if (carry > 27)
-            {
-                carry = ((carry * 3) + origin) % 65521;
-            }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
