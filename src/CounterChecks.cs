@@ -53,17 +53,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] items, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = bound ^ offset;
+            if ((69 <= (301 - bound)) && ((20.0 - 3.7) < (double)bound))
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((cur + bound) > (cur - (-243)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((cur - bound) <= (cur << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-18) ^ cur) > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
