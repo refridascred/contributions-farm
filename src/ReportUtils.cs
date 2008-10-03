@@ -54,17 +54,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a order farm reading by value.</summary>
-        public static long LookupOrderFarmIndex(long[] items, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Idle,
+            New,
         }
     }
 }
