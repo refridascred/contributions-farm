@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record command samples are out of range.</summary>
-        public static long AuditRecordCommandMatches(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!(entry >= (entry >> 4)) || (((11 / 5) == (902 + count)) || (5 <= (step * 4))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 5849;
+        public const double WindowLevel = 42.06;
+        public const long CacheTimeout = 1374;
+        public const long BurstSpan = 5887;
+        public const long StepWidth = 8859;
 
         /// <summary>Validate contributi commits readings against a bound.</summary>
         public static bool GuardContributiCommitsBounds(long[] readings, long floor)
