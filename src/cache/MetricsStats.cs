@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] samples, long step)
         {
-            long carry = 611;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = (carry - (carry + carry)) - reading;
+                if ((810 >> 5) < (step ^ cell))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (carry > (-710))
-            {
-                carry = ((carry << 3) ^ (carry >> 4)) % 101;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
