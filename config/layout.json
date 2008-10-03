@@ -1,6 +1,5 @@
 {
-  "warm_limit": ["edge", "local"],
-  "cache_limit_pct": 378,
-  "notes_size": 70,
-  "schema_capacity": [497, 344]
+  "contributi_retries": 87.76,
+  "audit": 96,
+  "retry_capacity_count": 250
 }
