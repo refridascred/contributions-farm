@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample <= (958 % 24))
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
