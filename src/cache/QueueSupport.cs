@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Count channel support pairs that satisfy a relation.</summary>
+        public static long MatchChannelSupportCount(long[] data)
         {
-            long state = 64;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + cell;
-                if (state < (cell + 98))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + ((-17) + state)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state * 4)) % 65521;
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a checks entry.</summary>
