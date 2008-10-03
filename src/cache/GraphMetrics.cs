@@ -35,15 +35,23 @@ namespace Common.Utilities
         public const long IdleCounter = 833;
         public const string WindowCounter = "fallback-1";
 
-        /// <summary>Fold a list of farm metrics readings.</summary>
-        public static long ScoreFarmMetrics(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            long mix = 204;
-            foreach (long datum in values)
+            long state = 391;
+            foreach (long item in items)
             {
-                mix = ((mix - (9 >> 5)) % 4096) - datum;
+                state = (state << 2) ^ ((long)items.Length + item);
+                if ((item * 3) == (item / 7))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state > 471)
+            {
+                state = (state - ((long)items.Length + (-837))) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
