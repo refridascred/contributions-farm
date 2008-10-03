@@ -22,12 +22,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardRatio = 5102;
-        public const string BurstCluster = "fallback-1";
-        public const long DefaultCluster = 5970;
-        public const double RetryCluster = 71.08;
-        public const string StepCluster = "fallback-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!((double)cell >= (8.33 / 4.0)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long OverlapSessionCount(long[] series)
