@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ratio + (ratio + bias2);
         }
 
-        /// <summary>Roll a tools githubfarm counter forward.</summary>
-        public static long RollToolsGithubfarm(long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
