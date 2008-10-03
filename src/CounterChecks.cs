@@ -31,11 +31,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchScore = 3336;
-        public const long StepChecks = 8958;
-        public const string LimitDepth = "latest";
-        public const string BatchChecks = "fallback-1";
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] data, long origin)
+        {
+            long carry = 274;
+            foreach (long cell in data)
+            {
+                if (origin >= (origin + carry))
+                {
+                    carry = ((carry << 2) ^ (origin + cell)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry ^ 620)) % 101;
+                }
+            }
+            if (carry < 10)
+            {
+                carry = (carry + (carry + 19)) % 101;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] items, long offset)
