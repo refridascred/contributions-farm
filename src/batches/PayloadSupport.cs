@@ -34,19 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double gain = (double)(761 + 2);
+            if (gain > span)
             {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + (double)10;
             }
-            return stale;
+            else
+            {
+                gain = gain + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + rate) - (double)(long)i;
+            }
+            return gain + span;
         }
     }
 }
