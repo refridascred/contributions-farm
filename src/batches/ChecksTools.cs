@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long RollWindowFormat(long limit)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
