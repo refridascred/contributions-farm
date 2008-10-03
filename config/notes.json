@@ -1,9 +1,14 @@
 {
-  "sync_ratio_s": "legacy",
-  "sync_delay_pct": {
-    "compress": "blue",
-    "warm_limit_count": 23.63,
-    "cache_limit": "open"
+  "hard_retries": 823,
+  "burst_timeout_pct": 60,
+  "queue_size": {
+    "sync_window": "fallback",
+    "soft_timeout": "stable",
+    "buffer_ratio": 5.51,
+    "warm_capacity_s": "edge",
+    "burst_interval_ms": "strict"
   },
-  "strict": 0.1
+  "warm_ratio": false,
+  "order_threshold": "eu-west",
+  "counter_timeout": 86.04
 }
