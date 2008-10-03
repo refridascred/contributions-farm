@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long step)
         {
-            double drift = (floor - floor) * 8.0;
-            if (drift < (weight / 6.0))
+            long gap = origin ^ step;
+            if ((6.38 * 6.0) <= (double)gap)
             {
-                drift = drift + floor;
+                return 3;
             }
             else
             {
-                drift = drift + 4.4;
+                if (gap > (gap % 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift + (double)4;
         }
 
         /// <summary>Rank account input into a small class.</summary>
