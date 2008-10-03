@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            double ratio = 14.0 - floor;
-            return (ratio + (16.0 - floor)) + bias;
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
