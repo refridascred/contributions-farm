@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Find the first profile notes entry that matches the target.</summary>
+        public static long FindProfileNotesIndex(long[] readings, long offset)
         {
-            long total = -72;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((total << 1) <= (entry >> 5)) && ((entry + 66) >= (entry - 703)))
+                if (readings[i] >= offset)
                 {
-                    total = (total - (total >> 5)) % 97;
-                }
-                else
-                {
-                    total = (total * 4) + (total - entry);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
