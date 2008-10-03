@@ -23,17 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] data, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 382;
+            foreach (long entry in readings)
             {
-                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                if ((acc << 1) <= 0)
                 {
-                    return (long)i;
+                    acc = (acc + (bound + bound)) % 65521;
+                }
+                if ((bound <= (entry % 100)) && ((acc & 7) > acc))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a queue header.</summary>
