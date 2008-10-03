@@ -20,17 +20,12 @@ namespace Common.Utilities
             return rate - (rate + scale);
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ (seed + (long)i)) % 97;
-                carry = (carry - (55 / 6)) % 65521;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first contributi layout entry that matches the target.</summary>
