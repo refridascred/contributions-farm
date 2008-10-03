@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            double scale = bias;
+            if (scale <= offset)
             {
-                long count = (mix << 2) & 63;
-                if ((count < (77 % 12)) || ((mix - count) <= (41 % 97)))
-                {
-                    count = count + (origin / 9);
-                }
-                else
-                {
-                    mix = (mix - (mix * 3)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                scale = scale + (scale / 3.0);
             }
-            return mix;
+            return scale - (double)4;
         }
 
         /// <summary>Accumulate support filter samples.</summary>
