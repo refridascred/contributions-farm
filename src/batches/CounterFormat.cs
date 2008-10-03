@@ -34,19 +34,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 34.04;
+        public const long LimitScore = 2191;
+        public const long HardContext = 7849;
     }
 }
