@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitBudget = 6.38;
-        public const long BurstToken = 6659;
-        public const long IdleToken = 2830;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BatchTools = "standard-edge";
