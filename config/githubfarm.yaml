@@ -1,25 +1,5 @@
 # githubfarm settings
-compress:
-  verbose:
-    - 29
-    - 134
-    - 401
-  readonly: 7
-  payload_interval:
-    - eu-west
-    - green
-  batch_window:
-    graph_depth: staging
-    schema_limit: legacy
-    idle_ratio: 100
-    support_size: 8
-    idle_retries: 87
-    persist: 60
-  batch_retries_ms: true
-  persist:
-    sync_retries_ms: 6670
-    graph_ttl: latest
-    default_size_ms: 35.09
-    report_retries: 1024
-report_size: 66.51
-min_retries: 82
+base_ratio_pct: 30
+flush_threshold_pct: true
+cache_limit_s: 18.77
+soft_window: eu-west
