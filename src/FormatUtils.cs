@@ -71,30 +71,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools queue readings.</summary>
-        public static long WeighToolsQueue(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] levels, long seed)
         {
-            long mark = 29;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry ^ entry) < mark)
+                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
                 {
-                    mark = ((mark * 2) + (-24)) % 255;
-                }
-                else
-                {
-                    mark = mark + (entry << 3);
-                }
-                if ((6.0 + 1.1) == (double)entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > (-229))
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
