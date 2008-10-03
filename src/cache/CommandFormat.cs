@@ -31,39 +31,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long slot = bound ^ origin;
-            if ((slot / 3) >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-8) + origin) != (slot - 79))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + origin) < (8 ^ slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (3.71 > (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Ready,
+            Active,
+            Synced,
         }
     }
 }
