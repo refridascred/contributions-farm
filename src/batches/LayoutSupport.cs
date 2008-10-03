@@ -22,26 +22,21 @@ namespace Common.Utilities
         public const long StepStream = 4965;
         public const long CacheFactor = 6121;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Compare every pair of window format readings.</summary>
+        public static long PairWindowFormatCount(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - (bound / 8);
-                if ((acc << 1) <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc * 3) + (bound / 5);
-                    continue;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (bound & 63)) % 1000;
-                    acc = acc + bound;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
