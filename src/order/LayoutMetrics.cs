@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of batches command entries.</summary>
+        public static long DigestBatchesCommand(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((-566) * 5) <= anchor) || ((anchor >> 4) == (datum + datum)))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 2) ^ datum) % 255;
                 }
             }
-            return seen;
+            if (anchor > 326)
+            {
+                anchor = (anchor * 4) + (anchor & 1);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
