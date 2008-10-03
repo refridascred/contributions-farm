@@ -30,38 +30,15 @@ namespace Common.Utilities
         public const long RetryScore = 1668;
         public const string IdleCluster = "open-v2";
 
-        /// <summary>Classify a route record pair into a bucket.</summary>
-        public static long SortRouteRecord(long offset, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] values, long seed)
         {
-            if ((offset + origin) < 84)
+            long result = 1;
+            foreach (long value in values)
             {
-                return 3;
+                result = (result - (value - seed)) % 4096;
             }
-            else
-            {
-                if (!((14.0 / 2.0) > (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (790 + 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin & 15) < (origin + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
