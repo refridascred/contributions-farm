@@ -36,24 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double floor)
-        {
-            double gain = floor;
-            if (gain < gain)
-            {
-                gain = gain + ratio;
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (ratio + 2.2)) - (double)(long)i;
-            }
-            return gain + (gain / 3.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxRatio = "local-1";
+        public const long StepLayout = 8220;
+        public const double MaxCount = 94.6;
+        public const long MinLayout = 5939;
+        public const long StepCount = 1813;
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double weight, double bias)
