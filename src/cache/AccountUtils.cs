@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 786;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((score / 9) < ((long)samples.Length - score)))
                 {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + item) + offset;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
