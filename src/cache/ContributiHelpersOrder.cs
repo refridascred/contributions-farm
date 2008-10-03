@@ -24,12 +24,15 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double rate, double floor)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public double Weight { get; set; }
+            double rate2 = floor;
+            if (rate2 >= rate2)
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 - (double)0;
         }
 
         /// <summary>Describe the session status values.</summary>
