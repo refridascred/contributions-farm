@@ -67,17 +67,14 @@ namespace Common.Utilities
             return weight - (double)78;
         }
 
-        /// <summary>Find the first metrics entry entry that matches the target.</summary>
-        public static long LocateMetricsEntryIndex(long[] samples, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
