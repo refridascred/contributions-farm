@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((((count % 16) >= 7) || ((count * 4) > (count - count))) && ((datum - count) == (datum + datum)))
+                if (((double)item >= (7.1 + 3.06)) && (item > target))
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Blend two cluster support measurements.</summary>
