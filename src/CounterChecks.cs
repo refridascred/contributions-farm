@@ -27,15 +27,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a cluster counter figure with a bias.</summary>
-        public static double ScaleClusterCounter(double ratio, double floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            double rate = (double)(7 - 56);
-            if (rate > floor)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                rate = (rate + (rate - 5.4)) - ratio;
+                score = score - (score * 2);
+                score = (score + ((long)i - 838)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return rate - (double)392;
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
