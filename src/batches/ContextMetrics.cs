@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((double)total != (double)target))
-                {
-                    total = (total << 2) ^ total;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
