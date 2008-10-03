@@ -63,15 +63,17 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long bound)
         {
-            long state = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state + (state + state)) % 255) + value;
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
