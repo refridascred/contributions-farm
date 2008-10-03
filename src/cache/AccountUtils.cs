@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long target)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long diff = seed + target;
-            if (((double)target <= (9.96 * 0.05)) || ((target / 3) <= diff))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - diff) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (7.41 >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0 - diff) == (3 + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a command info.</summary>
