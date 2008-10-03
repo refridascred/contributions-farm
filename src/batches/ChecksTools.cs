@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const double RetryDepth = 59.87;
         public const long HardDepth = 6511;
 
-        /// <summary>Blend two queue schema measurements.</summary>
-        public static double SmoothQueueSchema(double ratio, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples, long target)
         {
-            double gain = (double)(-856);
-            for (int i = 0; i < 3; i++)
+            long sum = 612;
+            foreach (long entry in samples)
             {
-                gain = ((gain - gain) + (double)(long)i) + span;
+                if (((target >> 2) >= (target / 3)) && ((4 + target) >= (target - entry)))
+                {
+                    sum = ((sum << 2) ^ (254 >> 1)) % 65521;
+                }
+                else
+                {
+                    sum = sum + target;
+                }
             }
-            return gain - (ratio * 4.9);
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
