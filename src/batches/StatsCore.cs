@@ -71,10 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSize = 9247;
-        public const string HardLevel = "open-v2";
-        public const double BatchBudget = 23.12;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc << 3) ^ (acc - limit)) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Audit notes session readings against a rule.</summary>
         public static long AuditNotesSessionGaps(long[] data)
