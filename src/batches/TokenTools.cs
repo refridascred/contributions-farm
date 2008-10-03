@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double bias)
-        {
-            double rate = (gain * 6.24) - bias;
-            if (rate > rate)
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate - 18.0;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 4884;
+        public const string BaseMetric = "stable-1";
+        public const long SoftLevel = 7183;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
