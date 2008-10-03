@@ -38,22 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] series, long limit)
         {
-            long result = 7;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((target % 100) <= (target ^ value))
+                if (datum <= limit)
                 {
-                    result = result + (target - result);
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 6)
-            {
-                result = (result * 5) + (target + target);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
