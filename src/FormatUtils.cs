@@ -21,21 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 51;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > 73)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score * 4) + ((-40) / 5);
+                }
+                if ((entry <= (entry - score)) || ((double)score >= 18.0))
+                {
+                    score = ((score << 3) ^ (311 / 5)) % 65521;
+                }
+                else
+                {
+                    score = (score << 3) ^ (982 % 60);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Fold a list of route readings.</summary>
