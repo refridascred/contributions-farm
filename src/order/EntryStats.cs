@@ -26,21 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 178;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((1.56 * 4.05) >= (double)origin) && (item <= (item >> 3)))
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark - (item - origin)) % 1000;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Blend two metrics payload measurements.</summary>
