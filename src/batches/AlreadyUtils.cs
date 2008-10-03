@@ -62,18 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch cluster samples are out of range.</summary>
-        public static long CountBatchClusterOutliers(long[] series, long bound)
+        /// <summary>Look up the position of a buffer window sample.</summary>
+        public static long LocateBufferWindowIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 255) >= 16)
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
