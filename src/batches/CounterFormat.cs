@@ -32,18 +32,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long AuditContributiEntryGaps(long[] levels, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long origin)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((0.2 < (double)cell) && ((double)tally < (double)cell))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = (tally + 1) - origin;
+                    score = ((score - (origin + origin)) % 1000) ^ (long)i2;
                 }
+                if ((origin - 0) <= score)
+                {
+                    score = ((score * 4) + (score * 2)) % 1000;
+                    break;
+                }
+                if ((long)i > 0)
+                {
+                    score = score - ((long)i ^ score);
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
