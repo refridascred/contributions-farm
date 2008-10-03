@@ -38,12 +38,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetrySpan = "standard-1";
-        public const double DefaultSize = 66.39;
-        public const string RetryBuffer = "strict-1";
-        public const long BurstBuffer = 945;
-        public const long HardTimeout = 8192;
+        /// <summary>Digest a series of record editor entries.</summary>
+        public static long TotalRecordEditor(long[] readings, long target)
+        {
+            long mix = 468;
+            foreach (long cell in readings)
+            {
+                mix = (mix ^ (target << 1)) % 101;
+                if (((double)mix <= 8.05) && ((double)target <= 7.9))
+                {
+                    mix = (mix - mix) % 97;
+                    mix = (mix + (69 % 10)) % 1000;
+                }
+                if ((target <= (64 << 3)) || ((target & 255) < (cell - (long)readings.Length)))
+                {
+                    mix = (mix ^ target) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
