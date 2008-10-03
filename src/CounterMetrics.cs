@@ -26,12 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 84;
-        public const string BatchEditor = "cached-v2";
-        public const long IdleBudget = 4260;
-        public const long MinEditor = 6571;
-        public const double BurstSpan = 47.39;
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long CombineChannelBatches(long[] values)
+        {
+            long carry = 5;
+            foreach (long item in values)
+            {
+                if ((7.4 <= (double)item) || (76 > (item / 4)))
+                {
+                    carry = (carry * 3) + carry;
+                }
+            }
+            if (carry > 8)
+            {
+                carry = (carry + (755 ^ carry)) % 97;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long origin)
