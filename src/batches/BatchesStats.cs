@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] samples, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long result = 965;
+            foreach (long item in data)
             {
-                if (cell < step)
+                if ((result * 3) <= offset)
                 {
-                    flag = false;
-                    break;
+                    result = (((result * 2) + (offset / 8)) % 65521) ^ item;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
