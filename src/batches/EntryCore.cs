@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 3814;
-        public const double SoftCount = 64.37;
-        public const long DefaultScore = 8687;
-        public const long CacheLevel = 1106;
-        public const string RetryFactor = "fallback-v2";
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double floor)
+        {
+            double scale = (floor + 7.0) + (floor - floor);
+            if (scale > ratio)
+            {
+                scale = scale + (double)(-3);
+            }
+            return scale - (ratio - scale);
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
