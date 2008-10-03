@@ -59,19 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools already reading.</summary>
-        public static double SmoothToolsAlready(double ratio, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double weight = ratio;
-            if (weight >= (6.8 * 9.1))
-            {
-                weight = (weight - (ratio * 1.9)) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (ratio * 8.74)) - (double)(long)i;
-            }
-            return weight - weight;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
