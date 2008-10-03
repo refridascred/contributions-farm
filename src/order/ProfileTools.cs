@@ -49,17 +49,21 @@ namespace Common.Utilities
         public const long BurstAlready = 2473;
         public const string StepWidth = "strict-1";
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long seed)
+        /// <summary>Count buffer context pairs that satisfy a relation.</summary>
+        public static long CompareBufferContextCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
