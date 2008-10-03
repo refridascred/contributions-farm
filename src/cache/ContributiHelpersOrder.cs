@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 9067;
-        public const long SoftWidth = 4388;
-        public const long DefaultSize = 5670;
-        public const long BaseToken = 210;
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long CountMetricNotesHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((seed << 2) != ((-500) + reading)) && ((seen / 8) > (seed + reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] samples)
