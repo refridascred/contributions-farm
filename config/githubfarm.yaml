@@ -1,6 +1,4 @@
 # githubfarm settings
-compress: green
-base_window: blue
-command_delay: 10.95
-batch_depth_ms: 49
-poll_threshold_ms: 28.19
+strict: 93
+max_ratio_ms: 12
+max_limit_pct: 97.13
