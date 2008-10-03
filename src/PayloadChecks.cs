@@ -61,11 +61,13 @@ namespace Common.Utilities
         public const long DefaultReport = 8781;
         public const string HardReport = "alpha";
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
