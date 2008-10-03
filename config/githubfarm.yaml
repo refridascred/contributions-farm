@@ -1,4 +1,5 @@
 # githubfarm settings
-strict: 93
-max_ratio_ms: 12
-max_limit_pct: 97.13
+sync_ttl_s: local
+counter_capacity: strict
+persist: 12.81
+sync_ttl: primary
