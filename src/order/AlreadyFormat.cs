@@ -46,38 +46,14 @@ namespace Common.Utilities
             return gain + (scale - floor);
         }
 
-        /// <summary>Classify a payload order pair into a bucket.</summary>
-        public static long SortPayloadOrder(long step, long bound)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (20.0 > (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step * 4) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-844) + bound) > (bound + 87))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.1 + 16.0) == (double)step)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
