@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] samples)
         {
-            double mean = (span - rate) + (span - 6.0);
-            if (mean < mean)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mean = mean - rate;
+                if ((value - 588) != (value ^ seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (6.2 * 1.5)) + (double)(long)i;
-            }
-            return mean + span;
+            return seen;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
