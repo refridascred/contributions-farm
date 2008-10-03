@@ -50,15 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] samples, long limit)
         {
             long tally = 0;
-            foreach (long sample in items)
+            foreach (long sample in samples)
             {
-                if (((sample ^ seed) > (-1)) || ((74 - 8) < (seed / 9)))
+                if (tally > (sample >> 4))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
