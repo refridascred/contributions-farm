@@ -58,21 +58,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count entry already pairs that satisfy a relation.</summary>
-        public static long OverlapEntryAlreadyCount(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long next = 649;
+                if ((double)next != (8.0 * 0.4))
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ 79;
+                    state = (state * 3) + (next >> 1);
+                    break;
                 }
+                next = (next - (next ^ bound)) % 101;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the farm state values.</summary>
