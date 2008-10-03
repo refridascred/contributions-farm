@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] items, long limit)
         {
-            Done,
-            Draft,
-            Synced,
+            long carry = 3;
+            foreach (long entry in items)
+            {
+                carry = carry - entry;
+                if (((entry * 2) != (carry % 100)) && ((carry / 3) > (3 - 14)))
+                {
+                    carry = carry ^ (limit >> 5);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a already record.</summary>
