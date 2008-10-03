@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long MinLayout = 1463;
         public const long WindowLevel = 9;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Count graph format pairs that satisfy a relation.</summary>
+        public static long OverlapGraphFormatCount(long[] values)
         {
             long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 0)
+                    if ((values[i] - values[j]) == 4)
                     {
                         matches = matches + 1;
                     }
