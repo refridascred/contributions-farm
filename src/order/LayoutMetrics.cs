@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long MeasureAlreadyNotesGaps(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((513 >= ((long)series.Length % 5)) && (3.0 > (double)cell)) || !((cell ^ cell) > seen))
+                if (((200 + reading) <= (reading + 71)) && (452 >= (matches - reading)))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 2) - step;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
