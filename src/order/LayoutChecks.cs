@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long MaxMetric = 6026;
         public const long BurstMetric = 3690;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 5027;
-        public const string LimitBatch = "open-1";
-        public const string DefaultBatch = "cached";
+        /// <summary>Roll a order counter counter forward.</summary>
+        public static long DeriveOrderCounter(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long limit)
