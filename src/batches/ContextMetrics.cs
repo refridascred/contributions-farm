@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            double load = (double)2 * 6.72;
-            return (load - (ratio / 9.0)) + span;
+            double gain = (offset + scale) * 20.0;
+            return gain - offset;
         }
 
         /// <summary>Adjust a report reading.</summary>
