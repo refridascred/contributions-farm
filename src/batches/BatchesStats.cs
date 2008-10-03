@@ -55,12 +55,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
+            Synced,
+            Paused,
+            Locked,
+            Dropped,
+            Idle,
         }
     }
 }
