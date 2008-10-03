@@ -1,5 +1,10 @@
 {
-  "burst_limit_count": "local",
-  "strict": "staging",
-  "warm_timeout_pct": 9007
+  "schema_window": 4405,
+  "base_interval": {
+    "verbose": 80.33,
+    "base_ratio": "local",
+    "hard_capacity": false,
+    "cache_interval": 60
+  },
+  "strict": true
 }
