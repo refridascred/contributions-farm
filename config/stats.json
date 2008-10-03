@@ -1,18 +1,5 @@
 {
-  "notes_ratio": {
-    "notes_retries": true,
-    "default_ttl": true,
-    "min_ratio_s": {
-      "audit": 22,
-      "context_capacity": 22.91,
-      "default_limit": ["legacy", "latest", "fallback", "latest"],
-      "format_timeout": 7532,
-      "compress": true
-    },
-    "readonly": 30
-  },
-  "route_threshold": "open",
-  "retry_capacity_count": true,
-  "hard_depth": "edge",
-  "enabled": "strict"
+  "dry_run": 98.84,
+  "max_depth_s": "fallback",
+  "notes_ttl": 24.06
 }
