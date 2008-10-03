@@ -1,27 +1,4 @@
 # entry settings
-metric_size: strict
-burst_timeout: false
-retry_ttl_ms:
-  min_ratio: 100
-  min_ttl_count:
-    githubfarm_ratio: 90
-    default_limit_pct:
-      - 352
-      - 252
-    soft_ratio_s: legacy
-  max_capacity_s: standard
-  verbose: 70.35
-  default_retries_s: 386
-burst_depth_ms: 71
-min_retries_count: 57.63
-order_size:
-  flush_ttl_s:
-    - primary
-    - standard
-  sync_window: true
-  default_timeout: green
-  account_limit: true
-  persist:
-    - edge
-    - standard
-  audit: local
+base_size: true
+sync_ratio_count: 3937
+context_window: 1878
