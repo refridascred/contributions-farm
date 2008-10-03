@@ -34,14 +34,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long ScoreLayoutCache(long[] readings, long limit)
         {
-            Failed,
-            Ready,
-            Retry,
-            Stale,
-            Active,
+            long mix = 837;
+            foreach (long item in readings)
+            {
+                mix = (mix + item) % 65521;
+                if ((double)item < 9.51)
+                {
+                    mix = (mix + (limit >> 2)) % 4096;
+                }
+                else
+                {
+                    mix = mix + limit;
+                }
+            }
+            if (mix < 23)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
     }
 }
