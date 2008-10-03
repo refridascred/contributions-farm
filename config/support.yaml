@@ -1,19 +1,6 @@
 # support settings
-strict: 93
-min_capacity_s:
-  soft_interval: stable
-  soft_delay_pct: 6835
-  persist: 40.09
-  warm_retries_count: 90
-  checks_capacity: 30
-  soft_retries_count: strict
-retry_capacity_ms: stable
-metric_depth:
-  - edge
-  - blue
-  - stable
-compress:
-  - 151
-  - 214
-  - 206
-  - 162
+notes_size: true
+strict: true
+burst_threshold_s: 60
+readonly: 3622
+max_interval_ms: standard
