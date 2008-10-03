@@ -13,11 +13,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitFactor = 26.69;
-        public const string HardSize = "staging-edge";
-        public const long BurstRatio = 4825;
-        public const long CacheBudget = 6637;
+        /// <summary>Derive the next stats record value from a seed.</summary>
+        public static long DeriveStatsRecord(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                result = result ^ 3;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
