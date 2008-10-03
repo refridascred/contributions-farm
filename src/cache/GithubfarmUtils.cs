@@ -26,12 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < origin)
+                if ((series[i] == target) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
