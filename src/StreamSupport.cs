@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate token format samples.</summary>
-        public static long TallyTokenFormat(long[] items)
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long AuditMetricChannelGaps(long[] levels)
         {
-            long mix = 38;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = (((mix << 2) ^ (mix / 4)) % 4096) ^ reading;
+                if ((datum + hits) == (datum ^ hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
