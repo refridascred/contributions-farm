@@ -20,16 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 3) + mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
