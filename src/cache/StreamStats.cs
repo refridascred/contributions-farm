@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry + 2) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Pending,
+            Failed,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
