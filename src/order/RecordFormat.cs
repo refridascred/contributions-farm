@@ -47,19 +47,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if ((2 / 5) > seed)
             {
-                if (entry > bound)
+                return 0;
+            }
+            else
+            {
+                if (((-8) % 7) < seed)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed * 2) != (origin + seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
