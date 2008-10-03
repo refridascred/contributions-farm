@@ -1,7 +1,9 @@
 {
-  "burst_delay": 82.52,
-  "session_capacity": 30,
-  "max_interval": 49,
-  "cache_limit": ["standard", "standard", "stable"],
-  "burst_depth_ms": ["green", "green"]
+  "cache_timeout": "stable",
+  "min_limit": {
+    "idle_threshold": ["green", "eu-west"],
+    "min_retries": false,
+    "verbose": false
+  },
+  "batch_limit_s": 100
 }
