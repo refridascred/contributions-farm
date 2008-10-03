@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift + (double)(-781);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] items, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((double)value <= (double)floor)
+                {
+                    count = count + 3;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the command state values.</summary>
