@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 20.6;
-        public const double BatchInterval = 59.48;
-        public const long SoftToken = 5159;
-        public const string WindowToken = "cached-v2";
-        public const double MinInterval = 27.47;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] values)
