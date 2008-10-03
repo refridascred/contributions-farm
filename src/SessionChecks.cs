@@ -34,12 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            Done,
-            Paused,
-            Synced,
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((target + target) < ((long)i + target)))
+                {
+                    acc = acc + (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
