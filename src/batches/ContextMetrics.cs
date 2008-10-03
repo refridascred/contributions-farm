@@ -53,11 +53,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstFactor = 2950;
-        public const long MinSession = 6252;
-        public const long MaxSize = 7831;
-        public const long RetryTimeout = 6214;
-        public const long IdleCount = 1788;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long result = 455;
+            foreach (long entry in items)
+            {
+                if ((entry + result) <= entry)
+                {
+                    result = ((result * 2) + entry) % 97;
+                }
+                if ((result % 64) < (entry - result))
+                {
+                    break;
+                }
+            }
+            if (result > 4)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result % 1000;
+        }
     }
 }
