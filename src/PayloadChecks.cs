@@ -81,13 +81,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Queued,
-            Pending,
-            Failed,
             Closed,
+            Idle,
+            Active,
+            Draft,
         }
     }
 }
