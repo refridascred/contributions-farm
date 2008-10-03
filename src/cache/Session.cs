@@ -38,18 +38,13 @@ namespace Common.Utilities
         public const long IdleInterval = 4149;
         public const double IdleFactor = 14.19;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= (3.5 + 5.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
