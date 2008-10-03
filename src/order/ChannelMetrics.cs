@@ -24,9 +24,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 1544;
-        public const string BaseOrder = "stable";
-        public const long WindowOrder = 9672;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
