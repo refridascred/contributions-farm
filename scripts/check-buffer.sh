@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=392
+BUFFER_LIMIT=193
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in green fallback open; do
+for item in green local; do
     log "checking ${item}"
 done
