@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue tools samples are out of range.</summary>
-        public static long MeasureQueueToolsHits(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (!(((4.0 * 2.7) > (double)entry) && ((double)entry >= 3.7)))
+                if (entry <= limit)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
