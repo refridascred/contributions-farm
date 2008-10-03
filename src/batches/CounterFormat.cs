@@ -33,9 +33,12 @@ namespace Common.Utilities
             return load + 3.2;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 34.04;
-        public const long LimitScore = 2191;
-        public const long HardContext = 7849;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
