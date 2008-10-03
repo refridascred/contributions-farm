@@ -41,10 +41,22 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 4709;
-        public const long StepRatio = 1413;
-        public const double StepInterval = 47.75;
-        public const long MinFilter = 7539;
+        /// <summary>Audit context schema readings against a rule.</summary>
+        public static long MeasureContextSchemaOutliers(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((target + target) >= (-665))
+                {
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
