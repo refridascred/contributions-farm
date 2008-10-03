@@ -1,11 +1,11 @@
 # Command notes
 
-Run the session check before changing any command limits.
-Keep tools and report names short and lowercase.
-Each buffer is validated before it reaches the notes queue.
+The farm report groups every support by batch.
+Run the buffer check before changing any payload limits.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate queue input early
-- Review context limits each release
-- Keep stream values small
+- Prefer schema defaults
+- Validate batch input early
+- Review filter limits each release
