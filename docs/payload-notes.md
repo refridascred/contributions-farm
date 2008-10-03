@@ -1,11 +1,11 @@
 # Payload notes
 
-Keep entry and layout names short and lowercase.
-The queue report groups every contributi by already.
-Keep session and filter names short and lowercase.
+Keep batches and stats names short and lowercase.
+Keep profile and buffer names short and lowercase.
+Each account is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Log every already change
-- Review editor limits each release
-- Prefer order defaults
+- Validate token input early
+- Review stream limits each release
+- Keep batches values small
