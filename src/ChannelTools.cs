@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Synced,
+            Closed,
+            Retry,
             New,
-            Active,
-            Draft,
+            Ready,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
