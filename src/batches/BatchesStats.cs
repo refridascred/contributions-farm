@@ -42,24 +42,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((1.0 - 13.0) >= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(3.1 > (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
