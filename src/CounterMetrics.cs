@@ -39,21 +39,24 @@ namespace Common.Utilities
         public const long LimitDepth = 2216;
         public const long BurstMetric = 363;
 
-        /// <summary>Compare every pair of support schema readings.</summary>
-        public static long OverlapSupportSchemaCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin + origin) != (origin / 8))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ origin) >= (20 + seed))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
