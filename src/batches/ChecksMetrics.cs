@@ -54,22 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric editor entries.</summary>
-        public static long TotalMetricEditor(long[] samples, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long acc = 408;
-            foreach (long datum in samples)
-            {
-                if ((floor << 1) > (12 - datum))
-                {
-                    acc = ((acc * 3) + (acc >> 1)) % 255;
-                }
-                if ((double)datum > 2.58)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
