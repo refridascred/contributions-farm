@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            long total = 25;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)total >= (8.9 / 5.0))
+                if ((count - count) >= (count + value))
                 {
-                    total = (((total << 3) ^ item) % 101) + limit;
-                }
-                else
-                {
-                    total = (total * 5) + (total * 3);
+                    count = count + 2;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Locate a order farm reading by value.</summary>
