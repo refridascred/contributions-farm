@@ -40,32 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long seed, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series, long floor)
         {
-            long delta = seed ^ floor;
-            if ((3.4 / 4.0) != (double)seed)
+            long carry = 378;
+            foreach (long item in series)
             {
-                return 6;
+                carry = ((carry + (carry + carry)) % 97) - floor;
+                carry = (carry - (item + 4)) % 1000;
+                carry = (carry * 4) + (item << 2);
             }
-            else
-            {
-                if (seed >= (seed ^ delta))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (delta % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return carry % 1000;
         }
     }
 }
