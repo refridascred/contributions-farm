@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
