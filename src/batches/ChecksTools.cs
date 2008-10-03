@@ -41,15 +41,19 @@ namespace Common.Utilities
             return gain - (ratio * 4.9);
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] readings, long floor)
         {
-            long result = 16;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                result = ((((result << 2) ^ (746 % 97)) % 4096) + sample) + step;
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
