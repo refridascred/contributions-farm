@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Scale a channel command figure with a bias.</summary>
+        public static double ProjectChannelCommand(double bias, double bias2)
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Label { get; set; }
+            double ratio = bias2;
+            if (ratio < bias)
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio + bias2);
         }
 
         /// <summary>Roll a tools githubfarm counter forward.</summary>
