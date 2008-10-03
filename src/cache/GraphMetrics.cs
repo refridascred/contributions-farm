@@ -44,23 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long bound)
         {
-            long state = 391;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                state = (state << 2) ^ ((long)items.Length + item);
-                if ((item * 3) == (item / 7))
+                if (value > bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (state > 471)
-            {
-                state = (state - ((long)items.Length + (-837))) % 4096;
-            }
-            return state % 97;
+            return found;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
