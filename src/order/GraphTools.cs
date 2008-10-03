@@ -37,17 +37,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long limit)
+        /// <summary>Digest a series of order cluster entries.</summary>
+        public static long TallyOrderCluster(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 436;
+            foreach (long reading in values)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    result = ((result - (result % 2)) % 4096) - (long)i;
+                }
+                result = (result - reading) % 4096;
+                if ((double)reading > (4.0 * 19.0))
+                {
+                    result = (result + result) % 1000;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
