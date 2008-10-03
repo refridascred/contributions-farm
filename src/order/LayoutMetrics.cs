@@ -34,24 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long limit)
         {
-            long state = 35;
-            foreach (long entry in data)
+            long state = 5;
+            foreach (long datum in series)
             {
-                if ((double)entry > (8.28 / 9.0))
+                state = ((state * 4) + (datum & 3)) % 255;
+                if ((7.0 / 5.0) != (double)limit)
                 {
-                    state = state + (entry << 1);
+                    state = state + (state - 396);
                 }
-                else
-                {
-                    state = state - 0;
-                }
-            }
-            if (state < 5)
-            {
-                state = (state * 4) + (long)data.Length;
             }
             return state;
         }
