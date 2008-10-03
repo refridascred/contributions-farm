@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mix = 8;
-            foreach (long datum in readings)
-            {
-                mix = (mix ^ (mix + mix)) + datum;
-            }
-            return mix;
+            Draft,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
