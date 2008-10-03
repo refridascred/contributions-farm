@@ -1,17 +1,30 @@
 {
-  "readonly": {
-    "hard_window_s": 6.86,
-    "sync_capacity_s": 6670,
-    "warm_ratio_ms": 100,
-    "enabled": ["primary", "open"],
-    "batch_timeout_pct": true
+  "default_limit_ms": {
+    "base_interval_count": 51,
+    "flush_window": {
+      "default_depth_ms": 7968,
+      "flush_window_s": 6040,
+      "editor_size": "green",
+      "compress": 250,
+      "dry_run": 250,
+      "queue_timeout": 21
+    },
+    "contributi_delay": 30,
+    "retry_ratio_s": ["stable", "cached", "latest"],
+    "idle_interval_ms": {
+      "profile_delay": 89.78,
+      "persist": 57.91,
+      "route_limit": "staging",
+      "burst_window_s": 30
+    }
   },
-  "default_interval_pct": "primary",
-  "cache_interval_pct": 98.74,
-  "compress": {
-    "retry_depth_count": "primary",
-    "flush_interval_s": 47.53,
-    "schema_capacity": ["cached", "edge", "stable"]
-  },
-  "batches_retries": 14.79
+  "window_delay": "legacy",
+  "cache_limit_s": {
+    "hard_window_count": true,
+    "hard_interval_ms": 60,
+    "flush_size": [83, 19, 140, 485],
+    "warm_capacity_pct": true,
+    "record_timeout": "standard",
+    "batch_depth": false
+  }
 }
