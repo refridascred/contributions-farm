@@ -34,19 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] levels, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long mix = 20;
+            foreach (long datum in items)
             {
-                if (item >= bound)
+                if ((mix - mix) == (datum / 6))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 4) + (step & 127)) % 255;
                 }
             }
-            return ready;
+            if (mix < 17)
+            {
+                mix = ((mix << 2) ^ (815 ^ step)) % 65521;
+            }
+            return mix;
         }
     }
 }
