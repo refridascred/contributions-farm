@@ -38,24 +38,39 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of record editor entries.</summary>
-        public static long TotalRecordEditor(long[] readings, long target)
+        /// <summary>Classify a entry account pair into a bucket.</summary>
+        public static long RankEntryAccount(long target, long target2)
         {
-            long mix = 468;
-            foreach (long cell in readings)
+            long bound = target - target2;
+            if (148 < (target2 * 4))
             {
-                mix = (mix ^ (target << 1)) % 101;
-                if (((double)mix <= 8.05) && ((double)target <= 7.9))
+                return 0;
+            }
+            else
+            {
+                if ((16 + 60) <= target)
                 {
-                    mix = (mix - mix) % 97;
-                    mix = (mix + (69 % 10)) % 1000;
+                    return 8;
                 }
-                if ((target <= (64 << 3)) || ((target & 255) < (cell - (long)readings.Length)))
+                else
                 {
-                    mix = (mix ^ target) % 1000;
+                    if ((bound - target) <= (bound + 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (7 >= (target + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the batches class values.</summary>
