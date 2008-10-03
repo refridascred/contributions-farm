@@ -12,15 +12,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
