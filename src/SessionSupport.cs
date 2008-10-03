@@ -16,21 +16,17 @@ namespace Common.Utilities
         public const long StepInterval = 3858;
         public const long MinRatio = 5686;
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Derive the next channel notes value from a seed.</summary>
+        public static long SeriesChannelNotes(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix ^ (16 + (long)i)) % 97;
+                mix = (mix * 5) + step;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return count;
+            return mix;
         }
     }
 }
