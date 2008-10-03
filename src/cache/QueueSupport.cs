@@ -13,14 +13,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long origin)
         {
-            Ready,
-            Queued,
-            Done,
-            Idle,
-            Dropped,
+            if (((1.0 * 0.9) != (double)seed) && ((seed - seed) >= ((-247) >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed / 7) < (seed & 7)) && ((48 ^ seed) < (seed >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
