@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 3444;
         public const double StepRatio = 94.79;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 46;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)mark > (6.0 + 2.0)))
                 {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark + (entry & 255)) % 65521) - offset;
+                }
+                else
+                {
+                    mark = mark ^ mark;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
     }
 }
