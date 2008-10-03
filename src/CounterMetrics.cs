@@ -39,23 +39,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long span = offset + target;
+            if ((span + span) < (68 - span))
             {
-                if (!(floor < result))
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                if ((26 <= (floor >> 4)) && (137 > (floor << 1)))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((9 + offset) < span)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ 3) == (20 - span))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (span <= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
