@@ -13,13 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Audit githubfarm token readings against a rule.</summary>
+        public static long AuditGithubfarmTokenHits(long[] values)
         {
-            Done,
-            Pending,
-            Dropped,
-            Synced,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (count < (2 - count))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
