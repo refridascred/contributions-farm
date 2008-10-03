@@ -1,7 +1,6 @@
-id,active,region
-1,latest,42.61
-2,62.32,77.98
-3,146,staging
-4,local,65.27
-5,strict,43.73
-6,46,326
+id,ratio,rank
+1,35.42,97.6
+2,978,822
+3,54.58,legacy
+4,edge,56.41
+5,14.99,440
