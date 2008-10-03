@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Locked,
+            Failed,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
