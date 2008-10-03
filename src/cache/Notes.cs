@@ -30,16 +30,18 @@ namespace Common.Utilities
         public const long MinLevel = 7997;
         public const long CacheRatio = 3472;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Audit contributi commits readings against a rule.</summary>
+        public static long AuditContributiCommitsMatches(long[] values, long bound)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mark = (mark - (origin << 3)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((3.4 * 9.5) >= (double)seen)
+                {
+                    seen = ((seen + 2) - item) + bound;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
