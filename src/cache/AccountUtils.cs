@@ -38,21 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9 + count) > (-277))
                 {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ sample;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
