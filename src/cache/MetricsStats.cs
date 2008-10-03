@@ -67,17 +67,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first token already entry that matches the target.</summary>
-        public static long LocateTokenAlreadyIndex(long[] levels, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] > limit)
+                if ((cell & 31) < hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
