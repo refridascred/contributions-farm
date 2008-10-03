@@ -43,11 +43,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 9944;
         public const double MinContributi = 12.6;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 2754;
-        public const string CacheFactor = "strict";
-        public const long CacheCount = 7973;
-        public const double CacheRatio = 72.02;
-        public const string IdleScore = "staging";
+        /// <summary>Count stats counter pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCounterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
