@@ -10,21 +10,24 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long CacheMetrics = 1310;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (limit < (origin / 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!(origin > (limit ^ limit)))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
