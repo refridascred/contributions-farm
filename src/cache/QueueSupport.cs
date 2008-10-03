@@ -25,16 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 944;
+            foreach (long cell in levels)
             {
-                acc = ((acc << 3) ^ (1 + limit)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
+                mix = ((mix << 2) ^ (mix - 2)) % 1000;
+                mix = ((mix << 3) ^ cell) % 101;
+                if ((1 % 3) > mix)
+                {
+                    mix = (mix ^ (cell - origin)) % 101;
+                }
             }
-            return acc;
+            if (mix > 6)
+            {
+                mix = (mix - (mix ^ origin)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks entry.</summary>
