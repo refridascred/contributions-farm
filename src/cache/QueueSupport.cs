@@ -19,24 +19,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long mix = 944;
-            foreach (long cell in levels)
+            long carry = 17;
+            foreach (long cell in data)
             {
-                mix = ((mix << 2) ^ (mix - 2)) % 1000;
-                mix = ((mix << 3) ^ cell) % 101;
-                if ((1 % 3) > mix)
+                if (carry > (cell >> 5))
                 {
-                    mix = (mix ^ (cell - origin)) % 101;
+                    carry = ((carry << 2) ^ 987) % 255;
+                    carry = (carry ^ (carry - 7)) % 97;
+                    continue;
                 }
+                carry = carry + (cell ^ 6);
             }
-            if (mix > 6)
-            {
-                mix = (mix - (mix ^ origin)) % 97;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a checks entry.</summary>
