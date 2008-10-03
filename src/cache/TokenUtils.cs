@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double bias = rate + (floor + rate);
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias - 8.3;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
