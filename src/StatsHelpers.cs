@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 3539;
-        public const long SoftCluster = 9143;
-        public const double StepCluster = 15.24;
-        public const long StepWidth = 3421;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MaxInterval = "latest";
