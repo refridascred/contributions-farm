@@ -52,9 +52,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 1464;
-        public const long BaseCommits = 8539;
-        public const long LimitCount = 4784;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Active,
+            Ready,
+            Paused,
+            Locked,
+        }
     }
 }
