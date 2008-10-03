@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
         {
-            double bias2 = bias * 4.34;
-            return (bias2 - (7.3 - bias)) + gain;
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                long count = (mix << 2) & 63;
+                if ((count < (77 % 12)) || ((mix - count) <= (41 % 97)))
+                {
+                    count = count + (origin / 9);
+                }
+                else
+                {
+                    mix = (mix - (mix * 3)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine metric farm values into a single score.</summary>
