@@ -58,21 +58,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 139;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry * 3) >= 873)
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry + (item % 24);
+                }
+                else
+                {
+                    carry = (carry ^ (item - item)) % 4096;
                 }
             }
-            return seen;
+            if (carry > 2)
+            {
+                carry = (carry ^ (carry - 4)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Project the next cluster value.</summary>
