@@ -50,10 +50,27 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 12.06;
-        public const long HardScore = 885;
-        public const double SoftCounter = 38.92;
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long TallyAccountProfile(long[] series)
+        {
+            long mark = 26;
+            foreach (long sample in series)
+            {
+                if ((double)sample < (1.74 / 3.0))
+                {
+                    mark = mark - (sample ^ sample);
+                }
+                if ((mark & 127) < (mark - sample))
+                {
+                    mark = mark + (mark + mark);
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark + mark);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long offset)
