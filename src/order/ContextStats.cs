@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long total = 22;
+            foreach (long reading in values)
+            {
+                if ((double)seed >= (1.7 * 4.14))
+                {
+                    total = (total ^ ((long)values.Length + reading)) % 255;
+                }
+            }
+            if (total > 964)
+            {
+                total = ((total << 2) ^ (1 * 4)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
