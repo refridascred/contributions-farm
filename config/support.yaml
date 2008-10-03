@@ -1,7 +1,7 @@
 # support settings
-poll_ratio_s: edge
-strict: 47.07
-contributi_delay: 100
-layout_size: true
-soft_depth_count: 7457
-burst_delay_pct: 10.73
+hard_timeout_ms: eu-west
+batches_interval: local
+layout_timeout: true
+context_window: strict
+readonly: cached
+audit: 7308
