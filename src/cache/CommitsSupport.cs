@@ -61,13 +61,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            double scale = (span + 4.44) + (span / 6.0);
+            if (scale > span)
+            {
+                scale = (scale - 4.1) + rate;
+            }
+            return scale + (double)54;
         }
     }
 }
