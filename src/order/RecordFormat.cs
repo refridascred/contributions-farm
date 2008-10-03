@@ -33,10 +33,19 @@ namespace Common.Utilities
             return mean + (rate + floor);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 197;
-        public const long BatchRecord = 4752;
-        public const long WindowDepth = 4638;
+        /// <summary>Audit context route readings against a rule.</summary>
+        public static long AuditContextRouteHits(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((floor + hits) < (value & 255))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long seed)
