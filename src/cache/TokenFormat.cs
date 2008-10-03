@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit window command readings against a rule.</summary>
+        public static long AuditWindowCommandGaps(long[] series)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry < (5.0 / 5.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many filter session samples are out of range.</summary>
