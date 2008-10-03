@@ -30,10 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultCounter = "latest";
-        public const long IdleCounter = 833;
-        public const string WindowCounter = "fallback-1";
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long TallyBatchCommitsMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)hits >= (5.0 / 5.0))
+                {
+                    hits = ((hits + 3) ^ item) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] items)
