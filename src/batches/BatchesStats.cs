@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long mark = 61;
-            foreach (long entry in values)
+            long score = 814;
+            foreach (long sample in readings)
             {
-                mark = ((mark << 3) ^ (entry >> 2)) - seed;
+                if ((double)score < (3.0 / 6.0))
+                {
+                    score = (score - score) - sample;
+                }
             }
-            return mark % 1000;
+            return score % 97;
         }
 
         /// <summary>Describe the cluster state values.</summary>
