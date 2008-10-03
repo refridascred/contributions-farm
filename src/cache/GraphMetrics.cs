@@ -25,15 +25,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long TallyBatchCommitsMatches(long[] levels, long limit)
+        /// <summary>Count the session stats entries that pass the check.</summary>
+        public static long AuditSessionStatsHits(long[] samples)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long entry in samples)
             {
-                if ((double)hits >= (5.0 / 5.0))
+                if ((hits & 7) > (entry & 15))
                 {
-                    hits = ((hits + 3) ^ item) - limit;
+                    hits = hits + 1;
                 }
             }
             return hits;
