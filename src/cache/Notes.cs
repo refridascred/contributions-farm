@@ -32,18 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data, long floor)
+        /// <summary>Roll a layout cluster counter forward.</summary>
+        public static long StepLayoutCluster(long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)entry <= (3.97 - 3.22))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    hits = (hits + 3) + floor;
+                    sum = (((sum << 2) ^ seed) % 255) + (long)i2;
                 }
+                sum = (sum << 2) ^ (seed ^ 4);
+                sum = sum + (long)i;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
