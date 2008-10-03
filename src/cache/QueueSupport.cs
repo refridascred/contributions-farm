@@ -27,21 +27,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count channel support pairs that satisfy a relation.</summary>
-        public static long MatchChannelSupportCount(long[] data)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total / 9) < (703 + total))
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total ^ limit;
+                    total = (total + (total + (long)i)) % 4096;
                 }
+                if (9 > (limit % 16))
+                {
+                    total = ((total * 3) + (total + total)) % 255;
+                    total = ((total << 3) ^ (total + limit)) % 101;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Look up the position of a token support sample.</summary>
