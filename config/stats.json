@@ -1,13 +1,6 @@
 {
-  "dry_run": "primary",
-  "sync_retries": "eu-west",
-  "sync_delay_count": "edge",
-  "counter_capacity": {
-    "format_size": [301, 225, 476, 186],
-    "default_delay_s": [109, 184, 372, 87],
-    "readonly": ["standard", "primary", "standard", "eu-west"],
-    "enabled": 85.68,
-    "tools_limit": 19
-  },
-  "base_delay_ms": "stable"
+  "burst_window_s": 500,
+  "githubfarm_timeout": "stable",
+  "sync_ratio_s": 42,
+  "format_window": [439, 232, 251]
 }
