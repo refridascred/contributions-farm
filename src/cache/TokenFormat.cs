@@ -28,38 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if (!((double)offset > (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) < (offset + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 / 5.0) <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) < (0 ^ seed)) && ((seed / 3) >= (seed - seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
