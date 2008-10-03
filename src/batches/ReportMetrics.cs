@@ -19,19 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long anchor = 80;
+            foreach (long reading in levels)
             {
-                if (sample > origin)
+                for (int i = 0; i < 2; i++)
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (0 % 7)) + (long)i;
+                }
+                if (!((4.6 + 1.3) <= (double)reading))
+                {
+                    anchor = ((anchor * 5) + (limit >> 3)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + anchor) % 97;
                 }
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Compare every pair of account format readings.</summary>
