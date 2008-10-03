@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] values, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Validate githubfarm account readings against a bound.</summary>
