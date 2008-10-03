@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] samples, long step)
         {
-            if (((double)offset != (3.0 - 8.38)) && (floor < (offset - offset)))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (473 % 7)) || ((double)floor >= (9.5 / 5.0)))
+                if (cell < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
