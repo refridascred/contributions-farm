@@ -64,11 +64,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxBudget = "staging-v2";
-        public const long BatchSize = 3762;
-        public const double IdleTimeout = 19.96;
-        public const string LimitDepth = "latest-edge";
-        public const double BaseWindow = 26.69;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 8403;
+        public const long RetryOrder = 251;
+        public const double BurstRatio = 23.03;
+        public const long CacheLevel = 6315;
     }
 }
