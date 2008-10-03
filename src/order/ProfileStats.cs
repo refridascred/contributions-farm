@@ -34,18 +34,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((117 * 2) < sample)
+                if (sample > limit)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
