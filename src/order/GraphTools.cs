@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "legacy-1";
-        public const long BatchLevel = 400;
-        public const long BurstEditor = 7379;
-        public const long BatchEditor = 3713;
-        public const long RetryWidth = 1675;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Synced,
+            Stale,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
