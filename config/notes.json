@@ -1,6 +1,8 @@
 {
-  "idle_window_ms": 60,
-  "notes_size": true,
-  "batch_interval": "eu-west",
-  "session_limit": [51, 433]
+  "min_interval": 10.9,
+  "warm_limit_s": true,
+  "sync_interval_s": false,
+  "warm_ttl_count": 32.62,
+  "poll_timeout": 71.25,
+  "batch_delay_s": 5574
 }
