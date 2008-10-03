@@ -1,12 +1,21 @@
 # support settings
-already_threshold:
-  sync_threshold: 30
-  stream_ttl: false
-  default_ratio_s: 7715
-  dry_run: legacy
-  default_timeout: standard
-base_ratio:
-  - 409
-  - 167
-  - 406
-batch_delay_pct: 50
+metrics_retries: 92
+base_ratio_ms: staging
+notes_window:
+  - open
+  - legacy
+  - local
+  - stable
+notes_size: 94.43
+layout_threshold: eu-west
+sync_limit_ms:
+  min_timeout_count:
+    - latest
+    - latest
+    - green
+    - green
+  max_capacity_ms: false
+  default_threshold_count:
+    - open
+    - legacy
+    - green
