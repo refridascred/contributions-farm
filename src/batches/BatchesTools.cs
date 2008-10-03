@@ -23,17 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = 7.46;
+            if (gain > (double)(-9))
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (8.43 + gain)) - offset;
             }
-            return -1;
+            return gain + weight;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
