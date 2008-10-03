@@ -44,12 +44,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Synced,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
