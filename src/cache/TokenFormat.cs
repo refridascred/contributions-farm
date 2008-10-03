@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter session samples are out of range.</summary>
-        public static long CountFilterSessionHits(long[] data, long offset)
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool GuardChannelBatchesLimits(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)offset == (2.0 + 5.8))
+                if (entry > bound)
                 {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
