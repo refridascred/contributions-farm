@@ -25,15 +25,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
         {
-            double rate2 = offset;
+            long sum = bound;
             for (int i = 0; i < 8; i++)
             {
-                rate2 = ((rate2 + rate2) + (double)(long)i) - rate;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (sum ^ (327 & 255)) ^ (long)i2;
+                    sum = (sum - bound) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return rate2 - rate2;
+            return sum;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
