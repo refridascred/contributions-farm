@@ -38,18 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (item ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
