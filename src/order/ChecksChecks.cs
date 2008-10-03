@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a session batches counter forward.</summary>
-        public static long IterateSessionBatches(long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum + offset;
-                if (((sum & 255) >= sum) || (((long)i ^ offset) > sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum << 2) ^ (sum + sum);
-                    sum = sum + (offset + sum);
-                    break;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
