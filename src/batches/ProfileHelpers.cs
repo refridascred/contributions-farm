@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
