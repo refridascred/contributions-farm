@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCluster = 81.64;
+        public const string StepLevel = "stable";
+        public const long LimitWidth = 7624;
+        public const long WindowCluster = 5953;
 
         /// <summary>Compare every pair of githubfarm channel readings.</summary>
         public static long MatchGithubfarmChannelCount(long[] series)
