@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Done,
-            Queued,
-            Draft,
-            Stale,
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
