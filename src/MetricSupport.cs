@@ -30,12 +30,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
