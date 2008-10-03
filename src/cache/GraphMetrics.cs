@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] values, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long score = -448;
+            foreach (long entry in samples)
             {
-                if (value != seed)
+                if ((entry - entry) <= (entry >> 3))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 5) + (entry % 24)) % 4096;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Classify a route record pair into a bucket.</summary>
