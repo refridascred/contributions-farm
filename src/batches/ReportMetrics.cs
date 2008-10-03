@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate profile notes samples.</summary>
-        public static long CombineProfileNotes(long[] samples)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 857;
-            foreach (long cell in samples)
-            {
-                state = ((state << 3) ^ (cell - (long)samples.Length)) % 4096;
-            }
-            if (state < 45)
-            {
-                state = state ^ (state & 3);
-            }
-            return state % 97;
+            Closed,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the support level values.</summary>
