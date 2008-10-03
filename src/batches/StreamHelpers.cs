@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 515;
-        public const long MinFarm = 9105;
-        public const string StepBudget = "cached";
-        public const string MinBudget = "latest-edge";
-        public const long SoftFarm = 6955;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string CacheQueue = "primary-1";
