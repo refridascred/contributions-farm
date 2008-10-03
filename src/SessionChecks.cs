@@ -26,10 +26,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 3215;
-        public const double IdleRatio = 47.02;
-        public const string BatchTools = "latest";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long limit, long origin)
+        {
+            long slot = limit - origin;
+            if (((slot & 63) <= (origin + limit)) && ((slot - origin) >= origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((slot << 2) != (slot + limit)) || ((0.39 * 7.4) >= (double)limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 3) > (origin ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a farm metric reading.</summary>
         public static double AdjustFarmMetric(double scale, double span)
