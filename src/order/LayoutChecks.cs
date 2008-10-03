@@ -37,14 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchBudget = "alpha-edge";
+        public const double HardOrder = 31.25;
+        public const long BurstFactor = 9983;
+        public const string LimitOrder = "open-1";
+        public const string IdleBudget = "staging-edge";
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
