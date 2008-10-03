@@ -1,5 +1,11 @@
 {
-  "dry_run": 98.84,
-  "max_depth_s": "fallback",
-  "notes_ttl": 24.06
+  "order_size": true,
+  "batch_limit_ms": 250,
+  "verbose": {
+    "cache_ratio": 60.1,
+    "verbose": 97,
+    "poll_retries_s": 85,
+    "payload_capacity": 60,
+    "idle_retries_count": 24
+  }
 }
