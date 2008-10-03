@@ -66,12 +66,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Done,
-            Idle,
-            Draft,
+            Locked,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
