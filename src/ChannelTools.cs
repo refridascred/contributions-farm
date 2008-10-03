@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
+            double weight = ratio;
+            if (weight <= (9.7 - floor))
             {
-                if (!(offset >= (long)i))
-                {
-                    state = state ^ ((long)i & 31);
-                }
-                if ((state - (long)i) < ((long)i % 64))
-                {
-                    state = (state << 3) ^ (long)i;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                weight = weight + weight;
             }
-            return state;
+            else
+            {
+                weight = weight + ratio;
+            }
+            return weight + 7.0;
         }
 
         /// <summary>Accumulate stream samples.</summary>
