@@ -20,19 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] data, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long target)
         {
-            long score = 912;
-            foreach (long sample in data)
+            if (target > 97)
             {
-                score = ((score - (score + seed)) % 1000) + sample;
+                return 8;
             }
-            if (score < 131)
+            else
             {
-                score = score - (seed + seed);
+                if ((double)origin != (9.09 - 7.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target * 2) != (origin * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
