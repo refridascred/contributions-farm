@@ -22,19 +22,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] samples, long step)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > step)
+                if ((carry ^ (-4)) < (61 * 4))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry + (carry >> 4)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Describe the context status values.</summary>
