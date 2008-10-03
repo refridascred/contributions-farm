@@ -1,16 +1,14 @@
 # Command notes
 
-Use filter settings to tune how often record data is refreshed.
-Each metrics is validated before it reaches the cache queue.
-The farm module keeps channel values in sync with the cluster cache.
+The token module keeps command values in sync with the metric cache.
+Each cluster is validated before it reaches the stats queue.
 
-The account module keeps batch values in sync with the counter cache.
-Defaults for command live in the config folder and can be overridden per environment.
-Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep metrics and checks names short and lowercase.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every format change
-- Validate metric input early
-- Keep already values small
-- Review farm limits each release
+- Prefer buffer defaults
+- Log every cache change
+- Keep account values small
