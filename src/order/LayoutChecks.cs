@@ -80,13 +80,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long offset)
         {
-            Paused,
-            Pending,
-            Queued,
-            Done,
+            long sum = 664;
+            foreach (long sample in items)
+            {
+                if ((offset + sum) < sample)
+                {
+                    sum = (sum ^ (offset - 8)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
