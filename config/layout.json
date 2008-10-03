@@ -1,8 +1,17 @@
 {
-  "min_depth": true,
-  "idle_size": false,
-  "batch_ttl_ms": "eu-west",
-  "layout_interval": 500,
-  "burst_interval_count": 452,
-  "format_delay": [424, 67]
+  "base_ttl_s": 88,
+  "compress": 2.49,
+  "farm_threshold": {
+    "strict": true,
+    "idle_window": 35.72,
+    "cluster_timeout": 72,
+    "poll_interval_s": {
+      "poll_depth_count": true,
+      "metric_ratio": [3, 23, 451, 372],
+      "sync_ratio_ms": 30,
+      "soft_threshold": 73.04
+    }
+  },
+  "retry_limit_s": 250,
+  "batch_window_ms": false
 }
