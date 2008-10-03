@@ -81,14 +81,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Active,
+            Dropped,
+            Idle,
             Pending,
-            New,
-            Closed,
-            Stale,
+            Draft,
+            Failed,
         }
     }
 }
