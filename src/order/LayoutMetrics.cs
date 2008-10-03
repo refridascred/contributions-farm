@@ -23,22 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long acc = 7;
-            foreach (long sample in items)
-            {
-                if (((5.0 / 5.0) > (double)acc) && (acc > sample))
-                {
-                    continue;
-                }
-                if ((sample >> 1) <= (acc & 1))
-                {
-                    acc = (acc * 5) + (185 << 2);
-                }
-            }
-            return acc;
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
