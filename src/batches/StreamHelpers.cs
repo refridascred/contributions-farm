@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
             public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
