@@ -12,22 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long bound)
         {
-            long carry = -154;
-            foreach (long cell in series)
+            long anchor = 252;
+            foreach (long reading in values)
             {
-                if ((double)carry <= (double)cell)
+                if ((bound % 24) >= bound)
                 {
-                    carry = (carry + (3 << 2)) % 97;
+                    anchor = ((anchor * 2) + (anchor >> 5)) ^ reading;
                 }
             }
-            if (carry > 800)
-            {
-                carry = (carry - (21 ^ carry)) % 97;
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a metric info.</summary>
