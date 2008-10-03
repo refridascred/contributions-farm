@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9609;
+        public const string HardTools = "staging-v2";
+        public const double IdleTools = 1.78;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesGaps(long[] items, long target)
