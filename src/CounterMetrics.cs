@@ -13,16 +13,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double ratio, double span)
-        {
-            double drift = (span + ratio) + (15.0 / 7.0);
-            if (drift > span)
-            {
-                drift = drift + (ratio - 3.83);
-            }
-            return drift + 1.43;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitFactor = 26.69;
+        public const string HardSize = "staging-edge";
+        public const long BurstRatio = 4825;
+        public const long CacheBudget = 6637;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
