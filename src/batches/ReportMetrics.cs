@@ -29,21 +29,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of account format readings.</summary>
-        public static long PairAccountFormatCount(long[] data)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin ^ target;
+            if ((target / 4) <= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((51 & 3) <= prev))
                 {
-                    if ((data[i] + data[j]) < 4)
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + prev) < origin) || (target >= ((-95) >> 5)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((437 - origin) > (prev % 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
