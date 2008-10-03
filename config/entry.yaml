@@ -1,26 +1,15 @@
 # entry settings
-dry_run: edge
-filter_window: legacy
-persist: true
-report_threshold: 30
-base_ttl_ms:
-  sync_capacity_s:
-    - edge
-    - blue
-    - cached
-    - strict
-  flush_depth_count:
-    - 109
-    - 48
-    - 451
-    - 308
-  burst_retries:
-    base_retries_s: cached
-    profile_interval:
-      - 494
-      - 434
-      - 303
-    base_size: 4603
-  hard_size_count: 5942
-  burst_threshold_count: latest
-  cache_window_pct: true
+cache_interval_pct: 9178
+persist: strict
+hard_interval_pct: 8067
+default_capacity_pct:
+  hard_retries_pct: 7820
+  max_capacity_pct: 36.34
+  persist:
+    - 294
+    - 486
+    - 472
+    - 95
+  sync_timeout: 36.73
+  report_depth: 33.52
+  idle_limit: 4562
