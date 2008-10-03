@@ -25,13 +25,23 @@ namespace Common.Utilities
         public const long MinTimeout = 7735;
         public const string BaseFormat = "open-v2";
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(floor < result))
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                if ((26 <= (floor >> 4)) && (137 > (floor << 1)))
+                {
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
