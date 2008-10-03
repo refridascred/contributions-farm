@@ -1,8 +1,5 @@
 {
-  "retry_delay_pct": 55.02,
-  "max_limit_count": 30,
-  "verbose": 7889,
-  "readonly": 29.38,
-  "audit": 8387,
-  "retry_window_ms": 30
+  "batch_depth": [24, 234, 274],
+  "burst_retries_s": ["fallback", "primary"],
+  "warm_threshold_count": 100
 }
