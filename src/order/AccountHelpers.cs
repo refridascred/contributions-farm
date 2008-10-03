@@ -70,18 +70,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading == (double)limit)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitBudget = 2106;
+        public const long DefaultToken = 4134;
+        public const long RetrySpan = 9549;
+        public const long MaxTimeout = 9751;
     }
 }
