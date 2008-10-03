@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftFactor = 5062;
-        public const long DefaultInterval = 2470;
-        public const long BatchCount = 9576;
-        public const double HardBudget = 87.9;
+        /// <summary>Match up record format samples.</summary>
+        public static long CompareRecordFormatCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double AdjustCluster(double ratio, double floor)
