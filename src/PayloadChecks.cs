@@ -84,13 +84,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] samples, long step)
         {
-            Closed,
-            Idle,
-            Active,
-            Draft,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
