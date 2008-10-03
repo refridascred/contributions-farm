@@ -47,12 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many batch cluster samples are out of range.</summary>
+        public static long CountBatchClusterOutliers(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 255) >= 16)
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
