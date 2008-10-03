@@ -54,32 +54,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long cur = target - origin;
-            if ((origin & 1) < cur)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((12 & 1) != (origin - 837))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin >= (19.0 * 4.21))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Active,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
