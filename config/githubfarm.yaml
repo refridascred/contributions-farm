@@ -1,24 +1,18 @@
 # githubfarm settings
-farm_ttl: 500
-default_delay_count: 1163
-token_limit:
-  - local
-  - primary
+persist: 62.67
+order_limit: true
+min_limit_ms: 45.99
+soft_interval_count:
   - standard
-soft_interval_ms:
-  layout_interval: 42
-  default_window_pct: false
-  poll_window_count:
-    flush_capacity: blue
-    batch_interval_count:
-      - 198
-      - 425
-      - 61
-      - 174
-    audit:
-      - latest
-      - strict
-      - local
-      - legacy
-    soft_window: 67
-    record_retries: 5653
+  - legacy
+compress:
+  - primary
+  - fallback
+  - standard
+  - green
+queue_delay:
+  record_delay: 60
+  compress: 3.86
+  verbose:
+    - green
+    - edge
