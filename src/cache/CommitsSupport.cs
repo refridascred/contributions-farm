@@ -42,12 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Active,
-            New,
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
