@@ -22,14 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            New,
-            Failed,
-            Draft,
-            Idle,
-            Queued,
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
