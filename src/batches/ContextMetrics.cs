@@ -34,17 +34,23 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Locate a session format reading by value.</summary>
-        public static long LocateSessionFormatIndex(long[] samples, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long cell in series)
             {
-                if (samples[i] == offset)
+                anchor = (anchor + (cell << 1)) % 4096;
+                if ((double)(long)series.Length != (4.0 * 4.78))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 4) + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
