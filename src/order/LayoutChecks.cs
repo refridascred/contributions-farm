@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)floor == (9.15 / 2.0)) && (floor >= (sample ^ 807))) || ((floor + tally) >= (floor * 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 8022;
+        public const long HardSpan = 8550;
+        public const string MinFilter = "fallback-edge";
+        public const long RetryFilter = 9769;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardRatio = 5102;
