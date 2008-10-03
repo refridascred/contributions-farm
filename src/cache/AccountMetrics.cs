@@ -59,18 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] values, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long total = 94;
-            foreach (long datum in values)
-            {
-                if ((double)seed <= 5.0)
-                {
-                    total = ((total * 5) + (datum / 7)) % 101;
-                }
-            }
-            return total;
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
