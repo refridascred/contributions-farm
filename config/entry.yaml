@@ -1,17 +1,6 @@
 # entry settings
-flush_retries: 57
-max_timeout_s: 40
-compress:
-  report_depth: fallback
-  soft_interval_s:
-    - 415
-    - 476
-    - 122
-  default_delay_count: 62.76
-  account_interval: eu-west
-  idle_limit:
-    poll_interval: cached
-    persist: green
-    readonly: 65.29
-    hard_timeout_pct: 250
-    enabled: 11
+batch_size_pct: standard
+cluster_depth: 57.77
+verbose: 31.71
+poll_depth: primary
+persist: 60
