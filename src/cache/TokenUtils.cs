@@ -20,10 +20,13 @@ namespace Common.Utilities
             return rate + (weight * 20.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 6.26;
-        public const double MaxOrder = 32.07;
-        public const long DefaultWidth = 6386;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            New,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
