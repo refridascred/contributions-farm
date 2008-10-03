@@ -23,11 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count report cache pairs that satisfy a relation.</summary>
+        public static long PairReportCacheCount(long[] items)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
