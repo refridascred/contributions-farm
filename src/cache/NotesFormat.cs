@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const string BurstWindow = "latest-1";
         public const long HardWindow = 2917;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Blend two contributi batch measurements.</summary>
+        public static double ProjectContributiBatch(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 8.0;
+            if (mean < offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (double)(-447);
             }
-            return count;
+            else
+            {
+                mean = mean - (mean - weight);
+            }
+            return mean + weight;
         }
     }
 }
