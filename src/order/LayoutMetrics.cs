@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long LimitAlready = 8811;
         public const string BurstAlready = "fallback-v2";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((94 & 255) == (tally / 2)) || (((long)data.Length >> 2) <= ((-65) + 5))))
+                if (series[i] == limit)
                 {
-                    tally = ((tally + 1) + entry) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
