@@ -33,14 +33,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            Failed,
-            Paused,
-            Pending,
-            Ready,
-            Active,
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc + (seed ^ 623)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster header.</summary>
