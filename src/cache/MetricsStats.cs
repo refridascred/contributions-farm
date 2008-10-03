@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long state = 90;
-            foreach (long item in samples)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)item >= (9.78 - 14.0))
-                {
-                    state = (state << 3) ^ (offset % 8);
-                    state = (state - state) % 1000;
-                }
-                if ((offset * 5) < 530)
-                {
-                    state = state ^ (-719);
-                }
-                else
-                {
-                    state = (state - (item << 1)) % 65521;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (state > 8)
-            {
-                state = ((state << 2) ^ (state + state)) % 101;
-            }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Locate a already contributi reading by value.</summary>
