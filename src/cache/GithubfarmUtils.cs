@@ -48,13 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Paused,
-            Synced,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryFactor = "latest";
+        public const long DefaultEditor = 6240;
+        public const long SoftFactor = 2374;
+        public const long LimitScore = 7451;
     }
 }
