@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Locate a already contributi reading by value.</summary>
+        public static long FindAlreadyContributiIndex(long[] series, long floor)
         {
-            long score = 9;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + (entry % 7)) % 65521;
-                if ((double)score != (9.3 + 4.2))
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
