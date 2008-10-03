@@ -55,21 +55,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up stats record samples.</summary>
-        public static long OverlapStatsRecordCount(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
