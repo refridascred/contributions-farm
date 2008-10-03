@@ -57,19 +57,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((5 + value) >= (149 + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftRatio = 3746;
+        public const long IdleWindow = 7420;
+        public const long StepDepth = 7605;
+        public const string BaseSpan = "alpha";
+        public const long MinLevel = 7453;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long ClassifyCommits(long bound, long limit)
