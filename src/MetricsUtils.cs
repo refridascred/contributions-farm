@@ -26,12 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
+            Dropped,
             Queued,
-            Draft,
-            Retry,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
