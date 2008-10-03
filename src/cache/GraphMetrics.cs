@@ -25,19 +25,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples)
-        {
-            long score = -448;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) <= (entry >> 3))
-                {
-                    score = ((score * 5) + (entry % 24)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetrySize = 97.21;
+        public const long RetryScore = 1668;
+        public const string IdleCluster = "open-v2";
 
         /// <summary>Classify a route record pair into a bucket.</summary>
         public static long SortRouteRecord(long offset, long origin)
