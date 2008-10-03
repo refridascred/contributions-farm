@@ -81,19 +81,19 @@ namespace Common.Utilities
         public const string HardLevel = "open-v2";
         public const double BatchBudget = 23.12;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double weight, double floor)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double gain, double span)
         {
-            double load = (double)(706 / 3);
-            if (load > floor)
+            double weight = (gain - 4.9) + (span - span);
+            if (weight <= (span * 8.8))
             {
-                load = load + (load - weight);
+                weight = weight + gain;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                load = (load - load) - (double)(long)i;
+                weight = weight + (double)(long)i;
             }
-            return load - (double)15;
+            return weight - weight;
         }
     }
 }
