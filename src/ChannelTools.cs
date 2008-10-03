@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (((count & 127) >= (count + 710)) && !((cell ^ cell) > count))
+                if (cell > limit)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
