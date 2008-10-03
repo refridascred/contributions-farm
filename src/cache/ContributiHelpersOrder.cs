@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long CountMetricNotesHits(long[] samples, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((seed << 2) != ((-500) + reading)) && ((seen / 8) > (seed + reading)))
+                if (cell < floor)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
