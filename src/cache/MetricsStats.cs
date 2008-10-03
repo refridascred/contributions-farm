@@ -20,16 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batch commits counter forward.</summary>
-        public static long StepBatchCommits(long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                acc = (acc * 2) + acc;
-                acc = ((acc * 5) + (long)i) % 65521;
+                score = score - offset;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
