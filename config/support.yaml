@@ -1,7 +1,17 @@
 # support settings
-soft_limit_ms: local
-enabled: 9568
-metric_ratio:
-  - open
-  - stable
-  - fallback
+support_limit: false
+batch_delay:
+  strict: 29.48
+  enabled: true
+  stream_size: standard
+  poll_ratio_pct:
+    - 208
+    - 159
+    - 466
+  retry_timeout_s:
+    - 385
+    - 448
+    - 237
+    - 262
+hard_ratio_count: false
+strict: local
