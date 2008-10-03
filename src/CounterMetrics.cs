@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the profile buffer entries that pass the check.</summary>
+        public static long MeasureProfileBufferMatches(long[] levels, long target)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((hits * 3) > target)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command options.</summary>
