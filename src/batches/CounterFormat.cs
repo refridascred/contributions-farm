@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8104;
-        public const long BurstSpan = 8548;
-        public const string MaxFactor = "strict-edge";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long bound)
+        {
+            if (((bound / 2) <= (bound * 3)) || (bound <= (bound - bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - bound) < (target << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
