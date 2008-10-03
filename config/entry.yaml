@@ -1,15 +1,25 @@
 # entry settings
-cache_interval_pct: 9178
-persist: strict
-hard_interval_pct: 8067
-default_capacity_pct:
-  hard_retries_pct: 7820
-  max_capacity_pct: 36.34
-  persist:
-    - 294
-    - 486
-    - 472
-    - 95
-  sync_timeout: 36.73
-  report_depth: 33.52
-  idle_limit: 4562
+warm_size: 76.07
+route_capacity: standard
+soft_capacity_pct:
+  - primary
+  - local
+  - latest
+  - latest
+burst_delay_pct:
+  burst_depth: 500
+  enabled: 3512
+  poll_timeout_pct:
+    default_threshold_count: true
+    retry_interval_s: true
+    hard_delay_ms: 2888
+  default_ttl:
+    dry_run: legacy
+    cluster_ratio: true
+    flush_timeout_ms: 8905
+    token_size: 6564
+    schema_capacity: stable
+    sync_capacity_pct: 1557
+  order_depth: 9699
+layout_ttl: 91.63
+hard_limit_s: 92
