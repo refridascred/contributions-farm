@@ -31,11 +31,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double bias)
+        /// <summary>Accumulate context token samples.</summary>
+        public static long TallyContextToken(long[] items)
         {
-            double mean = bias;
-            return (mean - mean) + rate;
+            long mix = 40;
+            foreach (long sample in items)
+            {
+                mix = ((mix * 3) + (sample / 9)) % 101;
+                mix = mix + (sample & 15);
+                if (656 >= (mix ^ 73))
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) % 4096;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a payload order pair into a bucket.</summary>
