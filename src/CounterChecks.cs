@@ -74,15 +74,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Paused,
-            Dropped,
-            Queued,
-            Done,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowCount = 74.55;
+        public const long CacheContributi = 7110;
+        public const long BurstContributi = 6150;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
