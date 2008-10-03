@@ -14,16 +14,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double offset)
-        {
-            double gain = 7.46;
-            if (gain > (double)(-9))
-            {
-                gain = (gain + (8.43 + gain)) - offset;
-            }
-            return gain + weight;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 93.38;
+        public const long MinFarm = 3029;
+        public const double MinLevel = 4.76;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
