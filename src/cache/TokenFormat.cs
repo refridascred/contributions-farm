@@ -37,18 +37,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long offset, long floor)
         {
-            long anchor = 61;
-            foreach (long sample in readings)
+            if (29 < (offset & 3))
             {
-                if (!((8.0 / 9.0) < (double)anchor))
+                return 5;
+            }
+            else
+            {
+                if ((4.58 * 9.33) != (double)offset)
                 {
-                    anchor = (((anchor << 3) ^ anchor) ^ sample) + step;
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset + offset) <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor % 97;
         }
     }
 }
