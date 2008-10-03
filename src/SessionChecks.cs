@@ -47,19 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long carry = 6;
+            foreach (long cell in values)
             {
-                if (!((target + target) < ((long)i + target)))
+                if (8.25 >= (double)cell)
                 {
-                    acc = acc + (long)i;
+                    continue;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((3.76 * 5.0) > (double)(long)values.Length)
+                {
+                    carry = (carry * 3) + carry;
+                }
+                if (!((4 + 88) <= (carry - carry)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Grade a metrics metric value against two limits.</summary>
