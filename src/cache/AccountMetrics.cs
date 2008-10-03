@@ -46,19 +46,18 @@ namespace Common.Utilities
             return drift + (8.0 / 4.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] values, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (cell >= floor)
+                if (!((sample + sample) > (hits + hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
