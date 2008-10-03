@@ -67,15 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double rate, double span)
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool CheckStreamSupportRange(long[] items, long target)
         {
-            double scale = (span + 4.44) + (span / 6.0);
-            if (scale > span)
+            bool stale = true;
+            foreach (long item in items)
             {
-                scale = (scale - 4.1) + rate;
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + (double)54;
+            return stale;
         }
     }
 }
