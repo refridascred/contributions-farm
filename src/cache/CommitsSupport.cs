@@ -10,31 +10,12 @@ namespace Common.Utilities
         public const double BatchLevel = 50.0;
         public const string MaxWidth = "open-edge";
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((double)step <= (double)(-29))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step / 7) >= step) || (limit < step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step - limit) < limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
