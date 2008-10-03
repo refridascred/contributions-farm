@@ -44,18 +44,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] series, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long item in series)
+            double mean = (double)((-61) ^ (-387));
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)offset != (double)tally)
-                {
-                    tally = (tally + 3) + item;
-                }
+                mean = (mean + (bias - mean)) + (double)(long)i;
             }
-            return tally;
+            return mean + rate;
         }
 
         /// <summary>Fold a list of order readings.</summary>
