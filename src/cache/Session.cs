@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long floor)
+        /// <summary>Count layout queue pairs that satisfy a relation.</summary>
+        public static long MatchLayoutQueueCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of layout githubfarm readings.</summary>
