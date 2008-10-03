@@ -1,6 +1,8 @@
 # entry settings
-batch_size_pct: standard
-cluster_depth: 57.77
-verbose: 31.71
-poll_depth: primary
-persist: 60
+notes_retries: true
+max_delay_s:
+  - strict
+  - standard
+  - local
+  - legacy
+token_ratio: open
