@@ -1,6 +1,9 @@
 {
-  "cluster_capacity": 30,
-  "window_size": 7046,
-  "idle_timeout_count": "eu-west",
-  "soft_capacity": 500
+  "sync_ratio_s": "legacy",
+  "sync_delay_pct": {
+    "compress": "blue",
+    "warm_limit_count": 23.63,
+    "cache_limit": "open"
+  },
+  "strict": 0.1
 }
