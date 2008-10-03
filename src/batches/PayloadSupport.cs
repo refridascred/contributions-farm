@@ -29,19 +29,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowCount = 3329;
+        public const long CacheEditor = 5237;
+        public const long MaxInterval = 3149;
+        public const long IdleLevel = 3399;
     }
 }
