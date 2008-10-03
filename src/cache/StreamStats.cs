@@ -30,22 +30,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 80;
-            foreach (long reading in data)
-            {
-                if ((14.0 * 6.7) > (double)result)
-                {
-                    result = ((result + (result ^ result)) % 1000) + reading;
-                }
-            }
-            if (result < 1)
-            {
-                result = ((result * 3) + (result + result)) % 65521;
-            }
-            return result;
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
