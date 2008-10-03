@@ -55,25 +55,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route batches series from a seed.</summary>
-        public static long RollRouteBatches(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long state = 993;
+            foreach (long reading in data)
             {
-                if (sum > (sum % 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum - (long)i) % 1000;
-                }
-                sum = sum - (floor % 10);
-                sum = (sum ^ floor) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
+                state = ((state << 3) ^ (reading * 2)) % 4096;
+                state = (state ^ (86 << 1)) % 65521;
             }
-            return sum;
+            if (state > 90)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
