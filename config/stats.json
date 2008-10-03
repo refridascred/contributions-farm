@@ -1,6 +1,6 @@
 {
-  "burst_window_s": 500,
-  "githubfarm_timeout": "stable",
-  "sync_ratio_s": 42,
-  "format_window": [439, 232, 251]
+  "soft_timeout": "staging",
+  "min_ratio_pct": false,
+  "default_ttl_s": "cached",
+  "entry_delay": 30
 }
