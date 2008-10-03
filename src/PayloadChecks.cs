@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9619;
+        public const long MinGithubfarm = 3807;
+        public const long StepDepth = 7012;
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double bias, double span)
