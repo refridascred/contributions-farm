@@ -25,14 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            Draft,
-            Active,
-            Done,
-            Closed,
-            Queued,
+            double scale2 = span / 8.0;
+            if (scale2 > (double)64)
+            {
+                scale2 = scale2 + (double)1;
+            }
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 - (span - 5.8);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
