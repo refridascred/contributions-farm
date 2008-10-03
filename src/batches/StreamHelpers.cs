@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const string MinBudget = "latest-edge";
         public const long SoftFarm = 6955;
 
-        /// <summary>Locate a farm batches reading by value.</summary>
-        public static long LocateFarmBatchesIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "primary-1";
+        public const long DefaultQueue = 604;
+        public const long CacheBudget = 9244;
+        public const double LimitBudget = 60.22;
+        public const long LimitSize = 2232;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long SeriesTools(long offset)
