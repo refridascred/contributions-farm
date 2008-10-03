@@ -1,8 +1,7 @@
 # githubfarm settings
-farm_limit:
-  - green
-  - eu-west
-  - eu-west
-min_ttl_pct: primary
-strict: false
-max_ratio_ms: edge
+sync_timeout: false
+batch_retries: eu-west
+audit: 1031
+hard_delay_s: fallback
+min_capacity: legacy
+cache_capacity_count: true
