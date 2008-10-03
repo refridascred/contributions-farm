@@ -13,15 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a order counter counter forward.</summary>
-        public static long DeriveOrderCounter(long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] data, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((((double)floor == (9.15 / 2.0)) && (floor >= (sample ^ 807))) || ((floor + tally) >= (floor * 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
