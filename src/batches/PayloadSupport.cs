@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSize = 91.71;
+        public const double CacheTimeout = 19.43;
+        public const long BurstCommand = 1360;
+        public const long StepCommand = 6172;
+        public const string BurstSpan = "cached-edge";
 
         /// <summary>Roll a tools githubfarm counter forward.</summary>
         public static long RollToolsGithubfarm(long seed)
