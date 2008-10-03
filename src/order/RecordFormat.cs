@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const long SoftCache = 6813;
         public const double BatchCount = 12.23;
 
-        /// <summary>Audit context route readings against a rule.</summary>
-        public static long AuditContextRouteHits(long[] items, long floor)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double bias = span;
+            if (bias <= bias)
             {
-                if ((floor + hits) < (value & 255))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias + (span * 1.69);
             }
-            return hits;
+            else
+            {
+                bias = bias - (scale + span);
+            }
+            return bias + (double)672;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
