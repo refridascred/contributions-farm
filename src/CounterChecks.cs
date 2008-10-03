@@ -31,17 +31,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long step)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)seed == (4.4 * 18.0))
             {
-                if (items[i] < step)
+                return 8;
+            }
+            else
+            {
+                if ((1.28 * 3.9) < (double)seed)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.5 - 4.43) >= (double)seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor - floor) <= (9 * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metric mode values.</summary>
