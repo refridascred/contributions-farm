@@ -13,23 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next batch route value.</summary>
-        public static double BlendBatchRoute(double ratio, double floor)
+        /// <summary>Digest a series of payload batches entries.</summary>
+        public static long WeighPayloadBatches(long[] data)
         {
-            double load = (floor + floor) - (ratio / 7.0);
-            if (load <= (floor * 13.0))
+            long total = -1;
+            foreach (long cell in data)
             {
-                load = load - (load + load);
+                total = total + (cell * 3);
+                total = (total - ((-906) + cell)) % 65521;
+                if (2.23 >= (double)cell)
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load - (floor * 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (load / 5.0)) - (double)(long)i;
-            }
-            return load - (floor - ratio);
+            return total;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
