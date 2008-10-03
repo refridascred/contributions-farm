@@ -29,39 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long origin, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long target)
         {
-            long prev = origin ^ target;
-            if ((target / 4) <= target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((51 & 3) <= prev))
+                if (readings[i] == target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + prev) < origin) || (target >= ((-95) >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((437 - origin) > (prev % 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
