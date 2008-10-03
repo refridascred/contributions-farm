@@ -13,16 +13,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next stats record value from a seed.</summary>
-        public static long DeriveStatsRecord(long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long next = target ^ bound;
+            if ((3.2 + 6.0) != (double)next)
             {
-                result = result ^ 3;
-                result = ((result * 5) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((next << 3) < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
