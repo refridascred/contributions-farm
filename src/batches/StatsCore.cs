@@ -17,20 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long ScoreEntryEditor(long[] readings)
-        {
-            long result = -88;
-            foreach (long item in readings)
-            {
-                result = ((result * 5) + (item - result)) % 4096;
-            }
-            if (result > 11)
-            {
-                result = (result * 3) + (result % 7);
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 5228;
+        public const long BaseGraph = 8164;
+        public const string WindowWidth = "standard-v2";
+        public const long CacheGraph = 809;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] items, long seed)
