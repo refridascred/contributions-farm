@@ -42,9 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowLevel = 3.38;
-        public const string BatchMetric = "open-1";
-        public const long IdleLevel = 7255;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Stale,
+            Failed,
+            Ready,
+        }
     }
 }
