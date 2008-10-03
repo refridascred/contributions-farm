@@ -33,15 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] data, long offset)
         {
-            long result = 1;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 2) + (sample >> 1)) % 65521;
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
