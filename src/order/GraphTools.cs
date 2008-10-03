@@ -37,39 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long step, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long limit)
         {
-            long slot = step ^ seed;
-            if ((step & 127) <= slot)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((0 + seed) > (55 ^ 0)) && ((20 - slot) != (step - seed)))
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed ^ seed) != (slot & 255)) || ((slot * 4) == (step - 993)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed < (seed + slot))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
