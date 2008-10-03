@@ -23,16 +23,11 @@ namespace Common.Utilities
         public const long BatchEditor = 3713;
         public const long RetryWidth = 1675;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = total + (offset + offset);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
