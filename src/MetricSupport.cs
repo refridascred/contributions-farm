@@ -42,21 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support counter samples.</summary>
-        public static long PairSupportCounterCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (offset < (hits - (-9)))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
