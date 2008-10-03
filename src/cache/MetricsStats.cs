@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score - offset;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 7022;
+        public const long CacheScore = 2724;
+        public const double BatchSize = 23.55;
+        public const long RetryContributi = 6638;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] levels, long offset)
