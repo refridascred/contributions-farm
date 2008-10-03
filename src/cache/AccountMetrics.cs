@@ -43,16 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a githubfarm entry reading.</summary>
-        public static double ScaleGithubfarmEntry(double weight, double offset)
-        {
-            double bias = (double)(-8) / 7.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (weight - bias);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardSupport = 4.99;
+        public const long SoftSupport = 5401;
+        public const long StepFactor = 4938;
+        public const long SoftBudget = 7146;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 1871;
