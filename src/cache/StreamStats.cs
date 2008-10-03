@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long result = 985;
+            foreach (long value in data)
             {
-                if (sample > floor)
+                result = ((result - (result + result)) % 65521) + value;
+                if ((double)result >= (0.3 + 0.8))
                 {
-                    ok = false;
-                    break;
+                    result = (result + result) % 65521;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Describe the cache kind values.</summary>
