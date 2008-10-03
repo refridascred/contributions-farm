@@ -1,8 +1,13 @@
 {
-  "default_interval": 2.52,
-  "retry_ttl_ms": 500,
-  "verbose": ["latest", "green"],
-  "burst_size": false,
-  "hard_timeout": 8292,
-  "burst_window": 250
+  "soft_interval_ms": "fallback",
+  "persist": {
+    "route_timeout": "staging",
+    "burst_delay_ms": [494, 132],
+    "channel_delay": 30,
+    "soft_threshold_s": "standard",
+    "strict": 2642,
+    "flush_delay_ms": "primary"
+  },
+  "retry_ratio_ms": true,
+  "sync_window_s": 541
 }
