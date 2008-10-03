@@ -35,20 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long limit)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor >> 4)) - value;
-                for (int i = 0; i < 12; i++)
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
                 {
-                    anchor = ((anchor ^ (90 * 3)) % 255) - (long)i;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + ((-19) * 4)) % 255;
             }
-            return anchor;
+            return -1;
         }
     }
 }
