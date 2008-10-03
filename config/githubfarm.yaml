@@ -1,16 +1,19 @@
 # githubfarm settings
-retry_timeout_s: 3782
-token_interval: fallback
-enabled:
-  - 201
-  - 119
-  - 222
-  - 339
-warm_size:
-  cache_interval_s: 36.93
-  base_window_count: 37.18
-  cache_ratio_s: 60
-  cache_window: 6
-warm_timeout:
-  - 137
-  - 139
+base_threshold_ms: latest
+default_ttl_count: 51.78
+format_threshold: 79.57
+min_delay_count:
+  hard_ratio_ms: stable
+  max_timeout_pct: 25
+  flush_interval_pct:
+    - local
+    - cached
+  persist:
+    - strict
+    - green
+    - green
+    - green
+  idle_capacity_ms:
+    - strict
+    - cached
+  warm_size_pct: green
