@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order notes reading by value.</summary>
-        public static long LookupOrderNotesIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowScore = 2691;
+        public const long DefaultSchema = 581;
+        public const long StepInterval = 3858;
+        public const long MinRatio = 5686;
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] readings)
