@@ -50,21 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Validate channel stats readings against a bound.</summary>
+        public static bool VerifyChannelStatsLimits(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > step)
                 {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the cache route entries that pass the check.</summary>
