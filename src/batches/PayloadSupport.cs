@@ -46,14 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Draft,
-            Paused,
-            Retry,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 29.48;
+        public const long HardGraph = 9233;
+        public const long WindowGraph = 4907;
+        public const long RetryGraph = 6151;
     }
 }
