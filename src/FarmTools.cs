@@ -23,17 +23,21 @@ namespace Common.Utilities
         public const long LimitFactor = 1630;
         public const long BaseRatio = 7162;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] values, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
