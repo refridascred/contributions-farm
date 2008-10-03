@@ -35,22 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] items, long target)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits << 3) >= item)
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
