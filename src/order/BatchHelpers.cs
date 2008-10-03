@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleStats = "staging-v2";
-        public const long CacheStats = 2631;
-        public const long BaseTimeout = 3444;
-        public const double StepRatio = 94.79;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
