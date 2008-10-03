@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = 6.0;
+            if (weight >= (ratio * 1.7))
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                weight = weight - floor;
             }
-            return -1;
+            return weight - floor;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
