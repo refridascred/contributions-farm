@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Closed,
-            Stale,
-            Pending,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next batch route value.</summary>
