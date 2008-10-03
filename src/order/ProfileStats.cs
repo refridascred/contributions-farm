@@ -48,11 +48,22 @@ namespace Common.Utilities
             return load + (double)288;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4039;
-        public const long MaxFilter = 7849;
-        public const long StepCount = 9348;
-        public const long BatchFilter = 6333;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] items, long step)
