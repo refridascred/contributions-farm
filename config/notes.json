@@ -1,20 +1,6 @@
 {
-  "retry_timeout": ["open", "fallback", "blue"],
-  "max_ratio": {
-    "base_delay_count": true,
-    "warm_ttl_pct": "latest",
-    "cache_limit_ms": "strict",
-    "dry_run": 61
-  },
-  "record_window": true,
-  "flush_interval": {
-    "cache_limit": 57.86,
-    "default_threshold": 86.01,
-    "warm_depth": false,
-    "idle_interval": 1024,
-    "cache_interval_s": [340, 169, 387],
-    "min_depth": 448
-  },
-  "dry_run": "primary",
-  "cache_limit": [167, 99, 241]
+  "default_capacity_ms": 7519,
+  "profile_limit": 4,
+  "max_capacity_s": [497, 13, 279],
+  "soft_threshold": 413
 }
