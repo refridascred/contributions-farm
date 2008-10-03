@@ -32,21 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout cluster counter forward.</summary>
-        public static long StepLayoutCluster(long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (((sum << 2) ^ seed) % 255) + (long)i2;
-                }
-                sum = (sum << 2) ^ (seed ^ 4);
-                sum = sum + (long)i;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
