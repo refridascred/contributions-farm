@@ -55,11 +55,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 8648;
-        public const double HardBatches = 55.52;
-        public const long RetrySize = 6720;
-        public const long WindowDepth = 1606;
-        public const long MinSize = 2171;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 1564;
+        public const string CacheBuffer = "local-edge";
+        public const long MaxBuffer = 4253;
+        public const long SoftRatio = 1823;
+        public const string RetryTimeout = "open-edge";
     }
 }
