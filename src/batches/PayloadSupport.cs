@@ -30,21 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = limit ^ step;
+            if ((33 << 3) > (slot + step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit - step) >= (slot - 47))
                 {
-                    if ((readings[i] - readings[j]) == 18)
+                    return 5;
+                }
+                else
+                {
+                    if (2.0 <= (double)limit)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot + slot) <= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
