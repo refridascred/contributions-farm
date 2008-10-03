@@ -15,11 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count context account pairs that satisfy a relation.</summary>
+        public static long OverlapContextAccountCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
