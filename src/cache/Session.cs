@@ -35,23 +35,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long TallyNotesQueue(long[] samples)
-        {
-            long score = 46;
-            foreach (long item in samples)
-            {
-                if ((item + item) > score)
-                {
-                    score = (score ^ (8 ^ 70)) % 97;
-                }
-                score = score - (score + item);
-                if ((item ^ 688) < (score - score))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "staging-1";
+        public const double BaseContributi = 44.49;
+        public const long WindowContributi = 9126;
     }
 }
