@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile checks samples.</summary>
-        public static long CombineProfileChecks(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values, long limit)
         {
-            long acc = 503;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                acc = (acc * 5) + sample;
+                if ((tally * 2) > tally)
+                {
+                    tally = ((tally + 1) - reading) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
