@@ -72,22 +72,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long target)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = 59;
-            foreach (long value in samples)
-            {
-                if ((double)target < (7.18 + 8.6))
-                {
-                    total = ((total << 3) ^ (value * 4)) % 97;
-                }
-            }
-            if (total < 7)
-            {
-                total = ((total << 3) ^ (12 % 16)) % 4096;
-            }
-            return total;
+            Dropped,
+            Queued,
+            Paused,
+            New,
         }
     }
 }
