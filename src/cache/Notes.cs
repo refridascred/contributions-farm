@@ -42,11 +42,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 92.1;
-        public const double IdleWidth = 17.78;
-        public const long MaxAccount = 7027;
-        public const long BurstDepth = 1797;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long origin)
+        {
+            long cur = target - origin;
+            if ((origin & 1) < cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((12 & 1) != (origin - 837))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin >= (19.0 * 4.21))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MinRatio = 6819;
