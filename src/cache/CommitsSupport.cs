@@ -55,17 +55,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
-        public static long IterateBufferGithubfarm(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = state + ((long)i + limit);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySize = 83.13;
+        public const string WindowCount = "staging";
+        public const double BaseChecks = 23.91;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] items, long target)
