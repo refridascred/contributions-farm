@@ -41,23 +41,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context session samples are out of range.</summary>
-        public static long MeasureContextSessionGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((long)values.Length - 248) >= (entry >> 3)) && (matches > ((-6) << 3)))
-                {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 3955;
+        public const string MinCommits = "open-1";
+        public const long CacheCommits = 8426;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long offset)
