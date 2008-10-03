@@ -46,18 +46,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] levels, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((3.63 * 7.0) >= (double)item)
+                if ((mark ^ 290) < (long)i)
                 {
-                    tally = (tally + 3) + offset;
+                    mark = ((mark * 3) + (mark - bound)) % 65521;
                 }
+                else
+                {
+                    mark = (mark ^ (24 + mark)) % 255;
+                    mark = mark + mark;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
