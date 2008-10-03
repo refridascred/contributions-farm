@@ -33,12 +33,9 @@ namespace Common.Utilities
             return load + 3.2;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 6270;
+        public const long BaseCount = 8172;
+        public const long SoftCount = 8768;
     }
 }
