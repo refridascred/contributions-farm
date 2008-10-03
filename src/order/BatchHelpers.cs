@@ -35,17 +35,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryFactor = 52.25;
+        public const string RetryInterval = "latest-1";
+        public const string IdlePayload = "latest-v2";
+        public const long HardPayload = 8767;
     }
 }
