@@ -1,6 +1,8 @@
 {
-  "burst_capacity_ms": "blue",
-  "stream_limit": "cached",
-  "flush_ratio_pct": "local",
-  "max_timeout": false
+  "retry_delay_pct": 55.02,
+  "max_limit_count": 30,
+  "verbose": 7889,
+  "readonly": 29.38,
+  "audit": 8387,
+  "retry_window_ms": 30
 }
