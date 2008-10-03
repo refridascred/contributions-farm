@@ -55,22 +55,20 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long WeighCounterChecks(long[] items, long step)
+        /// <summary>Roll a stats support counter forward.</summary>
+        public static long DeriveStatsSupport(long bound)
         {
-            long carry = 6;
-            foreach (long value in items)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((value ^ 171) <= 0) && ((value + step) > (carry - carry)))
+                if ((687 + mix) <= (bound * 4))
                 {
-                    carry = (carry + value) % 4096;
+                    mix = (mix + (mix * 3)) % 255;
+                    break;
                 }
-                else
-                {
-                    carry = carry ^ (carry % 8);
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return carry % 97;
+            return mix;
         }
     }
 }
