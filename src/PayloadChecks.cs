@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long step)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = 8;
-            foreach (long cell in values)
-            {
-                if ((6.0 <= (double)cell) && (cell > (cell ^ step)))
-                {
-                    mix = mix - (mix << 1);
-                }
-                else
-                {
-                    mix = mix - cell;
-                }
-                if ((60 % 10) != ((long)values.Length + cell))
-                {
-                    mix = mix + (step % 100);
-                }
-            }
-            return mix;
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
