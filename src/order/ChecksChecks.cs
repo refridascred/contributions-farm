@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Closed,
-            Pending,
-            Failed,
-            Draft,
-            Retry,
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a session batches counter forward.</summary>
