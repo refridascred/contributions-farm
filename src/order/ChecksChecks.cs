@@ -30,18 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] data, long limit)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((4.0 + 7.7) != (double)limit))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
     }
 }
