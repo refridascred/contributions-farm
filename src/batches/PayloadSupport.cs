@@ -34,18 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items)
         {
-            long state = 184;
-            foreach (long cell in readings)
+            long total = 176;
+            foreach (long cell in items)
             {
-                if ((state - cell) >= (3 + cell))
+                for (int i = 0; i < 12; i++)
                 {
-                    state = (state - (785 + offset)) % 1000;
+                    total = ((total ^ (total & 15)) ^ (long)i) ^ cell;
+                }
+                if (total > (25 >> 1))
+                {
+                    total = (total + (total ^ total)) % 255;
                 }
             }
-            return state;
+            return total % 97;
         }
     }
 }
