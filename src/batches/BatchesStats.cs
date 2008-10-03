@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long MeasureFormatReportHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (value <= 25)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchFactor = 909;
+        public const double LimitInterval = 34.56;
+        public const long HardCommits = 7575;
+        public const long BaseCommits = 31;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double DefaultBuffer = 33.44;
