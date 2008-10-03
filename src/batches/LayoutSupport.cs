@@ -44,19 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] items, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double weight = (double)(0 - 1);
+            if (weight < (1.2 / 5.0))
             {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight - weight) + rate) - span;
             }
-            return stale;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (double)6;
         }
     }
 }
