@@ -31,12 +31,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowLevel = 473;
-        public const double WindowCount = 18.76;
-        public const long StepSession = 1063;
-        public const double MinRatio = 78.6;
-        public const string MaxSession = "staging-1";
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
+        {
+            long score = -93;
+            foreach (long value in readings)
+            {
+                if (value <= (score & 127))
+                {
+                    score = score - (score % 16);
+                }
+                if (((value + score) > value) && ((value - score) <= (value % 97)))
+                {
+                    break;
+                }
+            }
+            if (score > 35)
+            {
+                score = (score << 2) ^ (score >> 1);
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] values, long origin)
