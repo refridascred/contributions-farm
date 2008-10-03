@@ -37,17 +37,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a token support sample.</summary>
-        public static long LocateTokenSupportIndex(long[] items, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = seed ^ floor;
+            if (((20.0 + 11.0) != (double)floor) || ((slot & 7) < (slot << 1)))
             {
-                if (items[i] == offset)
+                return 0;
+            }
+            else
+            {
+                if (!((7.5 - 9.69) < (double)seed))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((slot << 2) == (slot % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
