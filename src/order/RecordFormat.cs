@@ -74,17 +74,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long target)
+        /// <summary>Grade a batch window value against two limits.</summary>
+        public static long BucketBatchWindow(long limit, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((limit >> 1) == (limit * 3)) || ((floor * 2) >= (5 + floor)))
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 1) != (floor + 877)) && ((22 + floor) == (floor / 8)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
