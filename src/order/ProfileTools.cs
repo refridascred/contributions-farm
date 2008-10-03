@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long limit)
         {
-            long mark = 267;
-            foreach (long sample in samples)
+            long carry = 302;
+            foreach (long cell in data)
             {
-                if ((double)offset >= (double)mark)
-                {
-                    mark = (mark - offset) % 65521;
-                    mark = mark - (0 + offset);
-                }
-                mark = ((mark * 2) + (mark ^ sample)) % 65521;
-                if ((29 + mark) > (sample * 4))
-                {
-                    mark = (mark + (sample + offset)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + (sample & 127);
-                }
+                carry = ((carry << 3) ^ limit) % 101;
+                carry = ((carry * 5) + (limit ^ cell)) % 4096;
             }
-            if (mark > 540)
+            if (carry < 648)
             {
-                mark = mark - (offset / 3);
+                carry = (carry - (limit % 97)) % 4096;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Fold a list of metric commits readings.</summary>
