@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate route already readings against a bound.</summary>
-        public static bool ValidateRouteAlreadyLimits(long[] items, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Match up metrics cluster samples.</summary>
