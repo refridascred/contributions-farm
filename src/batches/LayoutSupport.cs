@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double ratio = (offset + scale) - scale;
+            if (ratio > (offset - offset))
+            {
+                ratio = ratio - (scale * 8.2);
+            }
+            return ratio + (ratio / 8.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
