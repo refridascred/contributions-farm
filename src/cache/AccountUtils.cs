@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long offset)
+        /// <summary>Validate githubfarm account readings against a bound.</summary>
+        public static bool ValidateGithubfarmAccountRange(long[] samples, long floor)
         {
-            long score = 786;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (!((score / 9) < ((long)samples.Length - score)))
+                if (datum >= floor)
                 {
-                    score = (score + item) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
