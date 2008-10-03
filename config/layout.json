@@ -1,16 +1,11 @@
 {
-  "strict": 500,
-  "min_depth": 54.21,
-  "compress": 45.76,
-  "flush_ratio_count": [267, 45],
-  "max_limit": {
-    "burst_size": 100,
-    "hard_ttl_count": {
-      "hard_depth": ["green", "green"],
-      "base_limit_s": "legacy",
-      "base_timeout_pct": false,
-      "metrics_limit": false
-    },
-    "verbose": 7.02
-  }
+  "persist": [67, 467, 373, 464],
+  "schema_timeout": {
+    "warm_window_ms": false,
+    "max_depth_ms": 250,
+    "retry_capacity_count": "green",
+    "burst_limit": "primary",
+    "metric_delay": "stable"
+  },
+  "batch_delay": "local"
 }
