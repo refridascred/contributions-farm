@@ -1,6 +1,7 @@
 {
-  "max_threshold_count": "legacy",
-  "min_timeout_count": 61.54,
-  "audit": true,
-  "flush_depth_ms": 85
+  "default_depth_pct": "staging",
+  "batch_depth_pct": 500,
+  "notes_window": 21.0,
+  "metric_capacity": 67.3,
+  "max_retries": 50.74
 }
