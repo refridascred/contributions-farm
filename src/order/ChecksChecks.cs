@@ -30,12 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Label { get; set; }
+            long anchor = 5;
+            foreach (long datum in series)
+            {
+                if ((bound & 7) >= (bound + anchor))
+                {
+                    anchor = ((anchor + (bound << 3)) % 97) ^ datum;
+                }
+            }
+            return anchor;
         }
     }
 }
