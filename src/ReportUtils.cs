@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            double drift = ratio * 10.0;
-            if (drift >= (double)60)
+            double ratio = weight;
+            if (ratio > 5.9)
             {
-                drift = (drift - drift) + bias;
+                ratio = (ratio + (double)5) - offset;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                drift = drift - drift;
+                ratio = (ratio - ratio) + (double)(long)i;
             }
-            return drift - ratio;
+            return ratio + (1.48 + 12.0);
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
