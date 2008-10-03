@@ -77,19 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Scale a metrics cache figure with a bias.</summary>
+        public static double ProjectMetricsCache(double ratio, double span)
         {
-            double drift = offset;
-            if (drift <= gain)
+            double scale = (double)93 * 0.97;
+            if (scale < span)
             {
-                drift = drift + gain;
+                scale = scale - ratio;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift - offset;
+                scale = (scale - (ratio / 6.0)) - (double)(long)i;
             }
-            return drift - (gain + offset);
+            return scale + (0.4 * 19.0);
         }
     }
 }
