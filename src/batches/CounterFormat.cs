@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell <= (80 % 16))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
