@@ -1,6 +1,8 @@
 {
-  "persist": [414, 466, 483, 279],
-  "base_timeout": 1.77,
-  "account_capacity": "latest",
-  "warm_retries_pct": "strict"
+  "default_interval": 2.52,
+  "retry_ttl_ms": 500,
+  "verbose": ["latest", "green"],
+  "burst_size": false,
+  "hard_timeout": 8292,
+  "burst_window": 250
 }
