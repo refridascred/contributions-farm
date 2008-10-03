@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const long MinLevel = 7997;
         public const long CacheRatio = 3472;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] series, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Draft,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
