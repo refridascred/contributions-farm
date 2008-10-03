@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long carry = 302;
-            foreach (long cell in data)
-            {
-                carry = ((carry << 3) ^ limit) % 101;
-                carry = ((carry * 5) + (limit ^ cell)) % 4096;
-            }
-            if (carry < 648)
-            {
-                carry = (carry - (limit % 97)) % 4096;
-            }
-            return carry;
+            Done,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of metric commits readings.</summary>
