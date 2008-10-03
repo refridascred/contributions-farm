@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
