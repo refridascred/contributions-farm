@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const string IdleTimeout = "strict-edge";
         public const long HardRatio = 9863;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 84;
+            foreach (long datum in data)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    result = (((result * 4) + (99 - bound)) % 4096) ^ datum;
+                    result = result - (bound + (long)i);
                 }
+                result = result - (result + result);
             }
-            return -1;
+            if (result > 368)
+            {
+                result = ((result * 3) + (4 + result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
