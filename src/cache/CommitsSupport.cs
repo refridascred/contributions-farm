@@ -64,17 +64,39 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = bound + offset;
+            if ((2.0 - 13.0) != (double)delta)
             {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= 4.3)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 4) < (delta << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset > (8.0 - 15.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record record.</summary>
