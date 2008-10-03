@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool VerifyGraphMetricsLimits(long[] readings, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
