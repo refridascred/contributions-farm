@@ -48,13 +48,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long limit)
         {
-            Stale,
-            Pending,
-            Closed,
-            Done,
+            if ((target % 100) < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit % 2) != (target % 60))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit << 2) != (target - target)) || (limit >= (73 >> 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
