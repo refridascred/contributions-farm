@@ -35,11 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the queue kind values.</summary>
