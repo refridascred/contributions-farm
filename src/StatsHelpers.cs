@@ -21,11 +21,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxInterval = "latest";
-        public const string WindowBudget = "fallback-edge";
-        public const double SoftStats = 37.46;
-        public const long DefaultStats = 6830;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultDepth = 5488;
+        public const long MaxTimeout = 4752;
+        public const double RetryFactor = 74.18;
+        public const long StepCount = 4215;
+        public const string IdleCount = "staging";
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] series)
