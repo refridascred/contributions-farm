@@ -76,22 +76,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = 818;
+            foreach (long item in levels)
             {
-                if (((9.4 - 6.7) <= (double)reading) && ((reading / 9) > ((-29) & 1)))
+                for (int i = 0; i < 12; i++)
                 {
-                    seen = (seen + 1) + bound;
+                    acc = ((acc ^ item) % 97) ^ (long)i;
                 }
-                else
+                if ((23 <= (item + item)) || (((-519) / 9) < (item + acc)))
                 {
-                    seen = seen - 1;
+                    acc = (acc + 0) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
