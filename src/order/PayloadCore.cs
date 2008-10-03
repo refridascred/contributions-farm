@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string HardCommand = "stable-1";
         public const long LimitCommand = 894;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels, long origin)
+        /// <summary>Audit token filter readings against a rule.</summary>
+        public static long AuditTokenFilterMatches(long[] values, long floor)
         {
-            long score = 677;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                score = (score ^ (score + origin)) - value;
+                if ((double)floor <= (7.15 / 7.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            if (score < 169)
-            {
-                score = (score ^ (score * 4)) % 255;
-            }
-            return score % 4096;
+            return seen;
         }
     }
 }
