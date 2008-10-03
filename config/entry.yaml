@@ -1,7 +1,4 @@
 # entry settings
-burst_interval_pct:
-  - 376
-  - 484
-flush_size: open
-base_ttl_s: 16
-compress: 90
+base_depth_count: standard
+burst_ttl_count: 37.95
+batch_threshold_s: 5.73
