@@ -1,7 +1,37 @@
 # githubfarm settings
-burst_delay_count: 100
-compress: 30
-sync_capacity_s: 95
-hard_capacity_s: 40.98
-burst_capacity_ms: 41
-hard_threshold: fallback
+token_limit:
+  - 163
+  - 283
+  - 166
+  - 354
+idle_window_count: 1024
+warm_interval: 77
+report_limit: 82
+readonly:
+  idle_size_pct:
+    - 327
+    - 486
+    - 27
+    - 207
+  strict:
+    - 213
+    - 101
+    - 100
+    - 222
+  base_depth_s:
+    default_threshold_s: 49
+    poll_ttl_pct: 8693
+    hard_retries: 14.39
+    burst_retries_ms: 41.47
+    dry_run: 9486
+    poll_timeout_pct: legacy
+  warm_retries:
+    sync_size_pct: 96.58
+    notes_limit: 83.69
+    readonly: 14
+  audit:
+    base_size_ms: 13.36
+    command_ratio: 100
+    batch_ratio_ms: 3091
+    default_window_s: 100
+context_timeout: 29.33
