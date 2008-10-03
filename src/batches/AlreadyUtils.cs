@@ -62,17 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer window sample.</summary>
-        public static long LocateBufferWindowIndex(long[] series, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Failed,
+            Ready,
         }
     }
 }
