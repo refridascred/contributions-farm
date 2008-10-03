@@ -37,19 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] readings, long floor)
+        /// <summary>Count the route githubfarm entries that pass the check.</summary>
+        public static long AuditRouteGithubfarmGaps(long[] readings, long target)
         {
-            bool ready = true;
+            long count = 0;
             foreach (long item in readings)
             {
-                if (item > floor)
+                if (!((item / 2) >= (item - target)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
