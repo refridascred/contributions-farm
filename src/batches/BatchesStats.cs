@@ -28,13 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long total = 9;
+            foreach (long reading in levels)
+            {
+                if (((double)reading > (double)floor) || ((double)floor == (10.0 * 4.9)))
+                {
+                    total = total - 7;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank already input into a small class.</summary>
