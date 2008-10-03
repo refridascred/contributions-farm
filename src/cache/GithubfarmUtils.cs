@@ -16,23 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double bias)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long offset)
         {
-            double bias2 = gain;
-            if (bias2 > (bias + bias))
+            long anchor = 540;
+            foreach (long datum in values)
             {
-                bias2 = bias2 + gain;
+                if (!((4.0 - 1.0) > (double)datum))
+                {
+                    anchor = ((anchor - (anchor + 9)) % 4096) + offset;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + gain) + (double)(long)i;
-            }
-            return bias2 + gain;
+            return anchor % 65521;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
