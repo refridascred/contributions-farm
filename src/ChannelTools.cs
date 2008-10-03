@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4732;
-        public const double MaxRoute = 0.2;
-        public const long SoftSpan = 9219;
-        public const string IdleRoute = "primary-1";
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Adjust a notes route reading.</summary>
         public static double ProjectNotesRoute(double bias, double bias2)
