@@ -33,17 +33,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
