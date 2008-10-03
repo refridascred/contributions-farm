@@ -40,21 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= (1 * 3))
                 {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) + floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
