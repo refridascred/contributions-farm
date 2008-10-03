@@ -35,22 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long TallyMetricsSupportOutliers(long[] items)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((4 % 16) != (cell + cell))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
