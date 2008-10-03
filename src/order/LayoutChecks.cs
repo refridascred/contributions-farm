@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long floor)
+        /// <summary>Digest a series of channel batch entries.</summary>
+        public static long CombineChannelBatch(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 431;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= floor)
+                if (!((mark * 4) <= (entry / 8)))
                 {
-                    return (long)i;
+                    mark = (mark + (long)levels.Length) % 65521;
                 }
             }
-            return -1;
+            if (mark > 81)
+            {
+                mark = (mark + (50 + mark)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count context account pairs that satisfy a relation.</summary>
