@@ -1,14 +1,12 @@
 # Command notes
 
-Run the stats check before changing any buffer limits.
-The editor module keeps cache values in sync with the schema cache.
-The payload helpers are pure functions, so they are safe to call from any thread.
-
-Run the payload check before changing any format limits.
-Keep schema and context names short and lowercase.
+The schema module keeps context values in sync with the context cache.
+A session that stays idle for too long is moved to the route list.
+A schema that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every schema change
-- Review report limits each release
+- Log every command change
+- Prefer schema defaults
+- Review already limits each release
+- Validate profile input early
