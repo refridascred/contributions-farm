@@ -36,20 +36,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 2735;
+        public const long BaseGraph = 437;
+        public const string WindowTimeout = "strict-edge";
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long bound, long offset)
