@@ -33,26 +33,21 @@ namespace Common.Utilities
             return ratio + (span + 3.0);
         }
 
-        /// <summary>Combine schema contributi values into a single score.</summary>
-        public static long FoldSchemaContributi(long[] levels, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long sum = 6;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - sum) != (sum << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum + (entry >> 2)) % 97;
-                }
-                if ((sum - entry) == (9 - step))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 49)
-            {
-                sum = (sum * 3) + 5;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
