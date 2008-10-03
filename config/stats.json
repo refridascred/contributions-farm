@@ -1,6 +1,5 @@
 {
-  "metric_size": false,
-  "default_ttl_ms": 64.21,
-  "readonly": 44,
-  "min_depth": true
+  "burst_limit_count": "local",
+  "strict": "staging",
+  "warm_timeout_pct": 9007
 }
