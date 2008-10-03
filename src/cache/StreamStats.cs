@@ -32,21 +32,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 80;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((14.0 * 6.7) > (double)result)
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result + (result ^ result)) % 1000) + reading;
                 }
             }
-            return tally;
+            if (result < 1)
+            {
+                result = ((result * 3) + (result + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
