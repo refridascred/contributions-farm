@@ -14,21 +14,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
