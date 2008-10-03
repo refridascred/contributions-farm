@@ -33,24 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long origin)
-        {
-            if ((origin > (limit ^ origin)) && ((double)limit < (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 2) >= (limit >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryCount = 8661;
+        public const long CacheFarm = 9702;
+        public const long RetryFarm = 761;
+        public const string WindowInterval = "legacy";
+        public const long BatchFarm = 7562;
     }
 }
