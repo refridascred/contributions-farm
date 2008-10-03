@@ -38,20 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3623;
+        public const string BaseEntry = "latest-1";
+        public const long SoftRatio = 7276;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double StepFactor = 14.23;
