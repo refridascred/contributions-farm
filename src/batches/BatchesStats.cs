@@ -12,15 +12,20 @@ namespace Common.Utilities
             return gain - (bias - span);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] levels, long step)
+        /// <summary>Iterate the contributi order series from a seed.</summary>
+        public static long SeriesContributiOrder(long floor)
         {
-            long result = 540;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                result = ((result + (cell << 1)) % 255) - step;
+                if ((mix << 3) > (floor + floor))
+                {
+                    mix = mix - (mix ^ (-317));
+                    mix = mix ^ ((-37) * 4);
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a route stats.</summary>
