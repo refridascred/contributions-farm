@@ -26,24 +26,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long floor)
         {
-            if (!((offset - seed) >= offset))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (offset >> 4))
+                if (((4 - floor) == (hits + hits)) && ((floor & 1) > hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 2) ^ sample;
                 }
             }
+            return hits;
         }
     }
 }
