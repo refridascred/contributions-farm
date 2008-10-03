@@ -1,6 +1,12 @@
 {
-  "default_capacity_ms": 7519,
-  "profile_limit": 4,
-  "max_capacity_s": [497, 13, 279],
-  "soft_threshold": 413
+  "persist": "latest",
+  "audit": false,
+  "hard_retries": "stable",
+  "batch_ttl_pct": {
+    "verbose": [403, 461],
+    "default_ttl_count": true,
+    "session_ttl": 86.7,
+    "sync_delay_pct": "legacy",
+    "persist": 61.25
+  }
 }
