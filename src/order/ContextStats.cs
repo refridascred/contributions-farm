@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long sum = 23;
-            foreach (long reading in samples)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                sum = ((sum * 4) + (target >> 4)) % 65521;
-                if ((sum / 6) <= (sum + sum))
+                if ((entry + mark) <= (mark % 97))
                 {
-                    sum = (sum + (sum ^ (-5))) % 1000;
+                    mark = ((mark << 3) ^ (entry + mark)) % 255;
                 }
-                sum = ((sum << 3) ^ (reading % 7)) % 101;
             }
-            if (sum < 4)
-            {
-                sum = ((sum * 4) + target) % 255;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
