@@ -23,18 +23,16 @@ namespace Common.Utilities
         public const long BatchEditor = 3713;
         public const long RetryWidth = 1675;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long mark = 198;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)sample > 3.0) && (((long)values.Length << 1) > 1))
-                {
-                    mark = (mark ^ seed) % 4096;
-                }
+                total = total + (offset + offset);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
