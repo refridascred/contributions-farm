@@ -62,18 +62,17 @@ namespace Common.Utilities
             return bias - 3.77;
         }
 
-        /// <summary>Measure how many entry counter samples are out of range.</summary>
-        public static long AuditEntryCounterMatches(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits >= (reading - hits))
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
