@@ -1,23 +1,5 @@
 {
-  "sync_retries_pct": {
-    "base_limit_s": {
-      "payload_interval": 38.8,
-      "retry_timeout_count": 31,
-      "cache_timeout_pct": true,
-      "base_depth": 250,
-      "buffer_ttl": "open"
-    },
-    "batch_threshold_pct": false,
-    "verbose": false
-  },
-  "buffer_ttl": {
-    "notes_ttl": 1811,
-    "verbose": 72,
-    "soft_delay_ms": 2213,
-    "hard_ratio_pct": true,
-    "farm_limit": 92,
-    "hard_size_pct": [217, 226, 201]
-  },
-  "verbose": 58.36,
-  "enabled": 442
+  "persist": 19.42,
+  "min_ttl_count": "standard",
+  "enabled": "strict"
 }
