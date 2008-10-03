@@ -75,18 +75,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            long sum = 664;
-            foreach (long sample in items)
-            {
-                if ((offset + sum) < sample)
-                {
-                    sum = (sum ^ (offset - 8)) % 97;
-                }
-            }
-            return sum;
+            double drift = (double)57 * 3.36;
+            return (drift - span) + rate;
         }
     }
 }
