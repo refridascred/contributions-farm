@@ -36,9 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSpan = 3754;
-        public const long BurstDepth = 895;
-        public const string RetryToken = "fallback-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "strict";
+        public const long CacheMetrics = 1168;
+        public const long StepWidth = 836;
+        public const long RetryLevel = 2391;
+        public const string IdleMetrics = "primary";
     }
 }
