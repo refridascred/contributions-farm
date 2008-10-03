@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFactor = 8022;
-        public const long HardSpan = 8550;
-        public const string MinFilter = "fallback-edge";
-        public const long RetryFilter = 9769;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long HardRatio = 5102;
