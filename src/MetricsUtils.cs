@@ -37,12 +37,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long limit)
         {
-            Active,
-            Synced,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank token report input into a small class.</summary>
