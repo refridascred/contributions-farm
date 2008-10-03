@@ -20,23 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double gain, double floor)
+        /// <summary>Count the buffer stream entries that pass the check.</summary>
+        public static long MeasureBufferStreamHits(long[] levels)
         {
-            double scale = (double)(70 - 50);
-            if (scale <= (gain / 9.0))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                scale = (scale + gain) - floor;
+                if ((19.0 / 2.0) <= (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (scale * 8.2);
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
