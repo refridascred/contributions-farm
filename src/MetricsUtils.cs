@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] values, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally >> 1) >= tally)
-                {
-                    tally = ((tally + 2) - entry) - target;
-                }
-            }
-            return tally;
+            double ratio = 14.0 - floor;
+            return (ratio + (16.0 - floor)) + bias;
         }
 
         /// <summary>Hold a entry header.</summary>
