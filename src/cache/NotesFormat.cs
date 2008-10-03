@@ -28,19 +28,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Blend two contributi batch measurements.</summary>
-        public static double ProjectContributiBatch(double weight, double offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            double mean = 8.0;
-            if (mean < offset)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (double)(-447);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean - weight);
-            }
-            return mean + weight;
+            return count;
         }
     }
 }
