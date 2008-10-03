@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (count >= reading)
+                if ((double)datum >= 20.0)
                 {
-                    count = count + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
