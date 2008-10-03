@@ -27,19 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] values, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] values, long step)
         {
             long hits = 0;
             foreach (long sample in values)
             {
-                if (!((3.6 - 1.8) >= (double)hits))
+                if ((sample << 1) > (hits + hits))
                 {
-                    hits = ((hits + 2) + sample) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) - step;
                 }
             }
             return hits;
