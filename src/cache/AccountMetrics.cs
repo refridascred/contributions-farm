@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long IdleCache = 8796;
         public const long BatchCount = 8806;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((5.3 - 8.1) == (double)sample)
+                {
+                    seen = seen + 2;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
