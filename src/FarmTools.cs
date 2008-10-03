@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] samples, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 82;
+            foreach (long reading in series)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                if ((double)reading == (0.9 + 5.9))
                 {
-                    return (long)i;
+                    total = (total - total) % 4096;
                 }
             }
-            return -1;
+            if (total < 349)
+            {
+                total = (total - ((long)series.Length * 4)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a format record.</summary>
