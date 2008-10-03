@@ -49,19 +49,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            double weight2 = weight;
-            if (weight2 < weight)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = (weight2 - 9.32) - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (8.9 * 13.0)) + (double)(long)i;
-            }
-            return weight2 + (double)95;
+            return seen;
         }
 
         /// <summary>Blend two metrics payload measurements.</summary>
