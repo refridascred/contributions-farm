@@ -26,13 +26,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((8.23 - 3.1) > (double)tally)
+                {
+                    tally = (tally + 2) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the schema layout series from a seed.</summary>
