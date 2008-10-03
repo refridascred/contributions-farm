@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the support schema entries that pass the check.</summary>
-        public static long TallySupportSchemaMatches(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((8.63 * 6.56) > (double)cell)
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 98.89;
+        public const double StepBatch = 74.82;
+        public const long LimitBatch = 1907;
 
         /// <summary>Fold a list of entry token readings.</summary>
         public static long CombineEntryToken(long[] levels, long target)
