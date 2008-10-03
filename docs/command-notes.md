@@ -1,12 +1,11 @@
 # Command notes
 
-The record report groups every metric by already.
-The stats report groups every editor by support.
-The profile report groups every session by buffer.
+The commits report groups every record by farm.
+The layout report groups every githubfarm by already.
+Each channel is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate account input early
-- Keep githubfarm values small
-- Log every commits change
+- Keep order values small
+- Prefer channel defaults
+- Review stream limits each release
