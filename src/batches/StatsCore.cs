@@ -81,18 +81,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit notes session readings against a rule.</summary>
-        public static long AuditNotesSessionGaps(long[] data)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double span)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double drift = span;
+            if (drift < span)
             {
-                if ((5.19 * 6.9) >= (8.63 + 0.95))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
+                drift = (drift + span) - bias;
             }
-            return seen;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (drift + 2.9);
         }
     }
 }
