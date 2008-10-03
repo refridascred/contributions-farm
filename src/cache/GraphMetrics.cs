@@ -26,10 +26,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetrySize = 97.21;
-        public const long RetryScore = 1668;
-        public const string IdleCluster = "open-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long WeighAlready(long[] values, long seed)
