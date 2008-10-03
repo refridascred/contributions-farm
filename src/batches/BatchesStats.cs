@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultScore = 5123;
+        public const long MinSchema = 1665;
+        public const long SoftDepth = 3336;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] levels, long step)
