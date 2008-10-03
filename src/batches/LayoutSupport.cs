@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double span)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double weight = (double)(0 - 1);
-            if (weight < (1.2 / 5.0))
-            {
-                weight = ((weight - weight) + rate) - span;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (double)6;
+            Dropped,
+            Closed,
+            Idle,
         }
     }
 }
