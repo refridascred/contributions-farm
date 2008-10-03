@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] data, long limit)
+        /// <summary>Adjust a contributi checks reading.</summary>
+        public static double ScaleContributiChecks(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((limit * 3) == (datum - datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double ratio = (bias - bias) / 4.0;
+            return (ratio + (double)1) + offset;
         }
 
         /// <summary>Describe the editor kind values.</summary>
