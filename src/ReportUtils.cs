@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            double drift = ratio * 10.0;
+            if (drift >= (double)60)
             {
-                if ((floor * 4) >= (sum - sum))
-                {
-                    sum = (sum << 2) ^ ((-80) - floor);
-                }
-                else
-                {
-                    sum = (sum ^ 5) % 1000;
-                }
-                sum = (sum * 4) + (floor << 2);
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = (drift - drift) + bias;
             }
-            return sum;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
