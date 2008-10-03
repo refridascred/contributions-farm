@@ -59,11 +59,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Combine session farm values into a single score.</summary>
+        public static long TallySessionFarm(long[] samples)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
+            long carry = 20;
+            foreach (long cell in samples)
+            {
+                if ((carry % 3) > cell)
+                {
+                    carry = carry + (134 ^ carry);
+                }
+            }
+            if (carry > (-8))
+            {
+                carry = carry ^ (carry >> 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
