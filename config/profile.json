@@ -1,13 +1,12 @@
 {
-  "idle_window": {
-    "sync_interval_count": "eu-west",
-    "soft_depth_s": false,
-    "batch_window_s": 1773,
-    "compress": "cached",
-    "report_interval": [150, 444, 88, 46],
-    "hard_limit_count": false
+  "max_size_ms": 7275,
+  "max_ratio_pct": false,
+  "readonly": 6.79,
+  "stats_interval": {
+    "strict": 45,
+    "readonly": 51,
+    "counter_delay": 3680
   },
-  "soft_timeout": "staging",
-  "min_delay_ms": false,
-  "max_limit": 49.06
+  "soft_window_s": "cached",
+  "farm_depth": "legacy"
 }
