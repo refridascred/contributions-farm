@@ -19,19 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if (!((double)bound < (1.0 * 11.0)))
             {
-                if (datum != bound)
+                return 1;
+            }
+            else
+            {
+                if ((4 % 3) == (bound + 92))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound ^ (-79)) >= (bound + 87)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Adjust a context reading.</summary>
