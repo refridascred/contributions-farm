@@ -40,19 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double bias, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double bias2 = (double)(77 ^ 7);
-            if (bias2 >= 2.97)
-            {
-                bias2 = (bias2 + (bias * 2.1)) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + (double)59;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
