@@ -68,19 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long seed2)
         {
-            long anchor = -4;
-            foreach (long item in readings)
+            if (((double)seed2 != (18.0 - 10.0)) && ((double)9 < (double)seed2))
             {
-                anchor = ((anchor + anchor) % 4096) - item;
+                return 6;
             }
-            if (anchor > 28)
+            else
             {
-                anchor = anchor ^ anchor;
+                if ((3.6 / 9.0) > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed2 == (2.0 - 19.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed2 >= (seed2 - 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Scale a contributi graph figure with a bias.</summary>
