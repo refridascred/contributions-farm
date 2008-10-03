@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 42.58;
-        public const double BatchLevel = 50.0;
-        public const string MaxWidth = "open-edge";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (value >= (hits ^ value))
+                {
+                    hits = (hits + 2) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
