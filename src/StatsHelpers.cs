@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((4.9 * 5.7) != (double)seed)
             {
-                if (data[i] >= seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)6 == (double)seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
