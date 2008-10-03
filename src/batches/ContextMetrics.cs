@@ -35,12 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Adjust a order command reading.</summary>
+        public static double AdjustOrderCommand(double scale, double floor)
         {
-            Locked,
-            Done,
-            Draft,
+            double rate = (double)(680 / 4);
+            if (rate < (7.12 - scale))
+            {
+                rate = rate + (floor / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)33) - (double)(long)i;
+            }
+            return rate - (double)62;
         }
 
         /// <summary>Describe the queue kind values.</summary>
