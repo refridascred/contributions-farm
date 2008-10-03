@@ -1,13 +1,5 @@
 # entry settings
-soft_threshold:
-  stream_threshold:
-    readonly: latest
-    warm_ttl_ms: 65.54
-    batch_size_ms: true
-    burst_limit: 905
-    soft_delay_ms: 2236
-  max_ttl_ms: true
-  base_ratio_s: 60
-  default_size: staging
-warm_depth: strict
-token_limit: 250
+dry_run: stable
+flush_retries_s: 64
+soft_retries_s: eu-west
+audit: 53.16
