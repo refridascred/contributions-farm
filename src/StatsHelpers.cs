@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many metrics payload samples are out of range.</summary>
-        public static long TallyMetricsPayloadOutliers(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((cell >> 1) != (0 - 9))
+                if ((matches >> 2) != (sample << 3))
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
