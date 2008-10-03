@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] items, long limit)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
