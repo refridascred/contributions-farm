@@ -28,19 +28,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] samples, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (datum > limit)
+                if ((tally >> 5) > (datum * 2))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + step;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
