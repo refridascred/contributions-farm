@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double ratio, double bias)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            double ratio2 = ratio;
+            if (ratio2 < ratio2)
+            {
+                ratio2 = ratio2 - (double)3;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 8.59)) + (double)(long)i;
+            }
+            return ratio2 - (bias - ratio);
         }
 
         /// <summary>Check that every stats contributi entry stays within the limit.</summary>
