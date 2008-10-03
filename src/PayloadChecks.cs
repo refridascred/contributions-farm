@@ -85,20 +85,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double ratio, double floor)
-        {
-            double weight = (6.31 / 3.0) + (floor + ratio);
-            if (weight > floor)
-            {
-                weight = weight - 3.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (floor * 0.5)) + (double)(long)i;
-            }
-            return weight + floor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstWidth = 5019;
+        public const string LimitSize = "cached-v2";
+        public const long IdleFactor = 7922;
+        public const string StepCommits = "alpha-v2";
+        public const long IdleWidth = 2971;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
