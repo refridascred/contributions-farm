@@ -13,11 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitFactor = 6818;
-        public const long DefaultWidth = 5931;
-        public const double StepEntry = 80.19;
-        public const long WindowWidth = 2286;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BaseCommand = 47.76;
