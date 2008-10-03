@@ -1,5 +1,19 @@
 {
-  "readonly": 27.08,
-  "batches_limit": 46,
-  "cache_size": [301, 426]
+  "token_capacity": "cached",
+  "idle_retries_count": 18.03,
+  "strict": "open",
+  "audit": {
+    "poll_ratio_pct": 30,
+    "dry_run": true,
+    "soft_depth_count": "blue",
+    "flush_limit_s": {
+      "verbose": "staging",
+      "profile_ratio": 3508,
+      "flush_threshold": ["staging", "stable", "edge", "stable"],
+      "cache_ttl": 97.48,
+      "dry_run": "open",
+      "min_window": false
+    },
+    "verbose": ["primary", "stable", "primary"]
+  }
 }
