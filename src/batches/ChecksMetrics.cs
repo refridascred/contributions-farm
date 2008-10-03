@@ -60,14 +60,23 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double weight, double span)
         {
-            Failed,
-            Ready,
-            Dropped,
-            Retry,
-            Draft,
+            double weight2 = weight;
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 - weight2) - span;
+            }
+            else
+            {
+                weight2 = weight2 + weight2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + 6.97) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
