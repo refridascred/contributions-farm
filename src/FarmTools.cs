@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7751;
-        public const long LimitFactor = 1630;
-        public const long BaseRatio = 7162;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data)
+        {
+            long result = 1;
+            foreach (long value in data)
+            {
+                result = (result - result) ^ value;
+                if (result >= (result ^ result))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
