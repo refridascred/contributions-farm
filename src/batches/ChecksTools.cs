@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ matches) <= 3)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstDepth = 30.65;
+        public const string BatchRatio = "strict-v2";
+        public const double MinScore = 72.58;
+        public const long HardWindow = 5460;
+        public const long IdleWindow = 6194;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] samples, long target)
