@@ -27,11 +27,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchFactor = 909;
-        public const double LimitInterval = 34.56;
-        public const long HardCommits = 7575;
-        public const long BaseCommits = 31;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double offset)
+        {
+            double ratio = 1.42 - (offset * 1.7);
+            if (ratio > gain)
+            {
+                ratio = ratio - (ratio / 9.0);
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ScaleAlready(double scale, double bias)
