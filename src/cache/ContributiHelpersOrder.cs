@@ -37,11 +37,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "strict";
-        public const long CacheMetrics = 1168;
-        public const long StepWidth = 836;
-        public const long RetryLevel = 2391;
-        public const string IdleMetrics = "primary";
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
