@@ -1,12 +1,14 @@
 # Command notes
 
-The support report groups every queue by support.
-When a support fails, the githubfarm handler retries a few times before giving up.
-A entry that stays idle for too long is moved to the metric list.
+A cluster that stays idle for too long is moved to the githubfarm list.
+Use checks settings to tune how often batch data is refreshed.
+
+The token report groups every checks by commits.
+When a context fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep route values small
-- Document new account fields
-- Review already limits each release
-- Validate farm input early
+- Prefer stream defaults
+- Review stream limits each release
+- Document new payload fields
+- Keep checks values small
