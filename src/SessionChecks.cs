@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ratio2 + (double)74;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] readings, long limit)
         {
-            Idle,
-            New,
-            Pending,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((1.2 + 14.0) < (double)limit)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
