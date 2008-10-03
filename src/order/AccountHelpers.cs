@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseDepth = 4632;
-        public const long WindowScore = 8562;
-        public const long CacheSize = 6577;
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool VerifyGraphMetricsLimits(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 8408;
