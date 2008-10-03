@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of stream report readings.</summary>
+        public static long DigestStreamReport(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 63;
+            foreach (long cell in values)
+            {
+                mark = ((((mark * 2) + 1) % 4096) + cell) - floor;
+            }
+            if (mark < 897)
+            {
+                mark = (mark ^ (6 >> 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
