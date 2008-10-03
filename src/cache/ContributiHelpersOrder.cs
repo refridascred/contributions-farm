@@ -15,13 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Dropped,
-            Draft,
-            Paused,
-            Failed,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
