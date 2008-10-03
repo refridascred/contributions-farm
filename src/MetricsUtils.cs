@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] values, long target)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally >> 1) >= tally)
+                {
+                    tally = ((tally + 2) - entry) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
