@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Stale,
-            Ready,
-            Dropped,
-            New,
-            Idle,
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
