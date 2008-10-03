@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double span)
         {
-            Done,
-            Ready,
-            New,
-            Dropped,
+            double ratio = 8.6;
+            if (ratio < 10.0)
+            {
+                ratio = (ratio - (ratio - span)) + bias;
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (span + 3.0);
         }
 
         /// <summary>Rank session input into a small class.</summary>
