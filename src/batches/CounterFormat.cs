@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long bound)
+        /// <summary>Locate a route session reading by value.</summary>
+        public static long SeekRouteSessionIndex(long[] samples, long target)
         {
-            if (((bound / 2) <= (bound * 3)) || (bound <= (bound - bound)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - bound) < (target << 2))
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cluster state values.</summary>
