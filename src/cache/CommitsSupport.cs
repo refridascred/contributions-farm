@@ -74,19 +74,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool CheckStreamSupportRange(long[] items, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
