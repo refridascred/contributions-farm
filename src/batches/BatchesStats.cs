@@ -55,14 +55,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Match up stats record samples.</summary>
+        public static long OverlapStatsRecordCount(long[] series)
         {
-            Synced,
-            Paused,
-            Locked,
-            Dropped,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
