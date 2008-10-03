@@ -40,15 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] readings, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
             long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= (1 * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + floor;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
