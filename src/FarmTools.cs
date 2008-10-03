@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] items, long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset * 5) < (67 & 255)) && ((offset ^ tally) != (tally / 5)))
+                if (readings[i] == floor)
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
