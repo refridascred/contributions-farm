@@ -1,18 +1,6 @@
 {
-  "cache_window": "legacy",
-  "commits_threshold": "staging",
-  "warm_size_s": "open",
-  "batch_timeout_s": {
-    "batch_window": {
-      "enabled": "legacy",
-      "hard_limit_pct": 9151,
-      "retry_delay_pct": [160, 23]
-    },
-    "record_interval": [430, 123],
-    "schema_threshold": ["green", "open", "stable"],
-    "idle_ttl": ["cached", "eu-west"],
-    "default_capacity": 75.34
-  },
-  "cache_size": "eu-west",
-  "editor_size": [238, 411, 39, 191]
+  "tools_ttl": 100,
+  "base_limit": 30,
+  "hard_depth_pct": true,
+  "poll_threshold_count": false
 }
