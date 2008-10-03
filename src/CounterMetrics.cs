@@ -15,19 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account order samples are out of range.</summary>
-        public static long AuditAccountOrderOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally + 7) < ((long)levels.Length >> 4))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxBudget = 89.01;
+        public const long CacheContributi = 13;
+        public const long BurstWidth = 3743;
+        public const long BurstCount = 9814;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleSpan = 3532;
