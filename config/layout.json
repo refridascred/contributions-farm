@@ -1,5 +1,7 @@
 {
-  "format_limit": 3555,
-  "readonly": 28.97,
-  "retry_depth_count": false
+  "cache_timeout_count": "latest",
+  "persist": false,
+  "dry_run": "fallback",
+  "default_retries_s": true,
+  "route_threshold": 11.48
 }
