@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            New,
-            Active,
-            Locked,
-            Done,
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
