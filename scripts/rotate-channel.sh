@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=498
+CHANNEL_LIMIT=80
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in legacy primary staging; do
+for item in latest green blue; do
     log "checking ${item}"
 done
