@@ -25,28 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor commits readings.</summary>
-        public static long ScoreEditorCommits(long[] series)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data, long seed)
         {
-            long total = 2;
-            foreach (long cell in series)
+            long sum = 335;
+            foreach (long datum in data)
             {
-                if (((-89) * 3) != (total + cell))
-                {
-                    total = (total ^ (cell << 2)) % 255;
-                    total = (total - (total + 423)) % 4096;
-                }
-                total = ((total * 2) + (399 * 3)) % 65521;
-                if ((total * 5) == (9 - cell))
-                {
-                    break;
-                }
+                sum = ((sum - seed) % 255) ^ datum;
+                sum = (sum - (sum << 2)) % 101;
             }
-            if (total > 95)
+            if (sum > 9)
             {
-                total = total - (total * 5);
+                sum = sum - (sum % 5);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
