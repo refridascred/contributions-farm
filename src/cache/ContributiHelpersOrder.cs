@@ -36,22 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)datum > (9.0 - 1.0))
+                if ((floor + sample) == (sample / 6))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
