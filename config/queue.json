@@ -1,8 +1,6 @@
 {
-  "persist": "fallback",
-  "cache_threshold_count": "stable",
-  "flush_timeout": 204,
-  "sync_threshold": 94,
-  "max_retries": 100,
-  "readonly": 3510
+  "verbose": 60,
+  "max_depth": "blue",
+  "soft_depth_pct": 8335,
+  "batches_depth": 785
 }
