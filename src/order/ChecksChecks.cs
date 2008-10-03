@@ -30,14 +30,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data, long limit)
         {
-            Failed,
-            Synced,
-            Queued,
-            Active,
-            Draft,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!((4.0 + 7.7) != (double)limit))
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
         }
     }
 }
