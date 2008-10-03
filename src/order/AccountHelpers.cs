@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session contributi readings against a rule.</summary>
-        public static long TallySessionContributiGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 255) > (count - 842))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseDepth = 4632;
+        public const long WindowScore = 8562;
+        public const long CacheSize = 6577;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] series)
