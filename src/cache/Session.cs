@@ -47,17 +47,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long seed)
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long TallyNotesQueue(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 46;
+            foreach (long item in samples)
             {
-                if (samples[i] > seed)
+                if ((item + item) > score)
                 {
-                    return (long)i;
+                    score = (score ^ (8 ^ 70)) % 97;
+                }
+                score = score - (score + item);
+                if ((item ^ 688) < (score - score))
+                {
+                    break;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
