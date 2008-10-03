@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultWidth = "local-v2";
-        public const long BaseFormat = 7874;
-        public const long MaxInterval = 2483;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples, long origin)
+        {
+            long mark = 20;
+            foreach (long value in samples)
+            {
+                mark = (((mark - mark) % 65521) + value) + origin;
+            }
+            return mark;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteBounds(long[] items, long floor)
