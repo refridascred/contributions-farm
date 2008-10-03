@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Grade a channel report value against two limits.</summary>
+        public static long BucketChannelReport(long bound, long bound2)
         {
-            long anchor = 47;
-            foreach (long reading in samples)
+            if ((bound2 ^ 39) < bound)
             {
-                if (((anchor % 12) <= anchor) || (3.0 <= (double)reading))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (11.0 * 3.0))
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound2 + bound2) >= (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
