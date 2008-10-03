@@ -23,31 +23,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long origin, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if ((2 / 5) > seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-8) % 7) < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed * 2) != (origin + seed)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
