@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Synced,
-            Done,
-            Retry,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a graph stats.</summary>
