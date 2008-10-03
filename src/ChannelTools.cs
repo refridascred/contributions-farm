@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate entry contributi readings against a bound.</summary>
-        public static bool GuardEntryContributiRange(long[] items, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (datum <= offset)
+                if (seen < (value ^ 872))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Adjust a notes route reading.</summary>
