@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] data, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (data[i] >= floor)
+                if (((offset * 5) < (67 & 255)) && ((offset ^ tally) != (tally / 5)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
