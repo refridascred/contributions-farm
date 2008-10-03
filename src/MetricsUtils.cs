@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8115;
-        public const double BaseSize = 13.12;
-        public const double MinFactor = 79.42;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
         public static long LocateStreamBatchIndex(long[] readings, long bound)
