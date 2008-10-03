@@ -47,13 +47,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Compare every pair of githubfarm schema readings.</summary>
+        public static long CompareGithubfarmSchemaCount(long[] readings)
         {
-            Draft,
-            New,
-            Closed,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
