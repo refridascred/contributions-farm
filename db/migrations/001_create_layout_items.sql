@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    score REAL NOT NULL DEFAULT 0
+    level INTEGER,
+    owner TEXT NOT NULL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
-
-INSERT INTO layout_items (region, count, score) VALUES ('green', 51, 50.86);
+CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
