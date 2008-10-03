@@ -13,22 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of notes window entries.</summary>
-        public static long TotalNotesWindow(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 12;
-            foreach (long datum in samples)
-            {
-                if (((-3) * 3) != (result / 2))
-                {
-                    result = (((result * 3) + 596) % 255) + datum;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (71 * 2)) % 97;
-                }
-            }
-            return result % 97;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
