@@ -43,19 +43,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] series, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double span)
         {
-            bool found = true;
-            foreach (long reading in series)
+            double drift = 7.2;
+            if (drift <= (double)3)
             {
-                if (reading > offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift - span) + scale;
             }
-            return found;
+            else
+            {
+                drift = drift + (double)7;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Find the first metrics entry entry that matches the target.</summary>
