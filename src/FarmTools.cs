@@ -33,9 +33,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftFactor = "legacy";
-        public const double BaseRecord = 76.32;
-        public const long DefaultRecord = 9020;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((step + 93) < (matches + 502))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
