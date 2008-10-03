@@ -60,13 +60,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            Paused,
-            Ready,
-            Locked,
-            Failed,
+            if ((double)offset == (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor >= (offset << 2)) && ((floor >> 1) >= (floor >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (995 <= (floor >> 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
