@@ -35,11 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 3;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 4)) - value;
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = ((anchor ^ (90 * 3)) % 255) - (long)i;
+                }
+                anchor = ((anchor * 3) + ((-19) * 4)) % 255;
+            }
+            return anchor;
         }
     }
 }
