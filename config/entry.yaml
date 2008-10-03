@@ -1,40 +1,19 @@
 # entry settings
-enabled:
-  report_ttl: 500
-  account_ttl: 1024
-  verbose: false
-cache_ratio_ms:
-  batches_delay: 59.76
-  sync_delay:
-    idle_depth:
+flush_size:
+  retry_delay_ms:
+    soft_capacity: false
+    strict: 63.72
+    flush_size_ms:
+      - open
       - stable
-      - latest
-    notes_capacity: blue
-    base_retries: 36.58
-    max_timeout_pct: cached
-    min_ttl: edge
-    min_size_pct:
-      - 317
-      - 202
-      - 388
-  flush_size_count:
-    soft_delay_pct: open
-    batch_limit_pct: true
-    retry_timeout_ms: 8595
-    compress: true
-    command_delay:
-      - fallback
-      - cached
-      - blue
-      - cached
-  contributi_timeout: standard
-  idle_delay_count: 11.36
-default_ratio_count:
-  - fallback
-  - green
-readonly:
-  - 304
-  - 321
-  - 329
-  - 81
-base_retries: true
+      - open
+  queue_size: staging
+  warm_limit: 8976
+  audit:
+    - cached
+    - green
+  burst_interval: latest
+poll_threshold_count: true
+poll_depth: local
+flush_timeout_s: 60
+cache_size_s: staging
