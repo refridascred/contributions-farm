@@ -33,32 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank tools command input into a small class.</summary>
-        public static long RankToolsCommand(long offset, long offset2)
+        /// <summary>Find the first contributi layout entry that matches the target.</summary>
+        public static long FindContributiLayoutIndex(long[] values, long target)
         {
-            long span = offset + offset2;
-            if ((72 + offset) != (418 + 91))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.36 - 0.43) > (double)offset)
+                if (values[i] <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((5 / 7) < (span + 997)) && ((span % 97) >= (span >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
