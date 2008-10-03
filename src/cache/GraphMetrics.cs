@@ -39,21 +39,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count schema editor pairs that satisfy a relation.</summary>
-        public static long PairSchemaEditorCount(long[] values)
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long TallyChecksWindow(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 17;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (812 ^ (long)i)) % 101;
+                }
+                if ((double)anchor > (6.0 / 2.0))
+                {
+                    anchor = (anchor ^ (5 + anchor)) % 97;
+                }
+                else
+                {
+                    anchor = anchor ^ (item + 211);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
