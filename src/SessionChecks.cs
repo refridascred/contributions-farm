@@ -48,38 +48,12 @@ namespace Common.Utilities
         public const string BatchWidth = "local-1";
         public const long BaseOrder = 9071;
 
-        /// <summary>Grade a metrics metric value against two limits.</summary>
-        public static long RankMetricsMetric(long offset, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if (!((offset - origin) < (origin ^ origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset > (offset - offset)) || (((-49) + origin) >= (origin + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + offset) <= (41 / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset ^ origin) == (offset + 28))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
