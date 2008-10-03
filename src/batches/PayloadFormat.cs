@@ -33,15 +33,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool VerifyMetricCommitsLimits(long[] values, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
