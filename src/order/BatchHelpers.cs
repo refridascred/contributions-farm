@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BaseFormat = 7874;
         public const long MaxInterval = 2483;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] items, long floor)
         {
-            long total = 97;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long value in items)
             {
-                total = ((total << 2) ^ (total * 4)) % 1000;
-                if (!((bound / 3) != (cell << 1)))
+                if (value >= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Validate account notes readings against a bound.</summary>
