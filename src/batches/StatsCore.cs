@@ -71,18 +71,18 @@ namespace Common.Utilities
         public const string HardLevel = "open-v2";
         public const double BatchBudget = 23.12;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] readings, long bound)
+        /// <summary>Audit notes session readings against a rule.</summary>
+        public static long AuditNotesSessionGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)bound <= (5.41 + 1.36))
+                if ((5.19 * 6.9) >= (8.63 + 0.95))
                 {
-                    hits = (hits + 1) + datum;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
