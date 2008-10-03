@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] levels, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value << 1) >= (5 << 1))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
