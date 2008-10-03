@@ -33,23 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] readings, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((origin << 2) < (212 + origin))
+                if (item < bound)
                 {
-                    sum = sum - sum;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (origin - (long)i)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
