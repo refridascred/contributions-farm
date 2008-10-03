@@ -17,11 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "alpha";
-        public const long RetryTimeout = 3562;
-        public const double LimitSession = 53.66;
-        public const long BaseSession = 2287;
+        /// <summary>Match up window farm samples.</summary>
+        public static long OverlapWindowFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleGithubfarm = 4248;
