@@ -24,14 +24,17 @@ namespace Common.Utilities
             return ratio2 - (bias - ratio);
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
         {
-            Failed,
-            Synced,
-            Paused,
-            Dropped,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
