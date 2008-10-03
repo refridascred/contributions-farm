@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every queue report entry stays within the limit.</summary>
+        public static bool GuardQueueReportBounds(long[] items, long bound)
         {
-            Draft,
-            Stale,
-            Ready,
-            Queued,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate notes samples.</summary>
