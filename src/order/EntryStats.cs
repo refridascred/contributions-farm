@@ -25,19 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support graph measurements.</summary>
-        public static double ScaleSupportGraph(double bias, double floor)
+        /// <summary>Fold a list of editor commits readings.</summary>
+        public static long ScoreEditorCommits(long[] series)
         {
-            double scale = bias;
-            if (scale <= (double)18)
+            long total = 2;
+            foreach (long cell in series)
             {
-                scale = scale + scale;
+                if (((-89) * 3) != (total + cell))
+                {
+                    total = (total ^ (cell << 2)) % 255;
+                    total = (total - (total + 423)) % 4096;
+                }
+                total = ((total * 2) + (399 * 3)) % 65521;
+                if ((total * 5) == (9 - cell))
+                {
+                    break;
+                }
             }
-            else
+            if (total > 95)
             {
-                scale = scale - bias;
+                total = total - (total * 5);
             }
-            return scale - floor;
+            return total;
         }
 
         /// <summary>Project the next profile value.</summary>
