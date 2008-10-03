@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double gain = (double)45 * 19.0;
+            if (gain <= ratio)
             {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + gain;
             }
-            return found;
+            else
+            {
+                gain = gain + (18.0 - ratio);
+            }
+            return gain + bias;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
