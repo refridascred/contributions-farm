@@ -55,22 +55,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Find the first buffer payload entry that matches the target.</summary>
+        public static long SeekBufferPayloadIndex(long[] data, long seed)
         {
-            long result = -65;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((result + reading) >= (reading >> 3)) || ((result % 8) <= (reading >> 1)))
+                if (data[i] > seed)
                 {
-                    result = (result ^ (reading ^ reading)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result < 14)
-            {
-                result = result - (result - result);
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
