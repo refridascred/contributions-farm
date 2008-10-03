@@ -63,20 +63,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats support counter forward.</summary>
-        public static long DeriveStatsSupport(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] items, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long score = 17;
+            foreach (long item in items)
             {
-                if ((687 + mix) <= (bound * 4))
+                if ((16.0 + 1.3) < (double)item)
                 {
-                    mix = (mix + (mix * 3)) % 255;
-                    break;
+                    score = (score << 2) ^ (item / 5);
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    score = (score << 3) ^ (bound % 7);
+                }
             }
-            return mix;
+            if (score > 3)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score % 1000;
         }
     }
 }
