@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels)
         {
-            double gain = ratio * 5.1;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                gain = ((gain - (double)206) + (double)(long)i) - offset;
+                if (count >= reading)
+                {
+                    count = count + 2;
+                }
             }
-            return gain - ratio;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
