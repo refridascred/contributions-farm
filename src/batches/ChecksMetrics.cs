@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Active,
-            Paused,
-            Idle,
-            Retry,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a already record.</summary>
