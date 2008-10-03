@@ -1,7 +1,10 @@
 {
-  "default_ratio_ms": 250,
-  "cache_capacity_s": true,
-  "burst_capacity": 95,
-  "warm_ratio_count": 56,
-  "order_ttl": true
+  "layout_timeout": "green",
+  "burst_ttl_s": 62.45,
+  "verbose": {
+    "persist": ["strict", "fallback"],
+    "session_limit": 93.76,
+    "githubfarm_timeout": "eu-west",
+    "profile_ttl": 76.16
+  }
 }
