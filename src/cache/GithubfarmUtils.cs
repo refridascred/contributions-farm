@@ -35,22 +35,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
+        /// <summary>Project the next filter cluster value.</summary>
+        public static double SmoothFilterCluster(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double gain = (floor * 1.8) + (double)72;
+            if (gain > gain)
             {
-                if ((sample & 3) > matches)
-                {
-                    matches = (matches + 3) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain + rate;
             }
-            return matches;
+            return gain - (floor * 3.32);
         }
     }
 }
