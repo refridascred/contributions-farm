@@ -55,11 +55,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 1564;
-        public const string CacheBuffer = "local-edge";
-        public const long MaxBuffer = 4253;
-        public const long SoftRatio = 1823;
-        public const string RetryTimeout = "open-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data)
+        {
+            long result = -65;
+            foreach (long reading in data)
+            {
+                if (((result + reading) >= (reading >> 3)) || ((result % 8) <= (reading >> 1)))
+                {
+                    result = (result ^ (reading ^ reading)) % 65521;
+                }
+            }
+            if (result < 14)
+            {
+                result = result - (result - result);
+            }
+            return result % 4096;
+        }
     }
 }
