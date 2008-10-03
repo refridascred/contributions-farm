@@ -70,13 +70,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstFactor = 2950;
+        public const long MinSession = 6252;
+        public const long MaxSize = 7831;
+        public const long RetryTimeout = 6214;
+        public const long IdleCount = 1788;
     }
 }
