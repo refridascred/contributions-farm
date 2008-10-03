@@ -22,14 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit session contributi readings against a rule.</summary>
+        public static long TallySessionContributiGaps(long[] values)
         {
-            Retry,
-            Ready,
-            New,
-            Active,
-            Locked,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 255) > (count - 842))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
