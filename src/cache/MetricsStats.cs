@@ -67,21 +67,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count tools buffer pairs that satisfy a relation.</summary>
-        public static long MatchToolsBufferCount(long[] samples)
+        /// <summary>Find the first token already entry that matches the target.</summary>
+        public static long LocateTokenAlreadyIndex(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] > limit)
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
