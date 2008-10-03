@@ -1,6 +1,11 @@
-id,weight,owner,token
-1,22.45,89,32.14
-2,local,927,latest
-3,97.05,381,494
-4,323,825,local
-5,open,edge,standard
+id,count,rank,region,token
+1,standard,cached,381,12.12
+2,open,latest,strict,553
+3,primary,96.15,stable,32.61
+4,69.23,blue,48.22,83.27
+5,848,806,latest,fallback
+6,43.84,open,eu-west,strict
+7,28.53,882,edge,56.94
+8,786,primary,stable,55.42
+9,staging,371,85,latest
+10,primary,787,79.26,open
