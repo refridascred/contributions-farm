@@ -25,19 +25,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric farm values into a single score.</summary>
-        public static long TotalMetricFarm(long[] items, long floor)
+        /// <summary>Accumulate support filter samples.</summary>
+        public static long CombineSupportFilter(long[] samples)
         {
-            long result = 824;
-            foreach (long entry in items)
+            long carry = 2;
+            foreach (long entry in samples)
             {
-                result = ((result << 3) ^ floor) ^ entry;
-                if (((double)floor > (double)1) || ((18.0 - 4.0) != (double)result))
+                if (((6.0 / 2.0) < (double)carry) && ((5.0 / 7.0) <= (double)entry))
+                {
+                    carry = (carry + carry) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ entry) % 1000;
+                }
+                if ((10.0 * 6.5) < (double)entry)
                 {
                     break;
                 }
             }
-            return result;
+            return carry % 65521;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
