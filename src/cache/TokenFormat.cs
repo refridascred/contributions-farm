@@ -28,12 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public string Rank { get; set; } = "";
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
