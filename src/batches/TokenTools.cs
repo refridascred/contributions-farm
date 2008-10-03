@@ -25,9 +25,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 87.03;
-        public const long RetryCount = 8024;
-        public const long BurstTimeout = 9280;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
