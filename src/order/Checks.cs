@@ -68,19 +68,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double scale, double bias)
-        {
-            double load = (bias / 6.0) + (scale * 1.77);
-            if (load < (bias - load))
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - bias;
-            }
-            return load - bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 4.73;
+        public const double WindowEntry = 7.51;
+        public const long WindowScore = 5922;
+        public const long MaxEntry = 2241;
+        public const double CacheDepth = 32.67;
     }
 }
