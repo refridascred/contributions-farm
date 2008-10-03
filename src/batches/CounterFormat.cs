@@ -28,23 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Project the next graph order value.</summary>
+        public static double ProjectGraphOrder(double ratio, double bias)
         {
-            double bias = ratio;
-            if (bias <= floor)
+            double bias2 = bias;
+            if (bias2 <= (double)664)
             {
-                bias = bias - (double)9;
+                bias2 = bias2 - bias2;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                bias = bias - bias;
+                bias2 = (bias2 + (bias / 7.0)) - (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + 1.0) + (double)(long)i;
-            }
-            return bias + (double)(-63);
+            return bias2 - (bias + ratio);
         }
     }
 }
