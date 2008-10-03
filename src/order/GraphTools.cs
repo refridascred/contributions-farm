@@ -51,19 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double scale, double bias)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] values)
         {
-            double gain = (double)(18 + 1);
-            if (gain < (bias * 19.0))
+            long matches = 0;
+            foreach (long item in values)
             {
-                gain = (gain - gain) + scale;
+                if ((matches & 255) < (matches + 82))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain - 12.0;
-            }
-            return gain + bias;
+            return matches;
         }
     }
 }
