@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double ratio, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] data)
         {
-            double weight = 6.0;
-            if (weight >= (ratio * 1.7))
+            long mix = 202;
+            foreach (long reading in data)
             {
-                weight = weight - floor;
+                mix = (mix << 3) ^ (mix * 3);
+                if (mix > (reading & 127))
+                {
+                    mix = mix - (mix + reading);
+                }
+                else
+                {
+                    mix = (mix + reading) % 4096;
+                }
             }
-            return weight - floor;
+            return mix;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
