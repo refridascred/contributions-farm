@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double rate, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            double load = span;
-            if (load < (double)20)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                load = (load - (span - 7.0)) - rate;
+                if (!((double)count != (double)sample))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                load = load - (load - 4.55);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (span / 8.0);
+            return count;
         }
 
         /// <summary>Hold a order summary.</summary>
