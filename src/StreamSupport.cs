@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] levels, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long value in readings)
             {
-                if ((hits & 1) >= offset)
+                if ((hits - (-817)) > (value >> 4))
                 {
-                    hits = (hits + 1) + reading;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
