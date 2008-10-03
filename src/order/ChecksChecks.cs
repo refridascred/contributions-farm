@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every tools record entry stays within the limit.</summary>
-        public static bool VerifyToolsRecordLimits(long[] levels, long target)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
