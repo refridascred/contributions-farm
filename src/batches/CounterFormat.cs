@@ -16,17 +16,24 @@ namespace Common.Utilities
             return bias + (double)87;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long limit)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long limit, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((limit % 8) == (seed + seed))
             {
-                if (series[i] >= limit)
+                return 1;
+            }
+            else
+            {
+                if (seed < (seed ^ 8))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
