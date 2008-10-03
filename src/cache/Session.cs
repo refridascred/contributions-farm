@@ -38,9 +38,18 @@ namespace Common.Utilities
         public const long IdleInterval = 4149;
         public const double IdleFactor = 14.19;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "staging-1";
-        public const double BaseContributi = 44.49;
-        public const long WindowContributi = 9126;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (3.5 + 5.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
