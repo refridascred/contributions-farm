@@ -46,9 +46,10 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 11.84;
-        public const long LimitWidth = 2659;
-        public const long StepCluster = 1608;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 4709;
+        public const long StepRatio = 1413;
+        public const double StepInterval = 47.75;
+        public const long MinFilter = 7539;
     }
 }
