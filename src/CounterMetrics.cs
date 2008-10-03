@@ -25,31 +25,13 @@ namespace Common.Utilities
         public const long MinTimeout = 7735;
         public const string BaseFormat = "open-v2";
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long seed, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if (!((seed % 8) <= 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed + seed) == (seed >> 3)) && (5 >= (offset * 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed <= 2.8)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
