@@ -40,11 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 854;
-        public const long MinBuffer = 5528;
-        public const long MaxDepth = 4978;
-        public const double RetryBuffer = 71.16;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
