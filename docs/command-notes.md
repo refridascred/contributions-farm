@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep filter and queue names short and lowercase.
+Use entry settings to tune how often farm data is refreshed.
+When a farm fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
 - Keep already values small
-- Document new profile fields
-- Prefer window defaults
+- Document new already fields
+- Prefer layout defaults
+- Log every stream change
