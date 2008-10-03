@@ -51,17 +51,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((1.0 - 13.0) >= (double)bound)
             {
-                if (items[i] <= seed)
+                return 7;
+            }
+            else
+            {
+                if (!(3.1 > (double)floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
