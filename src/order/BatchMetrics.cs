@@ -13,18 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit githubfarm token readings against a rule.</summary>
-        public static long AuditGithubfarmTokenHits(long[] values)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (count < (2 - count))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Adjust a filter reading.</summary>
