@@ -1,10 +1,6 @@
-id,weight,state,level
-1,29.13,65.58,807
-2,strict,8.08,68.93
-3,27.58,811,804
-4,187,981,staging
-5,317,cached,edge
-6,fallback,16.0,296
-7,630,25.59,97
-8,50.16,77.85,standard
-9,68.2,11,211
+id,label,weight
+1,14.71,22
+2,190,green
+3,cached,51.26
+4,81.19,199
+5,standard,965
