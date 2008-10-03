@@ -20,32 +20,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels, long limit)
         {
-            long slot = seed + step;
-            if ((slot + (-89)) < (seed - step))
+            long acc = 1;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step << 1) >= 60)
+                acc = (acc + (64 << 2)) + limit;
+                if ((acc >> 2) <= (entry % 97))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed <= (seed + 591))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
