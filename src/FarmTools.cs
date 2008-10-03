@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long bound)
         {
-            long total = 82;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((double)reading == (0.9 + 5.9))
+                if (((matches << 2) <= matches) || (matches < (bound + datum)))
                 {
-                    total = (total - total) % 4096;
+                    matches = matches + 2;
                 }
             }
-            if (total < 349)
-            {
-                total = (total - ((long)series.Length * 4)) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a format record.</summary>
