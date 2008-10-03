@@ -23,11 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 73.45;
-        public const double HardFarm = 42.52;
-        public const double HardTimeout = 18.71;
-        public const double MaxInterval = 43.08;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
+        {
+            long acc = 7;
+            foreach (long sample in items)
+            {
+                if (((5.0 / 5.0) > (double)acc) && (acc > sample))
+                {
+                    continue;
+                }
+                if ((sample >> 1) <= (acc & 1))
+                {
+                    acc = (acc * 5) + (185 << 2);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] samples, long limit)
