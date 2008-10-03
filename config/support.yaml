@@ -1,4 +1,6 @@
 # support settings
-soft_threshold: 30
-default_retries: 1387
-poll_size: fallback
+soft_window: latest
+flush_interval_pct: 96.71
+burst_ttl_count: local
+enabled: 95
+warm_size_ms: blue
