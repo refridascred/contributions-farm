@@ -22,14 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Draft,
-            Queued,
             Stale,
-            Failed,
-            Pending,
+            Queued,
+            Idle,
         }
     }
 }
