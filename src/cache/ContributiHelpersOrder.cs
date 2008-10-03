@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a farm payload pair into a bucket.</summary>
-        public static long ClassifyFarmPayload(long origin, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            if (((origin + seed) < (0 * 3)) && ((origin / 7) >= (origin ^ seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed << 3) == (seed & 1)) || ((seed >> 4) == (30 + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + seed) < (seed - origin)) || (seed > (seed / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Queued,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the metric phase values.</summary>
