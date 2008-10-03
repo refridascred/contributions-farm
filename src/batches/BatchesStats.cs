@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] series, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 61;
+            foreach (long entry in values)
             {
-                if ((series[i] == bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (entry >> 2)) - seed;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Describe the cluster state values.</summary>
