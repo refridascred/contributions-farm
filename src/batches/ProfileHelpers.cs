@@ -66,19 +66,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long total = 5;
+            foreach (long reading in items)
             {
-                if (value < floor)
+                if (!((26 + total) <= (reading - 716)))
                 {
-                    flag = false;
-                    break;
+                    total = (total + reading) % 255;
                 }
             }
-            return flag;
+            if (total > 43)
+            {
+                total = (total - (total ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the contributi level values.</summary>
