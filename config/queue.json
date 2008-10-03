@@ -1,6 +1,12 @@
 {
-  "flush_threshold_s": 74.45,
-  "report_capacity": "open",
-  "audit": false,
-  "compress": 60
+  "dry_run": 9141,
+  "retry_window": true,
+  "order_ttl": "latest",
+  "readonly": {
+    "min_ratio_s": 44,
+    "min_window_ms": [351, 210],
+    "idle_ttl": ["standard", "eu-west", "cached"],
+    "notes_delay": 60,
+    "default_size_s": [313, 25, 429]
+  }
 }
