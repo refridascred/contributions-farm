@@ -55,20 +55,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 74.2;
+        public const long DefaultSupport = 288;
+        public const string DefaultScore = "local-1";
+        public const long LimitInterval = 2570;
+        public const string BurstSupport = "local-edge";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] levels, long offset)
