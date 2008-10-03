@@ -15,13 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Rank account input into a small class.</summary>
