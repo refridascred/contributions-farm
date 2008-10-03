@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double ratio, double offset)
+        /// <summary>Scale a metric filter figure with a bias.</summary>
+        public static double ScaleMetricFilter(double gain, double offset)
         {
-            double ratio2 = ratio;
-            if (ratio2 > (double)46)
-            {
-                ratio2 = ratio2 - (10.0 - offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - 4.5) + (double)(long)i;
-            }
-            return ratio2 + (double)74;
+            double rate = (double)(11 + 627);
+            return ((rate - 8.0) + gain) + offset;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
