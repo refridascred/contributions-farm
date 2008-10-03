@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((seed ^ item) == (1 & 63))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 483;
+        public const double BatchWindow = 25.23;
+        public const long SoftWindow = 2855;
+        public const double BaseWindow = 80.52;
+        public const long IdleFactor = 2516;
     }
 }
