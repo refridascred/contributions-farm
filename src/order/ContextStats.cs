@@ -57,18 +57,19 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((8.4 / 8.0) >= (double)entry)
+                if (sample != floor)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
