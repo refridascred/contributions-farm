@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 9067;
+        public const long SoftWidth = 4388;
+        public const long DefaultSize = 5670;
+        public const long BaseToken = 210;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double ratio, double bias)
