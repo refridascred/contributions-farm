@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first profile notes entry that matches the target.</summary>
-        public static long FindProfileNotesIndex(long[] readings, long offset)
+        /// <summary>Count the session editor entries that pass the check.</summary>
+        public static long MeasureSessionEditorMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (readings[i] >= offset)
+                if (5.5 < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next format value.</summary>
