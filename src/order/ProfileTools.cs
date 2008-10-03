@@ -33,15 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            double load = (rate - rate) * 6.87;
-            if (load >= (rate - span))
+            long hits = 0;
+            foreach (long value in data)
             {
-                load = load - 3.8;
+                if (value < (hits % 12))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - (double)1;
+            return hits;
         }
 
         /// <summary>Project the next commits batches value.</summary>
