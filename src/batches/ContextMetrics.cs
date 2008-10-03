@@ -44,17 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Done,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
