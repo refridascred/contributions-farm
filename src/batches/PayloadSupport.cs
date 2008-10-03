@@ -19,21 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Accumulate format metrics samples.</summary>
+        public static long TallyFormatMetrics(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 778;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2.0 / 2.0) >= 2.61)
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 2) ^ (mix >> 1);
+                }
+                else
+                {
+                    mix = (mix + (cell ^ (-32))) % 97;
                 }
             }
-            return matches;
+            if (mix > 3)
+            {
+                mix = (mix * 5) + (limit + limit);
+            }
+            return mix;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
