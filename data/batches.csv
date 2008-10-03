@@ -1,8 +1,6 @@
-id,count,state,level,rank
-1,strict,708,edge,945
-2,69.07,573,open,blue
-3,fallback,265,eu-west,644
-4,green,stable,476,555
-5,235,74.85,557,697
-6,green,blue,48.94,latest
-7,green,286,65.84,strict
+id,weight,owner,token
+1,22.45,89,32.14
+2,local,927,latest
+3,97.05,381,494
+4,323,825,local
+5,open,edge,standard
