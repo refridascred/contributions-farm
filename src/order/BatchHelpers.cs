@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 97;
+            foreach (long cell in values)
+            {
+                total = ((total << 2) ^ (total * 4)) % 1000;
+                if (!((bound / 3) != (cell << 1)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
