@@ -52,38 +52,15 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long step)
+        /// <summary>Combine account token values into a single score.</summary>
+        public static long ScoreAccountToken(long[] samples)
         {
-            if ((double)floor >= (2.5 * 4.16))
+            long score = 8;
+            foreach (long item in samples)
             {
-                return 7;
+                score = (score + (item * 5)) % 4096;
             }
-            else
-            {
-                if (((8.27 * 0.88) < (double)floor) || ((floor / 9) >= (step >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (662 < (step ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step ^ floor) > step) || ((floor << 3) < (floor & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a queue entry.</summary>
