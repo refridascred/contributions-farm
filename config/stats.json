@@ -1,8 +1,6 @@
 {
-  "cache_retries": 52.92,
-  "sync_window": "stable",
-  "entry_depth": 500,
-  "min_capacity": "edge",
-  "soft_size_count": ["primary", "local", "green", "primary"],
-  "tools_depth": "fallback"
+  "poll_ttl_ms": 79.04,
+  "max_limit": "green",
+  "audit": "strict",
+  "persist": "standard"
 }
