@@ -48,13 +48,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Derive the next notes account value from a seed.</summary>
+        public static long DeriveNotesAccount(long step)
         {
-            Paused,
-            Ready,
-            New,
-            Closed,
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 5) + (step % 5)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph status values.</summary>
