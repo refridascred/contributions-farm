@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] levels, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] data, long step)
         {
-            long score = 360;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                score = (((score * 5) + (4 ^ 411)) % 4096) - origin;
-                if (!((value / 6) >= (score % 3)))
+                if (item != step)
                 {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
