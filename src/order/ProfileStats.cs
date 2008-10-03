@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine route record values into a single score.</summary>
-        public static long DigestRouteRecord(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] series, long offset)
         {
-            long acc = 279;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                acc = acc + acc;
-                if ((reading ^ reading) <= (reading / 6))
+                if ((matches + matches) == (datum / 4))
                 {
-                    acc = (acc << 2) ^ (reading + acc);
-                }
-                else
-                {
-                    acc = acc + acc;
+                    matches = (matches + 1) + offset;
                 }
             }
-            if (acc > 595)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Hold a editor stats.</summary>
