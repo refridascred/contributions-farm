@@ -30,12 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate batch command samples.</summary>
+        public static long DigestBatchCommand(long[] readings, long limit)
         {
-            Locked,
-            Paused,
-            Failed,
+            long result = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample - sample) < result) && ((1.4 / 6.0) >= (double)result))
+                {
+                    result = ((result * 2) + (limit ^ (-42))) % 65521;
+                }
+            }
+            if (result < 170)
+            {
+                result = result + (limit - limit);
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank support batches input into a small class.</summary>
