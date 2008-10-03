@@ -1,12 +1,11 @@
 {
-  "max_size_ms": 7275,
-  "max_ratio_pct": false,
-  "readonly": 6.79,
-  "stats_interval": {
-    "strict": 45,
-    "readonly": 51,
-    "counter_delay": 3680
+  "poll_interval": 10.85,
+  "route_window": [207, 17],
+  "batch_interval": {
+    "flush_capacity_pct": [141, 202],
+    "sync_delay_pct": "fallback",
+    "batch_threshold_pct": 39.0,
+    "poll_capacity_ms": ["eu-west", "local", "open"]
   },
-  "soft_window_s": "cached",
-  "farm_depth": "legacy"
+  "account_capacity": 48.07
 }
