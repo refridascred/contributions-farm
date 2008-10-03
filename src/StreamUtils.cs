@@ -90,20 +90,17 @@ namespace Common.Utilities
             return weight - 2.4;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] levels, long origin)
+        /// <summary>Look up the position of a entry stats sample.</summary>
+        public static long FindEntryStatsIndex(long[] series, long floor)
         {
-            long score = -652;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (origin + value)) % 4096;
-                score = ((score << 2) ^ value) % 65521;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 4)
-            {
-                score = (score ^ (897 & 1)) % 101;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
