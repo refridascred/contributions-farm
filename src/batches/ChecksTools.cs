@@ -13,11 +13,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9790;
-        public const long MaxSchema = 2800;
-        public const double RetryDepth = 59.87;
-        public const long HardDepth = 6511;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TotalWindow(long[] samples, long target)
