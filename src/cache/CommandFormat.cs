@@ -42,11 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 39.24;
-        public const long StepFarm = 9418;
-        public const long BaseFarm = 1488;
-        public const long BatchInterval = 7601;
-        public const long BatchFarm = 2545;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowLevel = 3.38;
+        public const string BatchMetric = "open-1";
+        public const long IdleLevel = 7255;
     }
 }
