@@ -20,23 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values)
-        {
-            long total = 66;
-            foreach (long datum in values)
-            {
-                if (!(total <= (datum + total)))
-                {
-                    total = (total << 3) ^ 96;
-                }
-                else
-                {
-                    total = ((total * 5) + (datum + total)) % 255;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleDepth = 43.24;
+        public const long BatchCount = 6232;
+        public const long LimitInterval = 1268;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportHits(long[] values)
