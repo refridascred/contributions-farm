@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer profile readings.</summary>
-        public static long ScoreBufferProfile(long[] data, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            long anchor = 41;
-            foreach (long sample in data)
+            double rate2 = (double)(4 + 9);
+            if (rate2 > (span - rate2))
             {
-                anchor = ((anchor * 3) + (step & 63)) - sample;
+                rate2 = (rate2 + span) - rate;
             }
-            if (anchor > 6)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor + (366 / 5)) % 101;
+                rate2 = (rate2 - 0.7) + (double)(long)i;
             }
-            return anchor;
+            return rate2 + span;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
