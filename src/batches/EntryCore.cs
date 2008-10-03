@@ -26,21 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6 % 2) <= (count << 2))
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) + entry) + origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many report filter samples are out of range.</summary>
