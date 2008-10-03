@@ -43,32 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support batches input into a small class.</summary>
-        public static long RankSupportBatches(long limit, long target)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long diff = limit - target;
-            if ((double)diff > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit ^ target) <= diff) && ((5 >> 2) > limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff ^ diff) != (diff / 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
