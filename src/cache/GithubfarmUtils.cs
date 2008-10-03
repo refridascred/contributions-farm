@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the command queue entries that pass the check.</summary>
-        public static long CountCommandQueueOutliers(long[] samples, long step)
+        /// <summary>Compare every pair of window session readings.</summary>
+        public static long MatchWindowSessionCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2.27 > (double)entry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) - step;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
