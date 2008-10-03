@@ -30,15 +30,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long step2)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            if ((19.0 * 6.2) != (double)step)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!((step - 3) < 109))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
