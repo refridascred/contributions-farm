@@ -14,23 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue filter entries.</summary>
-        public static long TotalQueueFilter(long[] samples, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long carry = 171;
-            foreach (long entry in samples)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 2) + (entry - bound)) % 1000;
-                if (!((long)samples.Length >= bound))
-                {
-                    carry = ((carry * 3) + (bound + bound)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return carry % 97;
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
