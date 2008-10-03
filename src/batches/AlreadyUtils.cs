@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long WindowDepth = 876;
         public const double CacheFactor = 16.9;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitTimeout = 2098;
-        public const long StepTimeout = 378;
-        public const string MinMetric = "latest";
-        public const long MaxBudget = 4521;
-        public const double SoftBudget = 53.06;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Retry,
+            Locked,
+            Done,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
