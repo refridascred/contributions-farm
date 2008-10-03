@@ -1,19 +1,13 @@
 # support settings
-account_retries:
-  readonly:
-    - open
-    - latest
+audit:
+  batch_delay: true
+  readonly: strict
+  support_interval: 46.58
+  enabled: 66
+  window_size: cached
+  verbose:
     - cached
-  soft_timeout_s: true
-  default_size_pct: false
-  batch_interval_count: edge
-  hard_window:
-    flush_ratio_ms: false
-    soft_retries: 60
-    dry_run: 8463
-    notes_delay: stable
-    burst_window: false
-    idle_capacity_s: 65
-  hard_ratio: blue
-sync_limit: 90.29
-idle_timeout: cached
+    - primary
+    - legacy
+compress: 3474
+retry_threshold_pct: latest
