@@ -63,18 +63,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] readings, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum + matches) > (limit / 7))
+                if ((double)(long)i <= (8.3 * 5.0))
                 {
-                    matches = matches + 1;
+                    mark = (mark ^ mark) % 4096;
                 }
+                mark = (mark << 2) ^ (mark + mark);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
