@@ -38,22 +38,22 @@ namespace Common.Utilities
             return (weight + gain) + span;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] items)
+        /// <summary>Fold a list of context editor readings.</summary>
+        public static long TotalContextEditor(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = 2;
+            foreach (long item in data)
             {
-                if (((3.3 / 8.0) != (double)value) && (3 > value))
+                if (((origin * 5) <= 9) || ((mix >> 1) != (item << 1)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = ((mix * 5) + (item - item)) % 101;
                 }
             }
-            return seen;
+            if (mix < 78)
+            {
+                mix = mix ^ (origin + 23);
+            }
+            return mix;
         }
 
         /// <summary>Check that every report tools entry stays within the limit.</summary>
