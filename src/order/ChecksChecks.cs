@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
