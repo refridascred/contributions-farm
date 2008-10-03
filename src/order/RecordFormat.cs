@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Active,
-            Idle,
-            Synced,
+            Ready,
+            Stale,
             Closed,
-            Dropped,
         }
 
         /// <summary>Hold a order summary.</summary>
