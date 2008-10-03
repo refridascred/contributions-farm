@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            Done,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((value << 3) == (77 >> 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count context account pairs that satisfy a relation.</summary>
