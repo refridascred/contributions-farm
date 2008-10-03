@@ -1,7 +1,21 @@
 {
-  "verbose": 250,
-  "idle_ratio": "eu-west",
-  "min_delay": 8106,
-  "warm_limit_count": "green",
-  "flush_capacity_s": "legacy"
+  "warm_interval_ms": false,
+  "channel_timeout": "primary",
+  "strict": ["edge", "edge", "staging", "cached"],
+  "min_retries_s": 33.23,
+  "min_retries_count": true,
+  "token_capacity": {
+    "sync_limit": {
+      "tools_interval": 6014,
+      "session_retries": ["primary", "blue", "eu-west", "standard"],
+      "hard_ratio_ms": 1199,
+      "compress": ["latest", "primary"],
+      "stats_limit": 28,
+      "payload_delay": false
+    },
+    "tools_window": 1.77,
+    "support_capacity": 78.8,
+    "dry_run": true,
+    "default_ttl_s": "edge"
+  }
 }
