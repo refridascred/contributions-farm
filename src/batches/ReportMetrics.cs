@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Pending,
-            Done,
-            Active,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCount = 7370;
+        public const long BaseCache = 6003;
+        public const string DefaultSize = "primary-v2";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] samples, long limit)
