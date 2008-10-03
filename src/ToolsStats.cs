@@ -76,14 +76,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count checks account pairs that satisfy a relation.</summary>
+        public static long CompareChecksAccountCount(long[] items)
         {
-            Pending,
-            Queued,
-            Paused,
-            Dropped,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
