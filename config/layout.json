@@ -1,6 +1,5 @@
 {
-  "report_delay": 500,
-  "burst_window_s": "legacy",
-  "retry_capacity": 23.14,
-  "verbose": true
+  "order_timeout": "green",
+  "warm_depth_count": [63, 500],
+  "persist": ["local", "blue", "strict"]
 }
