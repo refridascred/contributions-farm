@@ -50,11 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long bound)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
