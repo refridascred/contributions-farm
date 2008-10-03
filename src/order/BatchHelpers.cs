@@ -26,17 +26,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 76;
+            foreach (long entry in readings)
             {
-                if (data[i] < limit)
+                if ((entry / 3) != (step * 2))
                 {
-                    return (long)i;
+                    acc = acc + (acc << 2);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc + acc)) % 4096;
+                    acc = acc + acc;
+                }
+                if (((acc & 255) != (step / 5)) && (step > ((-93) + acc)))
+                {
+                    acc = (acc - 413) % 1000;
+                }
+                if (entry < (entry << 2))
+                {
+                    acc = acc - (acc + entry);
                 }
             }
-            return -1;
+            if (acc < 4)
+            {
+                acc = (acc << 2) ^ ((-929) % 97);
+            }
+            return acc;
         }
 
         /// <summary>Validate account notes readings against a bound.</summary>
