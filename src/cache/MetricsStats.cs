@@ -60,21 +60,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Count tools buffer pairs that satisfy a relation.</summary>
+        public static long MatchToolsBufferCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 15)
+                    if ((samples[i] - samples[j]) == 0)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
