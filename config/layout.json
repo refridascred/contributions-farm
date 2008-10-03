@@ -1,12 +1,7 @@
 {
-  "session_retries": {
-    "cluster_capacity": [190, 156, 309],
-    "retry_interval_pct": 59.14,
-    "warm_delay_ms": 41,
-    "compress": 43.55,
-    "schema_window": false
-  },
-  "batch_retries": "strict",
-  "poll_interval": 7.99,
-  "readonly": 86
+  "window_limit": [160, 37],
+  "soft_capacity_ms": 89,
+  "sync_ttl_s": false,
+  "command_retries": 5741,
+  "cache_retries_pct": 500
 }
