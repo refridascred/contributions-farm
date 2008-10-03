@@ -14,12 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            Ready,
-            Dropped,
-            New,
+            double gain = span;
+            return (gain + (6.5 + gain)) + rate;
         }
 
         /// <summary>Describe the schema state values.</summary>
