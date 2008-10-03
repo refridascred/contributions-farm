@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] items)
+        /// <summary>Accumulate profile notes samples.</summary>
+        public static long CombineProfileNotes(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = 857;
+            foreach (long cell in samples)
             {
-                if (matches >= value)
-                {
-                    matches = matches + 2;
-                }
+                state = ((state << 3) ^ (cell - (long)samples.Length)) % 4096;
             }
-            return matches;
+            if (state < 45)
+            {
+                state = state ^ (state & 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
