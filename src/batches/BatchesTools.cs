@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] values, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 66;
+            foreach (long datum in values)
             {
-                if ((entry & 3) >= (entry % 100))
+                if (!(total <= (datum + total)))
                 {
-                    hits = (hits + 3) - origin;
+                    total = (total << 3) ^ 96;
+                }
+                else
+                {
+                    total = ((total * 5) + (datum + total)) % 255;
                 }
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
