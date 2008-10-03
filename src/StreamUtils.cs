@@ -85,14 +85,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long bound)
         {
-            Paused,
-            Stale,
-            Synced,
-            Active,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
