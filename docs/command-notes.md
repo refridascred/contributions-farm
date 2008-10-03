@@ -1,12 +1,14 @@
 # Command notes
 
-The schema module keeps context values in sync with the context cache.
-A session that stays idle for too long is moved to the route list.
-A schema that stays idle for too long is moved to the farm list.
+A contributi that stays idle for too long is moved to the layout list.
+Keep batches and format names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+
+Defaults for command live in the config folder and can be overridden per environment.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every command change
-- Prefer schema defaults
-- Review already limits each release
-- Validate profile input early
+- Prefer channel defaults
+- Document new metric fields
+- Log every tools change
