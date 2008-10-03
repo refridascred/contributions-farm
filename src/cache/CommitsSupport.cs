@@ -24,22 +24,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = 3;
-            foreach (long item in readings)
-            {
-                if (((long)readings.Length % 24) >= (item << 3))
-                {
-                    result = ((result << 2) ^ item) % 1000;
-                }
-            }
-            if (result < 63)
-            {
-                result = ((result << 2) ^ (limit % 97)) % 101;
-            }
-            return result;
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a buffer reading.</summary>
