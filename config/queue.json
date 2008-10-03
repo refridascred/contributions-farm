@@ -1,5 +1,5 @@
 {
-  "readonly": 45.93,
-  "base_delay": 32.52,
-  "payload_depth": "standard"
+  "flush_threshold_count": 45,
+  "cache_ttl_ms": "primary",
+  "min_threshold": "latest"
 }
