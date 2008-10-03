@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
         {
-            Synced,
-            Paused,
-            Ready,
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((double)total != (double)target))
+                {
+                    total = (total << 2) ^ total;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
