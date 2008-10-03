@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up checks editor samples.</summary>
-        public static long PairChecksEditorCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardBudget = "latest-1";
+        public const long RetryWidth = 2634;
+        public const string BaseCommand = "legacy-1";
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
