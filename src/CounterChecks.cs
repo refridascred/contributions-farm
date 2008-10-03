@@ -79,15 +79,12 @@ namespace Common.Utilities
         public const long CacheContributi = 7110;
         public const long BurstContributi = 6150;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double rate2 = span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + (double)532;
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
