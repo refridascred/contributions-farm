@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (item > seed)
+                if (reading < bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
