@@ -1,13 +1,12 @@
 {
-  "audit": {
-    "min_depth_ms": false,
-    "warm_window": false,
-    "persist": 78,
-    "route_limit": 57,
-    "batch_window": "cached",
-    "notes_interval": "latest"
+  "hard_depth": "eu-west",
+  "flush_timeout_ms": 96.39,
+  "sync_capacity_count": {
+    "enabled": 31.28,
+    "batch_timeout_ms": 76.07,
+    "batch_depth_pct": [288, 421, 485, 90],
+    "token_threshold": true
   },
-  "burst_limit": 8220,
-  "burst_capacity_ms": 17,
-  "order_ratio": "local"
+  "default_depth": 100,
+  "idle_depth_ms": 14
 }
