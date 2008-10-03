@@ -54,11 +54,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "legacy-edge";
-        public const double SoftCommand = 36.11;
-        public const double IdleCommand = 23.86;
-        public const string RetryWidth = "strict-edge";
-        public const long LimitCommand = 3025;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] levels)
+        {
+            long state = 101;
+            foreach (long cell in levels)
+            {
+                if (!((0.8 / 9.0) <= (double)state))
+                {
+                    state = ((state << 3) ^ (state >> 2)) ^ cell;
+                }
+            }
+            return state;
+        }
     }
 }
