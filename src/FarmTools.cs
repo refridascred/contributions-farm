@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const long BaseFactor = 4236;
         public const double LimitScore = 42.07;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftFactor = "legacy";
+        public const double BaseRecord = 76.32;
+        public const long DefaultRecord = 9020;
     }
 }
