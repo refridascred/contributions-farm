@@ -55,12 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
