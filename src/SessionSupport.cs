@@ -27,12 +27,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double span)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            double gain2 = span;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = ((gain2 + span) + (double)(long)i) + gain;
+            }
+            return gain2 + (double)998;
         }
     }
 }
