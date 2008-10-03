@@ -1,7 +1,6 @@
 {
-  "flush_interval_pct": "fallback",
-  "command_interval": 41.18,
-  "default_limit_s": "fallback",
-  "idle_timeout_s": true,
-  "warm_depth": 44
+  "report_delay": 500,
+  "burst_window_s": "legacy",
+  "retry_capacity": 23.14,
+  "verbose": true
 }
