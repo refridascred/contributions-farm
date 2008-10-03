@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first contributi batch entry that matches the target.</summary>
-        public static long LocateContributiBatchIndex(long[] series, long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
