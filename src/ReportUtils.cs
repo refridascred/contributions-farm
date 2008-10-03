@@ -20,19 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = (acc + (64 << 2)) + limit;
-                if ((acc >> 2) <= (entry % 97))
+                if ((item - count) >= (49 ^ item))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
