@@ -26,32 +26,12 @@ namespace Common.Utilities
         public const double StepEntry = 80.19;
         public const long WindowWidth = 2286;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long limit)
-        {
-            if ((target << 3) > target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((92 + limit) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.0 / 5.0) == (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 47.76;
+        public const string HardBudget = "alpha";
+        public const long CacheCommand = 7540;
+        public const string HardCommand = "stable-1";
+        public const long LimitCommand = 894;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TotalRecord(long[] levels, long origin)
