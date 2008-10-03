@@ -40,13 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
