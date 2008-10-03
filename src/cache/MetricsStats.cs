@@ -47,26 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long bound)
-        {
-            long slot = floor + bound;
-            if ((floor + bound) == (bound + slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.95 + 6.7) > (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 9232;
+        public const long BatchToken = 8741;
+        public const long CacheToken = 8102;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultBuffer = "fallback";
