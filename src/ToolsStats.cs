@@ -12,18 +12,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] data, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((45 / 9) < sample) || (((long)data.Length + sample) == (seen << 3)))
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
                 {
-                    seen = (seen + 3) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a queue header.</summary>
