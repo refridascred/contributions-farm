@@ -40,18 +40,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((20.0 + 9.81) < (double)datum)
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitDepth = "latest-v2";
+        public const long IdleCommits = 9467;
+        public const double BurstCommits = 51.0;
     }
 }
