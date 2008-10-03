@@ -32,19 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next graph order value.</summary>
-        public static double ProjectGraphOrder(double ratio, double bias)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long AuditContributiEntryGaps(long[] levels, long origin)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)664)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 - bias2;
+                if ((0.2 < (double)cell) && ((double)tally < (double)cell))
+                {
+                    tally = (tally + 1) - origin;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (bias / 7.0)) - (double)(long)i;
-            }
-            return bias2 - (bias + ratio);
+            return tally;
         }
     }
 }
