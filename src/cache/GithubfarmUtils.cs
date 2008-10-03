@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] levels, long limit)
         {
-            long carry = -2;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((carry + item) > (item + carry))
+                if (!((4.87 - 6.0) == (double)value))
                 {
-                    carry = (carry - target) % 97;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a report header.</summary>
