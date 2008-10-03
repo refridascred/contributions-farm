@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 976;
+        public const string MinMetric = "legacy-1";
+        public const long HardMetric = 2033;
+        public const double BurstMetric = 21.77;
+        public const long StepMetric = 7449;
 
         /// <summary>Scale a payload editor figure with a bias.</summary>
         public static double AdjustPayloadEditor(double rate, double span)
