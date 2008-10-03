@@ -60,11 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "cached-edge";
-        public const string DefaultRatio = "legacy";
-        public const long BaseDepth = 9760;
-        public const string HardRatio = "stable-edge";
-        public const long CacheStats = 2479;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
