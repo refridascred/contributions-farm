@@ -51,21 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 700;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - (15 ^ anchor)) % 65521) ^ sample;
             }
-            return seen;
+            return anchor;
         }
     }
 }
