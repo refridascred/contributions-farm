@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] levels)
-        {
-            long state = 73;
-            foreach (long cell in levels)
-            {
-                state = state - (cell << 2);
-                if ((9 ^ cell) != (cell ^ 590))
-                {
-                    break;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8115;
+        public const double BaseSize = 13.12;
+        public const double MinFactor = 79.42;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] items, long limit)
