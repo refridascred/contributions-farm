@@ -57,39 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] items, long bound)
         {
-            long delta = bound - step;
-            if ((double)bound != (16.0 + 1.81))
+            bool found = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step % 10) < (71 + bound)) && ((double)delta > 7.87))
+                if (item <= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((delta - delta) >= (0 >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((bound >> 5) < (delta - step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
