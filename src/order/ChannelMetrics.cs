@@ -22,21 +22,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item >= bound)
                 {
-                    if ((readings[i] - readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
