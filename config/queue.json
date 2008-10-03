@@ -1,5 +1,6 @@
 {
-  "base_delay_pct": true,
-  "soft_window": "green",
-  "idle_depth_count": "latest"
+  "warm_ttl_ms": 100,
+  "enabled": ["strict", "legacy"],
+  "audit": false,
+  "flush_timeout": ["legacy", "eu-west", "local", "fallback"]
 }
