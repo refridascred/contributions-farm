@@ -36,12 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxRatio = "local-1";
-        public const long StepLayout = 8220;
-        public const double MaxCount = 94.6;
-        public const long MinLayout = 5939;
-        public const long StepCount = 1813;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 60;
+        public const long CacheChannel = 8119;
+        public const long SoftSpan = 2174;
+        public const long WindowInterval = 8074;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 286;
