@@ -54,13 +54,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Stale,
-            Paused,
-            Idle,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheRatio = 2211;
+        public const long HardWidth = 4731;
+        public const double BaseEditor = 53.43;
+        public const string BurstTimeout = "open-edge";
     }
 }
