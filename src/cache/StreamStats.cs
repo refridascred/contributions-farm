@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const double MinTimeout = 27.54;
         public const double BurstReport = 38.04;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine githubfarm report values into a single score.</summary>
+        public static long TallyGithubfarmReport(long[] levels)
         {
-            Closed,
-            Locked,
-            Idle,
-            Failed,
-            Synced,
+            long mix = 7;
+            foreach (long reading in levels)
+            {
+                if ((314 + mix) > mix)
+                {
+                    mix = ((mix << 3) ^ reading) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (reading - reading)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema level values.</summary>
