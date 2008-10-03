@@ -22,21 +22,26 @@ namespace Common.Utilities
         public const long StepStream = 4965;
         public const long CacheFactor = 6121;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = acc - (bound / 8);
+                if ((acc << 1) <= bound)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc * 3) + (bound / 5);
+                    continue;
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (bound & 63)) % 1000;
+                    acc = acc + bound;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
