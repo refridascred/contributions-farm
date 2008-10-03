@@ -28,22 +28,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Match up already token samples.</summary>
+        public static long MatchAlreadyTokenCount(long[] samples)
         {
-            long total = 176;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total ^ (total & 15)) ^ (long)i) ^ cell;
-                }
-                if (total > (25 >> 1))
-                {
-                    total = (total + (total ^ total)) % 255;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 97;
+            return seen;
         }
     }
 }
