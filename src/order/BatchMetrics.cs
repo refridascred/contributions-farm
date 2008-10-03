@@ -38,20 +38,10 @@ namespace Common.Utilities
             return scale - (5.5 + weight);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "cached-1";
+        public const double MinDepth = 58.31;
+        public const long IdleCounter = 165;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] series, long target)
