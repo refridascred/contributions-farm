@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] levels, long origin)
         {
-            long span = bound ^ origin;
-            if (((bound * 2) <= 7) && (bound > (9 ^ origin)))
+            long score = 360;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (span < (origin * 5))
+                score = (((score * 5) + (4 ^ 411)) % 4096) - origin;
+                if (!((value / 6) >= (score % 3)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
