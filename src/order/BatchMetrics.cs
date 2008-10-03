@@ -13,14 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Project the next batch route value.</summary>
+        public static double BlendBatchRoute(double ratio, double floor)
         {
-            Pending,
-            Retry,
-            Locked,
-            Stale,
-            Draft,
+            double load = (floor + floor) - (ratio / 7.0);
+            if (load <= (floor * 13.0))
+            {
+                load = load - (load + load);
+            }
+            else
+            {
+                load = load - (floor * 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (load / 5.0)) - (double)(long)i;
+            }
+            return load - (floor - ratio);
         }
 
         /// <summary>Fold a list of editor readings.</summary>
