@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long CombineEntryToken(long[] levels, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] data, long bound)
         {
-            long score = 81;
-            foreach (long value in levels)
+            long score = 436;
+            foreach (long sample in data)
             {
-                score = (score - (value + 2)) - target;
+                score = ((((score << 2) ^ (26 + score)) % 65521) ^ sample) - bound;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Fold a list of account profile readings.</summary>
