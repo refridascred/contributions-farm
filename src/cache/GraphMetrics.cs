@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            Paused,
-            Done,
-            Locked,
+            double ratio = bias;
+            if (ratio < (double)391)
+            {
+                ratio = ratio + scale;
+            }
+            return ratio - (bias / 9.0);
         }
 
         /// <summary>Hold a tools stats.</summary>
