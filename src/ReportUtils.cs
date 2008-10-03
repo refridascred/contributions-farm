@@ -25,13 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Closed,
-            Stale,
-            Retry,
-            Active,
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the stream editor series from a seed.</summary>
