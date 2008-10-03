@@ -33,14 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the layout command series from a seed.</summary>
+        public static long IterateLayoutCommand(long target)
         {
-            Failed,
-            Locked,
-            Pending,
-            Paused,
-            Closed,
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
