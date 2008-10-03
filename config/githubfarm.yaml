@@ -1,13 +1,5 @@
 # githubfarm settings
-route_threshold: 1024
-retry_ratio_count:
-  enabled: staging
-  burst_window:
-    - 132
-    - 478
-  channel_interval: staging
-graph_threshold:
-  - 289
-  - 427
-  - 51
-  - 419
+filter_threshold: 47
+max_retries_count: false
+batch_retries: 42.97
+githubfarm_interval: 14.36
