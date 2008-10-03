@@ -24,22 +24,15 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double bias2 = offset;
+            if (bias2 >= (double)611)
             {
-                if ((double)count <= (double)cell)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = (bias2 - (double)441) + bias;
             }
-            return count;
+            return bias2 + (offset * 6.6);
         }
 
         /// <summary>Describe the window mode values.</summary>
