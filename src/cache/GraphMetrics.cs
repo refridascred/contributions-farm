@@ -41,11 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double drift = floor;
-            return (drift + drift) + scale;
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
