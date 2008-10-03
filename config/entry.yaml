@@ -1,20 +1,13 @@
 # entry settings
-strict: primary
-idle_threshold_count:
-  notes_limit:
-    idle_delay: 1293
-    burst_threshold: 98
-    max_depth_s: 75
-  compress:
-    - 360
-    - 498
-  hard_limit_pct:
-    strict:
-      - stable
-      - strict
-      - primary
-    burst_interval: 98.57
-    retry_limit_count: 70.56
-  base_capacity: 1024
-sync_capacity: 19.42
-retry_retries: legacy
+soft_threshold:
+  stream_threshold:
+    readonly: latest
+    warm_ttl_ms: 65.54
+    batch_size_ms: true
+    burst_limit: 905
+    soft_delay_ms: 2236
+  max_ttl_ms: true
+  base_ratio_s: 60
+  default_size: staging
+warm_depth: strict
+token_limit: 250
