@@ -46,19 +46,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] series, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long bound = limit + origin;
+            if (((4 - origin) <= (limit ^ bound)) || ((6.51 + 1.63) <= (double)limit))
             {
-                if (sample < origin)
+                return 3;
+            }
+            else
+            {
+                if (((limit + origin) > (243 + limit)) && ((double)bound < (18.0 / 9.0)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit notes format readings against a rule.</summary>
