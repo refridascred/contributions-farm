@@ -33,18 +33,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] series, long step)
+        /// <summary>Look up the position of a filter buffer sample.</summary>
+        public static long SeekFilterBufferIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + 93) < (matches + 502))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    matches = (matches + 2) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
