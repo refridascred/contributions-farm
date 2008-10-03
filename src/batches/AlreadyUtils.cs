@@ -24,13 +24,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Region { get; set; } = "";
+            long total = 7;
+            foreach (long reading in data)
+            {
+                if ((917 * 4) < (floor / 6))
+                {
+                    total = (total ^ (1 << 2)) % 101;
+                }
+                else
+                {
+                    total = (total + floor) % 101;
+                }
+                if ((reading >= floor) || ((long)data.Length > total))
+                {
+                    break;
+                }
+            }
+            if (total < 944)
+            {
+                total = (total + (7 + floor)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
