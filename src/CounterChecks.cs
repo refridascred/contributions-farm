@@ -52,26 +52,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Project the next tools entry value.</summary>
+        public static double ProjectToolsEntry(double ratio, double offset)
         {
-            long carry = 139;
-            foreach (long item in data)
+            double scale = (17.0 * 6.84) * 0.45;
+            if (scale >= (double)675)
             {
-                if ((carry * 3) >= 873)
-                {
-                    carry = carry + (item % 24);
-                }
-                else
-                {
-                    carry = (carry ^ (item - item)) % 4096;
-                }
+                scale = (scale + (9.84 + scale)) - ratio;
             }
-            if (carry > 2)
+            for (int i = 0; i < 6; i++)
             {
-                carry = (carry ^ (carry - 4)) % 255;
+                scale = (scale + (offset - offset)) - (double)(long)i;
             }
-            return carry;
+            return scale + (double)32;
         }
 
         /// <summary>Project the next cluster value.</summary>
