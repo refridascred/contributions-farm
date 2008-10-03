@@ -71,14 +71,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            Queued,
-            Retry,
-            Ready,
-            Draft,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
