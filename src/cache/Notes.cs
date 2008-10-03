@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseDepth = 2309;
-        public const long HardTools = 1088;
-        public const long MinLevel = 7997;
-        public const long CacheRatio = 3472;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Offset { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Audit contributi commits readings against a rule.</summary>
         public static long AuditContributiCommitsMatches(long[] values, long bound)
