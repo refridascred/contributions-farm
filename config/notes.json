@@ -1,8 +1,5 @@
 {
-  "min_interval": 10.9,
-  "warm_limit_s": true,
-  "sync_interval_s": false,
-  "warm_ttl_count": 32.62,
-  "poll_timeout": 71.25,
-  "batch_delay_s": 5574
+  "flush_depth": "latest",
+  "strict": 3915,
+  "max_limit_pct": false
 }
