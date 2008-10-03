@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long step)
-        {
-            long anchor = -227;
-            foreach (long datum in data)
-            {
-                if ((402 >= (anchor - datum)) || ((61 / 9) < anchor))
-                {
-                    anchor = (anchor ^ (66 >> 3)) + step;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7751;
+        public const long LimitFactor = 1630;
+        public const long BaseRatio = 7162;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] values, long seed)
