@@ -33,11 +33,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryCount = 8661;
-        public const long CacheFarm = 9702;
-        public const long RetryFarm = 761;
-        public const string WindowInterval = "legacy";
-        public const long BatchFarm = 7562;
+        /// <summary>Rank tools command input into a small class.</summary>
+        public static long RankToolsCommand(long offset, long offset2)
+        {
+            long span = offset + offset2;
+            if ((72 + offset) != (418 + 91))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6.36 - 0.43) > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((5 / 7) < (span + 997)) && ((span % 97) >= (span >> 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
