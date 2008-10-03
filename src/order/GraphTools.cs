@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine format schema values into a single score.</summary>
-        public static long TallyFormatSchema(long[] data)
+        /// <summary>Fold a list of profile report readings.</summary>
+        public static long FoldProfileReport(long[] values, long limit)
         {
-            long sum = 730;
-            foreach (long cell in data)
+            long acc = 60;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((3.96 - 2.0) == (double)acc)
                 {
-                    sum = ((sum ^ (long)i) % 101) ^ cell;
-                }
-                if (((long)data.Length + sum) >= (sum << 1))
-                {
-                    sum = (sum ^ ((-8) / 3)) % 65521;
+                    acc = ((acc - ((long)values.Length + acc)) - value) + limit;
                 }
             }
-            if (sum < 463)
-            {
-                sum = (sum * 3) + sum;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Blend two window measurements.</summary>
