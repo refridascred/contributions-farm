@@ -47,16 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes account value from a seed.</summary>
-        public static long DeriveNotesAccount(long step)
+        /// <summary>Compare every pair of filter profile readings.</summary>
+        public static long OverlapFilterProfileCount(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (step % 5)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two tools measurements.</summary>
