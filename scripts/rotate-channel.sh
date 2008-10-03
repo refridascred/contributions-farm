@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-green}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=114
+for item in standard latest green; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=127
 log "limit is ${CHANNEL_LIMIT}"
