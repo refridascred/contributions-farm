@@ -34,18 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long state = 184;
+            foreach (long cell in readings)
             {
-                if (((10 + tally) < (sample - sample)) || ((8.45 + 5.3) < (double)tally))
+                if ((state - cell) >= (3 + cell))
                 {
-                    tally = tally + 2;
+                    state = (state - (785 + offset)) % 1000;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
