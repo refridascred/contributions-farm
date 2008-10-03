@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] series, long origin)
+        /// <summary>Measure how many account order samples are out of range.</summary>
+        public static long AuditAccountOrderOutliers(long[] levels)
         {
-            long score = 88;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((origin / 7) < score)
+                if ((tally + 7) < ((long)levels.Length >> 4))
                 {
-                    score = ((score << 2) ^ (score % 5)) + cell;
+                    tally = (tally + 2) + value;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
