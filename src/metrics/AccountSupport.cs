@@ -47,13 +47,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long limit)
         {
-            Queued,
-            Dropped,
-            Active,
-            Pending,
+            long total = 915;
+            foreach (long entry in data)
+            {
+                if (total >= (entry + total))
+                {
+                    total = ((total - (entry - entry)) % 65521) - limit;
+                }
+                if ((16.0 + 19.0) >= (double)entry)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
     }
 }
