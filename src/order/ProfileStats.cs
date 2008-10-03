@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long CountProfileFarmGaps(long[] samples)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long TallyContributiNotesOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((double)seen >= 3.0)
+                if (((hits - 923) == (cell & 127)) || ((cell & 63) == (cell & 31)))
                 {
-                    seen = (seen + 1) - reading;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the stream level values.</summary>
