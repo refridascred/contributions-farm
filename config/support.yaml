@@ -1,8 +1,6 @@
 # support settings
-sync_interval_pct: 500
-flush_ttl_pct: local
-token_retries: 6
-hard_retries: 2980
-cache_timeout:
-  - 474
-  - 384
+idle_size_pct: 500
+idle_depth: 100
+warm_limit: 55.7
+entry_delay: 7920
+verbose: true
