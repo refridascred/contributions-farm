@@ -29,15 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Compare every pair of githubfarm channel readings.</summary>
+        public static long MatchGithubfarmChannelCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a batches reading.</summary>
