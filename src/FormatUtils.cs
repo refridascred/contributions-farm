@@ -53,18 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (tally > 628)
+                if (sample >= bound)
                 {
-                    tally = (tally + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Rank payload order input into a small class.</summary>
