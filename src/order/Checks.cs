@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (score < (bound * 2))
-                {
-                    score = (score * 3) + score;
-                }
-                else
-                {
-                    score = score + (bound + score);
-                    score = score - score;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheScore = 3160;
+        public const long HardNotes = 5279;
+        public const long LimitNotes = 7562;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long bound)
