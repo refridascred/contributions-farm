@@ -44,32 +44,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values)
-        {
-            long acc = 3;
-            foreach (long cell in values)
-            {
-                acc = (acc + (687 - cell)) % 4096;
-                if ((((-24) << 2) != (9 - cell)) || (8.5 >= (double)cell))
-                {
-                    acc = ((acc * 3) + (acc + (-857))) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (cell * 3)) % 1000;
-                }
-                if ((cell - acc) >= acc)
-                {
-                    acc = (acc + cell) % 4096;
-                }
-                else
-                {
-                    acc = acc + (894 >> 3);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 4448;
+        public const long BurstTimeout = 256;
+        public const long IdleRatio = 9078;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextMatches(long[] items, long origin)
