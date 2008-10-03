@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long result = 730;
-            foreach (long value in data)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                if (((result + limit) >= value) || ((value + value) != ((long)data.Length >> 2)))
-                {
-                    result = result + (result << 1);
-                }
-                else
-                {
-                    result = (result * 4) + (0 + 21);
-                }
-                if ((limit & 127) >= result)
-                {
-                    break;
-                }
+                mark = ((mark * 3) + datum) % 1000;
+                mark = mark + (mark ^ datum);
             }
-            return result % 65521;
+            if (mark < 63)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
