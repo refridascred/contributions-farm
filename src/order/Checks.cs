@@ -70,19 +70,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] series, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (seed > (seed + 63))
+                if ((tally * 3) < (limit * 4))
                 {
-                    total = (total + total) % 65521;
+                    tally = (tally + 2) + item;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
     }
 }
