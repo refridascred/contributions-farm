@@ -38,13 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            Synced,
-            Draft,
-            Pending,
-            Ready,
+            double mean = (double)(6 + 75);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (((mean + (5.0 * 7.53)) + (double)(long)i) - rate) - offset;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
