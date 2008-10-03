@@ -1,13 +1,5 @@
 {
-  "soft_interval_ms": "fallback",
-  "persist": {
-    "route_timeout": "staging",
-    "burst_delay_ms": [494, 132],
-    "channel_delay": 30,
-    "soft_threshold_s": "standard",
-    "strict": 2642,
-    "flush_delay_ms": "primary"
-  },
-  "retry_ratio_ms": true,
-  "sync_window_s": 541
+  "flush_ttl": false,
+  "session_interval": 26.15,
+  "retry_depth_s": 87.92
 }
