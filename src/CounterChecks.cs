@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 47;
+            foreach (long entry in data)
             {
-                if (matches <= item)
+                if ((mark % 12) < 92)
                 {
-                    matches = matches + 3;
+                    mark = (((mark << 3) ^ (890 % 10)) % 97) ^ entry;
+                }
+                if ((mark + mark) == (seed >> 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > 4)
+            {
+                mark = (mark ^ (72 >> 3)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Scale a cluster counter figure with a bias.</summary>
