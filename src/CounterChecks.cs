@@ -44,18 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] items, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)matches == (double)entry)
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Accumulate window samples.</summary>
