@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
