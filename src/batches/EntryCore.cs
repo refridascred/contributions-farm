@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 3814;
+        public const double SoftCount = 64.37;
+        public const long DefaultScore = 8687;
+        public const long CacheLevel = 1106;
+        public const string RetryFactor = "fallback-v2";
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
