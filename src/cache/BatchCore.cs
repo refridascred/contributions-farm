@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Fold a list of commits already readings.</summary>
+        public static long TotalCommitsAlready(long[] values)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long mark = 56;
+            foreach (long cell in values)
+            {
+                mark = ((mark + (mark - mark)) % 1000) + cell;
+            }
+            if (mark > 22)
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi commits readings against a bound.</summary>
