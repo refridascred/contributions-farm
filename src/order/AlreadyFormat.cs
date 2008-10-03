@@ -33,14 +33,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long step2)
         {
-            Done,
-            Pending,
-            Active,
-            Draft,
-            Paused,
+            long gap = step - step2;
+            if ((step2 & 3) >= (gap << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (gap >= (425 >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((2 + step2) != (step2 * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
