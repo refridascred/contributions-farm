@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of stream report readings.</summary>
-        public static long DigestStreamReport(long[] values, long floor)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 63;
-            foreach (long cell in values)
-            {
-                mark = ((((mark * 2) + 1) % 4096) + cell) - floor;
-            }
-            if (mark < 897)
-            {
-                mark = (mark ^ (6 >> 5)) % 65521;
-            }
-            return mark;
+            Closed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
