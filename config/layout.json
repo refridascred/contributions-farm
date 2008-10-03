@@ -1,5 +1,12 @@
 {
-  "retry_ratio": 8072,
-  "retry_timeout_s": "primary",
-  "window_threshold": 11
+  "session_retries": {
+    "cluster_capacity": [190, 156, 309],
+    "retry_interval_pct": 59.14,
+    "warm_delay_ms": 41,
+    "compress": 43.55,
+    "schema_window": false
+  },
+  "batch_retries": "strict",
+  "poll_interval": 7.99,
+  "readonly": 86
 }
