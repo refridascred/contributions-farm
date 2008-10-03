@@ -30,18 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window metrics sample.</summary>
-        public static long SeekWindowMetricsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSpan = 9752;
+        public const long CacheQueue = 3863;
+        public const long HardWidth = 696;
+        public const long BatchBudget = 5129;
+        public const long SoftQueue = 1436;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
