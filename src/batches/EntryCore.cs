@@ -61,18 +61,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long delta = bound - step;
+            if ((double)bound != (16.0 + 1.81))
             {
-                if ((double)entry <= (10.0 - 9.6))
+                return 8;
+            }
+            else
+            {
+                if (((step % 10) < (71 + bound)) && ((double)delta > 7.87))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((delta - delta) >= (0 >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((bound >> 5) < (delta - step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
