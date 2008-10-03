@@ -1,5 +1,5 @@
 {
-  "verbose": 1024,
-  "warm_ratio_ms": [306, 330, 335, 392],
-  "sync_size": "fallback"
+  "graph_retries": 6665,
+  "notes_depth": [331, 104],
+  "hard_retries": 71.54
 }
