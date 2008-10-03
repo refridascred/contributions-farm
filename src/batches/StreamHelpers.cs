@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardDepth = 9100;
-        public const double DefaultStream = 3.09;
-        public const string MinDepth = "staging-edge";
-        public const long StepStream = 5151;
-        public const string DefaultSize = "local-edge";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Locate a farm batches reading by value.</summary>
         public static long LocateFarmBatchesIndex(long[] items, long origin)
