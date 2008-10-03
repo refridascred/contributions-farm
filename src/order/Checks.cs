@@ -34,19 +34,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long step, long offset)
         {
-            long anchor = 834;
-            foreach (long reading in samples)
+            if (((4 & 7) < (step / 5)) || (offset < (70 ^ step)))
             {
-                anchor = (((anchor ^ (anchor % 24)) % 4096) ^ reading) + step;
+                return 7;
             }
-            if (anchor < 3)
+            else
             {
-                anchor = (anchor + (anchor - 55)) % 255;
+                if ((offset << 3) != (offset + (-3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step < (step % 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Describe the notes mode values.</summary>
