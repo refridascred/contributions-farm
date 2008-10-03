@@ -21,13 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] samples, long offset)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
