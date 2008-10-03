@@ -82,9 +82,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryRatio = 7264;
-        public const long WindowSize = 7226;
-        public const long DefaultMetrics = 7012;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    long delta = (568 & 255) + step;
+                    state = (((state * 5) + delta) % 255) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
