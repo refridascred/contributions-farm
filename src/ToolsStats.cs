@@ -38,10 +38,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 3955;
-        public const string MinCommits = "open-1";
-        public const long CacheCommits = 8426;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples, long floor)
+        {
+            long state = 133;
+            foreach (long datum in samples)
+            {
+                state = ((state << 3) ^ (floor - state)) % 1000;
+                if (((floor + datum) == (floor % 7)) || ((51 >> 5) >= state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
