@@ -1,8 +1,20 @@
 {
-  "commits_interval": 14,
-  "contributi_depth": 61.35,
-  "soft_ratio_s": "green",
-  "base_threshold_count": 1024,
-  "verbose": 75,
-  "base_timeout_ms": 51
+  "payload_timeout": "standard",
+  "dry_run": {
+    "enabled": {
+      "stream_limit": 1024,
+      "persist": 250,
+      "commits_size": 84.44
+    },
+    "tools_window": 56.52,
+    "batch_limit_ms": "cached",
+    "warm_timeout_s": 97
+  },
+  "flush_size": {
+    "base_ttl": true,
+    "burst_timeout": "cached",
+    "burst_threshold_s": "primary"
+  },
+  "verbose": "open",
+  "account_interval": true
 }
