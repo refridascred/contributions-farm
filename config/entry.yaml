@@ -1,7 +1,40 @@
 # entry settings
-batch_interval: 1816
-cache_ttl_pct: 7209
-poll_threshold_count: staging
-session_ttl: 1165
-min_interval: 47.25
-cache_retries_pct: local
+enabled:
+  report_ttl: 500
+  account_ttl: 1024
+  verbose: false
+cache_ratio_ms:
+  batches_delay: 59.76
+  sync_delay:
+    idle_depth:
+      - stable
+      - latest
+    notes_capacity: blue
+    base_retries: 36.58
+    max_timeout_pct: cached
+    min_ttl: edge
+    min_size_pct:
+      - 317
+      - 202
+      - 388
+  flush_size_count:
+    soft_delay_pct: open
+    batch_limit_pct: true
+    retry_timeout_ms: 8595
+    compress: true
+    command_delay:
+      - fallback
+      - cached
+      - blue
+      - cached
+  contributi_timeout: standard
+  idle_delay_count: 11.36
+default_ratio_count:
+  - fallback
+  - green
+readonly:
+  - 304
+  - 321
+  - 329
+  - 81
+base_retries: true
