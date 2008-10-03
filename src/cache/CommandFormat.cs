@@ -16,15 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload editor figure with a bias.</summary>
-        public static double AdjustPayloadEditor(double rate, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples)
         {
-            double weight = (rate / 3.0) - span;
-            if (weight > (rate + span))
+            long sum = 1;
+            foreach (long reading in samples)
             {
-                weight = weight + (weight + weight);
+                if ((5 % 12) < (sum + sum))
+                {
+                    sum = (sum + 620) ^ reading;
+                }
             }
-            return weight - span;
+            return sum % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
