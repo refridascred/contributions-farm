@@ -33,32 +33,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long step2)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] items)
         {
-            long gap = step - step2;
-            if ((step2 & 3) >= (gap << 3))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (gap >= (425 >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((2 + step2) != (step2 * 4)))
+                    if ((items[i] + items[j]) == 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
