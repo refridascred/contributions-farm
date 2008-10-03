@@ -49,19 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum > bound)
+                if ((5 + value) >= (149 + value))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
