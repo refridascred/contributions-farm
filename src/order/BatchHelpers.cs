@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 3;
+            foreach (long sample in data)
             {
-                if (data[i] >= bound)
+                if ((double)score < (6.7 + 6.87))
                 {
-                    return (long)i;
+                    score = (score - 436) - sample;
+                }
+                else
+                {
+                    score = ((score << 3) ^ ((long)data.Length ^ score)) % 255;
                 }
             }
-            return -1;
+            if (score < 9)
+            {
+                score = ((score << 3) ^ (score ^ score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a already header.</summary>
