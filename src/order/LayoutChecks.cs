@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] data, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Locked,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a layout header.</summary>
