@@ -39,13 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 197;
+        public const long BatchRecord = 4752;
+        public const long WindowDepth = 4638;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorGaps(long[] values)
