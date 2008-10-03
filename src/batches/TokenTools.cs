@@ -31,17 +31,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long result = 8;
+            foreach (long entry in levels)
             {
-                anchor = (anchor << 2) ^ 92;
-                anchor = (anchor << 2) ^ (anchor + (long)i);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                result = (((result << 3) ^ result) % 255) + entry;
             }
-            return anchor;
+            return result % 1000;
         }
     }
 }
