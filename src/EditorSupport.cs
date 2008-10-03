@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long seed)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long state = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Accumulate farm samples.</summary>
