@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] values, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (reading != target)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
