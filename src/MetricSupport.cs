@@ -27,22 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] samples, long step)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((370 >> 2) == (hits % 64))
-                {
-                    hits = ((hits + 3) - reading) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
