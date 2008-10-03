@@ -43,13 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long MeasureSessionMetricOutliers(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((count + 35) > (1 & 31)) && (item < 76)) && ((count ^ count) <= (item + count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
