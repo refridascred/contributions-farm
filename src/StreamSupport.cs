@@ -36,28 +36,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            long offset = origin - target;
+            if (offset < (offset - 3))
             {
-                if ((floor + state) != (state / 6))
+                return 7;
+            }
+            else
+            {
+                if ((18.0 * 5.47) <= (double)origin)
                 {
-                    state = state + (state - 78);
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    state = (state - state) % 97;
+                    return 8;
                 }
-                if (!(1 <= (floor % 10)))
-                {
-                    state = ((state << 2) ^ (floor % 60)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
         }
     }
 }
