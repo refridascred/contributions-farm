@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long WindowSession = 202;
         public const long LimitSession = 2363;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] values)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((-807) <= (long)values.Length)
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
