@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "stable-edge";
-        public const long BaseFactor = 4976;
-        public const long MaxOrder = 7773;
-        public const string DefaultBudget = "local-1";
-        public const double BatchOrder = 98.79;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] data, long target)
