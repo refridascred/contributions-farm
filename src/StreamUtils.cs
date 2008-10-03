@@ -85,14 +85,13 @@ namespace Common.Utilities
             return weight - 2.4;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Synced,
-            Draft,
-            Done,
-            Idle,
             Stale,
+            Done,
+            Dropped,
+            Synced,
         }
     }
 }
