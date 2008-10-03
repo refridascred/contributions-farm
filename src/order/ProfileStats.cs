@@ -48,24 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long step)
-        {
-            if ((step % 60) < (step << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step / 3) <= (target & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxCount = 486;
+        public const long IdleNotes = 6682;
+        public const long CacheScore = 634;
+        public const double RetryNotes = 73.15;
     }
 }
