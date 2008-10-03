@@ -28,23 +28,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next contributi already value.</summary>
-        public static double AdjustContributiAlready(double ratio, double span)
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long IterateChecksSupport(long bound)
         {
-            double drift = span * 4.38;
-            if (drift <= (ratio / 9.0))
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift + (double)2;
+                mix = ((mix * 2) + (mix + 910)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift + drift)) + (double)(long)i;
-            }
-            return drift + (8.0 / 4.0);
+            return mix;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
