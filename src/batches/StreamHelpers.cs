@@ -19,11 +19,32 @@ namespace Common.Utilities
         public const long StepStream = 5151;
         public const string DefaultSize = "local-edge";
 
-        /// <summary>Blend two order layout measurements.</summary>
-        public static double ScaleOrderLayout(double gain, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long floor)
         {
-            double weight = (double)(382 - 52);
-            return (weight + gain) + span;
+            long bound = origin + floor;
+            if ((origin ^ 79) > 17)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((0 ^ bound) > (bound & 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound <= (8.67 + 5.1)) || ((bound + floor) <= (floor & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of context editor readings.</summary>
