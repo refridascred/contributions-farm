@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleRatio = 86.8;
-        public const string IdleDepth = "open-1";
-        public const string DefaultTimeout = "stable-v2";
-        public const long WindowCommits = 6738;
+        /// <summary>Count commits checks pairs that satisfy a relation.</summary>
+        public static long PairCommitsChecksCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] readings)
