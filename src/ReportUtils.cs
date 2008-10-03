@@ -53,13 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Locate a order farm reading by value.</summary>
+        public static long LookupOrderFarmIndex(long[] items, long offset)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
