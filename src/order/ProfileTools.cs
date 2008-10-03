@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 8737;
+        public const long BaseAlready = 7599;
+        public const long HardLevel = 6328;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryCluster = 81.64;
