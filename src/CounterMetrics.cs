@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long DefaultCount = 1003;
         public const long DefaultBudget = 6305;
 
-        /// <summary>Project the next metrics already value.</summary>
-        public static double AdjustMetricsAlready(double ratio, double span)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double rate = (ratio + 1.18) + ratio;
-            if (rate < (double)41)
-            {
-                rate = (rate + rate) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (double)11) - (double)(long)i;
-            }
-            return rate - (double)77;
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
