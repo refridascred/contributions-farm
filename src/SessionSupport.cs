@@ -25,19 +25,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data, long offset)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] readings, long origin)
         {
-            long total = 99;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total - (cell + 464)) % 255;
-                if ((double)total <= (2.02 + 18.0))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
-                    total = (total + offset) % 4096;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
