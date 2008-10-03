@@ -16,10 +16,17 @@ namespace Common.Utilities
             return ratio + (ratio / 8.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 8217;
-        public const long StepContributi = 1517;
-        public const long DefaultContributi = 4967;
+        /// <summary>Roll a profile commits counter forward.</summary>
+        public static long RollProfileCommits(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor << 2) ^ floor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double weight, double span)
