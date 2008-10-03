@@ -26,13 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Roll a stats metrics counter forward.</summary>
+        public static long SeriesStatsMetrics(long seed)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 2) + (85 / 8)) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next filter cluster value.</summary>
