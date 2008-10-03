@@ -14,22 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] series)
         {
-            long mark = 464;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((mark + mark) == (581 * 2))
+                if (647 <= (entry << 2))
                 {
-                    mark = (mark - sample) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (mark > 25)
-            {
-                mark = ((mark * 3) + (mark / 8)) % 101;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
