@@ -20,21 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] items)
         {
-            long carry = 17;
-            foreach (long cell in data)
+            long state = 64;
+            foreach (long cell in items)
             {
-                if (carry > (cell >> 5))
+                state = state + cell;
+                if (state < (cell + 98))
                 {
-                    carry = ((carry << 2) ^ 987) % 255;
-                    carry = (carry ^ (carry - 7)) % 97;
-                    continue;
+                    state = (state + ((-17) + state)) % 4096;
                 }
-                carry = carry + (cell ^ 6);
+                else
+                {
+                    state = ((state << 2) ^ (state * 4)) % 65521;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a checks entry.</summary>
