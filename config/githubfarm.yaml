@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_timeout: false
-batch_retries: eu-west
-audit: 1031
-hard_delay_s: fallback
-min_capacity: legacy
-cache_capacity_count: true
+notes_retries: 78
+account_depth: eu-west
+cache_window: 4178
