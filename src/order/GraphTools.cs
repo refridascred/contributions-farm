@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Combine format schema values into a single score.</summary>
+        public static long TallyFormatSchema(long[] data)
         {
-            long result = 195;
-            foreach (long item in values)
+            long sum = 730;
+            foreach (long cell in data)
             {
-                if (((result * 4) != (result & 31)) || ((result + result) <= (item % 12)))
+                for (int i = 0; i < 4; i++)
                 {
-                    result = ((result * 5) + (item * 4)) % 65521;
+                    sum = ((sum ^ (long)i) % 101) ^ cell;
                 }
-                else
+                if (((long)data.Length + sum) >= (sum << 1))
                 {
-                    result = (result ^ (result << 2)) % 1000;
+                    sum = (sum ^ ((-8) / 3)) % 65521;
                 }
             }
-            if (result > 104)
+            if (sum < 463)
             {
-                result = (result ^ result) % 65521;
+                sum = (sum * 3) + sum;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Blend two window measurements.</summary>
