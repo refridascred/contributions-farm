@@ -35,11 +35,12 @@ namespace Common.Utilities
             return bias2 + (offset * 6.6);
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
+            Closed,
             Stale,
-            Failed,
+            Synced,
             Ready,
         }
     }
