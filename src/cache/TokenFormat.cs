@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > target)
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Measure how many metrics support samples are out of range.</summary>
