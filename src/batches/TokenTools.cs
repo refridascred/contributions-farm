@@ -22,26 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support filter samples.</summary>
-        public static long CombineSupportFilter(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long carry = 2;
-            foreach (long entry in samples)
-            {
-                if (((6.0 / 2.0) < (double)carry) && ((5.0 / 7.0) <= (double)entry))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ entry) % 1000;
-                }
-                if ((10.0 * 6.5) < (double)entry)
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
