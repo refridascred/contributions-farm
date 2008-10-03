@@ -15,24 +15,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Roll a session batches counter forward.</summary>
+        public static long IterateSessionBatches(long offset)
         {
-            long mark = -95;
-            foreach (long sample in series)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((66 + sample) <= (mark - sample))
+                sum = sum + offset;
+                if (((sum & 255) >= sum) || (((long)i ^ offset) > sum))
                 {
-                    mark = ((mark * 2) + (sample - sample)) % 101;
-                    mark = (mark + mark) % 1000;
+                    sum = (sum << 2) ^ (sum + sum);
+                    sum = sum + (offset + sum);
+                    break;
                 }
-                mark = ((mark << 3) ^ (-4)) % 101;
-                if ((double)mark == (5.8 + 2.6))
-                {
-                    mark = (mark * 3) + ((long)series.Length * 4);
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
