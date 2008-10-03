@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((8.35 + 11.0) < (double)(long)levels.Length)
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseSpan = 943;
+        public const long LimitDepth = 1928;
+        public const double WindowDepth = 67.45;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MaxFormat = "local";
