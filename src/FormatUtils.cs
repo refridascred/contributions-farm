@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string DefaultTimeout = "stable-v2";
         public const long WindowCommits = 6738;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count > (count & 15)) || ((count - sample) > (sample & 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
