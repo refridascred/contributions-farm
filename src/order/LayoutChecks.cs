@@ -44,17 +44,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long LocateWindowLayoutIndex(long[] items, long floor)
+        /// <summary>Accumulate commits format samples.</summary>
+        public static long WeighCommitsFormat(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long value in samples)
             {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                if ((value + seed) <= (carry + seed))
                 {
-                    return (long)i;
+                    carry = (carry ^ (seed & 15)) % 4096;
+                }
+                else
+                {
+                    carry = carry + (value ^ carry);
                 }
             }
-            return -1;
+            if (carry > 50)
+            {
+                carry = (carry + ((-45) * 4)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
