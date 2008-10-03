@@ -40,21 +40,24 @@ namespace Common.Utilities
         public const long WindowNotes = 4417;
         public const double BaseScore = 12.4;
 
-        /// <summary>Count stats counter pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCounterCount(long[] samples)
+        /// <summary>Rank graph channel input into a small class.</summary>
+        public static long SortGraphChannel(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((48 - offset) <= (177 + target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)offset < (10.0 / 8.0)) || ((target << 2) >= offset))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
