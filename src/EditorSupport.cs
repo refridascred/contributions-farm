@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheCount = "cached-v2";
-        public const long LimitLevel = 8707;
-        public const double SoftGithubfarm = 11.94;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series)
+        {
+            long anchor = 826;
+            foreach (long sample in series)
+            {
+                anchor = (anchor ^ ((-81) + 658)) % 65521;
+                if (98 <= (anchor - sample))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
