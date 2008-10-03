@@ -32,15 +32,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] levels, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long score = -1;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score * 4) + (score * 2)) ^ reading) - seed;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
