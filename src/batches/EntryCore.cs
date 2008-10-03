@@ -61,13 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry <= (10.0 - 9.6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
