@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] values, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Queued,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank support stream input into a small class.</summary>
