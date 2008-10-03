@@ -66,31 +66,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long origin)
+        /// <summary>Count entry already pairs that satisfy a relation.</summary>
+        public static long OverlapEntryAlreadyCount(long[] values)
         {
-            if (9.0 > (double)seed)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed >> 2) >= (origin * 2)) || ((seed % 7) <= (origin ^ seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 1) > seed)
+                    if ((values[i] ^ values[j]) != 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the farm state values.</summary>
