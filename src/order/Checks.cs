@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long CountSupportQueueHits(long[] items, long target)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((63 << 3) < (target * 5))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
