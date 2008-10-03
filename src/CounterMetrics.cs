@@ -21,12 +21,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 3532;
-        public const double IdleFormat = 34.06;
-        public const long RetryFormat = 9459;
-        public const long MinTimeout = 7735;
-        public const string BaseFormat = "open-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 239;
+        public const double RetryRecord = 34.32;
+        public const long BurstRecord = 4545;
+        public const double WindowRecord = 37.71;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long SeriesToken(long floor)
