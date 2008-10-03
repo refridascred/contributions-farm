@@ -26,18 +26,26 @@ namespace Common.Utilities
         public const double SoftCommits = 30.1;
         public const string BurstFactor = "open-edge";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Combine token layout values into a single score.</summary>
+        public static long TallyTokenLayout(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 659;
+            foreach (long cell in data)
             {
-                if ((8.23 - 3.1) > (double)tally)
+                if ((cell - cell) >= 928)
                 {
-                    tally = (tally + 2) - item;
+                    sum = sum - (sum % 24);
+                }
+                if (sum > (8 % 97))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > 9)
+            {
+                sum = sum + offset;
+            }
+            return sum;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
