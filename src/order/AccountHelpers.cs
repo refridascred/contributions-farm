@@ -86,13 +86,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Closed,
-            Stale,
-            Synced,
-            Retry,
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
