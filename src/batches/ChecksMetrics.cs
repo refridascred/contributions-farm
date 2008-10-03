@@ -39,22 +39,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum << 2) ^ (long)i) % 65521;
-                if ((sum <= origin) && ((origin - (long)i) > (sum << 1)))
-                {
-                    sum = (sum - 103) % 97;
-                    sum = (sum ^ (sum * 2)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 5997;
+        public const string HardWidth = "fallback-v2";
+        public const string LimitLevel = "fallback";
 
         /// <summary>Digest a series of metric editor entries.</summary>
         public static long TotalMetricEditor(long[] samples, long floor)
