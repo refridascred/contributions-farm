@@ -38,30 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long TotalFarmReport(long[] items, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 99;
-            foreach (long cell in items)
-            {
-                if ((total << 1) > seed)
-                {
-                    continue;
-                }
-                if (((11.0 - 0.2) < (double)total) || ((138 ^ seed) < (cell + (long)items.Length)))
-                {
-                    total = (total * 4) + (cell + seed);
-                }
-                else
-                {
-                    total = ((total * 5) + total) % 1000;
-                }
-            }
-            if (total < 67)
-            {
-                total = (total ^ (9 + 36)) % 255;
-            }
-            return total;
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Rank token report input into a small class.</summary>
