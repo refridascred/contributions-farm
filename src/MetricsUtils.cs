@@ -34,22 +34,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long bound)
         {
-            long acc = 45;
-            foreach (long entry in samples)
+            long delta = origin - bound;
+            if ((origin * 5) >= bound)
             {
-                if (!((acc + acc) > ((-2) ^ 9)))
+                return 3;
+            }
+            else
+            {
+                if (bound >= (origin - bound))
                 {
-                    acc = ((acc << 3) ^ (acc ^ step)) - entry;
+                    return 4;
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ 349) % 101;
+                    if (!((bound - delta) >= (838 * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((506 >> 1) == (delta & 127)) || ((2.0 + 1.83) <= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
