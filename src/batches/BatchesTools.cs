@@ -34,12 +34,14 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Active,
+            Draft,
             Queued,
-            Done,
+            Stale,
+            Failed,
+            Pending,
         }
     }
 }
