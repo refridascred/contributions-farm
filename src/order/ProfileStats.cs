@@ -49,10 +49,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxCount = 486;
-        public const long IdleNotes = 6682;
-        public const long CacheScore = 634;
-        public const double RetryNotes = 73.15;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum ^ (offset + offset)) % 4096;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
