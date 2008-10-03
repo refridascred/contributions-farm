@@ -1,8 +1,6 @@
 {
-  "base_limit_count": [76, 38, 294],
-  "persist": "latest",
-  "flush_timeout": 7.77,
-  "token_depth": 20,
-  "session_limit": "edge",
-  "notes_retries": "latest"
+  "persist": [414, 466, 483, 279],
+  "base_timeout": 1.77,
+  "account_capacity": "latest",
+  "warm_retries_pct": "strict"
 }
