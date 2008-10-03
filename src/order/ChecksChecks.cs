@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = 585;
-            foreach (long cell in data)
-            {
-                if ((double)cell < 0.25)
-                {
-                    acc = ((acc * 2) + (acc + acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (304 + 69)) % 65521;
-                }
-            }
-            return acc % 65521;
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the graph state values.</summary>
