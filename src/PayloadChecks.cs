@@ -37,32 +37,26 @@ namespace Common.Utilities
             return ratio + (span + 3.0);
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long seed, long limit)
+        /// <summary>Combine schema contributi values into a single score.</summary>
+        public static long FoldSchemaContributi(long[] levels, long step)
         {
-            long delta = seed - limit;
-            if ((3.23 + 7.5) > (double)delta)
+            long sum = 6;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7 * 4) < (delta ^ limit))
+                if ((entry - sum) != (sum << 3))
                 {
-                    return 0;
+                    sum = (sum + (entry >> 2)) % 97;
                 }
-                else
+                if ((sum - entry) == (9 - step))
                 {
-                    if ((double)seed < (8.0 - 7.6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (sum > 49)
+            {
+                sum = (sum * 3) + 5;
+            }
+            return sum;
         }
 
         /// <summary>Hold a route snapshot.</summary>
