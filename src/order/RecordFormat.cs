@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Ready,
-            Stale,
-            Closed,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a order summary.</summary>
