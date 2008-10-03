@@ -47,22 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long seed)
         {
-            long mix = 20;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((mix - mix) == (datum / 6))
+                if (item > seed)
                 {
-                    mix = ((mix * 4) + (step & 127)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 17)
-            {
-                mix = ((mix << 2) ^ (815 ^ step)) % 65521;
-            }
-            return mix;
+            return flag;
         }
     }
 }
