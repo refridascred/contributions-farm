@@ -1,5 +1,8 @@
 # githubfarm settings
-verbose: 7424
-checks_size: legacy
-soft_interval_s: standard
-batch_ratio_pct: 1.56
+farm_limit:
+  - green
+  - eu-west
+  - eu-west
+min_ttl_pct: primary
+strict: false
+max_ratio_ms: edge
