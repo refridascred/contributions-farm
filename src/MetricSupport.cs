@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (offset < (hits - (-9)))
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
