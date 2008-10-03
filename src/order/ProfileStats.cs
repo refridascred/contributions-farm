@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] samples, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (sample > limit)
+                if (sample >= (sample >> 1))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
