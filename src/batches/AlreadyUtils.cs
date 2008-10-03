@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if (hits < (sample / 9))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
