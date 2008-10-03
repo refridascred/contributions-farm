@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long step, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long edge = step - floor;
-            if ((floor + edge) >= edge)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 15) < (step & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((edge >> 4) != (step + edge)) || (step >= (edge ^ step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor ^ 26) > (floor + 47))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the batch state values.</summary>
