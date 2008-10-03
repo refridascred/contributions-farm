@@ -36,11 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardLevel = "alpha-edge";
-        public const string LimitChecks = "standard-edge";
-        public const long DefaultBudget = 9743;
-        public const long CacheChecks = 2801;
-        public const long IdleSize = 7358;
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long TallyMetricsSupportOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((4 % 16) != (cell + cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
