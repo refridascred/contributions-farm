@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long limit)
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((hits % 24) == (hits ^ sample)))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
