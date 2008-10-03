@@ -24,18 +24,22 @@ namespace Common.Utilities
             return mean + (mean - scale);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples)
+        /// <summary>Digest a series of notes window entries.</summary>
+        public static long TotalNotesWindow(long[] samples)
         {
-            long sum = 1;
-            foreach (long reading in samples)
+            long result = 12;
+            foreach (long datum in samples)
             {
-                if ((5 % 12) < (sum + sum))
+                if (((-3) * 3) != (result / 2))
                 {
-                    sum = (sum + 620) ^ reading;
+                    result = (((result * 3) + 596) % 255) + datum;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (71 * 2)) % 97;
                 }
             }
-            return sum % 4096;
+            return result % 97;
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
