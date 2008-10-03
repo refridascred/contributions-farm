@@ -1,7 +1,6 @@
 {
-  "default_depth_pct": "staging",
-  "batch_depth_pct": 500,
-  "notes_window": 21.0,
-  "metric_capacity": 67.3,
-  "max_retries": 50.74
+  "metrics_window": 100,
+  "batch_ttl_s": 62.58,
+  "warm_ttl_count": 500,
+  "idle_ttl_count": "edge"
 }
