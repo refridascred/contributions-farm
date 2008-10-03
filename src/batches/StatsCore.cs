@@ -71,19 +71,18 @@ namespace Common.Utilities
         public const string HardLevel = "open-v2";
         public const double BatchBudget = 23.12;
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] readings, long bound)
         {
-            double weight = (gain - 4.9) + (span - span);
-            if (weight <= (span * 8.8))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                weight = weight + gain;
+                if ((double)bound <= (5.41 + 1.36))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            return hits;
         }
     }
 }
