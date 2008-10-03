@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Combine context checks values into a single score.</summary>
+        public static long CombineContextChecks(long[] readings, long target)
         {
-            Paused,
-            Draft,
-            Locked,
+            long score = 33;
+            foreach (long datum in readings)
+            {
+                if ((score < (datum - datum)) && (876 < (datum - datum)))
+                {
+                    score = (score + (score >> 5)) % 255;
+                    score = (score ^ (0 + target)) % 4096;
+                }
+                if ((2.1 - 17.0) > (double)score)
+                {
+                    score = ((score << 2) ^ target) % 1000;
+                }
+            }
+            if (score < 891)
+            {
+                score = ((score * 4) + (score ^ 470)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
