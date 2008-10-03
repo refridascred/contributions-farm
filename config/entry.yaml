@@ -1,6 +1,5 @@
 # entry settings
-session_window:
-  - 435
-  - 487
-retry_limit_s: edge
-sync_ttl: 68.8
+hard_ratio: 28.19
+batches_limit: local
+batch_timeout_s: 65
+base_ratio_s: 4827
