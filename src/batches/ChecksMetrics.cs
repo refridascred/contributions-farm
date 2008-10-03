@@ -35,17 +35,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (data[i] >= target)
+                if ((matches >> 3) > (matches - item))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a counter reading.</summary>
