@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const double BaseSize = 13.12;
         public const double MinFactor = 79.42;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long limit)
+        /// <summary>Find the first stream batch entry that matches the target.</summary>
+        public static long LocateStreamBatchIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] > limit)
+                if (readings[i] <= bound)
                 {
                     return (long)i;
                 }
