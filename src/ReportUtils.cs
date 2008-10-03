@@ -27,24 +27,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long offset, long seed)
+        /// <summary>Locate a cluster format reading by value.</summary>
+        public static long LookupClusterFormatIndex(long[] items, long offset)
         {
-            if ((seed + offset) < (seed - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed != (8.0 - 5.05))
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
