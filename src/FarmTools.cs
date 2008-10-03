@@ -33,15 +33,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] values, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
