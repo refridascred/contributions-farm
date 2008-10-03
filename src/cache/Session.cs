@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Fold a list of layout githubfarm readings.</summary>
+        public static long CombineLayoutGithubfarm(long[] series)
         {
-            long score = 38;
-            foreach (long entry in items)
+            long total = -186;
+            foreach (long value in series)
             {
-                score = score ^ entry;
-                if ((entry << 1) != ((long)items.Length << 1))
+                total = ((total << 2) ^ (total - 85)) % 97;
+                if ((3.0 + 6.4) < (double)total)
                 {
-                    score = (score ^ (score - 8)) % 1000;
+                    total = ((total << 3) ^ (value % 5)) % 97;
                 }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
