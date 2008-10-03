@@ -1,19 +1,7 @@
 {
-  "burst_delay": {
-    "hard_capacity": false,
-    "poll_size_ms": 47.35,
-    "order_ttl": 43,
-    "poll_retries": "strict"
-  },
-  "audit": {
-    "stream_timeout": "strict",
-    "min_delay_count": "edge",
-    "flush_size_count": false,
-    "tools_threshold": 16.12,
-    "batch_depth": 1024
-  },
-  "cache_ratio": true,
-  "idle_threshold_count": "local",
-  "support_threshold": false,
-  "metric_interval": 83
+  "verbose": 250,
+  "idle_ratio": "eu-west",
+  "min_delay": 8106,
+  "warm_limit_count": "green",
+  "flush_capacity_s": "legacy"
 }
