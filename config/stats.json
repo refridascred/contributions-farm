@@ -1,6 +1,17 @@
 {
-  "readonly": "stable",
-  "default_capacity": "staging",
-  "soft_ratio_pct": 28.45,
-  "payload_limit": 22.57
+  "readonly": {
+    "hard_window_s": 6.86,
+    "sync_capacity_s": 6670,
+    "warm_ratio_ms": 100,
+    "enabled": ["primary", "open"],
+    "batch_timeout_pct": true
+  },
+  "default_interval_pct": "primary",
+  "cache_interval_pct": 98.74,
+  "compress": {
+    "retry_depth_count": "primary",
+    "flush_interval_s": 47.53,
+    "schema_capacity": ["cached", "edge", "stable"]
+  },
+  "batches_retries": 14.79
 }
