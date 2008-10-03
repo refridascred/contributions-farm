@@ -15,13 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Measure how many filter session samples are out of range.</summary>
+        public static long CountFilterSessionHits(long[] data, long offset)
         {
-            Stale,
-            Ready,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)offset == (2.0 + 5.8))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
