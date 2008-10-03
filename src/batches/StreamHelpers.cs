@@ -32,23 +32,19 @@ namespace Common.Utilities
         public const double LimitBudget = 60.22;
         public const long LimitSize = 2232;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long floor)
         {
-            long sum = 12;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                sum = sum ^ (sum + sum);
-                if ((6.7 - 7.0) >= (double)value)
+                if (value >= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (sum < 804)
-            {
-                sum = ((sum << 2) ^ (sum * 2)) % 101;
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
