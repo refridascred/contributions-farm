@@ -16,24 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] data, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double floor)
         {
-            long result = 84;
-            foreach (long datum in data)
+            double gain2 = gain;
+            if (gain2 <= (double)32)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result * 4) + (99 - bound)) % 4096) ^ datum;
-                    result = result - (bound + (long)i);
-                }
-                result = result - (result + result);
+                gain2 = (gain2 - (gain - gain)) - floor;
             }
-            if (result > 368)
+            for (int i = 0; i < 9; i++)
             {
-                result = ((result * 3) + (4 + result)) % 255;
+                gain2 = (gain2 - gain2) + (double)(long)i;
             }
-            return result % 1000;
+            return gain2 + gain2;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
