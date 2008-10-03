@@ -46,14 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long AuditCacheRouteOutliers(long[] values, long step)
         {
-            Failed,
-            Locked,
-            Draft,
-            Idle,
-            Queued,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((step + 8) == (tally + (-24)))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a editor reading.</summary>
