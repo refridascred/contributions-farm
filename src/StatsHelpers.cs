@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowWidth = 58.09;
-        public const long HardLevel = 5780;
-        public const long HardCount = 5980;
-        public const double LimitCount = 17.77;
-        public const long SoftBudget = 3790;
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long MeasureProfileFarmMatches(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry % 10) >= (step ^ entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long seed)
