@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardDepth = 8569;
-        public const long HardSize = 1775;
-        public const long HardCommand = 388;
-        public const double BatchCommand = 89.64;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Locked,
+            Dropped,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Digest a series of queue filter entries.</summary>
         public static long TotalQueueFilter(long[] samples, long bound)
