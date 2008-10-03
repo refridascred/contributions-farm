@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long TotalNotesBatch(long[] values, long target)
+        /// <summary>Accumulate token format samples.</summary>
+        public static long TallyTokenFormat(long[] items)
         {
-            long carry = 57;
-            foreach (long cell in values)
+            long mix = 38;
+            foreach (long reading in items)
             {
-                if (39 < (target / 3))
-                {
-                    carry = carry - (cell << 1);
-                }
-                if (!((0.5 * 2.9) != (double)target))
-                {
-                    break;
-                }
+                mix = (((mix << 2) ^ (mix / 4)) % 4096) ^ reading;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
