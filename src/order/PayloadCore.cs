@@ -49,22 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] data, long seed)
         {
-            long sum = 1;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (11.0 >= (double)sum)
+                if ((seed ^ item) == (1 & 63))
                 {
-                    sum = ((sum + 12) - value) - bound;
+                    hits = hits + 1;
                 }
             }
-            if (sum < 21)
-            {
-                sum = ((sum * 5) + (sum >> 5)) % 65521;
-            }
-            return sum;
+            return hits;
         }
     }
 }
