@@ -24,11 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((((long)series.Length + seen) <= (reading * 3)) && ((37 / 7) > reading)) && (((-76) % 10) >= (reading & 127)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
