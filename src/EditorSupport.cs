@@ -37,19 +37,12 @@ namespace Common.Utilities
         public const long MaxCache = 2315;
         public const long SoftSize = 9547;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a commits options.</summary>
