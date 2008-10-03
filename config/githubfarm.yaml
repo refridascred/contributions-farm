@@ -1,5 +1,10 @@
 # githubfarm settings
-sync_ttl_s: local
-counter_capacity: strict
-persist: 12.81
-sync_ttl: primary
+soft_limit_s: true
+notes_window:
+  poll_retries: true
+  max_retries_pct: 2
+  persist: true
+metric_timeout: true
+strict: strict
+queue_window: 44.63
+sync_interval_ms: 1024
