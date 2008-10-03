@@ -23,23 +23,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate layout profile samples.</summary>
-        public static long ScoreLayoutProfile(long[] levels, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long acc = 39;
-            foreach (long entry in levels)
+            long carry = 61;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc * 5) + (entry * 3)) ^ (long)i;
-                }
-                acc = acc + ((-496) - 61);
+                carry = (carry << 2) ^ (reading >> 2);
             }
-            if (acc < 514)
-            {
-                acc = acc + bound;
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
