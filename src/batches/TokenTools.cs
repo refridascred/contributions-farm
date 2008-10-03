@@ -19,13 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double bias)
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            double rate = (gain * 6.24) - bias;
+            if (rate > rate)
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate - 18.0;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
