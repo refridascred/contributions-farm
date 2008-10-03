@@ -40,10 +40,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "primary-1";
-        public const long MinSession = 3870;
-        public const long BaseSize = 7720;
-        public const double LimitSession = 38.97;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Paused,
+            Dropped,
+            Synced,
+        }
     }
 }
