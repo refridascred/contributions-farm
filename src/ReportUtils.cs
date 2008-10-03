@@ -70,23 +70,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((origin > (anchor ^ anchor)) && (anchor < (origin << 1)))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                if (((origin + origin) >= origin) && (6 >= (anchor << 1)))
-                {
-                    anchor = (anchor ^ ((-263) + origin)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
