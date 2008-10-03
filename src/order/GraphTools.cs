@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - 588) != (value ^ seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
