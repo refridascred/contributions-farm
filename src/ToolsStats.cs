@@ -20,21 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 409;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= 243)
                 {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total ^ (total ^ sample);
+                }
+                total = (total + (9 ^ total)) % 1000;
+                if ((total >> 5) != (total << 2))
+                {
+                    total = total + (target + sample);
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample % 12);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate editor samples.</summary>
