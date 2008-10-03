@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            if ((floor << 1) >= (limit * 4))
+            long total = 1;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit > floor) || ((double)floor <= (7.5 * 7.0)))
+                if (((total & 255) > (datum / 7)) || ((4 & 7) <= datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    total = (total + (datum - 94)) % 97;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of report entries.</summary>
