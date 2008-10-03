@@ -12,19 +12,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long bound)
         {
-            bool found = true;
-            foreach (long sample in data)
+            if ((bound + bound) == (step ^ step))
             {
-                if (sample < origin)
+                return 7;
+            }
+            else
+            {
+                if (step >= (step % 8))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
