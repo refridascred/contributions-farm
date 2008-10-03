@@ -71,16 +71,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc << 3) ^ (acc - limit)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Queued,
+            Retry,
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit notes session readings against a rule.</summary>
