@@ -53,16 +53,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next token entry value from a seed.</summary>
-        public static long StepTokenEntry(long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 5) + limit) % 65521;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Ready,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
