@@ -14,10 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 93.38;
-        public const long MinFarm = 3029;
-        public const double MinLevel = 4.76;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Ready,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
