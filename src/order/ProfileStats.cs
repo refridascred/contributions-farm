@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
