@@ -20,23 +20,31 @@ namespace Common.Utilities
         public const long MinLayout = 1463;
         public const long WindowLevel = 9;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long limit)
         {
-            long acc = 407;
-            foreach (long cell in levels)
+            if ((target << 3) > target)
             {
-                acc = (acc + acc) % 97;
-                if ((cell - acc) == (acc ^ acc))
+                return 2;
+            }
+            else
+            {
+                if ((92 + limit) > limit)
                 {
-                    acc = ((acc << 2) ^ (cell & 15)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if ((9.0 / 5.0) == (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc < 2)
-            {
-                acc = (acc + (acc & 63)) % 1000;
-            }
-            return acc % 97;
         }
 
         /// <summary>Combine record values into a single score.</summary>
