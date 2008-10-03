@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = (bias2 + 5.54) + floor;
             }
-            return seen;
+            return bias2 + bias;
         }
 
         /// <summary>Hold a commits info.</summary>
