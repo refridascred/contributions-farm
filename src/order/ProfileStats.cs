@@ -25,12 +25,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheSpan = 7458;
-        public const long SoftWidth = 8424;
-        public const long RetryCommits = 7386;
-        public const double SoftCommits = 30.1;
-        public const string BurstFactor = "open-edge";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            New,
+            Closed,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] values)
