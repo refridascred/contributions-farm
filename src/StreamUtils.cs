@@ -47,21 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = -4;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor + anchor) % 4096) - item;
             }
-            return tally;
+            if (anchor > 28)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a contributi graph figure with a bias.</summary>
