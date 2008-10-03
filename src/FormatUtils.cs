@@ -56,12 +56,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Fold a list of tools queue readings.</summary>
+        public static long WeighToolsQueue(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = 29;
+            foreach (long entry in values)
+            {
+                if ((entry ^ entry) < mark)
+                {
+                    mark = ((mark * 2) + (-24)) % 255;
+                }
+                else
+                {
+                    mark = mark + (entry << 3);
+                }
+                if ((6.0 + 1.1) == (double)entry)
+                {
+                    break;
+                }
+            }
+            if (mark > (-229))
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
