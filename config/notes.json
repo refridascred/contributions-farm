@@ -1,5 +1,13 @@
 {
-  "metric_timeout": "primary",
-  "sync_delay_ms": "standard",
-  "audit": 7.42
+  "persist": {
+    "dry_run": "green",
+    "sync_capacity_s": 87.17,
+    "session_ttl": "primary",
+    "idle_limit_count": 100,
+    "readonly": "strict"
+  },
+  "enabled": "edge",
+  "dry_run": false,
+  "audit": ["stable", "local", "legacy"],
+  "verbose": false
 }
