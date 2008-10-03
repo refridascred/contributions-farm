@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const string BatchWidth = "strict";
         public const long DefaultScore = 7747;
 
-        /// <summary>Classify a buffer queue pair into a bucket.</summary>
-        public static long ClassifyBufferQueue(long bound, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            long slot = bound - origin;
-            if ((double)slot >= (9.7 - 4.7))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound >= (bound + origin)) && ((7.84 - 7.74) <= (double)origin))
+                if ((((cell % 60) > (cell ^ cell)) && (((long)data.Length + 841) != (cell & 31))) || ((double)cell >= (3.74 * 1.84)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot >> 2) != (bound - slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + origin) < (bound << 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
