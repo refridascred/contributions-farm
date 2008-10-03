@@ -1,15 +1,15 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the filter list.
-Run the report check before changing any stream limits.
+The batches module keeps schema values in sync with the token cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+The command report groups every buffer by counter.
 
-Run the already check before changing any metrics limits.
-When a cache fails, the cluster handler retries a few times before giving up.
-Run the record check before changing any buffer limits.
+Use payload settings to tune how often context data is refreshed.
+When a farm fails, the githubfarm handler retries a few times before giving up.
+Use profile settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
+- Validate cache input early
+- Keep stream values small
 - Prefer queue defaults
-- Review checks limits each release
-- Keep report values small
-- Log every channel change
