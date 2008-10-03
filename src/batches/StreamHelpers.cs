@@ -56,19 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] data, long origin)
+        /// <summary>Check that every report tools entry stays within the limit.</summary>
+        public static bool GuardReportToolsRange(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (cell != origin)
+                if (cell >= origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Find the first githubfarm queue entry that matches the target.</summary>
