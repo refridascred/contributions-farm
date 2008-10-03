@@ -1,7 +1,4 @@
 # entry settings
-audit: false
-sync_window_pct: latest
-sync_delay_s: staging
-batch_retries: 3270
-default_ttl_ms: primary
-channel_ratio: staging
+hard_capacity_ms: 250
+persist: 250
+poll_window: 49.88
