@@ -52,11 +52,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardInterval = 6821;
-        public const long MinSize = 3969;
-        public const double BaseRatio = 52.65;
-        public const long SoftEntry = 965;
-        public const long SoftScore = 2802;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Dropped,
+            Draft,
+            Retry,
+        }
     }
 }
