@@ -36,39 +36,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long bound)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long delta = origin - bound;
-            if ((origin * 5) >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (origin - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound - delta) >= (838 * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((506 >> 1) == (delta & 127)) || ((2.0 + 1.83) <= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
