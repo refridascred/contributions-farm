@@ -25,18 +25,16 @@ namespace Common.Utilities
         public const string LimitBatch = "open-1";
         public const string DefaultBatch = "cached";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] levels, long origin)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (tally < 73)
-                {
-                    tally = ((tally + 3) ^ value) - origin;
-                }
+                anchor = ((anchor * 4) + (anchor & 1)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Rank support input into a small class.</summary>
