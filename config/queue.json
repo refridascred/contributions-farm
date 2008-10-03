@@ -1,19 +1,6 @@
 {
-  "flush_interval_s": {
-    "stats_limit": 41,
-    "base_interval": ["latest", "green"],
-    "readonly": {
-      "compress": 16,
-      "buffer_timeout": 92,
-      "readonly": 3.06,
-      "window_interval": [98, 334, 377],
-      "warm_ratio_pct": 250,
-      "cache_threshold_ms": "stable"
-    },
-    "retry_interval_count": false
-  },
-  "batch_depth_count": false,
-  "verbose": 85.17,
-  "dry_run": true,
-  "max_size": 78.85
+  "flush_timeout": true,
+  "metrics_retries": ["cached", "green"],
+  "min_interval": false,
+  "verbose": ["standard", "edge"]
 }
