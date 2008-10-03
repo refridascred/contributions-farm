@@ -35,12 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 8408;
-        public const double BasePayload = 65.43;
-        public const string StepLevel = "alpha-1";
-        public const string CachePayload = "fallback-edge";
-        public const double HardCount = 34.41;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] levels, long offset)
