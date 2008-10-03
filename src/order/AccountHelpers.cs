@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Closed,
+            Retry,
+            Ready,
+            New,
             Active,
-            Failed,
-            Done,
+            Locked,
         }
 
         /// <summary>Combine context values into a single score.</summary>
