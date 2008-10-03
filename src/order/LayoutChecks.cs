@@ -33,26 +33,21 @@ namespace Common.Utilities
         public const double RetryCluster = 71.08;
         public const string StepCluster = "fallback-1";
 
-        /// <summary>Accumulate commits format samples.</summary>
-        public static long WeighCommitsFormat(long[] samples, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            long carry = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + seed) <= (carry + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ (seed & 15)) % 4096;
-                }
-                else
-                {
-                    carry = carry + (value ^ carry);
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 50)
-            {
-                carry = (carry + ((-45) * 4)) % 255;
-            }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
