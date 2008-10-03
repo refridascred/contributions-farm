@@ -44,10 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepFormat = 55.56;
-        public const double BatchFactor = 96.21;
-        public const string IdleFormat = "local-v2";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Done,
+            Retry,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
