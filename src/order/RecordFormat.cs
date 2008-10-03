@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long BatchRecord = 4752;
         public const long WindowDepth = 4638;
 
-        /// <summary>Measure how many cluster support samples are out of range.</summary>
-        public static long CountClusterSupportOutliers(long[] items, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)target >= 4.0)
+                if ((target * 3) > (target >> 5))
                 {
-                    matches = (matches + 2) + value;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metrics info.</summary>
