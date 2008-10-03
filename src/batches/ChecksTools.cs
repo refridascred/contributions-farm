@@ -55,17 +55,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Find the first buffer payload entry that matches the target.</summary>
-        public static long SeekBufferPayloadIndex(long[] data, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 80;
+            foreach (long reading in levels)
             {
-                if (data[i] > seed)
+                if (!((80 << 1) > reading))
                 {
-                    return (long)i;
+                    mark = ((mark + (mark << 2)) % 65521) - step;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
