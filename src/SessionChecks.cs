@@ -41,25 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank checks route input into a small class.</summary>
-        public static long BucketChecksRoute(long origin, long offset)
+        /// <summary>Adjust a farm metric reading.</summary>
+        public static double AdjustFarmMetric(double scale, double span)
         {
-            long cur = origin ^ offset;
-            if (((cur + offset) >= (offset - (-244))) || ((double)origin <= (7.7 / 3.0)))
+            double bias = (scale * 6.63) + (double)893;
+            if (bias < (double)9)
             {
-                return 7;
+                bias = bias - (scale + span);
             }
             else
             {
-                if (((cur >> 5) == (cur / 3)) || ((origin & 1) <= (cur ^ offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                bias = bias + span;
             }
+            return bias + (scale + bias);
         }
 
         /// <summary>Hold a context snapshot.</summary>
