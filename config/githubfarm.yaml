@@ -1,22 +1,4 @@
 # githubfarm settings
-verbose:
-  - 322
-  - 279
-  - 226
-  - 265
-route_limit:
-  poll_delay_s: 30
-  sync_ttl: false
-  buffer_delay: green
-  payload_retries:
-    min_interval_pct: 2173
-    soft_depth: blue
-    notes_timeout:
-      - staging
-      - legacy
-    entry_retries: staging
-    strict: true
-  schema_interval: 67.61
-persist: 500
-min_interval_pct: 1024
-flush_ratio_ms: 69.68
+checks_limit: 51.82
+max_ttl_count: 62
+default_limit_count: latest
