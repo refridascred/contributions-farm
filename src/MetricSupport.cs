@@ -27,11 +27,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 9924;
-        public const long HardReport = 7930;
-        public const long MinWidth = 7012;
-        public const long LimitDepth = 2742;
-        public const string HardCount = "standard";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((370 >> 2) == (hits % 64))
+                {
+                    hits = ((hits + 3) - reading) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
