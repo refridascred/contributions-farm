@@ -59,12 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepFactor = 14.23;
+        public const long RetryAlready = 7457;
+        public const long BurstAlready = 2473;
+        public const string StepWidth = "strict-1";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] values, long target)
