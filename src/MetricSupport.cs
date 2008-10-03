@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((items[i] < seed) && ((items[i] % 5) == 0))
+                if ((8.35 + 11.0) < (double)(long)levels.Length)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
