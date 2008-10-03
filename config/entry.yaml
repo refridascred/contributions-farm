@@ -1,25 +1,5 @@
 # entry settings
-warm_size: 76.07
-route_capacity: standard
-soft_capacity_pct:
-  - primary
-  - local
-  - latest
-  - latest
-burst_delay_pct:
-  burst_depth: 500
-  enabled: 3512
-  poll_timeout_pct:
-    default_threshold_count: true
-    retry_interval_s: true
-    hard_delay_ms: 2888
-  default_ttl:
-    dry_run: legacy
-    cluster_ratio: true
-    flush_timeout_ms: 8905
-    token_size: 6564
-    schema_capacity: stable
-    sync_capacity_pct: 1557
-  order_depth: 9699
-layout_ttl: 91.63
-hard_limit_s: 92
+filter_size: strict
+cache_timeout_ms: blue
+already_size: 34.78
+retry_capacity_ms: edge
