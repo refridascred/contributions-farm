@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const string BurstSchema = "standard-1";
         public const long MaxFactor = 4961;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Idle,
+            Pending,
             Locked,
-            Queued,
-            Stale,
             Closed,
         }
 
