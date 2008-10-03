@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout already entry that matches the target.</summary>
-        public static long LookupLayoutAlreadyIndex(long[] items, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
