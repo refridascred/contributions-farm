@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum >= 20.0)
+                if (seen >= sample)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
