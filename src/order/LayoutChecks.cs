@@ -71,21 +71,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Look up the position of a session filter sample.</summary>
