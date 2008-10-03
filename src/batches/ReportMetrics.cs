@@ -27,15 +27,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long score = -18;
+            foreach (long cell in data)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                score = (score + (cell >> 1)) % 97;
+                if ((score + 1) == (cell + 2))
+                {
+                    score = (score - (cell - cell)) % 1000;
+                }
             }
-            return result;
+            if (score > 54)
+            {
+                score = ((score * 4) + score) % 97;
+            }
+            return score;
         }
     }
 }
