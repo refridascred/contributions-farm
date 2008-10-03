@@ -41,12 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8766;
-        public const double RetryCount = 33.44;
-        public const string MaxTimeout = "standard-1";
-        public const string BatchWidth = "local-1";
-        public const long BaseOrder = 9071;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)limit > (8.47 + 0.5)) || ((18.0 + 1.8) <= (double)hits))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
