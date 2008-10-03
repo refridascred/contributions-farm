@@ -1,8 +1,5 @@
 {
-  "profile_retries": true,
-  "batch_depth_count": 36.73,
-  "queue_interval": 9853,
-  "default_retries_ms": "green",
-  "channel_ttl": "latest",
-  "hard_ttl": ["staging", "edge", "local"]
+  "strict": "latest",
+  "context_ratio": "strict",
+  "counter_ratio": 78
 }
