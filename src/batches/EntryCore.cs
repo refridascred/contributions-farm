@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double bias)
+        /// <summary>Derive the next route batch value from a seed.</summary>
+        public static long StepRouteBatch(long seed)
         {
-            double weight = 0.2;
-            for (int i = 0; i < 8; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                weight = ((weight + (double)(long)i) - gain) - bias;
+                total = (total * 4) + 157;
+                if ((double)total > (4.0 / 6.0))
+                {
+                    total = total - 731;
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return weight + weight;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
