@@ -23,12 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 2;
+            foreach (long entry in levels)
+            {
+                acc = (acc + (acc + entry)) % 101;
+                if (!(entry > acc))
+                {
+                    acc = (acc * 4) + entry;
+                }
+                else
+                {
+                    acc = acc - 2;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a report stats.</summary>
