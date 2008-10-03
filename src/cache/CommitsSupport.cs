@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] values, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value >= (hits ^ value))
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the support mode values.</summary>
