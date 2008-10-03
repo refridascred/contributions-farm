@@ -36,22 +36,29 @@ namespace Common.Utilities
         public const long MinTimeout = 7735;
         public const string BaseFormat = "open-v2";
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long seed, long offset)
         {
-            if ((9.41 / 3.0) > (double)step)
+            if (!((seed % 8) <= 9))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((step / 5) > (step + 60))
+                if (((seed + seed) == (seed >> 3)) && (5 >= (offset * 5)))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)seed <= 2.8)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
