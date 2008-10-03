@@ -15,11 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
