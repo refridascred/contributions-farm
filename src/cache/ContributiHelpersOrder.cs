@@ -55,17 +55,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Find the first cache order entry that matches the target.</summary>
-        public static long LookupCacheOrderIndex(long[] samples, long bound)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Locked,
+            Synced,
         }
     }
 }
