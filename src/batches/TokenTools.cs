@@ -31,15 +31,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] levels)
-        {
-            long result = 8;
-            foreach (long entry in levels)
-            {
-                result = (((result << 3) ^ result) % 255) + entry;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 87.03;
+        public const long RetryCount = 8024;
+        public const long BurstTimeout = 9280;
     }
 }
