@@ -27,17 +27,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score - (score * 2);
-                score = (score + ((long)i - 838)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
