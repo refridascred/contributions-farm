@@ -69,39 +69,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long limit)
         {
-            long step = target - offset;
-            if ((target / 2) > (offset + 120))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= (9.2 / 6.0))
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target * 3) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step <= 1.9)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
