@@ -26,18 +26,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long step)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long mark = 80;
-            foreach (long reading in levels)
-            {
-                if (!((80 << 1) > reading))
-                {
-                    mark = ((mark + (mark << 2)) % 65521) - step;
-                }
-            }
-            return mark % 1000;
+            Active,
+            New,
+            Locked,
         }
     }
 }
