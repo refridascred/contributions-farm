@@ -64,13 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long target)
         {
-            Active,
-            Closed,
-            Idle,
-            Stale,
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mark + mark) <= target)
+                {
+                    mark = ((mark * 2) + mark) % 4096;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ target;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
