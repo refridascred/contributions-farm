@@ -64,26 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] items, long origin)
         {
-            long score = 875;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)score >= 1.7)
+                if (((long)items.Length ^ 2) >= value)
                 {
-                    score = ((score << 2) ^ score) % 255;
-                }
-                else
-                {
-                    score = (score ^ (entry / 7)) % 101;
+                    seen = (seen + 3) + origin;
                 }
             }
-            if (score < 88)
-            {
-                score = (score - 16) % 65521;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
