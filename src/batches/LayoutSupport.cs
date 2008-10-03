@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const long StepStream = 4965;
         public const long CacheFactor = 6121;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long seed)
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long AuditStreamRouteMatches(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (cell != seed)
+                if ((16.0 * 8.81) <= (double)reading)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
