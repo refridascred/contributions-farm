@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long DefaultCount = 1003;
         public const long DefaultBudget = 6305;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxBudget = 89.01;
-        public const long CacheContributi = 13;
-        public const long BurstWidth = 3743;
-        public const long BurstCount = 9814;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "open-1";
+        public const double LimitMetric = 49.62;
+        public const long RetryMetric = 6226;
+        public const long CacheMetric = 5630;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleSpan = 3532;
