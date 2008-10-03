@@ -20,12 +20,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Dropped,
-            Ready,
-            Retry,
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every window graph entry stays within the limit.</summary>
