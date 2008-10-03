@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long state = 73;
+            foreach (long cell in levels)
             {
-                if ((count << 1) <= (count >> 3))
+                state = state - (cell << 2);
+                if ((9 ^ cell) != (cell ^ 590))
                 {
-                    count = (count + 1) + datum;
+                    break;
                 }
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Describe the tools phase values.</summary>
