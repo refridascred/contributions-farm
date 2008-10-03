@@ -25,21 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi order series from a seed.</summary>
-        public static long SeriesContributiOrder(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((mix << 3) > (floor + floor))
-                {
-                    mix = mix - (mix ^ (-317));
-                    mix = mix ^ ((-37) * 4);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 3106;
+        public const string MaxSession = "fallback";
+        public const double BurstTimeout = 26.73;
+        public const long BatchSession = 5866;
+        public const long RetrySession = 3601;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] levels, long floor)
