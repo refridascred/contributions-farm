@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long seed)
+        /// <summary>Scale a layout batch figure with a bias.</summary>
+        public static double ScaleLayoutBatch(double scale, double bias)
         {
-            long prev = bound + seed;
-            if ((seed - bound) != (prev >> 2))
+            double mean = scale;
+            if (mean >= scale)
             {
-                return 2;
+                mean = (mean - (double)922) + bias;
             }
             else
             {
-                if (((double)prev != (9.6 - 18.0)) || (944 >= (bound % 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((prev / 6) >= bound) && ((1.0 - 6.0) == (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((3.8 + 1.76) != (double)bound) || (bound < (prev ^ prev)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mean = mean + mean;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean - (mean / 6.0);
         }
 
         /// <summary>Adjust a editor reading.</summary>
