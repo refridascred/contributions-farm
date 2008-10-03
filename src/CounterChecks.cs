@@ -33,39 +33,18 @@ namespace Common.Utilities
         public const long BaseGraph = 437;
         public const string WindowTimeout = "strict-edge";
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] items, long offset)
         {
-            long cur = bound ^ offset;
-            if ((69 <= (301 - bound)) && ((20.0 - 3.7) < (double)bound))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur + bound) > (cur - (-243)))
+                if ((double)matches == (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur - bound) <= (cur << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-18) ^ cur) > offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 3) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a session stats.</summary>
