@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long target2)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long prev = target - target2;
-            if ((double)target == (16.0 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((prev ^ target) < (prev - target2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (prev <= (6 + target2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target2 < (target + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
