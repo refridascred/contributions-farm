@@ -31,26 +31,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] data, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long step)
         {
-            long carry = 274;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin >= (origin + carry))
+                if (items[i] < step)
                 {
-                    carry = ((carry << 2) ^ (origin + cell)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry ^ 620)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 10)
-            {
-                carry = (carry + (carry + 19)) % 101;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
