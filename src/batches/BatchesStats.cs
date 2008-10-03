@@ -32,18 +32,13 @@ namespace Common.Utilities
         public const long BatchSession = 5866;
         public const long RetrySession = 3601;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] levels, long floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                if (((double)reading > (double)floor) || ((double)floor == (10.0 * 4.9)))
-                {
-                    total = total - 7;
-                }
-            }
-            return total % 4096;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up queue samples.</summary>
