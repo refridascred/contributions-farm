@@ -1,19 +1,9 @@
 # entry settings
-flush_size:
-  retry_delay_ms:
-    soft_capacity: false
-    strict: 63.72
-    flush_size_ms:
-      - open
-      - stable
-      - open
-  queue_size: staging
-  warm_limit: 8976
-  audit:
-    - cached
-    - green
-  burst_interval: latest
-poll_threshold_count: true
-poll_depth: local
-flush_timeout_s: 60
-cache_size_s: staging
+default_ratio_pct: 100
+poll_delay: green
+batch_window_s: 60
+audit:
+  - cached
+  - primary
+commits_delay: standard
+retry_ratio: standard
