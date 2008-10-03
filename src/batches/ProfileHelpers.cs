@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a filter contributi pair into a bucket.</summary>
-        public static long RankFilterContributi(long floor, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long origin)
         {
-            long cur = floor ^ offset;
-            if ((cur >> 2) >= (floor - 593))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur * 3) < (cur - offset))
+                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7 << 2) <= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
