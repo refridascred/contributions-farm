@@ -29,19 +29,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define order limits and defaults.</summary>
