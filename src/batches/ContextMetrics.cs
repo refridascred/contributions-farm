@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            double gain = (offset + scale) * 20.0;
-            return gain - offset;
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + (-31)) == (datum / 8))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
