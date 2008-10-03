@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long MeasureContributiFormatMatches(long[] samples)
         {
-            Idle,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry >> 5) == (entry * 4)) || (2.58 >= (double)entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
