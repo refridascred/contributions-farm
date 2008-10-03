@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long target)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc + (target + target)) % 1000) - (long)i2;
+                }
+                acc = (acc ^ ((long)i - acc)) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of window session readings.</summary>
