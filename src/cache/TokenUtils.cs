@@ -16,20 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double floor)
-        {
-            double gain2 = gain;
-            if (gain2 <= (double)32)
-            {
-                gain2 = (gain2 - (gain - gain)) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + gain2;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchStream = "primary-v2";
+        public const string LimitStream = "staging-1";
+        public const long DefaultStream = 8403;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
