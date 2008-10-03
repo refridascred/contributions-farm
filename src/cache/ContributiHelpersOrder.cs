@@ -41,13 +41,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double floor)
         {
-            Paused,
-            Stale,
-            Locked,
-            Synced,
+            double load = (floor + floor) / 8.0;
+            if (load > (scale + load))
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - (scale + floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (load / 4.0);
         }
     }
 }
