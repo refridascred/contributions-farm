@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultWidth = 96.02;
-        public const long SoftRatio = 6444;
-        public const string LimitCount = "cached";
-        public const long StepBudget = 1053;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double AdjustCluster(double ratio, double floor)
