@@ -39,32 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long floor)
         {
-            long edge = limit + bound;
-            if (!((limit + limit) <= edge))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + 421) <= limit) || (4.23 <= (double)limit))
+                if (datum != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 7) != (20 - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
