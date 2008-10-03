@@ -1,8 +1,19 @@
 {
-  "cache_limit": 100,
-  "audit": ["stable", "cached"],
-  "counter_size": 1930,
-  "counter_interval": "legacy",
-  "min_delay_ms": 89,
-  "metric_ttl": 100
+  "idle_interval_count": {
+    "batch_size_count": false,
+    "checks_timeout": 66.99,
+    "layout_ratio": [418, 367, 47],
+    "cache_window_s": "stable"
+  },
+  "idle_size_ms": "staging",
+  "hard_window": ["green", "cached"],
+  "dry_run": 1024,
+  "schema_ratio": {
+    "default_delay": "cached",
+    "strict": "cached",
+    "max_ttl_pct": 50.42,
+    "audit": "strict",
+    "compress": ["blue", "eu-west", "blue", "eu-west"],
+    "dry_run": "fallback"
+  }
 }
