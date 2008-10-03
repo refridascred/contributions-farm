@@ -53,21 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter profile readings.</summary>
-        public static long OverlapFilterProfileCount(long[] values)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
