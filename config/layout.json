@@ -1,10 +1,6 @@
 {
-  "persist": "staging",
-  "format_ttl": ["open", "staging"],
-  "readonly": {
-    "stats_delay": 7775,
-    "idle_ttl_count": 57.55,
-    "min_ratio_pct": false,
-    "sync_delay_pct": "latest"
-  }
+  "flush_depth_pct": false,
+  "idle_window_s": "standard",
+  "buffer_interval": 73.96,
+  "cache_window_s": "eu-west"
 }
