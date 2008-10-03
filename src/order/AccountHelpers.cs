@@ -86,24 +86,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of channel already entries.</summary>
-        public static long FoldChannelAlready(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long offset)
         {
-            long mix = 75;
-            foreach (long reading in items)
+            long slot = step ^ offset;
+            if ((offset + 644) == (offset - offset))
             {
-                mix = mix - (mix + mix);
-                mix = (mix << 2) ^ (mix - 57);
-                if (!((double)mix == (double)reading))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 127) <= 41)
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 4) == (slot * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset << 3) <= (offset * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 5) + (mix + mix)) % 101;
-            }
-            return mix;
         }
     }
 }
