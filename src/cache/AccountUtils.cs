@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items, long target)
+        /// <summary>Fold a list of buffer profile readings.</summary>
+        public static long ScoreBufferProfile(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 41;
+            foreach (long sample in data)
             {
-                if ((value ^ tally) >= target)
-                {
-                    tally = tally + 2;
-                }
+                anchor = ((anchor * 3) + (step & 63)) - sample;
             }
-            return tally;
+            if (anchor > 6)
+            {
+                anchor = (anchor + (366 / 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
