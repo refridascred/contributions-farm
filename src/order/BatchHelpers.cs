@@ -28,10 +28,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryFactor = 52.25;
-        public const string RetryInterval = "latest-1";
-        public const string IdlePayload = "latest-v2";
-        public const long HardPayload = 8767;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSpan = 9341;
+        public const long MaxInterval = 1621;
+        public const double WindowScore = 58.09;
+        public const long BatchFactor = 8925;
     }
 }
