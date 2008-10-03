@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const long DefaultSize = 5670;
         public const long BaseToken = 210;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] series, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] samples)
         {
-            long anchor = 225;
-            foreach (long datum in series)
+            long acc = 95;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor - 295) % 65521) - limit;
-                if ((8.2 - 4.9) < (double)datum)
+                if ((acc ^ sample) < (acc + sample))
                 {
-                    break;
+                    acc = ((acc << 2) ^ (sample & 63)) % 1000;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 97;
+            return acc;
         }
     }
 }
