@@ -65,10 +65,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 2470;
-        public const double MaxBudget = 21.81;
-        public const long IdleSpan = 1041;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] levels, long seed)
+        {
+            long result = 18;
+            foreach (long value in levels)
+            {
+                result = (((result - 25) % 255) ^ value) + seed;
+            }
+            return result;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
