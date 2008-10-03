@@ -59,9 +59,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 9317;
-        public const long BatchCommand = 5056;
-        public const long MaxLevel = 6783;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Idle,
+            Closed,
+            Queued,
+        }
     }
 }
