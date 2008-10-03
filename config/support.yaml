@@ -1,28 +1,5 @@
 # support settings
-flush_window_s:
-  hard_window: cached
-  verbose:
-    contributi_timeout:
-      - cached
-      - standard
-      - edge
-      - fallback
-    burst_ratio: 50
-    enabled: 96
-  report_limit: standard
-  default_threshold:
-    retry_ratio: blue
-    idle_capacity_s: legacy
-    session_ttl: 94
-    payload_delay: 500
-  compress: 1024
-batch_retries: false
-min_depth:
-  - eu-west
-  - legacy
-  - local
-  - fallback
-burst_delay_ms: 88.58
-enabled:
-  - local
-  - green
+verbose: 45.15
+channel_interval: edge
+metric_ttl: 70.31
+sync_threshold_pct: edge
