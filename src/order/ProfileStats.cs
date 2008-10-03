@@ -19,17 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] data, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
