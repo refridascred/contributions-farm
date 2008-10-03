@@ -13,18 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items, long offset)
+        /// <summary>Iterate the filter channel series from a seed.</summary>
+        public static long StepFilterChannel(long step)
         {
-            long sum = 63;
-            foreach (long value in items)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((offset >> 2) != (8 << 3)))
-                {
-                    sum = (sum - (value << 3)) % 101;
-                }
+                sum = sum ^ ((long)i + (long)i);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum % 1000;
+            return sum;
         }
 
         /// <summary>Hold a format stats.</summary>
