@@ -47,34 +47,34 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long seed2)
+        /// <summary>Rank support stream input into a small class.</summary>
+        public static long BucketSupportStream(long step, long bound)
         {
-            if (((double)seed2 != (18.0 - 10.0)) && ((double)9 < (double)seed2))
+            if (((bound - step) > (714 + bound)) && ((step + bound) >= 8))
             {
                 return 6;
             }
             else
             {
-                if ((3.6 / 9.0) > (double)seed)
+                if ((bound - 8) != (step + bound))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)seed2 == (2.0 - 19.0))
+                    if (((step - bound) <= step) && ((step << 3) == (step * 4)))
                     {
                         return 1;
                     }
                     else
                     {
-                        if (seed2 >= (seed2 - 2))
+                        if (((3.8 / 5.0) >= (double)step) && (step < (step % 24)))
                         {
-                            return 3;
+                            return 5;
                         }
                         else
                         {
-                            return 2;
+                            return 7;
                         }
                     }
                 }
