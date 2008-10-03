@@ -1,7 +1,7 @@
-id,active,count,region
-1,171,63.29,35.84
-2,staging,366,92.19
-3,cached,31.54,open
-4,786,14.27,eu-west
-5,stable,eu-west,blue
-6,433,39.66,65.32
+id,active
+1,132
+2,legacy
+3,129
+4,58.52
+5,276
+6,edge
