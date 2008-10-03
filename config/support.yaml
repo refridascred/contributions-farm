@@ -1,8 +1,7 @@
 # support settings
-sync_delay_s: 1050
-hard_capacity_count:
-  - eu-west
-  - strict
-flush_ttl_s: 85
-hard_interval: false
-route_retries: 46
+poll_ratio_s: edge
+strict: 47.07
+contributi_delay: 100
+layout_size: true
+soft_depth_count: 7457
+burst_delay_pct: 10.73
