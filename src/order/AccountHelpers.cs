@@ -49,18 +49,16 @@ namespace Common.Utilities
         public const long BurstTimeout = 256;
         public const long IdleRatio = 9078;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] items, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long acc = 556;
+            foreach (long item in readings)
             {
-                if (((long)items.Length ^ 2) >= value)
-                {
-                    seen = (seen + 3) + origin;
-                }
+                acc = (((acc << 3) ^ 641) % 101) + item;
+                acc = ((acc << 2) ^ acc) % 101;
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
