@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            long state = 842;
+            foreach (long item in values)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if ((state - (-57)) < (long)values.Length)
+                {
+                    state = (state - (item - state)) % 97;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
