@@ -24,18 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a cluster format reading by value.</summary>
-        public static long LookupClusterFormatIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "strict-v2";
+        public const long BaseStream = 7526;
+        public const double WindowStream = 59.22;
+        public const long CacheFactor = 2581;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long floor)
