@@ -32,24 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((-53) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 10) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the queue kind values.</summary>
