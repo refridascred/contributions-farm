@@ -1,6 +1,10 @@
-id,count,label,weight
-1,580,eu-west,primary
-2,eu-west,507,580
-3,strict,502,open
-4,primary,staging,76.07
-5,67.26,green,32.49
+id,label,active,ratio
+1,70.75,61.45,1.09
+2,443,42.94,593
+3,725,55.41,latest
+4,fallback,69.71,fallback
+5,24,green,31.06
+6,124,staging,primary
+7,784,702,staging
+8,797,blue,791
+9,389,50.42,94.83
