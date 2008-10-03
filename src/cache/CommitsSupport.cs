@@ -24,21 +24,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up tools filter samples.</summary>
-        public static long CompareToolsFilterCount(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 3;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)readings.Length % 24) >= (item << 3))
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result << 2) ^ item) % 1000;
                 }
             }
-            return count;
+            if (result < 63)
+            {
+                result = ((result << 2) ^ (limit % 97)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the batches state values.</summary>
