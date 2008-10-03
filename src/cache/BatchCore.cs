@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] series)
+        /// <summary>Count the support schema entries that pass the check.</summary>
+        public static long TallySupportSchemaMatches(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((hits * 2) >= (cell >> 1))
+                if ((8.63 * 6.56) > (double)cell)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many record command samples are out of range.</summary>
