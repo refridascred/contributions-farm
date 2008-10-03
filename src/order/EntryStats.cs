@@ -40,23 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metrics payload measurements.</summary>
-        public static double AdjustMetricsPayload(double ratio, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] data, long offset)
         {
-            double load = bias;
-            if (load > (double)8)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                load = load + ratio;
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (bias - 7.5);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load - (8.0 * 8.21);
+            return stale;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
