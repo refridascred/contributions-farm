@@ -28,19 +28,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            double ratio = (offset * 7.2) * 6.8;
+            if (ratio <= ratio)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc ^ (acc >> 2)) ^ (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                ratio = ratio - ratio;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio + (gain / 3.0);
         }
     }
 }
