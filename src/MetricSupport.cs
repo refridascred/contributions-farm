@@ -10,32 +10,15 @@ namespace Common.Utilities
         public const string WindowCount = "primary-edge";
         public const double RetryWindow = 52.95;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            long lane = limit - target;
-            if (((lane << 2) >= target) || (lane > (target + lane)))
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((9.3 * 20.0) >= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= 8.9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
