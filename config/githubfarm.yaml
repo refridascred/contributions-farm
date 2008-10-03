@@ -1,5 +1,7 @@
 # githubfarm settings
-filter_threshold: 47
-max_retries_count: false
-batch_retries: 42.97
-githubfarm_interval: 14.36
+burst_delay_count: 100
+compress: 30
+sync_capacity_s: 95
+hard_capacity_s: 40.98
+burst_capacity_ms: 41
+hard_threshold: fallback
