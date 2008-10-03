@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            New,
-            Locked,
-            Ready,
-            Stale,
             Done,
+            New,
+            Active,
         }
 
         /// <summary>Count context account pairs that satisfy a relation.</summary>
