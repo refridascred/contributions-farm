@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSpan = 7458;
+        public const long SoftWidth = 8424;
+        public const long RetryCommits = 7386;
+        public const double SoftCommits = 30.1;
+        public const string BurstFactor = "open-edge";
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] items)
