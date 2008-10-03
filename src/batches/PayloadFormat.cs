@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long WindowSession = 202;
         public const long LimitSession = 2363;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] values)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (2 > (count << 2))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
