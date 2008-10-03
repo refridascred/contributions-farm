@@ -45,27 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((16.0 / 3.0) < (double)(long)i) || ((double)mix <= (double)target))
-                {
-                    mix = (mix ^ (mix - 8)) % 65521;
-                }
-                if (((target & 255) == (mix + mix)) && ((mix % 100) > mix))
-                {
-                    mix = ((mix << 2) ^ 20) % 65521;
-                }
-                if (!((double)target > (double)(long)i))
-                {
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
