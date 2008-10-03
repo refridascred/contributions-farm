@@ -28,18 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter entry samples are out of range.</summary>
-        public static long TallyFilterEntryMatches(long[] samples, long floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)floor > (1.0 * 6.0)))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Done,
+            Locked,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
