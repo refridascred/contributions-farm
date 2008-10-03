@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 6588;
+        public const double MinTimeout = 27.54;
+        public const double BurstReport = 38.04;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] data)
