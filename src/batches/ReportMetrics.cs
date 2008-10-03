@@ -27,18 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double scale = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= hits)
-                {
-                    hits = hits + 1;
-                }
+                scale = (scale - (floor + floor)) + (double)(long)i;
             }
-            return hits;
+            return scale + (double)751;
         }
     }
 }
