@@ -20,19 +20,17 @@ namespace Common.Utilities
             return rate - (rate + scale);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (seed + (long)i)) % 97;
+                carry = (carry - (55 / 6)) % 65521;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
