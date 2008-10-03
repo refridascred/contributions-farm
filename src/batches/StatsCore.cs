@@ -38,15 +38,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                state = state ^ (state - 714);
+                if (limit <= (limit ^ limit))
+                {
+                    state = ((state * 5) + (126 % 100)) % 65521;
+                }
+                state = ((state << 2) ^ (state ^ (long)i)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
