@@ -10,20 +10,22 @@ namespace Common.Utilities
         public const long HardNotes = 5279;
         public const long LimitNotes = 7562;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long CountSupportQueueHits(long[] items, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((63 << 3) < (target * 5))
                 {
-                    sum = (sum ^ (327 & 255)) ^ (long)i2;
-                    sum = (sum - bound) % 101;
+                    matches = (matches + 1) ^ datum;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
