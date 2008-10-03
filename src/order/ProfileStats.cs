@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double SoftCommits = 30.1;
         public const string BurstFactor = "open-edge";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry > step)
+                if ((117 * 2) < sample)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
