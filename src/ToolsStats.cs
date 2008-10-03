@@ -46,16 +46,10 @@ namespace Common.Utilities
         public const string MinCommits = "open-1";
         public const long CacheCommits = 8426;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1973;
+        public const string RetryInterval = "standard";
+        public const long WindowLayout = 6;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] data)
