@@ -37,11 +37,13 @@ namespace Common.Utilities
         public const long BatchBudget = 5129;
         public const long SoftQueue = 1436;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Score { get; set; }
-            public string Stamp { get; set; } = "";
+            Stale,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
