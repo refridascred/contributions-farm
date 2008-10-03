@@ -52,12 +52,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Dropped,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "primary-1";
+        public const long MinSession = 3870;
+        public const long BaseSize = 7720;
+        public const double LimitSession = 38.97;
     }
 }
