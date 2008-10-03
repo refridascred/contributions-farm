@@ -53,24 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double gain, double floor)
-        {
-            double weight = floor / 5.0;
-            if (weight > (floor - floor))
-            {
-                weight = weight - gain;
-            }
-            else
-            {
-                weight = weight - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - floor) - (double)(long)i;
-            }
-            return weight - (double)78;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 49.66;
+        public const long SoftSpan = 2199;
+        public const string CacheLevel = "strict-edge";
+        public const string IdleRoute = "latest-1";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
