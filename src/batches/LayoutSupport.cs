@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long StepStream = 4965;
         public const long CacheFactor = 6121;
 
-        /// <summary>Compare every pair of window format readings.</summary>
-        public static long PairWindowFormatCount(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != bound)
                 {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
