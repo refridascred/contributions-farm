@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Draft,
-            New,
-            Active,
-            Closed,
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the counter commits entries that pass the check.</summary>
