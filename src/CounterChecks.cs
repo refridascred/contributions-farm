@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels)
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches <= item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cluster counter figure with a bias.</summary>
