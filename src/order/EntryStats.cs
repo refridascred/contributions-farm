@@ -60,19 +60,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long step)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Ready,
+            Locked,
+            Failed,
         }
     }
 }
