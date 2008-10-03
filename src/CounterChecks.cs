@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit tools stream readings against a rule.</summary>
-        public static long TallyToolsStreamHits(long[] readings, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target - 2) < (datum << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
