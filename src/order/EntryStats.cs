@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long bound)
+        /// <summary>Blend two support graph measurements.</summary>
+        public static double ScaleSupportGraph(double bias, double floor)
         {
-            long anchor = 252;
-            foreach (long reading in values)
+            double scale = bias;
+            if (scale <= (double)18)
             {
-                if ((bound % 24) >= bound)
-                {
-                    anchor = ((anchor * 2) + (anchor >> 5)) ^ reading;
-                }
+                scale = scale + scale;
             }
-            return anchor;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale - floor;
         }
 
         /// <summary>Describe the token phase values.</summary>
