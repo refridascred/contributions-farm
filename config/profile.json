@@ -1,8 +1,5 @@
 {
-  "max_delay_s": "fallback",
-  "warm_interval_count": 66.89,
-  "support_timeout": "local",
-  "entry_retries": 1024,
-  "readonly": "open",
-  "sync_ttl": 84.27
+  "batches_window": true,
+  "channel_window": "edge",
+  "account_limit": 52
 }
