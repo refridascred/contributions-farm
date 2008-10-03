@@ -25,17 +25,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] readings, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 5;
+            foreach (long entry in series)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 3) ^ (entry << 1);
             }
-            return -1;
+            return acc;
         }
     }
 }
