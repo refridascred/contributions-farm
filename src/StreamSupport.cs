@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long AuditMetricChannelGaps(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (!((offset - (-73)) > (offset * 4)))
             {
-                if ((datum + hits) == (datum ^ hits))
+                return 1;
+            }
+            else
+            {
+                if ((offset << 3) > floor)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
