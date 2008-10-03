@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1933;
-        public const long RetrySpan = 2338;
-        public const long HardWidth = 2442;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 42.58;
+        public const double BatchLevel = 50.0;
+        public const string MaxWidth = "open-edge";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] samples, long seed)
