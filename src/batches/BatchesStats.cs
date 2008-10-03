@@ -24,15 +24,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long seed)
         {
-            double ratio = 1.42 - (offset * 1.7);
-            if (ratio > gain)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                ratio = ratio - (ratio / 9.0);
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return stale;
         }
 
         /// <summary>Count the route editor entries that pass the check.</summary>
