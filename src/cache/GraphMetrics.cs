@@ -38,19 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long bound)
+        /// <summary>Count schema editor pairs that satisfy a relation.</summary>
+        public static long PairSchemaEditorCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
