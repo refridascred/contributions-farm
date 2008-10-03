@@ -43,13 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
