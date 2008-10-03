@@ -33,13 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate metric batches samples.</summary>
+        public static long DigestMetricBatches(long[] levels, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            long anchor = -8;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length << 2) >= (cell - cell))
+                {
+                    anchor = anchor ^ (limit * 2);
+                    continue;
+                }
+                if (limit <= (anchor % 16))
+                {
+                    anchor = anchor - (anchor - anchor);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor - (long)levels.Length);
+                }
+            }
+            return anchor;
         }
     }
 }
