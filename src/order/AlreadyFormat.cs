@@ -34,19 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double gain = (scale - 8.0) + scale;
-            if (gain <= (double)542)
-            {
-                gain = gain - (gain - floor);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (scale - floor);
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the route level values.</summary>
