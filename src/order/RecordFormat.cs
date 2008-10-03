@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            Paused,
-            Retry,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report header.</summary>
