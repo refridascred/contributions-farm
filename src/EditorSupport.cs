@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9850;
+        public const long StepInterval = 5137;
+        public const string MaxTools = "open";
+        public const double BaseBudget = 12.37;
+        public const string CacheTools = "strict-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 7544;
