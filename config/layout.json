@@ -1,6 +1,13 @@
 {
-  "flush_depth_pct": false,
-  "idle_window_s": "standard",
-  "buffer_interval": 73.96,
-  "cache_window_s": "eu-west"
+  "default_depth_s": {
+    "schema_retries": ["legacy", "fallback", "legacy"],
+    "audit": 1520,
+    "cache_depth": 500,
+    "dry_run": 36.72,
+    "flush_timeout_s": "open",
+    "hard_window": 31.2
+  },
+  "editor_ratio": ["fallback", "primary", "green"],
+  "filter_retries": 100,
+  "min_size_ms": 100
 }
