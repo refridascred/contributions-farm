@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            Active,
-            Idle,
-            Failed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((count + count) == (881 / 4)) || ((double)count > (19.0 / 5.0))) || (701 < (count + (-5))))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
