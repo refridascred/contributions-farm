@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio - (bias / 9.0);
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            Pending,
-            Dropped,
-            Queued,
-            Done,
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
