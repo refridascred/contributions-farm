@@ -45,18 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] series, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((318 >= (tally & 7)) && ((65 >> 2) > (cell >> 1)))
+                if (!!((step - entry) < (hits + step)))
                 {
-                    tally = (tally + 2) + origin;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
