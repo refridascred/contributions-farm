@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] values, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (item <= (476 % 97))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
