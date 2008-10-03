@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long limit)
+        /// <summary>Validate already token readings against a bound.</summary>
+        public static bool GuardAlreadyTokenBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((hits % 24) == (hits ^ sample)))
+                if (entry > offset)
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
