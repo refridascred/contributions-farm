@@ -60,24 +60,19 @@ namespace Common.Utilities
         public const double MinDepth = 58.31;
         public const long IdleCounter = 165;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long carry = 838;
+            foreach (long sample in values)
             {
-                if (!((double)mark == (double)origin))
-                {
-                    mark = (mark * 2) + (581 * 2);
-                    break;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark ^ 793);
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                carry = (carry - (long)values.Length) - sample;
             }
-            return mark;
+            if (carry < 252)
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
