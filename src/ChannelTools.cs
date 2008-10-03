@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long offset)
         {
-            double drift = bias;
-            if (drift >= (drift - bias))
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + span;
+                if (!(offset >= (long)i))
+                {
+                    state = state ^ ((long)i & 31);
+                }
+                if ((state - (long)i) < ((long)i % 64))
+                {
+                    state = (state << 3) ^ (long)i;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (7.11 - bias)) + (double)(long)i;
-            }
-            return drift + (double)(-781);
+            return state;
         }
 
         /// <summary>Accumulate stream samples.</summary>
