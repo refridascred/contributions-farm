@@ -77,19 +77,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 2;
-            foreach (long value in series)
-            {
-                total = (total - (total - value)) % 4096;
-            }
-            if (total < 268)
-            {
-                total = (total ^ (seed % 10)) % 255;
-            }
-            return total % 65521;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
