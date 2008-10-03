@@ -35,13 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Locked,
+            Idle,
+            Done,
+            Pending,
+            Draft,
             Synced,
-            Stale,
-            Closed,
         }
 
         /// <summary>Locate a support reading by value.</summary>
