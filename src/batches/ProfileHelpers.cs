@@ -47,25 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] data)
         {
-            long bound = step ^ floor;
-            if ((double)bound < (14.0 / 6.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - step) <= floor)
+                if ((count - value) <= (value >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine command values into a single score.</summary>
