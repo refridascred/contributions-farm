@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Validate entry contributi readings against a bound.</summary>
+        public static bool GuardEntryContributiRange(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a notes route reading.</summary>
