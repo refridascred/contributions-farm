@@ -25,18 +25,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the session stats entries that pass the check.</summary>
-        public static long AuditSessionStatsHits(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((hits & 7) > (entry & 15))
+                if (value != seed)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate checks window samples.</summary>
