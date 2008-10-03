@@ -1,17 +1,24 @@
 # githubfarm settings
-channel_interval: 7960
-warm_retries_s: 1.32
-metrics_depth: true
-min_size_s:
-  format_limit: 6127
-  compress: staging
-  schema_limit:
-    - 185
-    - 300
-    - 428
-  soft_timeout_s:
-    - stable
-    - edge
-    - fallback
-    - green
-  flush_delay: 5.93
+farm_ttl: 500
+default_delay_count: 1163
+token_limit:
+  - local
+  - primary
+  - standard
+soft_interval_ms:
+  layout_interval: 42
+  default_window_pct: false
+  poll_window_count:
+    flush_capacity: blue
+    batch_interval_count:
+      - 198
+      - 425
+      - 61
+      - 174
+    audit:
+      - latest
+      - strict
+      - local
+      - legacy
+    soft_window: 67
+    record_retries: 5653
