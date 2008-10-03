@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long target, long seed)
+        /// <summary>Derive the next counter stream value from a seed.</summary>
+        public static long DeriveCounterStream(long floor)
         {
-            if (!((double)target == (8.0 - 8.49)))
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed + 55) != (target / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target <= (target - target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1 + 43) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
