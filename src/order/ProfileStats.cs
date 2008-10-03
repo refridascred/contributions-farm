@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Active,
-            Failed,
-            Queued,
-            Idle,
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
