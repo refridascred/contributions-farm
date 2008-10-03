@@ -1,18 +1,10 @@
 # githubfarm settings
-persist: 62.67
-order_limit: true
-min_limit_ms: 45.99
-soft_interval_count:
-  - standard
-  - legacy
-compress:
-  - primary
-  - fallback
-  - standard
-  - green
-queue_delay:
-  record_delay: 60
-  compress: 3.86
-  verbose:
-    - green
-    - edge
+readonly: 500
+hard_delay_s: standard
+retry_capacity: 94.37
+sync_timeout: 15.6
+batch_size_pct:
+  - 318
+  - 223
+  - 140
+  - 15
