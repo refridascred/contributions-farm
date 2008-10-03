@@ -79,9 +79,15 @@ namespace Common.Utilities
         public const long CacheContributi = 7110;
         public const long BurstContributi = 6150;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 8229;
-        public const long CacheWidth = 4104;
-        public const long BaseInterval = 7088;
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double rate, double span)
+        {
+            double rate2 = span;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + (double)532;
+        }
     }
 }
