@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the graph already series from a seed.</summary>
-        public static long IterateGraphAlready(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)origin != (2.8 + 0.9))
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2982;
+        public const long StepNotes = 4776;
+        public const string CacheBudget = "alpha-v2";
+        public const long WindowNotes = 186;
+        public const long RetryNotes = 3653;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TallyContext(long[] items, long offset)
