@@ -1,22 +1,9 @@
 # githubfarm settings
-max_threshold_count: standard
-batches_timeout: 30
-buffer_window: 91.89
-cache_limit: 55.87
-token_capacity:
-  batch_capacity_pct: 54
-  dry_run:
-    - 85
-    - 114
-    - 257
-  window_ttl: 47.63
-  idle_capacity: fallback
-  strict: standard
-  hard_timeout:
-    - standard
-    - green
-    - stable
-strict:
-  persist: 76
-  verbose: 4877
-  compress: true
+sync_depth_pct: 13.51
+min_depth_pct: blue
+persist: open
+session_timeout: true
+max_delay_s:
+  - green
+  - local
+default_threshold_s: 3.24
