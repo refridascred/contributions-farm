@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long BurstToken = 6659;
         public const long IdleToken = 2830;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] series, long origin)
         {
-            if ((double)step <= 6.2)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step << 2) > (limit - step)) && (limit <= (step + limit)))
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (limit + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
