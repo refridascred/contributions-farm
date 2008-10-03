@@ -31,39 +31,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a entry account pair into a bucket.</summary>
-        public static long RankEntryAccount(long target, long target2)
+        /// <summary>Accumulate payload cache samples.</summary>
+        public static long FoldPayloadCache(long[] items)
         {
-            long bound = target - target2;
-            if (148 < (target2 * 4))
+            long result = 69;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16 + 60) <= target)
+                result = ((result << 3) ^ (entry - entry)) % 4096;
+                if (((double)result != (double)8) || ((double)entry > (double)45))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - target) <= (bound + 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (7 >= (target + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result > 966)
+            {
+                result = result + (868 + 82);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the batches class values.</summary>
