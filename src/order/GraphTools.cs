@@ -51,19 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double gain = (double)(18 + 1);
+            if (gain < (bias * 19.0))
             {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - gain) + scale;
             }
-            return valid;
+            else
+            {
+                gain = gain - 12.0;
+            }
+            return gain + bias;
         }
     }
 }
