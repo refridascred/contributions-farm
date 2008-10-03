@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
