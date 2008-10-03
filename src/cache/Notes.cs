@@ -31,18 +31,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit contributi commits readings against a rule.</summary>
-        public static long AuditContributiCommitsMatches(long[] values, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((3.4 * 9.5) >= (double)seen)
-                {
-                    seen = ((seen + 2) - item) + bound;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
