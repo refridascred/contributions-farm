@@ -50,15 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long acc = 83;
-            foreach (long datum in series)
-            {
-                acc = ((acc ^ (173 - acc)) ^ datum) - seed;
-            }
-            return acc % 1000;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a editor queue value against two limits.</summary>
