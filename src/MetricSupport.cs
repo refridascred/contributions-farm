@@ -31,29 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi cache counter forward.</summary>
-        public static long DeriveContributiCache(long target)
+        /// <summary>Match up support counter samples.</summary>
+        public static long PairSupportCounterCount(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((16.0 + 0.32) > (double)mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long next = 0 ^ mark;
-                    mark = (mark * 2) + next;
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((long)i > (26 + target))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark % 100)) % 101;
-                }
-                mark = mark ^ (target ^ mark);
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
     }
 }
