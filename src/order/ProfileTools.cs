@@ -41,11 +41,14 @@ namespace Common.Utilities
         public const string BaseEntry = "latest-1";
         public const long SoftRatio = 7276;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepFactor = 14.23;
-        public const long RetryAlready = 7457;
-        public const long BurstAlready = 2473;
-        public const string StepWidth = "strict-1";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Idle,
+            Dropped,
+            New,
+            Stale,
+        }
 
         /// <summary>Count buffer context pairs that satisfy a relation.</summary>
         public static long CompareBufferContextCount(long[] levels)
