@@ -61,13 +61,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
