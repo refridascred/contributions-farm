@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mark = 8;
-            foreach (long entry in samples)
-            {
-                mark = ((mark * 4) + (entry + 3)) % 101;
-            }
-            return mark;
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Roll a order counter counter forward.</summary>
