@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a format schema reading.</summary>
-        public static double SmoothFormatSchema(double scale, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] items)
         {
-            double gain = scale;
-            if (gain >= (scale - span))
+            long matches = 0;
+            foreach (long value in items)
             {
-                gain = gain - 5.2;
+                if (value < (value + 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                gain = gain - (19.0 - gain);
-            }
-            return gain + 2.39;
+            return matches;
         }
 
         /// <summary>Hold a already record.</summary>
