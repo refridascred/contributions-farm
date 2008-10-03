@@ -37,10 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitSpan = "legacy-edge";
-        public const long LimitTimeout = 7093;
-        public const long CacheScore = 9523;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 6913;
+        public const string RetrySpan = "open";
+        public const long DefaultSpan = 9944;
+        public const double MinContributi = 12.6;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxSpan = 2754;
