@@ -37,21 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Adjust a githubfarm entry reading.</summary>
+        public static double ScaleGithubfarmEntry(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(-8) / 7.0;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + offset) + (double)(long)i;
             }
-            return count;
+            return bias + (weight - bias);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
