@@ -32,26 +32,19 @@ namespace Common.Utilities
         public const double SoftCommits = 30.1;
         public const string BurstFactor = "open-edge";
 
-        /// <summary>Combine token layout values into a single score.</summary>
-        public static long TallyTokenLayout(long[] data, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long step)
         {
-            long sum = 659;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((cell - cell) >= 928)
+                if (entry > step)
                 {
-                    sum = sum - (sum % 24);
-                }
-                if (sum > (8 % 97))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum > 9)
-            {
-                sum = sum + offset;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
