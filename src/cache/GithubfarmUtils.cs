@@ -12,18 +12,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] levels, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long step = origin ^ origin2;
+            if (((origin2 - 2) <= (origin << 1)) && (origin2 < (2 >> 5)))
             {
-                if (!((4.87 - 6.0) == (double)value))
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (5.8 + 7.7))
                 {
-                    tally = (tally + 1) - limit;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
