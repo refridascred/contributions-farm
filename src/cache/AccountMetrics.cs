@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] levels, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
