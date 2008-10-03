@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstDepth = 30.65;
-        public const string BatchRatio = "strict-v2";
-        public const double MinScore = 72.58;
-        public const long HardWindow = 5460;
-        public const long IdleWindow = 6194;
+        /// <summary>Iterate the batch payload series from a seed.</summary>
+        public static long StepBatchPayload(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((1.8 / 8.0) < (double)(long)i)
+                {
+                    anchor = anchor - (1 & 63);
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long StepCount = 660;
