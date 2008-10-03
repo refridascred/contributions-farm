@@ -1,6 +1,9 @@
-id,token,active
-1,staging,37.86
-2,edge,830
-3,cached,452
-4,938,2.22
-5,743,8.09
+id,token,rank,region
+1,143,blue,311
+2,16.01,stable,491
+3,340,primary,189
+4,56.33,edge,931
+5,stable,blue,830
+6,standard,48.77,fallback
+7,257,4,local
+8,141,725,stable
