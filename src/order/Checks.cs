@@ -35,11 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] readings, long bound)
         {
-            double gain = (double)1 + (double)492;
-            return (gain - (gain + scale)) + span;
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of githubfarm notes entries.</summary>
