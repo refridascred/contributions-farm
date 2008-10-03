@@ -27,38 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long bound2)
-        {
-            if ((double)271 >= (double)bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 <= (bound2 << 1)) || ((double)bound2 >= (1.7 / 4.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((5.2 * 0.4) == (double)bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound <= (bound + bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 9924;
+        public const long HardReport = 7930;
+        public const long MinWidth = 7012;
+        public const long LimitDepth = 2742;
+        public const string HardCount = "standard";
     }
 }
