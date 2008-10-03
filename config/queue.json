@@ -1,5 +1,13 @@
 {
-  "batch_capacity_s": 19.21,
-  "batch_retries_ms": "blue",
-  "readonly": "blue"
+  "sync_interval": 92.57,
+  "poll_interval": {
+    "idle_limit_ms": "fallback",
+    "session_depth": 56.98,
+    "soft_depth_ms": 14.0,
+    "burst_timeout_ms": "green",
+    "sync_threshold_count": true
+  },
+  "min_window_count": "eu-west",
+  "layout_depth": 14,
+  "tools_delay": 96.27
 }
