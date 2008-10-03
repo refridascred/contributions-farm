@@ -86,10 +86,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 150;
-        public const string StepPayload = "stable-v2";
-        public const long IdlePayload = 7872;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelHits(long[] series, long bound)
