@@ -1,7 +1,5 @@
 {
-  "verbose": [138, 484, 154],
-  "min_capacity_pct": 13.86,
-  "base_window": 74,
-  "retry_limit_ms": true,
-  "max_limit_pct": ["stable", "primary", "legacy", "blue"]
+  "poll_ratio_ms": "edge",
+  "idle_depth_s": 77.17,
+  "retry_size_ms": ["primary", "staging", "fallback"]
 }
