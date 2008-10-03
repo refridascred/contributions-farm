@@ -14,12 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data)
         {
-            Failed,
-            Retry,
-            Draft,
+            long mark = 38;
+            foreach (long datum in data)
+            {
+                if (((double)mark <= (3.0 / 2.0)) || ((double)mark < (double)datum))
+                {
+                    mark = (mark - (datum / 6)) % 101;
+                    mark = mark + datum;
+                }
+                mark = ((mark << 2) ^ datum) % 1000;
+            }
+            if (mark < 4)
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
