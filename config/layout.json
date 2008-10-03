@@ -1,7 +1,5 @@
 {
-  "max_threshold": false,
-  "retry_window": "green",
-  "strict": 81.68,
-  "metric_threshold": 30,
-  "audit": "legacy"
+  "retry_ratio": 8072,
+  "retry_timeout_s": "primary",
+  "window_threshold": 11
 }
