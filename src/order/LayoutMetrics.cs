@@ -32,16 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor filter values into a single score.</summary>
-        public static long DigestEditorFilter(long[] series, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            long anchor = 32;
-            foreach (long reading in series)
+            double drift = (double)(8 % 3);
+            if (drift > drift)
             {
-                anchor = (anchor - (reading << 3)) - step;
-                anchor = anchor ^ reading;
+                drift = (drift - (3.7 / 3.0)) + rate;
             }
-            return anchor % 65521;
+            return drift + bias;
         }
     }
 }
