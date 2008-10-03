@@ -66,18 +66,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((item / 3) < (137 % 24))
+                if (831 <= (item + (long)values.Length))
                 {
-                    tally = tally + 1;
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
