@@ -68,23 +68,18 @@ namespace Common.Utilities
             return bias - 3.77;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double weight, double span)
+        /// <summary>Measure how many entry counter samples are out of range.</summary>
+        public static long AuditEntryCounterMatches(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 > weight)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                weight2 = (weight2 - weight2) - span;
+                if (hits >= (reading - hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + 6.97) + (double)(long)i;
-            }
-            return weight2 - weight;
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
