@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long target)
+        /// <summary>Classify a order notes pair into a bucket.</summary>
+        public static long GradeOrderNotes(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long bound = limit ^ limit2;
+            if ((219 << 1) <= (limit2 - 674))
             {
-                if ((values[i] <= target) && ((values[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit2 % 7) < limit2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit2 + bound) == (limit + 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((750 - limit2) >= (bound << 1)) || ((limit << 1) != (limit - limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
