@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long StepSchema = 235;
         public const long MinSchema = 6609;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double rate, double span)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] values, long origin)
         {
-            double gain = span;
-            return (gain + (6.5 + gain)) + rate;
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry & 3) >= (entry % 100))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
