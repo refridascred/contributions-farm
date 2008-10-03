@@ -23,15 +23,12 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double bias2 = offset;
-            if (bias2 >= (double)611)
-            {
-                bias2 = (bias2 - (double)441) + bias;
-            }
-            return bias2 + (offset * 6.6);
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the stats mode values.</summary>
