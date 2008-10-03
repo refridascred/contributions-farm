@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 2699;
-        public const double RetryInterval = 30.9;
-        public const long WindowDepth = 876;
-        public const double CacheFactor = 16.9;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "stable-edge";
+        public const long BaseFactor = 4976;
+        public const long MaxOrder = 7773;
+        public const string DefaultBudget = "local-1";
+        public const double BatchOrder = 98.79;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] data, long target)
