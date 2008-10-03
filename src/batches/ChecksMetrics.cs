@@ -82,20 +82,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    long delta = (568 & 255) + step;
-                    state = (((state * 5) + delta) % 255) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
     }
 }
