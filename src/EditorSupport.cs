@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = 826;
-            foreach (long sample in series)
-            {
-                anchor = (anchor ^ ((-81) + 658)) % 65521;
-                if (98 <= (anchor - sample))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
