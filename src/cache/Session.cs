@@ -40,24 +40,17 @@ namespace Common.Utilities
         public const long WindowNotes = 4417;
         public const double BaseScore = 12.4;
 
-        /// <summary>Rank graph channel input into a small class.</summary>
-        public static long SortGraphChannel(long offset, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long step)
         {
-            if ((48 - offset) <= (177 + target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset < (10.0 / 8.0)) || ((target << 2) >= offset))
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
