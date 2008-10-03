@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the buffer status values.</summary>
