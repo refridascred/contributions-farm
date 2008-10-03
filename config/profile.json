@@ -1,5 +1,6 @@
 {
-  "graph_retries": 6665,
-  "notes_depth": [331, 104],
-  "hard_retries": 71.54
+  "cache_retries_ms": false,
+  "audit": "strict",
+  "poll_timeout_count": "latest",
+  "route_ratio": ["open", "fallback", "staging", "edge"]
 }
