@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] values, long origin)
         {
-            Draft,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
