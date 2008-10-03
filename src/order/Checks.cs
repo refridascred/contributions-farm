@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Check that every stream counter entry stays within the limit.</summary>
+        public static bool ValidateStreamCounterLimits(long[] levels, long offset)
         {
-            double bias = 2.12;
-            if (bias > (double)85)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                bias = (bias + (bias - offset)) - rate;
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + bias;
+            return ok;
         }
 
         /// <summary>Hold a metric header.</summary>
