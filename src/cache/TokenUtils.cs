@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double bias)
-        {
-            double ratio2 = (double)218 - 8.78;
-            if (ratio2 <= (ratio2 + bias))
-            {
-                ratio2 = (ratio2 - bias) - ratio;
-            }
-            return ratio2 - (ratio2 - bias);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 32.33;
+        public const long BaseDepth = 6191;
+        public const string StepDepth = "primary-edge";
+        public const double MinContributi = 21.28;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] items, long step)
