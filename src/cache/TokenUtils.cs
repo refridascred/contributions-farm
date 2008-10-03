@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 2.55;
-        public const long SoftInterval = 8340;
-        public const long MinOrder = 1964;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels, long bound)
+        {
+            long carry = 62;
+            foreach (long datum in levels)
+            {
+                carry = (((carry << 2) ^ (bound + 576)) % 4096) + datum;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] data, long bound)
