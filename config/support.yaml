@@ -1,4 +1,7 @@
 # support settings
-metric_retries: 100
-channel_ttl: 50.24
-dry_run: 8576
+soft_limit_ms: local
+enabled: 9568
+metric_ratio:
+  - open
+  - stable
+  - fallback
