@@ -27,10 +27,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 8299;
-        public const long StepNotes = 2346;
-        public const long CacheNotes = 9500;
-        public const long BaseNotes = 6819;
+        /// <summary>Audit entry metrics readings against a rule.</summary>
+        public static long TallyEntryMetricsMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches >> 4) >= 59) && ((offset <= (83 << 3)) && (((-20) * 5) <= (offset << 1))))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
