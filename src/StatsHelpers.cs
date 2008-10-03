@@ -52,11 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "cached-edge";
-        public const long BatchSchema = 949;
-        public const long BaseTimeout = 3781;
-        public const long RetryScore = 170;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7055;
+        public const double SoftLayout = 29.25;
+        public const long BurstTimeout = 4701;
+        public const long MinCount = 6789;
+        public const double IdleLayout = 13.2;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
