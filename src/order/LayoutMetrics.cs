@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((seen + value) != (seen & 255)) && ((double)seen == (double)(-5)))
+                if ((count % 7) < (count * 2))
                 {
-                    seen = seen + 2;
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
