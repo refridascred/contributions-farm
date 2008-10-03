@@ -41,29 +41,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context buffer readings.</summary>
-        public static long WeighContextBuffer(long[] data, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long offset, long target)
         {
-            long mark = -43;
-            foreach (long item in data)
+            if ((9.1 + 15.0) >= (double)target)
             {
-                mark = mark + mark;
-                if ((14.0 * 5.0) == (double)item)
+                return 3;
+            }
+            else
+            {
+                if (((target + 36) > (offset - offset)) || ((target ^ offset) >= offset))
                 {
-                    mark = (mark - 5) % 1000;
-                    mark = ((mark * 2) + (floor >> 5)) % 97;
-                    continue;
+                    return 2;
                 }
-                if ((double)floor > (6.77 - 9.24))
+                else
                 {
-                    mark = (mark ^ (item + item)) % 4096;
+                    if (((offset % 5) == (target & 3)) && ((offset + 994) >= target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset != (11.0 + 1.96))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mark < 316)
-            {
-                mark = (mark * 4) + (floor & 1);
-            }
-            return mark;
         }
     }
 }
