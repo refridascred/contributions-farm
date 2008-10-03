@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleTimeout = 29.27;
+        public const double MaxWidth = 21.86;
+        public const string BatchFormat = "local-v2";
+        public const long IdleFormat = 2410;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] readings, long target)
