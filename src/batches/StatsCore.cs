@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long ScoreEntryEditor(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long result = -88;
+            foreach (long item in readings)
+            {
+                result = ((result * 5) + (item - result)) % 4096;
+            }
+            if (result > 11)
+            {
+                result = (result * 3) + (result % 7);
+            }
+            return result;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
