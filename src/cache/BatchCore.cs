@@ -50,20 +50,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate contributi commits readings against a bound.</summary>
-        public static bool GuardContributiCommitsBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleCounter = 12.06;
+        public const long HardScore = 885;
+        public const double SoftCounter = 38.92;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long offset)
