@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double rate2 = (double)(4 + 9);
-            if (rate2 > (span - rate2))
-            {
-                rate2 = (rate2 + span) - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - 0.7) + (double)(long)i;
-            }
-            return rate2 + span;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
