@@ -94,11 +94,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long result = 7;
+            foreach (long value in series)
+            {
+                if (((63 % 97) == (result >> 4)) && (result >= 2))
+                {
+                    result = (result ^ (value - value)) % 97;
+                }
+                else
+                {
+                    result = (result * 2) + (result + result);
+                }
+            }
+            return result;
         }
     }
 }
