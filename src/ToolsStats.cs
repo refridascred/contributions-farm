@@ -65,27 +65,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long seed, long bound)
         {
-            long anchor = 37;
-            foreach (long item in values)
+            long offset = seed + bound;
+            if ((bound - 97) >= (offset / 8))
             {
-                if (((long)values.Length * 5) == (step + item))
+                return 0;
+            }
+            else
+            {
+                if ((seed - bound) != (bound + seed))
                 {
-                    anchor = anchor - (step << 2);
-                    anchor = (anchor << 2) ^ (733 % 2);
+                    return 2;
                 }
-                if (!((item & 63) >= anchor))
+                else
                 {
-                    anchor = anchor + (anchor + step);
+                    if (((bound ^ bound) == (bound - seed)) || ((bound ^ bound) == (345 - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (anchor > 23)
-            {
-                anchor = ((anchor * 4) + step) % 101;
-            }
-            return anchor % 65521;
         }
     }
 }
