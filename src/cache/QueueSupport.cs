@@ -37,15 +37,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "open-v2";
+        public const string LimitSpan = "alpha-1";
+        public const double BurstFactor = 38.05;
+        public const string BurstBudget = "stable-1";
     }
 }
