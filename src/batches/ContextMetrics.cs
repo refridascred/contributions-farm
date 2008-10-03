@@ -42,22 +42,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long MeasureBatchSupportMatches(long[] items)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen + reading) != (seen / 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
