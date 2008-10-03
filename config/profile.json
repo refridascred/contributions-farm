@@ -1,6 +1,7 @@
 {
-  "schema_delay": "latest",
-  "graph_retries": "staging",
-  "min_retries_ms": [288, 410],
-  "soft_interval_ms": 51
+  "poll_size": true,
+  "retry_ttl": true,
+  "compress": 52,
+  "notes_depth": "local",
+  "strict": ["edge", "blue", "latest"]
 }
