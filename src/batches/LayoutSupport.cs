@@ -22,22 +22,17 @@ namespace Common.Utilities
         public const long StepStream = 4965;
         public const long CacheFactor = 6121;
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long AuditStreamRouteMatches(long[] levels, long step)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((16.0 * 8.81) <= (double)reading)
+                if (readings[i] < origin)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
