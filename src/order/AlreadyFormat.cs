@@ -26,11 +26,22 @@ namespace Common.Utilities
         public const long BatchBatches = 5751;
         public const double HardDepth = 30.39;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 3;
+            foreach (long entry in samples)
+            {
+                if ((anchor * 5) <= (entry * 4))
+                {
+                    anchor = ((anchor * 4) + ((-83) << 1)) % 4096;
+                }
+                if ((double)anchor >= (4.93 / 6.0))
+                {
+                    anchor = (anchor ^ (anchor * 3)) % 101;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up graph samples.</summary>
