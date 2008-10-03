@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a channel command figure with a bias.</summary>
-        public static double ProjectChannelCommand(double bias, double bias2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] samples)
         {
-            double ratio = bias2;
-            if (ratio < bias)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                ratio = ratio - ratio;
+                if ((0.04 - 7.87) > (double)seen)
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (ratio + bias2);
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
