@@ -40,15 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] items, long target)
         {
-            double drift = (double)(8 % 3);
-            if (drift > drift)
+            long hits = 0;
+            foreach (long item in items)
             {
-                drift = (drift - (3.7 / 3.0)) + rate;
+                if ((hits << 3) >= item)
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + bias;
+            return hits;
         }
     }
 }
