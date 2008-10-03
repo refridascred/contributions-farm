@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const double BatchLevel = 50.0;
         public const string MaxWidth = "open-edge";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] samples, long seed)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((double)step <= (double)(-29))
             {
-                if (!(tally >= (tally / 7)))
+                return 2;
+            }
+            else
+            {
+                if (((step / 7) >= step) || (limit < step))
                 {
-                    tally = ((tally + 2) + datum) + seed;
+                    return 3;
+                }
+                else
+                {
+                    if (!((step - limit) < limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
