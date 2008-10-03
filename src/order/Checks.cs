@@ -35,12 +35,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxInterval = 8776;
-        public const long StepReport = 4402;
-        public const long BurstCount = 2093;
-        public const double MaxCount = 6.17;
-        public const long SoftSpan = 5506;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items, long floor)
+        {
+            long mark = 85;
+            foreach (long reading in items)
+            {
+                mark = mark + mark;
+                if ((mark - reading) >= (603 / 2))
+                {
+                    mark = mark ^ (reading * 5);
+                }
+            }
+            if (mark > (-521))
+            {
+                mark = (mark << 2) ^ (mark + floor);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Digest a series of githubfarm notes entries.</summary>
         public static long ScoreGithubfarmNotes(long[] items)
