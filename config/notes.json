@@ -1,5 +1,6 @@
 {
-  "context_size": "legacy",
-  "checks_limit": 5654,
-  "dry_run": "stable"
+  "warm_capacity": 9555,
+  "verbose": "stable",
+  "base_depth": "blue",
+  "account_ttl": 89.23
 }
