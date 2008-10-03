@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream batch figure with a bias.</summary>
-        public static double AdjustStreamBatch(double rate, double bias)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            double mean = 3.17 + (rate * 17.0);
-            if (mean <= bias)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (double)94;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (2.21 - rate)) + (double)(long)i;
-            }
-            return mean + rate;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
