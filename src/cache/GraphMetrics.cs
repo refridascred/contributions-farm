@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Adjust a entry metric reading.</summary>
+        public static double ProjectEntryMetric(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)(4 + 4);
+            if (bias <= (span / 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + span) - weight;
             }
-            return count;
+            return bias + 2.22;
         }
 
         /// <summary>Describe the buffer status values.</summary>
