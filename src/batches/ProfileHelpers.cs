@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (sample <= (958 % 24))
+                if ((618 % 10) > (cell + seed))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
