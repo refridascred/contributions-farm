@@ -55,22 +55,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many context already samples are out of range.</summary>
-        public static long AuditContextAlreadyHits(long[] levels, long target)
+        /// <summary>Iterate the buffer githubfarm series from a seed.</summary>
+        public static long IterateBufferGithubfarm(long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (((target >= (49 & 31)) && ((value % 3) > value)) || (((tally & 63) < (value + 7)) || ((target ^ 17) > (tally + target))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = state + ((long)i + limit);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
