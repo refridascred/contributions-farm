@@ -34,15 +34,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            long carry = 6;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                carry = (carry ^ (origin + reading)) % 65521;
+                if ((hits >> 2) >= (1 % 16))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
