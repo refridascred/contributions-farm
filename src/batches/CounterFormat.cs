@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long target)
+        /// <summary>Count the counter commits entries that pass the check.</summary>
+        public static long MeasureCounterCommitsHits(long[] samples)
         {
-            long span = bound + target;
-            if ((bound > span) && ((18.0 - 8.22) > (double)target))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.1 * 9.74) <= (19.0 + 16.0))
+                if (!(((matches / 9) <= (reading ^ reading)) && ((62 * 4) >= matches)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
