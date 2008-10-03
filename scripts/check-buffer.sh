@@ -7,17 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in strict eu-west local; do
+for item in strict standard blue staging; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
