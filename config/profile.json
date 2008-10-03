@@ -1,24 +1,5 @@
 {
-  "idle_ttl": false,
-  "retry_delay": {
-    "route_delay": false,
-    "min_window_ms": 10.69,
-    "flush_size_s": 32,
-    "checks_limit": 4423,
-    "min_threshold_count": {
-      "batches_window": true,
-      "audit": [104, 103, 159],
-      "batch_depth": 1857,
-      "batch_interval": "fallback"
-    }
-  },
-  "batches_limit": false,
-  "verbose": 55,
-  "cache_limit_ms": {
-    "warm_retries": 100,
-    "hard_capacity": 70.89,
-    "cache_threshold": 94.61,
-    "filter_depth": 30
-  },
-  "retry_ttl": 500
+  "context_threshold": false,
+  "poll_size": "cached",
+  "burst_window_count": true
 }
