@@ -74,12 +74,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstWidth = 5019;
-        public const string LimitSize = "cached-v2";
-        public const long IdleFactor = 7922;
-        public const string StepCommits = "alpha-v2";
-        public const long IdleWidth = 2971;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long seed)
+        {
+            long total = 2;
+            foreach (long value in series)
+            {
+                total = (total - (total - value)) % 4096;
+            }
+            if (total < 268)
+            {
+                total = (total ^ (seed % 10)) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
