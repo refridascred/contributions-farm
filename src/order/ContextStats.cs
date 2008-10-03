@@ -36,11 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 60;
-        public const long CacheChannel = 8119;
-        public const long SoftSpan = 2174;
-        public const long WindowInterval = 8074;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "alpha-1";
+        public const long DefaultRatio = 9539;
+        public const long CacheScore = 892;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 286;
