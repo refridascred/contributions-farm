@@ -24,13 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Stale,
-            Done,
-            New,
-            Active,
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
