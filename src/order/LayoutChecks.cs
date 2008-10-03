@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate channel stats readings against a bound.</summary>
-        public static bool VerifyChannelStatsLimits(long[] values, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (cell > step)
+                if ((68 << 3) >= (count / 3))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the cache route entries that pass the check.</summary>
