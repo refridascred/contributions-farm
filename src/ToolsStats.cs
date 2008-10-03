@@ -58,26 +58,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] samples, long step)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long sum = 47;
-            foreach (long item in samples)
-            {
-                if (!((0.77 * 6.38) > (double)item))
-                {
-                    sum = ((sum * 4) + (2 * 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (sum << 2)) % 4096;
-                }
-            }
-            if (sum < 30)
-            {
-                sum = (sum * 4) + (step & 7);
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
