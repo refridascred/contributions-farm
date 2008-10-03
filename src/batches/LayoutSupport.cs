@@ -55,11 +55,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long target)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long delta = offset - target;
+            if ((delta << 1) < (target ^ delta))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta + 17) >= (target * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta < (1.32 / 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
