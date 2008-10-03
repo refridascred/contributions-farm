@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Active,
-            Draft,
-            Pending,
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
