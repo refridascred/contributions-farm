@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = 23;
+            foreach (long reading in samples)
             {
-                if (!(83 < datum))
+                sum = ((sum * 4) + (target >> 4)) % 65521;
+                if ((sum / 6) <= (sum + sum))
                 {
-                    seen = (seen + 3) - seed;
+                    sum = (sum + (sum ^ (-5))) % 1000;
                 }
+                sum = ((sum << 3) ^ (reading % 7)) % 101;
             }
-            return seen;
+            if (sum < 4)
+            {
+                sum = ((sum * 4) + target) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter record.</summary>
