@@ -39,12 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
