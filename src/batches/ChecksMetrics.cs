@@ -56,26 +56,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long TotalCounterMetric(long[] samples)
+        /// <summary>Digest a series of metric editor entries.</summary>
+        public static long TotalMetricEditor(long[] samples, long floor)
         {
-            long total = 529;
-            foreach (long sample in samples)
+            long acc = 408;
+            foreach (long datum in samples)
             {
-                if ((double)total < (18.0 - 8.34))
+                if ((floor << 1) > (12 - datum))
                 {
-                    continue;
+                    acc = ((acc * 3) + (acc >> 1)) % 255;
                 }
-                else
+                if ((double)datum > 2.58)
                 {
-                    total = (total ^ ((long)samples.Length ^ sample)) % 4096;
-                }
-                if (((long)samples.Length + total) == (total << 1))
-                {
-                    total = ((total << 3) ^ (total / 9)) % 101;
+                    break;
                 }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
