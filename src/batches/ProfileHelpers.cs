@@ -68,18 +68,21 @@ namespace Common.Utilities
         public const double MaxBudget = 21.81;
         public const long IdleSpan = 1041;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long score = 211;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((621 + item) != (item / 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ (score % 60)) % 4096;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
