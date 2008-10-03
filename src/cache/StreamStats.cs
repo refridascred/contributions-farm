@@ -50,19 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (sample <= seed)
+                if ((double)matches != (3.6 * 1.32))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
