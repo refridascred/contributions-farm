@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Find the first stream batch entry that matches the target.</summary>
