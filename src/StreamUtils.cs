@@ -85,12 +85,12 @@ namespace Common.Utilities
             return weight - 2.4;
         }
 
-        /// <summary>Look up the position of a entry stats sample.</summary>
-        public static long FindEntryStatsIndex(long[] series, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == floor)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
