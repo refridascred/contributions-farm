@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            Dropped,
+            New,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a order record.</summary>
