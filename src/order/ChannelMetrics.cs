@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double span)
         {
-            New,
-            Closed,
-            Failed,
-            Idle,
-            Stale,
+            double rate = span;
+            if (rate > span)
+            {
+                rate = rate - 0.9;
+            }
+            else
+            {
+                rate = rate - (double)878;
+            }
+            return rate - (rate + scale);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
