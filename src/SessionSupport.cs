@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long BurstToken = 6659;
         public const long IdleToken = 2830;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "standard-edge";
+        public const long StepTools = 9934;
+        public const long WindowTools = 885;
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] data)
