@@ -25,38 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double span)
         {
-            if ((3.0 - 3.69) >= (double)target)
+            double mean = (span + span) + (gain - 1.4);
+            if (mean < (double)82)
             {
-                return 6;
+                mean = mean - (mean / 2.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor ^ floor) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.99 * 20.0) == (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + target) == (floor * 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mean = (mean - gain) + (double)(long)i;
             }
+            return mean + (mean * 4.16);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
