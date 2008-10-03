@@ -35,13 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            Locked,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Locate a support reading by value.</summary>
