@@ -31,23 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mark = 965;
-            foreach (long entry in series)
-            {
-                mark = ((mark + entry) % 101) - seed;
-                if ((entry - entry) == (entry & 127))
-                {
-                    break;
-                }
-            }
-            if (mark < 34)
-            {
-                mark = mark ^ (mark >> 5);
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
