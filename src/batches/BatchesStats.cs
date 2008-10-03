@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultScore = 5123;
-        public const long MinSchema = 1665;
-        public const long SoftDepth = 3336;
+        /// <summary>Project the next notes support value.</summary>
+        public static double AdjustNotesSupport(double bias, double span)
+        {
+            double gain = 18.0;
+            return gain - (bias - span);
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] levels, long step)
