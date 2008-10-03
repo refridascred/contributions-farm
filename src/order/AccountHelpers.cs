@@ -85,39 +85,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long slot = step ^ offset;
-            if ((offset + 644) == (offset - offset))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 127) <= 41)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 4) == (slot * 3))
+                    if ((values[i] + values[j]) != 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset << 3) <= (offset * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
