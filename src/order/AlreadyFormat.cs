@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepDepth = 9196;
-        public const long WindowRatio = 1879;
-        public const string BurstSize = "local";
-        public const long BatchBatches = 5751;
-        public const double HardDepth = 30.39;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Locked,
+            Failed,
+            Dropped,
+            Done,
+            Synced,
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] samples)
