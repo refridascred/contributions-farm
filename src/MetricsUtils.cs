@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long target2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target - target2;
+            if ((double)target == (16.0 / 9.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((prev ^ target) < (prev - target2))
                 {
-                    if ((samples[i] ^ samples[j]) != 2)
+                    return 1;
+                }
+                else
+                {
+                    if (prev <= (6 + target2))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target2 < (target + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
