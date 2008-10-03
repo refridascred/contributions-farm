@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 811;
-            foreach (long item in values)
-            {
-                if ((15.0 * 8.0) <= (double)item)
-                {
-                    acc = ((acc << 2) ^ offset) % 4096;
-                }
-                else
-                {
-                    acc = (acc + acc) % 65521;
-                }
-            }
-            return acc;
+            Done,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Adjust a commits reading.</summary>
