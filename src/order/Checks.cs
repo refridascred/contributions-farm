@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] series, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                if (score < (bound * 2))
                 {
-                    return (long)i;
+                    score = (score * 3) + score;
                 }
+                else
+                {
+                    score = score + (bound + score);
+                    score = score - score;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the graph state values.</summary>
