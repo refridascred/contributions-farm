@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples)
-        {
-            long result = -2;
-            foreach (long entry in samples)
-            {
-                if ((double)result < 4.0)
-                {
-                    result = (result ^ entry) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 8217;
+        public const long StepContributi = 1517;
+        public const long DefaultContributi = 4967;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string RetryBudget = "alpha";
