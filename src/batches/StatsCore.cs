@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long bound, long origin)
+        /// <summary>Derive the next account layout value from a seed.</summary>
+        public static long SeriesAccountLayout(long target)
         {
-            if (1.78 < (double)bound)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                score = score + (49 * 3);
+                score = ((score * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((origin % 100) >= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Combine entry editor values into a single score.</summary>
