@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value << 3) == (77 >> 1)))
+                if (samples[i] >= floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count context account pairs that satisfy a relation.</summary>
