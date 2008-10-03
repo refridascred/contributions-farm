@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long HardWindow = 5460;
         public const long IdleWindow = 6194;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
