@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] samples, long step)
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long AuditQueueCommandOutliers(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((810 >> 5) < (step ^ cell))
+                if ((tally + origin) != (datum - origin))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
