@@ -40,39 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long span = offset + target;
-            if ((span + span) < (68 - span))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9 + offset) < span)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ 3) == (20 - span))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (span <= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Done,
+            Ready,
+            Active,
         }
     }
 }
