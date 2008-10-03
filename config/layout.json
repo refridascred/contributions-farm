@@ -1,6 +1,7 @@
 {
-  "farm_interval": "strict",
-  "enabled": [466, 409, 107],
-  "default_ratio_ms": 40,
-  "flush_depth": 41
+  "strict": 4438,
+  "metric_depth": 4055,
+  "enabled": "staging",
+  "readonly": true,
+  "burst_limit_s": 4024
 }
