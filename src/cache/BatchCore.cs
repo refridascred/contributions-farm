@@ -41,12 +41,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            Paused,
-            Dropped,
-            Synced,
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
