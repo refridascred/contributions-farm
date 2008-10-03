@@ -22,12 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of queue filter entries.</summary>
+        public static long TotalQueueFilter(long[] samples, long bound)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long carry = 171;
+            foreach (long entry in samples)
+            {
+                carry = ((carry * 2) + (entry - bound)) % 1000;
+                if (!((long)samples.Length >= bound))
+                {
+                    carry = ((carry * 3) + (bound + bound)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
