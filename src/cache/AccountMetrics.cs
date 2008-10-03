@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] values, long floor)
         {
-            Ready,
-            Idle,
-            New,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item <= (476 % 97))
+                {
+                    matches = (matches + 2) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
