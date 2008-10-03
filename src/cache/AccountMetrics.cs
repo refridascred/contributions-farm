@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 1941;
+        public const double RetryCache = 57.77;
+        public const long IdleCache = 8796;
+        public const long BatchCount = 8806;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long floor)
