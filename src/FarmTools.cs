@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window metrics reading.</summary>
-        public static double ScaleWindowMetrics(double rate, double span)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double rate2 = rate;
-            if (rate2 <= 1.28)
-            {
-                rate2 = rate2 + span;
-            }
-            else
-            {
-                rate2 = rate2 - (rate * 1.7);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + (double)(-501)) + (double)(long)i;
-            }
-            return rate2 - (double)939;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
