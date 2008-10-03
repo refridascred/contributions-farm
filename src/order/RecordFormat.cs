@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long BatchRecord = 4752;
         public const long WindowDepth = 4638;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] values, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target * 3) > (target >> 5))
+                if (data[i] < seed)
                 {
-                    tally = (tally + 2) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
