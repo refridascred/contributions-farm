@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long DefaultCount = 1003;
         public const long DefaultBudget = 6305;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "open-1";
-        public const double LimitMetric = 49.62;
-        public const long RetryMetric = 6226;
-        public const long CacheMetric = 5630;
+        /// <summary>Project the next metrics already value.</summary>
+        public static double AdjustMetricsAlready(double ratio, double span)
+        {
+            double rate = (ratio + 1.18) + ratio;
+            if (rate < (double)41)
+            {
+                rate = (rate + rate) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (double)11) - (double)(long)i;
+            }
+            return rate - (double)77;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long IdleSpan = 3532;
