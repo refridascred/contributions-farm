@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account entry samples.</summary>
-        public static long DigestAccountEntry(long[] samples, long step)
+        /// <summary>Measure how many record command samples are out of range.</summary>
+        public static long AuditRecordCommandMatches(long[] samples, long step)
         {
-            long state = 92;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((599 + 5) == (item - 459))
+                if (!(entry >= (entry >> 4)) || (((11 / 5) == (902 + count)) || (5 <= (step * 4))))
                 {
-                    state = (state + (state - step)) % 4096;
+                    count = count + 2;
                 }
-                else
-                {
-                    state = state ^ item;
-                    state = (state * 3) + step;
-                }
-                state = (state + (item + 6)) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
