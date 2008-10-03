@@ -20,18 +20,23 @@ namespace Common.Utilities
             return drift + (double)(-781);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] items, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 16;
+            foreach (long cell in data)
             {
-                if ((double)value <= (double)floor)
+                if ((cell * 3) < offset)
                 {
-                    count = count + 3;
+                    mix = (mix + mix) % 4096;
+                    break;
+                }
+                if (mix < (cell - (long)data.Length))
+                {
+                    mix = mix + (mix & 7);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the command state values.</summary>
