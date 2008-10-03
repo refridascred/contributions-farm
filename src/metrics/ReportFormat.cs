@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Project the next context route value.</summary>
+        public static double SmoothContextRoute(double ratio, double span)
         {
-            Stale,
-            Paused,
-            Draft,
-            Failed,
-            New,
+            double drift = ratio;
+            if (drift >= drift)
+            {
+                drift = drift + (span / 8.0);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + ratio;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
