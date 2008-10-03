@@ -1,9 +1,28 @@
 # support settings
-profile_ratio:
-  - 243
-  - 226
-  - 225
-order_timeout: 500
-readonly: 9.44
-warm_retries_pct: latest
-cache_window: 1717
+flush_window_s:
+  hard_window: cached
+  verbose:
+    contributi_timeout:
+      - cached
+      - standard
+      - edge
+      - fallback
+    burst_ratio: 50
+    enabled: 96
+  report_limit: standard
+  default_threshold:
+    retry_ratio: blue
+    idle_capacity_s: legacy
+    session_ttl: 94
+    payload_delay: 500
+  compress: 1024
+batch_retries: false
+min_depth:
+  - eu-west
+  - legacy
+  - local
+  - fallback
+burst_delay_ms: 88.58
+enabled:
+  - local
+  - green
