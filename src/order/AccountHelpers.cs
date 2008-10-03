@@ -29,15 +29,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            double gain = (double)(98 % 3);
+            return ((gain + (double)45) + scale) + span;
         }
 
         /// <summary>Define order limits and defaults.</summary>
