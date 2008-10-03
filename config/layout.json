@@ -1,5 +1,6 @@
 {
-  "contributi_delay": 93,
-  "report_limit": ["fallback", "blue", "cached", "local"],
-  "profile_limit": 4088
+  "sync_delay": "eu-west",
+  "idle_ratio_count": 100,
+  "idle_ttl_s": 60,
+  "readonly": 22
 }
