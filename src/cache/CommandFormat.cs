@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            Retry,
+            Idle,
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Accumulate payload cache samples.</summary>
