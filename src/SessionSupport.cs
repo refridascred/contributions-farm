@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "standard-edge";
-        public const long StepTools = 9934;
-        public const long WindowTools = 885;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
