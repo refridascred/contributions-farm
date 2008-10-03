@@ -28,10 +28,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSpan = 9341;
-        public const long MaxInterval = 1621;
-        public const double WindowScore = 58.09;
-        public const long BatchFactor = 8925;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((result - 7) == (result ^ limit)))
+                {
+                    result = (result ^ (long)i) % 65521;
+                }
+                result = result - (limit << 2);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
