@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] samples, long seed)
         {
-            long carry = 3;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                carry = carry - entry;
-                if (((entry * 2) != (carry % 100)) && ((carry / 3) > (3 - 14)))
+                if (sample > seed)
                 {
-                    carry = carry ^ (limit >> 5);
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return valid;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
