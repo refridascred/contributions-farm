@@ -1,7 +1,5 @@
 {
-  "strict": 4438,
-  "metric_depth": 4055,
-  "enabled": "staging",
-  "readonly": true,
-  "burst_limit_s": 4024
+  "format_limit": 3555,
+  "readonly": 28.97,
+  "retry_depth_count": false
 }
