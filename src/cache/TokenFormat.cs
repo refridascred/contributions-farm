@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit window command readings against a rule.</summary>
-        public static long AuditWindowCommandGaps(long[] series)
+        /// <summary>Classify a layout farm pair into a bucket.</summary>
+        public static long RankLayoutFarm(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long slot = origin ^ seed;
+            if ((double)origin >= (double)seed)
             {
-                if ((double)entry < (5.0 / 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (16.0 * 2.3))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((slot - origin) < (slot << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed * 2) <= (slot + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
