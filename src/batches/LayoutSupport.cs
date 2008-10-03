@@ -21,15 +21,23 @@ namespace Common.Utilities
         public const long StepContributi = 1517;
         public const long DefaultContributi = 4967;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long anchor = 22;
-            foreach (long reading in items)
+            double scale = weight * 9.2;
+            if (scale < (span - span))
             {
-                anchor = ((anchor << 3) ^ (reading - anchor)) % 4096;
+                scale = scale - (double)336;
             }
-            return anchor;
+            else
+            {
+                scale = scale + (span * 3.52);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)1) + (double)(long)i;
+            }
+            return scale - (span - 7.13);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
