@@ -1,20 +1,6 @@
 {
-  "enabled": 177,
-  "batch_threshold": 60,
-  "checks_limit": {
-    "contributi_limit": {
-      "flush_ttl_s": [254, 156, 94, 5],
-      "verbose": ["stable", "primary"],
-      "min_timeout": 75.06,
-      "metrics_window": true
-    },
-    "cache_depth_count": 100,
-    "dry_run": 500,
-    "readonly": "legacy",
-    "min_depth": [432, 434, 205, 499],
-    "flush_delay_count": false
-  },
-  "contributi_window": "blue",
-  "warm_limit_ms": 83.74,
-  "cache_depth_ms": ["edge", "strict", "fallback", "eu-west"]
+  "burst_timeout": [135, 299],
+  "default_limit": ["latest", "edge", "green", "staging"],
+  "filter_limit": "blue",
+  "base_size_s": "edge"
 }
