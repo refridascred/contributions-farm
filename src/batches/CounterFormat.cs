@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the counter commits entries that pass the check.</summary>
