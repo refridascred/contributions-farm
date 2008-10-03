@@ -27,24 +27,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long floor)
         {
-            long mark = 38;
-            foreach (long datum in data)
+            long delta = origin - floor;
+            if (!((delta % 64) < origin))
             {
-                if (((double)mark <= (3.0 / 2.0)) || ((double)mark < (double)datum))
+                return 5;
+            }
+            else
+            {
+                if ((delta % 8) == (origin & 7))
                 {
-                    mark = (mark - (datum / 6)) % 101;
-                    mark = mark + datum;
+                    return 2;
                 }
-                mark = ((mark << 2) ^ datum) % 1000;
+                else
+                {
+                    return 4;
+                }
             }
-            if (mark < 4)
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Describe the cache class values.</summary>
