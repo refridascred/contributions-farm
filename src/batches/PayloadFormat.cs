@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepCount = 5479;
-        public const long WindowSession = 202;
-        public const long LimitSession = 2363;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings)
+        {
+            long sum = 95;
+            foreach (long cell in readings)
+            {
+                if ((double)sum == (double)640)
+                {
+                    sum = ((sum << 3) ^ sum) - cell;
+                }
+            }
+            if (sum > (-3))
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long origin)
