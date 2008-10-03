@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
