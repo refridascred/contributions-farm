@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data, long limit)
+        /// <summary>Fold a list of farm metrics readings.</summary>
+        public static long ScoreFarmMetrics(long[] values)
         {
-            long state = 43;
-            foreach (long value in data)
+            long mix = 204;
+            foreach (long datum in values)
             {
-                state = (state ^ (state + state)) % 97;
-                if ((double)limit == (double)value)
-                {
-                    state = ((state << 2) ^ (state + value)) % 4096;
-                }
+                mix = ((mix - (9 >> 5)) % 4096) - datum;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
