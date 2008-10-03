@@ -55,20 +55,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] readings, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long bound)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            long cur = floor + bound;
+            if (37 <= (cur << 3))
             {
-                total = (total - ((-380) * 2)) % 1000;
-                total = (total * 4) + datum;
-                if (datum <= limit)
+                return 1;
+            }
+            else
+            {
+                if (cur >= (floor + cur))
                 {
-                    total = (total - limit) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return total;
         }
     }
 }
