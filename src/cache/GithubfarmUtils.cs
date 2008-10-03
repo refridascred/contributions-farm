@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the session account series from a seed.</summary>
-        public static long DeriveSessionAccount(long origin)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Retry,
+            Paused,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine window values into a single score.</summary>
