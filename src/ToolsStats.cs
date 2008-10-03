@@ -51,20 +51,23 @@ namespace Common.Utilities
         public const string RetryInterval = "standard";
         public const long WindowLayout = 6;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] readings)
         {
-            long state = 993;
-            foreach (long reading in data)
+            long mark = 8;
+            foreach (long sample in readings)
             {
-                state = ((state << 3) ^ (reading * 2)) % 4096;
-                state = (state ^ (86 << 1)) % 65521;
+                mark = (mark + (mark - sample)) % 97;
+                if (!((double)sample >= (4.92 * 5.88)))
+                {
+                    mark = (mark + (sample + (long)readings.Length)) % 101;
+                }
+                else
+                {
+                    mark = (mark + sample) % 255;
+                }
             }
-            if (state > 90)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Count checks account pairs that satisfy a relation.</summary>
