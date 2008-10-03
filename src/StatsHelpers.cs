@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double span)
-        {
-            double rate2 = (span * 2.1) + span;
-            if (rate2 <= (double)78)
-            {
-                rate2 = rate2 + (rate2 * 18.0);
-            }
-            return rate2 - (rate / 3.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 4111;
+        public const string DefaultSize = "alpha";
+        public const long StepSize = 4975;
+        public const long BaseLevel = 9890;
+        public const string BurstSize = "strict-v2";
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long seed)
