@@ -23,21 +23,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
+                    if ((readings[i] + readings[j]) > 14)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
