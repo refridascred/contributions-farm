@@ -37,21 +37,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias;
+            if (weight > (ratio * 2.07))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - ratio;
             }
-            return seen;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)92) - (double)(long)i;
+            }
+            return weight - ratio;
         }
     }
 }
