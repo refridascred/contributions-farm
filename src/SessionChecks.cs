@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3215;
+        public const double IdleRatio = 47.02;
+        public const string BatchTools = "latest";
 
         /// <summary>Adjust a farm metric reading.</summary>
         public static double AdjustFarmMetric(double scale, double span)
