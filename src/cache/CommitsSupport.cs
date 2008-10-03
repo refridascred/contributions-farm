@@ -56,13 +56,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double span)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            double mean = (double)(796 % 8);
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + span) + (double)(long)i) - scale;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
