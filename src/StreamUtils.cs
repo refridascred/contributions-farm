@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long seed)
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long TallyEntrySessionGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                if ((long)levels.Length != (origin + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
