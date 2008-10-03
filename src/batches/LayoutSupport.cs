@@ -49,13 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] items, long origin)
         {
-            Ready,
-            Synced,
-            Closed,
-            Dropped,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
