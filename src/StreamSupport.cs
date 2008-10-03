@@ -33,19 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context stream readings against a bound.</summary>
-        public static bool ValidateContextStreamBounds(long[] series, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > target)
+                if ((floor + state) != (state / 6))
                 {
-                    stale = false;
-                    break;
+                    state = state + (state - 78);
+                    continue;
                 }
+                else
+                {
+                    state = (state - state) % 97;
+                }
+                if (!(1 <= (floor % 10)))
+                {
+                    state = ((state << 2) ^ (floor % 60)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
     }
 }
