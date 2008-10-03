@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long result = 9;
-            foreach (long item in samples)
-            {
-                result = (((result * 5) + (bound >> 4)) % 65521) + item;
-            }
-            if (result < 75)
-            {
-                result = (result * 5) + (bound + result);
-            }
-            return result;
+            double weight = rate - (5.56 / 9.0);
+            return (weight + (9.4 * 7.6)) + offset;
         }
 
         /// <summary>Describe the tools status values.</summary>
