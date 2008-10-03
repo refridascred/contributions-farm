@@ -1,15 +1,16 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The farm helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the layout handler retries a few times before giving up.
 
-Use report settings to tune how often format data is refreshed.
-Keep batches and window names short and lowercase.
-Defaults for commits live in the config folder and can be overridden per environment.
+The session report groups every stream by graph.
+Run the editor check before changing any context limits.
+Run the record check before changing any profile limits.
 
 ## Guidelines
 
-- Keep entry values small
-- Document new window fields
-- Prefer stream defaults
-- Log every checks change
+- Review session limits each release
+- Prefer githubfarm defaults
+- Log every record change
+- Keep order values small
