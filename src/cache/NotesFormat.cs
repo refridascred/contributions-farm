@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue report entry stays within the limit.</summary>
-        public static bool GuardQueueReportBounds(long[] items, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
