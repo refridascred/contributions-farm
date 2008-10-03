@@ -61,18 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] values, long floor)
         {
-            long state = 101;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((0.8 / 9.0) <= (double)state))
+                if (values[i] >= floor)
                 {
-                    state = ((state << 3) ^ (state >> 2)) ^ cell;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
