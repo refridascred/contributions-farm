@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Pending,
-            Closed,
-            Done,
             Dropped,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
