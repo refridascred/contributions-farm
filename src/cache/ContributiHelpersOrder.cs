@@ -32,18 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] samples)
-        {
-            long acc = 95;
-            foreach (long sample in samples)
-            {
-                if ((acc ^ sample) < (acc + sample))
-                {
-                    acc = ((acc << 2) ^ (sample & 63)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 3184;
+        public const long LimitSpan = 8097;
+        public const long BatchBudget = 3885;
+        public const long StepCommits = 9688;
     }
 }
