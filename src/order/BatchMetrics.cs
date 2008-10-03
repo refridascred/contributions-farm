@@ -63,18 +63,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] readings, long offset)
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long WeighCounterChecks(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long carry = 6;
+            foreach (long value in items)
             {
-                if ((long)readings.Length > (offset << 3))
+                if (((value ^ 171) <= 0) && ((value + step) > (carry - carry)))
                 {
-                    hits = (hits + 1) + entry;
+                    carry = (carry + value) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 8);
                 }
             }
-            return hits;
+            return carry % 97;
         }
     }
 }
