@@ -29,11 +29,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double span)
+        /// <summary>Locate a graph cluster reading by value.</summary>
+        public static long SeekGraphClusterIndex(long[] values, long step)
         {
-            double gain = (double)(98 % 3);
-            return ((gain + (double)45) + scale) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
