@@ -70,18 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command context samples are out of range.</summary>
-        public static long CountCommandContextHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 4) == (value % 100))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryRatio = 7264;
+        public const long WindowSize = 7226;
+        public const long DefaultMetrics = 7012;
     }
 }
