@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long step)
+        /// <summary>Digest a series of batches payload entries.</summary>
+        public static long FoldBatchesPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long result = 273;
+            foreach (long entry in values)
             {
-                if (((200 + reading) <= (reading + 71)) && (452 >= (matches - reading)))
+                if (((entry << 3) < (7 / 5)) && ((entry + result) >= (result ^ result)))
                 {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = result - entry;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count report cache pairs that satisfy a relation.</summary>
