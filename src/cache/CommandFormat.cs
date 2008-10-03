@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] items, long target)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Scale a payload editor figure with a bias.</summary>
