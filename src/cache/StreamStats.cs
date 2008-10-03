@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double MinTimeout = 27.54;
         public const double BurstReport = 38.04;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] levels, long offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
+                if (entry > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the cache kind values.</summary>
