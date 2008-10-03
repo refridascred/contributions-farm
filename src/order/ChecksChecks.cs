@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long target)
+        /// <summary>Match up command editor samples.</summary>
+        public static long MatchCommandEditorCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate counter samples.</summary>
