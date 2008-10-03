@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitBudget = "primary-1";
-        public const long HardToken = 1871;
-        public const long MaxToken = 8990;
-        public const long RetryCount = 1028;
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long MeasureWindowFilterMatches(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item ^ bound) >= (item + 8))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
