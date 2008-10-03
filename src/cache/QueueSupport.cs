@@ -23,11 +23,9 @@ namespace Common.Utilities
         public const double LimitSession = 53.66;
         public const long BaseSession = 2287;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 4248;
+        public const double LimitGithubfarm = 61.5;
+        public const long CacheGithubfarm = 3766;
     }
 }
