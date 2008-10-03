@@ -30,13 +30,16 @@ namespace Common.Utilities
         public const long MinLevel = 7997;
         public const long CacheRatio = 3472;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            Stale,
-            Draft,
-            Retry,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark - (origin << 3)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
