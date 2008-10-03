@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-Keep payload and token names short and lowercase.
-Run the contributi check before changing any checks limits.
+Each counter is validated before it reaches the editor queue.
+The filter report groups every metric by profile.
+A entry that stays idle for too long is moved to the stats list.
+
+Run the cluster check before changing any route limits.
+A report that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Log every editor change
-- Validate profile input early
-- Review cluster limits each release
+- Keep schema values small
+- Prefer format defaults
+- Log every already change
+- Review graph limits each release
