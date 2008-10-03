@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen < (item - seen))
+                if (data[i] >= bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a already header.</summary>
