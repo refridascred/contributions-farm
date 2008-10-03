@@ -58,26 +58,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            long result = 455;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((entry + result) <= entry)
+                if ((seen <= (263 % 8)) || !((double)seen != (double)datum))
                 {
-                    result = ((result * 2) + entry) % 97;
+                    seen = seen + 3;
                 }
-                if ((result % 64) < (entry - result))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (result > 4)
-            {
-                result = result ^ (result ^ result);
-            }
-            return result % 1000;
+            return seen;
         }
     }
 }
