@@ -1,5 +1,7 @@
 {
-  "audit": [267, 496, 245],
-  "burst_interval_pct": "eu-west",
-  "verbose": 2356
+  "stats_capacity": 1566,
+  "max_window_s": 5.16,
+  "sync_capacity": 60,
+  "warm_depth": 73.15,
+  "retry_threshold": true
 }
