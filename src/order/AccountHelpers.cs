@@ -31,24 +31,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long seed, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series)
         {
-            if (target < seed)
+            long anchor = 746;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (9.0 > (11.0 - 12.0))
+                if ((value + 400) < (value + value))
                 {
-                    return 6;
+                    anchor = (anchor ^ (value & 63)) % 101;
+                    break;
+                }
+                if (!(((long)series.Length + anchor) <= anchor))
+                {
+                    anchor = ((anchor * 4) + value) % 4096;
+                    anchor = anchor - value;
+                }
+                if ((double)anchor != (1.2 / 4.0))
+                {
+                    anchor = ((anchor << 3) ^ (value - value)) % 97;
                 }
                 else
                 {
-                    return 7;
+                    anchor = anchor + (anchor + (-81));
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a already info.</summary>
