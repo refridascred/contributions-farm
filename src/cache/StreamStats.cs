@@ -28,12 +28,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many filter entry samples are out of range.</summary>
+        public static long TallyFilterEntryMatches(long[] samples, long floor)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)floor > (1.0 * 6.0)))
+                {
+                    matches = (matches + 1) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
