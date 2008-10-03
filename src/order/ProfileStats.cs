@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] data, long step)
         {
-            New,
-            Closed,
-            Failed,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
