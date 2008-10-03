@@ -23,15 +23,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            double scale = span;
-            if (scale < 7.9)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                scale = scale - (scale / 3.0);
+                carry = ((carry << 3) ^ (3 << 3)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return scale - (5.5 + weight);
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
