@@ -30,22 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric format readings against a rule.</summary>
-        public static long TallyMetricFormatHits(long[] values, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((hits - value) == (value >> 2))
+                if (value >= step)
                 {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
