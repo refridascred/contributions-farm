@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long BatchRecord = 4752;
         public const long WindowDepth = 4638;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] values)
+        /// <summary>Measure how many cluster support samples are out of range.</summary>
+        public static long CountClusterSupportOutliers(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((2 < (reading - (-323))) && ((6.9 * 1.0) != (double)reading))
+                if ((double)target >= 4.0)
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) + value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
