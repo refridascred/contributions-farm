@@ -13,12 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Queued,
-            Draft,
-            Pending,
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
