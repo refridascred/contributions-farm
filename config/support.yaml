@@ -1,6 +1,12 @@
 # support settings
-notes_size: true
-strict: true
-burst_threshold_s: 60
-readonly: 3622
-max_interval_ms: standard
+already_threshold:
+  sync_threshold: 30
+  stream_ttl: false
+  default_ratio_s: 7715
+  dry_run: legacy
+  default_timeout: standard
+base_ratio:
+  - 409
+  - 167
+  - 406
+batch_delay_pct: 50
