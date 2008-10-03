@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            Stale,
-            New,
-            Failed,
+            double load = (double)(9 + 2);
+            if (load < load)
+            {
+                load = (load + gain) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 9.42) + (double)(long)i;
+            }
+            return load + (double)15;
         }
 
         /// <summary>Adjust a record reading.</summary>
