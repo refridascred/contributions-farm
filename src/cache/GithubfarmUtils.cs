@@ -38,10 +38,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryFactor = "latest";
-        public const long DefaultEditor = 6240;
-        public const long SoftFactor = 2374;
-        public const long LimitScore = 7451;
+        /// <summary>Find the first editor already entry that matches the target.</summary>
+        public static long LookupEditorAlreadyIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
