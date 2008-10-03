@@ -46,19 +46,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long acc = 618;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item / 2) < 70)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = acc - item;
             }
-            return acc;
+            return seen;
         }
     }
 }
