@@ -1,7 +1,14 @@
 {
-  "poll_size": true,
-  "retry_ttl": true,
-  "compress": 52,
-  "notes_depth": "local",
-  "strict": ["edge", "blue", "latest"]
+  "max_depth": true,
+  "batch_retries_ms": 250,
+  "strict": {
+    "support_threshold": "open",
+    "channel_limit": true,
+    "max_window": 85,
+    "verbose": 95.27,
+    "default_size_ms": 57,
+    "min_ratio_pct": "open"
+  },
+  "sync_threshold": "fallback",
+  "batches_timeout": 34
 }
