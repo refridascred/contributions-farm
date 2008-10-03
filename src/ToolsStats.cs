@@ -94,21 +94,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks account pairs that satisfy a relation.</summary>
-        public static long CompareChecksAccountCount(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (levels[i] >= origin)
                 {
-                    if ((items[i] + items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
