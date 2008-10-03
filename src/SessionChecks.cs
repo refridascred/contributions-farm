@@ -26,31 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long seed)
         {
-            if (target > 97)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin != (9.09 - 7.0))
+                if (reading < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target * 2) != (origin * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
