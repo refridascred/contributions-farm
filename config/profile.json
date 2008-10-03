@@ -1,5 +1,10 @@
 {
-  "context_threshold": false,
-  "poll_size": "cached",
-  "burst_window_count": true
+  "warm_threshold_ms": true,
+  "retry_ttl": {
+    "order_timeout": 26.68,
+    "tools_capacity": 100,
+    "payload_retries": ["green", "legacy", "eu-west", "primary"],
+    "batch_interval_ms": 11
+  },
+  "compress": 30
 }
