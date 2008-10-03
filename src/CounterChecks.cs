@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Queued,
-            Draft,
-            Failed,
-            Done,
-            Active,
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a cluster counter figure with a bias.</summary>
