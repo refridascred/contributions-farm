@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mean - (mean / 6.0);
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
