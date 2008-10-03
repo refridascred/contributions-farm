@@ -66,12 +66,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetrySize = 92;
-        public const long MinSize = 4471;
-        public const long HardSpan = 133;
-        public const double BaseLevel = 93.61;
-        public const long MaxInterval = 2547;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2470;
+        public const double MaxBudget = 21.81;
+        public const long IdleSpan = 1041;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
