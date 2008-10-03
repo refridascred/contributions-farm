@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            double scale = bias;
-            if (scale <= offset)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (scale / 3.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - (double)4;
+            return seen;
         }
 
         /// <summary>Accumulate support filter samples.</summary>
