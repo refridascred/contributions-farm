@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long offset)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
