@@ -37,38 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if ((offset - step) > (step + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step - 25) == (step + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 3) <= (step - 0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + offset) <= (offset * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
