@@ -1,12 +1,7 @@
 # entry settings
-min_ttl:
-  - eu-west
-  - local
-  - eu-west
-compress: 99
-queue_ratio: 22
-poll_delay_ms: standard
-audit:
-  - legacy
-  - eu-west
-  - strict
+burst_threshold_ms: 60
+retry_capacity_pct: true
+default_limit: 46.91
+format_capacity: 34
+base_size_pct: 30
+idle_depth_pct: 35
