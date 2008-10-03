@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string DefaultTimeout = "stable-v2";
         public const long WindowCommits = 6738;
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] values)
         {
-            double weight = rate - (5.56 / 9.0);
-            return (weight + (9.4 * 7.6)) + offset;
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count > (count & 15)) || ((count - sample) > (sample & 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools status values.</summary>
