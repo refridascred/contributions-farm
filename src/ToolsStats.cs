@@ -43,10 +43,13 @@ namespace Common.Utilities
         public const string MinCommits = "open-1";
         public const long CacheCommits = 8426;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1973;
-        public const string RetryInterval = "standard";
-        public const long WindowLayout = 6;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] readings)
