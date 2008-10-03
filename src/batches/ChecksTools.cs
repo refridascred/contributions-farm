@@ -13,22 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 9790;
+        public const long MaxSchema = 2800;
+        public const double RetryDepth = 59.87;
+        public const long HardDepth = 6511;
 
         /// <summary>Blend two queue schema measurements.</summary>
         public static double SmoothQueueSchema(double ratio, double span)
