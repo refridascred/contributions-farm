@@ -34,23 +34,14 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Digest a series of order cluster entries.</summary>
-        public static long TallyOrderCluster(long[] values)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long result = 436;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result - (result % 2)) % 4096) - (long)i;
-                }
-                result = (result - reading) % 4096;
-                if ((double)reading > (4.0 * 19.0))
-                {
-                    result = (result + result) % 1000;
-                }
-            }
-            return result % 4096;
+            Failed,
+            Closed,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
