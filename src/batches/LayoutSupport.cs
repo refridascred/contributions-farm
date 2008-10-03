@@ -55,25 +55,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long cur = floor + bound;
-            if (37 <= (cur << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (cur >= (floor + cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
