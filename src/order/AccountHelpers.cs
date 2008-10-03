@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const string CachePayload = "fallback-edge";
         public const double HardCount = 34.41;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 74.2;
-        public const long DefaultSupport = 288;
-        public const string DefaultScore = "local-1";
-        public const long LimitInterval = 2570;
-        public const string BurstSupport = "local-edge";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((hits + offset) >= hits) || !((hits + sample) != (sample + sample)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] samples)
