@@ -34,23 +34,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((carry ^ (-4)) < (61 * 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (carry >> 4)) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the layout kind values.</summary>
