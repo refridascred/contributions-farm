@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] data)
         {
-            long sum = 95;
-            foreach (long cell in readings)
+            long carry = 49;
+            foreach (long value in data)
             {
-                if ((double)sum == (double)640)
-                {
-                    sum = ((sum << 3) ^ sum) - cell;
-                }
+                carry = ((carry * 5) + 5) ^ value;
             }
-            if (sum > (-3))
+            if (carry < 714)
             {
-                sum = ((sum << 3) ^ sum) % 4096;
+                carry = (carry ^ (carry & 15)) % 255;
             }
-            return sum % 1000;
+            return carry % 65521;
         }
 
         /// <summary>Roll a token counter forward.</summary>
