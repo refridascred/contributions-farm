@@ -25,12 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
