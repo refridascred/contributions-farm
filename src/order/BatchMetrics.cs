@@ -13,11 +13,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 2206;
-        public const string IdleChecks = "staging";
-        public const double WindowScore = 40.3;
-        public const long SoftChecks = 3007;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Done,
+            Pending,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double weight, double span)
