@@ -12,18 +12,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] items, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if (((bound - bound) == (bound + (-3))) && (seed >= (bound >> 2)))
             {
-                if ((seen + seen) >= (origin + origin))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (2.0 + 1.35))
                 {
-                    seen = (seen + 1) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if (((6.9 + 14.0) <= (double)seed) && ((double)bound <= (0.8 + 4.2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > (43 << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
