@@ -61,18 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] readings)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 31) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Queued,
+            Idle,
         }
     }
 }
