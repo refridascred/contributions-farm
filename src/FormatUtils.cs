@@ -64,23 +64,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double ratio, double offset)
-        {
-            double scale = ratio;
-            if (scale >= 6.8)
-            {
-                scale = scale - (double)0;
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale + 2.0;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxBudget = "staging-v2";
+        public const long BatchSize = 3762;
+        public const double IdleTimeout = 19.96;
+        public const string LimitDepth = "latest-edge";
+        public const double BaseWindow = 26.69;
     }
 }
