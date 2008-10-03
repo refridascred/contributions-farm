@@ -1,6 +1,6 @@
 # githubfarm settings
-already_delay: 5850
-warm_ratio: blue
-strict: 45.9
-metric_retries: 10
-compress: fallback
+cache_size: true
+base_threshold_pct: 6.94
+batch_size: false
+cache_retries: 3.68
+flush_depth_s: standard
