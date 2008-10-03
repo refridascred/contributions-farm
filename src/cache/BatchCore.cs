@@ -58,19 +58,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long target)
         {
-            double ratio2 = (bias * 7.2) * 6.09;
-            if (ratio2 >= (ratio + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 - 6.83;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (2.8 - ratio2);
-            }
-            return ratio2 + ratio2;
+            return -1;
         }
     }
 }
