@@ -80,23 +80,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long limit)
         {
-            long mark = 8;
-            foreach (long sample in readings)
+            if (!(bound <= (bound - (-4))))
             {
-                mark = (mark + (mark - sample)) % 97;
-                if (!((double)sample >= (4.92 * 5.88)))
+                return 2;
+            }
+            else
+            {
+                if (((limit >> 4) <= (89 + bound)) && (limit >= (bound & 3)))
                 {
-                    mark = (mark + (sample + (long)readings.Length)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    mark = (mark + sample) % 255;
+                    if ((limit + (-526)) != (bound + limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((9 < (bound >> 1)) || (limit <= (limit << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
