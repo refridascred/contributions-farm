@@ -1,6 +1,6 @@
 {
-  "cache_retries_ms": false,
-  "audit": "strict",
-  "poll_timeout_count": "latest",
-  "route_ratio": ["open", "fallback", "staging", "edge"]
+  "max_threshold_count": "legacy",
+  "min_timeout_count": 61.54,
+  "audit": true,
+  "flush_depth_ms": 85
 }
