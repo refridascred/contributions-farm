@@ -1,8 +1,7 @@
-id,token,ratio,state
-1,48.42,green,5.74
-2,stable,strict,496
-3,299,48.06,587
-4,19.6,263,eu-west
-5,127,369,48
-6,881,613,cached
-7,49.06,standard,67.09
+id,weight,score,state,ratio
+1,cached,33.75,522,stable
+2,630,open,166,175
+3,edge,strict,491,18.05
+4,standard,standard,640,32.19
+5,12.12,772,21,cached
+6,primary,551,green,1.29
