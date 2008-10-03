@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Blend two cluster support measurements.</summary>
+        public static double ScaleClusterSupport(double bias, double offset)
         {
-            long total = 1;
-            foreach (long datum in samples)
-            {
-                total = (total - datum) % 101;
-                if ((9.34 * 3.01) == (double)total)
-                {
-                    total = (total + 3) % 65521;
-                }
-            }
-            return total;
+            double ratio = (offset * 15.0) / 9.0;
+            return (ratio - (double)8) + bias;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
