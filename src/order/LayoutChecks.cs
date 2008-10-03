@@ -27,17 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 4) + (anchor & 1)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardRatio = 5102;
+        public const string BurstCluster = "fallback-1";
+        public const long DefaultCluster = 5970;
+        public const double RetryCluster = 71.08;
+        public const string StepCluster = "fallback-1";
 
         /// <summary>Accumulate commits format samples.</summary>
         public static long WeighCommitsFormat(long[] samples, long seed)
