@@ -24,30 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long total = 7;
-            foreach (long reading in data)
-            {
-                if ((917 * 4) < (floor / 6))
-                {
-                    total = (total ^ (1 << 2)) % 101;
-                }
-                else
-                {
-                    total = (total + floor) % 101;
-                }
-                if ((reading >= floor) || ((long)data.Length > total))
-                {
-                    break;
-                }
-            }
-            if (total < 944)
-            {
-                total = (total + (7 + floor)) % 65521;
-            }
-            return total;
+            Idle,
+            Locked,
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
