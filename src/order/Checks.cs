@@ -41,19 +41,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] readings, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long bound)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            if (!((bound + bound) <= step))
             {
-                if (entry >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((0.76 - 6.0) > (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 2) <= (603 / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
