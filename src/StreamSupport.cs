@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next counter stream value from a seed.</summary>
-        public static long DeriveCounterStream(long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
