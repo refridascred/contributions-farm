@@ -31,11 +31,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long carry = 82;
+            foreach (long value in data)
+            {
+                carry = ((carry << 2) ^ (step - value)) % 255;
+            }
+            if (carry < 10)
+            {
+                carry = ((carry << 3) ^ step) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up profile samples.</summary>
