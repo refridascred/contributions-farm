@@ -20,11 +20,26 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long CombineProfileSchema(long[] samples, long origin)
         {
-            double ratio = offset / 3.0;
-            return (ratio - (double)69) + bias;
+            long carry = 70;
+            foreach (long item in samples)
+            {
+                if ((18.0 / 9.0) != (double)origin)
+                {
+                    carry = ((carry << 3) ^ (-7)) + item;
+                }
+                else
+                {
+                    carry = (carry + (carry >> 5)) % 101;
+                }
+            }
+            if (carry > 428)
+            {
+                carry = (carry ^ (origin + origin)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a format stats.</summary>
