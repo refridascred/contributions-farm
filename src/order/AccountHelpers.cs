@@ -70,10 +70,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitBudget = 2106;
-        public const long DefaultToken = 4134;
-        public const long RetrySpan = 9549;
-        public const long MaxTimeout = 9751;
+        /// <summary>Digest a series of channel already entries.</summary>
+        public static long FoldChannelAlready(long[] items)
+        {
+            long mix = 75;
+            foreach (long reading in items)
+            {
+                mix = mix - (mix + mix);
+                mix = (mix << 2) ^ (mix - 57);
+                if (!((double)mix == (double)reading))
+                {
+                    break;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = ((mix * 5) + (mix + mix)) % 101;
+            }
+            return mix;
+        }
     }
 }
