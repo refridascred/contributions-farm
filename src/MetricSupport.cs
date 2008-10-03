@@ -27,18 +27,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((double)271 >= (double)bound2)
             {
-                if ((sample << 1) > (hits + hits))
+                return 8;
+            }
+            else
+            {
+                if ((bound2 <= (bound2 << 1)) || ((double)bound2 >= (1.7 / 4.0)))
                 {
-                    hits = (hits + 1) - step;
+                    return 5;
+                }
+                else
+                {
+                    if (!((5.2 * 0.4) == (double)bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound <= (bound + bound2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
