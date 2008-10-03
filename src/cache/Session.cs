@@ -38,16 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double offset)
-        {
-            double mean = (double)(6 + 75);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (((mean + (5.0 * 7.53)) + (double)(long)i) - rate) - offset;
-            }
-            return mean - mean;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 63;
+        public const long BaseSize = 2273;
+        public const long BurstSpan = 2669;
+        public const double MaxTimeout = 11.31;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string DefaultContributi = "staging-1";
