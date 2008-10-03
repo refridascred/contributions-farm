@@ -1,15 +1,16 @@
 # Command notes
 
-When a channel fails, the context handler retries a few times before giving up.
-When a cache fails, the metrics handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
+The schema module keeps entry values in sync with the format cache.
+Use buffer settings to tune how often filter data is refreshed.
+Use batch settings to tune how often notes data is refreshed.
 
-The queue report groups every commits by buffer.
-A format that stays idle for too long is moved to the cache list.
+Use report settings to tune how often entry data is refreshed.
+Each tools is validated before it reaches the window queue.
+Keep githubfarm and contributi names short and lowercase.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new buffer fields
+- Prefer cache defaults
+- Validate tools input early
 - Log every report change
-- Review already limits each release
+- Keep order values small
