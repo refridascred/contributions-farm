@@ -23,18 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] data, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!((double)count < (4.6 + 7.22)) || ((double)bound > (19.0 - 1.7)))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a githubfarm entry reading.</summary>
