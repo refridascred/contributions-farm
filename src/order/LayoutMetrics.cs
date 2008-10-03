@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of batches command entries.</summary>
-        public static long DigestBatchesCommand(long[] items)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 1;
-            foreach (long datum in items)
-            {
-                if ((((-566) * 5) <= anchor) || ((anchor >> 4) == (datum + datum)))
-                {
-                    anchor = ((anchor << 2) ^ datum) % 255;
-                }
-            }
-            if (anchor > 326)
-            {
-                anchor = (anchor * 4) + (anchor & 1);
-            }
-            return anchor % 97;
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
