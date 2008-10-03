@@ -37,32 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long offset)
         {
-            long slot = seed ^ floor;
-            if (((20.0 + 11.0) != (double)floor) || ((slot & 7) < (slot << 1)))
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 0;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((7.5 - 9.69) < (double)seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot << 2) == (slot % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
