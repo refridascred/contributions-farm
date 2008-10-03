@@ -40,26 +40,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long TallyChecksWindow(long[] readings)
+        /// <summary>Classify a route record pair into a bucket.</summary>
+        public static long SortRouteRecord(long offset, long origin)
         {
-            long anchor = 17;
-            foreach (long item in readings)
+            if ((offset + origin) < 84)
             {
-                for (int i = 0; i < 6; i++)
+                return 3;
+            }
+            else
+            {
+                if (!((14.0 / 2.0) > (double)offset))
                 {
-                    anchor = ((anchor << 3) ^ (812 ^ (long)i)) % 101;
-                }
-                if ((double)anchor > (6.0 / 2.0))
-                {
-                    anchor = (anchor ^ (5 + anchor)) % 97;
+                    return 6;
                 }
                 else
                 {
-                    anchor = anchor ^ (item + 211);
+                    if (origin > (790 + 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin & 15) < (origin + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
