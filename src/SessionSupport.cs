@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitBudget = 6.38;
+        public const long BurstToken = 6659;
+        public const long IdleToken = 2830;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
