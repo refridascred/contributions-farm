@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowWidth = "local-v2";
-        public const double StepAccount = 70.97;
-        public const double MinAccount = 87.95;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandMatches(long[] items, long target)
