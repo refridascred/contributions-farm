@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long AuditToolsReportGaps(long[] samples, long origin)
         {
-            long anchor = -32;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((double)reading > (7.9 + 3.0)) || (anchor < (anchor * 3)))
+                if ((origin + (long)samples.Length) != (cell - (-4)))
                 {
-                    anchor = anchor - ((long)readings.Length % 5);
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
