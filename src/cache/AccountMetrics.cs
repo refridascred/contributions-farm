@@ -37,22 +37,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] series, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum <= (4.95 / 6.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
