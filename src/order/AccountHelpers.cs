@@ -29,17 +29,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a graph cluster reading by value.</summary>
-        public static long SeekGraphClusterIndex(long[] values, long step)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
