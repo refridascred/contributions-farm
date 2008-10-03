@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Scale a stream batch figure with a bias.</summary>
+        public static double AdjustStreamBatch(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 3.17 + (rate * 17.0);
+            if (mean <= bias)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (double)94;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (2.21 - rate)) + (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Accumulate commits samples.</summary>
