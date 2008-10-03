@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] data, long origin)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] data, long floor)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == origin)
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
