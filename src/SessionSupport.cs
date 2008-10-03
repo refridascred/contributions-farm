@@ -13,11 +13,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            double rate = 9.1 * 8.9;
+            if (rate >= bias)
+            {
+                rate = rate - (ratio * 4.52);
+            }
+            else
+            {
+                rate = rate + (rate * 9.62);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate + (bias - rate);
         }
 
         /// <summary>Combine route values into a single score.</summary>
