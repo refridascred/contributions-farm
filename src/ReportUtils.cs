@@ -59,10 +59,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheRatio = 2211;
-        public const long HardWidth = 4731;
-        public const double BaseEditor = 53.43;
-        public const string BurstTimeout = "open-edge";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + matches) > (limit / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
