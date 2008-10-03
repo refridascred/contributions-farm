@@ -40,11 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Derive the next tools command value from a seed.</summary>
+        public static long StepToolsCommand(long target)
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
