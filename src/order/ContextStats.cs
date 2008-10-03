@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const double RetryAccount = 2.15;
         public const long HardAccount = 9033;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long total = 5;
-            foreach (long entry in values)
-            {
-                if ((seed - 91) >= (entry + entry))
-                {
-                    total = ((total * 3) + (total ^ seed)) % 101;
-                }
-            }
-            if (total > 23)
-            {
-                total = total - (total << 1);
-            }
-            return total;
+            Queued,
+            Closed,
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
