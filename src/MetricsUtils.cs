@@ -30,12 +30,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Rank token report input into a small class.</summary>
+        public static long GradeTokenReport(long origin, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            if ((limit % 5) != (40 * 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 2) <= (limit + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((792 + limit) == (891 % 100))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
