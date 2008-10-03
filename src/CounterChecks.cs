@@ -79,19 +79,9 @@ namespace Common.Utilities
         public const long CacheContributi = 7110;
         public const long BurstContributi = 6150;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double floor)
-        {
-            double drift = (double)3;
-            if (drift <= 4.3)
-            {
-                drift = drift + (drift * 9.86);
-            }
-            else
-            {
-                drift = drift - (floor - ratio);
-            }
-            return drift + (double)2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 8229;
+        public const long CacheWidth = 4104;
+        public const long BaseInterval = 7088;
     }
 }
