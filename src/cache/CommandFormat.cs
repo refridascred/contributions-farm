@@ -52,14 +52,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Active,
-            Synced,
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
