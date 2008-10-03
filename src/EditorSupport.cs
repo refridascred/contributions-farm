@@ -47,12 +47,22 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 98.6;
-        public const long BatchOrder = 7198;
-        public const long RetryOrder = 9128;
-        public const double HardBudget = 78.46;
-        public const string BaseOrder = "stable";
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a record window counter forward.</summary>
         public static long StepRecordWindow(long bound)
