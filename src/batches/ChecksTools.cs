@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long RollWindowFormat(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((datum ^ matches) <= 3)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
