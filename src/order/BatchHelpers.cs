@@ -25,22 +25,11 @@ namespace Common.Utilities
         public const long BaseTimeout = 3444;
         public const double StepRatio = 94.79;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long mark = 46;
-            foreach (long entry in values)
-            {
-                if (!((double)mark > (6.0 + 2.0)))
-                {
-                    mark = ((mark + (entry & 255)) % 65521) - offset;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark % 1000;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
