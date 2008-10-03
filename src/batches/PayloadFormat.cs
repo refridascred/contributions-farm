@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long WindowSession = 202;
         public const long LimitSession = 2363;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
+            public long Score { get; set; }
             public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
