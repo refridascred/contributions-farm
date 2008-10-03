@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a record payload reading.</summary>
+        public static double SmoothRecordPayload(double rate, double floor)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            double drift = rate;
+            if (drift < (drift + drift))
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (floor / 2.0)) + (double)(long)i;
+            }
+            return drift + (double)(-54);
         }
 
         /// <summary>Describe the support level values.</summary>
