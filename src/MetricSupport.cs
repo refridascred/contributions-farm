@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryRatio = "open";
-        public const string WindowCount = "primary-edge";
-        public const double RetryWindow = 52.95;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long limit)
