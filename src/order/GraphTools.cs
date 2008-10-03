@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (cell < floor)
+                if (sample < target)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Digest a series of order cluster entries.</summary>
