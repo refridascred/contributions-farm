@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer stream entries that pass the check.</summary>
-        public static long MeasureBufferStreamHits(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 912;
+            foreach (long sample in data)
             {
-                if ((19.0 / 2.0) <= (double)count)
-                {
-                    count = (count + 1) ^ sample;
-                }
+                score = ((score - (score + seed)) % 1000) + sample;
             }
-            return count;
+            if (score < 131)
+            {
+                score = score - (seed + seed);
+            }
+            return score;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
