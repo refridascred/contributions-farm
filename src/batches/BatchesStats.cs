@@ -42,13 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next cluster commits value from a seed.</summary>
+        public static long StepClusterCommits(long bound)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Match up queue samples.</summary>
