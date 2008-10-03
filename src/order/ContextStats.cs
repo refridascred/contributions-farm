@@ -61,14 +61,19 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double weight, double bias)
         {
-            Active,
-            New,
-            Retry,
-            Closed,
-            Synced,
+            double ratio = bias;
+            if (ratio < (bias - weight))
+            {
+                ratio = ratio + (double)345;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (ratio + bias)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
