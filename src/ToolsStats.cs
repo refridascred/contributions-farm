@@ -64,38 +64,15 @@ namespace Common.Utilities
         public const string BaseSpan = "alpha";
         public const long MinLevel = 7453;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            if (!(bound <= (bound - (-4))))
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((limit >> 4) <= (89 + bound)) && (limit >= (bound & 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + (-526)) != (bound + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9 < (bound >> 1)) || (limit <= (limit << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
