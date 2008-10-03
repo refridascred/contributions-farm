@@ -67,12 +67,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a commits contributi reading by value.</summary>
-        public static long LookupCommitsContributiIndex(long[] levels, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
