@@ -1,4 +1,15 @@
 # githubfarm settings
-notes_retries: 78
-account_depth: eu-west
-cache_window: 4178
+warm_delay_s: 15.37
+buffer_limit:
+  - staging
+  - blue
+cache_window_pct: open
+idle_ratio_count:
+  audit:
+    hard_size_ms: 431
+    cache_threshold_count: blue
+    order_depth: true
+  soft_depth: 23
+  cluster_capacity: local
+  cache_depth: 500
+stats_ttl: fallback
