@@ -68,39 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long offset)
+        /// <summary>Validate layout batches readings against a bound.</summary>
+        public static bool GuardLayoutBatchesBounds(long[] samples, long step)
         {
-            long cur = step ^ offset;
-            if ((9.8 + 3.07) > (double)step)
+            bool found = true;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) == (offset - cur))
+                if (value <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + 6) != (offset + cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
