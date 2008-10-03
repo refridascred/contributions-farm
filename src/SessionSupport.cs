@@ -19,17 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a editor entry sample.</summary>
-        public static long SeekEditorEntryIndex(long[] samples, long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
