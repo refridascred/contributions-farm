@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double rate2 = floor;
-            if (rate2 >= rate2)
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - (double)0;
+            Dropped,
+            Draft,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the session status values.</summary>
