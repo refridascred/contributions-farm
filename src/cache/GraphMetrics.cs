@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a entry metric reading.</summary>
-        public static double ProjectEntryMetric(double weight, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double bias = (double)(4 + 4);
-            if (bias <= (span / 3.0))
-            {
-                bias = (bias + span) - weight;
-            }
-            return bias + 2.22;
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the buffer status values.</summary>
