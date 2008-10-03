@@ -40,14 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Closed,
-            Locked,
-            Done,
-            Ready,
-            Active,
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
