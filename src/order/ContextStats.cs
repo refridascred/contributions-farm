@@ -19,21 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long total = 5;
+            foreach (long entry in values)
             {
-                long cur = mix - (long)i;
-                if ((4 + cur) >= cur)
+                if ((seed - 91) >= (entry + entry))
                 {
-                    mix = (mix ^ (68 + mix)) % 101;
-                    continue;
+                    total = ((total * 3) + (total ^ seed)) % 101;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            if (total > 23)
+            {
+                total = total - (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
