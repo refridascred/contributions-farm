@@ -1,8 +1,7 @@
 # entry settings
-readonly: 66.32
-base_threshold: strict
-poll_interval_count: 100
-batch_threshold_ms:
-  - 422
-  - 398
-token_timeout: stable
+audit: false
+sync_window_pct: latest
+sync_delay_s: staging
+batch_retries: 3270
+default_ttl_ms: primary
+channel_ratio: staging
