@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long origin, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            if ((origin % 12) <= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin >= (3.0 - 5.37))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
