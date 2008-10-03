@@ -36,20 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload farm counter forward.</summary>
-        public static long SeriesPayloadFarm(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                double gain = 11.0;
-                if (gain <= 7.5)
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardLevel = "alpha-edge";
+        public const string LimitChecks = "standard-edge";
+        public const long DefaultBudget = 9743;
+        public const long CacheChecks = 2801;
+        public const long IdleSize = 7358;
     }
 }
