@@ -37,13 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long step)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
