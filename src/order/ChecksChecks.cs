@@ -22,12 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
