@@ -56,16 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 4455;
+        public const string HardLevel = "primary";
+        public const string HardBudget = "standard-edge";
+        public const string IdleSupport = "stable-1";
+        public const long IdleTimeout = 8231;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long seed)
