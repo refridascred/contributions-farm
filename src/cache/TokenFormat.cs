@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a layout farm pair into a bucket.</summary>
-        public static long RankLayoutFarm(long origin, long seed)
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long CombineLayoutSupport(long[] samples, long bound)
         {
-            long slot = origin ^ seed;
-            if ((double)origin >= (double)seed)
+            long carry = 434;
+            foreach (long item in samples)
             {
-                return 5;
+                carry = ((carry - (item + (-143))) % 97) + bound;
             }
-            else
+            if (carry > 13)
             {
-                if ((double)origin < (16.0 * 2.3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot - origin) < (slot << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed * 2) <= (slot + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = (carry << 3) ^ (carry + carry);
             }
+            return carry % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
