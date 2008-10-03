@@ -34,15 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Compare every pair of account format readings.</summary>
+        public static long PairAccountFormatCount(long[] data)
         {
-            double scale = weight;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - (floor + floor)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (double)751;
+            return hits;
         }
     }
 }
