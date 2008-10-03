@@ -36,18 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((floor + sample) == (sample / 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSpan = 3754;
+        public const long BurstDepth = 895;
+        public const string RetryToken = "fallback-edge";
     }
 }
