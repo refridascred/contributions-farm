@@ -33,19 +33,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool VerifyMetricCommitsLimits(long[] values, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            if (!((offset - seed) >= offset))
             {
-                if (value > bound)
+                return 2;
+            }
+            else
+            {
+                if (seed <= (offset >> 4))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
     }
 }
