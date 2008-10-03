@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] values, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((target + (-441)) >= (tally / 3)) || ((470 << 3) == (target + (-3))))
+                if ((hits & 1) >= offset)
                 {
-                    tally = (tally + 1) ^ reading;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate notes batch samples.</summary>
