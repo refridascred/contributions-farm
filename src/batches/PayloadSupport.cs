@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((0.04 - 7.87) > (double)seen)
+                if (((reading / 9) > (-4)) && ((5.03 - 1.1) < (double)reading))
                 {
-                    seen = (seen + 1) + reading;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
