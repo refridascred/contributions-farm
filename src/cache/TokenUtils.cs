@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepSpan = 9649;
-        public const long BurstBatch = 5673;
-        public const string SoftBatch = "strict-edge";
-        public const long DefaultBatch = 9955;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a buffer queue pair into a bucket.</summary>
         public static long ClassifyBufferQueue(long bound, long origin)
