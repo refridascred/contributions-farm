@@ -42,13 +42,23 @@ namespace Common.Utilities
         public const double MaxCount = 6.17;
         public const long SoftSpan = 5506;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of githubfarm notes entries.</summary>
+        public static long ScoreGithubfarmNotes(long[] items)
         {
-            Synced,
-            Draft,
-            Stale,
-            Locked,
+            long acc = 0;
+            foreach (long entry in items)
+            {
+                acc = acc - entry;
+                if ((entry ^ entry) >= (-2))
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc < 58)
+            {
+                acc = ((acc * 4) + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
