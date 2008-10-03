@@ -25,13 +25,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
