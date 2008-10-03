@@ -38,23 +38,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Rank support batches input into a small class.</summary>
+        public static long RankSupportBatches(long limit, long target)
         {
-            long bound = limit + origin;
-            if (((4 - origin) <= (limit ^ bound)) || ((6.51 + 1.63) <= (double)limit))
+            long diff = limit - target;
+            if ((double)diff > (double)limit)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (((limit + origin) > (243 + limit)) && ((double)bound < (18.0 / 9.0)))
+                if (((limit ^ target) <= diff) && ((5 >> 2) > limit))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((diff ^ diff) != (diff / 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
