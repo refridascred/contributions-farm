@@ -28,22 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 5115;
+        public const double HardBudget = 86.69;
+        public const long BurstWidth = 7405;
+        public const long MaxDepth = 8624;
+        public const double LimitNotes = 11.94;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] samples, long seed)
