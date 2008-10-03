@@ -20,12 +20,12 @@ namespace Common.Utilities
             return weight + 7.0;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] data, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] <= floor)
+                if (values[i] >= offset)
                 {
                     return (long)i;
                 }
