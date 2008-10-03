@@ -24,39 +24,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long offset, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] readings, long seed)
         {
-            long offset2 = offset - bound;
-            if (((offset2 * 3) != (64 * 4)) || ((bound + (-68)) > (50 / 6)))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) > (offset - offset2))
+                if ((8 + seen) != (seen % 97))
                 {
-                    return 8;
+                    seen = ((seen + 3) - reading) - seed;
                 }
                 else
                 {
-                    if ((offset >= (22 >> 2)) && ((bound % 64) > (999 << 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset <= ((-522) & 63)) || (offset <= bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
