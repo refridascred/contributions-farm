@@ -49,15 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Combine githubfarm batches values into a single score.</summary>
+        public static long FoldGithubfarmBatches(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long mark = -14;
+            foreach (long reading in series)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((5.56 / 9.0) != (double)mark) && (mark <= (mark + mark)))
+                {
+                    mark = (mark + (87 * 2)) - reading;
+                }
             }
-            return mix;
+            return mark;
         }
     }
 }
