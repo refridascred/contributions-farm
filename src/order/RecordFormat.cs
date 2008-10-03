@@ -62,17 +62,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor & 31) <= (230 / 7)))
             {
-                if (data[i] < seed)
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) >= floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((25 & 15) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
