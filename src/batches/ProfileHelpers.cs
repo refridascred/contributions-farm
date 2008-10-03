@@ -72,13 +72,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            Dropped,
-            Queued,
-            Paused,
-            New,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state * 3) + (state - state)) ^ (long)i2;
+                }
+                state = (state - (bound & 255)) % 65521;
+                state = (state ^ (16 + bound)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
