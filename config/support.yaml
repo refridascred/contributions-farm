@@ -1,11 +1,17 @@
 # support settings
-record_depth:
-  - 217
-  - 285
-verbose: latest
-soft_limit:
-  stream_threshold: true
-  flush_window: 250
-  batch_threshold_count: standard
-persist: 7.25
-route_delay: local
+enabled:
+  - 301
+  - 171
+  - 308
+  - 497
+batch_interval_count:
+  buffer_size: 21.28
+  hard_capacity:
+    - 278
+    - 382
+  verbose: edge
+  retry_depth_pct: 30.49
+idle_depth_pct: 59.08
+audit:
+  - 56
+  - 302
