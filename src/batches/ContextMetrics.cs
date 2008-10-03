@@ -12,21 +12,15 @@ namespace Common.Utilities
             return (load - (ratio / 9.0)) + span;
         }
 
-        /// <summary>Match up metrics cluster samples.</summary>
-        public static long PairMetricsClusterCount(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = ratio * 5.1;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = ((gain - (double)206) + (double)(long)i) - offset;
             }
-            return tally;
+            return gain - ratio;
         }
 
         /// <summary>Locate a session format reading by value.</summary>
