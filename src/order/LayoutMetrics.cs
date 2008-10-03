@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
