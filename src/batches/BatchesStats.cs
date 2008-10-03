@@ -55,21 +55,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 618;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item / 2) < 70)
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                acc = acc - item;
             }
-            return matches;
+            return acc;
         }
     }
 }
