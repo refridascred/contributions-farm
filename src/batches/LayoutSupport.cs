@@ -26,12 +26,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5115;
-        public const double HardBudget = 86.69;
-        public const long BurstWidth = 7405;
-        public const long MaxDepth = 8624;
-        public const double LimitNotes = 11.94;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryBudget = "alpha";
+        public const long StepStream = 4965;
+        public const long CacheFactor = 6121;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] samples, long seed)
