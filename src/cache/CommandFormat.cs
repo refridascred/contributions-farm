@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two metrics queue measurements.</summary>
-        public static double BlendMetricsQueue(double scale, double bias)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double mean = scale;
-            if (mean < (double)251)
-            {
-                mean = mean + (mean + bias);
-            }
-            else
-            {
-                mean = mean + (double)5;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (mean - scale);
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of notes window entries.</summary>
