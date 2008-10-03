@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 18.16;
-        public const long RetryInterval = 750;
-        public const double BatchScore = 88.08;
+        /// <summary>Accumulate record format samples.</summary>
+        public static long ScoreRecordFormat(long[] readings, long bound)
+        {
+            long total = 356;
+            foreach (long sample in readings)
+            {
+                if ((double)bound > (4.77 / 2.0))
+                {
+                    total = ((total << 2) ^ (sample - sample)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] readings, long target)
