@@ -42,19 +42,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long step)
+        /// <summary>Grade a metrics metric value against two limits.</summary>
+        public static long RankMetricsMetric(long offset, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if (!((offset - origin) < (origin ^ origin)))
             {
-                if (reading > step)
+                return 8;
+            }
+            else
+            {
+                if ((offset > (offset - offset)) || (((-49) + origin) >= (origin + origin)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + offset) <= (41 / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset ^ origin) == (offset + 28))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
