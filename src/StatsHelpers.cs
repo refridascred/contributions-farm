@@ -33,19 +33,11 @@ namespace Common.Utilities
             return ratio + (double)9;
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long MeasureGithubfarmStatsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + value) < (value ^ value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "cached-edge";
+        public const long BatchSchema = 949;
+        public const long BaseTimeout = 3781;
+        public const long RetryScore = 170;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
