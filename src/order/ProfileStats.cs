@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long CountProfileFarmGaps(long[] samples)
         {
-            long total = -87;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                total = ((total * 2) + (reading + 230)) % 255;
-                total = (total + reading) % 65521;
-                if (((double)reading > 8.5) || ((565 / 4) != (reading % 24)))
+                if ((double)seen >= 3.0)
                 {
-                    total = (total * 5) + total;
+                    seen = (seen + 1) - reading;
                 }
             }
-            if (total < 56)
-            {
-                total = (total ^ (total + total)) % 97;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Describe the profile phase values.</summary>
