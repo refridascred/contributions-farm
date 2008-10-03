@@ -1,6 +1,16 @@
 # githubfarm settings
-strict: 57.53
-compress: true
-stream_threshold: 83
-burst_retries: 24.84
-min_delay: stable
+retry_timeout_s: 3782
+token_interval: fallback
+enabled:
+  - 201
+  - 119
+  - 222
+  - 339
+warm_size:
+  cache_interval_s: 36.93
+  base_window_count: 37.18
+  cache_ratio_s: 60
+  cache_window: 6
+warm_timeout:
+  - 137
+  - 139
