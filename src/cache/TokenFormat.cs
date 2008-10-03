@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a contributi checks reading.</summary>
-        public static double ScaleContributiChecks(double bias, double offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double ratio = (bias - bias) / 4.0;
-            return (ratio + (double)1) + offset;
+            Pending,
+            Done,
+            Locked,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the editor kind values.</summary>
