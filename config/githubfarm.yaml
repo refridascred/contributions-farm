@@ -1,19 +1,22 @@
 # githubfarm settings
-base_threshold_ms: latest
-default_ttl_count: 51.78
-format_threshold: 79.57
-min_delay_count:
-  hard_ratio_ms: stable
-  max_timeout_pct: 25
-  flush_interval_pct:
-    - local
-    - cached
-  persist:
-    - strict
+max_threshold_count: standard
+batches_timeout: 30
+buffer_window: 91.89
+cache_limit: 55.87
+token_capacity:
+  batch_capacity_pct: 54
+  dry_run:
+    - 85
+    - 114
+    - 257
+  window_ttl: 47.63
+  idle_capacity: fallback
+  strict: standard
+  hard_timeout:
+    - standard
     - green
-    - green
-    - green
-  idle_capacity_ms:
-    - strict
-    - cached
-  warm_size_pct: green
+    - stable
+strict:
+  persist: 76
+  verbose: 4877
+  compress: true
