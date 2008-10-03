@@ -27,20 +27,12 @@ namespace Common.Utilities
         public const long WindowScore = 8562;
         public const long CacheSize = 6577;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((7 ^ 578) > offset))
-                {
-                    total = (total << 3) ^ (2 >> 5);
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 8408;
+        public const double BasePayload = 65.43;
+        public const string StepLevel = "alpha-1";
+        public const string CachePayload = "fallback-edge";
+        public const double HardCount = 34.41;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowSupport = 74.2;
