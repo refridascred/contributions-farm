@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
