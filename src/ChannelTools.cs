@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes route reading.</summary>
-        public static double ProjectNotesRoute(double bias, double bias2)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double mean = (double)94;
-            if (mean > (mean / 9.0))
-            {
-                mean = (mean + (1.1 - mean)) + bias;
-            }
-            else
-            {
-                mean = mean - bias2;
-            }
-            return mean + bias2;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
