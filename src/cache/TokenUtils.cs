@@ -16,10 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchStream = "primary-v2";
-        public const string LimitStream = "staging-1";
-        public const long DefaultStream = 8403;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Closed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
