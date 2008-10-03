@@ -40,9 +40,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitDepth = "latest-v2";
-        public const long IdleCommits = 9467;
-        public const double BurstCommits = 51.0;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor << 2) ^ 92;
+                anchor = (anchor << 2) ^ (anchor + (long)i);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
