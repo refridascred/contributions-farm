@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mark = 80;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (mark ^ mark) - (long)i;
+                }
+                if (((15.0 * 15.0) <= (double)datum) && ((mark % 8) == (mark - mark)))
+                {
+                    mark = (mark + (datum >> 3)) % 101;
+                }
+            }
+            if (mark > (-6))
+            {
+                mark = ((mark << 3) ^ mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
