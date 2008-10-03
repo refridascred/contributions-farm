@@ -46,23 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double gain = (double)(761 + 2);
-            if (gain > span)
-            {
-                gain = gain + (double)10;
-            }
-            else
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain + span;
+            Draft,
+            Paused,
+            Retry,
+            Ready,
+            Synced,
         }
     }
 }
