@@ -1,6 +1,6 @@
 {
-  "poll_ttl_ms": 79.04,
-  "max_limit": "green",
-  "audit": "strict",
-  "persist": "standard"
+  "metric_size": false,
+  "default_ttl_ms": 64.21,
+  "readonly": 44,
+  "min_depth": true
 }
