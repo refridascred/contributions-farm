@@ -21,22 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples, long limit)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (16.0 < (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = ((tally + 2) - datum) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
