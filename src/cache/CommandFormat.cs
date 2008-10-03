@@ -38,11 +38,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 15.63;
-        public const long MinDepth = 3517;
-        public const long RetrySize = 4144;
-        public const string CacheToken = "local-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetrySpan = "standard-1";
+        public const double DefaultSize = 66.39;
+        public const string RetryBuffer = "strict-1";
+        public const long BurstBuffer = 945;
+        public const long HardTimeout = 8192;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
