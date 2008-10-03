@@ -27,25 +27,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long origin, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
-            long delta = origin - floor;
-            if (!((delta % 64) < origin))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta % 8) == (origin & 7))
+                if (!((datum << 3) >= (datum + 5)))
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
