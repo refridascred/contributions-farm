@@ -22,13 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Retry,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 7544;
+        public const long MinCommand = 8608;
+        public const string IdleRatio = "strict-v2";
 
         /// <summary>Check that every cluster channel entry stays within the limit.</summary>
         public static bool ValidateClusterChannelLimits(long[] items, long origin)
