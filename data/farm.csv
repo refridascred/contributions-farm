@@ -1,11 +1,6 @@
-id,rank,ratio,weight,score
-1,445,501,0.61,612
-2,9.42,984,fallback,76.94
-3,12.46,468,617,95.13
-4,465,edge,90.91,969
-5,174,206,88.68,strict
-6,96.29,cached,26.38,87.41
-7,edge,13.05,primary,105
-8,905,14,887,cached
-9,stable,green,23.49,51.94
-10,201,eu-west,4.3,48.04
+id,token,score
+1,edge,185
+2,latest,56.57
+3,64.46,949
+4,37,standard
+5,57.35,773
