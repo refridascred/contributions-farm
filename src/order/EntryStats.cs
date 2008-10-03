@@ -20,19 +20,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double rate, double floor)
         {
-            long state = 1;
-            foreach (long cell in data)
+            double load = floor * 5.3;
+            if (load < (floor / 2.0))
             {
-                state = state ^ (326 ^ cell);
+                load = load - load;
             }
-            if (state > 31)
+            else
             {
-                state = ((state * 3) + (long)data.Length) % 65521;
+                load = load - (load + load);
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (10.0 - load)) + (double)(long)i;
+            }
+            return load + (rate * 20.0);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
