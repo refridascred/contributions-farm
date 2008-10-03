@@ -40,16 +40,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema layout series from a seed.</summary>
-        public static long DeriveSchemaLayout(long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long seed, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long delta = seed ^ floor;
+            if ((3.4 / 4.0) != (double)seed)
             {
-                mark = (mark + (bound + bound)) % 65521;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (seed >= (seed ^ delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (delta % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
