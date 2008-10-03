@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate profile counter samples.</summary>
-        public static long ScoreProfileCounter(long[] samples)
+        /// <summary>Validate metrics profile readings against a bound.</summary>
+        public static bool VerifyMetricsProfileLimits(long[] values, long origin)
         {
-            long state = 3;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                state = (state - state) - datum;
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 0)
-            {
-                state = state - state;
-            }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
