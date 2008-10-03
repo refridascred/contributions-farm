@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            double bias2 = bias * 4.34;
+            return (bias2 - (7.3 - bias)) + gain;
         }
 
         /// <summary>Describe the batches phase values.</summary>
