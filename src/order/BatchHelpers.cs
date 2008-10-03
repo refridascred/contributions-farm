@@ -34,18 +34,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long CountChecksContextMatches(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)sample >= (9.0 + 0.2))
+                if ((0 % 16) > (12 + reading))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
