@@ -59,9 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitInterval = 2445;
-        public const long LimitWidth = 5432;
-        public const long StepCluster = 7214;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (21 >= (limit + limit))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
