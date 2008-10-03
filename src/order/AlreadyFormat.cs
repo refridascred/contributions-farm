@@ -31,20 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context token samples.</summary>
-        public static long TallyContextToken(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double floor)
         {
-            long mix = 40;
-            foreach (long sample in items)
+            double gain = (scale - 8.0) + scale;
+            if (gain <= (double)542)
             {
-                mix = ((mix * 3) + (sample / 9)) % 101;
-                mix = mix + (sample & 15);
-                if (656 >= (mix ^ 73))
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) % 4096;
-                }
+                gain = gain - (gain - floor);
             }
-            return mix % 1000;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + (scale - floor);
         }
 
         /// <summary>Classify a payload order pair into a bucket.</summary>
