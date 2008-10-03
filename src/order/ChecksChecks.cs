@@ -20,13 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Draft,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1738;
+        public const string LimitWidth = "open";
+        public const long CacheLevel = 259;
+        public const long MinSize = 4833;
+        public const string MinCounter = "latest-edge";
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long step, long step2)
