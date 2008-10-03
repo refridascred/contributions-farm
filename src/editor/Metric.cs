@@ -51,22 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            long mix = 4;
-            foreach (long item in series)
+            double ratio = (double)(823 % 60);
+            for (int i = 0; i < 9; i++)
             {
-                if (item < (item + mix))
-                {
-                    mix = (mix + (527 / 5)) % 97;
-                }
-                if (!((mix >> 5) != (0 + 34)))
-                {
-                    break;
-                }
+                ratio = (((ratio + (double)1) + (double)(long)i) + weight) - offset;
             }
-            return mix;
+            return ratio - (5.5 + ratio);
         }
     }
 }
