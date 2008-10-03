@@ -49,21 +49,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            double gain = (8.1 - 5.52) + floor;
+            if (gain < (ratio * 2.0))
             {
-                state = state ^ (state - 714);
-                if (limit <= (limit ^ limit))
-                {
-                    state = ((state * 5) + (126 % 100)) % 65521;
-                }
-                state = ((state << 2) ^ (state ^ (long)i)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
+                gain = gain + (ratio - 7.9);
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (ratio + 11.0)) + (double)(long)i;
+            }
+            return gain - (double)26;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
