@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleLevel = 5975;
-        public const long IdleWindow = 2868;
-        public const double RetryWindow = 75.38;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Dropped,
+            Queued,
+            New,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
