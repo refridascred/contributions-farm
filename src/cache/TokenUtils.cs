@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 2080;
+        public const string BatchWidth = "strict";
+        public const long DefaultScore = 7747;
 
         /// <summary>Classify a buffer queue pair into a bucket.</summary>
         public static long ClassifyBufferQueue(long bound, long origin)
