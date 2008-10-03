@@ -72,15 +72,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
