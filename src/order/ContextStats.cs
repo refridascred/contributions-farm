@@ -56,16 +56,18 @@ namespace Common.Utilities
             return gain + (gain / 3.0);
         }
 
-        /// <summary>Roll a token session counter forward.</summary>
-        public static long SeriesTokenSession(long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = acc - (-277);
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((8.4 / 8.0) >= (double)entry)
+                {
+                    seen = seen + 2;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
