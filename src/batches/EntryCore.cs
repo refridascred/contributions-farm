@@ -15,10 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "local";
-        public const long SoftRatio = 8900;
-        public const long DefaultQueue = 8403;
+        /// <summary>Find the first notes metrics entry that matches the target.</summary>
+        public static long FindNotesMetricsIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long step, long target)
