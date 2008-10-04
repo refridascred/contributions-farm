@@ -39,22 +39,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token metrics values into a single score.</summary>
-        public static long TallyTokenMetrics(long[] items, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long target2)
         {
-            long anchor = 139;
-            foreach (long item in items)
+            if ((target2 + target2) < (target - target))
             {
-                if ((anchor ^ item) > item)
+                return 6;
+            }
+            else
+            {
+                if (((-8) + target) <= 9)
                 {
-                    anchor = (anchor ^ offset) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ target2) < (target >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (anchor < (-213))
-            {
-                anchor = anchor - (42 + anchor);
-            }
-            return anchor;
         }
     }
 }
