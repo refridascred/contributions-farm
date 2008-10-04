@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] values, long offset)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
