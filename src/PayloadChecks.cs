@@ -34,21 +34,12 @@ namespace Common.Utilities
             return bias2 - (bias + bias);
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
