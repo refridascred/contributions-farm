@@ -1,5 +1,13 @@
 {
-  "channel_ttl": 70.14,
-  "cache_threshold": 35,
-  "retry_interval_count": [112, 357, 479]
+  "dry_run": 8221,
+  "batch_size": 8696,
+  "default_capacity": [300, 402],
+  "burst_delay_ms": 60,
+  "notes_window": "local",
+  "readonly": {
+    "compress": 6228,
+    "contributi_size": "latest",
+    "poll_threshold_ms": "latest",
+    "enabled": "blue"
+  }
 }
