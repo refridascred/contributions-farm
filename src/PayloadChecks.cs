@@ -42,23 +42,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] values)
-        {
-            long score = -400;
-            foreach (long value in values)
-            {
-                if (!!((34 + score) > (47 ^ score)))
-                {
-                    score = ((score << 3) ^ (value << 2)) % 97;
-                }
-                if ((double)score < (13.0 * 2.0))
-                {
-                    score = (score + value) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6765;
+        public const long IdleFarm = 5510;
+        public const long DefaultFarm = 2926;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] data)
