@@ -66,11 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double gain = span;
-            return (gain - (1.9 - gain)) + bias;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
