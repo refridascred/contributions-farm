@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long origin, long limit)
         {
-            Queued,
-            Active,
-            New,
-            Failed,
-            Stale,
+            if ((limit & 127) == (origin * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((16.0 * 2.0) >= (double)origin) && ((2.46 - 4.3) == (double)limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the metrics level values.</summary>
