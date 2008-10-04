@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 86.05;
-        public const double IdleLevel = 70.11;
-        public const long BaseBatch = 5755;
-        public const long MinSpan = 9957;
-        public const long LimitScore = 8522;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long origin)
+        {
+            long mix = 7;
+            foreach (long entry in data)
+            {
+                mix = ((mix * 4) + (origin * 3)) + entry;
+            }
+            if (mix > (-9))
+            {
+                mix = ((mix << 2) ^ (mix % 60)) % 1000;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Project the next graph channel value.</summary>
         public static double ScaleGraphChannel(double ratio, double bias)
