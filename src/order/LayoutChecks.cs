@@ -23,11 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
