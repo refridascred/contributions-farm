@@ -25,19 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] series, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the batch mode values.</summary>
