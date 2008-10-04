@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] values, long origin)
         {
-            long score = 36;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (!((score & 127) > (item / 9)))
+                if (datum >= origin)
                 {
-                    score = score + ((long)readings.Length % 2);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 98)
-            {
-                score = score ^ (score - 553);
-            }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
