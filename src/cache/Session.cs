@@ -19,18 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((34 / 3) > (cell - 841))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next queue stream value from a seed.</summary>
