@@ -1,13 +1,5 @@
 {
-  "max_delay": [422, 21, 489],
-  "checks_interval": "green",
-  "audit": "stable",
-  "idle_threshold_s": 6599,
-  "burst_timeout": {
-    "min_ratio": 10,
-    "stats_size": "strict",
-    "sync_interval": 4.22,
-    "idle_depth_s": "strict"
-  },
-  "base_delay": 82
+  "cluster_capacity": 53.41,
+  "strict": 95,
+  "burst_threshold_count": 63.38
 }
