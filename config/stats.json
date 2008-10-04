@@ -1,8 +1,12 @@
 {
-  "retry_interval": "fallback",
-  "default_limit": "stable",
-  "sync_timeout_s": "fallback",
-  "min_capacity": "stable",
-  "payload_delay": "blue",
-  "checks_window": 33
+  "context_window": 3289,
+  "min_size_pct": ["blue", "legacy", "cached", "blue"],
+  "flush_retries_pct": {
+    "strict": false,
+    "batch_interval_count": true,
+    "sync_threshold_s": "stable",
+    "min_ratio": "edge"
+  },
+  "profile_delay": "edge",
+  "burst_depth": ["fallback", "green"]
 }
