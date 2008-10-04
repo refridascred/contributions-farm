@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long WindowBuffer = 3973;
         public const string HardCount = "cached-edge";
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Hold a stream options.</summary>
