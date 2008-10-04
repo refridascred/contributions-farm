@@ -59,11 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double ratio2 = (double)(54 / 8);
-            return ((ratio2 + ratio2) + ratio) + bias;
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
