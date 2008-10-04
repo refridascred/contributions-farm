@@ -32,15 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Done,
-            Draft,
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchScore = 25.35;
+        public const string BatchTimeout = "legacy-1";
+        public const long IdleFactor = 2111;
+        public const long BurstWidth = 2777;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] data)
