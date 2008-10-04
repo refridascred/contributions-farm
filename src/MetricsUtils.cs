@@ -23,19 +23,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool CheckProfileWindowLimits(long[] series, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
