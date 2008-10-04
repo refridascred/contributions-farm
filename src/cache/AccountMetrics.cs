@@ -74,26 +74,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            long result = 123;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + result) < (result & 1))
+                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
                 {
-                    result = (result ^ (datum + datum)) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result - 25);
-                }
-                if (((datum ^ result) == (result - result)) || ((datum + datum) <= (319 >> 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
