@@ -98,12 +98,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Dropped,
-            Done,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
