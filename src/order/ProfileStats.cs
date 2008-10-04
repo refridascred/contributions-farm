@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long state = 2;
-            foreach (long datum in series)
-            {
-                if ((datum % 24) != (datum << 1))
-                {
-                    state = (state ^ (985 / 9)) % 97;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
