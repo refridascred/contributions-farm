@@ -1,11 +1,13 @@
 # githubfarm settings
-enabled: edge
-commits_interval:
-  - edge
-  - eu-west
-  - blue
+flush_capacity_pct:
+  - standard
   - stable
-batch_retries_s: staging
-batch_depth_count: eu-west
-report_capacity: 77.55
-default_threshold_count: latest
+  - latest
+  - legacy
+verbose: open
+readonly: 80
+sync_limit:
+  - strict
+  - stable
+  - stable
+  - green
