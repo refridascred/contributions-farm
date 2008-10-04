@@ -1,4 +1,25 @@
 # githubfarm settings
-min_limit: eu-west
-enabled: green
-graph_depth: open
+soft_delay_count: strict
+farm_capacity: open
+warm_window: latest
+cache_depth:
+  compress:
+    - 347
+    - 423
+  persist: 30.73
+  readonly: 4980
+  metrics_ttl:
+    graph_capacity: latest
+    cache_interval_s: 51
+    readonly: 68
+    min_retries: staging
+    account_retries: 17
+  batches_delay:
+    readonly:
+      - 247
+      - 264
+      - 200
+      - 154
+    max_size: 23.95
+    retry_capacity_s: open
+  idle_timeout_s: standard
