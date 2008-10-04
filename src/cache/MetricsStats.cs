@@ -19,23 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double mean = 2.93;
-            if (mean <= ratio)
-            {
-                mean = mean + 9.46;
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (2.0 + mean);
+            Done,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the metric kind values.</summary>
