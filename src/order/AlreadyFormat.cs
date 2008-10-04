@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] items, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item < floor)
+                if (reading <= (reading ^ bound))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Find the first session editor entry that matches the target.</summary>
