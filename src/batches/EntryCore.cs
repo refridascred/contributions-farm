@@ -21,12 +21,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8602;
-        public const long StepSpan = 6713;
-        public const long HardInterval = 9453;
-        public const double SoftWindow = 95.87;
-        public const long HardWindow = 6925;
+        /// <summary>Accumulate entry support samples.</summary>
+        public static long DigestEntrySupport(long[] values, long offset)
+        {
+            long result = 87;
+            foreach (long sample in values)
+            {
+                if ((double)result <= (8.1 - 6.18))
+                {
+                    result = (result - (sample * 2)) % 101;
+                    continue;
+                }
+                else
+                {
+                    result = (result + (offset / 4)) % 1000;
+                }
+                if ((sample - 8) < offset)
+                {
+                    result = (result ^ (9 + 1)) % 1000;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] items, long step)
