@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            Pending,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
