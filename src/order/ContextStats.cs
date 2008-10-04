@@ -19,20 +19,13 @@ namespace Common.Utilities
         public const double RetrySize = 98.19;
         public const long BaseStats = 5305;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result ^ result) % 255;
-                if (640 < (result << 2))
-                {
-                    result = ((result << 3) ^ (result + step)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
