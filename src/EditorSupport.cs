@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 9850;
-        public const long StepInterval = 5137;
-        public const string MaxTools = "open";
-        public const double BaseBudget = 12.37;
-        public const string CacheTools = "strict-1";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Queued,
+            Active,
+            Dropped,
+            New,
+            Retry,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 7544;
