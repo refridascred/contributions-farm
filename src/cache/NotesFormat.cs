@@ -13,18 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((long)samples.Length < (688 - hits)))
+                if (!(74 <= (sample / 9)) || ((long)series.Length < (sample << 1)))
                 {
-                    hits = (hits + 1) ^ cell;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a stream token counter forward.</summary>
