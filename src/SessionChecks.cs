@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 2310;
+        public const double BurstCount = 16.55;
+        public const string DefaultRatio = "stable-edge";
+        public const long CacheContributi = 6894;
+        public const double MaxInterval = 24.76;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long origin, long offset)
