@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] values, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
