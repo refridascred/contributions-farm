@@ -21,10 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSpan = 3231;
-        public const long StepSupport = 6705;
-        public const long BatchSupport = 6427;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowWidth = 9263;
+        public const long RetryCount = 7478;
+        public const long BatchToken = 9613;
+        public const string MaxToken = "staging";
+        public const long RetryToken = 9544;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] items, long step)
