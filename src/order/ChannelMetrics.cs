@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long BatchStream = 5909;
         public const string RetryBudget = "stable-1";
 
-        /// <summary>Roll a filter batches counter forward.</summary>
-        public static long IterateFilterBatches(long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] levels, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((seen ^ seen) < (seed / 8))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
