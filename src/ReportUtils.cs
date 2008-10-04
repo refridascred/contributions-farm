@@ -25,12 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Project the next tools entry value.</summary>
+        public static double SmoothToolsEntry(double rate, double span)
         {
-            Closed,
-            New,
-            Synced,
+            double bias = (double)((-35) - 26);
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + (double)(-77)) - (double)(long)i) - rate;
+            }
+            return bias - span;
         }
 
         /// <summary>Describe the batch mode values.</summary>
