@@ -1,8 +1,7 @@
-id,label,level,score
-1,open,87.35,standard
-2,primary,71,44
-3,9.58,911,395
-4,477,362,884
-5,605,cached,110
-6,57.85,67.17,597
-7,green,221,strict
+id,label,region
+1,eu-west,581
+2,73,latest
+3,18.98,246
+4,32,820
+5,86,eu-west
+6,41.82,cached
