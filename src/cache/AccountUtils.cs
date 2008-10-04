@@ -18,39 +18,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank farm support input into a small class.</summary>
-        public static long ClassifyFarmSupport(long step, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long bound = step ^ target;
-            if ((bound * 4) == (step / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target < step) || ((558 / 8) >= (33 - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step < ((-9) * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((955 - target) == (bound & 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
