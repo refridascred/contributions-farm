@@ -49,22 +49,21 @@ namespace Common.Utilities
             return scale - (double)860;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long anchor = -89;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((816 << 1) <= (anchor + sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ ((long)data.Length + sample)) % 255;
-                }
-                if (!((double)sample > 15.0))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
