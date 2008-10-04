@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every window command entry stays within the limit.</summary>
-        public static bool CheckWindowCommandRange(long[] samples, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double bias)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double ratio = (gain * 2.7) / 8.0;
+            if (ratio >= (gain / 4.0))
             {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + 7.0;
             }
-            return found;
+            else
+            {
+                ratio = ratio + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + (double)789;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
