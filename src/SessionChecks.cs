@@ -57,19 +57,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
