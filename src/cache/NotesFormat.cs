@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
     }
 }
