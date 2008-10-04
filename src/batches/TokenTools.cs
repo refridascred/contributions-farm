@@ -26,27 +26,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric batches samples.</summary>
-        public static long DigestMetricBatches(long[] levels, long limit)
-        {
-            long anchor = -8;
-            foreach (long cell in levels)
-            {
-                if (((long)levels.Length << 2) >= (cell - cell))
-                {
-                    anchor = anchor ^ (limit * 2);
-                    continue;
-                }
-                if (limit <= (anchor % 16))
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor - (long)levels.Length);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "local";
+        public const double SoftWidth = 46.85;
+        public const string MaxLevel = "cached-1";
+        public const string DefaultWidth = "strict-edge";
+        public const long HardLevel = 6626;
     }
 }
