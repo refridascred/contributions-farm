@@ -33,15 +33,10 @@ namespace Common.Utilities
         public const double BurstAlready = 62.68;
         public const double DefaultSize = 33.57;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Failed,
-            Idle,
-            Pending,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 9090;
+        public const long WindowReport = 137;
+        public const long CacheReport = 1781;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
