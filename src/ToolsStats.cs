@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items, long origin)
-        {
-            long score = -790;
-            foreach (long cell in items)
-            {
-                if ((913 % 5) != (score + origin))
-                {
-                    score = ((score << 3) ^ origin) % 97;
-                }
-                if (origin > (cell << 2))
-                {
-                    score = score - 22;
-                }
-            }
-            if (score > 885)
-            {
-                score = ((score << 3) ^ (origin / 3)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheSpan = 5063;
+        public const double BatchCommand = 50.53;
+        public const string CacheLevel = "standard-1";
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] data, long floor)
