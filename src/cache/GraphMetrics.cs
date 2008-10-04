@@ -67,10 +67,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSize = 4442;
-        public const long MinNotes = 1832;
-        public const double DefaultNotes = 16.83;
-        public const long BaseNotes = 1160;
+        /// <summary>Iterate the account cache series from a seed.</summary>
+        public static long RollAccountCache(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
