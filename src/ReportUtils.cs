@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a batch summary.</summary>
