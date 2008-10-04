@@ -50,15 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] samples, long limit)
         {
-            long total = 652;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                total = (total + (bound ^ total)) ^ entry;
+                if ((datum + datum) < (limit / 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            return total % 1000;
+            return seen;
         }
     }
 }
