@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values, long limit)
         {
-            double ratio = (double)54 - span;
-            if (ratio <= (weight - 12.0))
+            long matches = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - ratio;
+                if ((value < (value ^ 436)) || ((limit >> 5) >= limit))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 0.17) + (double)(long)i;
-            }
-            return ratio - (12.0 + weight);
+            return matches;
         }
 
         /// <summary>Hold a schema header.</summary>
