@@ -30,19 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] data, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
