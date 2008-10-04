@@ -1,8 +1,4 @@
 # githubfarm settings
-audit: 500
-verbose: false
-tools_threshold: 250
-channel_threshold:
-  - latest
-  - standard
-sync_capacity: 250
+entry_depth: false
+audit: 51
+base_timeout: staging
