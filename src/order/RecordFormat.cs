@@ -12,20 +12,24 @@ namespace Common.Utilities
         public const long WindowNotes = 7134;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
+            long carry = -96;
+            foreach (long datum in items)
             {
-                if (!((long)i > seed))
+                long bound = datum;
+                if ((carry ^ carry) != (bound / 7))
                 {
-                    mark = (mark ^ (mark & 31)) % 97;
-                    mark = (mark ^ ((long)i + (long)i)) % 4096;
+                    carry = ((carry * 3) + datum) % 4096;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                carry = (carry + carry) % 1000;
             }
-            return mark;
+            if (carry < 50)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
