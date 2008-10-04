@@ -21,12 +21,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            Dropped,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
