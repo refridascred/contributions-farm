@@ -17,23 +17,22 @@ namespace Common.Utilities
         public const long BurstGraph = 13;
         public const long HardGraph = 1931;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double rate, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings)
         {
-            double load = floor * 5.3;
-            if (load < (floor / 2.0))
+            long mix = 92;
+            foreach (long reading in readings)
             {
-                load = load - load;
+                if ((mix - 863) < (mix & 63))
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (reading & 7);
+                }
             }
-            else
-            {
-                load = load - (load + load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (10.0 - load)) + (double)(long)i;
-            }
-            return load + (rate * 20.0);
+            return mix % 1000;
         }
 
         /// <summary>Hold a filter info.</summary>
