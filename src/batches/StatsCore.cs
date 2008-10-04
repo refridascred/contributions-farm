@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mark = 78;
+            foreach (long cell in samples)
             {
-                if ((cell % 5) == (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
+                mark = ((mark - (mark + cell)) % 101) - seed;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
