@@ -12,22 +12,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample << 1) == (sample / 2)) || (7 < (acc % 16)))
-                {
-                    acc = (acc ^ (sample * 5)) % 4096;
-                }
-            }
-            if (acc > (-604))
-            {
-                acc = (acc ^ (acc * 3)) % 97;
-            }
-            return acc;
+            Retry,
+            Queued,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
