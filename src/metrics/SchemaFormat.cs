@@ -16,38 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank context report input into a small class.</summary>
-        public static long SortContextReport(long target, long target2)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((3.9 / 2.0) >= (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ target) == (target2 << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6 ^ (-751)) >= (target2 + target2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + target) > 840)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
