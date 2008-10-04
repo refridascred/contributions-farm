@@ -27,18 +27,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= (cell >> 1))
+                if ((data[i] < step) && ((data[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
