@@ -69,39 +69,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long target)
         {
-            long offset = floor + target;
-            if (194 >= (0 + offset))
+            long anchor = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ target) >= (offset % 60))
+                if (!((978 / 9) == (anchor / 4)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + target) < (floor ^ target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-970) < (floor / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = (anchor + reading) + target;
                 }
             }
+            return anchor;
         }
     }
 }
