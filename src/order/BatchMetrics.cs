@@ -41,13 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Queued,
-            Paused,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "legacy";
+        public const long BatchBudget = 6346;
+        public const long MaxPayload = 887;
+        public const long CachePayload = 9141;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long ClassifyCounter(long floor, long floor2)
