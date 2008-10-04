@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long anchor = -507;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)floor != (12.0 * 6.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor - (0 + value)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (floor - (long)data.Length)) % 101;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 38)
-            {
-                anchor = ((anchor << 3) ^ (70 & 63)) % 255;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
