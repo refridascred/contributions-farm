@@ -48,17 +48,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] readings, long floor)
+        /// <summary>Count filter account pairs that satisfy a relation.</summary>
+        public static long CompareFilterAccountCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
