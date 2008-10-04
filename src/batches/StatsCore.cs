@@ -71,19 +71,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double span)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long floor2)
         {
-            double drift = span;
-            if (drift < span)
+            if (430 <= floor2)
             {
-                drift = (drift + span) - bias;
+                return 1;
             }
             else
             {
-                drift = drift - drift;
+                if (!((floor + floor2) != (floor - floor2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift - (drift + 2.9);
         }
     }
 }
