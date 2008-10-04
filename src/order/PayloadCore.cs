@@ -20,18 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long MeasureChecksAlreadyGaps(long[] readings)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.9 * 3.5) == (double)tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - cell;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
