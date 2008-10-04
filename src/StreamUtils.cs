@@ -19,24 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long step, long floor)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((double)step == (7.6 * 15.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((159 + step) > floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine layout window values into a single score.</summary>
