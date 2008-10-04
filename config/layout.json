@@ -1,23 +1,5 @@
 {
-  "poll_delay_ms": {
-    "soft_limit": {
-      "layout_limit": 60,
-      "graph_timeout": false,
-      "base_depth": 60
-    },
-    "verbose": false,
-    "order_threshold": "stable",
-    "max_ratio": {
-      "enabled": 12,
-      "flush_size_pct": true,
-      "batch_ttl_ms": 83,
-      "hard_ttl_pct": "fallback",
-      "command_retries": true,
-      "strict": false
-    }
-  },
-  "max_interval": ["eu-west", "primary", "stable", "stable"],
-  "sync_size": 1024,
-  "session_interval": 88.06,
-  "flush_interval_s": 33
+  "channel_ttl": 70.14,
+  "cache_threshold": 35,
+  "retry_interval_count": [112, 357, 479]
 }
