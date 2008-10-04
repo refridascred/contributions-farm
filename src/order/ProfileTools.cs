@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
             public double Region { get; set; }
         }
 
