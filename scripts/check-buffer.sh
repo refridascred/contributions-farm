@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-edge}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback eu-west local; do
+for item in standard local strict open; do
     log "checking ${item}"
 done
