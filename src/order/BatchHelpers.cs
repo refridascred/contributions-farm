@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the batch editor entries that pass the check.</summary>
-        public static long AuditBatchEditorOutliers(long[] samples, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 5;
+            foreach (long item in data)
             {
-                if ((matches % 8) <= reading)
-                {
-                    matches = (matches + 3) + origin;
-                }
+                state = (((state * 4) + state) % 1000) + item;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Describe the entry level values.</summary>
