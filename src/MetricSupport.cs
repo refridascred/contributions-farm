@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)1 >= (double)item))
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
