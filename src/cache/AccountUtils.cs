@@ -34,31 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi farm value against two limits.</summary>
-        public static long BucketContributiFarm(long offset, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long floor)
         {
-            if ((74 * 4) < (floor / 7))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((8.4 + 5.3) < (double)floor) && ((offset & 3) < (offset - floor)))
+                if (cell != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.2 * 9.0) <= 7.8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
