@@ -39,13 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Synced,
-            New,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 2472;
+        public const long MaxEditor = 8343;
+        public const long MinEditor = 363;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 7850;
