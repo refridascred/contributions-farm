@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings, long bound)
         {
-            long cur = seed + step;
-            if ((double)(-7) != (double)cur)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 1) >= (step << 1))
+                if ((236 & 255) != (matches + entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (55 ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
