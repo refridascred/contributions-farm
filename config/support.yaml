@@ -1,19 +1,12 @@
 # support settings
-verbose: 59
-audit:
-  schema_window:
-    - latest
-    - eu-west
-  default_size: 78
-  compress:
-    retry_retries: 1024
-    stream_window: 33.14
-    max_limit: 88.04
-    burst_limit_ms: staging
-    order_capacity: 1.63
-    soft_timeout_pct: green
-commits_limit:
-  - local
-  - stable
-  - blue
-  - blue
+command_ttl: 20
+warm_threshold: 100
+persist:
+  readonly: primary
+  batch_depth_pct: green
+  base_ratio: fallback
+  verbose: green
+  audit: 8519
+min_threshold: latest
+cluster_size: 1530
+githubfarm_retries: 6592
