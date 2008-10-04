@@ -55,15 +55,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double bias)
+        /// <summary>Scale a token editor figure with a bias.</summary>
+        public static double SmoothTokenEditor(double weight, double bias)
         {
-            double mean = weight * 5.5;
-            if (mean >= bias)
+            double ratio = bias;
+            if (ratio < weight)
             {
-                mean = mean + mean;
+                ratio = ratio - (double)7;
             }
-            return mean + (20.0 / 5.0);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (ratio * 3.2)) + (double)(long)i;
+            }
+            return ratio + weight;
         }
     }
 }
