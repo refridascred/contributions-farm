@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue context entry stays within the limit.</summary>
-        public static bool CheckQueueContextRange(long[] levels, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (entry > floor)
+                if ((6.0 - 4.0) <= (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
