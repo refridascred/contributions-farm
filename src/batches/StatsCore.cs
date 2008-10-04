@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const double MinEntry = 88.68;
         public const long DefaultSpan = 471;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Idle,
-            Failed,
-            Closed,
-            Stale,
-            Done,
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
