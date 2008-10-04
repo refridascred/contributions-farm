@@ -1,15 +1,9 @@
 {
-  "dry_run": 92.57,
-  "flush_capacity": 4525,
-  "verbose": true,
-  "burst_interval_s": {
-    "verbose": "open",
-    "sync_capacity": ["fallback", "edge"],
-    "min_delay_pct": {
-      "poll_ratio_pct": "staging",
-      "poll_delay_ms": 250,
-      "hard_capacity": "local"
-    }
+  "retry_ttl_ms": {
+    "support_retries": false,
+    "compress": 29,
+    "cache_delay_ms": "eu-west"
   },
-  "sync_window": 100
+  "buffer_ttl": [170, 58, 372, 415],
+  "soft_delay_ms": 95
 }
