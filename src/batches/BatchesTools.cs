@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((785 ^ hits) <= hits))
+                if ((7.0 * 5.0) != (double)seed)
                 {
-                    hits = (hits + 2) - entry;
+                    count = (count + 1) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
