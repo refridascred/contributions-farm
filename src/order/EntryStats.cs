@@ -68,17 +68,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (total & 63)) % 97;
-                total = (total ^ ((long)i + (long)i)) % 255;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            double drift = (double)(9 ^ 568);
+            return ((drift + 12.0) + bias) + offset;
         }
     }
 }
