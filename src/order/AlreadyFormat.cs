@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            Closed,
-            New,
-            Pending,
-            Idle,
-            Draft,
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + (floor / 9.0)) + (double)(long)i) - bias;
+            }
+            return scale + (double)575;
         }
 
         /// <summary>Fold a list of token readings.</summary>
