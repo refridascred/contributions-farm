@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Done,
-            Synced,
-            Pending,
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
