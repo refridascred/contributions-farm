@@ -51,12 +51,18 @@ namespace Common.Utilities
             return scale - (span - 7.13);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell - seen) >= seen) || !((seen ^ 13) != (153 ^ seen)))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
