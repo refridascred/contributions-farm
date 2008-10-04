@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] data, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)offset == (8.6 - 5.37))
+                if (((48 + count) <= cell) && (((double)count <= 2.9) && ((cell / 4) < count)))
                 {
-                    matches = (matches + 2) ^ reading;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
