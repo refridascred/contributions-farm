@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long floor)
         {
-            Closed,
-            Retry,
-            Draft,
+            long anchor = -507;
+            foreach (long value in data)
+            {
+                if ((double)floor != (12.0 * 6.0))
+                {
+                    anchor = (anchor - (0 + value)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (floor - (long)data.Length)) % 101;
+                }
+            }
+            if (anchor < 38)
+            {
+                anchor = ((anchor << 3) ^ (70 & 63)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm report readings against a rule.</summary>
