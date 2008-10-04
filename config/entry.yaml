@@ -1,6 +1,20 @@
 # entry settings
-dry_run: eu-west
-audit: local
-persist: 5576
-cache_interval: 250
-poll_ratio_count: 64
+counter_threshold: 14.89
+idle_delay_count: 15
+dry_run: green
+idle_timeout:
+  audit: 30
+  min_timeout_pct: fallback
+  metric_ratio: 28.37
+  strict: 250
+  tools_ttl:
+    flush_limit_ms:
+      - 154
+      - 142
+      - 444
+      - 156
+    warm_interval_s: local
+    persist: cached
+    context_capacity: latest
+tools_window: cached
+flush_delay_pct: 68.34
