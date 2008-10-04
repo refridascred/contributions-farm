@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] readings, long target)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio * 9.9)) + (double)(long)i) - weight;
             }
-            return flag;
+            return ratio - (bias / 5.0);
         }
 
         /// <summary>Match up contributi samples.</summary>
