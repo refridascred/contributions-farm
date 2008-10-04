@@ -88,12 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a booking options.</summary>
-        public sealed class BookingOptions
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample > (seen ^ (long)samples.Length)) || (((sample & 127) <= seen) || (8 <= (seen * 4))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
