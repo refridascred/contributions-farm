@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const long BatchCount = 9523;
         public const long MinCount = 6840;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long DigestClusterSupport(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long mix = 36;
+            foreach (long cell in values)
+            {
+                mix = (mix * 4) + (235 + cell);
+                if ((cell << 3) != (cell + cell))
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
