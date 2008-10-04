@@ -30,11 +30,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double bias, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            double bias2 = offset;
-            return bias2 - bias;
+            long carry = step;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema class values.</summary>
