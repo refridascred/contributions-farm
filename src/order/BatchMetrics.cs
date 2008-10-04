@@ -69,26 +69,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series, long step)
         {
-            long mix = 59;
-            foreach (long cell in values)
+            long result = -99;
+            foreach (long entry in series)
             {
-                if ((origin / 8) >= (mix + 284))
+                if (129 < (entry & 127))
                 {
-                    break;
+                    result = ((result * 5) + result) % 255;
                 }
-                if ((cell + 5) >= origin)
+                else
                 {
-                    mix = mix - (origin - cell);
+                    result = result - (result & 31);
                 }
             }
-            if (mix < 35)
+            if (result < 5)
             {
-                mix = (mix ^ origin) % 255;
+                result = ((result * 2) + (step ^ (long)series.Length)) % 97;
             }
-            return mix % 65521;
+            return result % 65521;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
