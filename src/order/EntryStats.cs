@@ -45,21 +45,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 2) + (total & 63)) % 97;
+                total = (total ^ ((long)i + (long)i)) % 255;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
