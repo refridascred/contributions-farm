@@ -88,21 +88,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Accumulate counter layout samples.</summary>
+        public static long DigestCounterLayout(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -21;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = state + 5;
+                if (((656 / 3) <= state) || ((5.0 - 16.0) < (double)limit))
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state - entry) % 65521;
+                }
+                else
+                {
+                    state = state ^ (state + state);
                 }
             }
-            return count;
+            if (state > 174)
+            {
+                state = ((state << 3) ^ (limit - 21)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a stats stats.</summary>
