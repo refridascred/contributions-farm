@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long target, long origin)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long prev = target - origin;
-            if (!(770 < (origin * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + prev) >= (2 >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ target) < (target % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a commits route counter forward.</summary>
