@@ -49,15 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double bias = floor;
-            if (bias < (double)4)
-            {
-                bias = (bias + (bias * 9.2)) + weight;
-            }
-            return bias - 17.0;
+            Locked,
+            Synced,
+            Idle,
         }
     }
 }
