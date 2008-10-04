@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count context account pairs that satisfy a relation.</summary>
-        public static long OverlapContextAccountCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxWidth = 3744;
+        public const long StepLevel = 127;
+        public const long RetryMetrics = 2746;
+        public const long CacheDepth = 9934;
+        public const long SoftCount = 578;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsHits(long[] readings)
