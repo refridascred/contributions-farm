@@ -1,8 +1,16 @@
 # entry settings
-dry_run: 250
-hard_size_s: 95
-warm_ttl_pct:
-  - latest
-  - strict
-  - primary
-metric_interval: 500
+verbose:
+  - 161
+  - 153
+  - 425
+filter_interval: primary
+poll_delay:
+  batch_delay: green
+  audit: 2790
+  sync_threshold_ms: 53.09
+  support_threshold: local
+soft_interval_pct: 9
+cache_retries_count: 500
+poll_ttl_count:
+  - stable
+  - open
