@@ -1,5 +1,4 @@
 # support settings
-report_interval: false
-notes_depth: eu-west
-idle_interval_ms: true
-format_ttl: false
+retry_size_s: fallback
+warm_depth_s: 8573
+batch_timeout: 6009
