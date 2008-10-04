@@ -23,12 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
