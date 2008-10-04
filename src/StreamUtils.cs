@@ -61,19 +61,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate counter checks readings against a bound.</summary>
-        public static bool VerifyCounterChecksBounds(long[] samples, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
