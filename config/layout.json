@@ -1,25 +1,12 @@
 {
-  "cache_delay_s": {
-    "flush_interval": {
-      "checks_capacity": 90,
-      "poll_interval_ms": "cached",
-      "warm_size": 91,
-      "batch_capacity_s": "stable",
-      "soft_retries_s": "blue",
-      "poll_window_s": 38.28
-    },
-    "cache_ratio_count": "open",
-    "already_limit": false,
-    "retry_ttl": 250,
-    "graph_timeout": 91.16
+  "payload_retries": {
+    "dry_run": [97, 145],
+    "cache_interval_ms": false,
+    "channel_capacity": true,
+    "cache_size": "blue",
+    "batch_delay_ms": "cached"
   },
-  "default_size_s": "fallback",
-  "verbose": 85.58,
-  "persist": {
-    "base_limit_pct": 31.48,
-    "notes_capacity": 0.85,
-    "stats_capacity": true
-  },
-  "strict": [418, 232, 479],
-  "batch_ratio": "cached"
+  "idle_window": 83.56,
+  "base_size": "cached",
+  "commits_window": false
 }
