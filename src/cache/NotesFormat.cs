@@ -23,14 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Done,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxDepth = 9751;
+        public const double HardCount = 28.27;
+        public const long RetryCount = 8635;
 
         /// <summary>Iterate the record contributi series from a seed.</summary>
         public static long DeriveRecordContributi(long step)
