@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -179;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((((result << 3) ^ result) % 1000) ^ datum) + offset;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
