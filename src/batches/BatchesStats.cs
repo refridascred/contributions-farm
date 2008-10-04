@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardWidth = "standard-edge";
-        public const long RetryFormat = 1556;
-        public const long WindowFormat = 2508;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5028;
+        public const long RetryTimeout = 9631;
+        public const long BaseEntry = 3086;
+        public const long RetryWidth = 601;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long DigestProfile(long[] data, long floor)
