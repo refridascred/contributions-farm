@@ -1,6 +1,5 @@
 {
-  "flush_window": "legacy",
-  "enabled": "standard",
-  "report_limit": 17.84,
-  "audit": ["latest", "open", "blue", "strict"]
+  "min_retries_s": "primary",
+  "enabled": "fallback",
+  "base_depth": 8365
 }
