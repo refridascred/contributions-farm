@@ -59,9 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 1956;
-        public const double BurstProfile = 94.32;
-        public const long RetryCount = 5101;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
