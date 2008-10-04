@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a filter commits figure with a bias.</summary>
+        public static double BlendFilterCommits(double weight, double floor)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            double drift = weight;
+            if (drift > drift)
+            {
+                drift = drift - (double)62;
+            }
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the stats kind values.</summary>
