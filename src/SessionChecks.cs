@@ -15,19 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
-        public static bool ValidateWindowGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a buffer entry.</summary>
