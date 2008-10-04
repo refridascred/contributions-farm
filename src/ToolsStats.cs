@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheSpan = 5063;
-        public const double BatchCommand = 50.53;
-        public const string CacheLevel = "standard-1";
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] data, long floor)
