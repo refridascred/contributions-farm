@@ -21,18 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] samples, long origin)
+        /// <summary>Match up support command samples.</summary>
+        public static long MatchSupportCommandCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((seen / 8) > origin))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) ^ item;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
