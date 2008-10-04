@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the support metrics entries that pass the check.</summary>
-        public static long CountSupportMetricsGaps(long[] series)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count <= (count >> 4))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the batches status values.</summary>
