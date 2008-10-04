@@ -31,21 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
