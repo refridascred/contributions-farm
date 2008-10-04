@@ -42,18 +42,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample & 7) == (count ^ count))
-                {
-                    count = count + 3;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
