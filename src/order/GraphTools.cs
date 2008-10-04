@@ -22,22 +22,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many counter support samples are out of range.</summary>
-        public static long AuditCounterSupportOutliers(long[] values, long bound)
+        /// <summary>Check that every order route entry stays within the limit.</summary>
+        public static bool CheckOrderRouteRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (!(((4.0 + 9.66) < (double)bound) || ((19.0 * 9.58) > (double)value)))
+                if (datum != step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
