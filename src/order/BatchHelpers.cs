@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count - 120) >= count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 3891;
+        public const long LimitOrder = 6811;
+        public const long StepTimeout = 7716;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double IdleCount = 45.65;
