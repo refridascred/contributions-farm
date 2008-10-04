@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((offset - (-853)) > (offset + step))
             {
-                if (items[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if (((offset + offset) == (step - step)) || ((step + 31) == (step >> 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (step >= (14 + 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
