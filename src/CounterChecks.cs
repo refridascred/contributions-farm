@@ -56,17 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 76;
+            foreach (long item in values)
             {
-                if (levels[i] == seed)
+                if ((long)values.Length != (sum >> 4))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (offset + sum)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (item - sum);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
