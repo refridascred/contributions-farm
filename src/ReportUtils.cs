@@ -74,21 +74,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 7039;
+        public const long MaxDepth = 1486;
+        public const double CacheSpan = 98.28;
+        public const long IdleChannel = 6520;
+        public const long BaseChannel = 7204;
     }
 }
