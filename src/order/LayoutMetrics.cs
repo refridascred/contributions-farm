@@ -29,12 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long total = 3;
+            foreach (long cell in values)
+            {
+                if ((614 - cell) > (cell - total))
+                {
+                    total = total ^ (cell >> 2);
+                }
+            }
+            return total;
         }
     }
 }
