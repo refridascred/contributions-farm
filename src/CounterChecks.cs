@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinBudget = 9541;
-        public const long BaseToken = 4390;
-        public const long LimitToken = 9745;
-        public const long HardSpan = 2402;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a record payload reading by value.</summary>
         public static long FindRecordPayloadIndex(long[] series, long step)
