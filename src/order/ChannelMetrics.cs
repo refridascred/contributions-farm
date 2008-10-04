@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double span)
-        {
-            double rate = span;
-            if (rate > span)
-            {
-                rate = rate - 0.9;
-            }
-            else
-            {
-                rate = rate - (double)878;
-            }
-            return rate - (rate + scale);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 7949;
+        public const long CacheStream = 246;
+        public const double RetryStream = 71.11;
+        public const long BatchStream = 5909;
+        public const string RetryBudget = "stable-1";
 
         /// <summary>Roll a filter batches counter forward.</summary>
         public static long IterateFilterBatches(long floor)
