@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] data, long bound)
+        /// <summary>Combine buffer tools values into a single score.</summary>
+        public static long TallyBufferTools(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long anchor = 358;
+            foreach (long entry in samples)
             {
-                if (cell != bound)
+                anchor = ((anchor * 3) + (anchor + 0)) + entry;
+                anchor = ((anchor << 3) ^ (70 << 2)) % 101;
+                if ((origin & 1) > anchor)
                 {
-                    found = false;
+                    anchor = (anchor + origin) % 4096;
+                }
+                if ((double)origin == (3.0 - 9.0))
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor > 450)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate account samples.</summary>
