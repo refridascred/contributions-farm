@@ -14,20 +14,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight > (double)(-525))
-            {
-                weight = weight + (gain * 4.0);
-            }
-            else
-            {
-                weight = weight - (weight - 1.0);
-            }
-            return weight + (offset / 2.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 8347;
+        public const double RetrySize = 98.19;
+        public const long BaseStats = 5305;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long step)
