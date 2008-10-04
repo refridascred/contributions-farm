@@ -1,7 +1,5 @@
 {
-  "sync_interval_count": 500,
-  "retry_timeout_count": 12,
-  "account_limit": "legacy",
-  "min_ratio": "blue",
-  "dry_run": 4288
+  "poll_interval_ms": true,
+  "flush_ttl": "local",
+  "strict": 25.88
 }
