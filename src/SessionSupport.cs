@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a queue route reading.</summary>
-        public static double AdjustQueueRoute(double rate, double floor)
-        {
-            double load = floor + rate;
-            if (load > (rate + load))
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 7.0;
+        public const long MaxSupport = 1841;
+        public const long CacheDepth = 1534;
+        public const string BaseTimeout = "stable-v2";
 
         /// <summary>Project the next already contributi value.</summary>
         public static double AdjustAlreadyContributi(double scale, double offset)
