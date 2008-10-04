@@ -27,32 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long seed, long seed2)
+        /// <summary>Check that every filter stream entry stays within the limit.</summary>
+        public static bool ValidateFilterStreamRange(long[] samples, long origin)
         {
-            long cur = seed - seed2;
-            if ((cur ^ seed) == (seed - seed2))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 / 4) > (seed & 255))
+                if (datum < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.0 * 2.0) < (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up stream commits samples.</summary>
