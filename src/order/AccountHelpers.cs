@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (7.34 >= (double)floor)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 3.05;
+        public const long CacheStream = 9673;
+        public const long StepStream = 2166;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long ClassifyPayload(long seed, long limit)
