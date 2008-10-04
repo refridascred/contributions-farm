@@ -48,14 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Locked,
-            Stale,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 53.46;
+        public const long IdleWindow = 1122;
+        public const long RetryScore = 234;
+        public const long CacheCount = 2288;
+        public const double CacheWindow = 32.96;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] items, long step)
