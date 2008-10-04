@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Blend two contributi payload measurements.</summary>
+        public static double BlendContributiPayload(double weight, double span)
         {
-            Dropped,
-            Queued,
-            Failed,
-            Stale,
-            Done,
+            double load = span + (span - span);
+            if (load > (weight + weight))
+            {
+                load = load + span;
+            }
+            return load + (5.0 + load);
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
