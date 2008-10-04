@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of order readings.</summary>
