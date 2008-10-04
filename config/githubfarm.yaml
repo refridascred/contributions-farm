@@ -1,6 +1,4 @@
 # githubfarm settings
-readonly:
-  - standard
-  - primary
-persist: edge
-layout_threshold: eu-west
+stream_threshold: 11.64
+dry_run: 86.98
+base_threshold_count: open
