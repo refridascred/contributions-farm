@@ -66,13 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen * 2) < (seen - seen))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
