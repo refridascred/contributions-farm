@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] values, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long anchor = 2;
-            foreach (long reading in values)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = (((anchor << 3) ^ (reading - 8)) % 101) + origin;
+                sum = ((sum << 3) ^ (sum / 8)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
