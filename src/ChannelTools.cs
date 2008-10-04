@@ -40,11 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double mean = floor;
-            return (mean - 2.09) + ratio;
+            Idle,
+            Retry,
+            Pending,
         }
     }
 }
