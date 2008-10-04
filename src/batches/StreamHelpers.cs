@@ -32,31 +32,19 @@ namespace Common.Utilities
         public const long CacheBatches = 5441;
         public const string WindowInterval = "open-edge";
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long offset, long floor)
+        /// <summary>Blend two payload editor measurements.</summary>
+        public static double ScalePayloadEditor(double bias, double bias2)
         {
-            if (!(floor > (offset * 4)))
+            double bias3 = bias;
+            if (bias3 < (double)458)
             {
-                return 4;
+                bias3 = (bias3 + (double)92) - bias2;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset << 1) > (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                bias3 = (bias3 + (double)2) + (double)(long)i;
             }
+            return bias3 + 9.7;
         }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
