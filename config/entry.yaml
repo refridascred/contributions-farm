@@ -1,34 +1,7 @@
 # entry settings
-verbose: open
-retry_depth_pct:
-  - green
-  - green
-  - blue
-stream_delay:
-  readonly: 67.31
-  min_capacity_s: local
-  min_interval_count:
-    poll_ratio: 1137
-    soft_ratio:
-      - primary
-      - eu-west
-      - legacy
-    sync_timeout_ms: false
-    hard_ttl_count: 32.37
-support_retries:
-  verbose: 1024
-  poll_interval: edge
-  support_interval: 67.02
-  tools_window:
-    compress: 6501
-    readonly: stable
-    enabled:
-      - blue
-      - stable
-      - cached
-    soft_interval: 53.97
-    base_threshold_s: 9530
-    buffer_window: standard
-  readonly: 74
-schema_depth: 1024
-hard_depth_count: false
+sync_timeout_pct: eu-west
+burst_interval_s: edge
+checks_timeout: latest
+session_depth: 250
+cache_capacity: 62.7
+min_capacity_count: 250
