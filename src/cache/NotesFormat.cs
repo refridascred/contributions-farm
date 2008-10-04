@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long step)
         {
-            Retry,
-            Idle,
-            Pending,
+            long acc = -212;
+            foreach (long sample in readings)
+            {
+                if ((acc - step) >= (acc / 8))
+                {
+                    acc = ((acc * 2) + (acc << 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc + (sample ^ step)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the metric phase values.</summary>
