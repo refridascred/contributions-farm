@@ -13,23 +13,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long carry = 50;
+            foreach (long entry in levels)
             {
-                if (((origin + (long)i) <= 612) && ((anchor + anchor) != ((long)i + (long)i)))
+                carry = carry - carry;
+                if ((21 < (long)levels.Length) || ((double)entry < (2.0 / 6.0)))
                 {
-                    anchor = (anchor - (origin & 127)) % 1000;
+                    carry = (carry ^ (carry - carry)) % 101;
                 }
                 else
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                    carry = (carry << 3) ^ (carry * 5);
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (((18.0 + 15.0) < (double)entry) || ((entry + entry) < entry))
+                {
+                    carry = (carry * 4) + (entry >> 2);
+                }
+                if (!((double)carry != (3.6 / 5.0)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
