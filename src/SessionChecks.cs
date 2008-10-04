@@ -15,20 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long StepSchemaQueue(long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (origin >> 5)) % 97;
-                if (!(4.3 >= (double)(long)i))
+                if (readings[i] < floor)
                 {
-                    sum = (sum + ((long)i * 5)) % 4096;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
