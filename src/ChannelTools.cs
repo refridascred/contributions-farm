@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series)
-        {
-            long carry = 5;
-            foreach (long value in series)
-            {
-                if ((96 >> 4) <= carry)
-                {
-                    carry = carry ^ value;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "alpha-1";
+        public const long StepDepth = 7251;
+        public const long HardLevel = 4441;
+        public const long HardSpan = 2345;
+        public const long DefaultPayload = 4434;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long DigestEditor(long[] data)
