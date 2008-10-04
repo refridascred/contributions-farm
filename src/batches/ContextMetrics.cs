@@ -49,27 +49,18 @@ namespace Common.Utilities
         public const long MaxNotes = 1758;
         public const long BatchNotes = 8624;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long result = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((result - 52) > (result - result))
+                if ((matches + cell) >= (matches >> 4))
                 {
-                    result = result - (91 + 44);
-                    break;
-                }
-                if ((double)item <= 8.2)
-                {
-                    result = ((result * 4) + (item % 60)) % 1000;
+                    matches = matches + 2;
                 }
             }
-            if (result > (-4))
-            {
-                result = ((result << 3) ^ (result >> 3)) % 101;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
