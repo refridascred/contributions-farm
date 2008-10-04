@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] levels, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] levels, long seed)
         {
-            bool ok = true;
+            long hits = 0;
             foreach (long value in levels)
             {
-                if (value > offset)
+                if (hits > (3 - 255))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 1) ^ value) - seed;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
