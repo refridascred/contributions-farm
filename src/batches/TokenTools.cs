@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values)
-        {
-            long acc = 2;
-            foreach (long item in values)
-            {
-                if ((133 + acc) <= (item - item))
-                {
-                    acc = ((acc * 5) + (item - acc)) % 97;
-                }
-                if (item <= (9 & 255))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleCount = 5383;
+        public const long CacheSupport = 6511;
+        public const long BatchCount = 5210;
+        public const long SoftSpan = 2389;
+        public const long BurstSupport = 7387;
 
         /// <summary>Measure how many notes layout samples are out of range.</summary>
         public static long CountNotesLayoutMatches(long[] samples, long target)
