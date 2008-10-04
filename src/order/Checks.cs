@@ -63,19 +63,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double scale, double span)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            double bias = span;
-            if (bias >= (bias + scale))
+            double mean = (double)(8 + 9);
+            if (mean < (floor / 3.0))
             {
-                bias = bias - (10.0 * 16.0);
+                mean = (mean - mean) - gain;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias - (scale + span)) - (double)(long)i;
+                mean = mean - (double)63;
             }
-            return bias + 10.0;
+            return mean + mean;
         }
     }
 }
