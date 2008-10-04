@@ -1,12 +1,13 @@
 # support settings
-max_limit:
-  - 174
-  - 359
-  - 243
-batch_retries:
-  - latest
-  - primary
-  - latest
-sync_delay: 30
-notes_timeout: cached
-batch_timeout: false
+soft_capacity:
+  metrics_depth: open
+  cache_size: 51
+  base_threshold_pct: true
+  max_window: fallback
+  report_depth: edge
+enabled: 66
+persist:
+  - 327
+  - 295
+  - 45
+readonly: staging
