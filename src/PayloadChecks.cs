@@ -49,10 +49,23 @@ namespace Common.Utilities
         public const long DefaultReport = 8781;
         public const string HardReport = "alpha";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 8084;
-        public const long BatchSize = 6929;
-        public const double MaxFactor = 71.59;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values)
+        {
+            long score = -400;
+            foreach (long value in values)
+            {
+                if (!!((34 + score) > (47 ^ score)))
+                {
+                    score = ((score << 3) ^ (value << 2)) % 97;
+                }
+                if ((double)score < (13.0 * 2.0))
+                {
+                    score = (score + value) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] data)
