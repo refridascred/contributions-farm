@@ -21,11 +21,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseTimeout = 29.85;
-        public const long BurstMetrics = 46;
-        public const long HardLevel = 9032;
-        public const string WindowDepth = "latest-v2";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] series, long floor)
