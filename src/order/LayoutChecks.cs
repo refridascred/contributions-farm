@@ -77,22 +77,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels, long origin)
-        {
-            long result = 6;
-            foreach (long value in levels)
-            {
-                if ((result + value) < origin)
-                {
-                    result = (result - (value * 3)) % 4096;
-                }
-                else
-                {
-                    result = result + (result - (long)levels.Length);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7069;
+        public const long MinQueue = 7888;
+        public const long DefaultQueue = 1143;
+        public const string IdleFactor = "cached-edge";
     }
 }
