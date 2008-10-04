@@ -17,19 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long target)
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool VerifyAccountFilterBounds(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (datum > target)
+                if (datum >= origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Digest a series of format entries.</summary>
