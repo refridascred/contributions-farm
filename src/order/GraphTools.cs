@@ -60,18 +60,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] series, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)limit >= (4.79 * 8.2))
-                {
-                    count = (count + 2) + cell;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
