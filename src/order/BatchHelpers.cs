@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] data, long floor)
+        /// <summary>Count the batch editor entries that pass the check.</summary>
+        public static long AuditBatchEditorOutliers(long[] samples, long origin)
         {
-            long acc = 52;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((1.86 / 7.0) > (double)floor)
+                if ((matches % 8) <= reading)
                 {
-                    acc = ((acc * 4) + (14 + 1)) ^ datum;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
