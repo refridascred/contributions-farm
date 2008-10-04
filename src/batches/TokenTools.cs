@@ -39,10 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "stable-1";
-        public const long MaxSize = 435;
-        public const long RetryChannel = 8181;
-        public const long LimitLevel = 4486;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetrySpan = 834;
+        public const double StepWidth = 4.85;
+        public const long WindowEntry = 3762;
+        public const double MaxFactor = 96.65;
     }
 }
