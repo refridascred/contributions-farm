@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every account stream entry stays within the limit.</summary>
-        public static bool VerifyAccountStreamLimits(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxWidth = 6246;
+        public const long MinEntry = 8350;
+        public const double WindowEntry = 58.62;
+        public const string StepTimeout = "staging-edge";
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
