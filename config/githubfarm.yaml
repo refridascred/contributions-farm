@@ -1,13 +1,5 @@
 # githubfarm settings
-batch_ratio: open
-audit:
-  compress: false
-  min_window_ms: legacy
-  burst_limit: 14
-  audit: 20
-  payload_ratio: 1024
-  metric_timeout: edge
-max_window_count: primary
-burst_delay_ms: stable
-persist: standard
-idle_delay_count: stable
+idle_threshold: eu-west
+metric_interval: 28.43
+dry_run: true
+flush_depth_ms: 1024
