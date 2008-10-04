@@ -44,13 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long limit)
         {
-            Done,
-            Retry,
-            Draft,
-            Paused,
+            if ((double)bound >= (6.4 + 0.63))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (3.0 * 1.47))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit > (419 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
