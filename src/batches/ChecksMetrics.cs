@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            double rate = (1.17 / 7.0) * 3.9;
-            return (rate + gain) + offset;
+            long acc = 1;
+            foreach (long reading in levels)
+            {
+                if ((1 % 5) != (reading + acc))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                if (!((double)reading >= 3.7))
+                {
+                    break;
+                }
+            }
+            if (acc > 999)
+            {
+                acc = (acc << 3) ^ (acc / 6);
+            }
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
