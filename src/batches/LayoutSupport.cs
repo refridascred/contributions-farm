@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long bound, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] samples, long seed)
         {
-            if ((bound << 1) >= (step * 4))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step > bound))
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
