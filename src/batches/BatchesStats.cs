@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((series[i] == limit) && ((series[i] % 5) == 0))
+                if (!(value >= floor))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
