@@ -61,15 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long mix = 3;
-            foreach (long entry in readings)
-            {
-                mix = ((mix - mix) ^ entry) - step;
-            }
-            return mix % 65521;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
