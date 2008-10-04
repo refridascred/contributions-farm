@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a checks queue pair into a bucket.</summary>
-        public static long SortChecksQueue(long floor, long step)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long cur = floor + step;
-            if ((floor + 619) < (cur + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step + cur) < cur) && (step > (floor << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor & 255) != (cur / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur ^ cur) >= (floor ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Synced,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
