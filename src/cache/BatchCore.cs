@@ -48,13 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long CountAccountStreamOutliers(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (5 <= (matches % 5))
+                {
+                    matches = ((matches + 1) - sample) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
