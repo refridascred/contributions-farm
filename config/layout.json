@@ -1,12 +1,6 @@
 {
-  "payload_retries": {
-    "dry_run": [97, 145],
-    "cache_interval_ms": false,
-    "channel_capacity": true,
-    "cache_size": "blue",
-    "batch_delay_ms": "cached"
-  },
-  "idle_window": 83.56,
-  "base_size": "cached",
-  "commits_window": false
+  "poll_ratio_count": ["latest", "edge", "eu-west"],
+  "persist": 250,
+  "flush_timeout_pct": "standard",
+  "sync_limit_pct": "strict"
 }
