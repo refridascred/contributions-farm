@@ -63,14 +63,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Draft,
-            Locked,
-            Failed,
+            Synced,
+            Closed,
             Active,
-            Idle,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
