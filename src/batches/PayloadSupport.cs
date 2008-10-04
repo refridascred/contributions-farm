@@ -20,10 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 29.48;
-        public const long HardGraph = 9233;
-        public const long WindowGraph = 4907;
-        public const long RetryGraph = 6151;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
