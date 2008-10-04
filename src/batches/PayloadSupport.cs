@@ -27,12 +27,32 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a graph cache value against two limits.</summary>
+        public static long SortGraphCache(long seed, long seed2)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long offset = seed - seed2;
+            if ((double)seed2 < (0.2 - 1.06))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset <= seed2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed - seed2) <= (-7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
