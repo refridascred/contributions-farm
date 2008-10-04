@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 36.11;
+        public const string MinScore = "primary-1";
+        public const long BaseAccount = 5414;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long bound)
