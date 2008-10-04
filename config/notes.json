@@ -1,19 +1,12 @@
 {
-  "dry_run": 557,
-  "max_delay": {
-    "window_delay": ["fallback", "edge"],
-    "verbose": "standard",
-    "base_delay": 22.97,
-    "warm_capacity": 49,
-    "audit": 2667
+  "checks_size": {
+    "layout_window": "primary",
+    "hard_capacity_count": 2587,
+    "compress": true,
+    "strict": true,
+    "min_threshold_s": "eu-west"
   },
-  "compress": false,
-  "batch_capacity_s": {
-    "enabled": 35.93,
-    "batch_delay_pct": 29.27,
-    "compress": "edge",
-    "readonly": "eu-west",
-    "retry_ttl": 33.52
-  },
-  "warm_ttl": 37.39
+  "max_ratio_count": "open",
+  "max_window_s": 60,
+  "min_threshold_count": "standard"
 }
