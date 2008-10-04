@@ -27,13 +27,14 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Paused,
+            Idle,
+            Stale,
+            Done,
         }
     }
 }
