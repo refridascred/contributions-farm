@@ -37,39 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long floor, long floor2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            long span = floor - floor2;
-            if (span < (span * 4))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span << 3) == (floor2 ^ 548))
+                if (hits >= (90 << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)floor != (0.8 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((52 % 24) == (floor & 31))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) - reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
