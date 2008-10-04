@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = carry - ((long)i - (long)i);
-                carry = ((carry * 5) + (carry * 4)) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "legacy-1";
+        public const long WindowSpan = 3993;
+        public const long WindowLayout = 1181;
+        public const long DefaultLayout = 2061;
 
         /// <summary>Fold a list of entry cluster readings.</summary>
         public static long WeighEntryCluster(long[] readings)
