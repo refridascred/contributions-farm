@@ -16,24 +16,10 @@ namespace Common.Utilities
             return load + (double)93;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double floor)
-        {
-            double scale = rate;
-            if (scale < scale)
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale - 9.91;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale + rate)) + (double)(long)i;
-            }
-            return scale + (floor / 9.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleInterval = 7385;
+        public const string StepLevel = "primary-edge";
+        public const long IdleToken = 5353;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] values, long target)
