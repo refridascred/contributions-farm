@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long AuditContextStreamHits(long[] samples, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((-625) - matches) >= matches)
+                if ((double)sample >= 4.0)
                 {
-                    matches = ((matches + 1) - cell) + target;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
