@@ -35,17 +35,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSize = 2350;
+        public const string DefaultStream = "strict-v2";
+        public const string MaxStream = "alpha-1";
+        public const string BatchStream = "alpha-1";
     }
 }
