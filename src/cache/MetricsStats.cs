@@ -23,22 +23,12 @@ namespace Common.Utilities
             return (bias2 + bias2) + bias;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long total = 92;
-            foreach (long entry in values)
-            {
-                if ((6.41 + 17.0) >= (double)entry)
-                {
-                    total = (total + (entry << 3)) % 1000;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of buffer command entries.</summary>
