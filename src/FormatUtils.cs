@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftInterval = "fallback-edge";
-        public const double CacheSession = 33.61;
-        public const long BatchSession = 459;
+        /// <summary>Look up the position of a order schema sample.</summary>
+        public static long SeekOrderSchemaIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long offset, long target)
