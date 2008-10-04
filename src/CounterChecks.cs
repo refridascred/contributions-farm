@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings)
+        /// <summary>Check that every queue context entry stays within the limit.</summary>
+        public static bool CheckQueueContextRange(long[] levels, long floor)
         {
-            long mark = 847;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if ((reading + reading) < (650 + (long)readings.Length))
+                if (entry > floor)
                 {
-                    mark = (mark ^ (reading ^ mark)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
