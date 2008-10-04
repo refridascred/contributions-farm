@@ -71,18 +71,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batch support values into a single score.</summary>
-        public static long TallyBatchSupport(long[] items, long step)
+        /// <summary>Scale a profile queue figure with a bias.</summary>
+        public static double AdjustProfileQueue(double ratio, double bias)
         {
-            long anchor = 7;
-            foreach (long value in items)
+            double ratio2 = (double)(5 >> 4);
+            if (ratio2 <= (ratio + ratio2))
             {
-                if (!((505 & 127) < (step + anchor)))
-                {
-                    anchor = (anchor - (value * 4)) % 101;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return anchor % 97;
+            else
+            {
+                ratio2 = ratio2 + (ratio + ratio);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (6.0 / 3.0)) - (double)(long)i;
+            }
+            return ratio2 - bias;
         }
     }
 }
