@@ -1,4 +1,6 @@
 # support settings
-persist: true
-audit: 87.14
-editor_ttl: 6994
+idle_size_pct: 70.43
+account_ratio: 250
+sync_timeout: 100
+hard_window_pct: 89.45
+sync_delay_pct: open
