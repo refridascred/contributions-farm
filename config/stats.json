@@ -1,7 +1,21 @@
 {
-  "poll_interval_s": "strict",
-  "default_size_ms": 55.35,
-  "persist": 17,
-  "min_depth_count": 41.5,
-  "verbose": 68.11
+  "min_limit": 6811,
+  "cache_threshold": 500,
+  "schema_ratio": {
+    "min_limit_s": true,
+    "batches_threshold": "stable",
+    "base_ttl_pct": "local",
+    "burst_ttl_count": true
+  },
+  "token_window": true,
+  "hard_size": 66.08,
+  "poll_delay_s": {
+    "base_retries_s": "legacy",
+    "dry_run": {
+      "soft_size": true,
+      "soft_capacity_ms": 90.55,
+      "session_limit": 15.15
+    },
+    "burst_window_pct": [146, 88]
+  }
 }
