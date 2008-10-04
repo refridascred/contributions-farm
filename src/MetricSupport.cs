@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] items, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                if ((double)anchor != (7.0 - 10.0))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ (anchor + 8)) % 4096) - cell;
                 }
             }
-            return -1;
+            if (anchor > 1)
+            {
+                anchor = (anchor - (anchor - anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a format stats.</summary>
