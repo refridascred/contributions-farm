@@ -25,39 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long next = origin ^ offset;
-            if (4 < next)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset % 10) <= next) && ((double)origin == (9.0 + 9.5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((72 + origin) > ((-9) % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((63 << 1) < (next << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
