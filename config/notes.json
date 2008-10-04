@@ -1,7 +1,7 @@
 {
-  "route_ratio": true,
-  "max_ttl_s": "fallback",
-  "hard_window_s": 94.89,
-  "idle_timeout_pct": ["strict", "latest"],
-  "flush_threshold": "cached"
+  "sync_interval_count": 500,
+  "retry_timeout_count": 12,
+  "account_limit": "legacy",
+  "min_ratio": "blue",
+  "dry_run": 4288
 }
