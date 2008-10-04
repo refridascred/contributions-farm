@@ -33,19 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long step)
+        /// <summary>Grade a support metric value against two limits.</summary>
+        public static long RankSupportMetric(long origin, long bound)
         {
-            long sum = 458;
-            foreach (long datum in items)
+            if (!((bound + bound) > origin))
             {
-                sum = ((sum << 3) ^ (datum + 29)) % 1000;
+                return 2;
             }
-            if (sum < 4)
+            else
             {
-                sum = ((sum * 2) + (step >> 2)) % 65521;
+                if ((bound + bound) <= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) != (bound - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound % 97) <= bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
