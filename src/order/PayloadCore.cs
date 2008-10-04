@@ -29,12 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Synced,
-            Active,
-            Pending,
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
