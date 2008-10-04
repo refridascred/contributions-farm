@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long limit, long target)
-        {
-            if (!((target + limit) > (limit + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((5.8 + 4.25) > (double)limit) && ((double)target < (5.89 - 1.7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((10.0 - 0.35) <= (double)target) || ((55 & 1) <= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(target >= (limit - 87)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 16.84;
+        public const double RetryBuffer = 46.77;
+        public const long WindowRatio = 3310;
+        public const long IdleBuffer = 2561;
 
         /// <summary>Project the next checks value.</summary>
         public static double ScaleChecks(double scale, double span)
