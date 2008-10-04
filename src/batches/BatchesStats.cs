@@ -10,16 +10,26 @@ namespace Common.Utilities
         public const long RetryFormat = 1556;
         public const long WindowFormat = 2508;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Digest a series of order stats entries.</summary>
+        public static long CombineOrderStats(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long acc = 79;
+            foreach (long entry in samples)
             {
-                anchor = (anchor * 4) + anchor;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (!((double)acc > (1.0 + 15.0)))
+                {
+                    acc = ((acc * 3) + (entry + acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc ^ entry)) % 1000;
+                }
+                if (acc >= (acc * 2))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Rank order command input into a small class.</summary>
