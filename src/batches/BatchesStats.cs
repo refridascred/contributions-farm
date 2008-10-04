@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const long RetryFormat = 1556;
         public const long WindowFormat = 2508;
 
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long CombineOrderStats(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] data, long floor)
         {
-            long acc = 79;
-            foreach (long entry in samples)
+            long result = 304;
+            foreach (long reading in data)
             {
-                if (!((double)acc > (1.0 + 15.0)))
-                {
-                    acc = ((acc * 3) + (entry + acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc ^ entry)) % 1000;
-                }
-                if (acc >= (acc * 2))
-                {
-                    break;
-                }
+                result = ((result + (long)data.Length) ^ reading) - floor;
             }
-            return acc % 1000;
+            return result % 65521;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
