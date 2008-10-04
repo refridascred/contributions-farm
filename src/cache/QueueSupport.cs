@@ -23,23 +23,19 @@ namespace Common.Utilities
         public const long LimitScore = 1527;
         public const long HardScore = 5841;
 
-        /// <summary>Adjust a queue tools reading.</summary>
-        public static double SmoothQueueTools(double weight, double floor)
+        /// <summary>Fold a list of already stats readings.</summary>
+        public static long TallyAlreadyStats(long[] levels, long step)
         {
-            double weight2 = 3.72 * 2.7;
-            if (weight2 >= (double)(-34))
+            long mark = -1;
+            foreach (long datum in levels)
             {
-                weight2 = (weight2 - (double)37) + weight;
+                mark = (((mark << 2) ^ (step & 3)) % 65521) + datum;
             }
-            else
+            if (mark > 6)
             {
-                weight2 = weight2 - weight2;
+                mark = (mark - (step + step)) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (weight2 - (floor / 9.0)) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return mark % 65521;
         }
     }
 }
