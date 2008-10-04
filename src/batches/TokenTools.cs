@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit entry token readings against a rule.</summary>
-        public static long CountEntryTokenOutliers(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((379 + sample) != (tally ^ (long)values.Length))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Rank already input into a small class.</summary>
