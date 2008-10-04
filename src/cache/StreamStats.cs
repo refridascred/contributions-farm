@@ -10,32 +10,26 @@ namespace Common.Utilities
         public const long StepLayout = 7329;
         public const long BurstLayout = 8894;
 
-        /// <summary>Rank token session input into a small class.</summary>
-        public static long ClassifyTokenSession(long origin, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long offset = origin + target;
-            if (7 >= offset)
+            long anchor = 3;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.5 + 10.0) >= (double)origin)
+                if ((((-217) - 315) < (anchor ^ 298)) || ((cell - anchor) == (anchor - cell)))
                 {
-                    return 6;
+                    anchor = (anchor + 881) % 255;
                 }
                 else
                 {
-                    if (!((target + origin) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor - (anchor / 5);
                 }
             }
+            if (anchor > 91)
+            {
+                anchor = ((anchor * 3) + ((long)levels.Length - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph mode values.</summary>
