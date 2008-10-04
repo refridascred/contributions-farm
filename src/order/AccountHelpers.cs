@@ -34,21 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix & 31) > target)
                 {
-                    if ((levels[i] ^ levels[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    long hits = (target + 10) * 4;
+                    mix = (mix - (hits ^ 689)) % 97;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
