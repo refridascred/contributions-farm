@@ -39,19 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] data, long target)
+        /// <summary>Combine token metrics values into a single score.</summary>
+        public static long TallyTokenMetrics(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long anchor = 139;
+            foreach (long item in items)
             {
-                if (value != target)
+                if ((anchor ^ item) > item)
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ offset) % 1000;
                 }
             }
-            return ready;
+            if (anchor < (-213))
+            {
+                anchor = anchor - (42 + anchor);
+            }
+            return anchor;
         }
     }
 }
