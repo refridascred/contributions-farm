@@ -40,12 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            Idle,
-            Retry,
-            Pending,
+            double bias = (double)(54 >> 4);
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias - offset) + (double)(long)i) - gain;
+            }
+            return bias + (bias - bias);
         }
     }
 }
