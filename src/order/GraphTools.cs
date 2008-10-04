@@ -45,19 +45,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] levels, long limit)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
