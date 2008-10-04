@@ -24,13 +24,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Active,
-            Retry,
+            Queued,
+            Stale,
             Draft,
-            Locked,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
