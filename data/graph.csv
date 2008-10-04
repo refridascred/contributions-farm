@@ -1,10 +1,7 @@
-id,token,level,count
-1,primary,802,latest
-2,eu-west,82.44,local
-3,22.93,blue,958
-4,latest,705,stable
-5,staging,29.76,7.4
-6,staging,61.83,839
-7,25.39,926,619
-8,638,blue,eu-west
-9,890,443,57.11
+id,level,weight,owner
+1,24.49,42.91,40.76
+2,235,89.89,718
+3,standard,eu-west,424
+4,87,910,51.53
+5,green,local,438
+6,local,26.67,614
