@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items)
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long TallyEntryChecksGaps(long[] series)
         {
-            long total = -2;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                total = (total << 3) ^ entry;
+                if ((((double)matches >= (double)cell) || ((cell >> 5) == (matches >> 1))) && ((0.12 + 9.72) != (double)cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Adjust a counter batches reading.</summary>
