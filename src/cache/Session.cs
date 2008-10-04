@@ -19,23 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long CountGithubfarmQueueOutliers(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((19.0 - 18.0) == (double)tally)
-                {
-                    tally = ((tally + 2) - datum) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheWidth = "local-edge";
+        public const long BurstRatio = 1357;
+        public const string SoftRecord = "standard";
+        public const long BaseRecord = 3048;
+        public const double DefaultDepth = 79.54;
 
         /// <summary>Derive the next queue stream value from a seed.</summary>
         public static long RollQueueStream(long target)
