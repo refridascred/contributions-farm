@@ -1,6 +1,7 @@
 {
-  "order_retries": 7.22,
-  "batch_retries": true,
-  "layout_depth": 1024,
-  "default_interval_pct": false
+  "format_limit": false,
+  "readonly": "open",
+  "max_interval_ms": "green",
+  "strict": "staging",
+  "default_delay_pct": ["standard", "local", "staging", "edge"]
 }
