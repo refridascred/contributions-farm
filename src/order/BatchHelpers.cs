@@ -16,14 +16,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double floor)
         {
-            Active,
-            Stale,
-            Failed,
-            Closed,
-            New,
+            double ratio2 = (double)(41 + 0);
+            if (ratio2 > (ratio - 4.0))
+            {
+                ratio2 = (ratio2 + ratio) - floor;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            return ratio2 - (ratio / 3.0);
         }
 
         /// <summary>Match up already samples.</summary>
