@@ -17,19 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool VerifyAccountFilterBounds(long[] values, long origin)
+        /// <summary>Derive the next session commits value from a seed.</summary>
+        public static long RollSessionCommits(long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= origin)
+                if (!(((long)i / 2) <= floor))
                 {
-                    flag = false;
                     break;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Digest a series of format entries.</summary>
