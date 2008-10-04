@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 3); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=448
-log "limit is ${RECORD_LIMIT}"
+for item in green blue cached; do
+    log "checking ${item}"
+done
