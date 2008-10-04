@@ -31,27 +31,11 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double floor)
         {
-            long result = 0;
-            foreach (long sample in values)
-            {
-                if (((result & 255) <= (15 + result)) || ((367 + result) >= (sample * 2)))
-                {
-                    result = result ^ (-60);
-                }
-                result = ((result << 2) ^ (446 - 827)) % 101;
-                if (((sample & 31) <= (origin + 8)) || ((sample * 2) <= (result + origin)))
-                {
-                    result = ((result << 2) ^ (origin * 2)) % 1000;
-                }
-                if ((result + 3) > (long)values.Length)
-                {
-                    break;
-                }
-            }
-            return result;
+            double drift = floor;
+            return drift - (gain + floor);
         }
     }
 }
