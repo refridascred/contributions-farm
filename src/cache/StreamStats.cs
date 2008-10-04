@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mean - 4.4;
         }
 
-        /// <summary>Combine githubfarm report values into a single score.</summary>
-        public static long TallyGithubfarmReport(long[] levels)
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool ValidateQueueSupportLimits(long[] series, long step)
         {
-            long mix = 7;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((314 + mix) > mix)
+                if (value != step)
                 {
-                    mix = ((mix << 3) ^ reading) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (reading - reading)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
