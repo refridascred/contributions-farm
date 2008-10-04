@@ -1,6 +1,6 @@
-id,label,owner,region
-1,blue,214,872
-2,stable,108,418
-3,824,green,895
-4,90.98,76.67,green
-5,785,941,52.19
+id,count,owner,score
+1,415,194,40.44
+2,337,6.21,632
+3,60.74,926,752
+4,30.44,172,eu-west
+5,435,eu-west,edge
