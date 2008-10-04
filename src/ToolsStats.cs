@@ -72,27 +72,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine cache batches values into a single score.</summary>
-        public static long TotalCacheBatches(long[] values, long step)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 2;
-            foreach (long reading in values)
-            {
-                if (28 <= carry)
-                {
-                    long delta = carry;
-                    carry = ((carry + (carry - delta)) % 255) ^ reading;
-                }
-                if (!((double)step < (7.86 / 4.0)))
-                {
-                    carry = ((carry << 3) ^ step) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry << 1);
-                }
-            }
-            return carry % 97;
+            Draft,
+            Locked,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
