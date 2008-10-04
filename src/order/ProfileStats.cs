@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum % 24) != (datum << 1))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (985 / 9)) % 97;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
