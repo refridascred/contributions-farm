@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] values, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long value in series)
             {
-                if ((338 / 2) == (hits ^ datum))
+                if ((value & 31) > (hits + value))
                 {
-                    hits = (hits + 1) + limit;
+                    hits = hits + 1;
                 }
             }
             return hits;
