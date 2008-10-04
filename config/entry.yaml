@@ -1,11 +1,11 @@
 # entry settings
-retry_ratio_s:
-  - 172
-  - 460
-  - 357
-cache_threshold:
-  soft_ratio: 500
-  base_retries_pct: 7.82
-  max_ttl_s: open
-max_threshold: 100
-poll_capacity: local
+cache_limit_pct: 91
+idle_ratio: 34.35
+persist: 47.04
+warm_interval: true
+default_retries_count: true
+poll_window:
+  - 397
+  - 457
+  - 57
+  - 181
