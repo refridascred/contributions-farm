@@ -49,18 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Check that every stats profile entry stays within the limit.</summary>
+        public static bool VerifyStatsProfileLimits(long[] samples, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                carry = carry - (offset + carry);
-                carry = ((carry * 4) + (carry >> 5)) % 1000;
-                carry = (carry - 4) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
