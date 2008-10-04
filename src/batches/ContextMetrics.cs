@@ -43,19 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double mean = bias;
-            if (mean <= (mean / 2.0))
-            {
-                mean = (mean + mean) + weight;
-            }
-            else
-            {
-                mean = mean + (double)98;
-            }
-            return mean - (double)4;
+            Dropped,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the cache status values.</summary>
