@@ -1,7 +1,7 @@
-id,label,count
-1,green,96.28
-2,32.35,44
-3,910,80.64
-4,cached,primary
-5,546,37.12
-6,59.69,fallback
+id,ratio,label
+1,edge,64.62
+2,60.07,latest
+3,86.84,58.96
+4,54.02,0
+5,primary,29.53
+6,195,417
