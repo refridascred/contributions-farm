@@ -25,18 +25,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Count the graph metrics entries that pass the check.</summary>
-        public static long MeasureGraphMetricsOutliers(long[] values, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double gain = rate * 3.73;
+            if (gain <= (gain - floor))
             {
-                if ((count + reading) <= count)
-                {
-                    count = (count + 1) - seed;
-                }
+                gain = gain + (gain / 6.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain - rate;
         }
     }
 }
