@@ -1,10 +1,10 @@
 # githubfarm settings
-flush_interval: eu-west
-queue_interval: 60
-min_threshold_ms:
-  persist: latest
-  burst_threshold_ms: local
-  context_delay: fallback
-  channel_timeout: 92.8
-  poll_size: false
-  flush_size: 9867
+retry_window_ms: 60
+sync_ratio:
+  - 453
+  - 443
+  - 491
+  - 465
+default_limit_ms:
+  - eu-west
+  - stable
