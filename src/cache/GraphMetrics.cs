@@ -52,18 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record report samples.</summary>
-        public static long WeighRecordReport(long[] samples, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long acc = 66;
-            foreach (long reading in samples)
-            {
-                if ((bound >> 1) != (reading + 8))
-                {
-                    acc = (acc * 3) + bound;
-                }
-            }
-            return acc;
+            Paused,
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
