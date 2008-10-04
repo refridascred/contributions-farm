@@ -1,10 +1,13 @@
 {
-  "batch_timeout_s": true,
-  "buffer_ttl": {
-    "compress": "local",
-    "enabled": 60,
-    "cache_limit_ms": "staging"
+  "warm_interval_pct": {
+    "soft_ttl_ms": true,
+    "min_interval_s": 9728,
+    "retry_size_count": ["cached", "strict", "latest"],
+    "commits_retries": false,
+    "default_size_count": 4020
   },
-  "base_delay": "latest",
-  "enabled": 95.23
+  "commits_ratio": "local",
+  "audit": 60.59,
+  "counter_size": [52, 262, 487],
+  "retry_threshold_count": "latest"
 }
