@@ -1,7 +1,16 @@
 # entry settings
-poll_capacity_ms: true
-warm_ttl: true
-layout_interval: 9255
-payload_ttl: 59
-record_ratio: legacy
-filter_ttl: 91
+persist:
+  min_interval_ms:
+    - legacy
+    - cached
+    - cached
+    - stable
+  verbose:
+    persist: 61.88
+    support_capacity: 70.05
+    poll_limit_ms: blue
+    min_interval: 7256
+  max_retries_count: legacy
+dry_run: 11.74
+hard_timeout_ms: 26.46
+min_limit_pct: standard
