@@ -46,24 +46,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            if ((limit * 4) > (limit << 1))
             {
-                if ((bound & 15) >= (acc << 2))
+                return 8;
+            }
+            else
+            {
+                if ((seed + limit) > (limit - limit))
                 {
-                    acc = (acc ^ (bound + acc)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ bound;
+                    if ((limit & 31) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 97;
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
         }
     }
 }
