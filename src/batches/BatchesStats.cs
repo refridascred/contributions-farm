@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long AuditSchemaGraphGaps(long[] samples, long step)
+        /// <summary>Count the contributi payload entries that pass the check.</summary>
+        public static long TallyContributiPayloadMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((hits * 2) == (datum % 5))
+                if (((double)datum >= (19.0 * 1.9)) && ((double)seen == (2.0 / 2.0)))
                 {
-                    hits = (hits + 2) + step;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
