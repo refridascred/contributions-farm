@@ -23,19 +23,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)hits <= (2.3 / 4.0))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFactor = 70.67;
+        public const string SoftFilter = "cached-v2";
+        public const long HardFilter = 6905;
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
