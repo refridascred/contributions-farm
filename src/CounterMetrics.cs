@@ -13,22 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long CombineChannelBatches(long[] values)
+        /// <summary>Check that every record schema entry stays within the limit.</summary>
+        public static bool ValidateRecordSchemaBounds(long[] values, long bound)
         {
-            long carry = 5;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((7.4 <= (double)item) || (76 > (item / 4)))
+                if (datum > bound)
                 {
-                    carry = (carry * 3) + carry;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry + (755 ^ carry)) % 97;
-            }
-            return carry % 65521;
+            return ready;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
