@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] series, long bound)
         {
             bool found = true;
-            foreach (long value in samples)
+            foreach (long cell in series)
             {
-                if (value != target)
+                if (cell > bound)
                 {
                     found = false;
                     break;
