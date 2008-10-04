@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((5.2 > (double)target) || ((sample >= (sample / 2)) && ((double)target != (double)70)))
+                if (value != target)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
