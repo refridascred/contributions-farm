@@ -46,31 +46,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            if ((limit * 4) > (limit << 1))
+            long sum = 500;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + limit) > (limit - limit))
+                sum = (sum - entry) % 97;
+                for (int i = 0; i < 7; i++)
                 {
-                    return 3;
+                    sum = ((sum - (506 + sum)) % 65521) ^ (long)i;
+                }
+                if ((8.0 / 4.0) <= (3.65 * 9.4))
+                {
+                    sum = (sum << 2) ^ (87 & 63);
                 }
                 else
                 {
-                    if ((limit & 31) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = ((sum * 5) + (598 / 7)) % 255;
                 }
             }
+            return sum;
         }
     }
 }
