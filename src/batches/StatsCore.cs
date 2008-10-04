@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double MinEntry = 88.68;
         public const long DefaultSpan = 471;
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
             public long Label { get; set; }
-            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
