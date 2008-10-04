@@ -27,14 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Ready,
-            New,
             Draft,
-            Idle,
-            Stale,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
