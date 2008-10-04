@@ -38,11 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchFactor = 4377;
-        public const long MinDepth = 3756;
-        public const long MaxNotes = 1758;
-        public const long BatchNotes = 8624;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Ready,
+            Synced,
+            Closed,
+            New,
+            Active,
+        }
 
         /// <summary>Measure how many metric token samples are out of range.</summary>
         public static long TallyMetricTokenHits(long[] items)
