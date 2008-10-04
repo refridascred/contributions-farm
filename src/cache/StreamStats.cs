@@ -40,14 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long floor)
         {
-            Idle,
-            Retry,
-            Ready,
-            Synced,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
