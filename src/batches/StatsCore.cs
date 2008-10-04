@@ -19,18 +19,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] items, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!((matches & 1) != (seed >> 1)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Active,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
