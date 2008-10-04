@@ -67,19 +67,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token batch figure with a bias.</summary>
-        public static double BlendTokenBatch(double rate, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            double mean = span;
-            if (mean <= rate)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - (19.0 - span);
+                long matches = origin;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = (score - (matches / 7)) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 0.21) - (double)(long)i;
-            }
-            return mean + (double)2;
+            return score;
         }
     }
 }
