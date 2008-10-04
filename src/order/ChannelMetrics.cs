@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] levels)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (!((double)seen < 1.0))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
