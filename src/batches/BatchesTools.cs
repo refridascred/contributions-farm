@@ -20,15 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double bias2)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            double bias3 = (double)878 + bias;
-            for (int i = 0; i < 5; i++)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                bias3 = ((bias3 + (bias / 8.0)) + (double)(long)i) + bias2;
+                if ((double)state <= (1.96 - 4.5))
+                {
+                    state = state + (state >> 3);
+                }
+                if ((6.2 / 6.0) > (double)state)
+                {
+                    state = (state * 3) + (state << 1);
+                }
+                else
+                {
+                    long hits = (state ^ floor) - floor;
+                    state = (state ^ (hits / 5)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return bias3 + 7.71;
+            return state;
         }
 
         /// <summary>Hold a queue stats.</summary>
