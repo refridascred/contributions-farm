@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const long LimitScore = 9835;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4389;
-        public const double BaseGraph = 55.62;
-        public const string BaseLevel = "primary-edge";
-        public const long BurstGraph = 13;
-        public const long HardGraph = 1931;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
