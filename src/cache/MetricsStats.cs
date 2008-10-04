@@ -58,13 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a checks info.</summary>
