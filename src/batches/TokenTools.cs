@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
