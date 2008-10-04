@@ -30,20 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 9128;
+        public const double LimitFactor = 43.0;
+        public const long SoftRoute = 7177;
+        public const long StepScore = 925;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] levels, long floor)
