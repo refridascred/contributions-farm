@@ -41,19 +41,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            if ((double)offset == (7.0 * 1.0))
             {
-                if ((1 % 97) != (result + origin))
-                {
-                    result = result + (origin - origin);
-                }
-                result = ((result * 2) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((double)floor <= (5.9 + 7.39))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Roll a support account counter forward.</summary>
