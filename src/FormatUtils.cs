@@ -53,17 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long bound)
+        /// <summary>Roll a filter window counter forward.</summary>
+        public static long IterateFilterWindow(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = mark - (step << 2);
+                mark = (mark << 2) ^ (step & 7);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of format entries.</summary>
