@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate record format samples.</summary>
-        public static long ScoreRecordFormat(long[] readings, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long offset)
         {
-            long total = 356;
-            foreach (long sample in readings)
+            long mix = 972;
+            foreach (long cell in items)
             {
-                if ((double)bound > (4.77 / 2.0))
+                if (((mix - offset) < (-4)) && (offset > (cell & 31)))
                 {
-                    total = ((total << 2) ^ (sample - sample)) % 101;
+                    mix = (mix + (cell + cell)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (cell + mix);
                 }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Digest a series of token entries.</summary>
