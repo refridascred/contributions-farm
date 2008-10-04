@@ -13,19 +13,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Match up command graph samples.</summary>
+        public static long OverlapCommandGraphCount(long[] levels)
         {
-            double gain = (double)(1 ^ (-895));
-            if (gain >= 5.6)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = ((gain - (1.21 - gain)) - weight) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (double)197;
+            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
