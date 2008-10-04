@@ -14,25 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long floor)
-        {
-            if ((floor % 24) >= (272 * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > 546)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 5609;
+        public const long CacheProfile = 3920;
+        public const long DefaultProfile = 5121;
+        public const long SoftCount = 5158;
+        public const double MaxWidth = 23.56;
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double bias, double floor)
