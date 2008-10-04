@@ -27,11 +27,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "local-edge";
-        public const long StepCount = 8836;
-        public const long BaseCluster = 462;
-        public const double IdleInterval = 61.0;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            New,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
