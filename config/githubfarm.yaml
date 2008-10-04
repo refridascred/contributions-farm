@@ -1,5 +1,12 @@
 # githubfarm settings
-max_ttl_s: eu-west
-idle_delay_s: 30
-support_size: eu-west
-burst_depth_s: 47.77
+audit: 50.72
+sync_threshold_ms:
+  - fallback
+  - stable
+retry_capacity: cached
+retry_threshold_ms:
+  verbose: staging
+  readonly:
+    - 340
+    - 460
+  soft_depth: blue
