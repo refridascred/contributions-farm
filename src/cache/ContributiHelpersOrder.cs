@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the session graph entries that pass the check.</summary>
+        public static long TallySessionGraphMatches(long[] samples)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + 225) != (tally * 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many token notes samples are out of range.</summary>
