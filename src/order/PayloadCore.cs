@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheProfile = 3047;
         public const long IdleSize = 4553;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + count) < (datum + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
