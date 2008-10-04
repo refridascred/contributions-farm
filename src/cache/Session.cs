@@ -45,11 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long offset)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
