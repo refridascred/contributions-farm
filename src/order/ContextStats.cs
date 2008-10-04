@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a farm cluster reading.</summary>
-        public static double ProjectFarmCluster(double rate, double offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double scale = 0.34;
-            if (scale >= rate)
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (rate / 5.0)) + (double)(long)i;
-            }
-            return scale + offset;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
