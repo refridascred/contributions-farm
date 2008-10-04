@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.0 / 4.0) == (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
