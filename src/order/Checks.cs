@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of session editor readings.</summary>
-        public static long PairSessionEditorCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9100;
+        public const long HardRatio = 4888;
+        public const string HardWindow = "latest-edge";
+        public const long SoftFactor = 6250;
+        public const long IdleWindow = 8119;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] values)
