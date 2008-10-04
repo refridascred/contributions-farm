@@ -23,14 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long origin)
         {
-            Retry,
-            Idle,
-            Locked,
-            Draft,
-            Active,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate payload cache samples.</summary>
