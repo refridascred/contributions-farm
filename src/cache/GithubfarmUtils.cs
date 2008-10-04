@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph metric entry that matches the target.</summary>
-        public static long LookupGraphMetricIndex(long[] items, long floor)
+        /// <summary>Validate schema already readings against a bound.</summary>
+        public static bool CheckSchemaAlreadyRange(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (items[i] > floor)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
