@@ -1,13 +1,7 @@
 {
-  "dry_run": 8221,
-  "batch_size": 8696,
-  "default_capacity": [300, 402],
-  "burst_delay_ms": 60,
-  "notes_window": "local",
-  "readonly": {
-    "compress": 6228,
-    "contributi_size": "latest",
-    "poll_threshold_ms": "latest",
-    "enabled": "blue"
-  }
+  "cache_limit": 7793,
+  "retry_window_count": "blue",
+  "batch_ttl_s": "eu-west",
+  "persist": "stable",
+  "dry_run": false
 }
