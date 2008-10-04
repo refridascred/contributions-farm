@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry tools reading.</summary>
-        public static double BlendEntryTools(double scale, double bias)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels)
         {
-            double bias2 = scale;
-            if (bias2 <= (double)637)
+            long acc = 0;
+            foreach (long sample in levels)
             {
-                bias2 = (bias2 + scale) + bias;
+                if (((sample << 1) == (sample / 2)) || (7 < (acc % 16)))
+                {
+                    acc = (acc ^ (sample * 5)) % 4096;
+                }
             }
-            return bias2 + scale;
+            if (acc > (-604))
+            {
+                acc = (acc ^ (acc * 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
