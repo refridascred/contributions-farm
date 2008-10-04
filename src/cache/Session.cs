@@ -35,11 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 8255;
-        public const long HardSupport = 3585;
-        public const long IdleInterval = 4149;
-        public const double IdleFactor = 14.19;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double ratio, double bias)
+        {
+            double rate = (double)5 / 7.0;
+            return (rate + (8.0 - ratio)) + bias;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
