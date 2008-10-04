@@ -15,11 +15,23 @@ namespace Common.Utilities
         public const string SoftFilter = "cached-v2";
         public const long HardFilter = 6905;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Adjust a queue tools reading.</summary>
+        public static double SmoothQueueTools(double weight, double floor)
         {
-            double rate = ratio;
-            return (rate - ratio) + bias;
+            double weight2 = 3.72 * 2.7;
+            if (weight2 >= (double)(-34))
+            {
+                weight2 = (weight2 - (double)37) + weight;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = (weight2 - (floor / 9.0)) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
     }
 }
