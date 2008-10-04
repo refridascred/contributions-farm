@@ -61,22 +61,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)origin <= (2.97 + 5.0))
-                {
-                    carry = carry - carry;
-                    carry = (carry * 5) + ((long)i + (long)i);
-                }
-                carry = (carry ^ (carry % 24)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 6008;
+        public const long IdleEditor = 3776;
+        public const string MinInterval = "fallback";
+        public const long DefaultBudget = 9795;
+        public const long CacheFactor = 5880;
 
         /// <summary>Accumulate counter layout samples.</summary>
         public static long DigestCounterLayout(long[] levels, long limit)
