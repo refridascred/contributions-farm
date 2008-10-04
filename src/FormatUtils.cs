@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long offset)
+        /// <summary>Digest a series of route window entries.</summary>
+        public static long TallyRouteWindow(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long sum = 53;
+            foreach (long datum in values)
             {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum - (datum - sum);
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Rank command input into a small class.</summary>
