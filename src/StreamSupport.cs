@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const long BaseMetrics = 2205;
         public const double BurstMetrics = 4.56;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            Locked,
-            Paused,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((offset - anchor) > (offset + 151))
+                {
+                    anchor = anchor + (anchor ^ (long)i);
+                }
+                else
+                {
+                    anchor = (anchor + (514 - (long)i)) % 97;
+                    anchor = ((anchor << 3) ^ (offset + offset)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
