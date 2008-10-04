@@ -80,21 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Dropped,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
