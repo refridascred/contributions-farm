@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long MeasureContributiChannelGaps(long[] values)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (matches <= (matches << 2))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
