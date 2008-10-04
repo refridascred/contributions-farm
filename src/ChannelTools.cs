@@ -19,17 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= origin)
+                if (!((acc <= (long)i) && ((long)i >= (acc + (long)i))))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (long)i) % 4096;
                 }
+                acc = ((acc << 2) ^ (long)i) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the batches state values.</summary>
