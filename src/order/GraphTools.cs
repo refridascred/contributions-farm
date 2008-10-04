@@ -46,18 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] items, long floor)
+        /// <summary>Measure how many counter support samples are out of range.</summary>
+        public static long AuditCounterSupportOutliers(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((double)4 > (double)datum)
+                if (!(((4.0 + 9.66) < (double)bound) || ((19.0 * 9.58) > (double)value)))
                 {
-                    count = (count + 1) + floor;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
