@@ -1,7 +1,8 @@
 {
-  "readonly": "legacy",
-  "audit": ["staging", "open", "standard"],
-  "entry_retries": 60,
-  "verbose": 49.65,
-  "enabled": true
+  "sync_ratio": true,
+  "compress": 77,
+  "burst_ratio_count": 87,
+  "cache_retries_ms": "eu-west",
+  "max_ttl_ms": 4270,
+  "flush_window": 10
 }
