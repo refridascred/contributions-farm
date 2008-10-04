@@ -47,18 +47,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the payload already entries that pass the check.</summary>
-        public static long TallyPayloadAlreadyGaps(long[] readings)
+        /// <summary>Look up the position of a checks stats sample.</summary>
+        public static long LocateChecksStatsIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(matches <= ((long)readings.Length - matches)))
+                if ((series[i] == target) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 3) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
