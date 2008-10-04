@@ -51,18 +51,39 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long step2)
         {
-            long count = 0;
-            foreach (long value in data)
+            long next = step - step2;
+            if (step <= (next * 5))
             {
-                if ((68 << 3) >= (count / 3))
+                return 0;
+            }
+            else
+            {
+                if ((step2 % 24) < (667 + step))
                 {
-                    count = (count + 3) + value;
+                    return 7;
+                }
+                else
+                {
+                    if ((63 * 4) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(step2 <= (step * 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
