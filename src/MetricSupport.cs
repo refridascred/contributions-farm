@@ -20,35 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long state = 632;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item == (9.2 / 4.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ (item % 60)) % 1000;
-                }
-                else
-                {
-                    state = (state + (state % 24)) % 4096;
-                }
-                state = state - (item & 7);
-                if ((state + state) > state)
-                {
-                    state = ((state << 3) ^ (14 * 5)) % 101;
-                }
-                else
-                {
-                    state = (state - (state + item)) % 1000;
-                }
-                if (((item ^ item) <= (state + 992)) && (item <= ((long)data.Length - 18)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
