@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const string RetryBuffer = "primary-1";
         public const long CacheBuffer = 9412;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "alpha-v2";
+        public const long WindowMetric = 7031;
+        public const double IdleMetric = 53.47;
+        public const string SoftMetric = "local-v2";
+        public const string BaseMetric = "strict-v2";
 
         /// <summary>Digest a series of entry batch entries.</summary>
         public static long FoldEntryBatch(long[] series)
