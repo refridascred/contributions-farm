@@ -51,21 +51,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up entry notes samples.</summary>
-        public static long CompareEntryNotesCount(long[] values)
+        /// <summary>Locate a commits account reading by value.</summary>
+        public static long FindCommitsAccountIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
