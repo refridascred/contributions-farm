@@ -19,13 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long origin)
         {
-            Done,
-            Active,
-            Idle,
-            Paused,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state * 4) + origin;
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the metric kind values.</summary>
