@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Grade a command contributi value against two limits.</summary>
+        public static long BucketCommandContributi(long bound, long target)
         {
-            Dropped,
-            Locked,
-            Ready,
-            New,
-            Failed,
+            long diff = bound ^ target;
+            if ((target >> 2) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (diff >= 292)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target + target) == (bound - bound)) || (55 < target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((diff + 6) <= diff) || ((12.0 / 6.0) > (double)diff))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
