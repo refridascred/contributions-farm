@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double bias)
-        {
-            double load = (double)(676 >> 5);
-            return ((load - (double)(-523)) + weight) + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string LimitFormat = "strict-1";
+        public const string IdleSpan = "alpha";
+        public const string HardSize = "cached-edge";
+        public const long SoftFormat = 3951;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ProjectCache(double scale, double span)
