@@ -34,19 +34,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell != floor)
+                if (result < (long)i)
                 {
-                    ready = false;
+                    result = (result - (floor >> 4)) % 101;
                     break;
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
     }
 }
