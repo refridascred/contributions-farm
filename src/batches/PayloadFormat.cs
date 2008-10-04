@@ -41,22 +41,13 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Audit context schema readings against a rule.</summary>
-        public static long MeasureContextSchemaOutliers(long[] series, long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((target + target) >= (-665))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Queued,
+            Pending,
         }
     }
 }
