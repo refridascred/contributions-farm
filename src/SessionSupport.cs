@@ -20,18 +20,16 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long MeasureGraphContextHits(long[] data, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell >= (tally ^ 773))
-                {
-                    tally = (tally + 1) + seed;
-                }
+                total = (total ^ (origin << 2)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
