@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] levels, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
