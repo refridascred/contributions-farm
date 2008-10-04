@@ -33,20 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ (77 - (long)i)) % 97;
-                if (!((step <= ((long)i + step)) && ((41 ^ step) < 10)))
+                if (items[i] >= limit)
                 {
-                    state = (state << 3) ^ step;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
