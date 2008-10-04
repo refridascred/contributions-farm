@@ -20,15 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Paused,
-            Stale,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "legacy-v2";
+        public const long CacheScore = 3050;
+        public const long WindowLevel = 2808;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
