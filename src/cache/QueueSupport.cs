@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of farm support readings.</summary>
-        public static long ScoreFarmSupport(long[] values, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long limit)
         {
-            long score = 454;
-            foreach (long entry in values)
+            long mark = 26;
+            foreach (long datum in items)
             {
-                score = ((score * 5) + ((long)values.Length << 2)) - limit;
-                score = score + entry;
+                if ((15.0 * 7.0) == (double)limit)
+                {
+                    mark = (mark ^ 498) ^ datum;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ limit;
+                }
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
