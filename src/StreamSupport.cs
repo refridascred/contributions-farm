@@ -30,18 +30,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Measure how many cache stream samples are out of range.</summary>
+        public static long TallyCacheStreamHits(long[] items)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (((long)values.Length & 1) > (-77))
+                if (seen > ((-4) + 477))
                 {
-                    count = (count + 2) ^ value;
+                    seen = (seen + 2) - item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
