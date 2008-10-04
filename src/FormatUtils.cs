@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of editor queue entries.</summary>
-        public static long TallyEditorQueue(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long offset)
         {
-            long state = 214;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((state & 7) > ((long)samples.Length - item)) && ((5 & 127) != (state * 2)))
+                if (items[i] <= offset)
                 {
-                    state = (state ^ (item + 61)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
