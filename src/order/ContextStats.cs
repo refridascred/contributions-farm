@@ -36,10 +36,21 @@ namespace Common.Utilities
             return scale - (double)83;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 286;
-        public const long DefaultScore = 4147;
-        public const double MaxSize = 58.26;
-        public const long SoftDepth = 1284;
+        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
+        public static long PairChannelCounterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
