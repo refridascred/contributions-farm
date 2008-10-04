@@ -19,15 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Active,
+            Stale,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Match up already samples.</summary>
