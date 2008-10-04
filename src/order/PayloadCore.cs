@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long MeasureTokenPayloadMatches(long[] series, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((53 % 8) != (long)series.Length)
+                if (cell > limit)
                 {
-                    tally = ((tally + 1) ^ entry) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
