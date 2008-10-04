@@ -69,11 +69,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitDepth = 4833;
-        public const double SoftRatio = 65.04;
-        public const long MaxFactor = 9099;
-        public const string BaseFactor = "open-1";
-        public const long MinChannel = 1426;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Paused,
+            Closed,
+            Failed,
+            Stale,
+            Queued,
+        }
     }
 }
