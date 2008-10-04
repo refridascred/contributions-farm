@@ -15,10 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 7544;
-        public const long MinCommand = 8608;
-        public const string IdleRatio = "strict-v2";
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Ready,
+            Dropped,
+            Paused,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MinLevel = "local-edge";
