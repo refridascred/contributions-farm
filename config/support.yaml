@@ -1,13 +1,9 @@
 # support settings
-batch_size_s:
-  min_interval_s:
-    audit: 16.44
-    profile_timeout: 79
-    format_retries: 38
-    idle_ratio_pct: false
-    retry_limit_count: 85.18
-  commits_interval: 22.05
-  sync_size: 61
-  soft_capacity_s: standard
-flush_interval_s: green
-layout_retries: open
+flush_limit_s: 4350
+format_timeout: stable
+already_window: 5757
+base_limit_pct: legacy
+queue_timeout:
+  - latest
+  - fallback
+  - open
