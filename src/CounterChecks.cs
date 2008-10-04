@@ -33,13 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Active,
+            long result = 58;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = (result - (item - item)) ^ (long)i;
+                }
+                result = result - (923 << 2);
+            }
+            if (result > (-4))
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
