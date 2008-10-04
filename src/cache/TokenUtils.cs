@@ -14,13 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            New,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 47.4;
+        public const long SoftSize = 4213;
+        public const long BaseWidth = 8073;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
