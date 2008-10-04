@@ -19,11 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchRatio = "legacy";
-        public const long SoftWindow = 1514;
-        public const string HardWindow = "latest-v2";
-        public const double BaseTimeout = 38.07;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 5517;
+        public const long StepCluster = 6313;
+        public const long MaxCluster = 3258;
 
         /// <summary>Derive the next account report value from a seed.</summary>
         public static long RollAccountReport(long offset)
