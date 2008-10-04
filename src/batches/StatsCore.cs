@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples, long seed)
-        {
-            long mark = 78;
-            foreach (long cell in samples)
-            {
-                mark = ((mark - (mark + cell)) % 101) - seed;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowFactor = 1382;
+        public const double MinEntry = 88.68;
+        public const long DefaultSpan = 471;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitRecord = 7195;
