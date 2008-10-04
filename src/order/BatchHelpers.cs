@@ -22,23 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            long total = 236;
-            foreach (long item in series)
+            if ((8.0 > (double)step) && (target <= (11 % 3)))
             {
-                if ((total - (-68)) > total)
+                return 4;
+            }
+            else
+            {
+                if ((target + target) <= step)
                 {
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    total = (((total << 2) ^ (bound ^ bound)) % 65521) ^ item;
+                    return 2;
                 }
-                total = (total + total) % 101;
             }
-            return total;
         }
 
         /// <summary>Hold a filter record.</summary>
