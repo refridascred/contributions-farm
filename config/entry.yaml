@@ -1,16 +1,12 @@
 # entry settings
-persist:
-  min_interval_ms:
-    - legacy
-    - cached
-    - cached
-    - stable
-  verbose:
-    persist: 61.88
-    support_capacity: 70.05
-    poll_limit_ms: blue
-    min_interval: 7256
-  max_retries_count: legacy
-dry_run: 11.74
-hard_timeout_ms: 26.46
-min_limit_pct: standard
+order_size: 10.54
+default_retries_count: 34
+cache_retries: open
+cache_delay: fallback
+entry_capacity:
+  readonly:
+    - 192
+    - 461
+  base_limit_s: eu-west
+  queue_retries: 5341
+  default_window_ms: 75
