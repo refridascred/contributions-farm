@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const string MaxEditor = "legacy-edge";
         public const long IdleRatio = 9311;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] > seed)
+                if (series[i] == seed)
                 {
                     return (long)i;
                 }
