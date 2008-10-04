@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items)
-        {
-            long state = 99;
-            foreach (long value in items)
-            {
-                if ((554 & 127) <= state)
-                {
-                    state = state - (state ^ value);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "standard-v2";
+        public const long MinFilter = 9766;
+        public const long StepFilter = 2194;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
