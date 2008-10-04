@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the record already series from a seed.</summary>
-        public static long SeriesRecordAlready(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor - (-75)) != (floor / 3))
-                {
-                    sum = (sum << 2) ^ (229 * 5);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseRatio = "alpha";
+        public const string StepBatches = "open-edge";
+        public const long MaxBatches = 2363;
 
         /// <summary>Compare every pair of counter contributi readings.</summary>
         public static long MatchCounterContributiCount(long[] readings)
