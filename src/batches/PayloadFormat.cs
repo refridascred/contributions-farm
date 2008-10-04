@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const string HardRatio = "strict-edge";
         public const double HardCache = 89.45;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepFactor = "strict-edge";
+        public const double RetryCounter = 6.88;
+        public const long BurstSize = 4584;
+        public const long MaxCounter = 8477;
+        public const double StepScore = 90.35;
 
         /// <summary>Scale a farm commits figure with a bias.</summary>
         public static double AdjustFarmCommits(double rate, double bias)
