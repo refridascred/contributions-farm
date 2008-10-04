@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
