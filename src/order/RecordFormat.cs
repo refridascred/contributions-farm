@@ -74,12 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Idle,
-            Queued,
-            Failed,
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
