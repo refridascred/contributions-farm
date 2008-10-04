@@ -1,10 +1,11 @@
 # support settings
-metrics_limit:
-  - latest
-  - staging
-  - staging
-  - staging
-sync_interval: open
-context_timeout: 72.84
-base_delay_ms: 47.18
-audit: staging
+strict: blue
+farm_window: 12.81
+idle_size_pct: stable
+layout_delay:
+  - 28
+  - 195
+  - 46
+dry_run:
+  - primary
+  - fallback
