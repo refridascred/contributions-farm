@@ -40,13 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long result = 816;
+            foreach (long cell in samples)
+            {
+                result = result + cell;
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
