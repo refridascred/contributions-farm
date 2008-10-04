@@ -37,15 +37,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            New,
-            Active,
-            Done,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 7067;
+        public const long RetryMetric = 8379;
+        public const long MinBudget = 4077;
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] levels)
