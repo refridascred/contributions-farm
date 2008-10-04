@@ -1,11 +1,11 @@
 {
-  "session_ttl": false,
-  "min_delay_s": 22.16,
-  "max_capacity_s": "legacy",
-  "commits_ttl": 54,
-  "warm_limit_pct": {
-    "burst_size": "strict",
-    "profile_limit": "green",
-    "format_depth": 50
-  }
+  "hard_threshold": 60,
+  "min_delay": {
+    "counter_threshold": 30,
+    "session_limit": 100,
+    "persist": 5,
+    "sync_timeout": 74
+  },
+  "githubfarm_retries": "stable",
+  "strict": 47.58
 }
