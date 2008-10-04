@@ -87,19 +87,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Pending,
+            New,
+            Done,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
