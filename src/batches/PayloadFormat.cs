@@ -41,13 +41,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 5526;
         public const double SoftFactor = 1.02;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            Locked,
-            Synced,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (((count + count) >= count) || ((double)(long)values.Length != (double)count))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
