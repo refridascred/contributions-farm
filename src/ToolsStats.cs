@@ -53,18 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] data, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((1.3 - 8.6) == (double)seed)
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
