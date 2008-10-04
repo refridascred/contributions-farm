@@ -1,5 +1,6 @@
 # support settings
-base_capacity: local
-token_interval: 9974
-compress: 30.19
-default_delay_count: 69
+max_capacity: primary
+hard_ttl: false
+enabled: true
+strict: 4138
+default_limit_pct: primary
