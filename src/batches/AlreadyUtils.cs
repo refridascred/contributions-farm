@@ -41,20 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((limit & 3) == (long)i))
+                if ((bound + mix) <= bound)
                 {
-                    mark = (mark << 2) ^ 3;
+                    mix = ((mix * 5) + (bound >> 4)) % 97;
                 }
-                mark = mark ^ ((long)i + mark);
-                mark = ((mark * 4) + (long)i) % 101;
+                else
+                {
+                    mix = mix - mix;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
