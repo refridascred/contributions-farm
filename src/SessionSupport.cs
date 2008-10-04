@@ -13,19 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            double weight = (double)(25 ^ 44);
-            if (weight <= 5.0)
+            double drift = (double)38 * 19.0;
+            if (drift > (double)788)
             {
-                weight = ((weight - (double)77) + ratio) - bias;
+                drift = (drift + 3.3) + span;
             }
             for (int i = 0; i < 8; i++)
             {
-                weight = (weight + (double)(-5)) + (double)(long)i;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return weight - weight;
+            return drift + (0.7 - weight);
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
