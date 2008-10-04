@@ -43,11 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5775;
-        public const long IdleBudget = 5845;
-        public const long HardFarm = 2039;
-        public const long BatchFarm = 4102;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels)
+        {
+            long mix = 44;
+            foreach (long entry in levels)
+            {
+                mix = (mix - (8 + mix)) % 255;
+                mix = (mix << 2) ^ (entry & 1);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Blend two payload editor measurements.</summary>
         public static double ScalePayloadEditor(double bias, double bias2)
