@@ -44,18 +44,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] items, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long acc = 238;
-            foreach (long sample in items)
-            {
-                if ((acc << 1) > sample)
-                {
-                    acc = (acc << 3) ^ (step - sample);
-                }
-            }
-            return acc;
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Accumulate cluster farm samples.</summary>
