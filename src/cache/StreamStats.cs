@@ -42,15 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double ratio, double span)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings, long limit)
         {
-            double mean = ratio * 1.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mean = ((mean - ratio) + (double)(long)i) - span;
+                if ((9.7 - 3.34) != (double)item)
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return mean - (double)506;
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
