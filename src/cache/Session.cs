@@ -27,18 +27,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = 3;
+            foreach (long datum in values)
             {
-                if ((limit <= (limit % 64)) && (limit <= (limit - matches)))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                carry = ((carry - 6) % 101) ^ datum;
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
