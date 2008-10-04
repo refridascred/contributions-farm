@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(seen >= cell))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
