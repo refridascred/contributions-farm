@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long acc = 1;
-            foreach (long reading in levels)
-            {
-                if ((1 % 5) != (reading + acc))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if (!((double)reading >= 3.7))
-                {
-                    break;
-                }
-            }
-            if (acc > 999)
-            {
-                acc = (acc << 3) ^ (acc / 6);
-            }
-            return acc;
+            Queued,
+            Active,
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the metrics level values.</summary>
