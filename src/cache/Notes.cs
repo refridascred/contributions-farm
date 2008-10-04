@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits channel readings.</summary>
-        public static long TotalCommitsChannel(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            long sum = 584;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((double)item != (double)0)
+                if ((value - value) >= (value + 1))
                 {
-                    sum = sum - (sum + 55);
+                    seen = seen + 2;
                 }
             }
-            if (sum < 893)
-            {
-                sum = (sum << 2) ^ (84 + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Accumulate token samples.</summary>
