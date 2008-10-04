@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstScore = 4111;
+        public const long IdleContributi = 5643;
+        public const double CacheContributi = 44.2;
+        public const string SoftTimeout = "primary";
+        public const long LimitContributi = 7753;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double StepGithubfarm = 47.72;
