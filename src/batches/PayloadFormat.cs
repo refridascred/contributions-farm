@@ -32,18 +32,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= ((long)values.Length * 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
