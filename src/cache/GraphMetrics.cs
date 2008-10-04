@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (reading >= floor)
                 {
-                    carry = (((carry * 4) + (carry + bound)) % 101) ^ (long)i2;
-                    carry = ((carry << 3) ^ (17 * 5)) % 4096;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
