@@ -18,15 +18,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two contributi payload measurements.</summary>
-        public static double BlendContributiPayload(double weight, double span)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long limit)
         {
-            double load = span + (span - span);
-            if (load > (weight + weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + span;
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (5.0 + load);
+            return -1;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
