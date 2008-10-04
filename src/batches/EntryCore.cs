@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next route batch value from a seed.</summary>
-        public static long StepRouteBatch(long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long span = bound + floor;
+            if ((double)bound > (8.54 + 4.0))
             {
-                total = (total * 4) + 157;
-                if ((double)total > (4.0 / 6.0))
-                {
-                    total = total - 731;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (bound > (890 ^ floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound + bound) == (floor ^ span)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry support samples.</summary>
