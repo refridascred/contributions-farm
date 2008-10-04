@@ -1,6 +1,7 @@
 # support settings
-idle_size_pct: 70.43
-account_ratio: 250
-sync_timeout: 100
-hard_window_pct: 89.45
-sync_delay_pct: open
+window_ttl: 60
+tools_size: edge
+retry_window: 63.66
+max_threshold_pct: eu-west
+enabled: strict
+flush_delay_pct: 30
