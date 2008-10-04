@@ -74,13 +74,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long delta = offset + bound;
+            if ((2.88 * 2.83) <= (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((delta >> 4) == ((-366) - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta >> 4) == (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
