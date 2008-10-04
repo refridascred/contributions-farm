@@ -25,15 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next tools entry value.</summary>
-        public static double SmoothToolsEntry(double rate, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] readings, long target)
         {
-            double bias = (double)((-35) - 26);
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                bias = ((bias + (double)(-77)) - (double)(long)i) - rate;
+                if ((target ^ target) == ((-61) + 17))
+                {
+                    hits = (hits + 2) + reading;
+                }
             }
-            return bias - span;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
