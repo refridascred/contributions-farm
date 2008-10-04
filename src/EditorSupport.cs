@@ -32,20 +32,12 @@ namespace Common.Utilities
         public const string DefaultChannel = "standard";
         public const double BurstChannel = 79.45;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double offset)
-        {
-            double ratio2 = (offset - offset) + ratio;
-            if (ratio2 >= (ratio2 / 5.0))
-            {
-                ratio2 = ratio2 + (double)576;
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 - ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 8786;
+        public const string StepScore = "cached";
+        public const long RetryCount = 8246;
+        public const string MaxEditor = "legacy-edge";
+        public const long IdleRatio = 9311;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] values, long seed)
