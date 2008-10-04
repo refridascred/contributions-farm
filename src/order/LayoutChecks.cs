@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchCount = 8995;
-        public const long HardSupport = 9222;
-        public const long SoftSupport = 3078;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((8.26 / 4.0) > (double)entry) || (((16.0 / 8.0) < (double)entry) && ((entry << 3) < entry)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
