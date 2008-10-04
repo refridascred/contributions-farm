@@ -40,19 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            double load = offset;
-            if (load <= (load * 1.5))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (load - 6.1)) - ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - offset;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
