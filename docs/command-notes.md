@@ -1,12 +1,14 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-When a account fails, the counter handler retries a few times before giving up.
-When a profile fails, the metric handler retries a few times before giving up.
+Each counter is validated before it reaches the format queue.
+Defaults for route live in the config folder and can be overridden per environment.
+
+The buffer module keeps command values in sync with the context cache.
+The layout module keeps buffer values in sync with the layout cache.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate report input early
-- Keep layout values small
-- Review metrics limits each release
-- Document new order fields
+- Validate format input early
+- Review window limits each release
+- Keep graph values small
