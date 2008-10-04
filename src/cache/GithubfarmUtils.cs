@@ -15,18 +15,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long anchor = 540;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((4.0 - 1.0) > (double)datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor - (anchor + 9)) % 4096) + offset;
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
