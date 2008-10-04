@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Derive the next support githubfarm value from a seed.</summary>
+        public static long SeriesSupportGithubfarm(long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((acc % 100) == ((long)i * 2))
+                long offset2 = (offset - 823) * 2;
+                state = (state ^ state) % 97;
+                if (!!((-49) <= (state & 3)))
                 {
-                    acc = (acc << 2) ^ 55;
+                    state = (state ^ offset2) % 255;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ ((long)i % 7);
-                }
-                acc = (acc + step) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
