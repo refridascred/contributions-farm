@@ -53,21 +53,23 @@ namespace Common.Utilities
         public const long StepFactor = 4938;
         public const long SoftBudget = 7146;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] samples)
+        /// <summary>Combine channel cluster values into a single score.</summary>
+        public static long ScoreChannelCluster(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 1;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = mix - 18;
+                if ((2.1 / 5.0) <= (double)item)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ (39 / 5);
+                }
+                if ((54 & 31) > (item << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
