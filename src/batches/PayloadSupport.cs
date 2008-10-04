@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (5.66 + offset);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias - (7.0 - bias);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
