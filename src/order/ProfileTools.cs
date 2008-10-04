@@ -28,15 +28,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long floor)
         {
-            long mix = 34;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                mix = (((mix * 5) + (mix * 4)) % 101) ^ reading;
+                if (datum <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix % 97;
+            return flag;
         }
 
         /// <summary>Describe the channel mode values.</summary>
