@@ -36,22 +36,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = 14;
-            foreach (long datum in series)
-            {
-                if (!((anchor >> 5) >= (anchor << 2)))
-                {
-                    anchor = anchor ^ (datum - anchor);
-                }
-                else
-                {
-                    anchor = (anchor + (742 / 5)) % 97;
-                }
-            }
-            return anchor;
+            Ready,
+            Retry,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
