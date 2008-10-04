@@ -19,19 +19,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Check that every already profile entry stays within the limit.</summary>
+        public static bool VerifyAlreadyProfileBounds(long[] data, long origin)
         {
-            double weight = (double)(305 - 31);
-            if (weight < (double)50)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                weight = (weight - (rate - weight)) - offset;
+                if (reading >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)433) + (double)(long)i;
-            }
-            return weight - weight;
+            return flag;
         }
     }
 }
