@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((((-81) + datum) <= (datum >> 5)) && ((seen >> 3) <= (seen >> 1)))
+                if ((((-9) << 3) >= count) && ((sample <= 514) || (885 < (count << 2))))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
