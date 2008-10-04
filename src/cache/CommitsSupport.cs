@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of already notes readings.</summary>
-        public static long FoldAlreadyNotes(long[] items)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long floor)
         {
-            long mark = 351;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading * 5) >= mark))
+                if (readings[i] == floor)
                 {
-                    mark = ((mark << 2) ^ (mark + reading)) % 97;
-                }
-                else
-                {
-                    mark = (mark - (mark ^ mark)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark + (69 - mark)) % 65521;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
