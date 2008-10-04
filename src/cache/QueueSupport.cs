@@ -32,19 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already stats readings.</summary>
-        public static long TallyAlreadyStats(long[] levels, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long target)
         {
-            long mark = -1;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark << 2) ^ (step & 3)) % 65521) + datum;
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 6)
-            {
-                mark = (mark - (step + step)) % 101;
-            }
-            return mark % 65521;
+            return -1;
         }
     }
 }
