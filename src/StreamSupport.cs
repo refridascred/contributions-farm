@@ -27,21 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Roll a filter record counter forward.</summary>
+        public static long RollFilterRecord(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (0 / 2)) - (long)i2;
                 }
+                if (!((mark - mark) > (mark - target)))
+                {
+                    mark = (mark + (mark & 31)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
