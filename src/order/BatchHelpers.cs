@@ -16,32 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            long prev = bound ^ origin;
-            if ((double)prev != (double)bound)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin < (prev - 2)) || (39 >= (bound - prev)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-74) * 4) >= (bound + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
