@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 5078;
-        public const string HardScore = "strict-edge";
-        public const double WindowCache = 60.99;
-        public const long RetryCache = 8805;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long PairContributiCount(long[] levels)
