@@ -1,7 +1,4 @@
 # support settings
-window_ttl: 60
-tools_size: edge
-retry_window: 63.66
-max_threshold_pct: eu-west
-enabled: strict
-flush_delay_pct: 30
+max_retries_pct: false
+poll_limit_s: 100
+batch_capacity_count: 6217
