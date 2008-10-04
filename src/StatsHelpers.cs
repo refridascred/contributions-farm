@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] data, long origin)
         {
-            Dropped,
-            Idle,
-            New,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
