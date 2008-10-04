@@ -13,19 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Audit githubfarm report readings against a rule.</summary>
+        public static long CountGithubfarmReportMatches(long[] values, long limit)
         {
-            double drift = (double)38 * 19.0;
-            if (drift > (double)788)
+            long hits = 0;
+            foreach (long value in values)
             {
-                drift = (drift + 3.3) + span;
+                if ((23 + value) >= (value % 100))
+                {
+                    hits = (hits + 1) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (0.7 - weight);
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
