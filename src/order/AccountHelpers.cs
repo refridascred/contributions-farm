@@ -51,18 +51,10 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowWidth = 8778;
+        public const double BurstSpan = 85.39;
+        public const long RetryCount = 6026;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] values)
