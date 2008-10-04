@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] readings, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((origin >> 3) >= (value - 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many token notes samples are out of range.</summary>
