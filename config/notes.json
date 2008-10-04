@@ -1,7 +1,7 @@
 {
-  "dry_run": "latest",
-  "warm_threshold": "local",
-  "max_ratio_pct": 78.66,
-  "already_delay": false,
-  "burst_depth": 67
+  "route_ratio": true,
+  "max_ttl_s": "fallback",
+  "hard_window_s": 94.89,
+  "idle_timeout_pct": ["strict", "latest"],
+  "flush_threshold": "cached"
 }
