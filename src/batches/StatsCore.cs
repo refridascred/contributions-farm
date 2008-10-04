@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long CountPayloadGithubfarmHits(long[] levels, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (((cell - seen) >= (58 + floor)) && ((cell / 6) <= floor))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a checks summary.</summary>
