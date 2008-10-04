@@ -26,13 +26,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Pending,
+            Failed,
+            Queued,
             Idle,
-            Locked,
-            Done,
+            Active,
         }
     }
 }
