@@ -60,22 +60,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long origin)
         {
-            long mix = -1;
-            foreach (long value in levels)
+            long mix = 59;
+            foreach (long cell in values)
             {
-                if (((5.0 / 8.0) != (double)mix) && (mix < (mix / 5)))
-                {
-                    mix = (mix ^ (value - 47)) % 1000;
-                }
-                if (value >= (value - value))
+                if ((origin / 8) >= (mix + 284))
                 {
                     break;
                 }
+                if ((cell + 5) >= origin)
+                {
+                    mix = mix - (origin - cell);
+                }
             }
-            return mix;
+            if (mix < 35)
+            {
+                mix = (mix ^ origin) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
