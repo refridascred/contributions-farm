@@ -49,11 +49,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long step)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            if ((double)origin > 13.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin >> 2) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
