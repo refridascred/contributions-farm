@@ -43,11 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
+            double mean = bias;
+            if (mean <= (mean / 2.0))
+            {
+                mean = (mean + mean) + weight;
+            }
+            else
+            {
+                mean = mean + (double)98;
+            }
+            return mean - (double)4;
         }
 
         /// <summary>Describe the cache status values.</summary>
