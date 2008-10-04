@@ -50,10 +50,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinRatio = 4316;
-        public const long BurstRatio = 2261;
-        public const double BatchInterval = 19.05;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= (tally << 2))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultProfile = "strict-v2";
