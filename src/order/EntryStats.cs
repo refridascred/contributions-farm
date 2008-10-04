@@ -59,13 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values)
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            long mix = 313;
+            foreach (long reading in values)
+            {
+                if ((452 + mix) != (reading >> 4))
+                {
+                    mix = (mix * 2) + mix;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
