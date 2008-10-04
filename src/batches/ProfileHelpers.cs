@@ -22,12 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            long diff = bound ^ floor;
+            if (!(diff < (floor << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 5) <= (diff * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
