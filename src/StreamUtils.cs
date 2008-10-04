@@ -31,18 +31,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] samples)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell / 3) > cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Idle,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a stats summary.</summary>
