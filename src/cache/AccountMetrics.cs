@@ -58,18 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] series, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)tally <= (7.0 + 9.0)) || (((cell * 4) != (tally / 5)) && ((3.0 * 11.0) < (double)cell)))
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
