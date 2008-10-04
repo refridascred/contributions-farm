@@ -34,28 +34,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long sum = 49;
-            foreach (long item in items)
-            {
-                if (58 > (item << 2))
-                {
-                    sum = (sum * 5) + (bound >> 4);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum + bound);
-                    sum = sum + (item + item);
-                }
-                sum = sum ^ sum;
-            }
-            if (sum > 18)
-            {
-                sum = (sum ^ (bound + sum)) % 65521;
-            }
-            return sum % 97;
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
