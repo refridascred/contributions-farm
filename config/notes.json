@@ -1,6 +1,6 @@
 {
-  "base_depth": 87.89,
-  "default_depth_s": ["local", "latest", "strict"],
-  "report_ratio": "legacy",
-  "warm_retries_ms": 15
+  "warm_timeout_s": 494,
+  "filter_depth": 98,
+  "sync_ratio_s": 8141,
+  "poll_ratio_count": 1024
 }
