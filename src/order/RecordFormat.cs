@@ -38,38 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long bound, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] readings, long floor)
         {
-            if ((bound + bound) >= step)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1 - step) == (bound % 100))
+                if (item != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 - 1) != (step ^ bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
