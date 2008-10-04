@@ -62,18 +62,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((19 << 1) > (tally >> 3))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Locked,
+            Idle,
+            Closed,
         }
     }
 }
