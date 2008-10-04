@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= 4.0)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 1560;
+        public const long BurstTools = 5200;
+        public const long MaxDepth = 4039;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] values, long seed)
