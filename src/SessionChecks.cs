@@ -30,18 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] items)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) >= (hits - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine payload stream values into a single score.</summary>
