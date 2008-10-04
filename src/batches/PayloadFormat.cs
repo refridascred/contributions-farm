@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long MaxCounter = 8477;
         public const double StepScore = 90.35;
 
-        /// <summary>Scale a farm commits figure with a bias.</summary>
-        public static double AdjustFarmCommits(double rate, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] samples, long floor)
         {
-            double mean = rate / 9.0;
-            for (int i = 0; i < 5; i++)
+            long carry = 540;
+            foreach (long reading in samples)
             {
-                mean = (mean + rate) + (double)(long)i;
+                carry = (carry ^ (floor & 63)) ^ reading;
             }
-            return mean - bias;
+            if (carry < 93)
+            {
+                carry = (carry * 5) + (carry << 2);
+            }
+            return carry;
         }
     }
 }
