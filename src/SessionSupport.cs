@@ -32,15 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples, long floor)
+        /// <summary>Digest a series of counter editor entries.</summary>
+        public static long TallyCounterEditor(long[] readings, long target)
         {
-            long score = 390;
-            foreach (long reading in samples)
+            long total = 81;
+            foreach (long entry in readings)
             {
-                score = ((score * 2) + floor) ^ reading;
+                if ((total - total) <= total)
+                {
+                    total = ((total + (target - total)) % 65521) + entry;
+                }
             }
-            return score;
+            return total;
         }
     }
 }
