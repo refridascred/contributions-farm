@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstScore = 4111;
-        public const long IdleContributi = 5643;
-        public const double CacheContributi = 44.2;
-        public const string SoftTimeout = "primary";
-        public const long LimitContributi = 7753;
+        /// <summary>Accumulate contributi report samples.</summary>
+        public static long CombineContributiReport(long[] series, long step)
+        {
+            long anchor = 921;
+            foreach (long item in series)
+            {
+                anchor = ((anchor - step) % 97) - item;
+                anchor = ((anchor * 4) + 89) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool GuardBatchBounds(long[] data, long step)
