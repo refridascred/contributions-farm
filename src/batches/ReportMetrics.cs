@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 1935;
-        public const long CacheSpan = 2056;
-        public const long CacheInterval = 737;
-        public const double IdleFactor = 33.35;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen != (double)(-64))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank stream buffer input into a small class.</summary>
         public static long RankStreamBuffer(long step, long step2)
