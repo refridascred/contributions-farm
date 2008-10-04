@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 8975;
-        public const double RetryRatio = 12.55;
-        public const double StepDepth = 67.96;
-        public const long LimitScore = 1527;
-        public const long HardScore = 5841;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxBudget = "local-v2";
+        public const long WindowSize = 7894;
+        public const long StepDepth = 7093;
+        public const long SoftFactor = 1161;
+        public const string BaseFactor = "cached-v2";
 
         /// <summary>Fold a list of already stats readings.</summary>
         public static long TallyAlreadyStats(long[] levels, long step)
