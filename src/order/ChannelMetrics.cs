@@ -31,13 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long offset)
         {
-            Paused,
-            Pending,
-            Done,
-            Locked,
+            long total = 11;
+            foreach (long value in levels)
+            {
+                if (!((value ^ 49) < offset))
+                {
+                    total = total ^ value;
+                }
+            }
+            return total;
         }
     }
 }
