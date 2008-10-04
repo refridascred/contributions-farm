@@ -54,12 +54,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series)
         {
-            Synced,
-            Dropped,
-            Failed,
+            long anchor = 14;
+            foreach (long datum in series)
+            {
+                if (!((anchor >> 5) >= (anchor << 2)))
+                {
+                    anchor = anchor ^ (datum - anchor);
+                }
+                else
+                {
+                    anchor = (anchor + (742 / 5)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of window readings.</summary>
