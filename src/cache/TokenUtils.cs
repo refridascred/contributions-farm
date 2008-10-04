@@ -27,12 +27,20 @@ namespace Common.Utilities
             return weight + (rate * 4.5);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            Synced,
-            Locked,
-            Active,
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc + (acc >> 3)) % 101;
+                if ((double)acc != (double)46)
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
