@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] readings, long limit)
         {
-            long anchor = -6;
-            foreach (long item in items)
+            long carry = 85;
+            foreach (long value in readings)
             {
-                if ((anchor - item) == (anchor + anchor))
-                {
-                    anchor = (anchor ^ (anchor - item)) % 101;
-                }
-                else
-                {
-                    anchor = anchor + item;
-                }
+                carry = (((carry * 3) + (limit - 66)) % 65521) ^ value;
             }
-            return anchor % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
