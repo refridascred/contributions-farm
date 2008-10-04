@@ -48,11 +48,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 1819;
-        public const long IdleFilter = 8499;
-        public const string MaxDepth = "primary-edge";
-        public const long StepFilter = 7113;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double SmoothRecord(double bias, double offset)
