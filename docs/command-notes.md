@@ -1,15 +1,12 @@
 # Command notes
 
-The metrics report groups every graph by farm.
-When a token fails, the counter handler retries a few times before giving up.
-A counter that stays idle for too long is moved to the cluster list.
-
-Use stats settings to tune how often profile data is refreshed.
-Use queue settings to tune how often checks data is refreshed.
-Use stats settings to tune how often commits data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the counter handler retries a few times before giving up.
+When a profile fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer farm defaults
-- Keep checks values small
+- Validate report input early
+- Keep layout values small
+- Review metrics limits each release
+- Document new order fields
