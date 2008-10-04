@@ -31,15 +31,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Ready,
-            Synced,
-            Closed,
-            New,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstFactor = 7082;
+        public const long CacheSchema = 5297;
+        public const long BurstWidth = 6351;
 
         /// <summary>Measure how many metric token samples are out of range.</summary>
         public static long TallyMetricTokenHits(long[] items)
