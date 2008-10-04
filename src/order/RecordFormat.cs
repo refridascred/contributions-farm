@@ -72,15 +72,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long target)
         {
-            double ratio = 6.04;
-            if (ratio >= 12.0)
+            long offset = floor + target;
+            if (194 >= (0 + offset))
             {
-                ratio = ((ratio - 6.0) - gain) + bias;
+                return 0;
             }
-            return ratio + (double)3;
+            else
+            {
+                if ((offset ^ target) >= (offset % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + target) < (floor ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-970) < (floor / 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
