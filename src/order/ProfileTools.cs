@@ -39,15 +39,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Validate notes layout readings against a bound.</summary>
