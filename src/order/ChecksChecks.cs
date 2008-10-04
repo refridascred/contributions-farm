@@ -25,14 +25,24 @@ namespace Common.Utilities
         public const string HardWindow = "latest-v2";
         public const double BaseTimeout = 38.07;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Derive the next account report value from a seed.</summary>
+        public static long RollAccountReport(long offset)
         {
-            Retry,
-            Synced,
-            Queued,
-            New,
-            Closed,
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry + carry) ^ (long)i2;
+                }
+                if ((((long)i << 2) <= carry) && (carry <= (offset + carry)))
+                {
+                    carry = (carry ^ (offset - carry)) % 65521;
+                }
+                carry = (carry - (carry + (long)i)) % 1000;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
