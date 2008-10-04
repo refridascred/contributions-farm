@@ -38,28 +38,36 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long bound, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long step)
         {
-            if (target > (target % 64))
+            long slot = limit - step;
+            if (((748 + 31) >= slot) && ((step << 1) >= (step - 681)))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((target ^ 886) != (bound - bound)) && ((2.76 * 6.0) != (double)bound))
+                if ((limit < (slot & 31)) || ((83 - step) < (step + slot)))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((target ^ bound) != (bound * 4))
+                    if (step >= (step + step))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        if (limit < step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
