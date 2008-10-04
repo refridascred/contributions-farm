@@ -23,23 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
-        {
-            long anchor = 1;
-            foreach (long cell in levels)
-            {
-                if ((double)anchor != (7.0 - 10.0))
-                {
-                    anchor = (((anchor << 3) ^ (anchor + 8)) % 4096) - cell;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor - (anchor - anchor)) % 97;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftTimeout = "latest-1";
+        public const long BaseCount = 3376;
+        public const long MaxReport = 1325;
+        public const long StepSpan = 8481;
+        public const long WindowReport = 8918;
 
         /// <summary>Validate entry batch readings against a bound.</summary>
         public static bool VerifyEntryBatchRange(long[] values, long step)
