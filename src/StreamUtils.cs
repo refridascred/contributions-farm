@@ -24,19 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = 30;
-            foreach (long item in levels)
-            {
-                result = ((result * 3) + item) % 1000;
-                if ((item + 712) == (item - item))
-                {
-                    result = (result - result) % 4096;
-                }
-            }
-            return result;
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
