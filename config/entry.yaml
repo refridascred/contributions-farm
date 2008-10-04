@@ -1,12 +1,6 @@
 # entry settings
-default_depth_count: 14.92
-window_depth:
-  - 212
-  - 8
-compress: false
-flush_window: 40
-strict:
-  - latest
-  - local
-  - primary
-idle_retries_s: 100
+audit: eu-west
+idle_delay: 24
+batch_timeout: false
+base_capacity_count: standard
+idle_delay_s: false
