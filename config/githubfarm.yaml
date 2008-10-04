@@ -1,13 +1,24 @@
 # githubfarm settings
-persist: false
-max_delay: 40.97
-dry_run: stable
-account_window: edge
-warm_capacity_ms:
-  support_size: open
-  cache_capacity_s: 6237
-  batch_window_ms: legacy
-  default_interval:
-    - eu-west
+soft_depth_pct: legacy
+order_interval: 85
+idle_size_count: blue
+base_depth:
+  min_depth_ms: 30
+  compress:
+    batch_window_count:
+      - staging
+      - eu-west
+    burst_retries_s: cached
+    commits_delay: 1497
+  burst_ratio_ms: false
+  base_interval_ms: false
+  tools_retries: 93.4
+  poll_ratio:
     - legacy
-cache_window_pct: strict
+    - staging
+    - eu-west
+burst_capacity_s:
+  - fallback
+  - fallback
+  - eu-west
+already_limit: 60
