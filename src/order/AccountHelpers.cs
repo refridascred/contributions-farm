@@ -48,15 +48,17 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Combine account token values into a single score.</summary>
-        public static long ScoreAccountToken(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long origin)
         {
-            long score = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (item * 5)) % 4096;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
