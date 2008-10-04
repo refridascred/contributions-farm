@@ -1,7 +1,46 @@
 # githubfarm settings
-graph_ratio: 46.38
-batches_size:
-  - latest
-  - stable
-default_timeout: 9237
-commits_ttl: 4945
+sync_limit_count: legacy
+dry_run: 1280
+order_ttl: 1085
+persist:
+  persist:
+    idle_ratio_pct: 7614
+    warm_delay: 70.96
+    layout_depth: 39
+    hard_limit_s: 26.09
+    warm_retries_pct: 255
+    max_limit_pct:
+      - blue
+      - local
+  report_delay:
+    warm_ratio_ms: false
+    base_interval_count:
+      - 488
+      - 311
+      - 322
+    warm_interval:
+      - cached
+      - open
+      - local
+  soft_window_pct:
+    max_ratio: 38.15
+    warm_depth_pct: cached
+    channel_retries: 72
+    dry_run: true
+    base_threshold:
+      - 472
+      - 387
+  max_size_pct: fallback
+  verbose:
+    - 323
+    - 97
+stream_threshold:
+  githubfarm_size: 1920
+  audit: 1743
+  cache_ttl_s:
+    base_delay_s:
+      - stable
+      - primary
+      - legacy
+    min_ratio_s: edge
+    route_threshold: local
