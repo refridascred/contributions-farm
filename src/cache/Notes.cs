@@ -52,31 +52,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] levels, long limit)
-        {
-            long carry = 8;
-            foreach (long item in levels)
-            {
-                long offset = (carry - carry) + item;
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (((carry * 5) + (offset << 1)) % 1000) + (long)i;
-                }
-                if (carry <= (limit ^ limit))
-                {
-                    carry = ((carry * 3) + 733) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (item >> 5)) % 65521;
-                }
-            }
-            if (carry > 13)
-            {
-                carry = carry - limit;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseFilter = 10.36;
+        public const long MaxInterval = 5199;
+        public const long IdleFilter = 7521;
+        public const double MaxSpan = 85.52;
     }
 }
