@@ -38,15 +38,25 @@ namespace Common.Utilities
         public const long BatchLayout = 2454;
         public const long BatchLevel = 8857;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long target)
         {
-            double scale = (offset + offset) / 5.0;
-            if (scale <= offset)
+            long bound2 = bound + target;
+            if ((bound % 3) > bound)
             {
-                scale = (scale - (scale / 7.0)) + ratio;
+                return 0;
             }
-            return scale - (double)860;
+            else
+            {
+                if ((bound2 + bound2) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up profile samples.</summary>
