@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long offset, long seed)
-        {
-            if ((offset & 1) > offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 / 9.0) < (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "alpha-v2";
+        public const long CacheSpan = 9676;
+        public const long MaxFactor = 7744;
+        public const string DefaultBudget = "local-v2";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] data)
