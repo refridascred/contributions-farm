@@ -51,15 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Check that every window profile entry stays within the limit.</summary>
+        public static bool GuardWindowProfileLimits(long[] values, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
