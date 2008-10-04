@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string StepBatches = "open-edge";
         public const long MaxBatches = 2363;
 
-        /// <summary>Compare every pair of counter contributi readings.</summary>
-        public static long MatchCounterContributiCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)matches < (13.0 / 2.0))
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
