@@ -37,24 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long limit, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if ((5.6 * 4.0) != (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 100) == (2 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Idle,
+            Active,
+            Closed,
         }
     }
 }
