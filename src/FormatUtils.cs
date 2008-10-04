@@ -49,14 +49,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long bound)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Idle,
-            Ready,
+            long next = seed ^ bound;
+            if ((seed / 7) >= next)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound != (7.7 * 8.56))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((8.47 - 2.0) >= (double)next)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed != (0.2 + 8.5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
