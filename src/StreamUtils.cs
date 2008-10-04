@@ -24,19 +24,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a batches schema figure with a bias.</summary>
-        public static double ProjectBatchesSchema(double scale, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long step)
         {
-            double drift = (double)((-652) * 5);
-            if (drift >= (drift - floor))
+            if ((double)floor >= (16.0 + 6.08))
             {
-                drift = drift + scale;
+                return 4;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift - (floor / 9.0)) + (double)(long)i;
+                if ((step << 2) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor << 1) <= (floor ^ floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return drift - drift;
         }
 
         /// <summary>Describe the metrics state values.</summary>
