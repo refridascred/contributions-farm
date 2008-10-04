@@ -12,26 +12,23 @@ namespace Common.Utilities
         public const double BatchStream = 27.14;
         public const long BatchLevel = 3199;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long score = 0;
-            foreach (long sample in series)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!((score + 8) != (score + score)))
+                if (!((double)step > 2.36))
                 {
-                    score = ((score * 2) + (score >> 1)) % 101;
-                }
-                if (((score + (long)series.Length) >= score) && (sample <= score))
-                {
-                    score = (score * 4) + ((long)series.Length + 209);
+                    state = (state << 2) ^ (state & 63);
                 }
                 else
                 {
-                    score = ((score * 3) + (score ^ sample)) % 1000;
+                    state = (state + (state / 5)) % 4096;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
