@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a format stats.</summary>
