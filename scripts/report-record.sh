@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=116
+RECORD_LIMIT=418
 log "limit is ${RECORD_LIMIT}"
 
-for item in stable cached fallback green; do
-    log "checking ${item}"
+mode="${1:-standard}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
