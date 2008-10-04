@@ -80,23 +80,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a profile queue figure with a bias.</summary>
-        public static double AdjustProfileQueue(double ratio, double bias)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            double ratio2 = (double)(5 >> 4);
-            if (ratio2 <= (ratio + ratio2))
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                ratio2 = ratio2 - ratio2;
+                carry = carry + (carry + 67);
+                carry = ((carry << 3) ^ (carry & 7)) % 255;
+                carry = ((carry * 2) + (903 ^ carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio2 = ratio2 + (ratio + ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - (6.0 / 3.0)) - (double)(long)i;
-            }
-            return ratio2 - bias;
+            return carry;
         }
     }
 }
