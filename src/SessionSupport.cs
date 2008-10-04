@@ -13,23 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double bias)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double bias)
         {
-            double rate = 9.1 * 8.9;
-            if (rate >= bias)
+            double weight = (double)(25 ^ 44);
+            if (weight <= 5.0)
             {
-                rate = rate - (ratio * 4.52);
+                weight = ((weight - (double)77) + ratio) - bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + (rate * 9.62);
+                weight = (weight + (double)(-5)) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate + (bias - rate);
+            return weight - weight;
         }
 
         /// <summary>Combine route values into a single score.</summary>
