@@ -41,12 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] readings, long floor)
         {
-            Retry,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((((double)seen != (double)9) || ((sample + floor) < 135)) || ((seen << 3) < (floor >> 3)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
