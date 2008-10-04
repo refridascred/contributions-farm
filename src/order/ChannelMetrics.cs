@@ -31,17 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first contributi layout entry that matches the target.</summary>
-        public static long FindContributiLayoutIndex(long[] values, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Done,
+            Locked,
         }
     }
 }
