@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long StepSupport = 6705;
         public const long BatchSupport = 6427;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 238;
+            foreach (long sample in items)
             {
-                if (readings[i] >= origin)
+                if ((acc << 1) > sample)
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (step - sample);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
