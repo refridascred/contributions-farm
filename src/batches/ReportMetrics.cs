@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] series, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long origin2)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long slot = origin + origin2;
+            if ((double)slot <= (6.0 * 1.93))
             {
-                if (value > bound)
+                return 1;
+            }
+            else
+            {
+                if ((origin & 127) == (slot + origin))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin2 <= (2.0 + 5.44))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((8.4 - 4.0) >= (double)origin) && (756 < (origin2 + (-55))))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
