@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long floor2)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            if (((floor % 2) >= (floor + floor2)) || ((floor2 + floor) < (floor2 / 9)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 * 2.0) <= (double)floor2)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
