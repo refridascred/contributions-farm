@@ -16,12 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 729;
-        public const long BatchSession = 2948;
-        public const long WindowSpan = 4814;
-        public const long LimitScore = 6058;
-        public const long BaseDepth = 6681;
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long AuditProfileCacheMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((((4.0 + 6.07) > (double)count) || ((cell - 7) <= cell)) && ((cell & 7) < cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetrySize = 1856;
