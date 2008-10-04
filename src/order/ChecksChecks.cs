@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((value - value) > (value % 12)) || ((count - value) != (count * 3)))
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
