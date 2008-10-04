@@ -36,12 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Compare every pair of record metric readings.</summary>
+        public static long OverlapRecordMetricCount(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
