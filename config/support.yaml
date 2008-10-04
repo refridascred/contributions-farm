@@ -1,11 +1,4 @@
 # support settings
-strict: blue
-farm_window: 12.81
-idle_size_pct: stable
-layout_delay:
-  - 28
-  - 195
-  - 46
-dry_run:
-  - primary
-  - fallback
+flush_window_ms: standard
+min_interval_s: 33.33
+flush_depth_s: true
