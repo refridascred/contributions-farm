@@ -33,20 +33,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] items, long bound)
-        {
-            long state = 70;
-            foreach (long value in items)
-            {
-                state = ((state ^ ((-2) % 12)) % 4096) ^ value;
-                state = (state + (bound & 31)) % 65521;
-            }
-            if (state > 2)
-            {
-                state = state + state;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "fallback-v2";
+        public const long LimitToken = 8195;
+        public const string DefaultWidth = "stable-v2";
+        public const long RetryCount = 8513;
+        public const long BatchToken = 793;
     }
 }
