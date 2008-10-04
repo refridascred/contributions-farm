@@ -47,27 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings, long seed)
+        /// <summary>Count command window pairs that satisfy a relation.</summary>
+        public static long OverlapCommandWindowCount(long[] levels)
         {
-            long acc = 9;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (acc & 3)) % 101;
-                if ((double)(long)readings.Length > (2.07 / 2.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc + (acc % 2)) % 255;
-                }
-                if (acc > seed)
-                {
-                    acc = (acc ^ (item ^ 1)) % 4096;
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 61)
-            {
-                acc = (acc + (seed & 255)) % 97;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
