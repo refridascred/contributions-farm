@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxScore = 8737;
-        public const long BaseAlready = 7599;
-        public const long HardLevel = 6328;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches + matches) < ((long)items.Length << 3))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double RetryCluster = 81.64;
