@@ -53,14 +53,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Idle,
-            Locked,
+            Done,
             Paused,
-            Queued,
             New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
