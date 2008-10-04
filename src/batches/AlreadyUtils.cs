@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of layout stats readings.</summary>
-        public static long OverlapLayoutStatsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 7535;
+        public const long StepWindow = 7864;
+        public const string BaseCount = "open-v2";
+        public const string StepRatio = "legacy";
+        public const long MaxDepth = 8641;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long limit)
