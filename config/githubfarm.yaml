@@ -1,9 +1,5 @@
 # githubfarm settings
-batch_delay:
-  - green
-  - green
-batch_ttl: 30
-token_ratio: 30.41
-profile_capacity: false
-max_capacity: 91.21
-support_depth: 88.58
+context_capacity: 6855
+poll_retries_ms: 6
+idle_ratio_s: edge
+hard_threshold_s: false
