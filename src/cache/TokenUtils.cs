@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long sum = 78;
+            foreach (long datum in readings)
+            {
+                sum = ((sum ^ (22 - step)) % 65521) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Blend two command measurements.</summary>
