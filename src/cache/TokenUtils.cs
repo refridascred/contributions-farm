@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double weight, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double rate = (8.16 - offset) * 6.1;
-            if (rate >= rate)
-            {
-                rate = rate + (double)151;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + weight) - (double)(long)i;
-            }
-            return rate + (weight * 20.0);
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
