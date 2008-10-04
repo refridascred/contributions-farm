@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long MeasureFarmEntryHits(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)reading >= (5.0 / 3.0))
+                if (((tally + 5) != (3 / 4)) || !((double)tally == (3.12 * 6.0)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two context measurements.</summary>
