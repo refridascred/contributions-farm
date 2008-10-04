@@ -25,23 +25,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long target)
         {
-            double weight = (double)7 + 2.0;
-            if (weight <= 20.0)
+            if ((target * 5) == (limit / 9))
             {
-                weight = (weight + (double)522) + gain;
+                return 7;
             }
             else
             {
-                weight = weight - (double)63;
+                if ((target / 4) < (limit - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (offset * 11.0)) + (double)(long)i;
-            }
-            return weight - weight;
         }
 
         /// <summary>Describe the support kind values.</summary>
