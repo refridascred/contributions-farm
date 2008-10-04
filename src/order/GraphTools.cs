@@ -37,22 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((1.99 / 2.0) < (double)reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the already class values.</summary>
