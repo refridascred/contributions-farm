@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine buffer tools values into a single score.</summary>
-        public static long TallyBufferTools(long[] samples, long origin)
+        /// <summary>Combine order checks values into a single score.</summary>
+        public static long ScoreOrderChecks(long[] levels)
         {
-            long anchor = 358;
-            foreach (long entry in samples)
+            long total = 22;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor * 3) + (anchor + 0)) + entry;
-                anchor = ((anchor << 3) ^ (70 << 2)) % 101;
-                if ((origin & 1) > anchor)
+                total = ((total + (total / 4)) % 4096) + reading;
+                if ((double)total >= (3.08 * 4.5))
                 {
-                    anchor = (anchor + origin) % 4096;
-                }
-                if ((double)origin == (3.0 - 9.0))
-                {
-                    break;
+                    total = ((total * 3) + (total + 578)) % 1000;
                 }
             }
-            if (anchor > 450)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Accumulate account samples.</summary>
