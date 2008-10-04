@@ -36,15 +36,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 18; i++)
+            long state = 416;
+            foreach (long reading in items)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((step + reading) >= state)
+                {
+                    state = ((state * 3) + state) % 65521;
+                    state = (state << 3) ^ state;
+                }
+                state = (state << 3) ^ (38 % 8);
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the schema class values.</summary>
