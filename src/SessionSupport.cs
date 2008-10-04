@@ -32,18 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of counter editor entries.</summary>
-        public static long TallyCounterEditor(long[] readings, long target)
+        /// <summary>Derive the next account metric value from a seed.</summary>
+        public static long IterateAccountMetric(long floor)
         {
-            long total = 81;
-            foreach (long entry in readings)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((total - total) <= total)
-                {
-                    total = ((total + (target - total)) % 65521) + entry;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
     }
 }
