@@ -35,15 +35,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a checks metric figure with a bias.</summary>
-        public static double AdjustChecksMetric(double weight, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings)
         {
-            double gain = (double)(859 & 7);
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                gain = (gain - span) - (double)(long)i;
+                if ((double)datum < (double)seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain + (weight * 3.8);
+            return seen;
         }
 
         /// <summary>Project the next filter layout value.</summary>
