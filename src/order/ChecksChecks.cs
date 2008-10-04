@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long origin)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long state = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ (state / 9);
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the checks class values.</summary>
