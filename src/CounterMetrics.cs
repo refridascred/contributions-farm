@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinSize = 12.45;
-        public const long BaseTimeout = 544;
-        public const long BurstWidth = 2462;
-        public const long BurstScore = 7898;
-        public const string LimitGithubfarm = "primary-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9424;
+        public const long SoftFactor = 6925;
+        public const long WindowCounter = 5004;
+        public const double BaseCounter = 96.24;
+        public const string SoftLevel = "primary-1";
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
