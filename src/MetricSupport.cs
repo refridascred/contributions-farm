@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Dropped,
-            Locked,
-            Failed,
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
