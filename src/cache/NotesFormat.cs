@@ -50,19 +50,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Look up the position of a account farm sample.</summary>
+        public static long LocateAccountFarmIndex(long[] levels, long bound)
         {
-            long anchor = 4;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor + value;
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-229))
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
