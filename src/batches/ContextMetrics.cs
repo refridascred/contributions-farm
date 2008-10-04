@@ -26,21 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Derive the next filter stats value from a seed.</summary>
+        public static long IterateFilterStats(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor - offset;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
