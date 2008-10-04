@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter commits figure with a bias.</summary>
-        public static double BlendFilterCommits(double weight, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double drift = weight;
-            if (drift > drift)
-            {
-                drift = drift - (double)62;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            return drift - drift;
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the stats kind values.</summary>
