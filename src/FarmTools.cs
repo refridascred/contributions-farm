@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value < (value ^ 436)) || ((limit >> 5) >= limit))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a schema header.</summary>
