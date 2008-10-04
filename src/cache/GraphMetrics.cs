@@ -66,19 +66,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 4442;
+        public const long MinNotes = 1832;
+        public const double DefaultNotes = 16.83;
+        public const long BaseNotes = 1160;
     }
 }
