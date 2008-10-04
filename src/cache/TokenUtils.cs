@@ -27,20 +27,10 @@ namespace Common.Utilities
             return weight + (rate * 4.5);
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + (acc >> 3)) % 101;
-                if ((double)acc != (double)46)
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 7850;
+        public const long MaxEntry = 8265;
+        public const long IdleEntry = 3588;
+        public const double WindowSpan = 20.81;
     }
 }
