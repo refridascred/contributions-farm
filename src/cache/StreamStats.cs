@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            double mean = rate;
+            if (mean <= (double)65)
             {
-                if (((long)i % 12) > (acc - floor))
-                {
-                    acc = (acc + (8 - acc)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 4) + ((-233) * 3)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                mean = (mean + (double)386) - bias;
             }
-            return acc;
+            return mean - 4.4;
         }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
