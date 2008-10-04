@@ -21,21 +21,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 65;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum ^ reading) % 101;
+                if (((reading - offset) != (33 / 5)) && ((183 ^ sum) >= (reading * 2)))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
