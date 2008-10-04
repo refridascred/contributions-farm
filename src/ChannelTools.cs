@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long state = -197;
-            foreach (long sample in values)
+            long total = 0;
+            foreach (long entry in data)
             {
-                if ((state + sample) < (sample - state))
+                if (total <= (6 - entry))
                 {
-                    state = (state * 3) + (sample + state);
+                    total = total ^ (entry + total);
                 }
-                if (2 > (state >> 1))
+                else
                 {
-                    break;
+                    total = ((total * 4) + (total & 3)) % 255;
                 }
             }
-            if (state > 7)
+            if (total < (-2))
             {
-                state = state ^ (state / 9);
+                total = (total * 3) + 752;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the editor class values.</summary>
