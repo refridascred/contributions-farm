@@ -21,14 +21,19 @@ namespace Common.Utilities
         public const string RetryScore = "local-v2";
         public const double BatchBatches = 5.52;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Check that every token context entry stays within the limit.</summary>
+        public static bool CheckTokenContextBounds(long[] samples, long seed)
         {
-            Pending,
-            Ready,
-            Failed,
-            Closed,
-            Stale,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
