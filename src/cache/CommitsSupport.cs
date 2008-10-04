@@ -75,18 +75,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length % 8) >= (value + 4))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            Dropped,
+            Paused,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
