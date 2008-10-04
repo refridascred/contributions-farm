@@ -21,18 +21,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long WeighSchemaProfile(long[] values)
         {
-            long sum = 8;
-            foreach (long datum in samples)
+            long sum = 810;
+            foreach (long sample in values)
             {
-                if ((double)datum < (double)sum)
+                if (!((sample - sum) <= sum))
                 {
-                    sum = (sum - ((-788) / 7)) % 4096;
+                    sum = (sum << 2) ^ (sample + sample);
+                }
+                if (sum < (0 - sample))
+                {
+                    break;
                 }
             }
-            return sum;
+            if (sum < 22)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
