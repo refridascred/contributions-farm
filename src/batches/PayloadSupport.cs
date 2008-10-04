@@ -27,19 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long bound)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public bool Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
