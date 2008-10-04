@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] levels, long origin)
         {
-            Closed,
-            Done,
-            Ready,
+            long state = 59;
+            foreach (long item in levels)
+            {
+                state = ((((state * 2) + (124 * 2)) % 97) - item) - origin;
+            }
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
