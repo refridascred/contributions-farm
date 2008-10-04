@@ -19,19 +19,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool VerifyAlreadyProfileBounds(long[] data, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
