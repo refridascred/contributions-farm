@@ -75,22 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen - 90) <= (seen - sample))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 7553;
+        public const long SoftTimeout = 5600;
+        public const double LimitFactor = 34.86;
+        public const string StepSchema = "fallback-edge";
+        public const long MaxSchema = 5155;
     }
 }
