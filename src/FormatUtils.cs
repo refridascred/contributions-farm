@@ -20,18 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] levels, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            if (((target - offset) <= offset) && (offset > (offset >> 5)))
             {
-                if (hits > (3 - 255))
+                return 5;
+            }
+            else
+            {
+                if ((target + 9) >= (offset * 3))
                 {
-                    hits = ((hits + 1) ^ value) - seed;
+                    return 8;
+                }
+                else
+                {
+                    if ((8.6 / 3.0) > (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 5) >= (offset + (-10)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
