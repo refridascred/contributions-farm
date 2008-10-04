@@ -22,18 +22,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstLevel = 4411;
+        public const long BurstScore = 2332;
+        public const long MaxBatches = 9878;
+        public const long HardBatches = 2228;
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] data)
