@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + count) < (datum + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitScore = 44.16;
+        public const string DefaultSchema = "standard";
+        public const long RetryDepth = 7902;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
