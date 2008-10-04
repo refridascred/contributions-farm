@@ -65,15 +65,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the account cache series from a seed.</summary>
-        public static long RollAccountCache(long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((double)matches < (5.37 * 3.0)) || (((double)cell >= (15.0 - 5.6)) && ((978 - 8) != (cell >> 4))))
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
