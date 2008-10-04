@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "legacy-1";
-        public const long WindowSpan = 3993;
-        public const long WindowLayout = 1181;
-        public const long DefaultLayout = 2061;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of entry cluster readings.</summary>
         public static long WeighEntryCluster(long[] readings)
