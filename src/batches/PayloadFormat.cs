@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 6504;
-        public const string BaseEntry = "alpha-edge";
-        public const long StepEntry = 6134;
-        public const long BurstSpan = 3855;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen >= 4.08)
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every farm metrics entry stays within the limit.</summary>
         public static bool GuardFarmMetricsRange(long[] data, long step)
