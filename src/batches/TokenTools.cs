@@ -46,23 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] readings, long target)
         {
-            long sum = 52;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (sum ^ sum)) % 4096;
-                if ((456 ^ sum) > (sum + datum))
+                if (value >= target)
                 {
-                    sum = ((sum << 3) ^ 89) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 995)
-            {
-                sum = (sum + (92 - 145)) % 255;
-            }
-            return sum;
+            return ok;
         }
     }
 }
