@@ -31,11 +31,17 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] items, long bound)
         {
-            double drift = floor;
-            return drift - (gain + floor);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
