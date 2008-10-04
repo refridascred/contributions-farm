@@ -91,19 +91,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((55 - limit) != (55 & 255))
-                {
-                    anchor = anchor ^ (limit + limit);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "primary";
+        public const long IdleDepth = 7979;
+        public const long WindowDepth = 5806;
     }
 }
