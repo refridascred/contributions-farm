@@ -20,18 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long limit)
+        /// <summary>Scale a schema buffer figure with a bias.</summary>
+        public static double BlendSchemaBuffer(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double scale2 = (bias + scale) / 3.0;
+            if (scale2 <= scale)
             {
-                if ((entry * 3) >= (limit >> 1))
-                {
-                    matches = matches + 2;
-                }
+                scale2 = scale2 - scale2;
             }
-            return matches;
+            return scale2 - (double)83;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
