@@ -21,11 +21,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepBudget = 6449;
-        public const long BatchInterval = 358;
-        public const long MinBudget = 4176;
-        public const long BurstSize = 567;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
