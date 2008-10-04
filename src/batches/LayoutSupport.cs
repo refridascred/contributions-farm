@@ -36,19 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] levels, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
