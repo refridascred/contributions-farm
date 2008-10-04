@@ -71,11 +71,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            Synced,
+            New,
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
