@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] values, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 351;
+            foreach (long entry in data)
             {
-                if (values[i] < origin)
+                if (!((acc << 1) == (entry << 3)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (entry - entry)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 3) + (719 ^ acc);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of schema filter entries.</summary>
