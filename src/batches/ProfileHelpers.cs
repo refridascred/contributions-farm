@@ -22,25 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] series, long seed)
         {
-            long diff = bound ^ floor;
-            if (!(diff < (floor << 1)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 5) <= (diff * 5))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
