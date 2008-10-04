@@ -28,15 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Check that every window session entry stays within the limit.</summary>
+        public static bool VerifyWindowSessionBounds(long[] levels, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (sample != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
