@@ -45,13 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
+        public static bool VerifyClusterNotesBounds(long[] series, long target)
         {
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine command values into a single score.</summary>
