@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (origin >= (-637))
-                {
-                    carry = ((carry * 2) + (origin / 9)) % 101;
-                }
-                if ((11.0 * 7.0) <= (double)carry)
-                {
-                    carry = (carry ^ (carry << 1)) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((long)i << 1)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
