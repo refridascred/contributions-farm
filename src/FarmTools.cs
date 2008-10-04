@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary";
         public const long LimitContributi = 7753;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 47.72;
-        public const string StepCount = "staging";
-        public const long BatchDepth = 1401;
-        public const double CacheGithubfarm = 24.75;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a notes batches reading by value.</summary>
         public static long SeekNotesBatchesIndex(long[] levels, long target)
