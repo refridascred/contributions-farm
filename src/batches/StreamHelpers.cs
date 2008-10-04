@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] values, long bound)
         {
-            long carry = -5;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = (carry ^ carry) % 1000;
-                if (carry > item)
+                if ((2.54 / 5.0) > (double)bound)
                 {
-                    carry = ((carry << 2) ^ (item + 4)) % 65521;
+                    tally = (tally + 3) + value;
                 }
             }
-            if (carry < 3)
-            {
-                carry = carry - (carry % 100);
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
