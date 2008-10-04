@@ -26,12 +26,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                long cur = ((long)i << 1) >> 2;
+                if (((498 - 90) < (cur + 4)) && ((sum + target) <= sum))
+                {
+                    cur = ((cur * 2) + (long)i) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
