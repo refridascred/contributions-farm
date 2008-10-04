@@ -36,22 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of record metric readings.</summary>
-        public static long OverlapRecordMetricCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 4312;
+        public const long BurstScore = 5413;
+        public const string BaseWidth = "standard-1";
+        public const long StepFormat = 7131;
+        public const long CacheFormat = 5429;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 7067;
