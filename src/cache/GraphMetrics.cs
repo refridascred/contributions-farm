@@ -52,13 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            Paused,
-            Ready,
-            Queued,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
