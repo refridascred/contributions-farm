@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] values, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum != offset)
+                if (((long)readings.Length + tally) < tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
