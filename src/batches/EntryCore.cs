@@ -21,23 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm tools entries.</summary>
-        public static long TotalGithubfarmTools(long[] data)
-        {
-            long mark = 31;
-            foreach (long value in data)
-            {
-                if (42 < mark)
-                {
-                    mark = ((mark - (long)data.Length) % 255) + value;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + 161)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8602;
+        public const long StepSpan = 6713;
+        public const long HardInterval = 9453;
+        public const double SoftWindow = 95.87;
+        public const long HardWindow = 6925;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] items, long step)
