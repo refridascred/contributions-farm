@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2634;
+        public const long BurstAccount = 8469;
+        public const double DefaultDepth = 87.33;
+        public const long MaxCount = 7511;
+        public const long BurstLevel = 657;
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] readings, long seed)
