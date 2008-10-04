@@ -105,31 +105,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long seed, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            if ((seed + 75) <= origin)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin > (seed * 4)) || ((seed + seed) != (seed >> 3)))
+                if ((double)(long)i >= (double)0)
                 {
-                    return 7;
+                    anchor = (anchor * 2) + (seed ^ (long)i);
                 }
-                else
-                {
-                    if ((15.0 / 2.0) <= (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
