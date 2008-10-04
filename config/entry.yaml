@@ -1,8 +1,8 @@
 # entry settings
-strict: legacy
-sync_size_count: 49.52
-dry_run: stable
-cluster_threshold: blue
-idle_threshold:
-  - eu-west
-  - stable
+dry_run: 250
+hard_size_s: 95
+warm_ttl_pct:
+  - latest
+  - strict
+  - primary
+metric_interval: 500
