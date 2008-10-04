@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate batches record samples.</summary>
