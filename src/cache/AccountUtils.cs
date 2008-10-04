@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record window reading.</summary>
-        public static double AdjustRecordWindow(double bias, double offset)
+        /// <summary>Measure how many cache support samples are out of range.</summary>
+        public static long AuditCacheSupportGaps(long[] values)
         {
-            double bias2 = offset;
-            if (bias2 <= (double)(-267))
+            long seen = 0;
+            foreach (long value in values)
             {
-                bias2 = bias2 + offset;
+                if ((15.0 * 1.4) > (double)value)
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - (offset - 9.2)) - (double)(long)i;
-            }
-            return bias2 - bias;
+            return seen;
         }
 
         /// <summary>Hold a session record.</summary>
