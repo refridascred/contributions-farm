@@ -46,11 +46,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] items, long seed)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
