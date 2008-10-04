@@ -16,12 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
