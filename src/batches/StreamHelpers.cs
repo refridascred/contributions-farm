@@ -35,10 +35,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const long RetrySize = 1856;
-        public const long LimitBatches = 9860;
-        public const long CacheBatches = 5441;
-        public const string WindowInterval = "open-edge";
+        public const long SoftBatches = 9130;
+        public const string HardTimeout = "stable-1";
+        public const long WindowSpan = 4679;
+        public const long BaseFactor = 6178;
+        public const long BaseBatches = 7508;
 
         /// <summary>Blend two payload editor measurements.</summary>
         public static double ScalePayloadEditor(double bias, double bias2)
