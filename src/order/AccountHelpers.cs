@@ -59,19 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every context metrics entry stays within the limit.</summary>
-        public static bool GuardContextMetricsLimits(long[] readings, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mix = 1;
+            foreach (long datum in values)
             {
-                if (datum != step)
+                mix = (((mix << 2) ^ (97 & 1)) % 101) + datum;
+                if (((long)values.Length - mix) < (mix + mix))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - (mix << 1)) % 1000;
                 }
             }
-            return ok;
+            return mix % 4096;
         }
     }
 }
