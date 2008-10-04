@@ -1,5 +1,24 @@
 {
-  "default_retries_pct": 4273,
-  "base_capacity": 250,
-  "verbose": "edge"
+  "max_ratio_count": 30,
+  "persist": 1,
+  "cache_delay": {
+    "already_ratio": 2450,
+    "poll_delay_count": {
+      "strict": true,
+      "persist": 7004,
+      "report_ttl": 32,
+      "burst_retries": "staging"
+    },
+    "token_depth": false,
+    "readonly": "standard",
+    "max_retries": 250,
+    "min_window_pct": "standard"
+  },
+  "format_timeout": {
+    "batches_interval": "green",
+    "default_ratio_s": 51,
+    "cache_capacity_s": "local",
+    "max_delay_ms": [26, 17],
+    "batches_delay": 36.09
+  }
 }
