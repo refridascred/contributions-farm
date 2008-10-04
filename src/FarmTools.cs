@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            double ratio = (double)54 - span;
+            if (ratio <= (weight - 12.0))
             {
-                result = ((result * 2) + (long)i) % 101;
+                ratio = ratio - ratio;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 0.17) + (double)(long)i;
+            }
+            return ratio - (12.0 + weight);
         }
 
         /// <summary>Accumulate batches record samples.</summary>
