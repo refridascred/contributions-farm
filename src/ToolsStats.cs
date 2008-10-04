@@ -68,19 +68,19 @@ namespace Common.Utilities
         public const string BaseSpan = "alpha";
         public const long MinLevel = 7453;
 
-        /// <summary>Adjust a graph context reading.</summary>
-        public static double SmoothGraphContext(double rate, double bias)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long seed)
         {
-            double rate2 = rate;
-            if (rate2 >= bias)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                rate2 = rate2 - (double)94;
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (rate * 2.11);
-            }
-            return rate2 + rate;
+            return valid;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
