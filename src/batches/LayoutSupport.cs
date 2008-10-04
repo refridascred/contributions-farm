@@ -51,19 +51,12 @@ namespace Common.Utilities
             return scale - (span - 7.13);
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
