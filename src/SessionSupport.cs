@@ -20,24 +20,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples, long floor)
         {
-            if ((seed % 64) <= (origin - 208))
+            long score = 390;
+            foreach (long reading in samples)
             {
-                return 2;
+                score = ((score * 2) + floor) ^ reading;
             }
-            else
-            {
-                if (!((double)seed > (2.0 + 2.2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return score;
         }
     }
 }
