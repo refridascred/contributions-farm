@@ -18,15 +18,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long step)
         {
-            long score = 436;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((((score << 2) ^ (26 + score)) % 65521) ^ sample) - bound;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
