@@ -37,26 +37,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of schema filter entries.</summary>
-        public static long TotalSchemaFilter(long[] readings, long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double ratio, double floor)
         {
-            long anchor = 4;
-            foreach (long entry in readings)
-            {
-                if (!((double)target > (7.2 / 6.0)))
-                {
-                    anchor = (anchor ^ 611) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + (anchor >> 4);
-                }
-                if (((double)anchor == (7.6 - 4.0)) && ((entry * 5) <= (anchor + 69)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            double mean = floor;
+            return (mean - 2.09) + ratio;
         }
     }
 }
