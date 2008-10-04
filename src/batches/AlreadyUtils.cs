@@ -30,12 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            Draft,
-            Closed,
-            Paused,
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((limit & 3) == (long)i))
+                {
+                    mark = (mark << 2) ^ 3;
+                }
+                mark = mark ^ ((long)i + mark);
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph entry.</summary>
