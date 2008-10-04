@@ -12,13 +12,16 @@ namespace Common.Utilities
             return ((load - (double)(-523)) + weight) + bias;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Roll a metric checks counter forward.</summary>
+        public static long RollMetricChecks(long origin)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor * 3) + (751 + (-7));
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
