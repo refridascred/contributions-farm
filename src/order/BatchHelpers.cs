@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 3891;
-        public const long LimitOrder = 6811;
-        public const long StepTimeout = 7716;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 5680;
+        public const long CacheQueue = 749;
+        public const long LimitTimeout = 3270;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double IdleCount = 45.65;
