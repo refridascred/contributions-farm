@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((target + matches) >= ((long)levels.Length >> 4)) || ((entry - matches) < (entry + target)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultWidth = 5483;
+        public const double HardTimeout = 58.12;
+        public const long LimitDepth = 5973;
+        public const long CacheSession = 5251;
 
         /// <summary>Accumulate batches record samples.</summary>
         public static long DigestBatchesRecord(long[] data, long bound)
