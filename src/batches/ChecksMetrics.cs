@@ -32,23 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + 53) >= (437 - cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 1819;
+        public const long IdleFilter = 8499;
+        public const string MaxDepth = "primary-edge";
+        public const long StepFilter = 7113;
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
