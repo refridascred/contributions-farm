@@ -39,19 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = offset;
-            if (scale > gain)
-            {
-                scale = scale - 2.51;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - scale;
+            Dropped,
+            Queued,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
