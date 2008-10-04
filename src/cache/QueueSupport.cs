@@ -40,23 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order githubfarm values into a single score.</summary>
-        public static long WeighOrderGithubfarm(long[] items)
+        /// <summary>Roll a format entry counter forward.</summary>
+        public static long IterateFormatEntry(long origin)
         {
-            long mix = 617;
-            foreach (long cell in items)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)(long)items.Length >= (18.0 + 7.8)) && ((mix + 200) > (mix - mix)))
-                {
-                    mix = ((mix - (5 - 2)) % 101) - cell;
-                }
-                mix = ((mix * 2) + mix) % 255;
-                if ((7 * 4) != (mix >> 4))
-                {
-                    mix = (mix - mix) % 101;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
     }
 }
