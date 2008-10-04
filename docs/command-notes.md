@@ -1,12 +1,12 @@
 # Command notes
 
-The token module keeps record values in sync with the entry cache.
-Each githubfarm is validated before it reaches the order queue.
-When a command fails, the cache handler retries a few times before giving up.
+The cluster module keeps metrics values in sync with the cache cache.
+Keep batches and route names short and lowercase.
+A queue that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Keep farm values small
-- Review notes limits each release
-- Log every context change
+- Document new context fields
+- Review entry limits each release
 - Validate notes input early
+- Prefer token defaults
