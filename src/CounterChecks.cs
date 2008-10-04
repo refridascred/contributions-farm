@@ -53,18 +53,23 @@ namespace Common.Utilities
         public const long IdleBudget = 4560;
         public const long StepFactor = 5440;
 
-        /// <summary>Count the context filter entries that pass the check.</summary>
-        public static long MeasureContextFilterGaps(long[] series, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 38;
+            foreach (long datum in levels)
             {
-                if ((double)item > (16.0 - 6.61))
+                result = (result + (3 + datum)) % 4096;
+                if (((long)levels.Length % 60) >= (3 - step))
                 {
-                    matches = (matches + 2) - seed;
+                    result = result - (datum ^ result);
                 }
             }
-            return matches;
+            if (result < (-7))
+            {
+                result = (result + (80 ^ step)) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
