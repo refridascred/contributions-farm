@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "fallback-1";
-        public const long BurstBuffer = 803;
-        public const long CacheBuffer = 6198;
-        public const long WindowBuffer = 3973;
-        public const string HardCount = "cached-edge";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstFactor = 1785;
+        public const long StepLevel = 1343;
+        public const long BurstBudget = 8483;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long offset)
