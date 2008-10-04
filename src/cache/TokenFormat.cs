@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstFactor = 1785;
-        public const long StepLevel = 1343;
-        public const long BurstBudget = 8483;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long offset)
