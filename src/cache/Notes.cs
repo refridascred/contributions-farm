@@ -59,9 +59,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinRatio = 6819;
-        public const long MaxSize = 5090;
-        public const long HardFactor = 8944;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
