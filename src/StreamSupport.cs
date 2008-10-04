@@ -26,25 +26,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] values)
         {
-            long offset = origin - target;
-            if (offset < (offset - 3))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((18.0 * 5.47) <= (double)origin)
+                if (((long)values.Length & 1) > (-77))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
     }
 }
