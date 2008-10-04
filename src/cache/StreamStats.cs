@@ -52,19 +52,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stats profile entry stays within the limit.</summary>
-        public static bool VerifyStatsProfileLimits(long[] samples, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = 954;
+            foreach (long entry in items)
             {
-                if (entry >= offset)
+                if ((double)entry == (double)mark)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 4) + (entry ^ 776);
+                }
+                else
+                {
+                    mark = (mark ^ (entry - mark)) % 255;
                 }
             }
-            return flag;
+            return mark % 1000;
         }
     }
 }
