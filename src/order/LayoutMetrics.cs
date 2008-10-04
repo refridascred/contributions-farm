@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] series, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (cell > bound)
+                if (reading <= seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a window options.</summary>
