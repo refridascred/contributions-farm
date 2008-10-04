@@ -1,11 +1,20 @@
 # entry settings
-hard_size_pct: false
-dry_run: edge
-channel_delay: eu-west
-metric_threshold: 63.77
-retry_threshold_s:
-  - cached
-  - stable
-  - cached
-  - standard
-compress: latest
+soft_retries: false
+cache_timeout:
+  - 50
+  - 233
+  - 222
+counter_ratio:
+  profile_interval: 13.69
+  min_delay_ms: 5390
+  burst_delay: 85
+  route_capacity: false
+  soft_capacity: legacy
+  burst_ttl_count: eu-west
+cache_interval: 250
+verbose: 67.33
+soft_ratio_ms:
+  - primary
+  - latest
+  - green
+  - local
