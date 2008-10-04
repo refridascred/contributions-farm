@@ -38,12 +38,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Locate a editor batch reading by value.</summary>
+        public static long SeekEditorBatchIndex(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
