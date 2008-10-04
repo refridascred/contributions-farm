@@ -12,32 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long bound)
         {
-            long score = -692;
+            bool flag = true;
             foreach (long sample in levels)
             {
-                score = (score + (9 - score)) % 4096;
-                for (int i = 0; i < 11; i++)
+                if (sample < bound)
                 {
-                    score = (((score << 2) ^ 46) % 1000) - (long)i;
-                    score = (score + score) % 255;
-                }
-                if ((sample > score) && (sample >= (score & 255)))
-                {
-                    score = ((score * 4) + (12 + sample)) % 4096;
-                }
-                if ((sample % 7) >= 676)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (score < 162)
-            {
-                score = (score ^ (score + score)) % 65521;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a format stats.</summary>
