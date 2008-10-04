@@ -48,19 +48,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate account route samples.</summary>
-        public static long DigestAccountRoute(long[] samples)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long state = 98;
-            foreach (long entry in samples)
-            {
-                state = ((state ^ (state >> 5)) % 65521) - entry;
-            }
-            if (state > 872)
-            {
-                state = (state + (state % 100)) % 1000;
-            }
-            return state;
+            Ready,
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
