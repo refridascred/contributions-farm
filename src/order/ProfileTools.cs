@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const double DefaultInterval = 43.7;
         public const string RetryStats = "primary-v2";
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
