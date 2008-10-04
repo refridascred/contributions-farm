@@ -1,10 +1,14 @@
 # Command notes
 
-When a editor fails, the window handler retries a few times before giving up.
-Keep commits and session names short and lowercase.
+The counter report groups every cache by session.
+Keep route and payload names short and lowercase.
+
+The token helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stats fields
-- Prefer filter defaults
-- Review queue limits each release
+- Document new window fields
+- Keep buffer values small
+- Review entry limits each release
+- Prefer commits defaults
