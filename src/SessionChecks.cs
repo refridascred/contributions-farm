@@ -40,30 +40,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] items, long bound)
         {
-            long carry = 345;
-            foreach (long entry in values)
+            long state = 70;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry + entry) - (long)i;
-                }
-                if ((6.7 / 2.0) <= (double)carry)
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = carry + ((long)values.Length % 2);
-                }
-                if ((720 << 3) >= (carry + entry))
-                {
-                    carry = (carry - (-2)) % 255;
-                }
+                state = ((state ^ ((-2) % 12)) % 4096) ^ value;
+                state = (state + (bound & 31)) % 65521;
             }
-            return carry;
+            if (state > 2)
+            {
+                state = state + state;
+            }
+            return state;
         }
     }
 }
