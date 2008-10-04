@@ -25,13 +25,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long WeighMetricRecord(long[] samples, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                carry = ((carry - (floor - carry)) % 1000) + sample;
+                carry = (carry - (351 - floor)) % 97;
             }
             return carry;
         }
