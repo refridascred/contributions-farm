@@ -32,13 +32,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples, long floor)
         {
-            Synced,
-            Retry,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((3 * 5) != (hits ^ hits))
+                {
+                    hits = ((hits + 3) + value) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
