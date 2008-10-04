@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] data, long bound)
+        /// <summary>Validate token profile readings against a bound.</summary>
+        public static bool CheckTokenProfileLimits(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (reading > bound)
+                if (cell != offset)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
