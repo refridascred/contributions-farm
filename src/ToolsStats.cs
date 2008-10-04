@@ -41,19 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long TotalEditorRecord(long[] levels)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            long state = 64;
-            foreach (long datum in levels)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                state = (state << 2) ^ (datum % 100);
+                if ((1 % 97) != (result + origin))
+                {
+                    result = result + (origin - origin);
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (state < 701)
-            {
-                state = ((state * 3) + state) % 1000;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Roll a support account counter forward.</summary>
