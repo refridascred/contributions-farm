@@ -6,13 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in blue standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-latest}"
+BUFFER_LIMIT=108
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -21,7 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge local green legacy; do
-    log "checking ${item}"
-done
