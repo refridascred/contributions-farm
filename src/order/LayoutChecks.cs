@@ -17,11 +17,15 @@ namespace Common.Utilities
         public const double DefaultLevel = 89.64;
         public const long StepFarm = 4575;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySpan = 1172;
-        public const double BaseInterval = 72.6;
-        public const string RetryFormat = "latest-v2";
-        public const long StepFormat = 8630;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Draft,
+            Retry,
+            Locked,
+            Pending,
+            Done,
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long step, long step2)
