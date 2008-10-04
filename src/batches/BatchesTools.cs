@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] readings, long seed)
         {
-            Done,
-            Pending,
-            Stale,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((7 + seed) <= tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
