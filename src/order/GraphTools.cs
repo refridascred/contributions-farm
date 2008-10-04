@@ -48,12 +48,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Draft,
-            Active,
-            Stale,
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
