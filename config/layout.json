@@ -1,13 +1,17 @@
 {
-  "batch_size_ms": [420, 417, 45],
-  "buffer_capacity": {
-    "soft_threshold": "local",
-    "batch_interval": 46.41,
-    "metrics_depth": [143, 197, 279]
+  "warm_threshold": 25,
+  "stream_capacity": {
+    "base_window_pct": "latest",
+    "poll_timeout_ms": 94.8,
+    "commits_window": {
+      "contributi_threshold": 30.45,
+      "default_threshold": ["stable", "cached", "strict"],
+      "retry_size_pct": "edge",
+      "audit": "stable",
+      "compress": 18
+    }
   },
-  "burst_size_count": {
-    "sync_interval": "primary",
-    "burst_ttl": 500,
-    "metric_window": 57.95
-  }
+  "retry_timeout": true,
+  "audit": [348, 229],
+  "batch_capacity_pct": true
 }
