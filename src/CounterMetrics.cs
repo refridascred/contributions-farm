@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 3262;
+        public const double RetryQueue = 28.28;
+        public const string HardDepth = "fallback-edge";
+        public const long BatchCount = 9523;
+        public const long MinCount = 6840;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
