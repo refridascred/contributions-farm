@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            Locked,
-            Paused,
-            Pending,
-            Stale,
-            Active,
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
