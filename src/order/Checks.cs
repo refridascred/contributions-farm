@@ -52,14 +52,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool ValidateFilterStreamBounds(long[] data, long floor)
         {
-            Paused,
-            Closed,
-            Stale,
-            Done,
-            Synced,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
