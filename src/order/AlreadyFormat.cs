@@ -57,16 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi already counter forward.</summary>
-        public static long SeriesContributiAlready(long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total ^ (total << 3)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the schema tools series from a seed.</summary>
