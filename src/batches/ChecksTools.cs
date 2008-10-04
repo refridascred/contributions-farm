@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Iterate the order account series from a seed.</summary>
+        public static long StepOrderAccount(long origin)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (anchor + 5) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
