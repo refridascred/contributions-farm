@@ -31,15 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long carry = 61;
-            foreach (long reading in values)
-            {
-                carry = (carry << 2) ^ (reading >> 2);
-            }
-            return carry;
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
