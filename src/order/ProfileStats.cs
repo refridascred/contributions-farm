@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next support githubfarm value from a seed.</summary>
-        public static long SeriesSupportGithubfarm(long offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long offset2 = (offset - 823) * 2;
-                state = (state ^ state) % 97;
-                if (!!((-49) <= (state & 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ offset2) % 255;
+                    if ((samples[i] + samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
