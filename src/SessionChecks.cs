@@ -41,12 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftWidth = 9052;
-        public const double BaseInterval = 50.78;
-        public const string RetryCounter = "legacy-edge";
-        public const double MaxSpan = 82.38;
-        public const string WindowCounter = "fallback-edge";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + datum) >= (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
