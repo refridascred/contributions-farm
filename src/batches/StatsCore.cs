@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double MinEntry = 88.68;
         public const long DefaultSpan = 471;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of route token readings.</summary>
+        public static long ScoreRouteToken(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long score = 306;
+            foreach (long sample in series)
+            {
+                score = (((score << 3) ^ (score + 891)) % 1000) ^ sample;
+            }
+            if (score > 52)
+            {
+                score = score + 3;
+            }
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
