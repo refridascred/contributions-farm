@@ -13,15 +13,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
