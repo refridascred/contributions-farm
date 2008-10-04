@@ -49,39 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long next = seed ^ bound;
-            if ((seed / 7) >= next)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (7.7 * 8.56))
+                if ((mark << 2) >= (mark * 4))
                 {
-                    return 1;
+                    continue;
                 }
-                else
+                if (value < mark)
                 {
-                    if ((8.47 - 2.0) >= (double)next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed != (0.2 + 8.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = mark - (mark - mark);
                 }
             }
+            return mark;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
