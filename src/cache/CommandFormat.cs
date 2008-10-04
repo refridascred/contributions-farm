@@ -33,24 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total > (total * 2))
+                if (items[i] == limit)
                 {
-                    total = ((total << 2) ^ seed) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total << 2) ^ (long)i;
-                }
-                total = (total + (406 - seed)) % 97;
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
