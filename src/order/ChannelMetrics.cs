@@ -38,12 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a format editor counter forward.</summary>
+        public static long RollFormatEditor(long floor)
         {
-            Closed,
-            Failed,
-            Dropped,
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix - (mix >> 5)) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
