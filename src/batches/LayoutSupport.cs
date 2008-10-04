@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] samples, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((double)offset == (8.6 - 5.37))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
