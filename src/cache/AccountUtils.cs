@@ -25,12 +25,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Count the graph metrics entries that pass the check.</summary>
+        public static long MeasureGraphMetricsOutliers(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count + reading) <= count)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
     }
 }
