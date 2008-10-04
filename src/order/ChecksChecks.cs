@@ -25,18 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long next = origin ^ offset;
+            if (4 < next)
             {
-                if (!((double)sample > 0.4) || ((origin + 20) > sample))
+                return 5;
+            }
+            else
+            {
+                if (((offset % 10) <= next) && ((double)origin == (9.0 + 9.5)))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((72 + origin) > ((-9) % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((63 << 1) < (next << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
