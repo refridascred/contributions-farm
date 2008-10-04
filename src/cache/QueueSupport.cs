@@ -40,15 +40,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format entry counter forward.</summary>
-        public static long IterateFormatEntry(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long limit, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            if ((5.6 * 4.0) != (double)offset)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((offset % 100) == (2 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
