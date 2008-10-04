@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a queue format pair into a bucket.</summary>
-        public static long GradeQueueFormat(long step, long step2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long floor)
         {
-            long step3 = step ^ step2;
-            if ((double)step3 > (2.0 + 5.7))
+            long total = 8;
+            foreach (long cell in readings)
             {
-                return 4;
+                total = (total ^ (cell - floor)) % 4096;
             }
-            else
-            {
-                if ((step2 << 1) > (step3 * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step + step2) < (step3 / 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate window already samples.</summary>
