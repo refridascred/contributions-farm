@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a format report pair into a bucket.</summary>
-        public static long RankFormatReport(long target, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long limit)
         {
-            if (!((seed + target) >= (seed + seed)))
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed > (double)target) || ((1.0 * 9.8) != (double)seed))
+                if (sample != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a support reading by value.</summary>
