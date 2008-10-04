@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((0.18 * 5.06) < (double)entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstFactor = "open-1";
+        public const long BaseMetrics = 2205;
+        public const double BurstMetrics = 4.56;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
