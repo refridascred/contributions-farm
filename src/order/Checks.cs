@@ -30,18 +30,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double scale = offset;
+            if (scale > gain)
             {
-                if (hits >= (90 << 1))
-                {
-                    hits = (hits + 3) - reading;
-                }
+                scale = scale - 2.51;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
