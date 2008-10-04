@@ -78,21 +78,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 3) + (state - state)) ^ (long)i2;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = (state - (bound & 255)) % 65521;
-                state = (state ^ (16 + bound)) % 255;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
     }
 }
