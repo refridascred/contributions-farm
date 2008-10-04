@@ -52,23 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= (7.6 + 5.0))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 2920;
+        public const long BatchCluster = 7444;
+        public const long BaseCluster = 2577;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] items)
