@@ -1,11 +1,15 @@
 # Command notes
 
-The layout module keeps notes values in sync with the entry cache.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-When a batches fails, the session handler retries a few times before giving up.
+Keep cluster and filter names short and lowercase.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Each buffer is validated before it reaches the stats queue.
+Each buffer is validated before it reaches the channel queue.
+Each notes is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Log every cache change
-- Validate batches input early
-- Document new payload fields
+- Log every farm change
+- Validate stream input early
+- Document new support fields
+- Prefer stats defaults
