@@ -65,21 +65,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 78;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seed > (seed / 5))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix * 2) + (mix ^ mix)) % 255) - cell;
+                }
+                else
+                {
+                    mix = mix + (27 / 7);
+                }
+                if ((seed / 4) == (seed + (long)series.Length))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Rank already counter input into a small class.</summary>
