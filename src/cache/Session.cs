@@ -41,21 +41,12 @@ namespace Common.Utilities
         public const long IdleInterval = 4149;
         public const double IdleFactor = 14.19;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
