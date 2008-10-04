@@ -1,12 +1,7 @@
 {
-  "poll_limit_ms": false,
-  "persist": 45,
-  "dry_run": {
-    "dry_run": "cached",
-    "verbose": 1024,
-    "schema_timeout": ["green", "cached", "cached"],
-    "audit": 41.52,
-    "default_window": false
-  },
-  "strict": 2410
+  "editor_interval": 4325,
+  "poll_depth_ms": 1.14,
+  "idle_timeout_ms": "stable",
+  "buffer_window": 10.16,
+  "strict": "blue"
 }
