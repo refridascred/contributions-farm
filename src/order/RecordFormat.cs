@@ -21,14 +21,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series)
         {
-            Active,
-            Pending,
-            Ready,
-            Idle,
-            Locked,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((((-16) % 7) >= (reading / 9)) && !((count - count) > (reading * 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
