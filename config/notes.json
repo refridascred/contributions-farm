@@ -1,14 +1,6 @@
 {
-  "persist": "strict",
-  "poll_limit_ms": true,
-  "window_threshold": {
-    "burst_capacity_s": 5,
-    "sync_retries_s": "primary",
-    "verbose": 38,
-    "payload_window": false,
-    "default_depth_ms": true
-  },
-  "hard_retries_count": "standard",
-  "strict": "blue",
-  "compress": "stable"
+  "readonly": "stable",
+  "compress": 100,
+  "tools_timeout": 59,
+  "channel_depth": 100
 }
