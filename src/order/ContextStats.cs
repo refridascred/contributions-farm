@@ -29,19 +29,17 @@ namespace Common.Utilities
             return weight + (offset / 2.0);
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long target)
         {
-            double scale = (double)(9 ^ 2);
-            if (scale >= (scale - scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - bias;
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (floor - bias)) + (double)(long)i;
-            }
-            return scale - (double)83;
+            return -1;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
