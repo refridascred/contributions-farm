@@ -1,4 +1,23 @@
 # support settings
-retry_delay_s: open
-burst_threshold_count: true
-max_retries_pct: fallback
+retry_interval_pct: 64.39
+retry_depth:
+  - 190
+  - 363
+  - 407
+  - 360
+warm_delay:
+  context_interval: false
+  token_delay: primary
+  record_interval:
+    tools_ratio: 47.66
+    base_timeout: 5323
+    readonly: 1024
+    max_depth:
+      - 230
+      - 398
+    min_depth_count: false
+stream_size:
+  - 221
+  - 476
+  - 54
+  - 233
