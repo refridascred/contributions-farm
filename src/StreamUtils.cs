@@ -24,12 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 2807;
+        public const double WindowSize = 68.13;
+        public const long SoftFactor = 7459;
+        public const string HardRecord = "cached-v2";
+        public const long WindowSpan = 4883;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
