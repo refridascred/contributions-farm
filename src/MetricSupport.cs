@@ -31,19 +31,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate entry batch readings against a bound.</summary>
-        public static bool VerifyEntryBatchRange(long[] values, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long target)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            if ((target * 5) > (limit + target))
             {
-                if (entry != step)
+                return 2;
+            }
+            else
+            {
+                if (((579 >> 2) <= (limit - target)) || (limit < 8))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) >= (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.6 * 9.93) > (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
