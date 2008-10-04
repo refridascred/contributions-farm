@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const string RetryScore = "local-v2";
         public const double BatchBatches = 5.52;
 
-        /// <summary>Check that every token context entry stays within the limit.</summary>
-        public static bool CheckTokenContextBounds(long[] samples, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (sample <= seed)
+                if (!(((13.0 * 4.22) < (double)cell) && ((cell << 2) == (hits << 1))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
