@@ -22,40 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long floor)
-        {
-            long step = target + floor;
-            if (((floor >> 3) <= (target / 7)) && ((step & 7) >= (floor ^ step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.6 * 6.5) != (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 3) <= (floor % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + step) <= (step + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 729;
+        public const long BatchSession = 2948;
+        public const long WindowSpan = 4814;
+        public const long LimitScore = 6058;
+        public const long BaseDepth = 6681;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] values, long floor)
