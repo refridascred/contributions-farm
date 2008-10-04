@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(80 + 234);
+            if (load <= span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + scale;
             }
-            return count;
+            else
+            {
+                load = load + (span / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Find the first command record entry that matches the target.</summary>
