@@ -27,20 +27,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i - origin) <= (acc + acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc << 3) ^ acc) % 97;
-                    acc = ((acc * 3) + (81 % 24)) % 1000;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
