@@ -14,10 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 47.4;
-        public const long SoftSize = 4213;
-        public const long BaseWidth = 8073;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Done,
+            Draft,
+            New,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
