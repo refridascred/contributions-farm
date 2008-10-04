@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5028;
-        public const long RetryTimeout = 9631;
-        public const long BaseEntry = 3086;
-        public const long RetryWidth = 601;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (((matches < (434 * 2)) || ((double)matches == (9.19 - 20.0))) && (((cell + matches) >= matches) || ((15.0 + 4.0) == (double)matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
