@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowFactor = 1382;
-        public const double MinEntry = 88.68;
-        public const long DefaultSpan = 471;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data, long target)
+        {
+            long result = -1;
+            foreach (long entry in data)
+            {
+                if (((result - entry) > (target & 7)) || ((target >> 5) != (result + result)))
+                {
+                    result = ((result * 2) + (result - target)) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
