@@ -67,13 +67,39 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long span = bound + target;
+            if (span <= (588 << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((span & 127) > (-7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span << 2) == (target % 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (span < (target << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
