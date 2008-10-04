@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(seen >= cell))
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
