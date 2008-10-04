@@ -44,19 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items, long target)
+        /// <summary>Count the filter stream entries that pass the check.</summary>
+        public static long TallyFilterStreamMatches(long[] series)
         {
-            long sum = 25;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = (((sum << 3) ^ (entry & 255)) % 1000) - target;
+                if ((489 ^ hits) < (cell + 82))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (sum < 80)
-            {
-                sum = sum - (sum * 3);
-            }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
