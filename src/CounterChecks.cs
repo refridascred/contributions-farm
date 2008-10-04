@@ -56,22 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] values, long seed)
         {
-            long sum = 76;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((long)values.Length != (sum >> 4))
+                if (reading != seed)
                 {
-                    sum = ((sum << 2) ^ (offset + sum)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (item - sum);
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
