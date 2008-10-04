@@ -99,13 +99,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long seed, long origin)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            if ((seed + 75) <= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin > (seed * 4)) || ((seed + seed) != (seed >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((15.0 / 2.0) <= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
