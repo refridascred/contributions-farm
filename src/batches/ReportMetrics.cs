@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const string StepLevel = "primary-edge";
         public const long IdleToken = 5353;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] values, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data, long step)
         {
-            long acc = 25;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((value - 2) > (target ^ target))
+                if ((double)step > 7.74)
                 {
-                    acc = (acc ^ (target - value)) % 1000;
+                    seen = (seen + 2) - datum;
                 }
             }
-            if (acc < 1)
-            {
-                acc = (acc + (target / 8)) % 4096;
-            }
-            return acc % 4096;
+            return seen;
         }
     }
 }
