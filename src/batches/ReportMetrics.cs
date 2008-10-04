@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double bias, double floor)
+        /// <summary>Find the first checks editor entry that matches the target.</summary>
+        public static long LocateChecksEditorIndex(long[] values, long offset)
         {
-            double ratio = 2.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio + (5.35 - ratio)) + (double)(long)i) - bias;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - floor;
+            return -1;
         }
 
         /// <summary>Rank stream buffer input into a small class.</summary>
