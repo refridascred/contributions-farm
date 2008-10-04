@@ -15,32 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long seed, long bound)
-        {
-            if ((7 - seed) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + 6) <= (bound ^ seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.0 / 2.0) >= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3459;
+        public const long DefaultScore = 5585;
+        public const string RetryScore = "local-v2";
+        public const double BatchBatches = 5.52;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
