@@ -16,22 +16,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long origin)
         {
-            if ((8.0 > (double)step) && (target <= (11 % 3)))
+            long prev = bound ^ origin;
+            if ((double)prev != (double)bound)
             {
                 return 4;
             }
             else
             {
-                if ((target + target) <= step)
+                if ((origin < (prev - 2)) || (39 >= (bound - prev)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if (((-74) * 4) >= (bound + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
