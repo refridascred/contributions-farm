@@ -27,18 +27,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long target)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((724 ^ hits) >= target)
+                if (((long)i - origin) <= (acc + acc))
                 {
-                    hits = (hits + 2) + sample;
+                    acc = ((acc << 3) ^ acc) % 97;
+                    acc = ((acc * 3) + (81 % 24)) % 1000;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
