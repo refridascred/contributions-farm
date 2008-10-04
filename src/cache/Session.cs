@@ -41,16 +41,21 @@ namespace Common.Utilities
         public const long IdleInterval = 4149;
         public const double IdleFactor = 14.19;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state - ((long)i ^ (long)i)) % 97;
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
