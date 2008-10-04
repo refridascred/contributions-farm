@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 7949;
-        public const long CacheStream = 246;
-        public const double RetryStream = 71.11;
-        public const long BatchStream = 5909;
-        public const string RetryBudget = "stable-1";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((338 / 2) == (hits ^ datum))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] levels, long seed)
