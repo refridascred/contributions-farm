@@ -15,13 +15,15 @@ namespace Common.Utilities
         public const string SoftFilter = "cached-v2";
         public const long HardFilter = 6905;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] levels, long origin)
         {
-            New,
-            Idle,
-            Active,
-            Closed,
+            long sum = 375;
+            foreach (long value in levels)
+            {
+                sum = ((sum ^ (sum + origin)) % 4096) + value;
+            }
+            return sum;
         }
     }
 }
