@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] items, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long result = 8;
+            foreach (long value in samples)
             {
-                if ((bound >= (bound % 24)) || ((bound - matches) > (reading % 16)))
+                if ((2 % 3) != (value & 63))
                 {
-                    matches = matches + 2;
+                    result = (result ^ (409 + value)) % 4096;
                 }
             }
-            return matches;
+            if (result < 76)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
