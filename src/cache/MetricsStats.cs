@@ -67,11 +67,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleTimeout = "staging";
-        public const long MaxProfile = 1570;
-        public const long BurstProfile = 4932;
-        public const double CacheProfile = 0.47;
-        public const long HardProfile = 1677;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
