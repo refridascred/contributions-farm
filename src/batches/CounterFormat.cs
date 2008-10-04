@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((double)origin != (20.0 - 17.0))
+                {
+                    result = ((result << 2) ^ result) % 101;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
