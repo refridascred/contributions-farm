@@ -24,15 +24,22 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((2.82 + 11.0) < 10.0)
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
