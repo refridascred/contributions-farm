@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (item <= offset)
+                if (!((double)seen < 1.0))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
