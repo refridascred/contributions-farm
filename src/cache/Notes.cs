@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + matches) <= (sample + sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxCount = 4973;
+        public const double BurstSpan = 2.44;
+        public const string SoftSupport = "standard-edge";
+        public const string MaxInterval = "legacy-1";
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TotalQueue(long[] series)
