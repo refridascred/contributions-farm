@@ -28,19 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate account notes readings against a bound.</summary>
-        public static bool ValidateAccountNotesLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5042;
+        public const string BatchStats = "local-edge";
+        public const long WindowStats = 4111;
+        public const long StepStats = 3737;
     }
 }
