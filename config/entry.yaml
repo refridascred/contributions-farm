@@ -1,42 +1,11 @@
 # entry settings
-schema_ttl:
-  - primary
-  - primary
-  - local
-  - stable
-max_depth_count: blue
-default_ratio_s: primary
-default_window_pct:
-  - 252
-  - 186
-session_size:
-  commits_window: 500
-  poll_threshold_s:
-    strict: 60
-    layout_delay: 8152
-    enabled: 1024
-  batch_retries:
-    window_size: true
-    stream_ratio: false
-    window_depth: 3779
-  persist:
-    batch_window: 30
-    burst_size_s: legacy
-    cache_depth_pct: fallback
-  poll_interval_count: blue
-hard_delay_s:
-  retry_delay_s: eu-west
-  stats_capacity:
-    - local
-    - stable
-  soft_window_pct:
-    queue_ratio: 26.47
-    idle_limit_count: 68
-    burst_depth_ms: 89.12
-    audit:
-      - 239
-      - 494
-      - 2
-    readonly: eu-west
-  enabled: local
-  command_threshold: false
+retry_ratio_s:
+  - 172
+  - 460
+  - 357
+cache_threshold:
+  soft_ratio: 500
+  base_retries_pct: 7.82
+  max_ttl_s: open
+max_threshold: 100
+poll_capacity: local
