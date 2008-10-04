@@ -1,20 +1,7 @@
 # entry settings
-soft_retries: false
-cache_timeout:
-  - 50
-  - 233
-  - 222
-counter_ratio:
-  profile_interval: 13.69
-  min_delay_ms: 5390
-  burst_delay: 85
-  route_capacity: false
-  soft_capacity: legacy
-  burst_ttl_count: eu-west
-cache_interval: 250
-verbose: 67.33
-soft_ratio_ms:
-  - primary
-  - latest
-  - green
-  - local
+burst_depth_count: true
+hard_depth_pct: 35
+hard_timeout_s:
+  default_window_s: primary
+  sync_interval_pct: 9.47
+  max_window_s: 90
