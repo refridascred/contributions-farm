@@ -30,19 +30,12 @@ namespace Common.Utilities
             return ((gain + 9.95) + ratio) + offset;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample >= (4.17 / 2.0))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchCount = "fallback-v2";
+        public const long SoftFilter = 6840;
+        public const double StepScore = 19.57;
+        public const long CacheFilter = 7424;
+        public const string MinFilter = "alpha-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitSchema = 6812;
