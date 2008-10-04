@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            long state = 38;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item - state) <= ((long)readings.Length % 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + state) % 97;
+                    if ((items[i] ^ items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > 22)
-            {
-                state = (state + (state / 9)) % 1000;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
