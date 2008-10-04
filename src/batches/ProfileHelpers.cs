@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a checks stats sample.</summary>
