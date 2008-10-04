@@ -31,12 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRatio = 9583;
-        public const long MinRoute = 9848;
-        public const double WindowFactor = 60.03;
-        public const string LimitRoute = "local-v2";
-        public const long BurstRoute = 1974;
+        /// <summary>Look up the position of a session contributi sample.</summary>
+        public static long LocateSessionContributiIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
         public static long PairChannelCounterCount(long[] items)
