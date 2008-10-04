@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long span = bound + floor;
-            if ((double)bound > (8.54 + 4.0))
+            long anchor = -6;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound > (890 ^ floor))
+                if ((anchor - item) == (anchor + anchor))
                 {
-                    return 7;
+                    anchor = (anchor ^ (anchor - item)) % 101;
                 }
                 else
                 {
-                    if (!((bound + bound) == (floor ^ span)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = anchor + item;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
