@@ -12,15 +12,12 @@ namespace Common.Utilities
             return (rate + gain) + offset;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Queued,
-            Idle,
-            Dropped,
-            Draft,
-            New,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "staging-1";
+        public const long BurstFarm = 7155;
+        public const double MinFarm = 96.32;
+        public const long WindowFarm = 682;
+        public const long CacheWidth = 6143;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long step)
