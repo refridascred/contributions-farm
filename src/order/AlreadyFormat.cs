@@ -51,12 +51,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] data, long step)
         {
-            Stale,
-            Draft,
-            Done,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
