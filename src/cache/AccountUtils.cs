@@ -37,12 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
         {
-            Closed,
-            New,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
