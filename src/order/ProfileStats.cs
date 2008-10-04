@@ -34,25 +34,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long floor, long step)
-        {
-            if (!(floor >= (step << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor < (2.22 * 7.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "stable-v2";
+        public const string BaseEditor = "stable-1";
+        public const string IdleEditor = "cached-v2";
 
         /// <summary>Roll a context metrics counter forward.</summary>
         public static long SeriesContextMetrics(long seed)
