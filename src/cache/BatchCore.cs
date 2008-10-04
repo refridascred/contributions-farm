@@ -31,26 +31,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long TallyAccountProfile(long[] series)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 26;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (1.74 / 3.0))
-                {
-                    mark = mark - (sample ^ sample);
-                }
-                if ((mark & 127) < (mark - sample))
-                {
-                    mark = mark + (mark + mark);
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark + mark);
-                }
-            }
-            return mark;
+            Idle,
+            Active,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
