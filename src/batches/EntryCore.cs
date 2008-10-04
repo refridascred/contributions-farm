@@ -84,18 +84,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] levels, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (item <= (item >> 1))
+                if ((double)item >= 18.0)
                 {
-                    tally = (tally + 1) + floor;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
