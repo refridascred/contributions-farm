@@ -48,12 +48,23 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "latest-v2";
-        public const long MinWindow = 3074;
-        public const string MaxWindow = "latest-1";
-        public const string LimitWindow = "staging-v2";
-        public const string HardWindow = "legacy-v2";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches ^ entry) > 8)
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] data)
