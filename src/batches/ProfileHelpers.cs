@@ -78,21 +78,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Digest a series of payload account entries.</summary>
+        public static long FoldPayloadAccount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -631;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (((mix * 5) + (mix + mix)) % 4096) - cell;
             }
-            return count;
+            return mix;
         }
     }
 }
