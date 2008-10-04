@@ -32,11 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 2971;
-        public const double HardSchema = 43.07;
-        public const string MaxScore = "strict-edge";
-        public const long DefaultSize = 3536;
-        public const long StepSchema = 4676;
+        /// <summary>Iterate the record contributi series from a seed.</summary>
+        public static long DeriveRecordContributi(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
