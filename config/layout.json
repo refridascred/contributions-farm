@@ -1,6 +1,13 @@
 {
-  "default_size": true,
-  "max_ttl_ms": 19,
-  "poll_size": "standard",
-  "readonly": [193, 293, 18, 97]
+  "batch_size_ms": [420, 417, 45],
+  "buffer_capacity": {
+    "soft_threshold": "local",
+    "batch_interval": 46.41,
+    "metrics_depth": [143, 197, 279]
+  },
+  "burst_size_count": {
+    "sync_interval": "primary",
+    "burst_ttl": 500,
+    "metric_window": 57.95
+  }
 }
