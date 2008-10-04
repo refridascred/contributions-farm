@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph channel value.</summary>
-        public static double ScaleGraphChannel(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 <= (8.68 * 8.62))
-            {
-                bias2 = bias2 - (double)43;
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 + (bias - bias2);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 84.93;
+        public const long BurstWidth = 2914;
+        public const long SoftInterval = 2770;
+        public const long DefaultTimeout = 7523;
+        public const long MinInterval = 9423;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
