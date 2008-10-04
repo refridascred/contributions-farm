@@ -37,39 +37,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long step)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long limit)
         {
-            long slot = limit - step;
-            if (((748 + 31) >= slot) && ((step << 1) >= (step - 681)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit < (slot & 31)) || ((83 - step) < (step + slot)))
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (step + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit < step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
