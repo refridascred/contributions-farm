@@ -89,15 +89,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "alpha-1";
+        public const long SoftProfile = 1718;
+        public const long RetryProfile = 7741;
+        public const long DefaultProfile = 9056;
     }
 }
