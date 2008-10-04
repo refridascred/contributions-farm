@@ -1,8 +1,9 @@
 {
-  "schema_threshold": "local",
-  "record_delay": true,
-  "compress": 100,
-  "default_window_count": 26.89,
-  "sync_delay_count": "green",
-  "base_delay": 78.88
+  "cache_ratio_ms": {
+    "readonly": false,
+    "warm_delay": 44.83,
+    "audit": true
+  },
+  "idle_ttl_pct": "legacy",
+  "compress": 6499
 }
