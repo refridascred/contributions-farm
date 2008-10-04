@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Measure how many stats metric samples are out of range.</summary>
+        public static long MeasureStatsMetricHits(long[] series, long target)
         {
-            long acc = 35;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)sample != (8.41 + 9.41))
+                if ((9.7 * 4.47) <= (8.0 / 6.0))
                 {
-                    acc = ((acc * 5) + (sample & 31)) % 255;
+                    hits = ((hits + 3) - entry) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc > (-3))
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Find the first notes metrics entry that matches the target.</summary>
