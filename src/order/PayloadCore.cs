@@ -26,20 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 562;
+        public const long CacheRatio = 2922;
+        public const long RetryPayload = 7796;
+        public const long MinLevel = 2336;
+        public const double DefaultPayload = 94.25;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 483;
