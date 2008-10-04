@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 5609;
-        public const long CacheProfile = 3920;
-        public const long DefaultProfile = 5121;
-        public const long SoftCount = 5158;
-        public const double MaxWidth = 23.56;
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double offset)
+        {
+            double weight = offset;
+            if (weight > (double)(-525))
+            {
+                weight = weight + (gain * 4.0);
+            }
+            else
+            {
+                weight = weight - (weight - 1.0);
+            }
+            return weight + (offset / 2.0);
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double bias, double floor)
