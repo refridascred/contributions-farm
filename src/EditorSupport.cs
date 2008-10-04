@@ -65,18 +65,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long target, long bound)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((938 + bound) > (bound >> 4))
             {
-                if (((-274) << 1) > (item >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((19.0 + 2.09) > (double)bound)
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
