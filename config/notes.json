@@ -1,27 +1,6 @@
 {
-  "min_limit": {
-    "base_limit": 54,
-    "profile_capacity": {
-      "strict": "blue",
-      "token_size": false,
-      "flush_window": 500,
-      "sync_ratio": 1447,
-      "graph_interval": "fallback",
-      "min_ttl_count": "fallback"
-    },
-    "audit": "strict",
-    "base_capacity": "open",
-    "order_size": "staging",
-    "command_capacity": 500
-  },
-  "default_capacity": "primary",
-  "layout_size": {
-    "flush_ratio": 500,
-    "min_ratio_pct": "green",
-    "min_window_count": "open",
-    "readonly": "cached",
-    "idle_capacity_ms": "latest",
-    "buffer_depth": "primary"
-  },
-  "batch_timeout": ["standard", "eu-west"]
+  "min_delay_s": 91.99,
+  "max_window_s": 74.99,
+  "already_window": 98.57,
+  "verbose": 4941
 }
