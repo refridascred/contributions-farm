@@ -48,22 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] samples, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (tally > (sample >> 4))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
