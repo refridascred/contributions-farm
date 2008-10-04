@@ -1,9 +1,7 @@
 {
-  "batch_capacity_pct": {
-    "soft_interval_count": 100,
-    "hard_delay": "fallback",
-    "flush_ratio_pct": false
-  },
-  "retry_threshold_pct": 30.72,
-  "profile_timeout": true
+  "batch_threshold_pct": "edge",
+  "counter_depth": "blue",
+  "sync_window_count": "primary",
+  "dry_run": 500,
+  "max_retries_ms": 58.48
 }
