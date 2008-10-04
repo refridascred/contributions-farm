@@ -1,7 +1,8 @@
 # support settings
-audit: 98
-soft_retries: stable
-max_depth_count:
-  - edge
+batch_limit_pct: edge
+max_interval: blue
+payload_delay:
+  - blue
+  - staging
+  - open
   - legacy
-  - cached
