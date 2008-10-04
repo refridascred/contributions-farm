@@ -21,14 +21,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Closed,
-            Locked,
-            Paused,
-            Dropped,
-            New,
+            Idle,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
