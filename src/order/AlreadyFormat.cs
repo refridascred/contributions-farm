@@ -19,17 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream report value from a seed.</summary>
-        public static long DeriveStreamReport(long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - (mix + target)) % 97;
-                mix = mix + (target % 3);
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
