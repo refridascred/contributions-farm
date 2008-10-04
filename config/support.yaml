@@ -1,25 +1,5 @@
 # support settings
-warm_capacity_s:
-  sync_capacity: standard
-  soft_capacity_s: 7205
-  burst_size:
-    - green
-    - standard
-  warm_depth:
-    audit: 99
-    enabled: 95.53
-    support_depth: 2061
-    soft_ratio_ms: 60
-    support_ttl: stable
-    base_capacity_pct: 9.42
-  sync_size_ms:
-    burst_retries: 250
-    retry_capacity_pct: true
-    persist: 7430
-    hard_limit_count: stable
-warm_ratio:
-  - edge
-  - latest
-  - staging
-  - local
-compress: 100
+base_capacity: local
+token_interval: 9974
+compress: 30.19
+default_delay_count: 69
