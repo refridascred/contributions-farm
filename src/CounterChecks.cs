@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Accumulate stream support samples.</summary>
+        public static long CombineStreamSupport(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score <= (value / 5)) || (value >= (score & 3)))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + (value / 6)) % 101;
+                }
+                else
+                {
+                    score = (score * 3) + (5 & 15);
                 }
             }
-            return matches;
+            if (score < 89)
+            {
+                score = ((score * 3) + score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Locate a record payload reading by value.</summary>
