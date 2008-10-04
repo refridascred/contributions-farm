@@ -50,12 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data, long step)
         {
-            Dropped,
-            Queued,
-            Ready,
+            long state = 281;
+            foreach (long item in data)
+            {
+                state = (state ^ 931) % 255;
+                if ((step / 3) == (step + item))
+                {
+                    state = ((state << 2) ^ (state >> 4)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
