@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items)
-        {
-            long total = -616;
-            foreach (long reading in items)
-            {
-                if (!((double)total != (19.0 - 1.8)))
-                {
-                    total = (((total * 5) + (total << 1)) % 4096) - reading;
-                }
-            }
-            if (total > 784)
-            {
-                total = total + (total ^ 68);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchCount = 8995;
+        public const long HardSupport = 9222;
+        public const long SoftSupport = 3078;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 479;
