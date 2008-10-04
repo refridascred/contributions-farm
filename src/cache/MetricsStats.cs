@@ -27,13 +27,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] levels)
         {
-            Draft,
-            Paused,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell <= (cell >> 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
