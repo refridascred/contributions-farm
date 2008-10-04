@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Find the first command schema entry that matches the target.</summary>
+        public static long LocateCommandSchemaIndex(long[] readings, long seed)
         {
-            Retry,
-            Paused,
-            Active,
-            Synced,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first graph metric entry that matches the target.</summary>
