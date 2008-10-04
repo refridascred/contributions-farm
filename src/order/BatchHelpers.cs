@@ -16,19 +16,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            double ratio2 = (double)(41 + 0);
-            if (ratio2 > (ratio - 4.0))
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                ratio2 = (ratio2 + ratio) - floor;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 - (ratio / 3.0);
+            return carry;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
