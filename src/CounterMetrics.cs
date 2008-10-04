@@ -50,24 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            if ((origin + origin) != (origin / 8))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ origin) >= (20 + seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
