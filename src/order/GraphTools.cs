@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of profile report readings.</summary>
-        public static long FoldProfileReport(long[] values, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long target, long origin)
         {
-            long acc = 60;
-            foreach (long value in values)
+            long prev = target - origin;
+            if (!(770 < (origin * 4)))
             {
-                if ((3.96 - 2.0) == (double)acc)
+                return 6;
+            }
+            else
+            {
+                if ((target + prev) >= (2 >> 3))
                 {
-                    acc = ((acc - ((long)values.Length + acc)) - value) + limit;
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ target) < (target % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
