@@ -1,5 +1,5 @@
 {
-  "batch_depth": [24, 234, 274],
-  "burst_retries_s": ["fallback", "primary"],
-  "warm_threshold_count": 100
+  "soft_window": 8157,
+  "sync_window_pct": [412, 235, 214, 343],
+  "burst_limit": "fallback"
 }
