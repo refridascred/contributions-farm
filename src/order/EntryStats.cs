@@ -44,14 +44,25 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Grade a payload account value against two limits.</summary>
+        public static long SortPayloadAccount(long seed, long bound)
         {
-            New,
-            Queued,
-            Failed,
-            Done,
-            Pending,
+            long prev = seed - bound;
+            if ((bound + seed) == (seed & 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev + bound) > (seed >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
