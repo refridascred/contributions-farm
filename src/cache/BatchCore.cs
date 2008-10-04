@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] series)
         {
-            if ((490 + step) == (5 + step))
+            long state = 574;
+            foreach (long datum in series)
             {
-                return 0;
+                state = ((state * 2) + (88 << 1)) + datum;
             }
-            else
+            if (state > 463)
             {
-                if (((3.6 * 7.0) >= (double)step) && ((seed - step) >= 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed ^ 474) >= (seed / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed % 3) < (step / 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                state = (state + (state - state)) % 97;
             }
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
