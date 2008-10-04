@@ -28,12 +28,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSpan = 6868;
-        public const string BurstRoute = "open-edge";
-        public const long RetryBudget = 7036;
-        public const long BaseRoute = 5117;
-        public const long CacheSize = 7777;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardFactor = 8589;
+        public const string WindowContext = "fallback-edge";
+        public const long BurstTimeout = 4076;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long offset)
