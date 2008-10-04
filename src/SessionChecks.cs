@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of batch counter entries.</summary>
-        public static long ScoreBatchCounter(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            long anchor = 690;
-            foreach (long value in samples)
+            long prev = origin - offset;
+            if (451 <= offset)
             {
-                if (((-72) % 7) <= value)
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 1) <= origin) && ((prev * 5) >= origin))
                 {
-                    anchor = ((anchor * 3) + (841 - value)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    if ((prev << 1) < prev)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
