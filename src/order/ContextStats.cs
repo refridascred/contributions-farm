@@ -53,18 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] samples, long limit)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) < (limit / 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Paused,
         }
     }
 }
