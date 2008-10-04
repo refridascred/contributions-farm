@@ -78,26 +78,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] items, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long score = 17;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((16.0 + 1.3) < (double)item)
+                if ((seen + seen) != ((-845) + entry))
                 {
-                    score = (score << 2) ^ (item / 5);
-                }
-                else
-                {
-                    score = (score << 3) ^ (bound % 7);
+                    seen = seen + 3;
                 }
             }
-            if (score > 3)
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score % 1000;
+            return seen;
         }
     }
 }
