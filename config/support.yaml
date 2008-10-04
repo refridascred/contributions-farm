@@ -1,17 +1,9 @@
 # support settings
-default_retries_count:
-  channel_threshold: 100
-  warm_delay: true
-  sync_capacity: 7050
-  counter_threshold: 34.28
-  strict: 7146
-session_capacity:
-  strict: blue
-  batches_window: standard
-  poll_window_s:
-    - primary
-    - strict
-  max_ttl: 20.65
-  burst_limit: 92.58
-soft_timeout_count: 4803
-base_capacity_count: 47.84
+batch_ttl: false
+batch_capacity_count:
+  - latest
+  - stable
+  - cached
+strict: cached
+soft_window: 5613
+flush_capacity: 100
