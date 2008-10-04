@@ -31,15 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] data, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
