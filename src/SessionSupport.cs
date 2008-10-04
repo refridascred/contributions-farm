@@ -31,18 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] items)
+        /// <summary>Match up stream commits samples.</summary>
+        public static long CompareStreamCommitsCount(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen >= (6.56 / 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
