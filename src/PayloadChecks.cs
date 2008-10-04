@@ -62,22 +62,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] data, long limit)
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long AuditChannelWindowGaps(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((matches ^ entry) > 8)
+                if ((double)129 > (double)sample)
                 {
-                    matches = (matches + 3) + limit;
+                    count = (count + 2) - origin;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit stats tools readings against a rule.</summary>
