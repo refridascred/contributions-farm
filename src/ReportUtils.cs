@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstFactor = 2702;
-        public const string BaseBudget = "local-v2";
-        public const long MinWindow = 8666;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] data, long origin)
