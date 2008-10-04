@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string HardOrder = "fallback";
         public const long RetryOrder = 7512;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long MeasureGraphContextHits(long[] data, long seed)
         {
-            Retry,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (tally ^ 773))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
