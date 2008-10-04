@@ -20,12 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels, long bound)
         {
-            Active,
-            Paused,
-            Retry,
+            long anchor = 7;
+            foreach (long reading in levels)
+            {
+                if (anchor <= (anchor - bound))
+                {
+                    anchor = (anchor * 3) + (reading - 48);
+                }
+                if ((8.0 + 8.98) >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
