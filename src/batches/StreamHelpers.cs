@@ -47,10 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleScore = 499;
-        public const long StepGraph = 8623;
-        public const string BaseDepth = "legacy";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values)
+        {
+            long acc = -9;
+            foreach (long value in values)
+            {
+                acc = ((acc + (acc * 2)) % 4096) - value;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandRange(long[] levels, long floor)
