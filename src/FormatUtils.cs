@@ -21,26 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] series, long seed)
         {
-            long score = 51;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (entry > 73)
+                if (value < seed)
                 {
-                    score = (score * 4) + ((-40) / 5);
-                }
-                if ((entry <= (entry - score)) || ((double)score >= 18.0))
-                {
-                    score = ((score << 3) ^ (311 / 5)) % 65521;
-                }
-                else
-                {
-                    score = (score << 3) ^ (982 % 60);
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Fold a list of route readings.</summary>
