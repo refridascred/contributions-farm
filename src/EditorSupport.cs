@@ -92,11 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 1066;
-        public const double DefaultCount = 38.94;
-        public const double RetryBatch = 60.83;
-        public const long BaseBudget = 6850;
-        public const long CacheSize = 4872;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
