@@ -34,11 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit channel report readings against a rule.</summary>
+        public static long AuditChannelReportGaps(long[] items)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits << 1) != (32 - hits))
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
