@@ -36,18 +36,13 @@ namespace Common.Utilities
             return load + (rate * 20.0);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long floor)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen + 4) == (sample % 64))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the tools report entries that pass the check.</summary>
