@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "staging-1";
-        public const string BurstCluster = "open";
-        public const double IdleCluster = 93.29;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data)
+        {
+            long mix = 66;
+            foreach (long reading in data)
+            {
+                mix = (mix ^ 579) - reading;
+            }
+            if (mix < 168)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 4389;
