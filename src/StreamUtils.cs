@@ -28,19 +28,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long WeighLayoutWindow(long[] data, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 29;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum ^ (entry / 3)) % 101) ^ (long)i;
-                }
-                sum = ((sum * 3) + (entry - limit)) % 97;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next session farm value.</summary>
