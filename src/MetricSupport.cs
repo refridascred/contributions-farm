@@ -41,11 +41,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
