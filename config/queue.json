@@ -1,7 +1,8 @@
 {
-  "enabled": 1024,
-  "already_size": 9243,
-  "cache_depth_count": 17.17,
-  "max_ttl_s": 7966,
-  "checks_interval": "blue"
+  "max_threshold": 1024,
+  "warm_ratio": "latest",
+  "default_timeout_s": 5483,
+  "context_capacity": 9562,
+  "readonly": "eu-west",
+  "flush_threshold": 95.35
 }
