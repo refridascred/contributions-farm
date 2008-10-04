@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const string RetrySupport = "latest-1";
         public const long CacheDepth = 6352;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long score = 4;
+            foreach (long value in readings)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score - (limit + score)) - value;
             }
-            return found;
+            return score;
         }
     }
 }
