@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a graph checks figure with a bias.</summary>
-        public static double BlendGraphChecks(double bias, double floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double bias2 = (double)(487 & 31);
-            if (bias2 > bias2)
-            {
-                bias2 = (bias2 - (bias2 + 13.0)) + floor;
-            }
-            else
-            {
-                bias2 = bias2 - (double)54;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - (bias2 * 6.0);
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank checks input into a small class.</summary>
