@@ -69,13 +69,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Locate a farm stats reading by value.</summary>
+        public static long FindFarmStatsIndex(long[] levels, long step)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
