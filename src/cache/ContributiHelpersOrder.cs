@@ -36,15 +36,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long result = 43;
-            foreach (long reading in values)
-            {
-                result = result + reading;
-            }
-            return result % 4096;
+            New,
+            Active,
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
