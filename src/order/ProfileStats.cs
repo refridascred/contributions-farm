@@ -33,38 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support metric value against two limits.</summary>
-        public static long RankSupportMetric(long origin, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] series, long limit)
         {
-            if (!((bound + bound) > origin))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) <= origin)
+                if (entry > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ origin) != (bound - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound % 97) <= bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the command class values.</summary>
