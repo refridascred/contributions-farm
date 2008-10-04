@@ -62,14 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double scale, double span)
         {
-            Paused,
-            Closed,
-            Failed,
-            Stale,
-            Queued,
+            double bias = span;
+            if (bias >= (bias + scale))
+            {
+                bias = bias - (10.0 * 16.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (scale + span)) - (double)(long)i;
+            }
+            return bias + 10.0;
         }
     }
 }
