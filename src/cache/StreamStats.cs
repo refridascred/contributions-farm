@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next report format value.</summary>
-        public static double ScaleReportFormat(double weight, double span)
+        /// <summary>Accumulate stats stream samples.</summary>
+        public static long DigestStatsStream(long[] data, long floor)
         {
-            double scale = weight;
-            return (scale + (scale - 8.0)) + span;
+            long mark = 327;
+            foreach (long datum in data)
+            {
+                mark = mark ^ floor;
+                if (datum > (401 % 16))
+                {
+                    mark = mark - (floor + (long)data.Length);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of window readings.</summary>
