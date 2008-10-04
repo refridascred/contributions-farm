@@ -1,23 +1,11 @@
 # support settings
-retry_interval_pct: 64.39
-retry_depth:
-  - 190
-  - 363
-  - 407
-  - 360
-warm_delay:
-  context_interval: false
-  token_delay: primary
-  record_interval:
-    tools_ratio: 47.66
-    base_timeout: 5323
-    readonly: 1024
-    max_depth:
-      - 230
-      - 398
-    min_depth_count: false
-stream_size:
-  - 221
-  - 476
-  - 54
-  - 233
+poll_timeout_pct: 68.06
+batch_window: primary
+entry_ttl: false
+base_ratio_pct:
+  - 204
+  - 294
+retry_window_pct:
+  - 148
+  - 167
+  - 286
