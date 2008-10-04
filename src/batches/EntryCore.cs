@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            Queued,
-            Idle,
-            Pending,
-            Done,
-            Closed,
+            long acc = 35;
+            foreach (long sample in samples)
+            {
+                if ((double)sample != (8.41 + 9.41))
+                {
+                    acc = ((acc * 5) + (sample & 31)) % 255;
+                }
+            }
+            if (acc > (-3))
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first notes metrics entry that matches the target.</summary>
