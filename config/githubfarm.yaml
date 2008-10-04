@@ -1,4 +1,8 @@
 # githubfarm settings
-entry_depth: false
-audit: 51
-base_timeout: staging
+default_ttl: strict
+already_size: fallback
+enabled:
+  - local
+  - staging
+  - staging
+  - legacy
