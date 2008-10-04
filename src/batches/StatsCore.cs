@@ -65,22 +65,37 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long floor2)
+        /// <summary>Classify a report stream pair into a bucket.</summary>
+        public static long ClassifyReportStream(long bound, long origin)
         {
-            if (430 <= floor2)
+            long slot = bound + origin;
+            if ((8.0 + 11.0) <= (double)origin)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (!((floor + floor2) != (floor - floor2)))
+                if ((slot > (slot - origin)) && (slot >= (origin >> 4)))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if (((bound + bound) < bound) && (428 > (origin + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound ^ slot) > (slot << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
