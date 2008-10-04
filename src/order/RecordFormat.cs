@@ -31,31 +31,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long floor)
         {
-            if (!((floor & 31) <= (230 / 7)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) >= floor)
+                if (data[i] == floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((25 & 15) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a metrics cache figure with a bias.</summary>
