@@ -94,11 +94,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double span)
         {
-            double drift = (double)57 * 3.36;
-            return (drift - span) + rate;
+            double load = span * 19.0;
+            if (load >= (double)8)
+            {
+                load = (load - (double)90) - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load / 4.0)) + (double)(long)i;
+            }
+            return load - (8.4 + load);
         }
     }
 }
