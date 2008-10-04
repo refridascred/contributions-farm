@@ -57,15 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Match up schema farm samples.</summary>
+        public static long MatchSchemaFarmCount(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 10)
+                    if ((levels[i] + levels[j]) == 13)
                     {
                         matches = matches + 1;
                     }
