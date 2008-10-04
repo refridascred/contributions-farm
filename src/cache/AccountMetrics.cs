@@ -43,11 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 4.99;
-        public const long SoftSupport = 5401;
-        public const long StepFactor = 4938;
-        public const long SoftBudget = 7146;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)tally <= (7.0 + 9.0)) || (((cell * 4) != (tally / 5)) && ((3.0 * 11.0) < (double)cell)))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine channel cluster values into a single score.</summary>
         public static long ScoreChannelCluster(long[] samples)
