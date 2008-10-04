@@ -18,18 +18,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Rank farm support input into a small class.</summary>
+        public static long ClassifyFarmSupport(long step, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long bound = step ^ target;
+            if ((bound * 4) == (step / 6))
             {
-                if ((sample + hits) != (sample << 1))
+                return 2;
+            }
+            else
+            {
+                if ((target < step) || ((558 / 8) >= (33 - target)))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (step < ((-9) * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((955 - target) == (bound & 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
