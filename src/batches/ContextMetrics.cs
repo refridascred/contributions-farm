@@ -50,19 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long state = 281;
-            foreach (long item in data)
-            {
-                state = (state ^ 931) % 255;
-                if ((step / 3) == (step + item))
-                {
-                    state = ((state << 2) ^ (state >> 4)) % 65521;
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
