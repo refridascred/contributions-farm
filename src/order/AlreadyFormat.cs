@@ -51,17 +51,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a commits account reading by value.</summary>
-        public static long FindCommitsAccountIndex(long[] samples, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
