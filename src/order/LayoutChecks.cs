@@ -76,21 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster channel value from a seed.</summary>
-        public static long StepClusterChannel(long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                result = ((result * 5) + (long)i) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((sum - (long)items.Length) >= sum))
                 {
-                    result = ((result * 3) + bound) + (long)i2;
-                    result = (result - bound) % 4096;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 1000;
+                sum = (sum + (462 + cell)) % 255;
             }
-            return result;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
