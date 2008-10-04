@@ -1,21 +1,8 @@
 # support settings
-retry_depth_pct:
-  context_interval: 30
-  min_retries_ms: primary
-  retry_ratio_s: 1024
-  dry_run:
-    compress: local
-    warm_interval_pct: 9
-    buffer_timeout: primary
-    audit: 617
-    base_delay_ms:
-      - latest
-      - blue
-  retry_retries_count: open
-sync_delay:
-  - edge
-  - fallback
-  - local
-compress: true
-warm_interval_ms: staging
-metric_timeout: false
+batch_delay: false
+idle_capacity_count: 34.92
+default_depth: 5
+graph_retries:
+  - 441
+  - 144
+base_retries_ms: open
