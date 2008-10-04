@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!!((0 - entry) <= tally))
+                if ((double)value > (8.22 - 1.0))
                 {
-                    tally = (tally + 1) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
