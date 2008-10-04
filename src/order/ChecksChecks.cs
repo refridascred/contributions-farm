@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long CombineFormatSupport(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 714;
+            foreach (long entry in items)
             {
-                if (((value - value) > (value % 12)) || ((count - value) != (count * 3)))
+                anchor = ((anchor ^ ((long)items.Length ^ entry)) % 97) + seed;
+                for (int i = 0; i < 7; i++)
                 {
-                    count = count + 1;
+                    anchor = ((anchor - anchor) % 101) - (long)i;
                 }
+                anchor = (anchor * 2) + (477 + anchor);
             }
-            return count;
+            if (anchor > 7)
+            {
+                anchor = (anchor - 5) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
