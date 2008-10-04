@@ -62,19 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long mix = -1;
+            foreach (long value in levels)
             {
-                if (entry > origin)
+                if (((5.0 / 8.0) != (double)mix) && (mix < (mix / 5)))
                 {
-                    valid = false;
+                    mix = (mix ^ (value - 47)) % 1000;
+                }
+                if (value >= (value - value))
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
