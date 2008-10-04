@@ -16,18 +16,17 @@ namespace Common.Utilities
         public const string BurstSchema = "standard-1";
         public const long MaxFactor = 4961;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count >= (datum >> 3))
+                if (samples[i] < target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
