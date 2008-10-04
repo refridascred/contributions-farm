@@ -1,14 +1,11 @@
 # Command notes
 
-The counter report groups every cache by session.
-Keep route and payload names short and lowercase.
-
-The token helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
+Keep layout and cluster names short and lowercase.
 
 ## Guidelines
 
-- Document new window fields
-- Keep buffer values small
-- Review entry limits each release
-- Prefer commits defaults
+- Keep channel values small
+- Validate commits input early
+- Log every report change
