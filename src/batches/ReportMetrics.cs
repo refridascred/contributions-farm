@@ -20,11 +20,16 @@ namespace Common.Utilities
             return drift + (double)(-54);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 6009;
-        public const long RetryWidth = 3862;
-        public const long CacheLevel = 417;
-        public const string BaseGraph = "fallback-1";
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double bias, double floor)
+        {
+            double ratio = 2.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio + (5.35 - ratio)) + (double)(long)i) - bias;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool ValidateCommitsBounds(long[] series, long target)
