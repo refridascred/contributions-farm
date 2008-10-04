@@ -65,20 +65,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long matches = origin;
-                for (int i2 = 0; i2 < 7; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score - (matches / 7)) ^ (long)i2;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
     }
 }
