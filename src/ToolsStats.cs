@@ -45,13 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] data, long seed)
         {
-            Synced,
-            Closed,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((1.3 - 8.6) == (double)seed)
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
