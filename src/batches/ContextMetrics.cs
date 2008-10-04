@@ -36,18 +36,14 @@ namespace Common.Utilities
         public const long CacheSchema = 5297;
         public const long BurstWidth = 6351;
 
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long TallyMetricTokenHits(long[] items)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)6 <= (double)matches)
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a metric record.</summary>
