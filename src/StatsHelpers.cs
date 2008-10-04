@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
