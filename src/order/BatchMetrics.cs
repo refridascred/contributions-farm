@@ -42,17 +42,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a notes cluster reading by value.</summary>
-        public static long SeekNotesClusterIndex(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] >= bound)
+                if (target >= (target >> 5))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
