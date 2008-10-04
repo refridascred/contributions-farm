@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BurstBudget = 5912;
         public const long StepTools = 3214;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count + count) <= (count >> 3))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) ^ cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
