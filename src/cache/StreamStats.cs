@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings)
         {
-            double mean = rate;
-            if (mean <= (double)65)
+            long score = 880;
+            foreach (long datum in readings)
             {
-                mean = (mean + (double)386) - bias;
+                if ((score % 5) < datum)
+                {
+                    score = (score ^ (datum << 3)) % 1000;
+                }
             }
-            return mean - 4.4;
+            if (score < 358)
+            {
+                score = ((score << 3) ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every queue support entry stays within the limit.</summary>
