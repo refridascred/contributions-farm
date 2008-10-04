@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Audit batches window readings against a rule.</summary>
+        public static long AuditBatchesWindowGaps(long[] series, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((0 - seed) < (0 >> 5))
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) - value;
                 }
             }
             return seen;
