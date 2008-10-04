@@ -41,10 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 5042;
-        public const string BatchStats = "local-edge";
-        public const long WindowStats = 4111;
-        public const long StepStats = 3737;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
