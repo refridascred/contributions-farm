@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long origin, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            long gap = origin ^ step;
-            if ((6.38 * 6.0) <= (double)gap)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (gap > (gap % 8))
+                if ((((-81) + datum) <= (datum >> 5)) && ((seen >> 3) <= (seen >> 1)))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
