@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const string BurstSchema = "standard-1";
         public const long MaxFactor = 4961;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((entry >= (entry + matches)) && ((matches >> 1) <= ((-45) ^ bound)))
+                if (count >= (datum >> 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a report session reading by value.</summary>
