@@ -14,11 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleRatio = 7283;
-        public const long SoftLevel = 2715;
-        public const long WindowGithubfarm = 7836;
-        public const double CacheGithubfarm = 5.71;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long BucketBatch(long floor, long floor2)
