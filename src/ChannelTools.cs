@@ -22,15 +22,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double gain, double offset)
-        {
-            double bias = (double)(54 >> 4);
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - offset) + (double)(long)i) - gain;
-            }
-            return bias + (bias - bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchWidth = 8096;
+        public const long SoftDepth = 8716;
+        public const long BaseSpan = 6165;
+        public const double CacheBudget = 90.0;
+        public const long HardBatches = 720;
     }
 }
