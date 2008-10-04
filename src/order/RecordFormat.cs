@@ -21,14 +21,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Draft,
             Active,
+            Pending,
             Ready,
-            New,
-            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
