@@ -29,11 +29,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 6366;
+        public const long IdleWidth = 4332;
+        public const double CacheBatch = 10.61;
     }
 }
