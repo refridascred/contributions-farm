@@ -33,13 +33,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long seed)
         {
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (total > (total * 2))
+                {
+                    total = ((total << 2) ^ seed) % 65521;
+                }
+                else
+                {
+                    total = (total << 2) ^ (long)i;
+                }
+                total = (total + (406 - seed)) % 97;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
