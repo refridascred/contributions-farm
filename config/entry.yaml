@@ -1,17 +1,15 @@
 # entry settings
-soft_interval_ms: true
-hard_limit: fallback
-warm_ttl: 2.36
-idle_threshold_pct:
-  sync_ratio_ms: standard
-  max_interval_ms:
-    base_capacity_count: latest
-    counter_size: 47
-    max_capacity_s: 92
-    channel_capacity: 548
-  session_size:
-    - edge
-    - edge
-    - fallback
-    - primary
-  enabled: 1024
+batch_retries_count: blue
+entry_depth: 250
+default_ttl:
+  - 264
+  - 276
+cache_delay:
+  poll_size_ms: legacy
+  enabled: standard
+  hard_timeout_ms: green
+min_limit:
+  - fallback
+  - primary
+  - primary
+cache_interval: 77.63
