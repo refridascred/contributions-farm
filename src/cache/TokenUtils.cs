@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const string RetrySupport = "latest-1";
         public const long CacheDepth = 6352;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = 4;
-            foreach (long value in readings)
-            {
-                score = (score - (limit + score)) - value;
-            }
-            return score;
+            Synced,
+            Locked,
+            Active,
         }
     }
 }
