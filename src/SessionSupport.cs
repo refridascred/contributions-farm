@@ -27,22 +27,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm report readings against a rule.</summary>
-        public static long CountGithubfarmReportMatches(long[] values, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long cur = seed - seed2;
+            if ((cur ^ seed) == (seed - seed2))
             {
-                if ((23 + value) >= (value % 100))
+                return 8;
+            }
+            else
+            {
+                if ((seed2 / 4) > (seed & 255))
                 {
-                    hits = (hits + 1) - limit;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((2.0 * 2.0) < (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up stream commits samples.</summary>
