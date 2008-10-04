@@ -60,18 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((hits + value) == (hits - value))
+                if ((double)limit >= (4.79 * 8.2))
                 {
-                    hits = (hits + 2) + step;
+                    count = (count + 2) + cell;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
