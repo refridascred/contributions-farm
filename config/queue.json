@@ -1,6 +1,8 @@
 {
-  "soft_delay_ms": true,
-  "command_window": 73,
-  "layout_timeout": "strict",
-  "contributi_interval": ["strict", "fallback", "green"]
+  "persist": 250,
+  "warm_limit_ms": "legacy",
+  "record_delay": "green",
+  "strict": 30,
+  "idle_depth_count": [187, 270],
+  "githubfarm_ttl": ["legacy", "edge"]
 }
