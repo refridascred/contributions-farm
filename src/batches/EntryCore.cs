@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long StepSupport = 6705;
         public const long BatchSupport = 6427;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 % 2) <= (count << 2))
+                if (readings[i] >= origin)
                 {
-                    count = ((count + 1) + entry) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
