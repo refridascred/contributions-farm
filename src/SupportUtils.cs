@@ -33,32 +33,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long seed2)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            long lane = seed + seed2;
-            if (((92 + seed) >= 779) || ((14.0 + 9.12) >= (double)lane))
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                state = (state * 5) + state;
+                state = state ^ (state - origin);
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((6.07 / 7.0) != (double)seed2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed < (7.7 * 3.6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
