@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            long total = 33;
-            foreach (long entry in samples)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                total = total ^ entry;
-                total = (total - (total / 9)) % 255;
-                if ((double)total > 0.51)
-                {
-                    total = ((total * 5) + (entry + entry)) % 4096;
-                }
+                score = (score + (77 - seed)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Describe the command mode values.</summary>
