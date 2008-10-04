@@ -31,18 +31,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double ratio2 = 6.41;
+            if (ratio2 >= ratio)
             {
-                if ((20.0 / 5.0) < (double)hits)
-                {
-                    hits = ((hits + 3) ^ cell) + seed;
-                }
+                ratio2 = (ratio2 + ratio2) - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 + (ratio / 2.0);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
