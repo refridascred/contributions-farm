@@ -43,22 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long result = 8;
-            foreach (long item in values)
-            {
-                if ((result - result) >= limit)
-                {
-                    result = ((result - (335 >> 5)) % 1000) + item;
-                }
-            }
-            if (result < 78)
-            {
-                result = result + 3;
-            }
-            return result;
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
