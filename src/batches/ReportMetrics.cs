@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long origin2)
-        {
-            long slot = origin + origin2;
-            if ((double)slot <= (6.0 * 1.93))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 127) == (slot + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 <= (2.0 + 5.44))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((8.4 - 4.0) >= (double)origin) && (756 < (origin2 + (-55))))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitScore = 75.91;
+        public const long CacheFactor = 4307;
+        public const long StepSpan = 1791;
+        public const string RetryBuffer = "primary-1";
+        public const long CacheBuffer = 9412;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricBounds(long[] items, long origin)
