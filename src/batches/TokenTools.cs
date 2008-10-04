@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleCount = 5383;
-        public const long CacheSupport = 6511;
-        public const long BatchCount = 5210;
-        public const long SoftSpan = 2389;
-        public const long BurstSupport = 7387;
+        /// <summary>Iterate the buffer filter series from a seed.</summary>
+        public static long RollBufferFilter(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double weight, double span)
