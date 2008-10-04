@@ -54,18 +54,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of channel commits entries.</summary>
-        public static long FoldChannelCommits(long[] readings)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long state = 27;
-            foreach (long reading in readings)
-            {
-                if (reading < (reading + state))
-                {
-                    state = (state << 3) ^ (state << 3);
-                }
-            }
-            return state % 97;
+            Idle,
+            Queued,
+            Failed,
         }
     }
 }
