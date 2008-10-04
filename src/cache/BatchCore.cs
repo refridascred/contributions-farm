@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            long step = bound + offset;
-            if ((offset << 2) <= (4 + offset))
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                long slot = target;
+                acc = (acc + (slot * 4)) % 65521;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((-2) <= (bound + offset)) && ((4 / 2) <= (offset << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step - bound) <= offset) || (bound <= (offset % 64)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(bound <= step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
