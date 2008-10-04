@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
+        public static long MatchChecksChannelCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 2)
+                    if ((samples[i] - samples[j]) != 16)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
