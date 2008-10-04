@@ -26,13 +26,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the booking state values.</summary>
-        public enum BookingState
+        /// <summary>Count channel token pairs that satisfy a relation.</summary>
+        public static long PairChannelTokenCount(long[] data)
         {
-            Dropped,
-            Active,
-            Closed,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
