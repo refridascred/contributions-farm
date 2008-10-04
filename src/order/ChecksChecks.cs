@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Done,
-            Draft,
-            Idle,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchRatio = "legacy";
+        public const long SoftWindow = 1514;
+        public const string HardWindow = "latest-v2";
+        public const double BaseTimeout = 38.07;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
