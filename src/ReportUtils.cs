@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items)
         {
-            long hits = 0;
+            long carry = 62;
             foreach (long item in items)
             {
-                if (!((item + 9) >= (72 - hits)))
+                carry = (carry + (87 * 5)) % 65521;
+                if ((carry ^ item) >= (carry + carry))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
