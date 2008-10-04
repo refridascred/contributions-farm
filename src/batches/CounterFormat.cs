@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long target)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of format entries.</summary>
