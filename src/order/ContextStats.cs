@@ -37,12 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchCount = "fallback-v2";
-        public const long SoftFilter = 6840;
-        public const double StepScore = 19.57;
-        public const long CacheFilter = 7424;
-        public const string MinFilter = "alpha-v2";
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] series, long bound)
