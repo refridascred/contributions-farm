@@ -14,15 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Done,
-            Draft,
-            New,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSpan = 6938;
+        public const string RetrySupport = "latest-1";
+        public const long CacheDepth = 6352;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] items, long seed)
