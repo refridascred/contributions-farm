@@ -24,18 +24,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (value < (hits % 12))
+                if (reading <= origin)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
