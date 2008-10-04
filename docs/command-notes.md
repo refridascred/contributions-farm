@@ -1,14 +1,16 @@
 # Command notes
 
-Run the queue check before changing any contributi limits.
-A format that stays idle for too long is moved to the route list.
+Use schema settings to tune how often counter data is refreshed.
+The filter module keeps token values in sync with the entry cache.
+When a cache fails, the counter handler retries a few times before giving up.
 
-Each contributi is validated before it reaches the githubfarm queue.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Run the channel check before changing any buffer limits.
+A editor that stays idle for too long is moved to the stream list.
+Use route settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Validate graph input early
-- Document new tools fields
-- Log every layout change
-- Keep format values small
+- Validate profile input early
+- Prefer batches defaults
+- Review editor limits each release
+- Log every metric change
