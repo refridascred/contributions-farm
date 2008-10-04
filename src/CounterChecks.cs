@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long floor)
-        {
-            long total = 8;
-            foreach (long cell in readings)
-            {
-                total = (total ^ (cell - floor)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinBudget = 9541;
+        public const long BaseToken = 4390;
+        public const long LimitToken = 9745;
+        public const long HardSpan = 2402;
 
         /// <summary>Accumulate window already samples.</summary>
         public static long FoldWindowAlready(long[] data, long target)
