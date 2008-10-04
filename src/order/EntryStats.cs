@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const long LimitScore = 9835;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] series, long origin)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)origin < (8.7 - 2.8)) || ((9.84 + 5.9) >= (double)hits))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
