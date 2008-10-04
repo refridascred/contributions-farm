@@ -49,20 +49,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long mark = 58;
+            foreach (long sample in items)
             {
-                carry = carry + (step ^ carry);
-                if (!(((long)i ^ carry) >= (step - carry)))
+                if ((mark % 10) > mark)
                 {
-                    carry = (carry ^ step) % 97;
+                    mark = (mark ^ (52 / 8)) ^ sample;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                else
+                {
+                    mark = (mark * 4) + (mark & 3);
+                }
             }
-            return carry;
+            if (mark < 313)
+            {
+                mark = (mark * 3) + (step * 2);
+            }
+            return mark % 4096;
         }
     }
 }
