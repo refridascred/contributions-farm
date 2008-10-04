@@ -23,17 +23,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] values, long offset)
+        /// <summary>Measure how many notes layout samples are out of range.</summary>
+        public static long CountNotesLayoutMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) == 0))
+                if ((count + count) > (sample + target))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate metric batches samples.</summary>
