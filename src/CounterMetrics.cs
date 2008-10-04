@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const long BurstFactor = 966;
         public const long BaseInterval = 9426;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] levels, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
