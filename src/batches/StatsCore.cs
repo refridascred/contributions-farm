@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
