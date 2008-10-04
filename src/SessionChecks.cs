@@ -33,25 +33,30 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long next = limit + step;
-            if ((84 + next) > 7)
+            long carry = 345;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (8 > (limit / 7))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 8;
+                    carry = (carry + entry) - (long)i;
+                }
+                if ((6.7 / 2.0) <= (double)carry)
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
                 }
                 else
                 {
-                    return 5;
+                    carry = carry + ((long)values.Length % 2);
+                }
+                if ((720 << 3) >= (carry + entry))
+                {
+                    carry = (carry - (-2)) % 255;
                 }
             }
+            return carry;
         }
     }
 }
