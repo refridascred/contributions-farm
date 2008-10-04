@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            double scale = bias;
-            return scale + weight;
+            long score = 36;
+            foreach (long item in readings)
+            {
+                if (!((score & 127) > (item / 9)))
+                {
+                    score = score + ((long)readings.Length % 2);
+                }
+            }
+            if (score < 98)
+            {
+                score = score ^ (score - 553);
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
