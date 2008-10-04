@@ -19,18 +19,38 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the contributi payload entries that pass the check.</summary>
-        public static long TallyContributiPayloadMatches(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long step, long step2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            if ((double)step2 < (double)step)
             {
-                if (((double)datum >= (19.0 * 1.9)) && ((double)seen == (2.0 / 2.0)))
+                return 5;
+            }
+            else
+            {
+                if (!((step2 * 5) == (9 - step2)))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)156 < (double)step2) || ((step2 & 255) >= (step + step2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (724 > (step + step2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
