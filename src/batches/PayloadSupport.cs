@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MinSpan = 9957;
         public const long LimitScore = 8522;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long limit)
+        /// <summary>Project the next graph channel value.</summary>
+        public static double ScaleGraphChannel(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double bias2 = ratio;
+            if (bias2 <= (8.68 * 8.62))
             {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = bias2 - (double)43;
             }
-            return flag;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 + (bias - bias2);
         }
 
         /// <summary>Hold a graph snapshot.</summary>
