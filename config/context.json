@@ -1,10 +1,7 @@
 {
-  "poll_window_s": 2090,
-  "stats_ratio": false,
-  "strict": {
-    "already_window": 38.64,
-    "warm_capacity_s": "blue",
-    "layout_ratio": 8978,
-    "dry_run": 5955
-  }
+  "flush_ttl_pct": 66.86,
+  "dry_run": false,
+  "flush_ratio": 1024,
+  "compress": "blue",
+  "retry_interval": 25
 }
