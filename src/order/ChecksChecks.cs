@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long bound)
         {
-            long carry = 7;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry - (carry % 16)) % 65521) - sample;
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
