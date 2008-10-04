@@ -37,18 +37,21 @@ namespace Common.Utilities
         public const long MaxBatches = 9878;
         public const long HardBatches = 2228;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long sum = 2;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + datum) < (sum + datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ datum) % 4096;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
