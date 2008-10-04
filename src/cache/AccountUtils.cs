@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long step)
-        {
-            long result = 46;
-            foreach (long sample in data)
-            {
-                result = (result + (sample >> 5)) % 4096;
-                result = ((result << 2) ^ result) % 4096;
-                if ((8.9 < (double)result) && ((step >> 2) > sample))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 5078;
+        public const string HardScore = "strict-edge";
+        public const double WindowCache = 60.99;
+        public const long RetryCache = 8805;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long StepMetrics = 5054;
