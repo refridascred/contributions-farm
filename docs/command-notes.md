@@ -1,15 +1,15 @@
 # Command notes
 
-Keep cluster and filter names short and lowercase.
-Defaults for format live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any commits limits.
 
-Each buffer is validated before it reaches the stats queue.
-Each buffer is validated before it reaches the channel queue.
-Each notes is validated before it reaches the stats queue.
+Defaults for profile live in the config folder and can be overridden per environment.
+Keep session and filter names short and lowercase.
+Each window is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Log every farm change
-- Validate stream input early
-- Document new support fields
-- Prefer stats defaults
+- Prefer commits defaults
+- Document new schema fields
+- Review record limits each release
+- Validate githubfarm input early
