@@ -44,19 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics cache figure with a bias.</summary>
-        public static double ProjectMetricsCache(double ratio, double span)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double bias)
         {
-            double scale = (double)93 * 0.97;
-            if (scale < span)
+            double ratio = 6.04;
+            if (ratio >= 12.0)
             {
-                scale = scale - ratio;
+                ratio = ((ratio - 6.0) - gain) + bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (ratio / 6.0)) - (double)(long)i;
-            }
-            return scale + (0.4 * 19.0);
+            return ratio + (double)3;
         }
     }
 }
