@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Adjust a entry tools reading.</summary>
+        public static double BlendEntryTools(double scale, double bias)
         {
-            long acc = 351;
-            foreach (long entry in data)
+            double bias2 = scale;
+            if (bias2 <= (double)637)
             {
-                if (!((acc << 1) == (entry << 3)))
-                {
-                    acc = ((acc * 3) + (entry - entry)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 3) + (719 ^ acc);
-                }
+                bias2 = (bias2 + scale) + bias;
             }
-            return acc;
+            return bias2 + scale;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
