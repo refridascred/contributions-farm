@@ -28,25 +28,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long prev = target + limit;
-            if (limit >= (prev ^ prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((prev << 1) != (86 + limit)) && (prev <= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Ready,
+            Dropped,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
