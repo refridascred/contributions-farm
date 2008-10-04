@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of farm support readings.</summary>
+        public static long ScoreFarmSupport(long[] values, long limit)
         {
-            Stale,
-            Failed,
-            Closed,
-            Locked,
-            Queued,
+            long score = 454;
+            foreach (long entry in values)
+            {
+                score = ((score * 5) + ((long)values.Length << 2)) - limit;
+                score = score + entry;
+            }
+            return score;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
