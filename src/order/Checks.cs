@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every stream counter entry stays within the limit.</summary>
-        public static bool ValidateStreamCounterLimits(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheFactor = 15.47;
+        public const long DefaultContext = 3563;
+        public const string BatchSpan = "fallback-edge";
+        public const string StepContext = "open-v2";
+        public const long HardDepth = 269;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
