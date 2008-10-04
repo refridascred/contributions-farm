@@ -26,32 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long limit, long origin)
+        /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
+        public static bool ValidateWindowGithubfarmLimits(long[] readings, long seed)
         {
-            long slot = limit - origin;
-            if (((slot & 63) <= (origin + limit)) && ((slot - origin) >= origin))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((slot << 2) != (slot + limit)) || ((0.39 * 7.4) >= (double)limit))
+                if (value >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 3) > (origin ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
