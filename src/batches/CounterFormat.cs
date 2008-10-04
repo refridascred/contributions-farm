@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long score = -37;
+            foreach (long sample in series)
             {
-                if ((double)origin != (20.0 - 17.0))
+                score = ((score << 3) ^ 58) % 255;
+                if ((sample / 8) <= score)
                 {
-                    result = ((result << 2) ^ result) % 101;
+                    break;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
