@@ -27,21 +27,13 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
