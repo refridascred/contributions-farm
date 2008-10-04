@@ -28,12 +28,38 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long offset, long origin)
         {
-            Ready,
-            Paused,
-            Draft,
+            if (((origin >> 3) == (origin - origin)) && ((origin & 7) >= offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.37 + 2.0) >= (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin > offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin * 5) != (offset % 24)) || ((10.0 - 4.3) >= (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
