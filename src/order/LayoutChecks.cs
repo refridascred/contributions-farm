@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const long CacheDepth = 9934;
         public const long SoftCount = 578;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell >= (8.33 / 4.0)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
