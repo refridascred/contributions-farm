@@ -1,14 +1,14 @@
 # support settings
-burst_retries: open
-readonly: 29.91
-enabled: 42
-hard_retries: 5284
-max_threshold_ms:
-  max_interval_pct: 99
-  queue_timeout:
-    - local
+payload_ttl:
+  max_limit: 4.58
+  dry_run: 51
+  burst_window_s: 100
+  readonly:
+    - edge
     - legacy
-  burst_capacity_ms:
-    persist: primary
-    strict: primary
-    soft_retries_pct: false
+    - fallback
+    - standard
+  min_delay_count: false
+burst_threshold_s: 0.18
+flush_ttl_pct: 6895
+payload_window: 18.59
