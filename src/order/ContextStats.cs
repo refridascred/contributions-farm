@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long origin)
+        /// <summary>Adjust a farm cluster reading.</summary>
+        public static double ProjectFarmCluster(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = 0.34;
+            if (scale >= rate)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                scale = scale - offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (rate / 5.0)) + (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Describe the format status values.</summary>
