@@ -34,12 +34,29 @@ namespace Common.Utilities
             return bias2 - (bias + bias);
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Fold a list of farm record readings.</summary>
+        public static long CombineFarmRecord(long[] values, long target)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Mode { get; set; }
+            long result = 47;
+            foreach (long value in values)
+            {
+                if ((result / 9) == ((-99) - result))
+                {
+                    result = result ^ value;
+                    result = (result * 3) + 25;
+                    continue;
+                }
+                if ((target >> 2) != (result - target))
+                {
+                    break;
+                }
+                result = result + (target & 3);
+            }
+            if (result < 909)
+            {
+                result = result ^ (result ^ (-992));
+            }
+            return result % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
