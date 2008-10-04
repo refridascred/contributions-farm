@@ -1,7 +1,8 @@
 {
-  "burst_depth": 60,
-  "retry_retries_pct": 100,
-  "order_retries": true,
-  "enabled": 2,
-  "batch_depth": "local"
+  "schema_threshold": "local",
+  "record_delay": true,
+  "compress": 100,
+  "default_window_count": 26.89,
+  "sync_delay_count": "green",
+  "base_delay": 78.88
 }
