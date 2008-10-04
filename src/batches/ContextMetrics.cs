@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long floor)
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long MeasureContributiChannelGaps(long[] values)
         {
-            long step = bound - floor;
-            if ((step % 64) > bound)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >= (bound ^ step)) || ((bound >> 3) != (step << 1)))
+                if (matches <= (matches << 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 3) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next filter stats value from a seed.</summary>
