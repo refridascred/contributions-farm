@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=324
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary green blue; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
