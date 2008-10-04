@@ -1,9 +1,14 @@
 # githubfarm settings
-poll_retries: 1195
-session_retries: true
-base_capacity_pct:
-  - 298
-  - 314
-  - 23
-compress: strict
-batch_ratio_count: 1024
+checks_timeout: 30
+stats_limit: 60
+checks_retries:
+  - local
+  - stable
+  - standard
+retry_retries_s: local
+cache_timeout_ms: 250
+warm_size_pct:
+  - standard
+  - primary
+  - green
+  - fallback
