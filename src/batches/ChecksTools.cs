@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((hits > (hits * 2)) || (step >= (step % 24)))
+                mark = (mark ^ (mark & 127)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    hits = (hits + 3) ^ sample;
+                    mark = mark + (seed + (long)i2);
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a stats record.</summary>
