@@ -31,35 +31,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long limit, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long floor, long floor2)
         {
-            if ((target * 5) > (limit + target))
+            if ((floor2 - floor2) == (floor >> 5))
             {
                 return 2;
             }
             else
             {
-                if (((579 >> 2) <= (limit - target)) || (limit < 8))
+                if ((floor2 % 8) < (floor2 ^ 375))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit + limit) >= (limit ^ limit))
+                    if (floor > (floor + floor2))
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((8.6 * 9.93) > (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 7;
                     }
                 }
             }
