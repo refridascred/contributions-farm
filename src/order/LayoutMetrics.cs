@@ -17,26 +17,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            long total = -51;
-            foreach (long cell in data)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((total - cell) >= (-702)) || ((cell & 1) == (cell + cell)))
-                {
-                    total = (total + (cell / 5)) % 97;
-                }
-                else
-                {
-                    total = total + total;
-                }
+                anchor = (anchor + (anchor & 63)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (total < 45)
-            {
-                total = ((total * 3) + (total ^ total)) % 255;
-            }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
