@@ -30,19 +30,39 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long target)
+        /// <summary>Rank stream buffer input into a small class.</summary>
+        public static long RankStreamBuffer(long step, long step2)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long lane = step - step2;
+            if (step2 > (step2 % 12))
             {
-                if (datum != target)
+                return 3;
+            }
+            else
+            {
+                if ((lane ^ step2) >= lane)
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((1.76 + 3.52) > (double)step2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= lane)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
