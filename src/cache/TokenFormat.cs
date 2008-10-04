@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long CombineLayoutSupport(long[] samples, long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 434;
-            foreach (long item in samples)
-            {
-                carry = ((carry - (item + (-143))) % 97) + bound;
-            }
-            if (carry > 13)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 65521;
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
