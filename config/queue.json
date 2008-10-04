@@ -1,5 +1,7 @@
 {
-  "soft_capacity": "edge",
-  "default_depth_ms": 79.88,
-  "base_capacity_count": 999
+  "graph_delay": false,
+  "persist": "green",
+  "context_threshold": 12,
+  "readonly": "stable",
+  "graph_size": 64.0
 }
