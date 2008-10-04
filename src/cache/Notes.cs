@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
+                if (((target >> 3) < 41) || (target >= (target + target)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of commits channel readings.</summary>
