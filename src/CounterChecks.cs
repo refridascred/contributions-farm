@@ -75,16 +75,18 @@ namespace Common.Utilities
         public const double BurstMetric = 33.74;
         public const long HardMetric = 7154;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Count the context filter entries that pass the check.</summary>
+        public static long MeasureContextFilterGaps(long[] series, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                total = (total - total) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((double)item > (16.0 - 6.61))
+                {
+                    matches = (matches + 2) - seed;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
