@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Adjust a account filter reading.</summary>
+        public static double AdjustAccountFilter(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = floor;
+            if (weight <= floor)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - floor;
             }
-            return matches;
+            else
+            {
+                weight = weight - (weight + 13.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
