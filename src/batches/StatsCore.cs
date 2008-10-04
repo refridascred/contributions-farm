@@ -48,39 +48,22 @@ namespace Common.Utilities
             return scale - (double)860;
         }
 
-        /// <summary>Classify a report stream pair into a bucket.</summary>
-        public static long ClassifyReportStream(long bound, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            long slot = bound + origin;
-            if ((8.0 + 11.0) <= (double)origin)
+            long anchor = -89;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot > (slot - origin)) && (slot >= (origin >> 4)))
+                if ((816 << 1) <= (anchor + sample))
                 {
-                    return 7;
+                    anchor = ((anchor << 2) ^ ((long)data.Length + sample)) % 255;
                 }
-                else
+                if (!((double)sample > 15.0))
                 {
-                    if (((bound + bound) < bound) && (428 > (origin + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound ^ slot) > (slot << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
