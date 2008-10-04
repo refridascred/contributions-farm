@@ -27,14 +27,19 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            Active,
-            Paused,
-            Idle,
-            Stale,
-            Done,
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix + mix) % 97) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
