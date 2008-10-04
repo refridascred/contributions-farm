@@ -32,13 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Idle,
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 2971;
+        public const double HardSchema = 43.07;
+        public const string MaxScore = "strict-edge";
+        public const long DefaultSize = 3536;
+        public const long StepSchema = 4676;
     }
 }
