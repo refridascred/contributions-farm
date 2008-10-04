@@ -1,12 +1,13 @@
 {
-  "audit": {
-    "min_limit_ms": 69.9,
-    "burst_size_pct": "green",
-    "support_depth": 9524
+  "warm_ratio_count": "staging",
+  "verbose": {
+    "readonly": "standard",
+    "verbose": "cached",
+    "persist": "green",
+    "soft_ratio": "strict",
+    "max_threshold_pct": "fallback"
   },
-  "sync_limit_ms": 1398,
-  "min_depth_pct": 500,
-  "flush_limit": 47.04,
-  "verbose": 55.28,
-  "readonly": "open"
+  "counter_delay": 98.05,
+  "compress": 58.51,
+  "filter_window": false
 }
