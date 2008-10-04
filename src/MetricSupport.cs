@@ -23,17 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric cache sample.</summary>
-        public static long FindMetricCacheIndex(long[] levels, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
