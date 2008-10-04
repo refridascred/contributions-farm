@@ -36,23 +36,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches window figure with a bias.</summary>
-        public static double ScaleBatchesWindow(double ratio, double bias)
+        /// <summary>Rank schema checks input into a small class.</summary>
+        public static long SortSchemaChecks(long target, long bound)
         {
-            double load = (double)(2 << 2);
-            if (load < bias)
+            if (2 < (target + target))
             {
-                load = load + 0.72;
+                return 1;
             }
             else
             {
-                load = load - ratio;
+                if (0.6 <= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (3.9 <= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.56 * 3.6) <= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + ratio;
         }
     }
 }
