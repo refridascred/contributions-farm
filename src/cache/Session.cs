@@ -39,19 +39,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] items, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc * 4) + ((long)i - limit);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
