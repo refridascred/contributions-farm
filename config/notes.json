@@ -1,13 +1,6 @@
 {
-  "already_interval": "standard",
-  "enabled": {
-    "default_timeout": "primary",
-    "queue_limit": [219, 247, 401, 74],
-    "dry_run": ["legacy", "staging"]
-  },
-  "profile_window": {
-    "schema_capacity": [366, 232],
-    "schema_size": "stable",
-    "payload_depth": [54, 258, 247]
-  }
+  "base_depth": 87.89,
+  "default_depth_s": ["local", "latest", "strict"],
+  "report_ratio": "legacy",
+  "warm_retries_ms": 15
 }
