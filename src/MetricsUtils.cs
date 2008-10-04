@@ -27,13 +27,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Retry,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepBudget = 6449;
+        public const long BatchInterval = 358;
+        public const long MinBudget = 4176;
+        public const long BurstSize = 567;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
