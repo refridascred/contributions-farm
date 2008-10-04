@@ -53,18 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item * 3) <= (count >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 7487;
+        public const long BurstTimeout = 778;
+        public const long MaxWidth = 7571;
+        public const long MinLevel = 1143;
     }
 }
