@@ -53,13 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item * 3) <= (count >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
