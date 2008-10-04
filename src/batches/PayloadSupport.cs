@@ -27,32 +27,21 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Grade a graph cache value against two limits.</summary>
-        public static long SortGraphCache(long seed, long seed2)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            long offset = seed - seed2;
-            if ((double)seed2 < (0.2 - 1.06))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= seed2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed - seed2) <= (-7)))
+                    if ((samples[i] - samples[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
