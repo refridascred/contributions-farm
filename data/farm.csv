@@ -1,6 +1,6 @@
-id,token,score
-1,edge,185
-2,latest,56.57
-3,64.46,949
-4,37,standard
-5,57.35,773
+id,label,owner,region
+1,blue,214,872
+2,stable,108,418
+3,824,green,895
+4,90.98,76.67,green
+5,785,941,52.19
