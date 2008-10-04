@@ -1,6 +1,10 @@
 {
-  "default_interval_s": ["strict", "eu-west"],
-  "poll_capacity_count": "edge",
-  "format_delay": 0.86,
-  "enabled": [491, 1, 393]
+  "batch_timeout_s": true,
+  "buffer_ttl": {
+    "compress": "local",
+    "enabled": 60,
+    "cache_limit_ms": "staging"
+  },
+  "base_delay": "latest",
+  "enabled": 95.23
 }
