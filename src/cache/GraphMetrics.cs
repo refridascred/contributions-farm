@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + 8.4) + (double)(long)i) - scale;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
