@@ -47,11 +47,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long GradeClusterLayout(long bound, long target)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
+            if ((9.55 * 0.6) < (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target <= (target / 9)) || ((4.4 / 8.0) != (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= (bound & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream mode values.</summary>
