@@ -18,13 +18,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long mix = 94;
+            foreach (long reading in series)
+            {
+                mix = (mix + (reading * 3)) % 255;
+            }
+            if (mix < 312)
+            {
+                mix = ((mix * 4) + mix) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit entry metrics readings against a rule.</summary>
