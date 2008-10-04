@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long BaseMetrics = 2205;
         public const double BurstMetrics = 4.56;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset - anchor) > (offset + 151))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor + (anchor ^ (long)i);
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor + (514 - (long)i)) % 97;
-                    anchor = ((anchor << 3) ^ (offset + offset)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
