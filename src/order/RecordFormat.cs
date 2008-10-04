@@ -38,22 +38,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long bound, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((bound + bound) >= step)
             {
-                if ((((-16) % 7) >= (reading / 9)) && !((count - count) > (reading * 5)))
+                return 8;
+            }
+            else
+            {
+                if ((1 - step) == (bound % 100))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (step < (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 - 1) != (step ^ bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
