@@ -33,19 +33,25 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine payload stream values into a single score.</summary>
-        public static long DigestPayloadStream(long[] data, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long step)
         {
-            long total = -101;
-            foreach (long item in data)
+            long next = limit + step;
+            if ((84 + next) > 7)
             {
-                total = ((total * 5) + (total << 2)) % 101;
-                if (((item + item) <= (target * 5)) && ((item << 3) != (total >> 1)))
+                return 4;
+            }
+            else
+            {
+                if (8 > (limit / 7))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return total;
         }
     }
 }
