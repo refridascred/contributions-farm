@@ -37,14 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long WeighLayoutWindow(long[] data, long limit)
         {
-            Idle,
-            Pending,
-            Synced,
-            Locked,
-            Failed,
+            long sum = 29;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = ((sum ^ (entry / 3)) % 101) ^ (long)i;
+                }
+                sum = ((sum * 3) + (entry - limit)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank support stream input into a small class.</summary>
