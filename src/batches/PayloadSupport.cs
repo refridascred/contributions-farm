@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 86.05;
+        public const double IdleLevel = 70.11;
+        public const long BaseBatch = 5755;
+        public const long MinSpan = 9957;
+        public const long LimitScore = 8522;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
