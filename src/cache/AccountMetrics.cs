@@ -81,17 +81,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
