@@ -44,21 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel counter pairs that satisfy a relation.</summary>
-        public static long PairChannelCounterCount(long[] items)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Retry,
+            Queued,
         }
     }
 }
