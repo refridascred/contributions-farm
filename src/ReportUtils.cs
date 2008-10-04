@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long carry = 62;
-            foreach (long item in items)
-            {
-                carry = (carry + (87 * 5)) % 65521;
-                if ((carry ^ item) >= (carry + carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
