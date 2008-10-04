@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account filter reading.</summary>
-        public static double AdjustAccountFilter(double bias, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long target)
         {
-            double weight = floor;
-            if (weight <= floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - floor;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (weight + 13.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - floor;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
