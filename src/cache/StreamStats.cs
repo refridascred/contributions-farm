@@ -28,12 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double ratio, double span)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            double mean = ratio * 1.0;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - ratio) + (double)(long)i) - span;
+            }
+            return mean - (double)506;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
