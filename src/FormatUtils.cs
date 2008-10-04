@@ -52,10 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 2920;
-        public const long BatchCluster = 7444;
-        public const long BaseCluster = 2577;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] series, long offset)
+        {
+            long carry = 3;
+            foreach (long datum in series)
+            {
+                carry = ((carry ^ (datum & 3)) % 101) + offset;
+                carry = ((carry * 2) + (datum + datum)) % 65521;
+                carry = (carry << 2) ^ datum;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] items)
