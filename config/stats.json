@@ -1,6 +1,19 @@
 {
-  "soft_timeout": "staging",
-  "min_ratio_pct": false,
-  "default_ttl_s": "cached",
-  "entry_delay": 30
+  "soft_window": ["open", "cached", "legacy"],
+  "graph_ttl": 37.51,
+  "readonly": ["green", "stable"],
+  "verbose": {
+    "sync_threshold": "stable",
+    "counter_interval": 53.98,
+    "notes_capacity": 4.78,
+    "flush_limit_ms": [111, 216],
+    "filter_retries": "latest",
+    "window_limit": {
+      "enabled": 3368,
+      "window_timeout": 12,
+      "min_ratio_count": true,
+      "schema_retries": 100
+    }
+  },
+  "already_limit": [182, 417, 204, 303]
 }
