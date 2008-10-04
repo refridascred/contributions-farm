@@ -32,26 +32,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long ClassifyOrderCommand(long limit, long seed)
-        {
-            long slot = limit ^ seed;
-            if (seed < (slot - slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((7.2 * 5.1) < (double)slot))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseTimeout = 29.85;
+        public const long BurstMetrics = 46;
+        public const long HardLevel = 9032;
+        public const string WindowDepth = "latest-v2";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyMatches(long[] series, long floor)
