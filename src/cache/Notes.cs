@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long bound)
         {
-            Draft,
-            Failed,
-            Stale,
-            Locked,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
