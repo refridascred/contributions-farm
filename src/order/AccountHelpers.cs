@@ -63,12 +63,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every context metrics entry stays within the limit.</summary>
+        public static bool GuardContextMetricsLimits(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
