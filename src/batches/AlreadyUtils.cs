@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstRatio = 2096;
-        public const long BaseCommits = 5066;
-        public const long RetryCommits = 2558;
+        /// <summary>Compare every pair of layout stats readings.</summary>
+        public static long OverlapLayoutStatsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleLevel = 44.77;
