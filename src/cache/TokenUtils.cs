@@ -39,10 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 2472;
-        public const long MaxEditor = 8343;
-        public const long MinEditor = 363;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long bound, long seed)
+        {
+            if (!((double)bound == (1.7 * 5.3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 4) >= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (326 >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 7850;
