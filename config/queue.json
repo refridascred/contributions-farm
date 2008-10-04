@@ -1,5 +1,32 @@
 {
-  "enabled": 1024,
-  "idle_capacity": 1024,
-  "editor_capacity": ["cached", "fallback"]
+  "warm_threshold_count": {
+    "metric_size": 85.93,
+    "batch_interval_count": "eu-west",
+    "audit": {
+      "soft_ratio": false,
+      "payload_threshold": "fallback",
+      "soft_delay": 9952,
+      "idle_timeout_pct": 57.06,
+      "enabled": "fallback",
+      "metrics_limit": true
+    }
+  },
+  "persist": 85.21,
+  "strict": {
+    "queue_threshold": "cached",
+    "context_ttl": "local",
+    "verbose": true,
+    "default_retries_s": "strict",
+    "idle_ratio": {
+      "format_ttl": "cached",
+      "verbose": 1024,
+      "retry_retries_s": 63.21,
+      "strict": true,
+      "enabled": "cached",
+      "base_size": [323, 395, 185, 371]
+    },
+    "commits_window": "staging"
+  },
+  "default_depth": 12.75,
+  "readonly": "local"
 }
