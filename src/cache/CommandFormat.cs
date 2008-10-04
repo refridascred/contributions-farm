@@ -51,19 +51,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window profile entry stays within the limit.</summary>
-        public static bool GuardWindowProfileLimits(long[] values, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            if ((double)origin == (4.62 * 5.1))
             {
-                if (value > floor)
+                return 4;
+            }
+            else
+            {
+                if (((7.9 - 4.5) >= (double)origin) || ((origin ^ origin) == (origin - origin)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
