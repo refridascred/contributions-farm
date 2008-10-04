@@ -1,7 +1,9 @@
 # support settings
-batch_interval_s: 23.5
-tools_interval:
-  - 153
-  - 200
-  - 222
-route_limit: 9390
+warm_interval_count: 11.63
+max_retries:
+  warm_threshold_count: latest
+  soft_window: false
+  sync_delay_ms: 6567
+layout_delay: 500
+base_capacity_pct: 500
+burst_depth_pct: false
