@@ -1,18 +1,5 @@
 {
-  "hard_interval": 26.61,
-  "sync_capacity": "stable",
-  "readonly": {
-    "order_ratio": ["cached", "cached"],
-    "readonly": ["fallback", "strict", "open"],
-    "persist": {
-      "idle_window": "green",
-      "poll_timeout": ["latest", "standard", "staging", "open"],
-      "persist": "legacy"
-    },
-    "checks_depth": true,
-    "base_delay": 1024,
-    "profile_depth": false
-  },
-  "flush_delay_s": 49.42,
-  "session_timeout": "standard"
+  "max_timeout_s": 1024,
+  "metrics_window": "green",
+  "persist": 2506
 }
