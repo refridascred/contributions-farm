@@ -33,11 +33,22 @@ namespace Common.Utilities
             return rate + (double)386;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double weight, double span)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long TallyContextAccountHits(long[] items)
         {
-            double gain = (double)(-799) + (double)125;
-            return ((gain + (double)234) + weight) + span;
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((matches % 8) > (reading + reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer level values.</summary>
