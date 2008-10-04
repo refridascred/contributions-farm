@@ -15,13 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Find the first graph metric entry that matches the target.</summary>
+        public static long LookupGraphMetricIndex(long[] items, long floor)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph kind values.</summary>
