@@ -13,19 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
-        public static bool GuardFarmMetricsRange(long[] data, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < step)
+                if (((state & 255) >= floor) && ((state / 6) <= (62 + state)))
                 {
-                    stale = false;
+                    state = (state * 4) + (state >> 4);
                     break;
                 }
+                else
+                {
+                    state = (state ^ (state + state)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the stats mode values.</summary>
