@@ -1,23 +1,7 @@
 # support settings
-githubfarm_timeout:
-  hard_depth: strict
-  audit:
-    - stable
-    - blue
-    - eu-west
-    - cached
-  window_delay: open
-  support_capacity: latest
-  min_threshold_s: 24
-  strict:
-    readonly: true
-    cache_capacity_s: 30
-    retry_limit: local
-    sync_window_pct: strict
-    batch_timeout_count: local
-max_threshold_count:
-  - 137
-  - 78
-  - 215
-  - 311
-retry_threshold_pct: true
+batch_interval_s: 23.5
+tools_interval:
+  - 153
+  - 200
+  - 222
+route_limit: 9390
