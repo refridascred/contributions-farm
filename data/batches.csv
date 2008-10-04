@@ -1,9 +1,6 @@
-id,weight,rank,token,count
-1,573,eu-west,blue,100
-2,96.59,blue,14.88,89.28
-3,772,9.78,247,600
-4,legacy,12.82,97.61,green
-5,711,latest,439,blue
-6,63,staging,latest,129
-7,32,legacy,123,401
-8,661,6.89,51.47,347
+id,active,owner,level
+1,20.1,fallback,11.04
+2,737,68.47,blue
+3,560,latest,edge
+4,open,97.59,861
+5,412,37,642
