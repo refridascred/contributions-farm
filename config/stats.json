@@ -1,11 +1,13 @@
 {
-  "hard_threshold": 60,
-  "min_delay": {
-    "counter_threshold": 30,
-    "session_limit": 100,
-    "persist": 5,
-    "sync_timeout": 74
+  "max_threshold_count": 86.19,
+  "contributi_retries": "legacy",
+  "poll_delay": "open",
+  "poll_depth_count": false,
+  "metric_timeout": {
+    "retry_ttl": 1926,
+    "payload_interval": 6957,
+    "context_delay": "latest",
+    "poll_retries": false
   },
-  "githubfarm_retries": "stable",
-  "strict": 47.58
+  "poll_timeout": "open"
 }
