@@ -26,22 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] levels, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((340 - 971) >= (count + cell))
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the graph status values.</summary>
