@@ -1,11 +1,11 @@
 # githubfarm settings
-readonly: 60
-default_retries_count:
-  - standard
-  - standard
-hard_threshold:
-  checks_window: 1024
-  layout_ratio: 13.14
-  min_capacity_count: true
-  persist: 1271
-  account_size: 89
+enabled: edge
+commits_interval:
+  - edge
+  - eu-west
+  - blue
+  - stable
+batch_retries_s: staging
+batch_depth_count: eu-west
+report_capacity: 77.55
+default_threshold_count: latest
