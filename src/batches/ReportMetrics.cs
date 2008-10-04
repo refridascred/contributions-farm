@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 8213;
-        public const double BaseCache = 52.59;
-        public const double HardCache = 75.79;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleInterval = 7385;
