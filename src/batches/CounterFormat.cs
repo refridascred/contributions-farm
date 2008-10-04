@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 9000;
-        public const long RetryTools = 2194;
-        public const string StepSpan = "open-v2";
-        public const long LimitTimeout = 1570;
-        public const string LimitSpan = "staging-v2";
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Locked,
+            Closed,
+            Pending,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] series)
