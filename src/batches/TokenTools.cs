@@ -27,11 +27,16 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "local";
-        public const double SoftWidth = 46.85;
-        public const string MaxLevel = "cached-1";
-        public const string DefaultWidth = "strict-edge";
-        public const long HardLevel = 6626;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (limit + (long)i)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
