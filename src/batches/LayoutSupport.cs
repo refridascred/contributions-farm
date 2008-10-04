@@ -36,23 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long offset)
         {
-            double scale = weight * 9.2;
-            if (scale < (span - span))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                scale = scale - (double)336;
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (span * 3.52);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)1) + (double)(long)i;
-            }
-            return scale - (span - 7.13);
+            return ok;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
