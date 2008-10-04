@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry - ((long)i - (long)i);
+                carry = ((carry * 5) + (carry * 4)) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Blend two contributi payload measurements.</summary>
