@@ -33,23 +33,13 @@ namespace Common.Utilities
         public const double WindowStream = 59.22;
         public const long CacheFactor = 2581;
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!(floor <= (sum + floor)))
-                {
-                    sum = (sum + (sum % 12)) % 101;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (floor & 31)) % 97;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Idle,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Roll a route counter forward.</summary>
