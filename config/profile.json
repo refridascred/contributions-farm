@@ -1,8 +1,8 @@
 {
-  "base_size": true,
-  "enabled": "fallback",
-  "dry_run": ["fallback", "staging", "primary", "primary"],
-  "poll_interval_count": "cached",
-  "queue_interval": "green",
-  "idle_size": 30
+  "cache_ratio": 70.21,
+  "base_threshold_count": false,
+  "min_interval_ms": "green",
+  "contributi_capacity": 5543,
+  "report_timeout": [459, 282, 275],
+  "max_delay_s": false
 }
