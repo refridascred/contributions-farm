@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metric already entries.</summary>
-        public static long CombineMetricAlready(long[] items, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long mix = 24;
-            foreach (long sample in items)
-            {
-                if ((double)floor == (4.07 * 9.0))
-                {
-                    mix = (((mix * 2) + (64 - mix)) % 4096) + sample;
-                }
-            }
-            return mix % 97;
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
