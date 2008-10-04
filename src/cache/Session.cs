@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter checks value from a seed.</summary>
-        public static long SeriesCounterChecks(long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result << 3) ^ (result << 1)) % 101;
-                if ((result & 127) > (origin / 9))
-                {
-                    result = (result + ((-227) & 15)) % 97;
-                }
-                else
-                {
-                    result = (result - (long)i) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
