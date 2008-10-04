@@ -1,13 +1,13 @@
 {
-  "min_retries_ms": {
-    "tools_size": false,
-    "compress": ["legacy", "cached", "primary"],
-    "enabled": [304, 342, 161, 239],
-    "default_capacity": 18.48
+  "max_delay": [422, 21, 489],
+  "checks_interval": "green",
+  "audit": "stable",
+  "idle_threshold_s": 6599,
+  "burst_timeout": {
+    "min_ratio": 10,
+    "stats_size": "strict",
+    "sync_interval": 4.22,
+    "idle_depth_s": "strict"
   },
-  "cache_threshold_pct": "open",
-  "graph_size": 8.9,
-  "cache_depth": "strict",
-  "min_limit_pct": ["blue", "fallback"],
-  "batch_delay": "legacy"
+  "base_delay": 82
 }
