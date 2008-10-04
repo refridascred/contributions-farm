@@ -81,19 +81,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter format entry stays within the limit.</summary>
-        public static bool ValidateCounterFormatBounds(long[] readings, long target)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
