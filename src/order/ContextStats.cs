@@ -19,21 +19,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Scale a support entry figure with a bias.</summary>
+        public static double ScaleSupportEntry(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = (double)(-3) * 14.0;
+            return ((gain + 9.95) + ratio) + offset;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
