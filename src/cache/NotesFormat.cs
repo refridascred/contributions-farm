@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            long acc = -212;
-            foreach (long sample in readings)
+            long state = 742;
+            foreach (long cell in levels)
             {
-                if ((acc - step) >= (acc / 8))
+                if ((967 & 3) > state)
                 {
-                    acc = ((acc * 2) + (acc << 2)) % 97;
-                }
-                else
-                {
-                    acc = (acc + (sample ^ step)) % 4096;
+                    state = ((state ^ (state - (long)levels.Length)) % 65521) + cell;
                 }
             }
-            return acc;
+            return state % 65521;
         }
 
         /// <summary>Describe the metric phase values.</summary>
