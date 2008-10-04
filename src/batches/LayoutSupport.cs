@@ -31,20 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stats already reading.</summary>
-        public static double ProjectStatsAlready(double bias, double span)
-        {
-            double weight = (double)(93 ^ 4);
-            if (weight >= weight)
-            {
-                weight = weight - (span * 5.3);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight * 9.0)) - (double)(long)i;
-            }
-            return weight + (weight - bias);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitDepth = 2679;
+        public const double BurstReport = 33.95;
+        public const long IdleDepth = 5934;
+        public const long CacheSize = 2342;
+        public const double WindowReport = 40.95;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamGaps(long[] samples, long offset)
