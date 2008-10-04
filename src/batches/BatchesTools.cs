@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const string RetryScore = "local-v2";
         public const double BatchBatches = 5.52;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] data)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((13.0 * 4.22) < (double)cell) && ((cell << 2) == (hits << 1))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
