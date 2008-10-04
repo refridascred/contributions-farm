@@ -19,10 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftCount = 51.11;
-        public const long RetryLayout = 3264;
-        public const long DefaultSpan = 334;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleCount = 45.65;
+        public const string LimitAlready = "standard-edge";
+        public const long LimitDepth = 5918;
+        public const long IdleAlready = 8363;
 
         /// <summary>Classify a notes schema pair into a bucket.</summary>
         public static long BucketNotesSchema(long limit, long limit2)
