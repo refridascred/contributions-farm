@@ -1,6 +1,9 @@
-id,label,rank
-1,245,56.33
-2,673,119
-3,565,94.47
-4,962,593
-5,897,612
+id,active,count,token,region
+1,36.47,fallback,46.97,810
+2,35.88,green,50.55,primary
+3,5.15,edge,92.01,86.02
+4,legacy,986,63.11,995
+5,strict,318,latest,81.31
+6,latest,40.27,154,stable
+7,770,legacy,456,641
+8,297,staging,905,blue
