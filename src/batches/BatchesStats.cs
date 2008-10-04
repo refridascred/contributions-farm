@@ -15,21 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] items, long offset)
         {
-            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] <= offset)
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
