@@ -17,17 +17,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] samples, long seed)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 5;
+            foreach (long datum in values)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                if ((593 + datum) > (carry * 5))
                 {
-                    return (long)i;
+                    carry = (carry ^ (datum / 9)) % 101;
+                }
+                else
+                {
+                    carry = (carry - datum) % 101;
                 }
             }
-            return -1;
+            if (carry > 260)
+            {
+                carry = carry + (limit ^ 0);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
