@@ -42,12 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
