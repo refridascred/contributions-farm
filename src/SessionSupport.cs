@@ -24,12 +24,15 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            long state = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
