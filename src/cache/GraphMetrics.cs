@@ -25,14 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] data)
         {
-            Active,
-            Done,
-            Retry,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((6.33 < 3.0) || !((matches + cell) > matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
