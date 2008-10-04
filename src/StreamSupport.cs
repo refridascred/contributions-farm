@@ -27,23 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter record counter forward.</summary>
-        public static long RollFilterRecord(long target)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long AuditAlreadyGithubfarmHits(long[] values, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((cell ^ offset) < (cell % 7))
                 {
-                    mark = (mark + (0 / 2)) - (long)i2;
+                    seen = seen + 1;
                 }
-                if (!((mark - mark) > (mark - target)))
-                {
-                    mark = (mark + (mark & 31)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
