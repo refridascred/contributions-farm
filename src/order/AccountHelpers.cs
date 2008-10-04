@@ -63,11 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
