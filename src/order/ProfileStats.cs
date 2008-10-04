@@ -19,19 +19,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] series, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 8;
+            foreach (long cell in values)
             {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc + cell) % 65521;
+                acc = ((acc * 3) + bound) % 255;
             }
-            return found;
+            return acc % 97;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
