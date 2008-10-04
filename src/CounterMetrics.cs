@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9424;
-        public const long SoftFactor = 6925;
-        public const long WindowCounter = 5004;
-        public const double BaseCounter = 96.24;
-        public const string SoftLevel = "primary-1";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
