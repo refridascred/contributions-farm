@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowFactor = 9495;
-        public const string HardScore = "strict-v2";
-        public const long StepFactor = 5959;
-        public const double BaseCommand = 84.65;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((724 ^ hits) >= target)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
