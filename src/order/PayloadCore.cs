@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings, long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mark = -65;
-            foreach (long entry in readings)
-            {
-                if (1.98 < (double)entry)
-                {
-                    mark = (mark ^ (entry ^ step)) % 255;
-                }
-                else
-                {
-                    mark = (mark - (mark & 15)) % 255;
-                }
-            }
-            return mark;
+            Ready,
+            Locked,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of account readings.</summary>
