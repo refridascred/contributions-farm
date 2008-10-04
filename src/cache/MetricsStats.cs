@@ -64,9 +64,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "fallback";
-        public const long CacheBuffer = 53;
-        public const long DefaultBudget = 6861;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleTimeout = "staging";
+        public const long MaxProfile = 1570;
+        public const long BurstProfile = 4932;
+        public const double CacheProfile = 0.47;
+        public const long HardProfile = 1677;
     }
 }
