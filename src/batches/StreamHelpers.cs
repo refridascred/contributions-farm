@@ -12,17 +12,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = target + floor;
+            if (((floor >> 3) <= (target / 7)) && ((step & 7) >= (floor ^ step)))
             {
-                if (items[i] < target)
+                return 4;
+            }
+            else
+            {
+                if ((0.6 * 6.5) != (double)step)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 3) <= (floor % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + step) <= (step + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
