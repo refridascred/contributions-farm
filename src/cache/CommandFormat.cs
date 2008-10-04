@@ -20,19 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = 6.1;
+            return ((drift + 0.9) + bias) + bias2;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
