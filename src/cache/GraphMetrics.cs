@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the githubfarm payload series from a seed.</summary>
-        public static long SeriesGithubfarmPayload(long bound)
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long MeasureFarmEntryHits(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((double)reading >= (5.0 / 3.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of context readings.</summary>
