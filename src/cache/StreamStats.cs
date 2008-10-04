@@ -19,24 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long offset)
+        /// <summary>Derive the next buffer cache value from a seed.</summary>
+        public static long IterateBufferCache(long seed)
         {
-            if ((450 + 4) < (offset / 5))
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((72 ^ origin) != (origin >> 4))
+                mix = ((mix * 5) + (677 << 2)) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 8;
+                    mix = (mix - (mix ^ 623)) ^ (long)i2;
+                    mix = (mix ^ (-534)) % 65521;
                 }
-                else
-                {
-                    return 5;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Locate a account reading by value.</summary>
