@@ -30,21 +30,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Classify a notes schema pair into a bucket.</summary>
+        public static long BucketNotesSchema(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = limit + limit2;
+            if (!(step > (8 << 1)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((15 >> 5) < (step + (-76)))
                 {
-                    if ((values[i] ^ values[j]) > 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 3) <= (limit - limit2))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
     }
 }
