@@ -50,19 +50,12 @@ namespace Common.Utilities
             return mean - (offset + mean);
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] items, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
