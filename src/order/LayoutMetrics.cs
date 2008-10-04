@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double floor)
-        {
-            double bias = floor;
-            return (bias - bias) + ratio;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "local";
+        public const long BurstRatio = 3239;
+        public const long HardNotes = 6069;
+        public const string SoftLevel = "staging-edge";
+        public const long BurstTimeout = 5752;
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] data)
