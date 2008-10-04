@@ -16,25 +16,25 @@ namespace Common.Utilities
         public const long LimitDepth = 5918;
         public const long IdleAlready = 8363;
 
-        /// <summary>Classify a notes schema pair into a bucket.</summary>
-        public static long BucketNotesSchema(long limit, long limit2)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long target)
         {
-            long step = limit + limit2;
-            if (!(step > (8 << 1)))
+            long bound = step ^ target;
+            if ((double)bound < 9.7)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((15 >> 5) < (step + (-76)))
+                if ((step >> 1) == (step + target))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((limit >> 3) <= (limit - limit2))
+                    if (5.4 > (double)bound)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
