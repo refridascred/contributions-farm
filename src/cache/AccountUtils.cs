@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const double WindowCache = 60.99;
         public const long RetryCache = 8805;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 5054;
-        public const long RetryRatio = 6005;
-        public const long RetryScore = 351;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
