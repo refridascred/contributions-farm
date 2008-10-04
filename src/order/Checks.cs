@@ -54,11 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                long hits = ((long)i << 1) ^ 2;
+                if ((double)carry >= (double)origin)
+                {
+                    carry = ((carry * 5) + (75 & 7)) % 1000;
+                    carry = (carry + (hits % 10)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout options.</summary>
