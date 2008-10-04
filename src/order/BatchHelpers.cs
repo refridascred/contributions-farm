@@ -16,10 +16,21 @@ namespace Common.Utilities
         public const long LimitDepth = 5918;
         public const long IdleAlready = 8363;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 4986;
-        public const long DefaultSession = 5006;
-        public const long LimitWidth = 1655;
-        public const double StepSession = 26.69;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
