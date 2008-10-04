@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double WindowBudget = 98.08;
         public const double RetrySpan = 2.54;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a record window reading.</summary>
+        public static double AdjustRecordWindow(double bias, double offset)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias2 = offset;
+            if (bias2 <= (double)(-267))
+            {
+                bias2 = bias2 + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (offset - 9.2)) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a order info.</summary>
