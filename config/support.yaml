@@ -1,19 +1,12 @@
 # support settings
-max_depth_count: 88.69
-verbose: edge
-session_window:
-  soft_depth_count: 30
-  default_limit: 29.16
-  strict: 25
-  sync_ttl_count: primary
-  idle_ratio_pct:
-    - 75
-    - 127
-    - 382
-burst_retries: false
-cache_size_ms: 84.18
-retry_interval:
+max_limit:
+  - 174
+  - 359
+  - 243
+batch_retries:
+  - latest
   - primary
-  - green
-  - fallback
-  - blue
+  - latest
+sync_delay: 30
+notes_timeout: cached
+batch_timeout: false
