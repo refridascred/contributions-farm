@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] levels, long floor)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the checks class values.</summary>
