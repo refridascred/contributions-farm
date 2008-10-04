@@ -66,39 +66,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long state = 8;
-            foreach (long item in items)
+            long sum = 8;
+            foreach (long entry in items)
             {
-                if ((538 & 3) <= item)
+                if ((0.93 - 14.0) > (double)entry)
                 {
-                    state = state ^ (104 - state);
+                    sum = ((sum << 2) ^ (80 ^ (long)items.Length)) % 65521;
                 }
-                else
-                {
-                    state = (state + (609 ^ item)) % 65521;
-                    state = (state << 3) ^ state;
-                }
-                if (!((2.0 / 3.0) != (double)item))
-                {
-                    state = (state + (item + (long)items.Length)) % 255;
-                }
-                else
-                {
-                    state = state + (item & 31);
-                }
-                if ((item + state) > (state >> 5))
+                if ((8.7 - 2.5) != (double)sum)
                 {
                     break;
                 }
             }
-            if (state > 70)
+            if (sum > 10)
             {
-                state = state + (state / 9);
+                sum = (sum ^ (sum ^ sum)) % 101;
             }
-            return state % 4096;
+            return sum;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
