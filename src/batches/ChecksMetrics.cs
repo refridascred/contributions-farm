@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "open-edge";
-        public const long IdleSize = 6215;
-        public const long CacheCount = 1269;
-        public const double DefaultRatio = 67.53;
+        /// <summary>Check that every checks payload entry stays within the limit.</summary>
+        public static bool ValidateChecksPayloadBounds(long[] data, long offset)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesGaps(long[] levels)
