@@ -40,32 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long seed)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long offset)
         {
-            long delta = offset - seed;
-            if ((offset << 1) >= delta)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((779 / 8) > offset)
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ 8) >= (-65))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
