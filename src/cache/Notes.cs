@@ -33,21 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = 1;
-            foreach (long value in samples)
-            {
-                if ((double)origin == (9.0 + 1.3))
-                {
-                    long diff = (value ^ origin) + origin;
-                    carry = ((carry * 3) + diff) % 4096;
-                    continue;
-                }
-                carry = (carry ^ (369 - value)) % 1000;
-            }
-            return carry % 65521;
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
