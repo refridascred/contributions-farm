@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
