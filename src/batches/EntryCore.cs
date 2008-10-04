@@ -23,21 +23,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Blend two token stream measurements.</summary>
+        public static double ProjectTokenStream(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = gain;
+            if (rate <= rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - (double)576;
             }
-            return count;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (rate / 4.0);
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
