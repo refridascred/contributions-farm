@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySize = 7914;
-        public const long HardProfile = 2363;
-        public const long MaxProfile = 588;
-        public const long CacheProfile = 3047;
-        public const long IdleSize = 4553;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Retry,
+            Synced,
+            Idle,
+            Dropped,
+            New,
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] samples)
