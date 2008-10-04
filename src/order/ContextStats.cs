@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((79 - value) <= (value % 60))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
