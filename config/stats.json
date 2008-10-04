@@ -1,6 +1,6 @@
 {
-  "poll_timeout_pct": 83,
-  "poll_delay_pct": 1168,
-  "commits_retries": [118, 130, 320, 487],
-  "persist": "cached"
+  "entry_interval": "cached",
+  "default_retries_pct": [216, 495, 148],
+  "report_retries": "eu-west",
+  "hard_window_s": 6780
 }
