@@ -34,18 +34,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] levels, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long step)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((87 - origin) >= (3 + step))
             {
-                if ((matches + entry) > matches)
+                return 8;
+            }
+            else
+            {
+                if (step >= origin)
                 {
-                    matches = (matches + 3) - offset;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step < (double)5)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
