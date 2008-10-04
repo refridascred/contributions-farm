@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark ^ (mark & 127)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = mark + (seed + (long)i2);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            double load = (double)(676 >> 5);
+            return ((load - (double)(-523)) + weight) + bias;
         }
 
         /// <summary>Hold a stats record.</summary>
