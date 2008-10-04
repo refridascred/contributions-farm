@@ -69,17 +69,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long FindFarmStatsIndex(long[] levels, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                if (item != target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
