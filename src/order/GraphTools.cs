@@ -33,17 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long limit)
+        /// <summary>Roll a commits route counter forward.</summary>
+        public static long SeriesCommitsRoute(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 3) + 8;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many counter support samples are out of range.</summary>
