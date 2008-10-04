@@ -59,19 +59,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] samples, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mark = 353;
+            foreach (long cell in readings)
             {
-                if (cell != bound)
+                if (mark < 43)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark ^ (seed + mark)) % 1000) ^ cell;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count the channel window entries that pass the check.</summary>
