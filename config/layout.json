@@ -1,5 +1,8 @@
 {
-  "default_interval": [85, 55],
-  "base_window": 42,
-  "cluster_ttl": "open"
+  "cache_ttl": ["legacy", "stable"],
+  "dry_run": "standard",
+  "batch_ratio": "cached",
+  "poll_retries_ms": "standard",
+  "idle_interval": [226, 321, 365],
+  "hard_ttl_pct": 94.16
 }
