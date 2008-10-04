@@ -20,38 +20,19 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            if ((double)floor > (double)bound)
+            double mean = (double)25 * 19.0;
+            if (mean < (mean + mean))
             {
-                return 1;
+                mean = mean - (weight + 8.07);
             }
             else
             {
-                if ((floor - 739) > bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(2 >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound << 2) > (785 - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean + (bias + mean);
             }
+            return mean - (bias / 3.0);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
