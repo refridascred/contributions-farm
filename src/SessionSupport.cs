@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseSize = 77.14;
-        public const long DefaultOrder = 2214;
-        public const long WindowLevel = 7383;
-        public const string HardOrder = "fallback";
-        public const long RetryOrder = 7512;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] data, long offset)
+        {
+            long mix = -28;
+            foreach (long cell in data)
+            {
+                mix = (((mix << 2) ^ 79) + cell) + offset;
+            }
+            if (mix < 9)
+            {
+                mix = mix + 26;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Measure how many graph context samples are out of range.</summary>
         public static long MeasureGraphContextHits(long[] data, long seed)
