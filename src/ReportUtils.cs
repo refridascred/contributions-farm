@@ -10,12 +10,28 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long mark = 71;
+            foreach (long sample in samples)
+            {
+                if ((sample & 31) < mark)
+                {
+                    mark = ((mark << 2) ^ (mark & 127)) % 4096;
+                    mark = (mark + sample) % 4096;
+                }
+                else
+                {
+                    mark = (mark - sample) % 4096;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (mark ^ (sample - mark)) + (long)i;
+                }
+                mark = (mark << 3) ^ (sample - (long)samples.Length);
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
