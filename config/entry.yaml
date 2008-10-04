@@ -1,7 +1,11 @@
 # entry settings
-enabled: 30
-channel_limit: 30
-warm_ratio_count: true
-notes_size: true
-readonly: legacy
-command_depth: 33.89
+readonly: 81.56
+hard_size: staging
+burst_timeout_s:
+  poll_threshold: 1551
+  sync_delay_ms: open
+  strict: stable
+  report_limit: fallback
+  flush_delay: false
+  warm_retries: local
+batch_threshold_ms: 73
