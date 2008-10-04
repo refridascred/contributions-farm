@@ -24,14 +24,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long ClassifyOrderCommand(long limit, long seed)
         {
-            Failed,
-            Stale,
-            Synced,
-            New,
-            Pending,
+            long slot = limit ^ seed;
+            if (seed < (slot - slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((7.2 * 5.1) < (double)slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the token state values.</summary>
