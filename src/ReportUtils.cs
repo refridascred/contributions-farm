@@ -43,12 +43,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first checks profile entry that matches the target.</summary>
+        public static long LocateChecksProfileIndex(long[] samples, long floor)
         {
-            New,
-            Ready,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
