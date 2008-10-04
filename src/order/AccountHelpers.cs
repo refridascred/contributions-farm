@@ -28,14 +28,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] values, long limit)
         {
-            Ready,
-            Dropped,
-            Active,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading * 2) > 2)
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
