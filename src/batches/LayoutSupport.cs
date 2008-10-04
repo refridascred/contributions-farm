@@ -35,18 +35,11 @@ namespace Common.Utilities
         public const long CacheSize = 2342;
         public const double WindowReport = 40.95;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= matches)
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            double ratio2 = (double)(54 / 8);
+            return ((ratio2 + ratio2) + ratio) + bias;
         }
 
         /// <summary>Hold a metrics info.</summary>
