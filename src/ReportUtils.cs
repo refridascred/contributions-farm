@@ -32,13 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Idle,
             Stale,
-            Paused,
-            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
