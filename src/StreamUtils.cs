@@ -37,14 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Active,
-            Queued,
-            Draft,
-            Synced,
             Idle,
+            Pending,
+            Synced,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank support stream input into a small class.</summary>
