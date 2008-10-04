@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long AuditQueueCounterHits(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches * 5) > (matches - offset))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two account measurements.</summary>
