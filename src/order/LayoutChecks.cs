@@ -23,22 +23,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up session notes samples.</summary>
-        public static long PairSessionNotesCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 5879;
+        public const long RetryEditor = 3013;
+        public const long LimitScore = 9728;
+        public const long BatchWidth = 6718;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] samples)
