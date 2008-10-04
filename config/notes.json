@@ -1,7 +1,19 @@
 {
-  "batch_threshold_pct": "edge",
-  "counter_depth": "blue",
-  "sync_window_count": "primary",
-  "dry_run": 500,
-  "max_retries_ms": 58.48
+  "dry_run": 557,
+  "max_delay": {
+    "window_delay": ["fallback", "edge"],
+    "verbose": "standard",
+    "base_delay": 22.97,
+    "warm_capacity": 49,
+    "audit": 2667
+  },
+  "compress": false,
+  "batch_capacity_s": {
+    "enabled": 35.93,
+    "batch_delay_pct": 29.27,
+    "compress": "edge",
+    "readonly": "eu-west",
+    "retry_ttl": 33.52
+  },
+  "warm_ttl": 37.39
 }
