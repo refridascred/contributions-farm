@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= seed)
+                if (readings[i] > floor)
                 {
                     return (long)i;
                 }
