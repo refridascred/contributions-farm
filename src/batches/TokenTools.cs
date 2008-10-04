@@ -46,19 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] readings, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
