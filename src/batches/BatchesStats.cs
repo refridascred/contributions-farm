@@ -42,21 +42,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample & 7) == (count ^ count))
                 {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
