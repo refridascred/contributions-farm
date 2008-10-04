@@ -1,14 +1,13 @@
 # githubfarm settings
-burst_depth_pct: 6474
-audit: fallback
-min_depth:
-  farm_window: false
-  filter_depth: eu-west
-  readonly: 500
-  flush_timeout: latest
-  already_ratio:
-    - 24
-    - 228
-    - 323
-    - 54
-idle_size_count: 1024
+persist: false
+max_delay: 40.97
+dry_run: stable
+account_window: edge
+warm_capacity_ms:
+  support_size: open
+  cache_capacity_s: 6237
+  batch_window_ms: legacy
+  default_interval:
+    - eu-west
+    - legacy
+cache_window_pct: strict
