@@ -1,26 +1,4 @@
 # githubfarm settings
-strict:
-  - standard
-  - local
-context_timeout: 51
-poll_window:
-  soft_ratio_ms: 91.07
-  poll_limit_count: true
-  base_depth_s: 40
-  max_ratio_s: 67.26
-  profile_ttl: 19.66
-  readonly: 28
-max_capacity_s: 3484
-cache_retries: legacy
-min_capacity_pct:
-  persist: primary
-  poll_limit:
-    batch_ttl:
-      - 327
-      - 96
-    batch_ratio_pct: stable
-    min_capacity_ms: false
-    base_retries_s: 3157
-  enabled: 500
-  profile_depth: staging
-  max_window: local
+sync_ttl_pct: green
+route_capacity: latest
+filter_ratio: true
