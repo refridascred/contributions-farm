@@ -1,5 +1,11 @@
 # entry settings
-dry_run: stable
-flush_retries_s: 64
-soft_retries_s: eu-west
-audit: 53.16
+hard_size_pct: false
+dry_run: edge
+channel_delay: eu-west
+metric_threshold: 63.77
+retry_threshold_s:
+  - cached
+  - stable
+  - cached
+  - standard
+compress: latest
