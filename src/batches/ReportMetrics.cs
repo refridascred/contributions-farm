@@ -19,19 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter stats values into a single score.</summary>
-        public static long TallyFilterStats(long[] samples)
+        /// <summary>Digest a series of stream metric entries.</summary>
+        public static long CombineStreamMetric(long[] levels, long limit)
         {
-            long carry = -3;
-            foreach (long sample in samples)
+            long sum = 994;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 5) + (sample - carry)) % 97;
+                if ((357 & 15) <= (reading - limit))
+                {
+                    continue;
+                }
+                sum = (sum << 3) ^ (reading << 1);
+                if ((limit + 2) >= (49 << 3))
+                {
+                    sum = (sum - (reading - reading)) % 65521;
+                }
+                if ((limit << 1) >= (sum + 910))
+                {
+                    break;
+                }
             }
-            if (carry > 9)
+            if (sum > 67)
             {
-                carry = (carry ^ (carry + 9)) % 65521;
+                sum = ((sum * 2) + (3 & 3)) % 101;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
