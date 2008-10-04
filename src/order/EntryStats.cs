@@ -44,25 +44,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a payload account value against two limits.</summary>
-        public static long SortPayloadAccount(long seed, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long prev = seed - bound;
-            if ((bound + seed) == (seed & 63))
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((prev + bound) > (seed >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum;
         }
     }
 }
