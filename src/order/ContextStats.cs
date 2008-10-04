@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] readings, long origin)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long state = 3;
+            foreach (long cell in readings)
+            {
+                if ((8 << 1) >= state)
+                {
+                    state = ((state << 3) ^ (origin % 3)) - cell;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
