@@ -1,7 +1,8 @@
-id,ratio,label
-1,edge,64.62
-2,60.07,latest
-3,86.84,58.96
-4,54.02,0
-5,primary,29.53
-6,195,417
+id,weight,label,score
+1,green,564,418
+2,standard,legacy,796
+3,868,251,47.19
+4,80.33,9,755
+5,76.18,56.85,144
+6,285,90.34,7.22
+7,883,primary,stable
