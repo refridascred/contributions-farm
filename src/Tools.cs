@@ -35,12 +35,19 @@ namespace Common.Utilities
             return scale + (bias * 0.05);
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] readings, long limit)
         {
-            Failed,
-            Paused,
-            New,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
