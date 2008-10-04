@@ -39,13 +39,18 @@ namespace Common.Utilities
             return mean - (double)506;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry - (offset + carry);
+                carry = ((carry * 4) + (carry >> 5)) % 1000;
+                carry = (carry - 4) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
