@@ -22,11 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchWidth = 8096;
-        public const long SoftDepth = 8716;
-        public const long BaseSpan = 6165;
-        public const double CacheBudget = 90.0;
-        public const long HardBatches = 720;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
