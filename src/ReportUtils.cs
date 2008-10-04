@@ -27,28 +27,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data, long origin)
-        {
-            long anchor = 61;
-            foreach (long value in data)
-            {
-                long step = 972;
-                if (!((754 << 2) != (value ^ anchor)))
-                {
-                    anchor = (anchor + (step << 3)) % 1000;
-                }
-                if ((9 + value) <= anchor)
-                {
-                    anchor = (anchor ^ (long)data.Length) % 101;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = ((anchor << 3) ^ ((long)data.Length + origin)) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "local-edge";
+        public const long StepCount = 8836;
+        public const long BaseCluster = 462;
+        public const double IdleInterval = 61.0;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] samples)
