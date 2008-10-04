@@ -72,17 +72,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = 75;
+            foreach (long value in items)
             {
-                carry = (carry ^ (4 - bound)) % 1000;
-                carry = ((carry * 4) + (carry << 1)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((value >= ((-859) >> 1)) || ((anchor - value) >= anchor))
+                {
+                    anchor = anchor + (anchor << 1);
+                }
             }
-            return carry;
+            if (anchor > 5)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
