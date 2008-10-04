@@ -60,32 +60,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long edge = seed - offset;
-            if ((double)offset < 3.6)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed < (13.0 - 8.6)) || ((seed + offset) >= (edge ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((10.0 / 6.0) != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
