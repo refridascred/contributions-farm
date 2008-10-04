@@ -80,15 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats tools readings against a rule.</summary>
-        public static long AuditStatsToolsMatches(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] items)
         {
             long seen = 0;
-            foreach (long cell in samples)
+            foreach (long sample in items)
             {
-                if (!((double)seen < (2.9 + 2.87)))
+                if ((seen - 90) <= (seen - sample))
                 {
-                    seen = (seen + 1) ^ cell;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
