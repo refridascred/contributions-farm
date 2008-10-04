@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                total = (total ^ (origin << 2)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                if (entry > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
