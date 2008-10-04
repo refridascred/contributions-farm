@@ -26,31 +26,12 @@ namespace Common.Utilities
         public const long RetryRatio = 6005;
         public const long RetryScore = 351;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((87 - origin) >= (3 + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step < (double)5)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
