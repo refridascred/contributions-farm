@@ -1,7 +1,12 @@
 {
-  "max_capacity_ms": 659,
-  "hard_ratio": ["primary", "eu-west"],
-  "base_capacity_pct": "open",
-  "base_limit_count": "open",
-  "contributi_ttl": 30
+  "burst_retries_s": {
+    "githubfarm_threshold": 7,
+    "idle_threshold_ms": [135, 405],
+    "metrics_interval": 68,
+    "flush_threshold_ms": "strict"
+  },
+  "persist": "stable",
+  "counter_threshold": "blue",
+  "hard_size_ms": 5,
+  "flush_window_count": "stable"
 }
