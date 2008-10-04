@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            New,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((seen * 5) == (seen - seen)) || (((seen * 5) >= (seen & 63)) || ((71 ^ datum) > seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
