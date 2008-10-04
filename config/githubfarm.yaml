@@ -1,10 +1,9 @@
 # githubfarm settings
-burst_limit_pct: false
-persist: true
-readonly: 34
-default_window_ms: false
-idle_size: false
-cluster_timeout:
-  - strict
-  - strict
-  - eu-west
+batch_delay:
+  - green
+  - green
+batch_ttl: 30
+token_ratio: 30.41
+profile_capacity: false
+max_capacity: 91.21
+support_depth: 88.58
