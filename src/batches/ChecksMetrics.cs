@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Pending,
-            Idle,
-            Locked,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "open-edge";
+        public const long IdleSize = 6215;
+        public const long CacheCount = 1269;
+        public const double DefaultRatio = 67.53;
 
         /// <summary>Fold a list of metric record readings.</summary>
         public static long WeighMetricRecord(long[] samples, long floor)
