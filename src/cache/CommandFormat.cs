@@ -50,21 +50,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of report order readings.</summary>
-        public static long PairReportOrderCount(long[] values)
+        /// <summary>Combine metrics profile values into a single score.</summary>
+        public static long WeighMetricsProfile(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((923 & 1) != (reading + result))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    long bound = (result / 7) * 5;
+                    result = (result << 3) ^ (result + bound);
+                }
+                if ((reading >> 3) < 38)
+                {
+                    result = (result + (86 >> 5)) % 4096;
+                }
+                else
+                {
+                    result = result ^ result;
                 }
             }
-            return count;
+            return result % 4096;
         }
     }
 }
