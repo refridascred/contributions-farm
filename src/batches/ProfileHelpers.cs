@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            double rate = 8.8 / 9.0;
+            if (rate >= rate)
+            {
+                rate = rate - (ratio + bias);
+            }
+            else
+            {
+                rate = rate - 4.5;
+            }
+            return rate - ratio;
         }
 
         /// <summary>Hold a context info.</summary>
