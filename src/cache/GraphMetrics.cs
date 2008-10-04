@@ -51,15 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] values, long seed)
+        /// <summary>Accumulate record report samples.</summary>
+        public static long WeighRecordReport(long[] samples, long bound)
         {
-            long result = 1;
-            foreach (long value in values)
+            long acc = 66;
+            foreach (long reading in samples)
             {
-                result = (result - (value - seed)) % 4096;
+                if ((bound >> 1) != (reading + 8))
+                {
+                    acc = (acc * 3) + bound;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
