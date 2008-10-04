@@ -41,18 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] readings, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((((double)seen != (double)9) || ((sample + floor) < 135)) || ((seen << 3) < (floor >> 3)))
+                if (value < origin)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
