@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long target2)
+        /// <summary>Grade a counter window value against two limits.</summary>
+        public static long BucketCounterWindow(long step, long bound)
         {
-            if (target2 >= (target + target2))
+            if ((step >> 5) >= (9 - bound))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((double)target <= (0.9 + 4.9))
+                if (!((step << 1) <= step))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((target & 7) > (target + target2))
+                    if (step > (step ^ step))
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        if (!((double)bound < 2.1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
