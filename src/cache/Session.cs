@@ -27,16 +27,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc * 4) + ((long)i - limit);
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((limit <= (limit % 64)) && (limit <= (limit - matches)))
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
