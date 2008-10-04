@@ -63,13 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] items, long offset)
         {
-            Failed,
-            New,
-            Synced,
-            Draft,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
