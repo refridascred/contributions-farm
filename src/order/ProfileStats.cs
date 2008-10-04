@@ -55,22 +55,15 @@ namespace Common.Utilities
         public const long CacheCount = 2288;
         public const double CacheWindow = 32.96;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] items, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in items)
+            double mean = weight * 5.5;
+            if (mean >= bias)
             {
-                if ((-6) >= value)
-                {
-                    count = (count + 1) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean + mean;
             }
-            return count;
+            return mean + (20.0 / 5.0);
         }
     }
 }
