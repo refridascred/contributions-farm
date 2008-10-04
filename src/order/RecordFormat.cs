@@ -39,17 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == floor)
+                total = (total ^ offset) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    total = ((total * 2) + ((-94) << 2)) - (long)i2;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two tools measurements.</summary>
