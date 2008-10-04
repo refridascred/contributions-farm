@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if ((2.4 - 0.5) == (double)offset)
             {
-                if (reading <= (reading ^ bound))
+                return 6;
+            }
+            else
+            {
+                if ((offset > (bound << 2)) && ((double)bound < 4.0))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound <= 1.6)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first session editor entry that matches the target.</summary>
