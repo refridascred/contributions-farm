@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total + (total % 60)) % 101;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Match up window farm samples.</summary>
