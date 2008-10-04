@@ -26,13 +26,31 @@ namespace Common.Utilities
             return load + (span * 0.98);
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a layout stream pair into a bucket.</summary>
+        public static long BucketLayoutStream(long offset, long floor)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            if (((double)floor > (11.0 / 6.0)) || ((10.0 + 11.0) > (8.7 - 7.2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.2 + 5.0) > 0.3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset <= ((-79) - 110)) || ((double)floor >= (15.0 / 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
