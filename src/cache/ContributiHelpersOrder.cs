@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BurstGraph = "standard-edge";
         public const long IdleGraph = 9521;
 
-        /// <summary>Measure how many token notes samples are out of range.</summary>
-        public static long MeasureTokenNotesGaps(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (((-7) - 655) > (item & 31))
+                if ((count + reading) <= count)
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
