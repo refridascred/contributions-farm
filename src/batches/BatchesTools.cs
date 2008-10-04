@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] data, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 340;
-            foreach (long sample in data)
-            {
-                if ((sample - 715) < 456)
-                {
-                    mix = (mix + (sample >> 4)) - limit;
-                }
-            }
-            if (mix > (-4))
-            {
-                mix = mix ^ (mix >> 4);
-            }
-            return mix % 4096;
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
