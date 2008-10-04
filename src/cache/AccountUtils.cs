@@ -33,13 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Grade a contributi farm value against two limits.</summary>
+        public static long BucketContributiFarm(long offset, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            if ((74 * 4) < (floor / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((8.4 + 5.3) < (double)floor) && ((offset & 3) < (offset - floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.2 * 9.0) <= 7.8)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
