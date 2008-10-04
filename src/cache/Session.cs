@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long state = 99;
+            foreach (long value in items)
             {
-                state = (state + state) % 255;
-                state = (state + (offset & 3)) % 97;
-                state = ((state * 2) + (long)i) % 4093;
+                if ((554 & 127) <= state)
+                {
+                    state = state - (state ^ value);
+                }
             }
             return state;
         }
