@@ -65,18 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] data)
+        /// <summary>Audit stats tools readings against a rule.</summary>
+        public static long AuditStatsToolsMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((0.66 * 5.39) > (double)count) && (sample > (count + count)))
+                if (!((double)seen < (2.9 + 2.87)))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
