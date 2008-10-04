@@ -1,11 +1,4 @@
 # support settings
-batches_ratio:
-  max_ratio_count: 8.02
-  tools_ratio: false
-  cache_size_pct: false
-  base_ratio_ms: open
-sync_window_s: true
-flush_retries: fallback
-soft_delay: fallback
-soft_ttl_s: stable
-cache_depth: open
+retry_delay_s: open
+burst_threshold_count: true
+max_retries_pct: fallback
