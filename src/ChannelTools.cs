@@ -19,20 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] values, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((acc <= (long)i) && ((long)i >= (acc + (long)i))))
+                if (values[i] < origin)
                 {
-                    acc = ((acc * 5) + (long)i) % 4096;
+                    return (long)i;
                 }
-                acc = ((acc << 2) ^ (long)i) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of schema filter entries.</summary>
