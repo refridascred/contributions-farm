@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((((-9) << 3) >= count) && ((sample <= 514) || (885 < (count << 2))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Check that every window githubfarm entry stays within the limit.</summary>
