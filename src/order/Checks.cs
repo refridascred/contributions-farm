@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 7836;
         public const double CacheGithubfarm = 5.71;
 
-        /// <summary>Count command window pairs that satisfy a relation.</summary>
-        public static long OverlapCommandWindowCount(long[] levels)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
