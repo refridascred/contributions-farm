@@ -1,5 +1,5 @@
 # githubfarm settings
-idle_threshold: false
-profile_size: latest
-idle_interval_count: 30
-audit: 31.78
+max_ttl_s: eu-west
+idle_delay_s: 30
+support_size: eu-west
+burst_depth_s: 47.77
