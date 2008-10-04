@@ -1,10 +1,8 @@
 {
-  "soft_threshold_ms": {
-    "cluster_depth": 30,
-    "max_timeout_pct": "stable",
-    "idle_depth_pct": true
-  },
-  "sync_retries_pct": 60,
-  "poll_depth_ms": 500,
-  "already_ttl": 18.01
+  "tools_capacity": ["stable", "legacy", "open", "local"],
+  "dry_run": ["open", "fallback", "local"],
+  "window_interval": "green",
+  "strict": ["local", "standard"],
+  "graph_retries": "green",
+  "persist": true
 }
