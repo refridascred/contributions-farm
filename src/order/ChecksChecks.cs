@@ -34,38 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema checks input into a small class.</summary>
-        public static long SortSchemaChecks(long target, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (2 < (target + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (0.6 <= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (3.9 <= (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.56 * 3.6) <= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
