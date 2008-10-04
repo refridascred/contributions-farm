@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit command tools readings against a rule.</summary>
-        public static long CountCommandToolsGaps(long[] samples, long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((seen > (offset ^ reading)) || ((double)offset <= (5.9 / 4.0))))
+                if (!((double)1 >= (double)item))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
