@@ -44,23 +44,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data)
-        {
-            long mix = 63;
-            foreach (long cell in data)
-            {
-                if (!((37 << 1) >= cell))
-                {
-                    mix = (mix << 3) ^ (cell ^ cell);
-                }
-                else
-                {
-                    mix = (mix * 3) + (cell + cell);
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 7781;
+        public const double HardCount = 15.46;
+        public const string CacheFactor = "legacy-v2";
+        public const long WindowLevel = 1781;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsMatches(long[] items, long floor)
