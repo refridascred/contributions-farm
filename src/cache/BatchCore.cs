@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit batches window readings against a rule.</summary>
-        public static long AuditBatchesWindowGaps(long[] series, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((0 - seed) < (0 >> 5))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
