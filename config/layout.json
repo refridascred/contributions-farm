@@ -1,6 +1,8 @@
 {
-  "poll_ratio_count": ["latest", "edge", "eu-west"],
-  "persist": 250,
-  "flush_timeout_pct": "standard",
-  "sync_limit_pct": "strict"
+  "default_threshold_ms": true,
+  "counter_ratio": "cached",
+  "audit": 6012,
+  "retry_window_count": "local",
+  "sync_size_ms": ["edge", "green", "stable"],
+  "verbose": "standard"
 }
