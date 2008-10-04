@@ -72,10 +72,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 8434;
-        public const string SoftSpan = "local-v2";
-        public const double DefaultTools = 5.12;
-        public const long SoftTimeout = 8832;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((origin - (long)values.Length) >= (origin % 12))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
