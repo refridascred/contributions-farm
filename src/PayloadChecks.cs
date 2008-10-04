@@ -40,11 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] samples, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
