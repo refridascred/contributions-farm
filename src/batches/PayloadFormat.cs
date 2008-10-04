@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
