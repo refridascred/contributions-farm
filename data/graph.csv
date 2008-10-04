@@ -1,7 +1,10 @@
-id,region,state
-1,primary,40
-2,stable,530
-3,118,eu-west
-4,local,4.97
-5,0.53,857
-6,77.33,264
+id,region,rank
+1,47.66,stable
+2,488,81.19
+3,eu-west,16
+4,legacy,108
+5,689,37.08
+6,50.83,34.83
+7,520,89.74
+8,574,standard
+9,89.65,4.65
