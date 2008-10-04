@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long SoftSpan = 2389;
         public const long BurstSupport = 7387;
 
-        /// <summary>Measure how many notes layout samples are out of range.</summary>
-        public static long CountNotesLayoutMatches(long[] samples, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double gain = (double)(1 ^ (-895));
+            if (gain >= 5.6)
             {
-                if ((count + count) > (sample + target))
-                {
-                    count = count + 2;
-                }
+                gain = ((gain - (1.21 - gain)) - weight) - span;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (double)197;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
