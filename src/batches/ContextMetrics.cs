@@ -74,19 +74,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long anchor = -1;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (anchor * 4);
-                if (((anchor / 2) != (anchor - item)) || (((-882) * 3) > (item + anchor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
     }
 }
