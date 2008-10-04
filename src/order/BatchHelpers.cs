@@ -34,21 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                long lane = (long)i;
+                long prev = limit / 3;
+                mix = (mix - (lane ^ prev)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
