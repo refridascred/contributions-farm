@@ -37,19 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryFactor = 6992;
+        public const long MinBudget = 9781;
+        public const long WindowAlready = 9044;
+        public const long BurstTimeout = 1504;
+        public const string IdleScore = "alpha-v2";
     }
 }
