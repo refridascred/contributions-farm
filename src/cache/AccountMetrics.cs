@@ -40,22 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmRouteCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)item != (6.1 + 7.9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
