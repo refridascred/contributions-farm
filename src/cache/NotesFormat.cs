@@ -23,18 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long result = 992;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= (3.8 - 8.56))
-                {
-                    result = (result - (result ^ 2)) % 101;
-                }
-            }
-            return result;
+            Done,
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the editor level values.</summary>
