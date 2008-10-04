@@ -29,22 +29,20 @@ namespace Common.Utilities
             return weight + (offset / 2.0);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (((count * 5) > (cell >> 5)) || (count >= (count + 5)))
+                result = (result ^ result) % 255;
+                if (640 < (result << 2))
                 {
-                    count = count + 1;
+                    result = ((result << 3) ^ (result + step)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
