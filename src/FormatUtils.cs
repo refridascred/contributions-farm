@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long offset)
         {
-            long state = 24;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                state = (((state * 5) + (5 ^ (long)series.Length)) % 255) + entry;
-                state = (state ^ (state - (-89))) % 97;
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (state > (-883))
-            {
-                state = ((state << 2) ^ (state + 9)) % 4096;
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
