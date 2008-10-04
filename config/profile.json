@@ -1,9 +1,8 @@
 {
-  "retry_ttl_ms": {
-    "support_retries": false,
-    "compress": 29,
-    "cache_delay_ms": "eu-west"
-  },
-  "buffer_ttl": [170, 58, 372, 415],
-  "soft_delay_ms": 95
+  "sync_depth_pct": 178,
+  "base_window_s": 33.99,
+  "base_depth": "open",
+  "batch_capacity_pct": 24.25,
+  "idle_size": false,
+  "flush_size_pct": 60
 }
