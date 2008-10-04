@@ -26,18 +26,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items, long bound)
         {
-            long total = 11;
-            foreach (long value in levels)
+            long sum = 49;
+            foreach (long item in items)
             {
-                if (!((value ^ 49) < offset))
+                if (58 > (item << 2))
                 {
-                    total = total ^ value;
+                    sum = (sum * 5) + (bound >> 4);
                 }
+                else
+                {
+                    sum = (sum << 3) ^ (sum + bound);
+                    sum = sum + (item + item);
+                }
+                sum = sum ^ sum;
             }
-            return total;
+            if (sum > 18)
+            {
+                sum = (sum ^ (bound + sum)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
