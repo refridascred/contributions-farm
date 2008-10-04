@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] data, long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long bound)
         {
             bool found = true;
-            foreach (long item in data)
+            foreach (long cell in data)
             {
-                if (item != step)
+                if (cell != bound)
                 {
                     found = false;
                     break;
