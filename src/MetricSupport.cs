@@ -20,11 +20,32 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long score = -692;
+            foreach (long sample in levels)
+            {
+                score = (score + (9 - score)) % 4096;
+                for (int i = 0; i < 11; i++)
+                {
+                    score = (((score << 2) ^ 46) % 1000) - (long)i;
+                    score = (score + score) % 255;
+                }
+                if ((sample > score) && (sample >= (score & 255)))
+                {
+                    score = ((score * 4) + (12 + sample)) % 4096;
+                }
+                if ((sample % 7) >= 676)
+                {
+                    break;
+                }
+            }
+            if (score < 162)
+            {
+                score = (score ^ (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a format stats.</summary>
