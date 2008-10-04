@@ -23,18 +23,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] levels, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = 33;
+            foreach (long reading in data)
             {
-                if (((9.04 / 2.0) > (double)seen) || (entry >= (entry / 7)))
-                {
-                    seen = (seen + 3) + step;
-                }
+                state = ((state + (target + target)) % 4096) + reading;
+                state = (state * 4) + 343;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the tools phase values.</summary>
