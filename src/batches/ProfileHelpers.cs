@@ -40,14 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            Closed,
-            Queued,
-            Active,
-            Retry,
-            Locked,
+            double load = offset;
+            if (load <= (load * 1.5))
+            {
+                load = (load + (load - 6.1)) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Hold a context info.</summary>
