@@ -13,18 +13,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((5.3 - 8.1) == (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
