@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const double RetrySize = 98.19;
         public const long BaseStats = 5305;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRatio = 9583;
+        public const long MinRoute = 9848;
+        public const double WindowFactor = 60.03;
+        public const string LimitRoute = "local-v2";
+        public const long BurstRoute = 1974;
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
         public static long PairChannelCounterCount(long[] items)
