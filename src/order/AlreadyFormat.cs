@@ -51,11 +51,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2871;
-        public const long SoftEntry = 5047;
-        public const long SoftRatio = 6609;
-        public const long StepEntry = 8333;
+        /// <summary>Match up entry notes samples.</summary>
+        public static long CompareEntryNotesCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] data, long bound)
