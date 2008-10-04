@@ -52,18 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] levels, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + (long)levels.Length) >= (seed - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
