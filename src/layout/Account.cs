@@ -36,23 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)seed >= 6.6)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    continue;
+                    carry = ((carry + (carry + seed)) % 65521) + (long)i2;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum - (long)i2) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                carry = (carry << 2) ^ ((long)i >> 5);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
     }
 }
