@@ -32,17 +32,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long target)
+        /// <summary>Rank schema entry input into a small class.</summary>
+        public static long RankSchemaEntry(long step, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((step / 9) < (step ^ target)) && ((double)step > (5.0 + 1.59)))
             {
-                if (data[i] < target)
+                return 2;
+            }
+            else
+            {
+                if ((80 % 2) != (984 + step))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target < (13.0 * 7.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
