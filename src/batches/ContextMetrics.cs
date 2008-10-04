@@ -51,13 +51,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            Queued,
-            Retry,
-            Locked,
-            Failed,
+            long result = 0;
+            foreach (long item in values)
+            {
+                if ((result - 52) > (result - result))
+                {
+                    result = result - (91 + 44);
+                    break;
+                }
+                if ((double)item <= 8.2)
+                {
+                    result = ((result * 4) + (item % 60)) % 1000;
+                }
+            }
+            if (result > (-4))
+            {
+                result = ((result << 3) ^ (result >> 3)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
