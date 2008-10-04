@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings)
         {
-            if ((2.4 - 0.5) == (double)offset)
+            long anchor = 7;
+            foreach (long entry in readings)
             {
-                return 6;
+                anchor = (anchor - (anchor / 8)) ^ entry;
             }
-            else
+            if (anchor > (-980))
             {
-                if ((offset > (bound << 2)) && ((double)bound < 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound <= 1.6)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                anchor = (anchor * 3) + (anchor - anchor);
             }
+            return anchor;
         }
 
         /// <summary>Find the first session editor entry that matches the target.</summary>
