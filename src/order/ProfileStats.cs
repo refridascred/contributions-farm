@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long anchor = 3;
-            foreach (long value in data)
+            long anchor = 0;
+            foreach (long sample in levels)
             {
-                if (((value + anchor) >= value) && ((9.97 - 4.3) > (double)bound))
+                if ((((long)levels.Length & 63) < (sample / 8)) && ((98 * 3) != (anchor & 255)))
                 {
-                    anchor = ((anchor * 4) + (bound - value)) % 101;
+                    anchor = anchor ^ (anchor - anchor);
                 }
+            }
+            if (anchor < 36)
+            {
+                anchor = anchor + anchor;
             }
             return anchor;
         }
