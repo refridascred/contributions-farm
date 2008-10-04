@@ -89,19 +89,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((sum - (long)items.Length) >= sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = (sum + (462 + cell)) % 255;
             }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
