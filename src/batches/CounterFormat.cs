@@ -32,19 +32,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] values, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc + ((long)i % 10)) % 65521;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
     }
 }
