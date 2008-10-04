@@ -1,12 +1,6 @@
 {
-  "cache_interval_count": 10.86,
-  "contributi_threshold": "local",
-  "metric_size": {
-    "retry_retries": 43.9,
-    "soft_window_ms": 43.12,
-    "base_limit_ms": 8,
-    "min_ttl_count": true,
-    "hard_size": "standard"
-  },
-  "warm_depth_ms": false
+  "compress": ["staging", "open", "edge"],
+  "payload_capacity": "staging",
+  "retry_timeout_s": "edge",
+  "burst_depth_ms": true
 }
