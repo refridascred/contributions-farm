@@ -32,11 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double ratio, double bias)
+        /// <summary>Derive the next queue stream value from a seed.</summary>
+        public static long RollQueueStream(long target)
         {
-            double rate = (double)5 / 7.0;
-            return (rate + (8.0 - ratio)) + bias;
+            long state = target;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state - state) % 4096;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a command info.</summary>
