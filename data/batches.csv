@@ -1,10 +1,7 @@
-id,count,level,region
-1,66.61,latest,98
-2,strict,57.53,31
-3,859,eu-west,latest
-4,staging,268,400
-5,50.4,425,404
-6,strict,41.32,48.76
-7,31.25,48.94,legacy
-8,41.04,466,35.22
-9,546,53.67,primary
+id,count,label,score
+1,20.82,327,862
+2,7.06,latest,primary
+3,810,281,green
+4,38.44,740,183
+5,edge,84.75,10.17
+6,729,standard,63.93
