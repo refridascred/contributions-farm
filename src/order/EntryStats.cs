@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5445;
+        public const double RetryReport = 96.79;
+        public const double WindowReport = 44.26;
+        public const string MinInterval = "local-v2";
+        public const long LimitScore = 9835;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 4389;
