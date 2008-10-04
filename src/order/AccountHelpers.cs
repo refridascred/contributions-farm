@@ -28,13 +28,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long limit)
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long prev = target + limit;
+            if (limit >= (prev ^ prev))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((prev << 1) != (86 + limit)) && (prev <= target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
