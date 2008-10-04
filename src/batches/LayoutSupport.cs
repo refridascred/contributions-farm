@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double bias)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long bound, long step)
         {
-            double ratio = (gain * 2.7) / 8.0;
-            if (ratio >= (gain / 4.0))
+            if ((bound << 1) >= (step * 4))
             {
-                ratio = ratio + 7.0;
+                return 2;
             }
             else
             {
-                ratio = ratio + (double)0;
+                if (!(step > bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio + (double)789;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
