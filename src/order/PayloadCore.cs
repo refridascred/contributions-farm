@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != floor)
+                if (origin >= (-637))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 2) + (origin / 9)) % 101;
                 }
+                if ((11.0 * 7.0) <= (double)carry)
+                {
+                    carry = (carry ^ (carry << 1)) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ ((long)i << 1)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
