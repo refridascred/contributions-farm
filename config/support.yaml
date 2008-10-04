@@ -1,8 +1,4 @@
 # support settings
-warm_limit_ms:
-  already_ttl: staging
-  context_interval: true
-  soft_ttl_ms: cached
-notes_size: local
-max_window: eu-west
-max_window_ms: 97.25
+graph_retries: 30
+account_size: local
+retry_depth_pct: 7771
