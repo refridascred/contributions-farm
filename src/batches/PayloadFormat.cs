@@ -18,11 +18,13 @@ namespace Common.Utilities
         public const string HardRatio = "strict-edge";
         public const double HardCache = 89.45;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            Idle,
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Digest a series of order entries.</summary>
