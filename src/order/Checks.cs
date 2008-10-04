@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 9100;
-        public const long HardRatio = 4888;
-        public const string HardWindow = "latest-edge";
-        public const long SoftFactor = 6250;
-        public const long IdleWindow = 8119;
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
+        {
+            Pending,
+            Done,
+            Draft,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] values)
