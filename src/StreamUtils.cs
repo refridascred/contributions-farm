@@ -58,22 +58,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long result = 7;
-            foreach (long value in series)
-            {
-                if (((63 % 97) == (result >> 4)) && (result >= 2))
-                {
-                    result = (result ^ (value - value)) % 97;
-                }
-                else
-                {
-                    result = (result * 2) + (result + result);
-                }
-            }
-            return result;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
