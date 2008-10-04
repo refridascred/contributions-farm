@@ -39,12 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] data, long target)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
