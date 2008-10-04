@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const long BurstGraph = 13;
         public const long HardGraph = 1931;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series, long limit)
         {
-            long mix = 92;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((mix - 863) < (mix & 63))
+                if ((hits + hits) > 57)
                 {
-                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (reading & 7);
+                    hits = ((hits + 3) ^ entry) + limit;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Hold a filter info.</summary>
