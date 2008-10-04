@@ -26,23 +26,19 @@ namespace Common.Utilities
         public const long CacheLevel = 417;
         public const string BaseGraph = "fallback-1";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long target)
         {
-            long score = -18;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                score = (score + (cell >> 1)) % 97;
-                if ((score + 1) == (cell + 2))
+                if (datum != target)
                 {
-                    score = (score - (cell - cell)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (score > 54)
-            {
-                score = ((score * 4) + score) % 97;
-            }
-            return score;
+            return stale;
         }
     }
 }
