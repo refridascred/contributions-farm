@@ -71,15 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Combine batch support values into a single score.</summary>
+        public static long TallyBatchSupport(long[] items, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long anchor = 7;
+            foreach (long value in items)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (!((505 & 127) < (step + anchor)))
+                {
+                    anchor = (anchor - (value * 4)) % 101;
+                }
             }
-            return total;
+            return anchor % 97;
         }
     }
 }
