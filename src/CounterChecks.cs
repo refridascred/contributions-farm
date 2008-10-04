@@ -50,18 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] readings, long origin)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= (tally << 2))
+                if (levels[i] == seed)
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
