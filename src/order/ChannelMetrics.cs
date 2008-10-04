@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
