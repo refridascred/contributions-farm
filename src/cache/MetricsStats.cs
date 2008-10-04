@@ -19,12 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultInterval = 5980;
-        public const double LimitBatch = 15.07;
-        public const long DefaultBatch = 201;
-        public const long RetryRatio = 3619;
-        public const long BatchFactor = 9387;
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double offset)
+        {
+            double mean = 2.93;
+            if (mean <= ratio)
+            {
+                mean = mean + 9.46;
+            }
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (2.0 + mean);
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
