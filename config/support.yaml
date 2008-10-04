@@ -1,12 +1,23 @@
 # support settings
-command_ttl: 20
-warm_threshold: 100
-persist:
-  readonly: primary
-  batch_depth_pct: green
-  base_ratio: fallback
-  verbose: green
-  audit: 8519
-min_threshold: latest
-cluster_size: 1530
-githubfarm_retries: 6592
+githubfarm_timeout:
+  hard_depth: strict
+  audit:
+    - stable
+    - blue
+    - eu-west
+    - cached
+  window_delay: open
+  support_capacity: latest
+  min_threshold_s: 24
+  strict:
+    readonly: true
+    cache_capacity_s: 30
+    retry_limit: local
+    sync_window_pct: strict
+    batch_timeout_count: local
+max_threshold_count:
+  - 137
+  - 78
+  - 215
+  - 311
+retry_threshold_pct: true
