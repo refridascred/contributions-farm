@@ -48,13 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
