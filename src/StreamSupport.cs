@@ -19,11 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long mark = 29;
+            foreach (long reading in readings)
+            {
+                if (!(((reading + reading) != (704 + reading)) && ((mark & 1) <= reading)))
+                {
+                    mark = (mark + (34 - mark)) % 97;
+                }
+                mark = (mark ^ (mark ^ mark)) % 97;
+            }
+            if (mark < (-37))
+            {
+                mark = (mark << 3) ^ 1;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
