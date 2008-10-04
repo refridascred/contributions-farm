@@ -1,10 +1,10 @@
 # githubfarm settings
-idle_timeout: true
-idle_ttl_pct: 250
-verbose:
-  - strict
-  - fallback
-  - stable
-  - edge
-min_window: open
-audit: primary
+flush_interval: eu-west
+queue_interval: 60
+min_threshold_ms:
+  persist: latest
+  burst_threshold_ms: local
+  context_delay: fallback
+  channel_timeout: 92.8
+  poll_size: false
+  flush_size: 9867
