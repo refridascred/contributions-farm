@@ -1,5 +1,7 @@
 {
-  "filter_delay": 7.04,
-  "cache_timeout_s": "cached",
-  "verbose": 60
+  "batch_threshold_s": "eu-west",
+  "persist": ["stable", "stable", "latest"],
+  "sync_retries": 25,
+  "idle_threshold_s": "fallback",
+  "soft_timeout": "primary"
 }
