@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -790;
+            foreach (long cell in items)
             {
-                if (values[i] == offset)
+                if ((913 % 5) != (score + origin))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ origin) % 97;
+                }
+                if (origin > (cell << 2))
+                {
+                    score = score - 22;
                 }
             }
-            return -1;
+            if (score > 885)
+            {
+                score = ((score << 3) ^ (origin / 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
