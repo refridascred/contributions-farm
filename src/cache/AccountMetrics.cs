@@ -31,24 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                acc = (acc * 4) + (step + (long)i);
-                if (!(acc < (step >> 2)))
+                if ((double)item != (6.1 + 7.9))
                 {
-                    acc = acc + (acc + acc);
+                    tally = tally + 1;
                 }
                 else
                 {
-                    acc = (acc << 3) ^ (step + step);
+                    tally = tally - 1;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
