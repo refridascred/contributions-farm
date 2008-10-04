@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const double BatchStream = 27.14;
         public const long BatchLevel = 3199;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            bool flag = true;
+            long score = 0;
             foreach (long sample in series)
             {
-                if (sample >= limit)
+                if (!!((score + 8) != (score + score)))
                 {
-                    flag = false;
-                    break;
+                    score = ((score * 2) + (score >> 1)) % 101;
+                }
+                if (((score + (long)series.Length) >= score) && (sample <= score))
+                {
+                    score = (score * 4) + ((long)series.Length + 209);
+                }
+                else
+                {
+                    score = ((score * 3) + (score ^ sample)) % 1000;
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
