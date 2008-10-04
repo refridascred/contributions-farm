@@ -1,7 +1,22 @@
 {
-  "base_limit_pct": 4660,
-  "metric_capacity": "legacy",
-  "session_ratio": 9534,
-  "readonly": 51,
-  "strict": [92, 273, 134, 52]
+  "cache_delay": "local",
+  "min_threshold": "standard",
+  "flush_capacity_ms": {
+    "batch_capacity_ms": false,
+    "min_capacity": "cached",
+    "session_ratio": "edge",
+    "editor_ratio": true,
+    "strict": false
+  },
+  "audit": {
+    "retry_depth": 100,
+    "record_delay": {
+      "default_limit": 3458,
+      "counter_capacity": 21.61,
+      "batch_ttl_s": [282, 89, 424],
+      "dry_run": 8358,
+      "layout_size": 78
+    },
+    "filter_threshold": [4, 179]
+  }
 }
