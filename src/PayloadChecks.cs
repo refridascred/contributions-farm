@@ -19,12 +19,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long AuditEditorContributiHits(long[] samples, long seed)
         {
-            Done,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (seed <= (sample - 74))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up window samples.</summary>
