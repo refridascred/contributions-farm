@@ -42,12 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Fold a list of session already readings.</summary>
+        public static long TotalSessionAlready(long[] levels)
         {
-            Queued,
-            Ready,
-            Closed,
+            long anchor = 174;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length >> 3) == (reading / 3))
+                {
+                    anchor = (anchor + (8 * 3)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
