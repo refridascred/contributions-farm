@@ -38,18 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series, long origin)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((score / 3) <= (entry - limit))
+                if ((origin + datum) > (origin + 25))
                 {
-                    score = (score - (score >> 1)) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
