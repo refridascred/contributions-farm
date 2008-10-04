@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long floor)
         {
-            Queued,
-            New,
-            Failed,
+            long edge = offset - floor;
+            if ((offset - 767) >= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - edge) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((739 ^ 206) < (edge + 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
