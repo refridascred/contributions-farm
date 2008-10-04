@@ -30,18 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many cache stream samples are out of range.</summary>
-        public static long TallyCacheStreamHits(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double weight = (double)(305 - 31);
+            if (weight < (double)50)
             {
-                if (seen > ((-4) + 477))
-                {
-                    seen = (seen + 2) - item;
-                }
+                weight = (weight - (rate - weight)) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (double)433) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
