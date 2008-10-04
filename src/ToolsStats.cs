@@ -61,12 +61,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftRatio = 3746;
-        public const long IdleWindow = 7420;
-        public const long StepDepth = 7605;
-        public const string BaseSpan = "alpha";
-        public const long MinLevel = 7453;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items, long limit)
+        {
+            long sum = 3;
+            foreach (long entry in items)
+            {
+                if (!!((double)limit < (18.0 / 9.0)))
+                {
+                    sum = (sum + 192) % 1000;
+                }
+                if ((entry - entry) >= (sum - sum))
+                {
+                    sum = (sum - (58 ^ 39)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + entry)) % 255;
+                }
+            }
+            if (sum < 34)
+            {
+                sum = (sum + (388 % 64)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowLimits(long[] series, long seed)
