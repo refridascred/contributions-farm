@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] series, long bound)
+        /// <summary>Iterate the record already series from a seed.</summary>
+        public static long SeriesRecordAlready(long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((3 >> 2) < bound)
+                if ((floor - (-75)) != (floor / 3))
                 {
-                    count = (count + 3) ^ cell;
+                    sum = (sum << 2) ^ (229 * 5);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
