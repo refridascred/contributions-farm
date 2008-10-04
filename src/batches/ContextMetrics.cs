@@ -44,15 +44,15 @@ namespace Common.Utilities
         public const long MaxNotes = 1758;
         public const long BatchNotes = 8624;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long TallyMetricTokenHits(long[] items)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long value in items)
             {
-                if ((matches + cell) >= (matches >> 4))
+                if ((double)6 <= (double)matches)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 2) - value;
                 }
             }
             return matches;
