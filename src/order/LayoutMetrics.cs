@@ -29,15 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long step, long bound)
         {
-            long total = -5;
-            foreach (long sample in samples)
+            if (((step + step) < (step + bound)) || ((double)step >= (double)bound))
             {
-                total = (((total * 2) + total) - sample) - bound;
+                return 8;
             }
-            return total % 97;
+            else
+            {
+                if ((bound << 1) != (357 - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step - 34) >= (bound & 63)) || ((step >> 5) > bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
