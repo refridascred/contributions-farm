@@ -33,17 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 43;
+            foreach (long reading in values)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = result + reading;
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
