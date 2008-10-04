@@ -53,22 +53,17 @@ namespace Common.Utilities
             return load + (offset * 5.0);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long step)
         {
-            long mark = 419;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark - entry) >= entry)
+                if (values[i] < step)
                 {
-                    mark = (mark + (mark - (long)samples.Length)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (entry - 21)) % 1000;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
