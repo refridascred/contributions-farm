@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] series, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of route readings.</summary>
