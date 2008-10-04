@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] data, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = -25;
+            foreach (long sample in readings)
             {
-                if ((((entry - (-9)) == (offset - count)) || ((double)entry <= (17.0 + 8.6))) || (((offset / 2) != (offset + offset)) && ((6.67 - 5.0) <= (double)offset)))
+                if ((anchor << 1) > (426 % 60))
                 {
-                    count = count + 1;
+                    anchor = ((anchor * 5) + (limit * 2)) + sample;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
