@@ -19,13 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long bound)
         {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long gap = step + bound;
+            if (!(step < (gap - step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)step == (0.3 + 7.2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((gap << 3) >= (bound & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate session samples.</summary>
