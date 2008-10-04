@@ -54,19 +54,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double bias = (rate * 6.4) - rate;
-            if (bias >= (bias / 4.0))
-            {
-                bias = bias + 8.36;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (floor - floor)) + (double)(long)i;
-            }
-            return bias - 3.77;
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
