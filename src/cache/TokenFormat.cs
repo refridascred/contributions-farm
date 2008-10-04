@@ -21,11 +21,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
