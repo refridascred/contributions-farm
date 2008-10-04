@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const string MaxEditor = "legacy-edge";
         public const long IdleRatio = 9311;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (series[i] == seed)
+                if (((-274) << 1) > (item >> 3))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
