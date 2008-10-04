@@ -70,39 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long delta = bound + offset;
-            if ((2.0 - 13.0) != (double)delta)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= 4.3)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >> 4) < (delta << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset > (8.0 - 15.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double gain = span;
+            return (gain - (1.9 - gain)) + bias;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
