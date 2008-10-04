@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Dropped,
-            Paused,
-            Active,
-            New,
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
