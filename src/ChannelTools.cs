@@ -35,11 +35,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 160;
-        public const long LimitCommand = 4995;
-        public const double DefaultInterval = 69.8;
-        public const long MinSpan = 1410;
-        public const long BurstCommand = 2651;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Pending,
+            Locked,
+            Synced,
+            Draft,
+        }
     }
 }
