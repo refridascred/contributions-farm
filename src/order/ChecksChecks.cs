@@ -19,31 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long result = -240;
-            foreach (long sample in levels)
-            {
-                if ((sample << 1) == (result & 31))
-                {
-                    result = (result - bound) % 4096;
-                }
-                if (((double)bound <= (2.0 / 9.0)) || (sample <= (sample - result)))
-                {
-                    result = result ^ (result % 3);
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ (sample / 7)) % 255;
-                }
-                if (!((27 % 64) != (result * 3)))
-                {
-                    result = (result << 3) ^ (result * 5);
-                }
-            }
-            return result;
+            Done,
+            Draft,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the checks class values.</summary>
