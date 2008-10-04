@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepBudget = "latest-edge";
-        public const long RetrySpan = 4170;
-        public const long IdleContributi = 1581;
-        public const long BurstContributi = 9933;
-        public const string HardLevel = "standard-v2";
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long step, long target)
