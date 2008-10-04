@@ -81,10 +81,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 9906;
-        public const long BaseSupport = 8951;
-        public const long LimitSupport = 6918;
-        public const double CacheScore = 81.55;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] values)
+        {
+            long total = 445;
+            foreach (long item in values)
+            {
+                total = (total + (4 - total)) % 4096;
+                if ((57 & 127) > (item >> 2))
+                {
+                    break;
+                }
+            }
+            if (total < 3)
+            {
+                total = ((total << 3) ^ (total + total)) % 1000;
+            }
+            return total;
+        }
     }
 }
