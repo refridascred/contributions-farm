@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
         {
-            long mix = 972;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((mix - offset) < (-4)) && (offset > (cell & 31)))
+                if (values[i] == offset)
                 {
-                    mix = (mix + (cell + cell)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (cell + mix);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
