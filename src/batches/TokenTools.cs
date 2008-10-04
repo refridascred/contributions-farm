@@ -13,21 +13,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up command graph samples.</summary>
-        public static long OverlapCommandGraphCount(long[] levels)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)18 != (double)seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound - seed) <= (bound + bound))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
