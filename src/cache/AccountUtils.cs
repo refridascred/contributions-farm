@@ -27,19 +27,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double gain = rate * 3.73;
-            if (gain <= (gain - floor))
-            {
-                gain = gain + (gain / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain - rate;
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
