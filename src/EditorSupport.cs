@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] levels, long target)
         {
-            Queued,
-            Active,
-            Dropped,
-            New,
-            Retry,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
