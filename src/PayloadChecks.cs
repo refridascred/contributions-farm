@@ -19,18 +19,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long AuditEditorContributiHits(long[] samples, long seed)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long total = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (seed <= (sample - 74))
-                {
-                    hits = hits + 3;
-                }
+                total = (total + (903 & 31)) % 255;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the counter class values.</summary>
