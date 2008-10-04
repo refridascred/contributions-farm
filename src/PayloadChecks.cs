@@ -48,10 +48,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6765;
-        public const long IdleFarm = 5510;
-        public const long DefaultFarm = 2926;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "latest-v2";
+        public const long MinWindow = 3074;
+        public const string MaxWindow = "latest-1";
+        public const string LimitWindow = "staging-v2";
+        public const string HardWindow = "legacy-v2";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesGaps(long[] data)
