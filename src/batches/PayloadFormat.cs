@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const string HardRatio = "strict-edge";
         public const double HardCache = 89.45;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepFactor = "strict-edge";
-        public const double RetryCounter = 6.88;
-        public const long BurstSize = 4584;
-        public const long MaxCounter = 8477;
-        public const double StepScore = 90.35;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] samples, long floor)
