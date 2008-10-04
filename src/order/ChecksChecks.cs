@@ -22,13 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] readings)
         {
-            Idle,
-            Queued,
-            New,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
