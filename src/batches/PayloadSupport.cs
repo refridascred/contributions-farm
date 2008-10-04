@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] items, long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((2.8 - 2.23) != (double)origin)
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next graph channel value.</summary>
