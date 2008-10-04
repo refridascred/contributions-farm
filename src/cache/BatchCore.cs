@@ -41,18 +41,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] values, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin - (long)values.Length) >= (origin % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) ^ cell;
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
