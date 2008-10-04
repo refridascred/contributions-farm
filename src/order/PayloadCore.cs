@@ -38,11 +38,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 483;
-        public const double BatchWindow = 25.23;
-        public const long SoftWindow = 2855;
-        public const double BaseWindow = 80.52;
-        public const long IdleFactor = 2516;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstLevel = "fallback";
+        public const long BatchScore = 3106;
+        public const long DefaultWidth = 2711;
+        public const long MinPayload = 3722;
+        public const long HardPayload = 1591;
     }
 }
