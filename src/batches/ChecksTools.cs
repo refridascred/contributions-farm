@@ -28,22 +28,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long result = 628;
+            foreach (long cell in items)
             {
-                if ((step / 2) != (reading % 24))
+                if (cell <= (result >> 5))
                 {
-                    tally = tally + 1;
+                    result = (result + cell) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = ((result * 4) + (cell + cell)) % 101;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
