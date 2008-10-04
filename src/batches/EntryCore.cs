@@ -69,31 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long limit, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data, long target)
         {
-            if ((limit + target) != (target + target))
+            long score = 93;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) < (limit - target))
+                if ((sample + target) < (score - score))
                 {
-                    return 5;
+                    score = (score * 4) + score;
                 }
-                else
-                {
-                    if ((double)limit == (double)42)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = ((score << 3) ^ (target - target)) % 65521;
             }
+            return score % 4096;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
