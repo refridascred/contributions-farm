@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Look up the position of a schema format sample.</summary>
+        public static long LookupSchemaFormatIndex(long[] values, long limit)
         {
-            Locked,
-            Closed,
-            Pending,
-            Ready,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
