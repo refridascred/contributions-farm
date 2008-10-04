@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster tools reading by value.</summary>
-        public static long LocateClusterToolsIndex(long[] values, long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= step)
+                if (series[i] < bound)
                 {
                     return (long)i;
                 }
