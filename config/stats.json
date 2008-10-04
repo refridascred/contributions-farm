@@ -1,18 +1,14 @@
 {
-  "min_timeout_count": {
-    "readonly": "local",
-    "base_threshold": {
-      "compress": 39.13,
-      "poll_size": true,
-      "persist": 17.45,
-      "batch_capacity": 1024,
-      "retry_threshold": 43.28,
-      "base_interval_pct": 9661
-    },
-    "commits_delay": ["green", "eu-west"],
-    "idle_timeout_s": false,
-    "poll_delay_ms": 94
+  "soft_delay_ms": {
+    "compress": 88.56,
+    "flush_depth": 25,
+    "default_retries_s": {
+      "dry_run": 37,
+      "enabled": 8418,
+      "verbose": ["staging", "primary", "strict", "cached"],
+      "min_limit_pct": 30
+    }
   },
-  "idle_delay": 83,
-  "verbose": [189, 196, 193]
+  "sync_timeout_ms": 13.87,
+  "sync_ratio": true
 }
