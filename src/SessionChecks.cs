@@ -49,12 +49,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = carry + (step ^ carry);
+                if (!(((long)i ^ carry) >= (step - carry)))
+                {
+                    carry = (carry ^ step) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
