@@ -27,20 +27,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long carry = 79;
+            foreach (long reading in levels)
             {
-                long cur = ((long)i << 1) >> 2;
-                if (((498 - 90) < (cur + 4)) && ((sum + target) <= sum))
+                if (!(1 < (reading - 4)))
                 {
-                    cur = ((cur * 2) + (long)i) % 255;
+                    carry = carry ^ (-26);
+                    continue;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                carry = ((carry * 2) + (carry ^ reading)) % 4096;
             }
-            return sum;
+            if (carry < 46)
+            {
+                carry = (carry << 3) ^ (carry & 127);
+            }
+            return carry % 97;
         }
     }
 }
