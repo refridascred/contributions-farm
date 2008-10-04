@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = 5;
+            foreach (long value in series)
             {
-                if (seen < (value ^ 872))
+                if ((96 >> 4) <= carry)
                 {
-                    seen = seen + 3;
+                    carry = carry ^ value;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
