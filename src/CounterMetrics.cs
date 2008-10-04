@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record schema entry stays within the limit.</summary>
-        public static bool ValidateRecordSchemaBounds(long[] values, long bound)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double scale = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = ((scale - (scale - scale)) + (double)(long)i) - gain;
             }
-            return ready;
+            return scale + (double)951;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
