@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 1560;
-        public const long BurstTools = 5200;
-        public const long MaxDepth = 4039;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Done,
+            Pending,
+            Stale,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long bound)
