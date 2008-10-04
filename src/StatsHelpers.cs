@@ -50,18 +50,39 @@ namespace Common.Utilities
         public const string CacheFactor = "legacy-v2";
         public const long WindowLevel = 1781;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long delta = origin - origin2;
+            if (!((origin2 & 31) <= delta))
             {
-                if ((tally + (-4)) == (entry << 2))
+                return 2;
+            }
+            else
+            {
+                if ((origin2 * 4) == (origin * 2))
                 {
-                    tally = (tally + 1) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((delta + origin2) == (origin + delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 3) <= (delta + 76))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
