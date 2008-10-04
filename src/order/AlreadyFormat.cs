@@ -85,10 +85,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchWidth = 7446;
-        public const long LimitMetric = 6351;
-        public const long MinTimeout = 6891;
-        public const string HardMetric = "strict-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
