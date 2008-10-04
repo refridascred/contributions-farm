@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((5.7 - 3.9) < (double)origin)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
