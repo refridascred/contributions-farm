@@ -34,20 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix & 31) > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    long hits = (target + 10) * 4;
-                    mix = (mix - (hits ^ 689)) % 97;
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
