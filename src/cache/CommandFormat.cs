@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseRatio = "alpha";
-        public const string StepBatches = "open-edge";
-        public const long MaxBatches = 2363;
+        /// <summary>Audit payload queue readings against a rule.</summary>
+        public static long AuditPayloadQueueMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!((seen <= (sample << 1)) && ((double)(long)samples.Length < (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
