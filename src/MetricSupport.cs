@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double bias)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            double load = (double)(9 + 2);
-            if (load < load)
-            {
-                load = (load + gain) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 9.42) + (double)(long)i;
-            }
-            return load + (double)15;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
