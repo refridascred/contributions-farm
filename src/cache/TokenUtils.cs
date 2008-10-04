@@ -14,10 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSpan = 6938;
-        public const string RetrySupport = "latest-1";
-        public const long CacheDepth = 6352;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
