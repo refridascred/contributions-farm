@@ -1,12 +1,12 @@
 {
-  "base_retries": {
-    "readonly": 100,
-    "sync_interval_pct": 500,
-    "metrics_limit": 1.71,
-    "audit": 6831,
-    "filter_ttl": 75
-  },
-  "sync_size_count": 77.12,
-  "entry_threshold": "green",
-  "queue_depth": "latest"
+  "warm_ttl_ms": "blue",
+  "format_limit": 250,
+  "verbose": 2425,
+  "default_ttl_count": 500,
+  "readonly": {
+    "compress": 785,
+    "dry_run": "stable",
+    "burst_capacity": "blue",
+    "cache_interval": 39.93
+  }
 }
