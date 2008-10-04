@@ -28,13 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] values, long seed)
         {
-            Closed,
-            Queued,
-            Draft,
-            New,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
