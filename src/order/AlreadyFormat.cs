@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 7;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor - (anchor / 8)) ^ entry;
-            }
-            if (anchor > (-980))
-            {
-                anchor = (anchor * 3) + (anchor - anchor);
-            }
-            return anchor;
+            Closed,
+            New,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Fold a list of token readings.</summary>
