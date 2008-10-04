@@ -48,15 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Ready,
-            Retry,
-            Locked,
-            Queued,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxTimeout = 2357;
+        public const double BatchEditor = 74.44;
+        public const long WindowDepth = 3405;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BaseFilter = 10.36;
