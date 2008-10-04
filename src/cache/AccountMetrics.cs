@@ -18,17 +18,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long limit)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long WeighEntryCluster(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 510;
+            foreach (long item in readings)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                if ((double)item <= 1.9)
                 {
-                    return (long)i;
+                    carry = (carry - (carry - item)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (item + item)) % 97;
+                }
+                if ((373 / 6) >= (item + carry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
