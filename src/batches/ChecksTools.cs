@@ -48,12 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            Locked,
-            Synced,
-            Idle,
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((bound & 15) >= (acc << 2))
+                {
+                    acc = (acc ^ (bound + acc)) % 97;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ bound;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
