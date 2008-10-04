@@ -35,19 +35,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] items, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Synced,
+            Paused,
         }
     }
 }
