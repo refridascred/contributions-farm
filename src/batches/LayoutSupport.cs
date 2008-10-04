@@ -46,22 +46,17 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long limit)
         {
-            long mark = 3;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sample >= (sample + mark)))
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
                 {
-                    mark = ((mark * 3) + (mark & 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark > 613)
-            {
-                mark = (mark << 2) ^ (mark >> 5);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
