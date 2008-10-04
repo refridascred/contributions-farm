@@ -16,23 +16,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] levels, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long anchor = -67;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                anchor = anchor - (588 - entry);
+                if (origin > (origin + entry))
                 {
-                    total = ((total - (total + (-14))) % 97) ^ (long)i2;
+                    anchor = (anchor << 3) ^ (origin - entry);
                 }
-                if ((total ^ 6) <= (total - step))
-                {
-                    total = (total + (long)i) % 255;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (anchor < 7)
+            {
+                anchor = (anchor - (origin % 24)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
