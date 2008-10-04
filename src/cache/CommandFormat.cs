@@ -33,17 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (items[i] == limit)
+                if (!((double)value <= (9.1 * 3.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
