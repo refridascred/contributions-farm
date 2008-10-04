@@ -45,18 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (21 >= (limit + limit))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
