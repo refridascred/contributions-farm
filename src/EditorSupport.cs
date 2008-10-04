@@ -57,22 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter buffer readings against a rule.</summary>
-        public static long CountCounterBufferOutliers(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!!(bound > (count << 1)))
-                {
-                    count = (count + 3) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 1066;
+        public const double DefaultCount = 38.94;
+        public const double RetryBatch = 60.83;
+        public const long BaseBudget = 6850;
+        public const long CacheSize = 4872;
     }
 }
