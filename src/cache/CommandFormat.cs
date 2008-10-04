@@ -41,24 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long seed, long origin)
-        {
-            if ((double)origin == (4.62 * 5.1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((7.9 - 4.5) >= (double)origin) || ((origin ^ origin) == (origin - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleLevel = 5308;
+        public const double SoftFormat = 17.99;
+        public const double StepInterval = 33.96;
+        public const long CacheInterval = 2286;
+        public const long MaxLevel = 8690;
     }
 }
