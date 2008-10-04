@@ -19,16 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
-            long sum = 795;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum + (sum + sum)) % 255) + origin;
-                sum = (sum ^ (datum >> 2)) % 4096;
+                if (335 <= item)
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
