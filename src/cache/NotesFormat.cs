@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
