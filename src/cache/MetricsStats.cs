@@ -27,17 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state * 4) + origin;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstInterval = 1613;
+        public const double LimitAlready = 49.15;
+        public const double BurstAlready = 62.68;
+        public const double DefaultSize = 33.57;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
