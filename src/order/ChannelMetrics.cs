@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double rate, double span)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double weight = rate + (span / 5.0);
-            if (weight >= (weight * 12.0))
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + span;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
