@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
