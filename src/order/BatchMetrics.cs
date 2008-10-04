@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank command batch input into a small class.</summary>
+        public static long GradeCommandBatch(long seed, long limit)
         {
-            Idle,
-            Pending,
-            Draft,
-            Failed,
-            New,
+            if (limit < (seed ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed < (limit + limit)) || ((double)seed >= 8.3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
