@@ -36,27 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((anchor + anchor) == (limit % 3)) || ((limit >> 1) < (limit >> 2)))
-                {
-                    anchor = anchor - (limit - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ limit) % 1000;
-                }
-                if (((long)i - anchor) <= (long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of order entries.</summary>
