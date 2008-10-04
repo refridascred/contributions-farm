@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 5901;
-        public const long IdleFarm = 8469;
-        public const double WindowFarm = 39.29;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] samples)
+        {
+            long mix = 321;
+            foreach (long item in samples)
+            {
+                mix = ((mix * 4) + item) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFactor = 70.67;
