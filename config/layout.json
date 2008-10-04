@@ -1,5 +1,20 @@
 {
-  "filter_limit": 94.39,
-  "min_limit": true,
-  "persist": 86.86
+  "max_delay": 47,
+  "account_timeout": {
+    "warm_capacity": "fallback",
+    "strict": ["primary", "cached", "primary"],
+    "poll_limit_pct": 17,
+    "retry_size_count": "blue",
+    "burst_depth": ["blue", "edge"],
+    "filter_ttl": 55.47
+  },
+  "soft_ratio_ms": ["stable", "stable"],
+  "dry_run": {
+    "audit": "open",
+    "max_limit": [358, 235, 205],
+    "batch_window": 250,
+    "profile_depth": [354, 393, 396, 415],
+    "persist": [123, 116],
+    "schema_window": 38.06
+  }
 }
