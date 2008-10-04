@@ -81,18 +81,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen + seen) != ((-845) + entry))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
