@@ -75,12 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Derive the next cluster channel value from a seed.</summary>
+        public static long StepClusterChannel(long bound)
         {
-            Closed,
-            Draft,
-            Queued,
+            long result = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 5) + (long)i) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result * 3) + bound) + (long)i2;
+                    result = (result - bound) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
