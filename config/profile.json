@@ -1,5 +1,15 @@
 {
-  "cluster_capacity": 53.41,
-  "strict": 95,
-  "burst_threshold_count": 63.38
+  "dry_run": 92.57,
+  "flush_capacity": 4525,
+  "verbose": true,
+  "burst_interval_s": {
+    "verbose": "open",
+    "sync_capacity": ["fallback", "edge"],
+    "min_delay_pct": {
+      "poll_ratio_pct": "staging",
+      "poll_delay_ms": 250,
+      "hard_capacity": "local"
+    }
+  },
+  "sync_window": 100
 }
