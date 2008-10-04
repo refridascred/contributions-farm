@@ -1,24 +1,7 @@
 {
-  "cache_retries_s": 31,
-  "payload_ratio": 86,
-  "flush_capacity_s": ["open", "eu-west", "local", "strict"],
-  "readonly": {
-    "default_retries_s": "latest",
-    "session_depth": {
-      "stream_ratio": 250,
-      "retry_ratio_s": "standard",
-      "verbose": 23.75
-    },
-    "persist": "green",
-    "default_delay_pct": {
-      "audit": 95,
-      "base_ratio": ["latest", "edge", "legacy"],
-      "retry_window_ms": 3798,
-      "idle_interval": "primary",
-      "contributi_size": [457, 424]
-    },
-    "idle_ttl": 0.81
-  },
-  "batch_depth": 500,
-  "record_delay": 82.99
+  "base_limit_pct": 4660,
+  "metric_capacity": "legacy",
+  "session_ratio": 9534,
+  "readonly": 51,
+  "strict": [92, 273, 134, 52]
 }
