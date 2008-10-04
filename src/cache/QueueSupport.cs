@@ -15,19 +15,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of token route entries.</summary>
-        public static long DigestTokenRoute(long[] values, long offset)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long bound, long target)
         {
-            long carry = 6;
-            foreach (long value in values)
+            long slot = bound - target;
+            if ((25 >= bound) || ((double)0 == (double)bound))
             {
-                if ((offset - 14) < (carry - value))
-                {
-                    carry = (carry << 3) ^ (value + offset);
-                }
-                carry = ((carry << 3) ^ (value - offset)) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((bound + slot) > slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
