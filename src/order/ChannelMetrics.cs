@@ -38,16 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a format editor counter forward.</summary>
-        public static long RollFormatEditor(long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix - (mix >> 5)) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
