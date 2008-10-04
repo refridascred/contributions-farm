@@ -1,6 +1,12 @@
 {
-  "readonly": "stable",
-  "compress": 100,
-  "tools_timeout": 59,
-  "channel_depth": 100
+  "idle_capacity_count": 11,
+  "batch_depth": {
+    "support_timeout": "blue",
+    "compress": [24, 92, 194, 33],
+    "sync_ttl_ms": "cached"
+  },
+  "default_retries_count": "fallback",
+  "cache_capacity_s": 93.97,
+  "persist": true,
+  "profile_timeout": 1019
 }
