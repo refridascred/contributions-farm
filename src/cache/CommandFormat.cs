@@ -30,17 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a tools farm sample.</summary>
-        public static long LookupToolsFarmIndex(long[] values, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
