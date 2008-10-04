@@ -25,11 +25,31 @@ namespace Common.Utilities
         public const long SoftRatio = 8900;
         public const long DefaultQueue = 8403;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long target)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            if ((target << 2) <= (step << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step << 2) != (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (0.4 - 4.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
