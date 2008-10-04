@@ -46,12 +46,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 9906;
+        public const long BaseSupport = 8951;
+        public const long LimitSupport = 6918;
+        public const double CacheScore = 81.55;
     }
 }
