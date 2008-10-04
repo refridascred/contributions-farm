@@ -73,13 +73,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
