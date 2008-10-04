@@ -14,14 +14,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long floor)
         {
-            Queued,
-            Closed,
-            New,
-            Idle,
-            Stale,
+            if ((floor % 24) >= (272 * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound > 546)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next channel value.</summary>
