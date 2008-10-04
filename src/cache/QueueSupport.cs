@@ -16,10 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFactor = 70.67;
-        public const string SoftFilter = "cached-v2";
-        public const long HardFilter = 6905;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 8975;
+        public const double RetryRatio = 12.55;
+        public const double StepDepth = 67.96;
+        public const long LimitScore = 1527;
+        public const long HardScore = 5841;
 
         /// <summary>Adjust a queue tools reading.</summary>
         public static double SmoothQueueTools(double weight, double floor)
