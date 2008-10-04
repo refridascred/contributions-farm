@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowTimeout = 3401;
-        public const double StepToken = 11.31;
-        public const double BurstToken = 32.14;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] samples, long target)
