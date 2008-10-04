@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "standard";
-        public const double WindowBudget = 98.08;
-        public const double RetrySpan = 2.54;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheInterval = 4425;
+        public const double WindowCache = 21.12;
+        public const long DefaultCache = 6452;
+        public const long SoftCache = 3203;
+        public const long MaxBudget = 4590;
 
         /// <summary>Adjust a record window reading.</summary>
         public static double AdjustRecordWindow(double bias, double offset)
