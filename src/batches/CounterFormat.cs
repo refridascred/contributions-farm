@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long floor)
+        /// <summary>Grade a batches layout value against two limits.</summary>
+        public static long RankBatchesLayout(long limit, long step)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            if ((double)(-67) != (double)limit)
             {
-                if (sample >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((6.61 - 19.0) >= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.17 + 5.42) == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the schema level values.</summary>
