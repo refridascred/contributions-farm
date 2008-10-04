@@ -1,6 +1,5 @@
 {
-  "entry_interval": "cached",
-  "default_retries_pct": [216, 495, 148],
-  "report_retries": "eu-west",
-  "hard_window_s": 6780
+  "filter_delay": 7.04,
+  "cache_timeout_s": "cached",
+  "verbose": 60
 }
