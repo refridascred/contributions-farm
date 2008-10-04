@@ -1,5 +1,7 @@
 {
-  "max_timeout_s": 1024,
-  "metrics_window": "green",
-  "persist": 2506
+  "strict": true,
+  "base_capacity_count": 3676,
+  "burst_window": [385, 255, 495, 225],
+  "batch_ttl_count": 98,
+  "stats_depth": false
 }
