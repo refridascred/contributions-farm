@@ -1,5 +1,6 @@
 {
-  "compress": 95,
-  "persist": 86.67,
-  "soft_size_count": 250
+  "default_interval_s": ["strict", "eu-west"],
+  "poll_capacity_count": "edge",
+  "format_delay": 0.86,
+  "enabled": [491, 1, 393]
 }
