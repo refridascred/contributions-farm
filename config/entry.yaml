@@ -1,5 +1,23 @@
 # entry settings
-order_delay: 100
-compress: 57.11
-readonly: false
-poll_timeout_s: cached
+warm_delay_ms: false
+min_capacity_count: 100
+base_ratio_ms: 7416
+min_limit_pct: 1279
+readonly:
+  soft_delay_s: eu-west
+  min_ratio_ms: true
+  compress: strict
+  strict: open
+  poll_capacity_count: 58.74
+  githubfarm_window:
+    sync_timeout: 5226
+    warm_window: cached
+    dry_run: fallback
+    warm_threshold_ms: 6348
+    base_delay:
+      - standard
+      - blue
+verbose:
+  - strict
+  - green
+  - primary
