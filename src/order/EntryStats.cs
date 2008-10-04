@@ -19,13 +19,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] data, long target)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((-98) <= (count * 3))
+                {
+                    count = ((count + 3) ^ entry) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
