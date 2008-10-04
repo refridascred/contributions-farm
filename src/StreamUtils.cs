@@ -60,10 +60,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 1.38;
-        public const long WindowAlready = 3303;
-        public const double MinAlready = 0.55;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series)
+        {
+            long state = 313;
+            foreach (long datum in series)
+            {
+                state = (state + (state >> 5)) + datum;
+                if ((7.5 + 8.36) < (8.0 / 5.0))
+                {
+                    break;
+                }
+            }
+            if (state > 216)
+            {
+                state = (state * 2) + (state >> 1);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
