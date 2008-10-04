@@ -39,26 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] items, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = 5;
-            foreach (long item in items)
-            {
-                if (!((item << 2) >= (item >> 4)))
-                {
-                    sum = ((sum << 3) ^ (item ^ item)) % 65521;
-                }
-                if (1 < sum)
-                {
-                    sum = (sum * 5) + (sum + step);
-                }
-                else
-                {
-                    sum = ((sum * 2) + (step + sum)) % 65521;
-                }
-            }
-            return sum;
+            Draft,
+            Paused,
+            Retry,
         }
     }
 }
