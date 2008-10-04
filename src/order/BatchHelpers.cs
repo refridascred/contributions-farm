@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Validate account notes readings against a bound.</summary>
