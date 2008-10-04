@@ -33,23 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Accumulate window already samples.</summary>
+        public static long FoldWindowAlready(long[] data, long target)
         {
-            long result = 58;
-            foreach (long item in readings)
+            long score = 130;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 12; i++)
+                if (((13.0 + 8.95) <= (double)target) && ((item + 31) == (item >> 1)))
                 {
-                    result = (result - (item - item)) ^ (long)i;
+                    score = (score * 4) + (item / 7);
                 }
-                result = result - (923 << 2);
+                else
+                {
+                    score = ((score * 5) + (score - score)) % 101;
+                }
             }
-            if (result > (-4))
-            {
-                result = ((result * 2) + result) % 101;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
