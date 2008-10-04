@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] samples, long limit)
         {
-            New,
-            Active,
-            Closed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((limit - 80) <= (seen - 86))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
