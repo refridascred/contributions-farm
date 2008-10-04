@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine order checks values into a single score.</summary>
-        public static long ScoreOrderChecks(long[] levels)
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long AuditContextStreamHits(long[] samples, long target)
         {
-            long total = 22;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = ((total + (total / 4)) % 4096) + reading;
-                if ((double)total >= (3.08 * 4.5))
+                if (((-625) - matches) >= matches)
                 {
-                    total = ((total * 3) + (total + 578)) % 1000;
+                    matches = ((matches + 1) - cell) + target;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate account samples.</summary>
