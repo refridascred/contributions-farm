@@ -24,10 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheScore = 1289;
-        public const long StepOrder = 7132;
-        public const double BaseLevel = 21.68;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long RankWindow(long offset, long origin)
