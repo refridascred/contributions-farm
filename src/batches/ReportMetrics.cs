@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitScore = 75.91;
-        public const long CacheFactor = 4307;
-        public const long StepSpan = 1791;
-        public const string RetryBuffer = "primary-1";
-        public const long CacheBuffer = 9412;
+        /// <summary>Audit batches counter readings against a rule.</summary>
+        public static long TallyBatchesCounterGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((cell + 2) != (long)samples.Length) && (((seen >> 2) < (cell ^ seen)) || ((2.71 / 9.0) > (double)seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BatchMetric = "alpha-v2";
