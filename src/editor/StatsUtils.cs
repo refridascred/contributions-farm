@@ -84,12 +84,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the booking phase values.</summary>
-        public enum BookingPhase
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] values)
         {
-            Dropped,
-            Closed,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
