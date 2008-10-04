@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Validate already metrics readings against a bound.</summary>
+        public static bool ValidateAlreadyMetricsBounds(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > floor)
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
