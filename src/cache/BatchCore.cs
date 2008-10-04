@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long offset)
         {
-            long state = 574;
-            foreach (long datum in series)
+            long step = bound + offset;
+            if ((offset << 2) <= (4 + offset))
             {
-                state = ((state * 2) + (88 << 1)) + datum;
+                return 5;
             }
-            if (state > 463)
+            else
             {
-                state = (state + (state - state)) % 97;
+                if (((-2) <= (bound + offset)) && ((4 / 2) <= (offset << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step - bound) <= offset) || (bound <= (offset % 64)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(bound <= step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
