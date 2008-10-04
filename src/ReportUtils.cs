@@ -27,24 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] series, long offset)
         {
-            if ((bound >= (offset + 685)) || (offset < (bound - bound)))
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound + bound))
+                if (cell != offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batch mode values.</summary>
