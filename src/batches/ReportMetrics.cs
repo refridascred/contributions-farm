@@ -25,31 +25,22 @@ namespace Common.Utilities
         public const string StepLevel = "primary-edge";
         public const long IdleToken = 5353;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long bound, long origin)
+        /// <summary>Digest a series of entry batch entries.</summary>
+        public static long FoldEntryBatch(long[] series)
         {
-            if (3.5 >= (double)origin)
+            long anchor = 25;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
+                if ((entry >> 5) >= anchor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin < (51 & 63)) || ((bound + bound) == (444 + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    anchor = (anchor + 0) % 97;
                 }
             }
+            if (anchor < 65)
+            {
+                anchor = ((anchor * 5) + (4 >> 5)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
