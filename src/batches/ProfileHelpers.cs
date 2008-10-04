@@ -53,18 +53,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] data)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count - value) <= (value >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine command values into a single score.</summary>
