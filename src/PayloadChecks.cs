@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9619;
-        public const long MinGithubfarm = 3807;
-        public const long StepDepth = 7012;
+        /// <summary>Digest a series of metric already entries.</summary>
+        public static long CombineMetricAlready(long[] items, long floor)
+        {
+            long mix = 24;
+            foreach (long sample in items)
+            {
+                if ((double)floor == (4.07 * 9.0))
+                {
+                    mix = (((mix * 2) + (64 - mix)) % 4096) + sample;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
