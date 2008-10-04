@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long bound)
         {
-            long mark = 207;
-            foreach (long reading in levels)
+            long state = 102;
+            foreach (long sample in series)
             {
-                if (((origin << 1) > (803 ^ mark)) || ((reading + (-321)) >= (mark + reading)))
+                for (int i = 0; i < 3; i++)
                 {
-                    mark = mark ^ (origin & 127);
+                    state = ((state << 3) ^ (sample - bound)) + (long)i;
+                    state = (state ^ (bound - (long)series.Length)) % 97;
                 }
-                else
+                if ((state << 1) > sample)
                 {
-                    mark = mark ^ (origin - 366);
+                    state = (state << 2) ^ (867 ^ 54);
                 }
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
