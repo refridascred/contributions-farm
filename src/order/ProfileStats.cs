@@ -54,21 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter metric pairs that satisfy a relation.</summary>
-        public static long PairCounterMetricCount(long[] levels)
+        /// <summary>Roll a context metrics counter forward.</summary>
+        public static long SeriesContextMetrics(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + result) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
     }
 }
