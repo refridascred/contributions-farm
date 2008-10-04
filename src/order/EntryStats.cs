@@ -45,9 +45,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultFactor = 6202;
-        public const string SoftBudget = "cached-1";
-        public const double BurstEditor = 30.34;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] readings, long origin)
+        {
+            long mix = 28;
+            foreach (long reading in readings)
+            {
+                mix = (mix + (reading + mix)) % 101;
+                mix = ((mix * 3) + (reading + origin)) % 1000;
+            }
+            return mix % 4096;
+        }
     }
 }
