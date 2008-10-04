@@ -37,17 +37,13 @@ namespace Common.Utilities
         public const long BurstFactor = 966;
         public const long BaseInterval = 9426;
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long DigestClusterSupport(long[] values)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long mix = 36;
-            foreach (long cell in values)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix * 4) + (235 + cell);
-                if ((cell << 3) != (cell + cell))
-                {
-                    mix = (mix ^ mix) % 97;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
             return mix;
         }
