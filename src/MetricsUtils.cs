@@ -42,18 +42,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of session already readings.</summary>
-        public static long TotalSessionAlready(long[] levels)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] readings, long floor)
         {
-            long anchor = 174;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length >> 3) == (reading / 3))
+                if (readings[i] >= floor)
                 {
-                    anchor = (anchor + (8 * 3)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
