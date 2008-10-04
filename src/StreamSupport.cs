@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long BaseMetrics = 2205;
         public const double BurstMetrics = 4.56;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
