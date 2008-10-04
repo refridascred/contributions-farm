@@ -45,15 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (item < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
