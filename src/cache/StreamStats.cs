@@ -23,19 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool ValidateQueueSupportLimits(long[] series, long step)
+        /// <summary>Find the first command record entry that matches the target.</summary>
+        public static long FindCommandRecordIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != step)
+                if (items[i] == offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
