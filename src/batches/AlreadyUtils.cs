@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double rate, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long offset, long origin)
         {
-            double gain = (double)610 - rate;
-            return gain - (offset / 8.0);
+            if ((offset / 2) != (origin + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + 80) <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
