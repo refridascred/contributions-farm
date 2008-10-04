@@ -35,10 +35,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSize = 2350;
-        public const string DefaultStream = "strict-v2";
-        public const string MaxStream = "alpha-1";
-        public const string BatchStream = "alpha-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardBudget = 4337;
+        public const double MinDepth = 31.53;
+        public const double IdleSchema = 34.1;
     }
 }
