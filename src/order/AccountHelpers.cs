@@ -63,11 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSize = "alpha-edge";
-        public const long DefaultCount = 9438;
-        public const long BatchCluster = 8162;
-        public const long SoftCluster = 3536;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Ready,
+            Pending,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] readings, long seed)
