@@ -1,5 +1,5 @@
 {
-  "burst_depth_ms": "blue",
-  "batch_window_s": false,
-  "channel_window": 7180
+  "compress": true,
+  "batch_window_ms": true,
+  "verbose": 91
 }
