@@ -28,18 +28,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] values, long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading * 2) > 2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - limit;
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
