@@ -60,20 +60,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double floor)
-        {
-            double scale = weight;
-            if (scale < (weight - scale))
-            {
-                scale = scale + 7.16;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 1.38;
+        public const long WindowAlready = 3303;
+        public const double MinAlready = 0.55;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
