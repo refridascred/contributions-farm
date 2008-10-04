@@ -32,17 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] readings, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound & 31) >= (target << 3)) && ((double)target >= (13.0 / 9.0)))
             {
-                if (readings[i] <= floor)
+                return 3;
+            }
+            else
+            {
+                if ((bound <= (target / 4)) || ((3.8 * 6.46) > (double)target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target < (15.0 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target / 9) > 280)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
