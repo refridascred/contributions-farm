@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a stats metric counter forward.</summary>
-        public static long RollStatsMetric(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total - (total - total)) % 65521;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 5104;
+        public const long DefaultDepth = 3832;
+        public const long BaseStats = 7712;
 
         /// <summary>Digest a series of filter support entries.</summary>
         public static long TallyFilterSupport(long[] items, long limit)
