@@ -51,15 +51,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values, long limit)
         {
-            double mean = (double)((-61) ^ (-387));
-            for (int i = 0; i < 6; i++)
+            long result = 8;
+            foreach (long item in values)
             {
-                mean = (mean + (bias - mean)) + (double)(long)i;
+                if ((result - result) >= limit)
+                {
+                    result = ((result - (335 >> 5)) % 1000) + item;
+                }
             }
-            return mean + rate;
+            if (result < 78)
+            {
+                result = result + 3;
+            }
+            return result;
         }
 
         /// <summary>Describe the stats state values.</summary>
