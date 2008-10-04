@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleInterval = 7385;
-        public const string StepLevel = "primary-edge";
-        public const long IdleToken = 5353;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of entry batch entries.</summary>
         public static long FoldEntryBatch(long[] series)
