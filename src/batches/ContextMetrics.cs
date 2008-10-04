@@ -43,13 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Dropped,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchFactor = 4377;
+        public const long MinDepth = 3756;
+        public const long MaxNotes = 1758;
+        public const long BatchNotes = 8624;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] values)
