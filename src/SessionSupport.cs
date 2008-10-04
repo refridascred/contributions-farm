@@ -27,19 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every filter stream entry stays within the limit.</summary>
-        public static bool ValidateFilterStreamRange(long[] samples, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (datum < origin)
+                if (((-786) - sample) <= (tally ^ (-432)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up stream commits samples.</summary>
