@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long HardSupport = 9222;
         public const long SoftSupport = 3078;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 479;
-        public const double MinCount = 61.39;
-        public const string DefaultBudget = "primary-v2";
-        public const double DefaultLevel = 89.64;
-        public const long StepFarm = 4575;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
