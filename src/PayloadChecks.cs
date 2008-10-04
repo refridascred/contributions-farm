@@ -35,11 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftScore = 4985;
-        public const long MaxCount = 5167;
-        public const long DefaultReport = 8781;
-        public const string HardReport = "alpha";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long WeighCounter(long[] values)
