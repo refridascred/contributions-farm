@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] levels, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long bound)
         {
-            long state = 59;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((((state * 2) + (124 * 2)) % 97) - item) - origin;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
