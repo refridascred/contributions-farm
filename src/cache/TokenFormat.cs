@@ -35,16 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a report support counter forward.</summary>
-        public static long StepReportSupport(long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result + ((long)i ^ seed)) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
