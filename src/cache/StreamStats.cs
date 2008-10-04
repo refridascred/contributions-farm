@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate stats stream samples.</summary>
-        public static long DigestStatsStream(long[] data, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mark = 327;
-            foreach (long datum in data)
-            {
-                mark = mark ^ floor;
-                if (datum > (401 % 16))
-                {
-                    mark = mark - (floor + (long)data.Length);
-                }
-            }
-            return mark;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
