@@ -75,21 +75,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Check that every cluster filter entry stays within the limit.</summary>
+        public static bool CheckClusterFilterRange(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != origin)
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
