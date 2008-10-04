@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
