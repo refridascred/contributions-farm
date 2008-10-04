@@ -31,23 +31,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of buffer command entries.</summary>
-        public static long TallyBufferCommand(long[] values, long step)
+        /// <summary>Accumulate account route samples.</summary>
+        public static long DigestAccountRoute(long[] samples)
         {
-            long carry = -630;
-            foreach (long value in values)
+            long state = 98;
+            foreach (long entry in samples)
             {
-                carry = (carry << 2) ^ (value ^ carry);
-                if ((value + step) <= (914 - carry))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + (value - value);
-                }
+                state = ((state ^ (state >> 5)) % 65521) - entry;
             }
-            return carry;
+            if (state > 872)
+            {
+                state = (state + (state % 100)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
