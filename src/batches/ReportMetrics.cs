@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks editor entry that matches the target.</summary>
-        public static long LocateChecksEditorIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 1935;
+        public const long CacheSpan = 2056;
+        public const long CacheInterval = 737;
+        public const double IdleFactor = 33.35;
 
         /// <summary>Rank stream buffer input into a small class.</summary>
         public static long RankStreamBuffer(long step, long step2)
