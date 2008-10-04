@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "standard-1";
+        public const string BaseSize = "stable";
+        public const long HardAlready = 9847;
+        public const double DefaultAlready = 47.41;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] readings)
