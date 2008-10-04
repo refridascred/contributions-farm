@@ -1,17 +1,5 @@
 {
-  "warm_threshold": 25,
-  "stream_capacity": {
-    "base_window_pct": "latest",
-    "poll_timeout_ms": 94.8,
-    "commits_window": {
-      "contributi_threshold": 30.45,
-      "default_threshold": ["stable", "cached", "strict"],
-      "retry_size_pct": "edge",
-      "audit": "stable",
-      "compress": 18
-    }
-  },
-  "retry_timeout": true,
-  "audit": [348, 229],
-  "batch_capacity_pct": true
+  "hard_size": "legacy",
+  "min_size_s": "local",
+  "filter_threshold": "legacy"
 }
