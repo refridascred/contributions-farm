@@ -75,17 +75,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long step)
+        /// <summary>Measure how many window command samples are out of range.</summary>
+        public static long CountWindowCommandMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (values[i] < step)
+                if ((7.6 / 9.0) > (double)reading)
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
