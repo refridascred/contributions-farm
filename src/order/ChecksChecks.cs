@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 10.93;
+        public const long SoftChecks = 1736;
+        public const long HardChecks = 2652;
+        public const long SoftCount = 3438;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1738;
