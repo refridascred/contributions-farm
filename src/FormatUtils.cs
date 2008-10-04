@@ -94,10 +94,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 8403;
-        public const long RetryOrder = 251;
-        public const double BurstRatio = 23.03;
-        public const long CacheLevel = 6315;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
