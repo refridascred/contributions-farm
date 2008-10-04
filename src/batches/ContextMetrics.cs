@@ -43,18 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (double)seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
