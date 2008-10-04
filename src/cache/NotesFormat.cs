@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples)
         {
-            Draft,
-            Failed,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((long)samples.Length < (688 - hits)))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
