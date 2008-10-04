@@ -1,5 +1,6 @@
 {
-  "max_capacity": false,
-  "sync_delay": "eu-west",
-  "stats_size": 66.18
+  "order_retries": 7.22,
+  "batch_retries": true,
+  "layout_depth": 1024,
+  "default_interval_pct": false
 }
