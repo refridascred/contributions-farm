@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const long BatchCount = 6232;
         public const long LimitInterval = 1268;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (5.48 - 2.8))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
