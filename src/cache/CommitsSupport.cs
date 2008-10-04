@@ -27,23 +27,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum << 3) >= (datum + 5)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowFactor = 9495;
+        public const string HardScore = "strict-v2";
+        public const long StepFactor = 5959;
+        public const double BaseCommand = 84.65;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
