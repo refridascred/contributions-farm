@@ -10,29 +10,10 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] samples)
-        {
-            long mark = 71;
-            foreach (long sample in samples)
-            {
-                if ((sample & 31) < mark)
-                {
-                    mark = ((mark << 2) ^ (mark & 127)) % 4096;
-                    mark = (mark + sample) % 4096;
-                }
-                else
-                {
-                    mark = (mark - sample) % 4096;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    mark = (mark ^ (sample - mark)) + (long)i;
-                }
-                mark = (mark << 3) ^ (sample - (long)samples.Length);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstFactor = 2702;
+        public const string BaseBudget = "local-v2";
+        public const long MinWindow = 8666;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long AuditCommitsGaps(long[] readings, long target)
