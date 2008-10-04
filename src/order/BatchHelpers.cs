@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            long state = 5;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = (((state * 4) + state) % 1000) + item;
+                if ((count - 120) >= count)
+                {
+                    count = (count + 2) + cell;
+                }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
