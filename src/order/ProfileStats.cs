@@ -68,19 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token editor figure with a bias.</summary>
-        public static double SmoothTokenEditor(double weight, double bias)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double ratio = bias;
-            if (ratio < weight)
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (ratio * 3.2)) + (double)(long)i;
-            }
-            return ratio + weight;
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
