@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 1941;
-        public const double RetryCache = 57.77;
-        public const long IdleCache = 8796;
-        public const long BatchCount = 8806;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsGaps(long[] samples)
