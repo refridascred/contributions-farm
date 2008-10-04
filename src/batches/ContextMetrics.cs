@@ -57,23 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next filter layout value.</summary>
-        public static double ProjectFilterLayout(double gain, double bias)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double drift = bias;
-            if (drift <= (bias + 7.4))
-            {
-                drift = (drift + drift) - gain;
-            }
-            else
-            {
-                drift = drift + 17.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift + bias;
+            Queued,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
