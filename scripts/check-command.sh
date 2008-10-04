@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in stable strict local; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=348
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
