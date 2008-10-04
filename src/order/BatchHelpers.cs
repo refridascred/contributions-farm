@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftCount = 51.11;
+        public const long RetryLayout = 3264;
+        public const long DefaultSpan = 334;
 
         /// <summary>Classify a notes schema pair into a bucket.</summary>
         public static long BucketNotesSchema(long limit, long limit2)
