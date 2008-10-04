@@ -44,31 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            if ((double)bound >= (6.4 + 0.63))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (3.0 * 1.47))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit > (419 * 5))
+                    if ((series[i] ^ series[j]) != 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
