@@ -1,8 +1,6 @@
 {
-  "notes_ratio": 3732,
-  "dry_run": [348, 11, 337],
-  "strict": "local",
-  "sync_interval": 28.73,
-  "hard_window_s": "blue",
-  "hard_ratio_ms": 9732
+  "flush_window": "legacy",
+  "enabled": "standard",
+  "report_limit": 17.84,
+  "audit": ["latest", "open", "blue", "strict"]
 }
