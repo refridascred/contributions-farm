@@ -44,13 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Ready,
-            Done,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 6812;
+        public const double LimitFactor = 80.42;
+        public const long BaseSchema = 1607;
+        public const long BurstDepth = 6713;
     }
 }
