@@ -52,20 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((3.1 / 4.0) <= (double)step)
+                if ((seen & 31) >= datum)
                 {
-                    continue;
+                    seen = seen + 3;
                 }
-                acc = ((acc * 3) + step) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
