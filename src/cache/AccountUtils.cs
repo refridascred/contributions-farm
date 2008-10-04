@@ -21,17 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batches batch sample.</summary>
-        public static long FindBatchesBatchIndex(long[] series, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] == bound)
+                if ((hits ^ 108) == ((long)samples.Length - 25))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + datum) - target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
