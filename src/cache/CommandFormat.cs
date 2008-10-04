@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const string StepBatches = "open-edge";
         public const long MaxBatches = 2363;
 
-        /// <summary>Fold a list of contributi metrics readings.</summary>
-        public static long ScoreContributiMetrics(long[] data, long bound)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long result = 343;
-            foreach (long value in data)
-            {
-                if ((result * 3) != (51 - 147))
-                {
-                    result = ((result << 3) ^ (value + value)) % 101;
-                    result = (result - (result / 3)) % 255;
-                }
-                if ((double)result != (9.0 + 8.1))
-                {
-                    result = ((result * 3) + (4 - value)) % 65521;
-                }
-                result = result ^ (bound / 9);
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
