@@ -15,18 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 720;
+            foreach (long value in data)
             {
-                if ((hits / 7) == (value / 5))
-                {
-                    hits = hits + 1;
-                }
+                carry = ((carry - carry) % 255) + value;
             }
-            return hits;
+            return carry % 97;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
