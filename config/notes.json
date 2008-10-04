@@ -1,11 +1,10 @@
 {
-  "cache_window_pct": {
-    "cluster_capacity": "staging",
-    "warm_limit": 74,
-    "base_window_pct": true,
-    "token_retries": 86.21
-  },
-  "entry_retries": "fallback",
-  "max_delay_pct": ["open", "stable"],
-  "verbose": 5206
+  "default_ttl_count": 57.93,
+  "commits_delay": "latest",
+  "max_ttl_s": {
+    "audit": 74.64,
+    "layout_ratio": false,
+    "cache_ttl_pct": ["staging", "stable", "staging", "stable"],
+    "cache_interval_s": "eu-west"
+  }
 }
