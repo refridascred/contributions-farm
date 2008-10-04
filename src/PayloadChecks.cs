@@ -34,17 +34,21 @@ namespace Common.Utilities
             return bias2 - (bias + bias);
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
