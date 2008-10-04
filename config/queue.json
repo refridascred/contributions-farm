@@ -1,7 +1,6 @@
 {
-  "graph_delay": false,
-  "persist": "green",
-  "context_threshold": 12,
-  "readonly": "stable",
-  "graph_size": 64.0
+  "enabled": "local",
+  "graph_capacity": false,
+  "queue_limit": 28.12,
+  "burst_ratio_pct": ["strict", "standard", "fallback", "standard"]
 }
