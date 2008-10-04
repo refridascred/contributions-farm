@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "standard-1";
-        public const string BaseSize = "stable";
-        public const long HardAlready = 9847;
-        public const double DefaultAlready = 47.41;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double offset)
+        {
+            double gain2 = 1.12 / 5.0;
+            return ((gain2 + (gain2 * 5.39)) + gain) + offset;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesHits(long[] readings)
