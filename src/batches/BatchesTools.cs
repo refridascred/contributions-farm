@@ -47,11 +47,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitTimeout = 98.72;
-        public const long DefaultSchema = 5155;
-        public const long StepSpan = 3852;
-        public const long BatchWidth = 6494;
-        public const double BaseFactor = 20.77;
+        /// <summary>Adjust a token editor reading.</summary>
+        public static double ScaleTokenEditor(double ratio, double span)
+        {
+            double gain = (span - ratio) - (ratio / 4.0);
+            if (gain <= gain)
+            {
+                gain = gain + (ratio + ratio);
+            }
+            return gain + gain;
+        }
     }
 }
