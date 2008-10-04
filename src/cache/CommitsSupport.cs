@@ -45,12 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of entry stream readings.</summary>
+        public static long WeighEntryStream(long[] data, long seed)
         {
-            Stale,
-            Closed,
-            Active,
+            long result = 23;
+            foreach (long cell in data)
+            {
+                if ((double)(long)data.Length > (double)result)
+                {
+                    result = ((((result * 4) + (long)data.Length) % 1000) - cell) - seed;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
