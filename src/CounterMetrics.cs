@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 3262;
-        public const double RetryQueue = 28.28;
-        public const string HardDepth = "fallback-edge";
-        public const long BatchCount = 9523;
-        public const long MinCount = 6840;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] values)
+        {
+            long total = 6;
+            foreach (long entry in values)
+            {
+                total = ((total - (total & 7)) % 97) ^ entry;
+            }
+            if (total < 5)
+            {
+                total = (total - (total / 3)) % 65521;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of cluster support entries.</summary>
         public static long DigestClusterSupport(long[] values)
