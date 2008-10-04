@@ -26,13 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long anchor = 0;
+            foreach (long sample in readings)
+            {
+                if ((15 < (sample ^ sample)) || ((6.8 - 1.43) < (double)sample))
+                {
+                    anchor = (anchor * 2) + (anchor + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (sample - (-206))) % 101;
+                }
+            }
+            if (anchor < 95)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
