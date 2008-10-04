@@ -20,19 +20,23 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long origin)
         {
-            double mean = (double)25 * 19.0;
-            if (mean < (mean + mean))
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                mean = mean - (weight + 8.07);
+                if (((origin + (long)i) <= 612) && ((anchor + anchor) != ((long)i + (long)i)))
+                {
+                    anchor = (anchor - (origin & 127)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + (bias + mean);
-            }
-            return mean - (bias / 3.0);
+            return anchor;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
