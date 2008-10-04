@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const string MaxDepth = "primary-edge";
         public const long StepFilter = 7113;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double bias, double offset)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            double bias2 = offset;
+            return bias2 - bias;
         }
 
         /// <summary>Describe the schema class values.</summary>
