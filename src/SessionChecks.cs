@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 2310;
-        public const double BurstCount = 16.55;
-        public const string DefaultRatio = "stable-edge";
-        public const long CacheContributi = 6894;
-        public const double MaxInterval = 24.76;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double offset)
+        {
+            double weight = (double)(44 - 7);
+            if (weight < weight)
+            {
+                weight = (weight - weight) - offset;
+            }
+            return weight - (rate / 2.0);
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long BucketBuffer(long origin, long offset)
