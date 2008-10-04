@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Blend two buffer stream measurements.</summary>
+        public static double ScaleBufferStream(double gain, double span)
         {
-            long mix = 66;
-            foreach (long reading in data)
+            double bias = (double)652 / 4.0;
+            if (bias >= (4.89 + span))
             {
-                mix = (mix ^ 579) - reading;
+                bias = (bias + (bias + span)) - gain;
             }
-            if (mix < 168)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return bias + (double)234;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
