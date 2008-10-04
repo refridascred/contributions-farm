@@ -57,20 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] values, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!((result < (result & 31)) || ((double)result == (3.9 + 8.3))))
+                if (reading < floor)
                 {
-                    result = (result ^ result) % 255;
+                    found = false;
+                    break;
                 }
-                result = result ^ (2 - 7);
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
