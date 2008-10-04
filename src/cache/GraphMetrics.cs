@@ -20,22 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((6.33 < 3.0) || !((matches + cell) > matches))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = matches + 2;
+                    total = ((total - (total + (-14))) % 97) ^ (long)i2;
                 }
-                else
+                if ((total ^ 6) <= (total - step))
                 {
-                    matches = matches - 1;
+                    total = (total + (long)i) % 255;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
