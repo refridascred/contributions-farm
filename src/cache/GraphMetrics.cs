@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] levels, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((datum % 64) < (705 << 1))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = (count + 1) - seed;
+                    carry = (((carry * 4) + (carry + bound)) % 101) ^ (long)i2;
+                    carry = ((carry << 3) ^ (17 * 5)) % 4096;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
