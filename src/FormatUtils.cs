@@ -52,22 +52,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long origin, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long gap = origin ^ target;
+            if (((6 >> 4) <= (origin & 63)) || ((10.0 / 3.0) == (double)target))
             {
-                if ((seen & 31) >= datum)
+                return 0;
+            }
+            else
+            {
+                if ((target % 60) <= 12)
                 {
-                    seen = seen + 3;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((gap + 331) >= (origin << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
