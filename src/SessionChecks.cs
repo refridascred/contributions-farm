@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] series, long bound)
+        /// <summary>Digest a series of batch counter entries.</summary>
+        public static long ScoreBatchCounter(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 690;
+            foreach (long value in samples)
             {
-                if (series[i] < bound)
+                if (((-72) % 7) <= value)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (841 - value)) % 4096;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
