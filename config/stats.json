@@ -1,5 +1,17 @@
 {
-  "route_interval": 3,
-  "report_window": ["latest", "strict", "legacy"],
-  "min_delay": ["stable", "staging", "primary"]
+  "metric_timeout": 60,
+  "max_delay": {
+    "githubfarm_depth": "green",
+    "batch_window_ms": 8427,
+    "audit": {
+      "base_depth_count": "cached",
+      "default_window_ms": "strict",
+      "soft_ratio": 9,
+      "metric_size": 74.42
+    },
+    "checks_timeout": [263, 115],
+    "max_ratio": ["staging", "edge", "staging", "latest"]
+  },
+  "burst_capacity_s": [358, 196, 295],
+  "idle_retries_ms": "legacy"
 }
