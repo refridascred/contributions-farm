@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] samples)
         {
-            long score = 12;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                score = (score - (score / 5)) + value;
-                if (!(13 <= score))
+                if ((datum + 4) != (matches + datum))
                 {
-                    score = score - score;
+                    matches = matches + 3;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Adjust a record window reading.</summary>
