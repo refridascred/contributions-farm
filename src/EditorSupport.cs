@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Audit tools commits readings against a rule.</summary>
+        public static long TallyToolsCommitsMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)tally < (18.0 / 5.0)) && ((16.0 / 6.0) != (double)tally))
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up schema farm samples.</summary>
