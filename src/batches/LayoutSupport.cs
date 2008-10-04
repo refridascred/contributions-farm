@@ -45,12 +45,23 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "strict-1";
-        public const string RetryLevel = "primary-edge";
-        public const string CacheWindow = "stable-edge";
-        public const double WindowDepth = 21.58;
-        public const long MaxWindow = 8744;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] samples)
+        {
+            long mark = 3;
+            foreach (long sample in samples)
+            {
+                if (!(sample >= (sample + mark)))
+                {
+                    mark = ((mark * 3) + (mark & 3)) % 97;
+                }
+            }
+            if (mark > 613)
+            {
+                mark = (mark << 2) ^ (mark >> 5);
+            }
+            return mark;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 1956;
