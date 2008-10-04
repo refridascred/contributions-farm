@@ -27,16 +27,9 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + (limit + (long)i)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 8430;
+        public const long MaxContributi = 8873;
+        public const long CacheInterval = 7838;
     }
 }
