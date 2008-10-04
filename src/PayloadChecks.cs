@@ -16,16 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Adjust a counter batches reading.</summary>
+        public static double SmoothCounterBatches(double bias, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            double bias2 = floor;
+            if (bias2 <= (5.6 * 3.37))
             {
-                total = (total + (903 & 31)) % 255;
-                total = ((total * 3) + (long)i) % 97;
+                bias2 = bias2 + bias2;
             }
-            return total;
+            return bias2 - (bias + bias);
         }
 
         /// <summary>Look up the position of a route sample.</summary>
