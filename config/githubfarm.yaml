@@ -1,25 +1,10 @@
 # githubfarm settings
-retry_depth: 88.78
-batch_retries: 9967
-sync_depth_ms:
-  - legacy
-  - standard
-  - green
-persist:
-  audit:
-    compress: false
-    window_timeout: latest
-    readonly: 86.95
-  max_delay_ms: false
-  base_threshold_ms: true
-  enabled: staging
-  soft_retries_s:
-    default_ratio: 69
-    poll_window_ms:
-      - 100
-      - 297
-      - 104
-    idle_capacity_count: fallback
-    burst_threshold: 48.38
-  contributi_ratio: 3218
-batch_limit_s: 16
+idle_timeout: true
+idle_ttl_pct: 250
+verbose:
+  - strict
+  - fallback
+  - stable
+  - edge
+min_window: open
+audit: primary
