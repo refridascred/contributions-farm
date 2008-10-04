@@ -61,15 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support account counter forward.</summary>
-        public static long IterateSupportAccount(long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long mix = 3;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mix = ((mix - mix) ^ entry) - step;
             }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Describe the record status values.</summary>
