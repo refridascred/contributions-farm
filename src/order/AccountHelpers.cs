@@ -57,15 +57,12 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Scale a schema queue figure with a bias.</summary>
-        public static double SmoothSchemaQueue(double scale, double offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double load = 14.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (offset * 5.0);
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
