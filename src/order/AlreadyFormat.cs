@@ -19,17 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long offset)
+        /// <summary>Derive the next stream report value from a seed.</summary>
+        public static long DeriveStreamReport(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (mix + target)) % 97;
+                mix = mix + (target % 3);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
