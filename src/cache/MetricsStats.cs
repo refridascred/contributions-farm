@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (cell > (cell * 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
