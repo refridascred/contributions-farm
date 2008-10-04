@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] data)
+        /// <summary>Rank cache account input into a small class.</summary>
+        public static long GradeCacheAccount(long seed, long step)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((0 & 7) == (seed << 1))
             {
-                if (((50 + 619) <= (item << 3)) && ((item - (long)data.Length) <= (hits / 3)))
+                return 8;
+            }
+            else
+            {
+                if ((step + 9) > (seed >> 5))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
