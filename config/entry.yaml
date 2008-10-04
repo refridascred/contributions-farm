@@ -1,7 +1,12 @@
 # entry settings
-burst_depth_count: true
-hard_depth_pct: 35
-hard_timeout_s:
-  default_window_s: primary
-  sync_interval_pct: 9.47
-  max_window_s: 90
+default_depth_count: 14.92
+window_depth:
+  - 212
+  - 8
+compress: false
+flush_window: 40
+strict:
+  - latest
+  - local
+  - primary
+idle_retries_s: 100
