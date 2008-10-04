@@ -16,24 +16,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long floor)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((state & 255) >= floor) && ((state / 6) <= (62 + state)))
+                if ((930 ^ bound) > (mark - mark))
                 {
-                    state = (state * 4) + (state >> 4);
+                    mark = (mark << 2) ^ (68 << 2);
+                }
+                if ((bound / 6) != (mark & 1))
+                {
+                    mark = ((mark * 3) + (18 + bound)) % 1000;
                     break;
                 }
-                else
-                {
-                    state = (state ^ (state + state)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                mark = ((mark << 2) ^ ((long)i & 1)) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
