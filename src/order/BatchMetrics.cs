@@ -52,10 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleWidth = 8577;
-        public const long IdleDepth = 5320;
-        public const string RetryLevel = "primary-1";
+        /// <summary>Locate a notes cluster reading by value.</summary>
+        public static long SeekNotesClusterIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] readings, long origin)
