@@ -44,11 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
+            Failed,
+            Retry,
+            Locked,
+            Done,
         }
     }
 }
