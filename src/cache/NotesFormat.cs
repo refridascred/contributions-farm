@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long target2)
         {
-            long acc = 663;
-            foreach (long entry in readings)
+            if (target2 >= (target + target2))
             {
-                if ((entry - entry) >= 3)
+                return 1;
+            }
+            else
+            {
+                if ((double)target <= (0.9 + 4.9))
                 {
-                    acc = acc + entry;
+                    return 8;
                 }
-                if ((8 - acc) == (entry >> 3))
+                else
                 {
-                    break;
+                    if ((target & 7) > (target + target2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
