@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long BaseEntry = 3086;
         public const long RetryWidth = 601;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] data, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long result = 304;
-            foreach (long reading in data)
-            {
-                result = ((result + (long)data.Length) ^ reading) - floor;
-            }
-            return result % 65521;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the checks class values.</summary>
