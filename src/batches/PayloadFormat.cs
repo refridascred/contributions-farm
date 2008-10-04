@@ -16,25 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((930 ^ bound) > (mark - mark))
-                {
-                    mark = (mark << 2) ^ (68 << 2);
-                }
-                if ((bound / 6) != (mark & 1))
-                {
-                    mark = ((mark * 3) + (18 + bound)) % 1000;
-                    break;
-                }
-                mark = ((mark << 2) ^ ((long)i & 1)) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a editor snapshot.</summary>
