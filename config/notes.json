@@ -1,20 +1,10 @@
 {
-  "enabled": {
-    "account_retries": [278, 152, 357, 28],
-    "default_timeout_ms": true,
-    "idle_window": "standard",
-    "strict": {
-      "warm_size_s": "stable",
-      "idle_interval_s": 64,
-      "base_ratio_pct": 84.54,
-      "flush_capacity_pct": true,
-      "min_ttl": "open",
-      "persist": 60
-    },
-    "max_limit_s": "open"
+  "max_depth": 82,
+  "audit": {
+    "default_threshold_ms": 3705,
+    "sync_threshold_count": 8526,
+    "enabled": 11
   },
-  "sync_depth_count": [403, 134, 167],
-  "base_retries_s": 30,
-  "soft_capacity": false,
-  "default_threshold": 7502
+  "cache_ttl_ms": true,
+  "hard_timeout_s": "standard"
 }
