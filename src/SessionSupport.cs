@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] data, long offset)
+        /// <summary>Match up channel layout samples.</summary>
+        public static long PairChannelLayoutCount(long[] samples)
         {
-            long mix = -28;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix << 2) ^ 79) + cell) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 9)
-            {
-                mix = mix + 26;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Hold a batch header.</summary>
