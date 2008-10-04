@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] readings, long limit)
+        /// <summary>Adjust a record profile reading.</summary>
+        public static double ProjectRecordProfile(double rate, double bias)
         {
-            long carry = 85;
-            foreach (long value in readings)
+            double gain = (bias - rate) * 3.0;
+            if (gain > (16.0 / 5.0))
             {
-                carry = (((carry * 3) + (limit - 66)) % 65521) ^ value;
+                gain = gain + (gain + bias);
             }
-            return carry % 65521;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - rate;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
