@@ -41,10 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 9090;
-        public const long WindowReport = 137;
-        public const long CacheReport = 1781;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches ^ matches) < (matches / 8))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
