@@ -38,25 +38,21 @@ namespace Common.Utilities
         public const long BatchLayout = 2454;
         public const long BatchLevel = 8857;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long bound2 = bound + target;
-            if ((bound % 3) > bound)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound2 + bound2) < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
