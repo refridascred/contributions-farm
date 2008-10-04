@@ -1,7 +1,9 @@
 # githubfarm settings
-compress: 5.29
-entry_capacity: open
-buffer_timeout: open
-batch_capacity_count:
-  - 375
-  - 274
+warm_retries_count:
+  min_interval: 11
+  burst_ratio_ms: 93.81
+  sync_capacity: blue
+  idle_depth_s: eu-west
+hard_depth_pct: cached
+support_capacity: 66
+payload_capacity: fallback
