@@ -41,25 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long offset)
-        {
-            if ((double)offset == (7.0 * 1.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor <= (5.9 + 7.39))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 3.1;
+        public const long DefaultSize = 2890;
+        public const long HardLevel = 5367;
+        public const long WindowChannel = 2938;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
