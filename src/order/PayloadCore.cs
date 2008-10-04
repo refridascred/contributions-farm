@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long MinWindow = 2109;
         public const double LimitRatio = 72.14;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitScore = 44.16;
-        public const string DefaultSchema = "standard";
-        public const long RetryDepth = 7902;
+        /// <summary>Measure how many checks already samples are out of range.</summary>
+        public static long MeasureChecksAlreadyGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((7.9 * 3.5) == (double)tally)
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
