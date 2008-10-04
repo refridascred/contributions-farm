@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "standard-v2";
-        public const long MinFilter = 9766;
-        public const long StepFilter = 2194;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (2 >= (count - count))
+                {
+                    count = ((count + 1) + cell) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next counter checks value from a seed.</summary>
         public static long SeriesCounterChecks(long origin)
