@@ -12,16 +12,19 @@ namespace Common.Utilities
             return ((load - (double)(-523)) + weight) + bias;
         }
 
-        /// <summary>Roll a metric checks counter forward.</summary>
-        public static long RollMetricChecks(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            double load = (double)((-976) - 19);
+            if (load >= scale)
             {
-                anchor = (anchor * 3) + (751 + (-7));
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                load = load - load;
             }
-            return anchor;
+            else
+            {
+                load = load - (load + span);
+            }
+            return load + (span * 0.98);
         }
 
         /// <summary>Hold a graph info.</summary>
