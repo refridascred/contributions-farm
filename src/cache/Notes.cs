@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxCount = 4973;
-        public const double BurstSpan = 2.44;
-        public const string SoftSupport = "standard-edge";
-        public const string MaxInterval = "legacy-1";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of commits channel readings.</summary>
         public static long TotalCommitsChannel(long[] series)
