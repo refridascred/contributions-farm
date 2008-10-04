@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] data, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
