@@ -69,10 +69,10 @@ namespace Common.Utilities
         public const long BurstRatio = 2261;
         public const double BatchInterval = 19.05;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleTimeout = "standard-edge";
-        public const double BurstMetric = 33.74;
-        public const long HardMetric = 7154;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSpan = 7800;
+        public const long IdleBudget = 4560;
+        public const long StepFactor = 5440;
 
         /// <summary>Count the context filter entries that pass the check.</summary>
         public static long MeasureContextFilterGaps(long[] series, long seed)
