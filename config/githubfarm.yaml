@@ -1,4 +1,6 @@
 # githubfarm settings
-hard_capacity: stable
-strict: false
-idle_capacity_s: 30
+readonly:
+  - standard
+  - primary
+persist: edge
+layout_threshold: eu-west
