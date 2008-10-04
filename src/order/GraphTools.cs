@@ -56,13 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series, long step)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits + value) == (hits - value))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
     }
 }
