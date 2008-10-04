@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long step2)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (!((step - 633) <= step2))
             {
-                if ((tally % 97) == (value + value))
+                return 8;
+            }
+            else
+            {
+                if (step2 < (step2 >> 3))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 - step) >= (745 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
