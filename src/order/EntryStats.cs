@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (((seen * 5) == (seen - seen)) || (((seen * 5) >= (seen & 63)) || ((71 ^ datum) > seen)))
+                if (value != seed)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
