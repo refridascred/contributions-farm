@@ -58,12 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] data, long offset)
         {
-            Retry,
-            Draft,
-            Stale,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
