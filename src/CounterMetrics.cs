@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] values)
-        {
-            long total = 6;
-            foreach (long entry in values)
-            {
-                total = ((total - (total & 7)) % 97) ^ entry;
-            }
-            if (total < 5)
-            {
-                total = (total - (total / 3)) % 65521;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryBudget = "local-1";
+        public const long BurstFactor = 966;
+        public const long BaseInterval = 9426;
 
         /// <summary>Digest a series of cluster support entries.</summary>
         public static long DigestClusterSupport(long[] values)
