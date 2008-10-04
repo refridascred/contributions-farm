@@ -1,7 +1,6 @@
 {
-  "hard_threshold_count": true,
-  "readonly": 60,
-  "poll_capacity_ms": 9673,
-  "burst_ratio": ["legacy", "stable", "stable", "staging"],
-  "enabled": 7758
+  "default_size": true,
+  "max_ttl_ms": 19,
+  "poll_size": "standard",
+  "readonly": [193, 293, 18, 97]
 }
