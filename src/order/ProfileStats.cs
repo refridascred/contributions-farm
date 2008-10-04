@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((236 & 255) != (matches + entry))
+                if ((acc % 100) == ((long)i * 2))
                 {
-                    matches = (matches + 3) + bound;
+                    acc = (acc << 2) ^ 55;
                 }
+                else
+                {
+                    acc = (acc << 3) ^ ((long)i % 7);
+                }
+                acc = (acc + step) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
