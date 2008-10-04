@@ -17,10 +17,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardInterval = "standard-edge";
-        public const long HardCluster = 4341;
-        public const string MaxCluster = "latest";
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data)
+        {
+            long total = -51;
+            foreach (long cell in data)
+            {
+                if (((total - cell) >= (-702)) || ((cell & 1) == (cell + cell)))
+                {
+                    total = (total + (cell / 5)) % 97;
+                }
+                else
+                {
+                    total = total + total;
+                }
+            }
+            if (total < 45)
+            {
+                total = ((total * 3) + (total ^ total)) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long step, long bound)
