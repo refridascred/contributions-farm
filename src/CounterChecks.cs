@@ -93,12 +93,38 @@ namespace Common.Utilities
         public const long LimitReport = 6056;
         public const long StepReport = 4182;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Classify a profile notes pair into a bucket.</summary>
+        public static long RankProfileNotes(long bound, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            if ((seed * 4) > seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 16) >= 31)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((14.0 * 3.4) > (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ bound) == (bound + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
