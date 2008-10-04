@@ -34,14 +34,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] items, long floor)
         {
-            Failed,
-            Closed,
-            Queued,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)4 > (double)datum)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
