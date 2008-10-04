@@ -1,7 +1,7 @@
 {
-  "strict": true,
-  "base_capacity_count": 3676,
-  "burst_window": [385, 255, 495, 225],
-  "batch_ttl_count": 98,
-  "stats_depth": false
+  "hard_threshold_count": true,
+  "readonly": 60,
+  "poll_capacity_ms": 9673,
+  "burst_ratio": ["legacy", "stable", "stable", "staging"],
+  "enabled": 7758
 }
