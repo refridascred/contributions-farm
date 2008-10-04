@@ -19,31 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream metric entries.</summary>
-        public static long CombineStreamMetric(long[] levels, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            long sum = 994;
-            foreach (long reading in levels)
+            double scale = rate;
+            if (scale < scale)
             {
-                if ((357 & 15) <= (reading - limit))
-                {
-                    continue;
-                }
-                sum = (sum << 3) ^ (reading << 1);
-                if ((limit + 2) >= (49 << 3))
-                {
-                    sum = (sum - (reading - reading)) % 65521;
-                }
-                if ((limit << 1) >= (sum + 910))
-                {
-                    break;
-                }
+                scale = scale + floor;
             }
-            if (sum > 67)
+            else
             {
-                sum = ((sum * 2) + (3 & 3)) % 101;
+                scale = scale - 9.91;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale + rate)) + (double)(long)i;
+            }
+            return scale + (floor / 9.0);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
