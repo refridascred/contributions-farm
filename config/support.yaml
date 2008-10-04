@@ -1,4 +1,7 @@
 # support settings
-retry_size_s: fallback
-warm_depth_s: 8573
-batch_timeout: 6009
+retry_capacity: legacy
+base_delay_pct: 52.3
+strict: 39
+notes_threshold: stable
+readonly: eu-west
+notes_capacity: 70.26
