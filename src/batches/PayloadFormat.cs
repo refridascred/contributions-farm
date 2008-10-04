@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long entry in values)
             {
-                if (((count + count) >= count) || ((double)(long)values.Length != (double)count))
+                if ((long)values.Length < (hits % 60))
                 {
-                    count = (count + 1) ^ entry;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
