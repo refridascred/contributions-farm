@@ -72,10 +72,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5256;
-        public const string SoftLevel = "strict";
-        public const string MaxTimeout = "stable-1";
-        public const double BatchWidth = 89.46;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Paused,
+            Failed,
+            Synced,
+            Ready,
+        }
     }
 }
