@@ -1,8 +1,6 @@
-id,active,count,weight
-1,710,strict,eu-west
-2,41.44,blue,710
-3,920,eu-west,fallback
-4,strict,644,7.07
-5,890,17,184
-6,438,blue,blue
-7,blue,72.99,88.9
+id,weight,rank,active,ratio
+1,eu-west,68.79,20.42,997
+2,911,eu-west,861,408
+3,592,legacy,69.19,cached
+4,889,26.72,206,strict
+5,2.6,staging,latest,eu-west
