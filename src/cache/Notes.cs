@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples)
         {
-            long mix = 202;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix << 3) ^ (mix * 3);
-                if (mix > (reading & 127))
+                if ((matches + matches) <= (sample + sample))
                 {
-                    mix = mix - (mix + reading);
-                }
-                else
-                {
-                    mix = (mix + reading) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
