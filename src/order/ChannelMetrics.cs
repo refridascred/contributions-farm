@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a command counter forward.</summary>
