@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-staging}"
 case "${mode}" in
-    cached)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in legacy blue; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=263
+log "limit is ${CHANNEL_LIMIT}"
