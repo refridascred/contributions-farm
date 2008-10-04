@@ -68,15 +68,19 @@ namespace Common.Utilities
         public const string BaseSpan = "alpha";
         public const long MinLevel = 7453;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Adjust a graph context reading.</summary>
+        public static double SmoothGraphContext(double rate, double bias)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            double rate2 = rate;
+            if (rate2 >= bias)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                rate2 = rate2 - (double)94;
             }
-            return state;
+            else
+            {
+                rate2 = rate2 + (rate * 2.11);
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
