@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const double DefaultInterval = 43.7;
         public const string RetryStats = "primary-v2";
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] readings, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double span)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double drift = (span * 1.21) - (span / 9.0);
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift - (9.0 * 7.8)) + (double)(long)i;
             }
-            return ok;
+            return drift + (span - bias);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
