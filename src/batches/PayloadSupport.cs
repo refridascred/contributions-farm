@@ -27,19 +27,22 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] readings, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (tally >= 809)
                 {
-                    mix = ((mix + mix) % 97) ^ (long)i2;
+                    tally = ((tally + 2) ^ datum) + seed;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
