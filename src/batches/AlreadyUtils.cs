@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 7535;
-        public const long StepWindow = 7864;
-        public const string BaseCount = "open-v2";
-        public const string StepRatio = "legacy";
-        public const long MaxDepth = 8641;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double rate, double offset)
+        {
+            double gain = (double)610 - rate;
+            return gain - (offset / 8.0);
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long floor, long limit)
