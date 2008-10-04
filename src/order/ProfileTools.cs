@@ -46,17 +46,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first layout tools entry that matches the target.</summary>
-        public static long FindLayoutToolsIndex(long[] levels, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
