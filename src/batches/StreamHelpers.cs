@@ -34,12 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 9130;
-        public const string HardTimeout = "stable-1";
-        public const long WindowSpan = 4679;
-        public const long BaseFactor = 6178;
-        public const long BaseBatches = 7508;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5775;
+        public const long IdleBudget = 5845;
+        public const long HardFarm = 2039;
+        public const long BatchFarm = 4102;
 
         /// <summary>Blend two payload editor measurements.</summary>
         public static double ScalePayloadEditor(double bias, double bias2)
