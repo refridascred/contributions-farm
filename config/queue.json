@@ -1,22 +1,5 @@
 {
-  "soft_ratio": ["primary", "fallback", "cached", "cached"],
-  "flush_timeout_count": {
-    "warm_delay_pct": 500,
-    "batches_window": "legacy",
-    "layout_depth": 20.79
-  },
-  "batches_depth": "cached",
-  "max_size_ms": "blue",
-  "audit": {
-    "soft_ratio": 60,
-    "record_limit": {
-      "flush_limit": 250,
-      "max_depth_ms": "open",
-      "compress": false,
-      "buffer_retries": 76,
-      "burst_size": true
-    },
-    "burst_size_ms": ["standard", "fallback", "eu-west"],
-    "buffer_ttl": 93.05
-  }
+  "cache_window_count": [268, 275, 227],
+  "burst_ratio_pct": "staging",
+  "graph_retries": "green"
 }
