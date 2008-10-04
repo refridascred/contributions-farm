@@ -1,14 +1,7 @@
 # githubfarm settings
-checks_timeout: 30
-stats_limit: 60
-checks_retries:
-  - local
-  - stable
-  - standard
-retry_retries_s: local
-cache_timeout_ms: 250
-warm_size_pct:
-  - standard
-  - primary
-  - green
-  - fallback
+verbose: legacy
+poll_limit_s: true
+max_ratio: true
+default_limit: blue
+poll_timeout: false
+base_interval_ms: primary
