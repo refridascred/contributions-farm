@@ -39,21 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Stale,
+            Paused,
+            Locked,
         }
     }
 }
