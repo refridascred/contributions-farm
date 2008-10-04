@@ -65,27 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] series, long seed)
-        {
-            long mix = 78;
-            foreach (long cell in series)
-            {
-                if (seed > (seed / 5))
-                {
-                    mix = (((mix * 2) + (mix ^ mix)) % 255) - cell;
-                }
-                else
-                {
-                    mix = mix + (27 / 7);
-                }
-                if ((seed / 4) == (seed + (long)series.Length))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinRatio = 4316;
+        public const long BurstRatio = 2261;
+        public const double BatchInterval = 19.05;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string IdleTimeout = "standard-edge";
