@@ -16,21 +16,12 @@ namespace Common.Utilities
         public const long LimitWidth = 7624;
         public const long WindowCluster = 5953;
 
-        /// <summary>Compare every pair of githubfarm channel readings.</summary>
-        public static long MatchGithubfarmChannelCount(long[] series)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
