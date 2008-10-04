@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (sample != seed)
+                if ((datum ^ datum) < (datum >> 2))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a buffer header.</summary>
