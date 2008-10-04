@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit entry metrics readings against a rule.</summary>
-        public static long TallyEntryMetricsMatches(long[] samples, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((matches >> 4) >= 59) && ((offset <= (83 << 3)) && (((-20) * 5) <= (offset << 1))))
+                if (cell > step)
                 {
-                    matches = (matches + 3) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
