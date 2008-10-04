@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Active,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 6504;
+        public const string BaseEntry = "alpha-edge";
+        public const long StepEntry = 6134;
+        public const long BurstSpan = 3855;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long DefaultInterval = 1907;
