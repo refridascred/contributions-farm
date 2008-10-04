@@ -42,11 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryFactor = 6992;
-        public const long MinBudget = 9781;
-        public const long WindowAlready = 9044;
-        public const long BurstTimeout = 1504;
-        public const string IdleScore = "alpha-v2";
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Pending,
+            Ready,
+            Failed,
+            Closed,
+            Stale,
+        }
     }
 }
