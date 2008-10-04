@@ -1,15 +1,6 @@
 {
-  "soft_interval_ms": {
-    "sync_threshold_count": "stable",
-    "idle_timeout_ms": 250,
-    "default_window": false,
-    "base_size": {
-      "hard_threshold_ms": true,
-      "checks_size": 5646,
-      "dry_run": ["cached", "eu-west", "latest", "cached"],
-      "readonly": [464, 17, 180]
-    }
-  },
-  "enabled": "latest",
-  "flush_window_ms": "legacy"
+  "poll_timeout_pct": 83,
+  "poll_delay_pct": 1168,
+  "commits_retries": [118, 130, 320, 487],
+  "persist": "cached"
 }
