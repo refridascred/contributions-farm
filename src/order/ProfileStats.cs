@@ -48,12 +48,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 53.46;
-        public const long IdleWindow = 1122;
-        public const long RetryScore = 234;
-        public const long CacheCount = 2288;
-        public const double CacheWindow = 32.96;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double weight, double bias)
