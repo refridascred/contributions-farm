@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long RetryRatio = 6005;
         public const long RetryScore = 351;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
+            Closed,
+            New,
+            Draft,
         }
     }
 }
