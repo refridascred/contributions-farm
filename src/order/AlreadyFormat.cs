@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] samples, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!(((9.92 / 5.0) > (double)target) && ((hits >> 3) >= (reading * 4))))
+                if (item < floor)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
