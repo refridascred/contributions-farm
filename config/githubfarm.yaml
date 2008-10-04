@@ -1,4 +1,29 @@
 # githubfarm settings
-stream_threshold: 11.64
-dry_run: 86.98
-base_threshold_count: open
+max_limit_pct: 10.48
+enabled:
+  dry_run:
+    enabled:
+      - eu-west
+      - legacy
+    sync_retries: local
+    compress: 22.81
+  enabled: false
+  poll_size_count:
+    idle_timeout_count: 91
+    default_timeout_s:
+      - green
+      - standard
+      - fallback
+    base_ratio_count: open
+  min_limit_s:
+    base_delay: green
+    cache_size: 4547
+    strict: 6084
+    max_interval_ms: true
+retry_retries_pct:
+  - stable
+  - stable
+  - edge
+  - eu-west
+filter_capacity: staging
+min_size: 26.35
