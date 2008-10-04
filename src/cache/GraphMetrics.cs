@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (335 <= item)
+                if ((tally % 97) == (value + value))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
