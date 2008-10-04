@@ -32,13 +32,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
