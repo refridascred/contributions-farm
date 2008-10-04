@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Compare every pair of schema already readings.</summary>
+        public static long PairSchemaAlreadyCount(long[] series)
         {
-            double load = (double)3;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (((load + 6.0) + (double)(long)i) + gain) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)93;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
