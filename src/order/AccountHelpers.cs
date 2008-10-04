@@ -42,10 +42,16 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowWidth = 8778;
-        public const double BurstSpan = 85.39;
-        public const long RetryCount = 6026;
+        /// <summary>Scale a schema queue figure with a bias.</summary>
+        public static double SmoothSchemaQueue(double scale, double offset)
+        {
+            double load = 14.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - scale) + (double)(long)i;
+            }
+            return load + (offset * 5.0);
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] samples)
