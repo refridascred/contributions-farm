@@ -32,38 +32,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long step, long step2)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double offset)
         {
-            if ((double)step2 < (double)step)
+            double weight = (double)7 + 2.0;
+            if (weight <= 20.0)
             {
-                return 5;
+                weight = (weight + (double)522) + gain;
             }
             else
             {
-                if (!((step2 * 5) == (9 - step2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)156 < (double)step2) || ((step2 & 255) >= (step + step2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (724 > (step + step2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = weight - (double)63;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (offset * 11.0)) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the support kind values.</summary>
