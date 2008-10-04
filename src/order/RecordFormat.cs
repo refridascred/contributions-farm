@@ -69,18 +69,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long target)
+        /// <summary>Digest a series of channel commits entries.</summary>
+        public static long FoldChannelCommits(long[] readings)
         {
-            long anchor = 0;
-            foreach (long reading in levels)
+            long state = 27;
+            foreach (long reading in readings)
             {
-                if (!((978 / 9) == (anchor / 4)))
+                if (reading < (reading + state))
                 {
-                    anchor = (anchor + reading) + target;
+                    state = (state << 3) ^ (state << 3);
                 }
             }
-            return anchor;
+            return state % 97;
         }
     }
 }
