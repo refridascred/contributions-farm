@@ -1,6 +1,13 @@
 {
-  "audit": false,
-  "warm_size_s": 67.09,
-  "cache_window": 1024,
-  "poll_ratio": false
+  "already_interval": "standard",
+  "enabled": {
+    "default_timeout": "primary",
+    "queue_limit": [219, 247, 401, 74],
+    "dry_run": ["legacy", "staging"]
+  },
+  "profile_window": {
+    "schema_capacity": [366, 232],
+    "schema_size": "stable",
+    "payload_depth": [54, 258, 247]
+  }
 }
