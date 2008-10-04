@@ -1,6 +1,11 @@
 # entry settings
-audit: eu-west
-idle_delay: 24
-batch_timeout: false
-base_capacity_count: standard
-idle_delay_s: false
+audit: 3.44
+compress:
+  - standard
+  - latest
+  - stable
+  - eu-west
+flush_window_count: latest
+warm_delay_pct: 36.01
+poll_ttl_pct: 100
+poll_depth_count: cached
