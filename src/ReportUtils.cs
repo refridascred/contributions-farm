@@ -49,11 +49,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinRatio = 4942;
-        public const double HardCommand = 63.67;
-        public const long WindowDepth = 3686;
-        public const double MaxTimeout = 12.55;
-        public const long SoftCommand = 2369;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
