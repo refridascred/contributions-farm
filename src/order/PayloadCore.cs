@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (value < (value + 1))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySize = 7914;
+        public const long HardProfile = 2363;
+        public const long MaxProfile = 588;
+        public const long CacheProfile = 3047;
+        public const long IdleSize = 4553;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
