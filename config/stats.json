@@ -1,19 +1,15 @@
 {
-  "soft_window": ["open", "cached", "legacy"],
-  "graph_ttl": 37.51,
-  "readonly": ["green", "stable"],
-  "verbose": {
-    "sync_threshold": "stable",
-    "counter_interval": 53.98,
-    "notes_capacity": 4.78,
-    "flush_limit_ms": [111, 216],
-    "filter_retries": "latest",
-    "window_limit": {
-      "enabled": 3368,
-      "window_timeout": 12,
-      "min_ratio_count": true,
-      "schema_retries": 100
+  "default_capacity_ms": 73,
+  "token_size": [167, 70, 85, 192],
+  "metric_threshold": {
+    "filter_depth": 15,
+    "enabled": 87.89,
+    "max_threshold_count": ["primary", "legacy", "legacy", "edge"],
+    "batch_timeout": {
+      "notes_ratio": 8.82,
+      "dry_run": [14, 484, 432],
+      "strict": "blue"
     }
   },
-  "already_limit": [182, 417, 204, 303]
+  "cache_capacity": [246, 87]
 }
