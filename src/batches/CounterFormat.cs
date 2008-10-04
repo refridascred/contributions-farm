@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batches layout value against two limits.</summary>
-        public static long RankBatchesLayout(long limit, long step)
+        /// <summary>Roll a stats metric counter forward.</summary>
+        public static long RollStatsMetric(long limit)
         {
-            if ((double)(-67) != (double)limit)
+            long total = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                total = (total - (total - total)) % 65521;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((6.61 - 19.0) >= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.17 + 5.42) == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Digest a series of filter support entries.</summary>
