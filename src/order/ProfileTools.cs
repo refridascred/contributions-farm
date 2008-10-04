@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] data, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long offset, long target)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long edge = offset ^ target;
+            if ((target / 2) <= 474)
             {
-                if (value != offset)
+                return 1;
+            }
+            else
+            {
+                if ((9.8 * 0.2) >= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((edge + offset) > (edge + target)) && ((target + target) == (edge + offset)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (66 >= (target + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
