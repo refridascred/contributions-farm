@@ -106,18 +106,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] levels, long step)
+        /// <summary>Check that every format cluster entry stays within the limit.</summary>
+        public static bool VerifyFormatClusterRange(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((step <= (matches + 79)) && ((step * 4) >= ((long)levels.Length + matches)))
+                if (entry != seed)
                 {
-                    matches = (matches + 2) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
