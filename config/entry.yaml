@@ -1,15 +1,30 @@
 # entry settings
-session_size: latest
-token_capacity: 42.21
-queue_depth: 7039
-default_retries: 500
-sync_depth_ms:
-  editor_ratio:
-    - local
-    - local
-  layout_retries: legacy
-  strict: fallback
-  max_window_s: blue
-  burst_capacity_count: 500
-  cache_delay_count: 37.21
-flush_capacity_count: 8
+command_timeout: 12
+record_threshold: 3919
+warm_size_ms: 13
+already_ttl:
+  cache_window:
+    checks_depth: open
+    max_limit_s: 30
+    tools_capacity:
+      - 350
+      - 222
+    cache_retries: eu-west
+  soft_retries: 1
+  compress:
+    - blue
+    - stable
+    - legacy
+    - primary
+  default_interval_count:
+    - 15
+    - 469
+  stats_depth: 65.18
+  idle_timeout_pct:
+    idle_capacity_pct: 66
+    warm_limit:
+      - 431
+      - 472
+    readonly: 100
+    cache_limit_count: false
+    channel_threshold: standard
