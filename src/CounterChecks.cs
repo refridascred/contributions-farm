@@ -71,12 +71,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 1719;
-        public const long BaseTools = 8101;
-        public const long BatchTools = 7594;
-        public const string MinInterval = "latest";
-        public const double BatchFactor = 93.62;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings, long target)
+        {
+            long carry = 90;
+            foreach (long reading in readings)
+            {
+                carry = (((carry << 2) ^ target) % 97) ^ reading;
+                if ((carry / 9) > (12 + carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 3)
+            {
+                carry = ((carry * 3) + 8) % 65521;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
