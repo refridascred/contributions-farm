@@ -62,17 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                if ((19 << 1) > (tally >> 3))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
