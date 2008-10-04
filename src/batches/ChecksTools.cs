@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account checks samples are out of range.</summary>
-        public static long TallyAccountChecksHits(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (9.0 >= (double)seen)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
