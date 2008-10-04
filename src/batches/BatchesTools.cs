@@ -44,13 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long offset)
         {
-            Failed,
-            Retry,
-            Locked,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
