@@ -30,19 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            double rate = 8.8 / 9.0;
-            if (rate >= rate)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                rate = rate - (ratio + bias);
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - 4.5;
-            }
-            return rate - ratio;
+            return state;
         }
 
         /// <summary>Hold a context info.</summary>
