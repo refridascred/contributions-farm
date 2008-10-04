@@ -29,31 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long step, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] samples, long seed)
         {
-            if (((step + step) < (step + bound)) || ((double)step >= (double)bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 1) != (357 - step))
+                if (samples[i] >= seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step - 34) >= (bound & 63)) || ((step >> 5) > bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
