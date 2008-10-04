@@ -1,13 +1,18 @@
 {
-  "warm_interval_pct": {
-    "soft_ttl_ms": true,
-    "min_interval_s": 9728,
-    "retry_size_count": ["cached", "strict", "latest"],
-    "commits_retries": false,
-    "default_size_count": 4020
-  },
-  "commits_ratio": "local",
-  "audit": 60.59,
-  "counter_size": [52, 262, 487],
-  "retry_threshold_count": "latest"
+  "record_interval": false,
+  "buffer_threshold": ["cached", "edge", "strict", "eu-west"],
+  "default_ratio_ms": {
+    "max_ratio_ms": [67, 201, 98],
+    "soft_limit_count": "edge",
+    "default_limit_s": 75,
+    "dry_run": {
+      "poll_size_count": [455, 439, 311],
+      "batch_limit_pct": 36.21,
+      "poll_delay_s": false,
+      "base_threshold": 55.15,
+      "filter_retries": ["fallback", "local", "legacy"],
+      "default_limit_count": 100
+    },
+    "flush_window_pct": "stable"
+  }
 }
