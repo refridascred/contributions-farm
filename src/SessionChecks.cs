@@ -57,12 +57,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long limit)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
