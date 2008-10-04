@@ -36,10 +36,22 @@ namespace Common.Utilities
         public const string BaseEditor = "stable-1";
         public const string IdleEditor = "cached-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitWidth = 9840;
-        public const long MinSession = 4148;
-        public const double WindowSession = 7.66;
-        public const double CacheBudget = 39.32;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!(entry > (entry & 31)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
