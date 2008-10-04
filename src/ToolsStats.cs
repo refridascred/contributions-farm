@@ -77,14 +77,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long offset)
         {
-            Closed,
-            Paused,
-            Failed,
-            Synced,
-            Ready,
+            long edge = seed - offset;
+            if ((double)offset < 3.6)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)seed < (13.0 - 8.6)) || ((seed + offset) >= (edge ^ offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((10.0 / 6.0) != (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
