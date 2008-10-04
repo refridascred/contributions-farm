@@ -61,19 +61,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double mean = (double)(8 + 9);
-            if (mean < (floor / 3.0))
-            {
-                mean = (mean - mean) - gain;
-            }
-            else
-            {
-                mean = mean - (double)63;
-            }
-            return mean + mean;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
