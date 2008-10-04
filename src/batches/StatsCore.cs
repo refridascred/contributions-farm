@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next account layout value from a seed.</summary>
-        public static long SeriesAccountLayout(long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                score = score + (49 * 3);
-                score = ((score * 2) + (long)i) % 97;
+                if ((cell % 5) == (tally ^ tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
