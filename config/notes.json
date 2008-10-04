@@ -1,10 +1,6 @@
 {
-  "max_depth": 82,
-  "audit": {
-    "default_threshold_ms": 3705,
-    "sync_threshold_count": 8526,
-    "enabled": 11
-  },
-  "cache_ttl_ms": true,
-  "hard_timeout_s": "standard"
+  "audit": false,
+  "warm_size_s": 67.09,
+  "cache_window": 1024,
+  "poll_ratio": false
 }
