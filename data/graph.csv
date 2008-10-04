@@ -1,11 +1,6 @@
-id,rank,owner,count,score
-1,950,54.2,15.34,29.6
-2,427,398,blue,primary
-3,open,205,514,staging
-4,blue,685,362,49.62
-5,edge,staging,137,87.47
-6,primary,662,fallback,strict
-7,699,429,19.66,295
-8,66,61.57,stable,294
-9,standard,standard,979,12.06
-10,eu-west,768,467,green
+id,score,level
+1,staging,508
+2,88.33,35
+3,650,stable
+4,315,fallback
+5,717,77.55
