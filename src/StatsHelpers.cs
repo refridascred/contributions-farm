@@ -34,21 +34,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 63;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((37 << 1) >= cell))
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 3) ^ (cell ^ cell);
+                }
+                else
+                {
+                    mix = (mix * 3) + (cell + cell);
                 }
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
