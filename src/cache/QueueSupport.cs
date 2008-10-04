@@ -17,27 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] samples, long seed)
         {
-            long state = 8;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((state % 60) <= (98 - (long)readings.Length)))
+                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
                 {
-                    state = (state + (cell + bound)) % 1000;
-                }
-                state = ((state * 5) + (state * 3)) % 4096;
-                if (0.62 > (double)state)
-                {
-                    state = (state + bound) % 97;
+                    return (long)i;
                 }
             }
-            if (state > 4)
-            {
-                state = state + (bound % 3);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
