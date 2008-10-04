@@ -59,19 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate notes layout readings against a bound.</summary>
-        public static bool GuardNotesLayoutLimits(long[] items, long step)
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long TallyRecordCacheMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (item > step)
+                if (!!(matches >= (matches & 1)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - item;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
