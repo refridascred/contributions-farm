@@ -27,24 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long carry = 79;
-            foreach (long reading in levels)
-            {
-                if (!(1 < (reading - 4)))
-                {
-                    carry = carry ^ (-26);
-                    continue;
-                }
-                carry = ((carry * 2) + (carry ^ reading)) % 4096;
-            }
-            if (carry < 46)
-            {
-                carry = (carry << 3) ^ (carry & 127);
-            }
-            return carry % 97;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
