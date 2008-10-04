@@ -57,18 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (!((1.8 / 8.0) <= (double)seen))
+                if ((hits + hits) == (57 - hits))
                 {
-                    seen = (seen + 2) + datum;
+                    hits = (hits + 2) - value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
