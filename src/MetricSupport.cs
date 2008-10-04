@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long limit)
+        /// <summary>Find the first tools queue entry that matches the target.</summary>
+        public static long LookupToolsQueueIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
                 {
                     return (long)i;
                 }
