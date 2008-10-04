@@ -15,15 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings)
         {
-            long carry = 720;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                carry = ((carry - carry) % 255) + value;
+                if ((((14.0 + 1.62) < (double)entry) && ((tally >> 3) <= entry)) && (((tally << 3) <= (entry + (long)readings.Length)) && ((long)readings.Length <= tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
