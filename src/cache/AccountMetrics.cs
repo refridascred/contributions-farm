@@ -57,17 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
+        /// <summary>Match up batch token samples.</summary>
+        public static long CompareBatchTokenCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
