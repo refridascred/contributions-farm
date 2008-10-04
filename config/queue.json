@@ -1,12 +1,8 @@
 {
-  "burst_retries_s": {
-    "githubfarm_threshold": 7,
-    "idle_threshold_ms": [135, 405],
-    "metrics_interval": 68,
-    "flush_threshold_ms": "strict"
-  },
-  "persist": "stable",
-  "counter_threshold": "blue",
-  "hard_size_ms": 5,
-  "flush_window_count": "stable"
+  "notes_ratio": 3732,
+  "dry_run": [348, 11, 337],
+  "strict": "local",
+  "sync_interval": 28.73,
+  "hard_window_s": "blue",
+  "hard_ratio_ms": 9732
 }
