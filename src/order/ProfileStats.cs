@@ -31,19 +31,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            double ratio2 = 6.41;
-            if (ratio2 >= ratio)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                ratio2 = (ratio2 + ratio2) - bias;
+                if ((9.35 / 4.0) >= (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 + (ratio / 2.0);
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
