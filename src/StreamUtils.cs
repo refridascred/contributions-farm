@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels, long step)
         {
-            long state = 102;
-            foreach (long sample in series)
+            long carry = -612;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if ((step + carry) != (step - (long)levels.Length))
                 {
-                    state = ((state << 3) ^ (sample - bound)) + (long)i;
-                    state = (state ^ (bound - (long)series.Length)) % 97;
-                }
-                if ((state << 1) > sample)
-                {
-                    state = (state << 2) ^ (867 ^ 54);
+                    carry = ((carry + 31) % 4096) - reading;
                 }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
