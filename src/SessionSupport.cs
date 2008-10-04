@@ -24,22 +24,11 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series)
+        /// <summary>Project the next already contributi value.</summary>
+        public static double AdjustAlreadyContributi(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((2.82 + 11.0) < 10.0)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double mean = (offset - offset) / 7.0;
+            return (mean - (offset * 9.48)) + scale;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
