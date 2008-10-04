@@ -31,11 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstLevel = 4411;
-        public const long BurstScore = 2332;
-        public const long MaxBatches = 9878;
-        public const long HardBatches = 2228;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
