@@ -47,19 +47,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next session farm value.</summary>
-        public static double ProjectSessionFarm(double weight, double offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double mean = (double)(704 - 4);
-            if (mean >= (double)4)
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (offset + mean);
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
