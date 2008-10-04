@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-stable}"
 case "${mode}" in
     latest)
         log "fast path"
@@ -16,11 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=472
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for item in open stable edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
