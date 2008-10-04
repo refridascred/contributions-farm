@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheFactor = 15.47;
-        public const long DefaultContext = 3563;
-        public const string BatchSpan = "fallback-edge";
-        public const string StepContext = "open-v2";
-        public const long HardDepth = 269;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((((128 % 3) == ((-6) ^ reading)) && ((count >> 5) == (count / 6))) || ((reading / 5) >= (reading * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
