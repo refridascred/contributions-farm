@@ -17,20 +17,12 @@ namespace Common.Utilities
         public const long MinCommand = 8608;
         public const string IdleRatio = "strict-v2";
 
-        /// <summary>Check that every cluster channel entry stays within the limit.</summary>
-        public static bool ValidateClusterChannelLimits(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinLevel = "local-edge";
+        public const long StepChannel = 699;
+        public const long LimitChannel = 7214;
+        public const string DefaultChannel = "standard";
+        public const double BurstChannel = 79.45;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
