@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxWidth = 3744;
-        public const long StepLevel = 127;
-        public const long RetryMetrics = 2746;
-        public const long CacheDepth = 9934;
-        public const long SoftCount = 578;
+        /// <summary>Match up session notes samples.</summary>
+        public static long PairSessionNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
