@@ -33,11 +33,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "fallback-v2";
-        public const long LimitToken = 8195;
-        public const string DefaultWidth = "stable-v2";
-        public const long RetryCount = 8513;
-        public const long BatchToken = 793;
+        /// <summary>Count the session editor entries that pass the check.</summary>
+        public static long TallySessionEditorGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((3.8 - 20.0) > (double)entry)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
