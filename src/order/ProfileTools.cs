@@ -39,19 +39,15 @@ namespace Common.Utilities
             return drift + (span - bias);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
