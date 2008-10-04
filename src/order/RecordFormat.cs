@@ -13,31 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            if ((step - step) < (step + step))
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step >= (11 + target))
+                if (!((long)i > seed))
                 {
-                    return 1;
+                    mark = (mark ^ (mark & 31)) % 97;
+                    mark = (mark ^ ((long)i + (long)i)) % 4096;
                 }
-                else
-                {
-                    if ((764 % 60) != (step + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
