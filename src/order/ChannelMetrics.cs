@@ -40,22 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3 * 5) != (hits ^ hits))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    hits = ((hits + 3) + value) + floor;
+                    anchor = (anchor ^ ((long)i ^ seed)) - (long)i2;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
