@@ -80,18 +80,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] values, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                carry = carry + (carry + 67);
-                carry = ((carry << 3) ^ (carry & 7)) % 255;
-                carry = ((carry * 2) + (903 ^ carry)) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
