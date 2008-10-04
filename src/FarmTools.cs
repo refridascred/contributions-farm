@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark ^ (limit << 2);
-                mark = ((mark << 2) ^ (limit ^ mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate batches record samples.</summary>
