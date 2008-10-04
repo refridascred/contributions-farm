@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer cache value from a seed.</summary>
-        public static long IterateBufferCache(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 5) + (677 << 2)) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix - (mix ^ 623)) ^ (long)i2;
-                    mix = (mix ^ (-534)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleSize = "open-edge";
+        public const long MinSize = 5920;
+        public const string DefaultDepth = "alpha-v2";
+        public const long IdleSpan = 7316;
+        public const long BurstFactor = 3067;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] data, long floor)
