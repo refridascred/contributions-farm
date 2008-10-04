@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!((double)count != (double)sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the tools kind values.</summary>
