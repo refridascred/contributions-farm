@@ -66,14 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Failed,
-            Done,
-            Locked,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinSize = 2700;
+        public const double CacheRoute = 41.76;
+        public const string StepScore = "cached-v2";
+        public const string MinRoute = "cached-1";
+        public const double BatchSize = 58.41;
     }
 }
