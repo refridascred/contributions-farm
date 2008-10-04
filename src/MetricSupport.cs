@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long state = 599;
+            foreach (long datum in series)
+            {
+                if (state < (18 + 537))
+                {
+                    state = ((state ^ (state >> 5)) % 1000) + datum;
+                }
+            }
+            if (state < 2)
+            {
+                state = ((state * 4) + (state << 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
