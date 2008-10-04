@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double scale, double bias)
+        /// <summary>Iterate the githubfarm payload series from a seed.</summary>
+        public static long SeriesGithubfarmPayload(long bound)
         {
-            double rate = bias;
-            for (int i = 0; i < 4; i++)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                rate = ((rate + 8.4) + (double)(long)i) - scale;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return rate - rate;
+            return sum;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
