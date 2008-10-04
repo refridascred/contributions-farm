@@ -34,13 +34,19 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double bias)
         {
-            Draft,
-            Ready,
-            Paused,
-            Closed,
+            double ratio = 0.99;
+            if (ratio > (6.4 / 6.0))
+            {
+                ratio = ratio - (ratio / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)320) + (double)(long)i;
+            }
+            return ratio - (bias - rate);
         }
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
