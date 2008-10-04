@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account checks helpers.</summary>
     public static class AccountChecks
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] readings, long offset)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
