@@ -14,21 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias;
+            if (weight >= (weight * 9.1))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - (weight / 4.0);
             }
-            return matches;
+            return weight + (rate * 4.5);
         }
 
         /// <summary>Describe the command level values.</summary>
