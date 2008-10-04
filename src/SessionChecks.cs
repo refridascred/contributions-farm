@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 13.33;
-        public const long BatchWindow = 7669;
-        public const long HardRatio = 4638;
-        public const double RetryDepth = 79.51;
+        /// <summary>Classify a format report pair into a bucket.</summary>
+        public static long RankFormatReport(long target, long seed)
+        {
+            if (!((seed + target) >= (seed + seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)seed > (double)target) || ((1.0 * 9.8) != (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] readings, long floor)
