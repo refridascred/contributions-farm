@@ -14,22 +14,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 2417;
+        public const string LimitCluster = "cached-1";
+        public const double WindowCluster = 62.36;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long WeighProfile(long[] values)
