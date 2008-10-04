@@ -17,19 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next session commits value from a seed.</summary>
-        public static long RollSessionCommits(long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] levels, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)i / 2) <= floor))
+                if (levels[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
