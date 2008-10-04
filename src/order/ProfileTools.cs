@@ -46,12 +46,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first layout tools entry that matches the target.</summary>
+        public static long FindLayoutToolsIndex(long[] levels, long target)
         {
-            Queued,
-            Synced,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate notes layout readings against a bound.</summary>
