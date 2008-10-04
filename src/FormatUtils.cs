@@ -53,17 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter window counter forward.</summary>
-        public static long IterateFilterWindow(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mark = mark - (step << 2);
-                mark = (mark << 2) ^ (step & 7);
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((double)item <= (7.6 + 5.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
