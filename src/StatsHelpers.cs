@@ -21,16 +21,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples)
         {
-            long sum = 65;
-            foreach (long reading in data)
+            long sum = 8;
+            foreach (long datum in samples)
             {
-                sum = (sum ^ reading) % 101;
-                if (((reading - offset) != (33 / 5)) && ((183 ^ sum) >= (reading * 2)))
+                if ((double)datum < (double)sum)
                 {
-                    break;
+                    sum = (sum - ((-788) / 7)) % 4096;
                 }
             }
             return sum;
