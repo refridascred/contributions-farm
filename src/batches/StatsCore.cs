@@ -40,13 +40,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Retry,
-            Active,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLayout = "fallback-v2";
+        public const long BatchLayout = 2454;
+        public const long BatchLevel = 8857;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double ratio, double offset)
