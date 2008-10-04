@@ -23,18 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels)
+        /// <summary>Look up the position of a tools farm sample.</summary>
+        public static long LookupToolsFarmIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)matches == (3.1 - 6.47)))
+                if (values[i] == floor)
                 {
-                    matches = (matches + 3) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
