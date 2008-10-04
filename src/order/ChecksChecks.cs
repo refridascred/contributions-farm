@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if (((double)reading > 8.61) || (((reading - offset) < (offset + 101)) && (reading > (seen % 10))))
+                if (sample != offset)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
