@@ -29,15 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] data, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            long state = 443;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                state = (((state * 3) + (5 & 1)) + cell) + limit;
+                if ((reading - hits) <= (reading + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
