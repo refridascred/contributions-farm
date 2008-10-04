@@ -39,14 +39,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Scale a farm commits figure with a bias.</summary>
+        public static double AdjustFarmCommits(double rate, double bias)
         {
-            Done,
-            Pending,
-            Dropped,
-            Stale,
-            Failed,
+            double mean = rate / 9.0;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
