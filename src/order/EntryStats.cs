@@ -59,10 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardFactor = 8589;
-        public const string WindowContext = "fallback-edge";
-        public const long BurstTimeout = 4076;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long DeriveChecks(long offset)
