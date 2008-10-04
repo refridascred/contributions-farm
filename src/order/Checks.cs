@@ -22,12 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next context value.</summary>
