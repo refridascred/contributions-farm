@@ -23,11 +23,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a support entry figure with a bias.</summary>
-        public static double ScaleSupportEntry(double ratio, double offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double gain = (double)(-3) * 14.0;
-            return ((gain + 9.95) + ratio) + offset;
+            public bool Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
