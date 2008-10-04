@@ -32,11 +32,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchScore = 25.35;
-        public const string BatchTimeout = "legacy-1";
-        public const long IdleFactor = 2111;
-        public const long BurstWidth = 2777;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples)
+        {
+            long acc = 22;
+            foreach (long sample in samples)
+            {
+                if ((double)sample <= 8.77)
+                {
+                    acc = acc - (31 + (-611));
+                }
+                else
+                {
+                    acc = (acc * 5) + (sample - acc);
+                }
+            }
+            if (acc < 88)
+            {
+                acc = (acc - (acc - acc)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] data)
