@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] items, long limit)
         {
-            double scale = (offset / 5.0) / 2.0;
-            if (scale < 9.2)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                scale = scale + rate;
+                if (!!((0 - entry) <= tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
