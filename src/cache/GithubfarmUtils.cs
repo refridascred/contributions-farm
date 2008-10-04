@@ -32,17 +32,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first editor already entry that matches the target.</summary>
-        public static long LookupEditorAlreadyIndex(long[] items, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
