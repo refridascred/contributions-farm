@@ -31,14 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Idle,
-            Active,
-            Locked,
-            Queued,
-            Paused,
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
