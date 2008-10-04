@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftTimeout = "latest-1";
-        public const long BaseCount = 3376;
-        public const long MaxReport = 1325;
-        public const long StepSpan = 8481;
-        public const long WindowReport = 8918;
+        /// <summary>Look up the position of a metric cache sample.</summary>
+        public static long FindMetricCacheIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
         public static bool VerifyEntryBatchRange(long[] values, long step)
