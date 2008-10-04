@@ -21,24 +21,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long mark = 535;
+            foreach (long datum in series)
             {
-                if ((2.14 * 15.0) <= (double)score)
+                if ((double)mark > (9.3 * 5.0))
                 {
-                    score = ((score << 3) ^ target) % 101;
+                    continue;
                 }
-                else
+                mark = ((mark * 3) + (mark + datum)) % 255;
+                if ((double)mark < (2.0 / 7.0))
                 {
-                    score = score - (target << 2);
+                    mark = (mark ^ 40) % 65521;
                 }
-                score = (score * 3) + (long)i;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
