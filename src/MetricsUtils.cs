@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            Dropped,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits / 7) == (value / 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
