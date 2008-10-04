@@ -10,23 +10,12 @@ namespace Common.Utilities
         public const long MinGithubfarm = 3807;
         public const long StepDepth = 7012;
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double ratio = 8.6;
-            if (ratio < 10.0)
-            {
-                ratio = (ratio - (ratio - span)) + bias;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (span + 3.0);
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Match up window samples.</summary>
