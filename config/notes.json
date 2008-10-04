@@ -1,18 +1,10 @@
 {
-  "farm_size": 5741,
-  "dry_run": true,
-  "audit": 31.49,
-  "persist": true,
-  "compress": {
-    "hard_delay": false,
-    "cache_threshold": "latest",
-    "format_depth": "primary"
+  "soft_threshold_ms": {
+    "cluster_depth": 30,
+    "max_timeout_pct": "stable",
+    "idle_depth_pct": true
   },
-  "batches_capacity": {
-    "poll_ratio_ms": false,
-    "batch_limit_ms": 250,
-    "strict": 8.71,
-    "max_size": false,
-    "dry_run": "strict"
-  }
+  "sync_retries_pct": 60,
+  "poll_depth_ms": 500,
+  "already_ttl": 18.01
 }
