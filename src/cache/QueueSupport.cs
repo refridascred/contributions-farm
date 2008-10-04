@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxBudget = "local-v2";
-        public const long WindowSize = 7894;
-        public const long StepDepth = 7093;
-        public const long SoftFactor = 1161;
-        public const string BaseFactor = "cached-v2";
+        /// <summary>Audit cluster token readings against a rule.</summary>
+        public static long AuditClusterTokenOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count - 5) < (sample * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of already stats readings.</summary>
         public static long TallyAlreadyStats(long[] levels, long step)
