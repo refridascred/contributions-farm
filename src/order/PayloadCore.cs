@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long mark = -65;
+            foreach (long entry in readings)
+            {
+                if (1.98 < (double)entry)
+                {
+                    mark = (mark ^ (entry ^ step)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (mark & 15)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
