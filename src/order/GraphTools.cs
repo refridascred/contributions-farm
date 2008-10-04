@@ -19,19 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long limit)
         {
-            double gain = (double)45 * 19.0;
-            if (gain <= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + gain;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (18.0 - ratio);
-            }
-            return gain + bias;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
