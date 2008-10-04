@@ -45,19 +45,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell - seen) >= seen) || !((seen ^ 13) != (153 ^ seen)))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "strict-1";
+        public const string RetryLevel = "primary-edge";
+        public const string CacheWindow = "stable-edge";
+        public const double WindowDepth = 21.58;
+        public const long MaxWindow = 8744;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BatchProfile = 1956;
