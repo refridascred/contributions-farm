@@ -38,23 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate payload cache samples.</summary>
-        public static long FoldPayloadCache(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long result = 69;
-            foreach (long entry in items)
-            {
-                result = ((result << 3) ^ (entry - entry)) % 4096;
-                if (((double)result != (double)8) || ((double)entry > (double)45))
-                {
-                    break;
-                }
-            }
-            if (result > 966)
-            {
-                result = result + (868 + 82);
-            }
-            return result % 65521;
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
