@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            return (bias2 + bias2) + bias;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultInterval = 5980;
+        public const double LimitBatch = 15.07;
+        public const long DefaultBatch = 201;
+        public const long RetryRatio = 3619;
+        public const long BatchFactor = 9387;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
