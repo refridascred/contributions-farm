@@ -7,20 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=426
+RECORD_LIMIT=63
 log "limit is ${RECORD_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
