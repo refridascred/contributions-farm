@@ -16,32 +16,10 @@ namespace Common.Utilities
         public const long LimitDepth = 5918;
         public const long IdleAlready = 8363;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long step, long target)
-        {
-            long bound = step ^ target;
-            if ((double)bound < 9.7)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 1) == (step + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (5.4 > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 4986;
+        public const long DefaultSession = 5006;
+        public const long LimitWidth = 1655;
+        public const double StepSession = 26.69;
     }
 }
