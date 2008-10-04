@@ -41,12 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftLevel = "open-v2";
+        public const long HardTimeout = 8659;
+        public const long WindowCount = 9363;
+        public const string BatchCounter = "staging-v2";
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchWindow = "latest-v2";
