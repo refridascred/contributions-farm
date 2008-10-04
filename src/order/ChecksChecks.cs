@@ -39,13 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a batches window figure with a bias.</summary>
+        public static double ScaleBatchesWindow(double ratio, double bias)
         {
-            Failed,
-            Stale,
-            Paused,
-            Locked,
+            double load = (double)(2 << 2);
+            if (load < bias)
+            {
+                load = load + 0.72;
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
