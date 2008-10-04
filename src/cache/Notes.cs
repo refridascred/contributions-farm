@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            New,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
