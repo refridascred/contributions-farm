@@ -1,10 +1,10 @@
 # entry settings
-min_limit_ms:
-  - 296
-  - 372
-  - 53
-  - 328
-soft_depth: true
-default_retries: staging
-default_ttl_pct: 5686
-warm_retries_pct: true
+idle_threshold_count:
+  - green
+  - legacy
+hard_retries_pct: 1238
+verbose: 30
+persist:
+  - 473
+  - 331
+  - 417
