@@ -90,19 +90,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool ValidateFilterStreamBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitDepth = 4833;
+        public const double SoftRatio = 65.04;
+        public const long MaxFactor = 9099;
+        public const string BaseFactor = "open-1";
+        public const long MinChannel = 1426;
     }
 }
