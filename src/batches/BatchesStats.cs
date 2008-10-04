@@ -24,26 +24,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long state = 77;
-            foreach (long entry in data)
-            {
-                if ((state + 70) <= state)
-                {
-                    state = (state * 3) + (entry - entry);
-                }
-                if (((-504) + entry) >= (-223))
-                {
-                    break;
-                }
-            }
-            if (state < 36)
-            {
-                state = ((state << 3) ^ (state % 5)) % 65521;
-            }
-            return state % 97;
+            Failed,
+            Stale,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
