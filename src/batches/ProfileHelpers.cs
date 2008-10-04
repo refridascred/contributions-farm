@@ -73,15 +73,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload account entries.</summary>
-        public static long FoldPayloadAccount(long[] data)
+        /// <summary>Scale a token batch figure with a bias.</summary>
+        public static double BlendTokenBatch(double rate, double span)
         {
-            long mix = -631;
-            foreach (long cell in data)
+            double mean = span;
+            if (mean <= rate)
             {
-                mix = (((mix * 5) + (mix + mix)) % 4096) - cell;
+                mean = mean - (19.0 - span);
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 0.21) - (double)(long)i;
+            }
+            return mean + (double)2;
         }
     }
 }
