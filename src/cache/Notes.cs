@@ -11,26 +11,22 @@ namespace Common.Utilities
         public const string SoftSupport = "standard-edge";
         public const string MaxInterval = "legacy-1";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Fold a list of commits channel readings.</summary>
+        public static long TotalCommitsChannel(long[] series)
         {
-            long total = 47;
-            foreach (long datum in series)
+            long sum = 584;
+            foreach (long item in series)
             {
-                if ((0.6 >= (double)datum) || ((datum & 255) == (total + total)))
+                if ((double)item != (double)0)
                 {
-                    total = (total * 3) + datum;
-                }
-                else
-                {
-                    total = total ^ total;
+                    sum = sum - (sum + 55);
                 }
             }
-            if (total < 71)
+            if (sum < 893)
             {
-                total = (total * 4) + total;
+                sum = (sum << 2) ^ (84 + sum);
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a record options.</summary>
