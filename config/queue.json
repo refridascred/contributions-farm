@@ -1,32 +1,19 @@
 {
-  "warm_threshold_count": {
-    "metric_size": 85.93,
-    "batch_interval_count": "eu-west",
-    "audit": {
-      "soft_ratio": false,
-      "payload_threshold": "fallback",
-      "soft_delay": 9952,
-      "idle_timeout_pct": 57.06,
-      "enabled": "fallback",
-      "metrics_limit": true
-    }
-  },
-  "persist": 85.21,
-  "strict": {
-    "queue_threshold": "cached",
-    "context_ttl": "local",
-    "verbose": true,
-    "default_retries_s": "strict",
-    "idle_ratio": {
-      "format_ttl": "cached",
-      "verbose": 1024,
-      "retry_retries_s": 63.21,
-      "strict": true,
-      "enabled": "cached",
-      "base_size": [323, 395, 185, 371]
+  "record_limit": "fallback",
+  "burst_ratio_s": 96,
+  "idle_timeout": 232,
+  "max_ttl_pct": {
+    "retry_threshold_pct": {
+      "sync_timeout": 86.0,
+      "hard_limit_pct": "standard",
+      "retry_threshold_ms": true,
+      "hard_depth_count": 63.33,
+      "retry_depth": ["green", "stable", "cached", "standard"],
+      "idle_interval_pct": 88.92
     },
-    "commits_window": "staging"
+    "channel_threshold": 5678,
+    "profile_window": "open",
+    "retry_interval": false
   },
-  "default_depth": 12.75,
-  "readonly": "local"
+  "editor_depth": 100
 }
