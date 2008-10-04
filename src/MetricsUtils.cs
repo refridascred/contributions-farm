@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Done,
-            Dropped,
-            Pending,
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
