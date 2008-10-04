@@ -27,18 +27,31 @@ namespace Common.Utilities
         public const string StepLevel = "primary-edge";
         public const long IdleToken = 5353;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (3.5 >= (double)origin)
             {
-                if ((double)step > 7.74)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (double)bound)
                 {
-                    seen = (seen + 2) - datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin < (51 & 63)) || ((bound + bound) == (444 + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
