@@ -70,20 +70,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] data, long step)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2871;
+        public const long SoftEntry = 5047;
+        public const long SoftRatio = 6609;
+        public const long StepEntry = 8333;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] data, long bound)
