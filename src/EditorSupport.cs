@@ -39,11 +39,18 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 547;
-        public const long MinCount = 8956;
-        public const string CacheRoute = "primary-edge";
-        public const long StepScore = 9085;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit counter buffer readings against a rule.</summary>
         public static long CountCounterBufferOutliers(long[] levels, long bound)
