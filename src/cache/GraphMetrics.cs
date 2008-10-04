@@ -16,23 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] levels, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples, long origin)
         {
-            long anchor = -67;
-            foreach (long entry in levels)
+            long sum = 795;
+            foreach (long datum in samples)
             {
-                anchor = anchor - (588 - entry);
-                if (origin > (origin + entry))
-                {
-                    anchor = (anchor << 3) ^ (origin - entry);
-                }
+                sum = ((sum + (sum + sum)) % 255) + origin;
+                sum = (sum ^ (datum >> 2)) % 4096;
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (origin % 24)) % 4096;
-            }
-            return anchor;
+            return sum % 1000;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
