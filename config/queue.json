@@ -1,7 +1,16 @@
 {
-  "readonly": ["strict", "legacy", "latest"],
-  "batch_limit_s": 250,
-  "hard_depth_ms": false,
-  "warm_depth": 1024,
-  "hard_capacity": "legacy"
+  "base_limit_pct": {
+    "batch_window": "stable",
+    "poll_depth_pct": [83, 251, 206],
+    "dry_run": {
+      "max_interval_count": "cached",
+      "poll_interval_ms": false,
+      "retry_limit_s": true,
+      "retry_timeout_pct": "eu-west",
+      "cache_size": 60.74
+    },
+    "cache_depth": "strict"
+  },
+  "compress": 27.57,
+  "soft_depth_count": 40.37
 }
