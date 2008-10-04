@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long SoftMetric = 5058;
         public const long LimitMetric = 845;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long state = 842;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state - (-57)) < (long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state - (item - state)) % 97;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
