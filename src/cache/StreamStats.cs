@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 5292;
-        public const long StepLayout = 7329;
-        public const long BurstLayout = 8894;
+        /// <summary>Project the next report format value.</summary>
+        public static double ScaleReportFormat(double weight, double span)
+        {
+            double scale = weight;
+            return (scale + (scale - 8.0)) + span;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] levels)
