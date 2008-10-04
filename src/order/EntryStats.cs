@@ -32,18 +32,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] data, long target)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-98) <= (count * 3))
+                if (data[i] < target)
                 {
-                    count = ((count + 3) ^ entry) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
