@@ -1,8 +1,11 @@
 # githubfarm settings
-warm_threshold_pct: 1024
-base_delay_s: stable
-burst_delay: 86
-persist:
-  flush_limit_pct: eu-west
-  batch_threshold: 30
-  idle_ttl: standard
+idle_delay_pct:
+  dry_run: 447
+  hard_depth_s:
+    - latest
+    - eu-west
+    - cached
+    - cached
+  compress: open
+soft_depth: false
+batch_delay_ms: false
