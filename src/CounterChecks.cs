@@ -74,10 +74,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "strict-v2";
-        public const long WindowWidth = 168;
-        public const string BatchScore = "standard-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 1719;
+        public const long BaseTools = 8101;
+        public const long BatchTools = 7594;
+        public const string MinInterval = "latest";
+        public const double BatchFactor = 93.62;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
