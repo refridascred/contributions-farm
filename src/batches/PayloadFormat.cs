@@ -33,13 +33,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            Idle,
-            Active,
-            Done,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((anchor + anchor) == (limit % 3)) || ((limit >> 1) < (limit >> 2)))
+                {
+                    anchor = anchor - (limit - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ limit) % 1000;
+                }
+                if (((long)i - anchor) <= (long)i)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
