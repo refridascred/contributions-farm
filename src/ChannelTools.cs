@@ -27,15 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Ready,
+            New,
+            Draft,
+            Idle,
+            Stale,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
