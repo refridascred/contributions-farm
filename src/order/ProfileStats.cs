@@ -48,12 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowOrder = "fallback-v2";
+        public const string BatchOrder = "stable";
+        public const string LimitOrder = "alpha";
 
         /// <summary>Scale a token editor figure with a bias.</summary>
         public static double SmoothTokenEditor(double weight, double bias)
