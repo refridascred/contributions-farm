@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                if (value <= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
