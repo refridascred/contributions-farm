@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((limit - 80) <= (seen - 86))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
