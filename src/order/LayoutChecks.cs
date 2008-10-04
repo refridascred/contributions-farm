@@ -30,14 +30,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings, long offset)
         {
-            Draft,
-            Retry,
-            Locked,
-            Pending,
-            Done,
+            long state = 64;
+            foreach (long item in readings)
+            {
+                if (((state ^ state) >= (offset << 2)) && (8.6 < (double)state))
+                {
+                    state = (state - offset) + item;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
