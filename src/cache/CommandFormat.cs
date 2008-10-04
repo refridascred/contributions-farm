@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit payload queue readings against a rule.</summary>
-        public static long AuditPayloadQueueMatches(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (!((seen <= (sample << 1)) && ((double)(long)samples.Length < (double)seen)))
+                if ((((entry - (-9)) == (offset - count)) || ((double)entry <= (17.0 + 8.6))) || (((offset / 2) != (offset + offset)) && ((6.67 - 5.0) <= (double)offset)))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
