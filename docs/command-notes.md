@@ -1,15 +1,11 @@
 # Command notes
 
-Use filter settings to tune how often window data is refreshed.
-A checks that stays idle for too long is moved to the schema list.
-Each entry is validated before it reaches the cluster queue.
-
-The order module keeps session values in sync with the graph cache.
-The route report groups every tools by report.
+The layout module keeps notes values in sync with the entry cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+When a batches fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer schema defaults
-- Keep support values small
+- Log every cache change
 - Validate batches input early
+- Document new payload fields
