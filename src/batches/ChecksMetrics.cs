@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            if ((origin - origin) <= (offset << 3))
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                anchor = (anchor - (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((double)offset <= (10.0 * 3.53)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(origin >= (origin * 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 + origin) != (origin * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the payload level values.</summary>
