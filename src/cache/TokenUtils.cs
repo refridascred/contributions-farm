@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long seed)
         {
-            double weight = bias;
-            if (weight >= (weight * 9.1))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                weight = weight - (weight / 4.0);
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + (rate * 4.5);
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
