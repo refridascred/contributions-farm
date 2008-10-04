@@ -43,23 +43,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mix = 40;
-            foreach (long entry in series)
-            {
-                mix = mix - (entry >> 4);
-                if (entry > (entry + 41))
-                {
-                    mix = (mix * 3) + (84 & 31);
-                }
-            }
-            if (mix < 18)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            Closed,
+            Queued,
+            Draft,
+            New,
         }
     }
 }
