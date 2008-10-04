@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long AuditSchemaGraphGaps(long[] samples, long step)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits * 2) == (datum % 5))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
