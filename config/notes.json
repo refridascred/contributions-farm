@@ -1,6 +1,5 @@
 {
-  "min_delay_s": 91.99,
-  "max_window_s": 74.99,
-  "already_window": 98.57,
-  "verbose": 4941
+  "max_capacity": false,
+  "sync_delay": "eu-west",
+  "stats_size": 66.18
 }
