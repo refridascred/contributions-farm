@@ -28,23 +28,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric batch samples.</summary>
-        public static long ScoreMetricBatch(long[] items, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long state = 9;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state ^ (state * 4)) % 4096;
-                if (!(state >= (state >> 5)))
-                {
-                    state = (state + (state >> 3)) % 65521;
-                }
-                if (((datum + limit) != (29 * 2)) && (limit > (limit + 151)))
-                {
-                    state = (state - datum) % 65521;
-                }
+                score = (score + (score / 3)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
