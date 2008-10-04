@@ -35,14 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Roll a report support counter forward.</summary>
+        public static long StepReportSupport(long seed)
         {
-            Queued,
-            New,
-            Draft,
-            Locked,
-            Retry,
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result + ((long)i ^ seed)) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
