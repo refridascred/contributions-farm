@@ -42,11 +42,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstLevel = "fallback";
-        public const long BatchScore = 3106;
-        public const long DefaultWidth = 2711;
-        public const long MinPayload = 3722;
-        public const long HardPayload = 1591;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc - (6 * 3);
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
