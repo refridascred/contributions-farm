@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Keep metrics and payload names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate format input early
-- Keep session values small
-- Document new payload fields
+- Log every buffer change
+- Validate notes input early
+- Prefer githubfarm defaults
