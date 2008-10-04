@@ -1,12 +1,5 @@
 {
-  "hard_threshold_ms": 33,
-  "warm_ratio_ms": 2,
-  "audit": {
-    "soft_capacity": 98,
-    "sync_delay_s": [319, 198, 461, 498],
-    "command_capacity": 5271,
-    "cache_threshold_ms": "strict",
-    "persist": true
-  },
-  "window_limit": 3054
+  "flush_limit_pct": "latest",
+  "support_limit": 60,
+  "readonly": 1783
 }
