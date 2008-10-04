@@ -54,18 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] readings, long seed)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long anchor = 7;
-            foreach (long cell in readings)
+            long acc = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((seed % 64) >= (cell / 8)) && ((seed - seed) > seed))
+                if ((3.1 / 4.0) <= (double)step)
                 {
-                    anchor = ((anchor * 4) + anchor) % 65521;
+                    continue;
                 }
+                acc = ((acc * 3) + step) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Accumulate profile samples.</summary>
