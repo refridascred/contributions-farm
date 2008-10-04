@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long bound)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long cur = target - bound;
+            if (!(bound >= (292 - target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur - target) != (cur ^ (-87)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(287 < (bound / 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((494 + target) == (3 & 255))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
