@@ -30,16 +30,11 @@ namespace Common.Utilities
         public const double DefaultLevel = 89.64;
         public const long StepFarm = 4575;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples)
-        {
-            long result = 816;
-            foreach (long cell in samples)
-            {
-                result = result + cell;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySpan = 1172;
+        public const double BaseInterval = 72.6;
+        public const string RetryFormat = "latest-v2";
+        public const long StepFormat = 8630;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long step, long step2)
