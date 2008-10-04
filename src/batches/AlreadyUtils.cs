@@ -60,17 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a report session reading by value.</summary>
-        public static long LocateReportSessionIndex(long[] series, long floor)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a graph entry.</summary>
