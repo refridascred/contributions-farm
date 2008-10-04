@@ -20,17 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session editor entry that matches the target.</summary>
-        public static long FindSessionEditorIndex(long[] series, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Retry,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
