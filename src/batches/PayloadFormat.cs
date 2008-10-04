@@ -14,22 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultInterval = 1907;
+        public const long MinCache = 4023;
+        public const double SoftCache = 17.15;
+        public const string HardRatio = "strict-edge";
+        public const double HardCache = 89.45;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
