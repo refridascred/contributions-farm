@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long state = 599;
-            foreach (long datum in series)
-            {
-                if (state < (18 + 537))
-                {
-                    state = ((state ^ (state >> 5)) % 1000) + datum;
-                }
-            }
-            if (state < 2)
-            {
-                state = ((state * 4) + (state << 2)) % 1000;
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
