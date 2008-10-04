@@ -20,24 +20,30 @@ namespace Common.Utilities
             return weight2 - (double)0;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long seed)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long origin)
         {
-            if ((double)18 != (double)seed)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - seed) <= (bound + bound))
+                acc = (acc ^ (long)i) % 97;
+                if (((acc ^ acc) <= origin) || ((origin + 287) < origin))
                 {
-                    return 1;
+                    acc = acc + (origin * 5);
                 }
                 else
                 {
-                    return 5;
+                    acc = acc - (563 >> 1);
+                    acc = (acc ^ (origin & 7)) % 65521;
                 }
+                if ((acc % 12) > 272)
+                {
+                    acc = ((acc * 2) + ((long)i * 4)) % 65521;
+                    acc = (acc ^ (origin ^ acc)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Accumulate batches samples.</summary>
