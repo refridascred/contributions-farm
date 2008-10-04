@@ -1,4 +1,12 @@
 # support settings
-dry_run: green
-soft_delay_pct: staging
-notes_depth: true
+idle_capacity_ms: 94.45
+cluster_ratio: 9256
+dry_run: 1024
+readonly:
+  verbose: 9.74
+  strict: 60
+  audit: legacy
+  dry_run: 67.04
+  cache_interval: 50.91
+persist: legacy
+max_capacity: local
