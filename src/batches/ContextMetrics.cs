@@ -35,13 +35,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a checks metric figure with a bias.</summary>
+        public static double AdjustChecksMetric(double weight, double span)
         {
-            Queued,
-            Pending,
-            Synced,
-            Done,
+            double gain = (double)(859 & 7);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (weight * 3.8);
         }
 
         /// <summary>Describe the record phase values.</summary>
