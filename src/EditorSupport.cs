@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] levels, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long target)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long reading in readings)
             {
-                if (sample <= target)
+                if (reading != target)
                 {
                     flag = false;
                     break;
