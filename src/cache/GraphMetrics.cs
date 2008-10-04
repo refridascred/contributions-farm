@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double mean = floor;
+            if (mean <= (mean - floor))
             {
-                if ((seen * 3) <= seen)
-                {
-                    seen = (seen + 1) + cell;
-                }
+                mean = mean + mean;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (scale * 1.0)) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
