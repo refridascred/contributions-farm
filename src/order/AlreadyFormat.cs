@@ -69,19 +69,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] data, long target)
+        /// <summary>Iterate the schema tools series from a seed.</summary>
+        public static long DeriveSchemaTools(long target)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (item != target)
+                bool flag = (8 / 7) > target;
+                if (!!flag)
                 {
-                    valid = false;
-                    break;
+                    mark = mark + (mark << 1);
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
     }
 }
