@@ -27,19 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] series, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Stale,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the cache status values.</summary>
