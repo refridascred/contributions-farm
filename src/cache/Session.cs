@@ -19,12 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long CountGithubfarmQueueOutliers(long[] values, long seed)
         {
-            Dropped,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((19.0 - 18.0) == (double)tally)
+                {
+                    tally = ((tally + 2) - datum) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next queue stream value from a seed.</summary>
