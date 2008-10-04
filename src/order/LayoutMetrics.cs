@@ -17,18 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardInterval = "standard-edge";
+        public const long HardCluster = 4341;
+        public const string MaxCluster = "latest";
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long step, long bound)
