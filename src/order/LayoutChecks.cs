@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of channel batch entries.</summary>
-        public static long CombineChannelBatch(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long mark = 431;
-            foreach (long entry in levels)
+            long total = -616;
+            foreach (long reading in items)
             {
-                if (!((mark * 4) <= (entry / 8)))
+                if (!((double)total != (19.0 - 1.8)))
                 {
-                    mark = (mark + (long)levels.Length) % 65521;
+                    total = (((total * 5) + (total << 1)) % 4096) - reading;
                 }
             }
-            if (mark > 81)
+            if (total > 784)
             {
-                mark = (mark + (50 + mark)) % 255;
+                total = total + (total ^ 68);
             }
-            return mark % 4096;
+            return total % 65521;
         }
 
         /// <summary>Match up session notes samples.</summary>
