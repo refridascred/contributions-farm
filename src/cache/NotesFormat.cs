@@ -23,10 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxDepth = 9751;
-        public const double HardCount = 28.27;
-        public const long RetryCount = 8635;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample << 1) < (matches << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the record contributi series from a seed.</summary>
         public static long DeriveRecordContributi(long step)
