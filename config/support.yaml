@@ -1,8 +1,4 @@
 # support settings
-batch_limit_pct: edge
-max_interval: blue
-payload_delay:
-  - blue
-  - staging
-  - open
-  - legacy
+dry_run: green
+soft_delay_pct: staging
+notes_depth: true
