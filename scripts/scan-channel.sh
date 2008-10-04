@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=162
+log "limit is ${CHANNEL_LIMIT}"
