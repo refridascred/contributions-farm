@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 8285;
+        public const double HardNotes = 20.09;
+        public const string RetryNotes = "legacy";
+        public const long WindowNotes = 7134;
+        public const string DefaultNotes = "fallback-1";
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long seed)
