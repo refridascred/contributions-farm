@@ -1,9 +1,7 @@
-id,weight,state,owner
-1,923,662,25.08
-2,638,606,fallback
-3,625,stable,28.7
-4,eu-west,77.12,807
-5,72.97,stable,open
-6,930,88.37,legacy
-7,321,23.35,0.19
-8,open,strict,55.13
+id,weight,token
+1,59.43,61.82
+2,262,94.74
+3,fallback,33.36
+4,edge,legacy
+5,961,48
+6,58.34,834
