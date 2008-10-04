@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] series, long bound)
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmStreamRange(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (series[i] >= bound)
+                if (cell != target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
