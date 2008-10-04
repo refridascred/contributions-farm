@@ -34,13 +34,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] readings, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = 67;
+            foreach (long entry in readings)
+            {
+                acc = (((acc ^ (4 % 10)) % 4096) + entry) + origin;
+            }
+            return acc;
         }
     }
 }
