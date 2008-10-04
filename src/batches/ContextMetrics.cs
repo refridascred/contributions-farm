@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double ratio, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long limit)
         {
-            double load = ratio;
-            if (load <= ratio)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                load = (load + (load * 10.0)) - span;
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - 5.79;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
