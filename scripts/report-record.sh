@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging local latest; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=389
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
