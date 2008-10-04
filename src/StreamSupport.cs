@@ -19,23 +19,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long mark = 29;
-            foreach (long reading in readings)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(((reading + reading) != (704 + reading)) && ((mark & 1) <= reading)))
+                if ((2.14 * 15.0) <= (double)score)
                 {
-                    mark = (mark + (34 - mark)) % 97;
+                    score = ((score << 3) ^ target) % 101;
                 }
-                mark = (mark ^ (mark ^ mark)) % 97;
+                else
+                {
+                    score = score - (target << 2);
+                }
+                score = (score * 3) + (long)i;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (mark < (-37))
-            {
-                mark = (mark << 3) ^ 1;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
