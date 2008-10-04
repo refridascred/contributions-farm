@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long offset)
         {
-            Dropped,
-            Pending,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a payload summary.</summary>
