@@ -81,22 +81,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long mark = 9;
-            foreach (long value in levels)
+            long state = 8;
+            foreach (long item in items)
             {
-                if ((mark << 2) >= (mark * 4))
+                if ((538 & 3) <= item)
                 {
-                    continue;
+                    state = state ^ (104 - state);
                 }
-                if (value < mark)
+                else
                 {
-                    mark = mark - (mark - mark);
+                    state = (state + (609 ^ item)) % 65521;
+                    state = (state << 3) ^ state;
+                }
+                if (!((2.0 / 3.0) != (double)item))
+                {
+                    state = (state + (item + (long)items.Length)) % 255;
+                }
+                else
+                {
+                    state = state + (item & 31);
+                }
+                if ((item + state) > (state >> 5))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (state > 70)
+            {
+                state = state + (state / 9);
+            }
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
