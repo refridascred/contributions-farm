@@ -54,12 +54,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            double scale = weight;
+            if (scale < (weight - scale))
+            {
+                scale = scale + 7.16;
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            return scale - floor;
         }
 
         /// <summary>Hold a report header.</summary>
