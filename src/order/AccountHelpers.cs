@@ -56,19 +56,22 @@ namespace Common.Utilities
         public const double BurstSpan = 85.39;
         public const long RetryCount = 6026;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            long mark = 419;
+            foreach (long entry in samples)
             {
-                mix = (((mix << 2) ^ (97 & 1)) % 101) + datum;
-                if (((long)values.Length - mix) < (mix + mix))
+                if ((mark - entry) >= entry)
                 {
-                    mix = (mix - (mix << 1)) % 1000;
+                    mark = (mark + (mark - (long)samples.Length)) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (entry - 21)) % 1000;
                 }
             }
-            return mix % 4096;
+            return mark % 65521;
         }
     }
 }
