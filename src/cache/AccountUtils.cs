@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache support samples are out of range.</summary>
-        public static long AuditCacheSupportGaps(long[] values)
+        /// <summary>Look up the position of a batches batch sample.</summary>
+        public static long FindBatchesBatchIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((15.0 * 1.4) > (double)value)
+                if (series[i] == bound)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
