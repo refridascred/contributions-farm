@@ -38,16 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor - (long)i;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Idle,
+            Retry,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Check that every stats profile entry stays within the limit.</summary>
