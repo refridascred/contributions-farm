@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] readings, long offset)
         {
-            Queued,
-            Locked,
-            Pending,
-            Ready,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
