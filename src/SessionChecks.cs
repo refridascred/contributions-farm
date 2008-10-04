@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long floor)
+        /// <summary>Locate a cluster tools reading by value.</summary>
+        public static long LocateClusterToolsIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < floor)
+                if (values[i] <= step)
                 {
                     return (long)i;
                 }
