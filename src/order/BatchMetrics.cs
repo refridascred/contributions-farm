@@ -67,26 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long result = -99;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (129 < (entry & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 5) + result) % 255;
-                }
-                else
-                {
-                    result = result - (result & 31);
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 5)
-            {
-                result = ((result * 2) + (step ^ (long)series.Length)) % 97;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
