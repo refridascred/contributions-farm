@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double span)
-        {
-            double load = (double)(80 + 234);
-            if (load <= span)
-            {
-                load = load + scale;
-            }
-            else
-            {
-                load = load + (span / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardDepth = 5292;
+        public const long StepLayout = 7329;
+        public const long BurstLayout = 8894;
 
         /// <summary>Find the first command record entry that matches the target.</summary>
         public static long FindCommandRecordIndex(long[] items, long offset)
