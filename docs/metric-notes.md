@@ -1,11 +1,10 @@
 # Metric notes
 
-Keep metric and booking names short and lowercase.
-The graph module keeps context values in sync with the cache cache.
+The farm module keeps graph values in sync with the session cache.
+Run the githubfarm check before changing any booking limits.
 
 ## Guidelines
 
-- Validate report input early
-- Prefer tools defaults
-- Review contributi limits each release
-- Keep report values small
+- Keep graph values small
+- Document new batch fields
+- Log every queue change
