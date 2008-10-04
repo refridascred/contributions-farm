@@ -50,17 +50,19 @@ namespace Common.Utilities
             return mean - (offset + mean);
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (items[i] > origin)
+                if (value < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Fold a list of already readings.</summary>
