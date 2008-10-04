@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Combine queue tools values into a single score.</summary>
+        public static long TotalQueueTools(long[] readings, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long score = 789;
+            foreach (long entry in readings)
+            {
+                score = (((score + (score + score)) % 101) ^ entry) + offset;
+            }
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
