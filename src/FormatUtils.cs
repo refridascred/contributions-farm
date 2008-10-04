@@ -53,32 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long origin, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long bound)
         {
-            long gap = origin ^ target;
-            if (((6 >> 4) <= (origin & 63)) || ((10.0 / 3.0) == (double)target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target % 60) <= 12)
+                if (series[i] >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((gap + 331) >= (origin << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
