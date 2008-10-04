@@ -45,18 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry stream readings.</summary>
-        public static long WeighEntryStream(long[] data, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long result = 23;
-            foreach (long cell in data)
-            {
-                if ((double)(long)data.Length > (double)result)
-                {
-                    result = ((((result * 4) + (long)data.Length) % 1000) - cell) - seed;
-                }
-            }
-            return result % 1000;
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
