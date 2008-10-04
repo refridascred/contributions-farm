@@ -1,7 +1,8 @@
-id,rank,label,level
-1,858,309,62.93
-2,74.8,805,stable
-3,fallback,223,825
-4,blue,staging,65.72
-5,standard,fallback,green
-6,64.99,975,edge
+id,score,count
+1,13.72,813
+2,41.71,45.99
+3,197,217
+4,48.85,37.29
+5,235,724
+6,84.73,19.52
+7,492,69.62
