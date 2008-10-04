@@ -23,21 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 30;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result * 3) + item) % 1000;
+                if ((item + 712) == (item - item))
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - result) % 4096;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a command stats.</summary>
