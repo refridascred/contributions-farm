@@ -61,10 +61,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowCount = 74.55;
-        public const long CacheContributi = 7110;
-        public const long BurstContributi = 6150;
+        /// <summary>Rank already counter input into a small class.</summary>
+        public static long BucketAlreadyCounter(long limit, long limit2)
+        {
+            if ((limit - 406) <= (limit2 ^ limit2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit ^ limit2) <= limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 << 3) >= limit2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(limit2 < (limit << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
