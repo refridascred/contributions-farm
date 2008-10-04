@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long CacheProfile = 3047;
         public const long IdleSize = 4553;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
