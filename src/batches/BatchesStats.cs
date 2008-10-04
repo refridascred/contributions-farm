@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long RetryFormat = 1556;
         public const long WindowFormat = 2508;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            Idle,
-            Ready,
-            Paused,
-            Closed,
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor * 4) + anchor;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Rank order command input into a small class.</summary>
