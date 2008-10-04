@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first command schema entry that matches the target.</summary>
-        public static long LocateCommandSchemaIndex(long[] readings, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first graph metric entry that matches the target.</summary>
