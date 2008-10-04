@@ -69,13 +69,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long limit, long target)
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            if ((limit + target) != (target + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit) < (limit - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (double)42)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
