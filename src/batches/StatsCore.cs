@@ -17,20 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks already readings against a bound.</summary>
-        public static bool VerifyChecksAlreadyLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 7195;
+        public const long MaxRecord = 3797;
+        public const double MinDepth = 53.77;
+        public const long WindowRecord = 8614;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] items, long seed)
