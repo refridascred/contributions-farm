@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes metrics entry that matches the target.</summary>
-        public static long FindNotesMetricsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepBudget = "latest-edge";
+        public const long RetrySpan = 4170;
+        public const long IdleContributi = 1581;
+        public const long BurstContributi = 9933;
+        public const string HardLevel = "standard-v2";
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long step, long target)
