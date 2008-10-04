@@ -32,19 +32,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = 540;
-            foreach (long reading in samples)
-            {
-                carry = (carry ^ (floor & 63)) ^ reading;
-            }
-            if (carry < 93)
-            {
-                carry = (carry * 5) + (carry << 2);
-            }
-            return carry;
+            Synced,
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
