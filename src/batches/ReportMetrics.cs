@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] samples)
+        /// <summary>Combine filter stats values into a single score.</summary>
+        public static long TallyFilterStats(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = -3;
+            foreach (long sample in samples)
             {
-                if ((double)seen != (double)(-64))
-                {
-                    seen = (seen + 1) + item;
-                }
+                carry = ((carry * 5) + (sample - carry)) % 97;
             }
-            return seen;
+            if (carry > 9)
+            {
+                carry = (carry ^ (carry + 9)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
