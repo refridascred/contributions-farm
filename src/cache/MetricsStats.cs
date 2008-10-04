@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long anchor = 53;
+            foreach (long sample in levels)
             {
-                if (cell > (cell * 3))
+                if ((sample + anchor) <= (offset >> 3))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor ^ 86) % 97;
+                }
+                if (anchor >= (6 + (long)levels.Length))
+                {
+                    anchor = ((anchor << 3) ^ (offset >> 1)) % 97;
+                }
+                if (9.5 <= (double)offset)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
