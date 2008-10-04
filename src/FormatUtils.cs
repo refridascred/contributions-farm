@@ -102,12 +102,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] levels, long step)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((step <= (matches + 79)) && ((step * 4) >= ((long)levels.Length + matches)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
     }
 }
