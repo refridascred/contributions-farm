@@ -20,28 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = 340;
+            foreach (long sample in data)
             {
-                if ((double)state <= (1.96 - 4.5))
+                if ((sample - 715) < 456)
                 {
-                    state = state + (state >> 3);
+                    mix = (mix + (sample >> 4)) - limit;
                 }
-                if ((6.2 / 6.0) > (double)state)
-                {
-                    state = (state * 3) + (state << 1);
-                }
-                else
-                {
-                    long hits = (state ^ floor) - floor;
-                    state = (state ^ (hits / 5)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            if (mix > (-4))
+            {
+                mix = mix ^ (mix >> 4);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
