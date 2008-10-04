@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] readings, long floor)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)floor == (9.4 * 8.7))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a graph info.</summary>
