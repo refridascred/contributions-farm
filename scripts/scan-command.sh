@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open; do
+for item in local primary; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    latest)
         log "fast path"
         ;;
     *)
