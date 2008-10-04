@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 50.51;
-        public const long LimitRatio = 4290;
-        public const double WindowBudget = 42.05;
-        public const long SoftRecord = 9627;
-        public const long HardSize = 146;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 2096;
+        public const long BaseCommits = 5066;
+        public const long RetryCommits = 2558;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleLevel = 44.77;
