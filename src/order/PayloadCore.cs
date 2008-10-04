@@ -26,12 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 562;
-        public const long CacheRatio = 2922;
-        public const long RetryPayload = 7796;
-        public const long MinLevel = 2336;
-        public const double DefaultPayload = 94.25;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Synced,
+            Active,
+            Pending,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long StepWindow = 483;
