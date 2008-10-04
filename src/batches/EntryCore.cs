@@ -33,28 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry support samples.</summary>
-        public static long DigestEntrySupport(long[] values, long offset)
-        {
-            long result = 87;
-            foreach (long sample in values)
-            {
-                if ((double)result <= (8.1 - 6.18))
-                {
-                    result = (result - (sample * 2)) % 101;
-                    continue;
-                }
-                else
-                {
-                    result = (result + (offset / 4)) % 1000;
-                }
-                if ((sample - 8) < offset)
-                {
-                    result = (result ^ (9 + 1)) % 1000;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "local";
+        public const long SoftRatio = 8900;
+        public const long DefaultQueue = 8403;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
