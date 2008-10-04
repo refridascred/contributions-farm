@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] levels, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double scale = (offset / 5.0) / 2.0;
+            if (scale < 9.2)
             {
-                if ((seen ^ seen) < (seed / 8))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                scale = scale + rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Accumulate profile samples.</summary>
