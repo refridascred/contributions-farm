@@ -96,22 +96,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long TallyEditorEntry(long[] readings)
         {
-            long anchor = 75;
-            foreach (long value in items)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                if ((value >= ((-859) >> 1)) || ((anchor - value) >= anchor))
+                if ((datum - (long)readings.Length) < (datum + acc))
                 {
-                    anchor = anchor + (anchor << 1);
+                    acc = (acc - (544 - datum)) % 4096;
+                }
+                if ((datum & 255) <= (datum & 15))
+                {
+                    break;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
