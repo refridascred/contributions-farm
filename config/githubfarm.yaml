@@ -1,5 +1,5 @@
 # githubfarm settings
-context_capacity: 6855
-poll_retries_ms: 6
-idle_ratio_s: edge
-hard_threshold_s: false
+command_ttl: 7625
+sync_capacity_s: 8690
+base_interval: 85
+metrics_capacity: 91.24
