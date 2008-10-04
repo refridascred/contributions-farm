@@ -27,21 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stream commits samples.</summary>
-        public static long CompareStreamCommitsCount(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= bound)
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
