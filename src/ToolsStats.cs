@@ -27,23 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two contributi stream measurements.</summary>
-        public static double ScaleContributiStream(double bias, double offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] data, long floor)
         {
-            double load = bias - (4.8 / 3.0);
-            if (load < (load + load))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (offset - offset);
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (load - load);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (offset + load)) - (double)(long)i;
-            }
-            return load - (load / 5.0);
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
