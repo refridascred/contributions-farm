@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Active,
-            Done,
-            Closed,
-            Stale,
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
