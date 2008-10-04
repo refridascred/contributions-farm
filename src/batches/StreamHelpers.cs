@@ -101,13 +101,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long MeasureCommitsGithubfarmHits(long[] values)
         {
-            Active,
-            Ready,
-            Paused,
-            Locked,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!!((seen + (-8)) > (6 + 3)))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
     }
 }
