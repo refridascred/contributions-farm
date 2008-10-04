@@ -69,23 +69,22 @@ namespace Common.Utilities
         public const long WindowWidth = 168;
         public const string BatchScore = "standard-1";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long result = 38;
-            foreach (long datum in levels)
+            long carry = 66;
+            foreach (long value in readings)
             {
-                result = (result + (3 + datum)) % 4096;
-                if (((long)levels.Length % 60) >= (3 - step))
+                if (value > (value * 4))
                 {
-                    result = result - (datum ^ result);
+                    carry = ((carry << 2) ^ (carry ^ 90)) % 97;
                 }
             }
-            if (result < (-7))
+            if (carry > 6)
             {
-                result = (result + (80 ^ step)) % 4096;
+                carry = ((carry * 5) + (carry + carry)) % 97;
             }
-            return result % 4096;
+            return carry;
         }
     }
 }
