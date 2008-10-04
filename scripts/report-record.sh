@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard open legacy; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=448
+RECORD_LIMIT=116
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in stable cached fallback green; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
