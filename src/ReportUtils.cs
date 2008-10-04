@@ -27,21 +27,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((bound >= (offset + 685)) || (offset < (bound - bound)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound + bound))
                 {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
