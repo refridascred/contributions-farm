@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "latest";
-        public const double HardCluster = 56.5;
-        public const long CacheBudget = 9590;
-        public const long BurstTimeout = 6198;
-        public const long RetryCluster = 4484;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Synced,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BatchGraph = 29.48;
