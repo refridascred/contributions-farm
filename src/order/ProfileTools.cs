@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long offset, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            long edge = offset ^ target;
-            if ((target / 2) <= 474)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.8 * 0.2) >= (double)offset)
+                if (!((origin * 4) <= carry))
                 {
-                    return 8;
+                    carry = carry - (carry ^ 1);
                 }
-                else
-                {
-                    if (((edge + offset) > (edge + target)) && ((target + target) == (edge + offset)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (66 >= (target + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Hold a format record.</summary>
