@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Stale,
-            Paused,
-            Closed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardWidth = "standard-edge";
+        public const long RetryFormat = 1556;
+        public const long WindowFormat = 2508;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
