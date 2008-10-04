@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double bias2)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = bias;
+            if (drift <= (double)742)
+            {
+                drift = (drift - drift) + bias2;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a metrics header.</summary>
