@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of route window entries.</summary>
-        public static long TallyRouteWindow(long[] values)
-        {
-            long sum = 53;
-            foreach (long datum in values)
-            {
-                sum = sum - (datum - sum);
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftInterval = "fallback-edge";
+        public const double CacheSession = 33.61;
+        public const long BatchSession = 459;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long GradeCommand(long offset, long target)
