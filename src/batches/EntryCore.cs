@@ -21,12 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowWidth = 9263;
-        public const long RetryCount = 7478;
-        public const long BatchToken = 9613;
-        public const string MaxToken = "staging";
-        public const long RetryToken = 9544;
+        /// <summary>Digest a series of githubfarm tools entries.</summary>
+        public static long TotalGithubfarmTools(long[] data)
+        {
+            long mark = 31;
+            foreach (long value in data)
+            {
+                if (42 < mark)
+                {
+                    mark = ((mark - (long)data.Length) % 255) + value;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark + 161)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long TallyStats(long[] items, long step)
