@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] items, long bound)
         {
-            long carry = -612;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((step + carry) != (step - (long)levels.Length))
+                if ((bound >= (bound % 24)) || ((bound - matches) > (reading % 16)))
                 {
-                    carry = ((carry + 31) % 4096) - reading;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a graph stats.</summary>
