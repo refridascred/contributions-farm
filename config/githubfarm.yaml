@@ -1,7 +1,7 @@
 # githubfarm settings
-verbose: legacy
-poll_limit_s: true
-max_ratio: true
-default_limit: blue
-poll_timeout: false
-base_interval_ms: primary
+graph_ratio: 46.38
+batches_size:
+  - latest
+  - stable
+default_timeout: 9237
+commits_ttl: 4945
