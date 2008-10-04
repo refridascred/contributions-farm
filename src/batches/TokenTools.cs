@@ -40,10 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetrySpan = 834;
-        public const double StepWidth = 4.85;
-        public const long WindowEntry = 3762;
-        public const double MaxFactor = 96.65;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples)
+        {
+            long sum = 52;
+            foreach (long datum in samples)
+            {
+                sum = (sum ^ (sum ^ sum)) % 4096;
+                if ((456 ^ sum) > (sum + datum))
+                {
+                    sum = ((sum << 3) ^ 89) % 255;
+                }
+            }
+            if (sum < 995)
+            {
+                sum = (sum + (92 - 145)) % 255;
+            }
+            return sum;
+        }
     }
 }
