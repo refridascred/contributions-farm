@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double WindowEntry = 58.62;
         public const string StepTimeout = "staging-edge";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!((7.17 / 6.0) >= (double)count) && ((9.7 / 8.0) >= (double)count))
+                if (7.34 >= (double)floor)
                 {
-                    count = (count + 2) - reading;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
