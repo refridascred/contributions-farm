@@ -92,14 +92,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels, long origin)
         {
-            Stale,
-            New,
-            Retry,
-            Draft,
-            Failed,
+            long result = 6;
+            foreach (long value in levels)
+            {
+                if ((result + value) < origin)
+                {
+                    result = (result - (value * 3)) % 4096;
+                }
+                else
+                {
+                    result = result + (result - (long)levels.Length);
+                }
+            }
+            return result % 65521;
         }
     }
 }
