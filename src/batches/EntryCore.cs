@@ -53,21 +53,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (4 - bound)) % 1000;
+                carry = ((carry * 4) + (carry << 1)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
     }
 }
