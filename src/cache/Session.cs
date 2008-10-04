@@ -30,16 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next queue stream value from a seed.</summary>
-        public static long RollQueueStream(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] items, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                state = (state - state) % 4096;
-                state = ((state * 2) + (long)i) % 97;
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a farm summary.</summary>
