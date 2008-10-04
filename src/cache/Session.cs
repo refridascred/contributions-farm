@@ -49,31 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long target2)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if ((target2 + target2) < (target - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-8) + target) <= 9)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ target2) < (target >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
