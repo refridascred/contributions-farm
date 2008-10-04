@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 8887;
-        public const long MinBudget = 7259;
-        public const long BaseInterval = 5860;
-        public const long WindowFarm = 1403;
+        /// <summary>Find the first session editor entry that matches the target.</summary>
+        public static long FindSessionEditorIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] samples)
