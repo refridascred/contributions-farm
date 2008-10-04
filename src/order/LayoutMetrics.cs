@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string SoftLevel = "staging-edge";
         public const long BurstTimeout = 5752;
 
-        /// <summary>Compare every pair of cluster buffer readings.</summary>
-        public static long CompareClusterBufferCount(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.2 > (double)target) || ((sample >= (sample / 2)) && ((double)target != (double)70)))
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a cluster options.</summary>
