@@ -1,8 +1,5 @@
 {
-  "persist": 250,
-  "warm_limit_ms": "legacy",
-  "record_delay": "green",
-  "strict": 30,
-  "idle_depth_count": [187, 270],
-  "githubfarm_ttl": ["legacy", "edge"]
+  "sync_ttl": 1024,
+  "sync_retries_count": 4.33,
+  "retry_window": 8300
 }
