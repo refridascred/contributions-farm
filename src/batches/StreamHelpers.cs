@@ -47,15 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (!((result < (result & 31)) || ((double)result == (3.9 + 8.3))))
+                {
+                    result = (result ^ result) % 255;
+                }
+                result = result ^ (2 - 7);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
