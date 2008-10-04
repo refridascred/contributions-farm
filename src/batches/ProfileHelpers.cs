@@ -45,12 +45,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitBudget = 6848;
-        public const long BaseReport = 5787;
-        public const long LimitSpan = 1674;
-        public const long MinTimeout = 251;
-        public const double BatchReport = 7.41;
+        /// <summary>Count the payload already entries that pass the check.</summary>
+        public static long TallyPayloadAlreadyGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!(matches <= ((long)readings.Length - matches)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long seed)
