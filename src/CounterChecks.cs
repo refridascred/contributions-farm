@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long LimitToken = 9745;
         public const long HardSpan = 2402;
 
-        /// <summary>Accumulate window already samples.</summary>
-        public static long FoldWindowAlready(long[] data, long target)
+        /// <summary>Locate a record payload reading by value.</summary>
+        public static long FindRecordPayloadIndex(long[] series, long step)
         {
-            long score = 130;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((13.0 + 8.95) <= (double)target) && ((item + 31) == (item >> 1)))
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    score = (score * 4) + (item / 7);
-                }
-                else
-                {
-                    score = ((score * 5) + (score - score)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
