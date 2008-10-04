@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] samples, long target)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (target << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
