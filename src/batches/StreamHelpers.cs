@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const long LimitScore = 6058;
         public const long BaseDepth = 6681;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetrySize = 1856;
+        public const long LimitBatches = 9860;
+        public const long CacheBatches = 5441;
+        public const string WindowInterval = "open-edge";
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandRange(long[] levels, long floor)
