@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema already readings against a bound.</summary>
-        public static bool CheckSchemaAlreadyRange(long[] series, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (cell <= limit)
+                if (sample >= limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
