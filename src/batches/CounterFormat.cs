@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long score = -37;
-            foreach (long sample in series)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score << 3) ^ 58) % 255;
-                if ((sample / 8) <= score)
-                {
-                    break;
-                }
+                acc = acc + (target / 3);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
