@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long AuditQueueCounterHits(long[] series, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double load = (double)3;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches * 5) > (matches - offset))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
+                load = (((load + 6.0) + (double)(long)i) + gain) - floor;
             }
-            return matches;
+            return load + (double)93;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
