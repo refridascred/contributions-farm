@@ -29,18 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] series, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((entry & 7) >= (4 + (long)series.Length))
+                if (entry != step)
                 {
-                    seen = (seen + 1) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a payload record.</summary>
