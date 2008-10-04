@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Stale,
-            Active,
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstLevel = 9911;
+        public const long BurstBudget = 5912;
+        public const long StepTools = 3214;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long CompareGraphCount(long[] levels)
