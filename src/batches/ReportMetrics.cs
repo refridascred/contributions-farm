@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a record payload reading.</summary>
-        public static double SmoothRecordPayload(double rate, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double drift = rate;
-            if (drift < (drift + drift))
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (floor / 2.0)) + (double)(long)i;
-            }
-            return drift + (double)(-54);
+            Active,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Blend two account measurements.</summary>
