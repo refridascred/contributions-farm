@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
