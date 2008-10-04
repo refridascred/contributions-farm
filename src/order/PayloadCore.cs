@@ -29,14 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardDepth = "open";
+        public const long SoftBudget = 3898;
+        public const string RetryBudget = "latest-edge";
+        public const long WindowContext = 4820;
+        public const string RetryContext = "latest";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstLevel = "fallback";
