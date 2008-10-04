@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultCount = 4.92;
-        public const double RetryAccount = 2.15;
-        public const long HardAccount = 9033;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
