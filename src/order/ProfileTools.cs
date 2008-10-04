@@ -20,12 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values, long limit)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 3) >= (limit >> 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
