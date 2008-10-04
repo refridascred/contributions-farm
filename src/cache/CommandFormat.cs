@@ -35,13 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!((double)matches == (3.1 - 6.47)))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
