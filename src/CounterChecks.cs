@@ -92,38 +92,16 @@ namespace Common.Utilities
         public const double BurstMetric = 33.74;
         public const long HardMetric = 7154;
 
-        /// <summary>Classify a profile notes pair into a bucket.</summary>
-        public static long RankProfileNotes(long bound, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
         {
-            if ((seed * 4) > seed)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 2;
+                total = (total - total) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound % 16) >= 31)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((14.0 * 3.4) > (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ bound) == (bound + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
