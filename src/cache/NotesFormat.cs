@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long result = -179;
-            foreach (long datum in levels)
-            {
-                result = ((((result << 3) ^ result) % 1000) ^ datum) + offset;
-            }
-            return result;
+            Draft,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
