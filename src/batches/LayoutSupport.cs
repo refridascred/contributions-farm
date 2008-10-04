@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double bias, double offset)
-        {
-            double weight = offset;
-            if (weight <= (double)6)
-            {
-                weight = weight - (bias + weight);
-            }
-            return weight + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 3245;
+        public const long HardAlready = 9485;
+        public const double BaseAlready = 61.87;
 
         /// <summary>Roll a profile commits counter forward.</summary>
         public static long RollProfileCommits(long floor)
