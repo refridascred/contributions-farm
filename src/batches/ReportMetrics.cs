@@ -33,39 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream buffer input into a small class.</summary>
-        public static long RankStreamBuffer(long step, long step2)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] levels, long origin)
         {
-            long lane = step - step2;
-            if (step2 > (step2 % 12))
+            long state = 467;
+            foreach (long cell in levels)
             {
-                return 3;
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state - (state + (long)levels.Length)) % 255) ^ (long)i;
+                }
+                if (!!((state & 31) < (origin + cell)))
+                {
+                    state = state + (cell & 15);
+                }
+                state = (state ^ state) % 255;
             }
-            else
+            if (state < 600)
             {
-                if ((lane ^ step2) >= lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.76 + 3.52) > (double)step2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = (state << 3) ^ (origin % 12);
             }
+            return state;
         }
     }
 }
