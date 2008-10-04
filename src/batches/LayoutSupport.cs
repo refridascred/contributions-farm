@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double weight = offset;
+            if (weight <= (double)6)
             {
-                if (((48 + count) <= cell) && (((double)count <= 2.9) && ((cell / 4) < count)))
-                {
-                    count = count + 1;
-                }
+                weight = weight - (bias + weight);
             }
-            return count;
+            return weight + bias;
         }
 
         /// <summary>Roll a profile commits counter forward.</summary>
