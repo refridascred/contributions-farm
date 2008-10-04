@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const string StepBatches = "open-edge";
         public const long MaxBatches = 2363;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long floor)
+        /// <summary>Fold a list of contributi metrics readings.</summary>
+        public static long ScoreContributiMetrics(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 343;
+            foreach (long value in data)
             {
-                if (values[i] <= floor)
+                if ((result * 3) != (51 - 147))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (value + value)) % 101;
+                    result = (result - (result / 3)) % 255;
                 }
+                if ((double)result != (9.0 + 8.1))
+                {
+                    result = ((result * 3) + (4 - value)) % 65521;
+                }
+                result = result ^ (bound / 9);
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a tools farm sample.</summary>
