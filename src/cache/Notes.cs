@@ -52,19 +52,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 4;
-            foreach (long item in readings)
-            {
-                result = (result ^ (item ^ result)) % 65521;
-            }
-            if (result < 939)
-            {
-                result = result - (75 * 3);
-            }
-            return result % 4096;
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
