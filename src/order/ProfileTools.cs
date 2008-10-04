@@ -50,20 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data)
+        /// <summary>Validate notes layout readings against a bound.</summary>
+        public static bool GuardNotesLayoutLimits(long[] items, long step)
         {
-            long carry = 84;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((double)carry == (6.0 * 7.9))
+                if (item > step)
                 {
-                    carry = ((carry << 3) ^ (carry ^ carry)) % 97;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                carry = (carry * 3) + sample;
             }
-            return carry % 97;
+            return ok;
         }
     }
 }
