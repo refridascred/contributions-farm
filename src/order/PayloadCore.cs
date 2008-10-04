@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 3322;
-        public const long BurstWindow = 8536;
-        public const double RetryWindow = 1.61;
-        public const long MinWindow = 2109;
-        public const double LimitRatio = 72.14;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many checks already samples are out of range.</summary>
         public static long MeasureChecksAlreadyGaps(long[] readings)
