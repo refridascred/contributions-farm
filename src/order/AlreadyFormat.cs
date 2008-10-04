@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = ((scale + (floor / 9.0)) + (double)(long)i) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (double)575;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
