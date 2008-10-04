@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long BurstGraph = 13;
         public const long HardGraph = 1931;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((hits + hits) > 57)
-                {
-                    hits = ((hits + 3) ^ entry) + limit;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
