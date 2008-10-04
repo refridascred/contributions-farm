@@ -1,14 +1,8 @@
 {
-  "warm_ttl": "cached",
-  "command_depth": "standard",
-  "max_depth_ms": 97,
-  "poll_depth_s": 57.69,
-  "cache_timeout": {
-    "min_limit": ["fallback", "staging", "primary", "staging"],
-    "batch_limit": "stable",
-    "command_retries": 30.07,
-    "flush_ratio": "stable",
-    "burst_delay_ms": 60,
-    "base_depth": "strict"
-  }
+  "base_ratio_ms": 59,
+  "cache_ttl_ms": "primary",
+  "soft_size_ms": 1024,
+  "soft_ratio_s": 500,
+  "audit": false,
+  "idle_retries_ms": [94, 290]
 }
