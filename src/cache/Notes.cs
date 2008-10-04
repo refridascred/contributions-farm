@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const long RetryMetric = 8379;
         public const long MinBudget = 4077;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result ^ (item ^ result)) % 65521;
             }
-            return tally;
+            if (result < 939)
+            {
+                result = result - (75 * 3);
+            }
+            return result % 4096;
         }
     }
 }
