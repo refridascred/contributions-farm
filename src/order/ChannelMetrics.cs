@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double rate, double span)
         {
-            Closed,
-            Ready,
-            Dropped,
+            double weight = rate + (span / 5.0);
+            if (weight >= (weight * 12.0))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
