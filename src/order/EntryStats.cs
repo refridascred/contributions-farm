@@ -45,18 +45,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long AuditToolsReportGaps(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin + (long)samples.Length) != (cell - (-4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultFactor = 6202;
+        public const string SoftBudget = "cached-1";
+        public const double BurstEditor = 30.34;
     }
 }
