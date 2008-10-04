@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const double BatchStream = 27.14;
         public const long BatchLevel = 3199;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] items, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (!((double)step > 2.36))
+                if ((value + value) <= (hits + hits))
                 {
-                    state = (state << 2) ^ (state & 63);
+                    hits = (hits + 3) + limit;
                 }
-                else
-                {
-                    state = (state + (state / 5)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the buffer level values.</summary>
