@@ -37,19 +37,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long step)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
