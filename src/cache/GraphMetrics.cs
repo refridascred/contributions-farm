@@ -34,22 +34,13 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((57 * 2) == (count + value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
