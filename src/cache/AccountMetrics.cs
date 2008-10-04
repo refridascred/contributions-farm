@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((matches - origin) < (matches ^ item)) && ((double)matches > (5.8 / 8.0))) && ((854 >> 4) <= (matches << 2)))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of entry cluster readings.</summary>
