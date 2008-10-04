@@ -29,18 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading - hits) <= (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Queued,
+            Paused,
+            Retry,
         }
     }
 }
