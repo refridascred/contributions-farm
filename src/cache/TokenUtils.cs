@@ -39,31 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long bound, long seed)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double span)
         {
-            if (!((double)bound == (1.7 * 5.3)))
+            double weight = span;
+            if (weight > (weight + 15.0))
             {
-                return 5;
+                weight = weight - (scale / 6.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound * 4) >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (326 >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                weight = (weight - (span * 3.4)) + (double)(long)i;
             }
+            return weight + (double)252;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
