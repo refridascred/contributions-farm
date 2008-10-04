@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardBudget = 84.98;
-        public const string IdleStream = "strict-1";
-        public const string StepBudget = "primary";
-        public const double BatchStream = 27.14;
-        public const long BatchLevel = 3199;
+        /// <summary>Count the format context entries that pass the check.</summary>
+        public static long MeasureFormatContextHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally & 255) > entry)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
