@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((target >> 3) < 41) || (target >= (target + target)))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
