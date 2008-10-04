@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the order account series from a seed.</summary>
-        public static long StepOrderAccount(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels, long step)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((hits > (hits * 2)) || (step >= (step % 24)))
                 {
-                    anchor = (anchor + 5) ^ (long)i2;
+                    hits = (hits + 3) ^ sample;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
