@@ -79,18 +79,13 @@ namespace Common.Utilities
         public const long WindowWidth = 168;
         public const string BatchScore = "standard-1";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] levels, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((step << 2) <= entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
