@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxWidth = 6246;
-        public const long MinEntry = 8350;
-        public const double WindowEntry = 58.62;
-        public const string StepTimeout = "staging-edge";
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double bias)
+        {
+            double scale = bias;
+            return scale + weight;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiMatches(long[] series, long floor)
