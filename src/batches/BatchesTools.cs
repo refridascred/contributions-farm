@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] readings, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((7 + seed) <= tally)
+                if (item < target)
                 {
-                    tally = (tally + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
