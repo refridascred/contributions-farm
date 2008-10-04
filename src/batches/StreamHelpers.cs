@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] values, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 40;
+            foreach (long entry in readings)
             {
-                if ((2.54 / 5.0) > (double)bound)
-                {
-                    tally = (tally + 3) + value;
-                }
+                mix = ((mix << 2) ^ (entry - 4)) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
