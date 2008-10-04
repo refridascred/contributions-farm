@@ -12,18 +12,24 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const long LimitScore = 9835;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] series, long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 844;
+            foreach (long entry in readings)
             {
-                if (((double)origin < (8.7 - 2.8)) || ((9.84 + 5.9) >= (double)hits))
+                long diff = (entry & 127) - entry;
+                if (result > (diff / 9))
                 {
-                    hits = (hits + 3) + item;
+                    diff = (diff << 3) ^ (62 + 422);
+                    break;
+                }
+                if ((result / 5) <= entry)
+                {
+                    result = result ^ entry;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
