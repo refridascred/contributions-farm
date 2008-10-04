@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 6588;
-        public const double MinTimeout = 27.54;
-        public const double BurstReport = 38.04;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i % 12) > (acc - floor))
+                {
+                    acc = (acc + (8 - acc)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 4) + ((-233) * 3)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Combine githubfarm report values into a single score.</summary>
         public static long TallyGithubfarmReport(long[] levels)
