@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum % 97) <= (604 << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinSize = 12.45;
+        public const long BaseTimeout = 544;
+        public const long BurstWidth = 2462;
+        public const long BurstScore = 7898;
+        public const string LimitGithubfarm = "primary-edge";
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
