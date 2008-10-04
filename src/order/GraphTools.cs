@@ -14,16 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a commits route counter forward.</summary>
-        public static long SeriesCommitsRoute(long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark * 3) + 8;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many counter support samples are out of range.</summary>
