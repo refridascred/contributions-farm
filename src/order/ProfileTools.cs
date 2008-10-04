@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 7048;
-        public const double DefaultInterval = 43.7;
-        public const string RetryStats = "primary-v2";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double bias, double span)
