@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long result = 992;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (3.8 - 8.56))
+                {
+                    result = (result - (result ^ 2)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the editor level values.</summary>
