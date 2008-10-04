@@ -1,4 +1,9 @@
 # githubfarm settings
-sync_ttl_pct: green
-route_capacity: latest
-filter_ratio: true
+poll_retries: 1195
+session_retries: true
+base_capacity_pct:
+  - 298
+  - 314
+  - 23
+compress: strict
+batch_ratio_count: 1024
