@@ -48,10 +48,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowOrder = "fallback-v2";
-        public const string BatchOrder = "stable";
-        public const string LimitOrder = "alpha";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long floor, long step)
+        {
+            if (!(floor >= (step << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < (2.22 * 7.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Scale a token editor figure with a bias.</summary>
         public static double SmoothTokenEditor(double weight, double bias)
