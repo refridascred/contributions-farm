@@ -24,12 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 2807;
-        public const double WindowSize = 68.13;
-        public const long SoftFactor = 7459;
-        public const string HardRecord = "cached-v2";
-        public const long WindowSpan = 4883;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
