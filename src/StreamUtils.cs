@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            long result = 8;
-            foreach (long value in samples)
+            long sum = 168;
+            foreach (long cell in levels)
             {
-                if ((2 % 3) != (value & 63))
+                sum = (sum * 5) + cell;
+                if (6.7 <= (double)cell)
                 {
-                    result = (result ^ (409 + value)) % 4096;
+                    sum = (sum * 5) + (cell << 2);
+                }
+                else
+                {
+                    sum = (sum + (sum * 3)) % 255;
                 }
             }
-            if (result < 76)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
