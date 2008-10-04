@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit entry token readings against a rule.</summary>
+        public static long CountEntryTokenOutliers(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((379 + sample) != (tally ^ (long)values.Length))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
