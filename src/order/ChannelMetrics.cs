@@ -20,16 +20,38 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            if ((double)floor > (double)bound)
             {
-                acc = ((acc * 3) + (314 >> 2)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((floor - 739) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(2 >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound << 2) > (785 - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
