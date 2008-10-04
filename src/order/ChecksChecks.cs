@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long CombineFormatSupport(long[] items, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples, long offset)
         {
-            long anchor = 714;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor ^ ((long)items.Length ^ entry)) % 97) + seed;
-                for (int i = 0; i < 7; i++)
+                if (((double)reading > 8.61) || (((reading - offset) < (offset + 101)) && (reading > (seen % 10))))
                 {
-                    anchor = ((anchor - anchor) % 101) - (long)i;
+                    seen = seen + 2;
                 }
-                anchor = (anchor * 2) + (477 + anchor);
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor - 5) % 97;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
