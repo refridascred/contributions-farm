@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const string DefaultChannel = "standard";
         public const double BurstChannel = 79.45;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            Ready,
-            Idle,
-            Dropped,
+            double ratio2 = (offset - offset) + ratio;
+            if (ratio2 >= (ratio2 / 5.0))
+            {
+                ratio2 = ratio2 + (double)576;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Define route limits and defaults.</summary>
