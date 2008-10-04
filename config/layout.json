@@ -1,8 +1,11 @@
 {
-  "batch_size_ms": 1024,
-  "compress": [158, 159, 388, 7],
-  "hard_size_pct": ["primary", "staging", "strict"],
-  "context_timeout": "blue",
-  "burst_threshold_ms": 47,
-  "base_depth_pct": false
+  "tools_capacity": "stable",
+  "strict": 8096,
+  "verbose": {
+    "format_window": 9,
+    "batch_timeout_ms": ["legacy", "fallback", "primary", "open"],
+    "warm_capacity_pct": false
+  },
+  "burst_ttl": "blue",
+  "persist": ["fallback", "latest", "latest", "latest"]
 }
