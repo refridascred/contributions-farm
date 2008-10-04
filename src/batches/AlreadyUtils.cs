@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long bound)
-        {
-            long cur = target - bound;
-            if (!(bound >= (292 - target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur - target) != (cur ^ (-87)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(287 < (bound / 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((494 + target) == (3 & 255))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 50.51;
+        public const long LimitRatio = 4290;
+        public const double WindowBudget = 42.05;
+        public const long SoftRecord = 9627;
+        public const long HardSize = 146;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleLevel = 44.77;
