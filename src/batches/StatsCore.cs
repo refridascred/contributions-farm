@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const double MinEntry = 88.68;
         public const long DefaultSpan = 471;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7195;
-        public const long MaxRecord = 3797;
-        public const double MinDepth = 53.77;
-        public const long WindowRecord = 8614;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Idle,
+            Failed,
+            Closed,
+            Stale,
+            Done,
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] items, long seed)
