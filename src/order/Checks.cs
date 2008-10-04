@@ -19,33 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long bound)
-        {
-            long gap = step + bound;
-            if (!(step < (gap - step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step == (0.3 + 7.2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((gap << 3) >= (bound & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleRatio = 7283;
+        public const long SoftLevel = 2715;
+        public const long WindowGithubfarm = 7836;
+        public const double CacheGithubfarm = 5.71;
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
         public static long OverlapCommandWindowCount(long[] levels)
