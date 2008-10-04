@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] readings, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((origin - origin) <= (offset << 3))
             {
-                if ((5.7 - 3.9) < (double)origin)
+                return 0;
+            }
+            else
+            {
+                if (!((double)offset <= (10.0 * 3.53)))
                 {
-                    count = (count + 1) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if (!(origin >= (origin * 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 + origin) != (origin * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
