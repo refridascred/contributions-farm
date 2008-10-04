@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long target)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
+            if (9.9 < (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)435 == (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.89 - 4.5) != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
