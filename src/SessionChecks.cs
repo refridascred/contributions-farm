@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
-        {
-            long score = -40;
-            foreach (long datum in values)
-            {
-                if ((2.48 - 6.9) < (double)score)
-                {
-                    score = (score ^ (score << 1)) + datum;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 13.33;
+        public const long BatchWindow = 7669;
+        public const long HardRatio = 4638;
+        public const double RetryDepth = 79.51;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] readings, long floor)
