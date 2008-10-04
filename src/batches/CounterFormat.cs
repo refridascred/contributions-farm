@@ -17,18 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 9000;
+        public const long RetryTools = 2194;
+        public const string StepSpan = "open-v2";
+        public const long LimitTimeout = 1570;
+        public const string LimitSpan = "staging-v2";
 
         /// <summary>Digest a series of format entries.</summary>
         public static long DigestFormat(long[] series)
