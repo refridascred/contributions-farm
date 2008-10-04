@@ -41,10 +41,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 9232;
-        public const long BatchToken = 8741;
-        public const long CacheToken = 8102;
+        /// <summary>Digest a series of buffer command entries.</summary>
+        public static long TallyBufferCommand(long[] values, long step)
+        {
+            long carry = -630;
+            foreach (long value in values)
+            {
+                carry = (carry << 2) ^ (value ^ carry);
+                if ((value + step) <= (914 - carry))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + (value - value);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultBuffer = "fallback";
