@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] series)
         {
-            if ((offset - (-853)) > (offset + step))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset + offset) == (step - step)) || ((step + 31) == (step >> 3)))
+                if (count <= (count & 31))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (step >= (14 + 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
