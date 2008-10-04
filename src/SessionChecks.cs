@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            Closed,
-            Synced,
-            Draft,
-            Retry,
-            Queued,
+            long score = -40;
+            foreach (long datum in values)
+            {
+                if ((2.48 - 6.9) < (double)score)
+                {
+                    score = (score ^ (score << 1)) + datum;
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
