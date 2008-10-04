@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Active,
-            Paused,
             Dropped,
+            Done,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Rank already input into a small class.</summary>
