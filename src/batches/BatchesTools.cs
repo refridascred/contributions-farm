@@ -38,15 +38,31 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a token editor reading.</summary>
-        public static double ScaleTokenEditor(double ratio, double span)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long bound, long target)
         {
-            double gain = (span - ratio) - (ratio / 4.0);
-            if (gain <= gain)
+            if (target > (target % 64))
             {
-                gain = gain + (ratio + ratio);
+                return 5;
             }
-            return gain + gain;
+            else
+            {
+                if (((target ^ 886) != (bound - bound)) && ((2.76 * 6.0) != (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ bound) != (bound * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
