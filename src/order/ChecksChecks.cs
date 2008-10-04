@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 36.11;
-        public const string MinScore = "primary-1";
-        public const long BaseAccount = 5414;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (matches <= (matches + matches))
+                {
+                    matches = ((matches + 3) + reading) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] levels, long bound)
