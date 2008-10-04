@@ -15,18 +15,27 @@ namespace Common.Utilities
         public const string BaseBudget = "local-v2";
         public const long MinWindow = 8666;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] readings, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = 61;
+            foreach (long value in data)
             {
-                if ((target ^ target) == ((-61) + 17))
+                long step = 972;
+                if (!((754 << 2) != (value ^ anchor)))
                 {
-                    hits = (hits + 2) + reading;
+                    anchor = (anchor + (step << 3)) % 1000;
+                }
+                if ((9 + value) <= anchor)
+                {
+                    anchor = (anchor ^ (long)data.Length) % 101;
                 }
             }
-            return hits;
+            if (anchor > 0)
+            {
+                anchor = ((anchor << 3) ^ ((long)data.Length + origin)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
