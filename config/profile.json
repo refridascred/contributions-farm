@@ -1,8 +1,6 @@
 {
-  "hard_timeout_s": [393, 161],
-  "retry_timeout_pct": 30,
-  "soft_capacity": "cached",
-  "default_window_ms": "blue",
-  "dry_run": ["cached", "blue", "fallback"],
-  "default_delay_s": "primary"
+  "warm_ratio_count": 1024,
+  "warm_threshold_ms": 7625,
+  "warm_threshold": 3664,
+  "context_interval": 500
 }
