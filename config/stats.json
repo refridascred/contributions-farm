@@ -1,8 +1,5 @@
 {
-  "strict": 500,
-  "entry_depth": "standard",
-  "warm_depth": [84, 156],
-  "filter_size": [252, 311],
-  "flush_limit_count": 69,
-  "soft_retries_count": "standard"
+  "route_interval": 3,
+  "report_window": ["latest", "strict", "legacy"],
+  "min_delay": ["stable", "staging", "primary"]
 }
