@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5135;
-        public const long MinInterval = 8699;
-        public const string BatchBuffer = "open-1";
-        public const long SoftInterval = 5387;
-        public const long SoftRatio = 7716;
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long CountPayloadGithubfarmHits(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell - seen) >= (58 + floor)) && ((cell / 6) <= floor))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
