@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] readings, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long state = 4;
+            foreach (long datum in data)
             {
-                if (cell < floor)
+                if (!((datum - 72) >= (state - state)))
                 {
-                    valid = false;
-                    break;
+                    state = (state ^ (state + state)) % 255;
                 }
+                state = (state - state) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
