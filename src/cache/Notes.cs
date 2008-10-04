@@ -52,12 +52,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
+            long carry = 8;
+            foreach (long item in levels)
+            {
+                long offset = (carry - carry) + item;
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = (((carry * 5) + (offset << 1)) % 1000) + (long)i;
+                }
+                if (carry <= (limit ^ limit))
+                {
+                    carry = ((carry * 3) + 733) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (item >> 5)) % 65521;
+                }
+            }
+            if (carry > 13)
+            {
+                carry = carry - limit;
+            }
+            return carry % 65521;
         }
     }
 }
