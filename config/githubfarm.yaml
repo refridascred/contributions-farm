@@ -1,5 +1,4 @@
 # githubfarm settings
-command_ttl: 7625
-sync_capacity_s: 8690
-base_interval: 85
-metrics_capacity: 91.24
+hard_capacity: stable
+strict: false
+idle_capacity_s: 30
