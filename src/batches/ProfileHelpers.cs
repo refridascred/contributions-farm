@@ -22,17 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                if (2 >= cell)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the order phase values.</summary>
