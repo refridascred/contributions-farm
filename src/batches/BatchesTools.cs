@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long BatchCount = 6232;
         public const long LimitInterval = 1268;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
