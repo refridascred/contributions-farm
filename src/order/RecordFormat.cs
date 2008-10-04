@@ -13,12 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long step)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            if ((step - step) < (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step >= (11 + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((764 % 60) != (step + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
