@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((785 ^ hits) <= hits))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
