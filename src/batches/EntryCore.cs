@@ -42,21 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Accumulate cluster farm samples.</summary>
+        public static long DigestClusterFarm(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= (carry * 3))
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - (entry & 3)) % 255;
                 }
             }
-            return count;
+            if (carry > 16)
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Match up token samples.</summary>
