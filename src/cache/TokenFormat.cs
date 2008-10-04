@@ -29,9 +29,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 6366;
-        public const long IdleWidth = 4332;
-        public const double CacheBatch = 10.61;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Paused,
+            New,
+            Queued,
+            Dropped,
+            Ready,
+        }
     }
 }
