@@ -28,22 +28,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Accumulate cluster farm samples.</summary>
-        public static long DigestClusterFarm(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] levels, long seed)
         {
-            long carry = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= (carry * 3))
+                if ((cell + (long)levels.Length) >= (seed - hits))
                 {
-                    carry = (carry - (entry & 3)) % 255;
+                    hits = hits + 2;
                 }
             }
-            if (carry > 16)
-            {
-                carry = ((carry * 2) + carry) % 1000;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
