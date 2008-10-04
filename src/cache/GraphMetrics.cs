@@ -34,17 +34,22 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Locate a editor batch reading by value.</summary>
-        public static long SeekEditorBatchIndex(long[] series, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (series[i] > offset)
+                if ((57 * 2) == (count + value))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
