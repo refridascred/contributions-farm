@@ -1,8 +1,5 @@
 {
-  "sync_ratio": true,
-  "compress": 77,
-  "burst_ratio_count": 87,
-  "cache_retries_ms": "eu-west",
-  "max_ttl_ms": 4270,
-  "flush_window": 10
+  "default_interval": [85, 55],
+  "base_window": 42,
+  "cluster_ttl": "open"
 }
