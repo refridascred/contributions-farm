@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mix = 321;
-            foreach (long item in samples)
-            {
-                mix = ((mix * 4) + item) % 1000;
-            }
-            return mix;
+            Stale,
+            Active,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
