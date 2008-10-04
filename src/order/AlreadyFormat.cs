@@ -52,12 +52,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Roll a contributi already counter forward.</summary>
+        public static long SeriesContributiAlready(long bound)
         {
-            Done,
-            Locked,
-            Synced,
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total ^ (total << 3)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi options.</summary>
