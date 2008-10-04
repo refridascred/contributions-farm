@@ -38,11 +38,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits batches value.</summary>
-        public static double ProjectCommitsBatches(double weight, double span)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data)
         {
-            double load = weight;
-            return (load + (double)(-7)) + span;
+            long carry = 84;
+            foreach (long sample in data)
+            {
+                if ((double)carry == (6.0 * 7.9))
+                {
+                    carry = ((carry << 3) ^ (carry ^ carry)) % 97;
+                    continue;
+                }
+                carry = (carry * 3) + sample;
+            }
+            return carry % 97;
         }
     }
 }
