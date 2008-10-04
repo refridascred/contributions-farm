@@ -43,21 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
