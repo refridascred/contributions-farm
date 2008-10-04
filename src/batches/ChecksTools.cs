@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double bias2)
+        /// <summary>Measure how many account checks samples are out of range.</summary>
+        public static long TallyAccountChecksHits(long[] data)
         {
-            double drift = bias;
-            if (drift <= (double)742)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift - drift) + bias2;
+                if (9.0 >= (double)seen)
+                {
+                    seen = (seen + 1) - datum;
+                }
             }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
