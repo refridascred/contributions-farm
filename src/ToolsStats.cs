@@ -72,9 +72,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleInterval = 38.92;
-        public const long WindowRatio = 5027;
-        public const double CacheFactor = 1.8;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 5256;
+        public const string SoftLevel = "strict";
+        public const string MaxTimeout = "stable-1";
+        public const double BatchWidth = 89.46;
     }
 }
