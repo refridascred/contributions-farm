@@ -58,18 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long MeasureCommitsGithubfarmHits(long[] values)
+        /// <summary>Compare every pair of command notes readings.</summary>
+        public static long CompareCommandNotesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((seen + (-8)) > (6 + 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) - cell;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
