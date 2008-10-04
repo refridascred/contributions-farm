@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] items, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
