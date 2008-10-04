@@ -1,16 +1,15 @@
 # entry settings
-verbose:
-  - 161
-  - 153
-  - 425
-filter_interval: primary
-poll_delay:
-  batch_delay: green
-  audit: 2790
-  sync_threshold_ms: 53.09
-  support_threshold: local
-soft_interval_pct: 9
-cache_retries_count: 500
-poll_ttl_count:
-  - stable
-  - open
+session_size: latest
+token_capacity: 42.21
+queue_depth: 7039
+default_retries: 500
+sync_depth_ms:
+  editor_ratio:
+    - local
+    - local
+  layout_retries: legacy
+  strict: fallback
+  max_window_s: blue
+  burst_capacity_count: 500
+  cache_delay_count: 37.21
+flush_capacity_count: 8
