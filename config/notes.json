@@ -1,12 +1,6 @@
 {
-  "checks_size": {
-    "layout_window": "primary",
-    "hard_capacity_count": 2587,
-    "compress": true,
-    "strict": true,
-    "min_threshold_s": "eu-west"
-  },
-  "max_ratio_count": "open",
-  "max_window_s": 60,
-  "min_threshold_count": "standard"
+  "hard_depth_ms": 500,
+  "session_interval": [441, 184, 159, 368],
+  "batches_limit": true,
+  "batch_depth": "eu-west"
 }
