@@ -44,10 +44,15 @@ namespace Common.Utilities
         public const long CacheFilter = 7424;
         public const string MinFilter = "alpha-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 6812;
-        public const double LimitFactor = 80.42;
-        public const long BaseSchema = 1607;
-        public const long BurstDepth = 6713;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long bound)
+        {
+            long total = 652;
+            foreach (long entry in series)
+            {
+                total = (total + (bound ^ total)) ^ entry;
+            }
+            return total % 1000;
+        }
     }
 }
