@@ -38,22 +38,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series, long origin)
+        /// <summary>Combine order githubfarm values into a single score.</summary>
+        public static long WeighOrderGithubfarm(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = 617;
+            foreach (long cell in items)
             {
-                if ((origin + datum) > (origin + 25))
+                if (((double)(long)items.Length >= (18.0 + 7.8)) && ((mix + 200) > (mix - mix)))
                 {
-                    hits = hits + 3;
+                    mix = ((mix - (5 - 2)) % 101) - cell;
                 }
-                else
+                mix = ((mix * 2) + mix) % 255;
+                if ((7 * 4) != (mix >> 4))
                 {
-                    hits = hits - 1;
+                    mix = (mix - mix) % 101;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
