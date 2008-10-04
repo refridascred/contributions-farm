@@ -68,22 +68,18 @@ namespace Common.Utilities
         public const long WindowWidth = 168;
         public const string BatchScore = "standard-1";
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] levels, long step)
         {
-            long carry = 66;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value > (value * 4))
+                if ((step << 2) <= entry)
                 {
-                    carry = ((carry << 2) ^ (carry ^ 90)) % 97;
+                    matches = matches + 1;
                 }
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 97;
-            }
-            return carry;
+            return matches;
         }
     }
 }
