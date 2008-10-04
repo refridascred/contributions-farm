@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] series, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                acc = acc + (target / 3);
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
