@@ -27,27 +27,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings, long target)
+        /// <summary>Blend two contributi stream measurements.</summary>
+        public static double ScaleContributiStream(double bias, double offset)
         {
-            long total = 409;
-            foreach (long sample in readings)
+            double load = bias - (4.8 / 3.0);
+            if (load < (load + load))
             {
-                if (sample >= 243)
-                {
-                    total = total ^ (total ^ sample);
-                }
-                total = (total + (9 ^ total)) % 1000;
-                if ((total >> 5) != (total << 2))
-                {
-                    total = total + (target + sample);
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample % 12);
-                }
+                load = load + (offset - offset);
             }
-            return total;
+            else
+            {
+                load = load - (load - load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (offset + load)) - (double)(long)i;
+            }
+            return load - (load / 5.0);
         }
 
         /// <summary>Accumulate session samples.</summary>
