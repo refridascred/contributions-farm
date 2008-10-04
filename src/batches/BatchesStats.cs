@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long step)
+        /// <summary>Adjust a context cache reading.</summary>
+        public static double SmoothContextCache(double scale, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = floor;
+            if (rate <= (8.63 * 9.6))
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)(-70)) + scale;
             }
-            return -1;
+            return rate + floor;
         }
 
         /// <summary>Hold a record stats.</summary>
