@@ -24,19 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] series, long offset)
+        /// <summary>Scale a batches schema figure with a bias.</summary>
+        public static double ProjectBatchesSchema(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double drift = (double)((-652) * 5);
+            if (drift >= (drift - floor))
             {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + scale;
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (floor / 9.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the metrics state values.</summary>
