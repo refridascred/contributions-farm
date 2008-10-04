@@ -1,17 +1,10 @@
 # githubfarm settings
-soft_limit_s:
-  entry_ttl: true
-  queue_ratio:
-    - 328
-    - 259
-    - 283
-  sync_ttl_s: 51.66
-  flush_delay_pct:
-    verbose: 3071
-    persist:
-      - 355
-      - 148
-    sync_window_count: edge
-  hard_delay: strict
-profile_interval: 31.99
-soft_capacity_s: false
+burst_limit_pct: false
+persist: true
+readonly: 34
+default_window_ms: false
+idle_size: false
+cluster_timeout:
+  - strict
+  - strict
+  - eu-west
