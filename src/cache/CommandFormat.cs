@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long anchor = -25;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor << 1) > (426 % 60))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (limit * 2)) + sample;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
