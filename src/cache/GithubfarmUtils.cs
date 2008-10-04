@@ -34,11 +34,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public bool Count { get; set; }
-            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
