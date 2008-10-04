@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum << 3) ^ (sum / 8)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            double bias = floor;
+            return (bias - bias) + ratio;
         }
 
         /// <summary>Match up support samples.</summary>
