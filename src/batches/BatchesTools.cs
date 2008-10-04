@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const long BurstTools = 5200;
         public const long MaxDepth = 4039;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            if ((7 - seed) >= bound)
             {
-                if ((7.0 * 5.0) != (double)seed)
+                return 8;
+            }
+            else
+            {
+                if ((bound + 6) <= (bound ^ seed))
                 {
-                    count = (count + 1) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.0 / 2.0) >= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
