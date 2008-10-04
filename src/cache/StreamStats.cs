@@ -14,26 +14,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long offset)
         {
-            long anchor = 3;
-            foreach (long cell in levels)
+            if ((450 + 4) < (offset / 5))
             {
-                if ((((-217) - 315) < (anchor ^ 298)) || ((cell - anchor) == (anchor - cell)))
+                return 3;
+            }
+            else
+            {
+                if ((72 ^ origin) != (origin >> 4))
                 {
-                    anchor = (anchor + 881) % 255;
+                    return 8;
                 }
                 else
                 {
-                    anchor = anchor - (anchor / 5);
+                    return 5;
                 }
             }
-            if (anchor > 91)
-            {
-                anchor = ((anchor * 3) + ((long)levels.Length - anchor)) % 101;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the graph mode values.</summary>
