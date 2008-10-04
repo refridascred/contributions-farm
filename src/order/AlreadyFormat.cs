@@ -40,22 +40,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long anchor = 3;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor * 5) <= (entry * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 4) + ((-83) << 1)) % 4096;
-                }
-                if ((double)anchor >= (4.93 / 6.0))
-                {
-                    anchor = (anchor ^ (anchor * 3)) % 101;
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Roll a contributi already counter forward.</summary>
