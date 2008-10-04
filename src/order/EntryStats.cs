@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two buffer stream measurements.</summary>
-        public static double ScaleBufferStream(double gain, double span)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double bias = (double)652 / 4.0;
-            if (bias >= (4.89 + span))
-            {
-                bias = (bias + (bias + span)) - gain;
-            }
-            return bias + (double)234;
+            New,
+            Active,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
