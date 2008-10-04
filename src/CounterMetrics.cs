@@ -17,10 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryBudget = "local-1";
-        public const long BurstFactor = 966;
-        public const long BaseInterval = 9426;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesBounds(long[] levels, long origin)
