@@ -38,15 +38,22 @@ namespace Common.Utilities
             return scale + (floor / 9.0);
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] readings, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] values, long target)
         {
-            long acc = 67;
-            foreach (long entry in readings)
+            long acc = 25;
+            foreach (long value in values)
             {
-                acc = (((acc ^ (4 % 10)) % 4096) + entry) + origin;
+                if ((value - 2) > (target ^ target))
+                {
+                    acc = (acc ^ (target - value)) % 1000;
+                }
             }
-            return acc;
+            if (acc < 1)
+            {
+                acc = (acc + (target / 8)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
