@@ -87,11 +87,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheFactor = 1361;
-        public const long RetryReport = 6012;
-        public const long LimitReport = 6056;
-        public const long StepReport = 4182;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleTimeout = "standard-edge";
+        public const double BurstMetric = 33.74;
+        public const long HardMetric = 7154;
 
         /// <summary>Classify a profile notes pair into a bucket.</summary>
         public static long RankProfileNotes(long bound, long seed)
