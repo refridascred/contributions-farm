@@ -1,8 +1,19 @@
 {
-  "max_threshold": 1024,
-  "warm_ratio": "latest",
-  "default_timeout_s": 5483,
-  "context_capacity": 9562,
-  "readonly": "eu-west",
-  "flush_threshold": 95.35
+  "sync_size_s": 96,
+  "enabled": {
+    "enabled": "fallback",
+    "burst_delay": 2628,
+    "sync_interval": 2985,
+    "support_ratio": ["primary", "strict", "legacy", "stable"],
+    "min_window_count": "fallback",
+    "soft_size": {
+      "enabled": "edge",
+      "sync_interval": "primary",
+      "cache_timeout_count": 60,
+      "account_threshold": 12.43,
+      "persist": false
+    }
+  },
+  "hard_size_s": [183, 251, 306],
+  "poll_ttl": 1024
 }
