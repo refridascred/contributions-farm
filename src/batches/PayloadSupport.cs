@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double bias = offset;
-            if (bias > bias)
-            {
-                bias = bias + (5.66 + offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - (7.0 - bias);
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
