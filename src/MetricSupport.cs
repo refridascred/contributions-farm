@@ -23,12 +23,35 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long state = 632;
+            foreach (long item in data)
+            {
+                if ((double)item == (9.2 / 4.0))
+                {
+                    state = (state ^ (item % 60)) % 1000;
+                }
+                else
+                {
+                    state = (state + (state % 24)) % 4096;
+                }
+                state = state - (item & 7);
+                if ((state + state) > state)
+                {
+                    state = ((state << 3) ^ (14 * 5)) % 101;
+                }
+                else
+                {
+                    state = (state - (state + item)) % 1000;
+                }
+                if (((item ^ item) <= (state + 992)) && (item <= ((long)data.Length - 18)))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
