@@ -37,19 +37,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (sample <= bound)
+                if (item != target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
