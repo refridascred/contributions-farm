@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] series, long target)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry ^ (carry >> 1);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
