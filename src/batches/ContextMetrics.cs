@@ -34,14 +34,17 @@ namespace Common.Utilities
         public const long CacheSchema = 5297;
         public const long BurstWidth = 6351;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] items, long floor)
         {
-            Stale,
-            New,
-            Locked,
-            Pending,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
