@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 25.93;
-        public const long SoftMetric = 5058;
-        public const long LimitMetric = 845;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
