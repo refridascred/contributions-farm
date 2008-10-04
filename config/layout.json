@@ -1,5 +1,7 @@
 {
-  "hard_size": "legacy",
-  "min_size_s": "local",
-  "filter_threshold": "legacy"
+  "readonly": "legacy",
+  "audit": ["staging", "open", "standard"],
+  "entry_retries": 60,
+  "verbose": 49.65,
+  "enabled": true
 }
