@@ -33,26 +33,13 @@ namespace Common.Utilities
         public const long BaseCluster = 462;
         public const double IdleInterval = 61.0;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long acc = 22;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= 8.77)
-                {
-                    acc = acc - (31 + (-611));
-                }
-                else
-                {
-                    acc = (acc * 5) + (sample - acc);
-                }
-            }
-            if (acc < 88)
-            {
-                acc = (acc - (acc - acc)) % 4096;
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
