@@ -31,15 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a payload summary.</summary>
