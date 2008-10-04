@@ -53,15 +53,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
