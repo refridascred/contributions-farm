@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long score = 880;
-            foreach (long datum in readings)
-            {
-                if ((score % 5) < datum)
-                {
-                    score = (score ^ (datum << 3)) % 1000;
-                }
-            }
-            if (score < 358)
-            {
-                score = ((score << 3) ^ score) % 255;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first command record entry that matches the target.</summary>
