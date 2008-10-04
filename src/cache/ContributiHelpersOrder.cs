@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Measure how many token notes samples are out of range.</summary>
+        public static long MeasureTokenNotesGaps(long[] data)
         {
-            long state = 4;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((datum - 72) >= (state - state)))
+                if (((-7) - 655) > (item & 31))
                 {
-                    state = (state ^ (state + state)) % 255;
+                    hits = hits + 1;
                 }
-                state = (state - state) % 65521;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
