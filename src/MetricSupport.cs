@@ -41,13 +41,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate entry batch readings against a bound.</summary>
+        public static bool VerifyEntryBatchRange(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
