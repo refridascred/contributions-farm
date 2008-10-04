@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a order schema sample.</summary>
-        public static long SeekOrderSchemaIndex(long[] series, long bound)
+        /// <summary>Digest a series of editor queue entries.</summary>
+        public static long TallyEditorQueue(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 214;
+            foreach (long item in samples)
             {
-                if (series[i] <= bound)
+                if (((state & 7) > ((long)samples.Length - item)) && ((5 & 127) != (state * 2)))
                 {
-                    return (long)i;
+                    state = (state ^ (item + 61)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank command input into a small class.</summary>
