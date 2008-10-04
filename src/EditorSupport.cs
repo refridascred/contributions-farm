@@ -47,12 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8786;
-        public const string StepScore = "cached";
-        public const long RetryCount = 8246;
-        public const string MaxEditor = "legacy-edge";
-        public const long IdleRatio = 9311;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items, long step)
+        {
+            long acc = 36;
+            foreach (long value in items)
+            {
+                if (6.2 < (double)value)
+                {
+                    acc = acc ^ (acc << 3);
+                }
+            }
+            if (acc > 155)
+            {
+                acc = (acc ^ step) % 255;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] levels)
