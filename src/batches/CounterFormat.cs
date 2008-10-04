@@ -20,19 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Compare every pair of route filter readings.</summary>
+        public static long OverlapRouteFilterCount(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (((mark << 3) ^ (step + 80)) % 101) - (long)i2;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
