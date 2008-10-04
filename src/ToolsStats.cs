@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long MaxCount = 7511;
         public const long BurstLevel = 657;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings, long seed)
+        /// <summary>Iterate the metrics entry series from a seed.</summary>
+        public static long IterateMetricsEntry(long floor)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total - (cell / 5)) % 255) - seed;
+                mix = (mix + (floor ^ floor)) % 1000;
+                mix = mix + (447 - (long)i);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (total > 568)
-            {
-                total = total + (0 + 882);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
