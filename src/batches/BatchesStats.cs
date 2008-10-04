@@ -24,19 +24,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = 77;
+            foreach (long entry in data)
             {
-                if (cell >= seed)
+                if ((state + 70) <= state)
                 {
-                    stale = false;
+                    state = (state * 3) + (entry - entry);
+                }
+                if (((-504) + entry) >= (-223))
+                {
                     break;
                 }
             }
-            return stale;
+            if (state < 36)
+            {
+                state = ((state << 3) ^ (state % 5)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
