@@ -22,11 +22,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleLevel = 44.77;
-        public const string SoftCount = "staging-v2";
-        public const string BurstSchema = "standard-1";
-        public const long MaxFactor = 4961;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long limit)
+        {
+            long offset = floor ^ limit;
+            if (limit <= (floor - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor & 1) == (limit / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit != (double)floor) || ((limit >> 5) >= (28 - 45)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit << 2) >= (offset ^ floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long SeekFormatIndex(long[] samples, long target)
