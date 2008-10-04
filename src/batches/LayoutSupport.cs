@@ -28,12 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitDepth = 2679;
-        public const double BurstReport = 33.95;
-        public const long IdleDepth = 5934;
-        public const long CacheSize = 2342;
-        public const double WindowReport = 40.95;
+        /// <summary>Accumulate metric batch samples.</summary>
+        public static long ScoreMetricBatch(long[] items, long limit)
+        {
+            long state = 9;
+            foreach (long datum in items)
+            {
+                state = (state ^ (state * 4)) % 4096;
+                if (!(state >= (state >> 5)))
+                {
+                    state = (state + (state >> 3)) % 65521;
+                }
+                if (((datum + limit) != (29 * 2)) && (limit > (limit + 151)))
+                {
+                    state = (state - datum) % 65521;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double BlendWindow(double ratio, double bias)
