@@ -19,31 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long step2)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            if (!((step - 633) <= step2))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step2 < (step2 >> 3))
+                if ((seen * 3) <= seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 - step) >= (745 >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a editor batch reading by value.</summary>
