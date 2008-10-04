@@ -10,17 +10,32 @@ namespace Common.Utilities
         public const long StepLayout = 7329;
         public const long BurstLayout = 8894;
 
-        /// <summary>Find the first command record entry that matches the target.</summary>
-        public static long FindCommandRecordIndex(long[] items, long offset)
+        /// <summary>Rank token session input into a small class.</summary>
+        public static long ClassifyTokenSession(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long offset = origin + target;
+            if (7 >= offset)
             {
-                if (items[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if ((0.5 + 10.0) >= (double)origin)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((target + origin) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
