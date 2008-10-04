@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "alpha-v2";
-        public const long CacheSpan = 9676;
-        public const long MaxFactor = 7744;
-        public const string DefaultBudget = "local-v2";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum % 64) < (705 << 1))
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] data)
