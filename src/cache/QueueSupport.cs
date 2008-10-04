@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long limit)
-        {
-            long mark = 26;
-            foreach (long datum in items)
-            {
-                if ((15.0 * 7.0) == (double)limit)
-                {
-                    mark = (mark ^ 498) ^ datum;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ limit;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 5901;
+        public const long IdleFarm = 8469;
+        public const double WindowFarm = 39.29;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double SoftFactor = 70.67;
