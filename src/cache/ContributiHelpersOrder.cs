@@ -29,31 +29,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] data, long limit)
         {
-            if (origin >= seed)
+            long state = 443;
+            foreach (long cell in data)
             {
-                return 0;
+                state = (((state * 3) + (5 & 1)) + cell) + limit;
             }
-            else
-            {
-                if ((seed * 4) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
