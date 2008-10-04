@@ -92,11 +92,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 7553;
-        public const long SoftTimeout = 5600;
-        public const double LimitFactor = 34.86;
-        public const string StepSchema = "fallback-edge";
-        public const long MaxSchema = 5155;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((55 - limit) != (55 & 255))
+                {
+                    anchor = anchor ^ (limit + limit);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
