@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits + 4) > (cell + cell))
-                {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route level values.</summary>
