@@ -32,21 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks counter samples.</summary>
-        public static long PairChecksCounterCount(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + 53) >= (437 - cell))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
