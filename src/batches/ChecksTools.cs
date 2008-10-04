@@ -35,27 +35,24 @@ namespace Common.Utilities
         public const long StepOrder = 7132;
         public const double BaseLevel = 21.68;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long origin)
         {
-            long sum = 500;
-            foreach (long entry in levels)
+            if ((offset + origin) >= (offset + offset))
             {
-                sum = (sum - entry) % 97;
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if (((1.0 / 7.0) >= (double)offset) && ((2.0 - 3.34) > (double)offset))
                 {
-                    sum = ((sum - (506 + sum)) % 65521) ^ (long)i;
-                }
-                if ((8.0 / 4.0) <= (3.65 * 9.4))
-                {
-                    sum = (sum << 2) ^ (87 & 63);
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (598 / 7)) % 255;
+                    return 1;
                 }
             }
-            return sum;
         }
     }
 }
