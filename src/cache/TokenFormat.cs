@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long WeighGithubfarmCommand(long[] values, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long carry = 7;
+            foreach (long value in values)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                carry = ((carry + (carry - value)) % 255) + step;
             }
-            return total;
+            if (carry > 583)
+            {
+                carry = (carry * 5) + (carry << 3);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
