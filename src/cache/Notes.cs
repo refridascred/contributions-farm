@@ -53,10 +53,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardTimeout = 7067;
-        public const long RetryMetric = 8379;
-        public const long MinBudget = 4077;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Synced,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] readings)
