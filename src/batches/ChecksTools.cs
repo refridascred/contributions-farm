@@ -12,24 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if (8.9 > (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target <= (2 ^ target)) && ((target >> 1) < (717 % 12)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a metrics header.</summary>
