@@ -12,13 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] values)
         {
-            Stale,
-            New,
-            Retry,
-            Queued,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((datum % 97) <= (604 << 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
