@@ -1,8 +1,11 @@
 # support settings
-batch_delay: false
-idle_capacity_count: 34.92
-default_depth: 5
-graph_retries:
-  - 441
-  - 144
-base_retries_ms: open
+payload_retries: legacy
+idle_interval_count:
+  context_retries:
+    - primary
+    - local
+    - legacy
+  flush_timeout_ms: staging
+  entry_retries: open
+  support_limit: blue
+min_timeout_s: 6689
