@@ -30,18 +30,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long lane = (long)i;
-                long prev = limit / 3;
-                mix = (mix - (lane ^ prev)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
