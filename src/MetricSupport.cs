@@ -20,15 +20,11 @@ namespace Common.Utilities
             return load + (double)15;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long carry = 250;
-            foreach (long datum in readings)
-            {
-                carry = ((carry * 2) + (datum & 7)) % 1000;
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
