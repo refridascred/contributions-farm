@@ -1,8 +1,15 @@
 # githubfarm settings
-default_ttl: strict
-already_size: fallback
-enabled:
-  - local
-  - staging
-  - staging
-  - legacy
+sync_retries_s:
+  tools_window: 3493
+  stream_interval: 1024
+  soft_ratio: true
+dry_run: 96.15
+stream_ttl: stable
+batch_limit_pct: 1022
+notes_ratio:
+  cache_ratio: strict
+  retry_timeout:
+    - cached
+    - edge
+    - strict
+  persist: 93.37
