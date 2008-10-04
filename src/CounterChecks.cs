@@ -27,17 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a record payload reading by value.</summary>
-        public static long FindRecordPayloadIndex(long[] series, long step)
+        /// <summary>Validate githubfarm support readings against a bound.</summary>
+        public static bool GuardGithubfarmSupportBounds(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
