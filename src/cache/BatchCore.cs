@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                long slot = target;
-                acc = (acc + (slot * 4)) % 65521;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((7.0 / 4.0) == (double)tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Locate a context reading by value.</summary>
