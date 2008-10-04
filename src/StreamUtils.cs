@@ -54,36 +54,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank support stream input into a small class.</summary>
-        public static long BucketSupportStream(long step, long bound)
+        /// <summary>Grade a graph support value against two limits.</summary>
+        public static long GradeGraphSupport(long limit, long bound)
         {
-            if (((bound - step) > (714 + bound)) && ((step + bound) >= 8))
+            if ((limit % 7) >= (bound - bound))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((bound - 8) != (step + bound))
+                if ((1.0 + 0.75) <= (double)limit)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (((step - bound) <= step) && ((step << 3) == (step * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.8 / 5.0) >= (double)step) && (step < (step % 24)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
