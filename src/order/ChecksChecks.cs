@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)sample > 0.4) || ((origin + 20) > sample))
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank schema checks input into a small class.</summary>
