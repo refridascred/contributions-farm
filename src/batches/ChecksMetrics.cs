@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((matches - item) == (matches ^ matches))
+                if ((386 ^ hits) == (seed - datum))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
