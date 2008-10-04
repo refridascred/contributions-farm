@@ -91,22 +91,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window command samples are out of range.</summary>
-        public static long CountWindowCommandMatches(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.6 / 9.0) > (double)reading)
+                if (data[i] >= limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
