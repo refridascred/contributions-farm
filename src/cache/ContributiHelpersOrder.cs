@@ -37,10 +37,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 3184;
-        public const long LimitSpan = 8097;
-        public const long BatchBudget = 3885;
-        public const long StepCommits = 9688;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long origin)
+        {
+            if (origin >= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed * 4) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
