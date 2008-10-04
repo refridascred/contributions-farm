@@ -1,5 +1,12 @@
 {
-  "hard_capacity": 67.26,
-  "verbose": "primary",
-  "audit": true
+  "cache_interval_count": 10.86,
+  "contributi_threshold": "local",
+  "metric_size": {
+    "retry_retries": 43.9,
+    "soft_window_ms": 43.12,
+    "base_limit_ms": 8,
+    "min_ttl_count": true,
+    "hard_size": "standard"
+  },
+  "warm_depth_ms": false
 }
