@@ -41,12 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] values, long seed)
         {
-            Closed,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)hits < (double)seed)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
