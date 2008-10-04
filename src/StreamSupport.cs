@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            long anchor = 2;
-            foreach (long datum in samples)
+            long total = 33;
+            foreach (long entry in samples)
             {
-                if (((datum % 8) > (long)samples.Length) || ((datum >> 3) <= (anchor + anchor)))
+                total = total ^ entry;
+                total = (total - (total / 9)) % 255;
+                if ((double)total > 0.51)
                 {
-                    anchor = anchor + ((long)samples.Length + 115);
+                    total = ((total * 5) + (entry + entry)) % 4096;
                 }
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
