@@ -43,11 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleLevel = 5308;
-        public const double SoftFormat = 17.99;
-        public const double StepInterval = 33.96;
-        public const long CacheInterval = 2286;
-        public const long MaxLevel = 8690;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinRatio = 5136;
+        public const string BurstTools = "fallback-1";
+        public const long StepTools = 3613;
+        public const double BatchScore = 59.96;
     }
 }
