@@ -41,18 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] values, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)hits < (double)seed)
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
