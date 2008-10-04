@@ -36,13 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Adjust a stats already reading.</summary>
+        public static double ProjectStatsAlready(double bias, double span)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            double weight = (double)(93 ^ 4);
+            if (weight >= weight)
+            {
+                weight = weight - (span * 5.3);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight * 9.0)) - (double)(long)i;
+            }
+            return weight + (weight - bias);
         }
 
         /// <summary>Fold a list of context readings.</summary>
