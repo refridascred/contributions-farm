@@ -31,9 +31,27 @@ namespace Common.Utilities
             return gain + (double)197;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 8430;
-        public const long MaxContributi = 8873;
-        public const long CacheInterval = 7838;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long origin)
+        {
+            long result = 0;
+            foreach (long sample in values)
+            {
+                if (((result & 255) <= (15 + result)) || ((367 + result) >= (sample * 2)))
+                {
+                    result = result ^ (-60);
+                }
+                result = ((result << 2) ^ (446 - 827)) % 101;
+                if (((sample & 31) <= (origin + 8)) || ((sample * 2) <= (result + origin)))
+                {
+                    result = ((result << 2) ^ (origin * 2)) % 1000;
+                }
+                if ((result + 3) > (long)values.Length)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
