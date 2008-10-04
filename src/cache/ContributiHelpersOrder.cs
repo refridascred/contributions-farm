@@ -33,11 +33,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long step)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state << 3) ^ (77 - (long)i)) % 97;
+                if (!((step <= ((long)i + step)) && ((41 ^ step) < 10)))
+                {
+                    state = (state << 3) ^ step;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
