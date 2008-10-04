@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchSize = 38.62;
+        public const double WindowRatio = 2.55;
+        public const long LimitRatio = 1399;
+        public const long MinChecks = 8431;
+        public const long SoftTimeout = 1272;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] series)
