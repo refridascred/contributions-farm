@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings, long target)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((target + target) <= (78 + hits)) && ((1.0 - 10.0) == (double)target)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + entry;
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two command measurements.</summary>
