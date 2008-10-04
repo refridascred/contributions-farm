@@ -34,9 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 4248;
-        public const double LimitGithubfarm = 61.5;
-        public const long CacheGithubfarm = 3766;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long limit)
+        {
+            long score = 8;
+            foreach (long entry in readings)
+            {
+                if ((score / 3) <= (entry - limit))
+                {
+                    score = (score - (score >> 1)) % 97;
+                }
+            }
+            return score;
+        }
     }
 }
