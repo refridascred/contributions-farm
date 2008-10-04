@@ -31,17 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session contributi sample.</summary>
-        public static long LocateSessionContributiIndex(long[] readings, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                if ((double)sample >= (4.17 / 2.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the notes status values.</summary>
