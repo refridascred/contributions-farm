@@ -32,12 +32,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Stale,
-            Queued,
+            Done,
             Draft,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
