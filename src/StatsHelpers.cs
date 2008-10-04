@@ -27,11 +27,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
