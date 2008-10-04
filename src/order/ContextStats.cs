@@ -29,17 +29,22 @@ namespace Common.Utilities
             return weight + (offset / 2.0);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] readings, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (readings[i] <= target)
+                if (((count * 5) > (cell >> 5)) || (count >= (count + 5)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count channel counter pairs that satisfy a relation.</summary>
