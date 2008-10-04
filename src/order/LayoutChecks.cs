@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 5879;
-        public const long RetryEditor = 3013;
-        public const long LimitScore = 9728;
-        public const long BatchWidth = 6718;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 479;
+        public const double MinCount = 61.39;
+        public const string DefaultBudget = "primary-v2";
+        public const double DefaultLevel = 89.64;
+        public const long StepFarm = 4575;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] samples)
