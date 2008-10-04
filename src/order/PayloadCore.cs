@@ -29,12 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardDepth = "open";
-        public const long SoftBudget = 3898;
-        public const string RetryBudget = "latest-edge";
-        public const long WindowContext = 4820;
-        public const string RetryContext = "latest";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Closed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BurstLevel = "fallback";
