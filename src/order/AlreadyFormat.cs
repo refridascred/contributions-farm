@@ -60,19 +60,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] data, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
