@@ -23,18 +23,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long TallyEntrySessionGaps(long[] levels, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long step, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((double)step == (7.6 * 15.0))
             {
-                if ((long)levels.Length != (origin + matches))
+                return 0;
+            }
+            else
+            {
+                if ((159 + step) > floor)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine layout window values into a single score.</summary>
