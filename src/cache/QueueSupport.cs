@@ -17,17 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a order layout reading by value.</summary>
-        public static long SeekOrderLayoutIndex(long[] samples, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] <= offset)
+                if ((double)hits <= (2.3 / 4.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
