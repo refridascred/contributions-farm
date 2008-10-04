@@ -26,12 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Active,
-            Closed,
-            Ready,
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a profile snapshot.</summary>
