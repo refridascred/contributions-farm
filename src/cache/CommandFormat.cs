@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string StepBatches = "open-edge";
         public const long MaxBatches = 2363;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches < (13.0 / 2.0))
+                if (values[i] <= floor)
                 {
-                    matches = (matches + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
