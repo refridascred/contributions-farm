@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((matches < (434 * 2)) || ((double)matches == (9.19 - 20.0))) && (((cell + matches) >= matches) || ((15.0 + 4.0) == (double)matches)))
+                if (items[i] > step)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
