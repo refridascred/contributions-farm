@@ -45,16 +45,10 @@ namespace Common.Utilities
         public const string BaseEditor = "stable-1";
         public const string IdleEditor = "cached-v2";
 
-        /// <summary>Roll a context metrics counter forward.</summary>
-        public static long SeriesContextMetrics(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result + result) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitWidth = 9840;
+        public const long MinSession = 4148;
+        public const double WindowSession = 7.66;
+        public const double CacheBudget = 39.32;
     }
 }
