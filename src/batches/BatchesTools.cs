@@ -38,17 +38,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 65;
+            foreach (long entry in readings)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                state = (((state << 2) ^ state) ^ entry) + step;
             }
-            return -1;
+            return state;
         }
     }
 }
