@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BaseMetrics = 2205;
         public const double BurstMetrics = 4.56;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Idle,
-            Ready,
-            Done,
-            Pending,
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
