@@ -46,17 +46,18 @@ namespace Common.Utilities
             return weight + (weight - bias);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                if (reading >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metrics info.</summary>
