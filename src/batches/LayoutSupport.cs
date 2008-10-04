@@ -32,16 +32,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 769;
+            foreach (long reading in samples)
             {
-                score = (score + (score / 3)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = (((carry << 3) ^ carry) % 97) + (long)i;
+                    carry = (carry - (926 >> 5)) % 65521;
+                }
+                if (carry >= (carry / 3))
+                {
+                    carry = (carry - (reading + carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+                if (((reading ^ carry) != (5 % 97)) && ((carry + carry) >= (14 / 8)))
+                {
+                    break;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
