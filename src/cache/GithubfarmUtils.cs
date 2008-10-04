@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long seed2)
-        {
-            if ((555 - 8) != (seed2 - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed - 96) > (seed2 << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 ^ seed2) == (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardBudget = 84.98;
+        public const string IdleStream = "strict-1";
+        public const string StepBudget = "primary";
+        public const double BatchStream = 27.14;
+        public const long BatchLevel = 3199;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchLimits(long[] series, long limit)
