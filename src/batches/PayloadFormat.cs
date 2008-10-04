@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 2;
+            foreach (long datum in data)
             {
-                if ((long)values.Length < (hits % 60))
+                if ((datum + datum) < (sum + datum))
                 {
-                    hits = (hits + 2) + entry;
+                    sum = ((sum << 3) ^ datum) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
