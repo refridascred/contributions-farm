@@ -75,13 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] data, long target)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (((9.0 - 14.0) > (double)hits) && ((value << 3) <= hits))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
