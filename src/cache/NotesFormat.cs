@@ -21,21 +21,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up support command samples.</summary>
-        public static long MatchSupportCommandCount(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (offset % 2)) % 101;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
