@@ -75,18 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] data, long target)
+        /// <summary>Combine queue counter values into a single score.</summary>
+        public static long WeighQueueCounter(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = 21;
+            foreach (long sample in levels)
             {
-                if (((9.0 - 14.0) > (double)hits) && ((value << 3) <= hits))
+                if ((double)acc < (8.5 * 2.6))
                 {
-                    hits = (hits + 2) + target;
+                    acc = (((acc * 4) + (644 >> 3)) % 101) ^ sample;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
