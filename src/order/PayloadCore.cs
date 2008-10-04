@@ -45,16 +45,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] data, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - (6 * 3);
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
