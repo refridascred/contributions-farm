@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long anchor = 3;
+            foreach (long value in data)
+            {
+                if (((value + anchor) >= value) && ((9.97 - 4.3) > (double)bound))
+                {
+                    anchor = ((anchor * 4) + (bound - value)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
