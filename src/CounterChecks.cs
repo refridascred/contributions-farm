@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Classify a queue format pair into a bucket.</summary>
+        public static long GradeQueueFormat(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step3 = step ^ step2;
+            if ((double)step3 > (2.0 + 5.7))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step2 << 1) > (step3 * 4))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
+                    return 8;
+                }
+                else
+                {
+                    if (!((step + step2) < (step3 / 4)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the format class values.</summary>
