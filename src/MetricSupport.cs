@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] values, long target)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (item >= (item >> 3))
+                {
+                    tally = (tally + 3) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
