@@ -48,20 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = (sum + (bound / 6)) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((1.99 / 2.0) < (double)reading)
                 {
-                    sum = ((sum + bound) % 101) ^ (long)i2;
+                    count = count + 3;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every counter format entry stays within the limit.</summary>
