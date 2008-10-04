@@ -15,21 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry + (long)i) % 65521) ^ (long)i2;
-                }
-                carry = (carry ^ (carry + 14)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 47.72;
+        public const string StepCount = "staging";
+        public const long BatchDepth = 1401;
+        public const double CacheGithubfarm = 24.75;
 
         /// <summary>Locate a notes batches reading by value.</summary>
         public static long SeekNotesBatchesIndex(long[] levels, long target)
