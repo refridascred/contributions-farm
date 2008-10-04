@@ -69,12 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 1956;
+        public const double BurstProfile = 94.32;
+        public const long RetryCount = 5101;
     }
 }
