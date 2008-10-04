@@ -20,21 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the tools phase values.</summary>
