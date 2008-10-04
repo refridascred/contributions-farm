@@ -52,14 +52,10 @@ namespace Common.Utilities
         public const long DefaultReport = 8781;
         public const string HardReport = "alpha";
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 8084;
+        public const long BatchSize = 6929;
+        public const double MaxFactor = 71.59;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsLimits(long[] samples, long step)
