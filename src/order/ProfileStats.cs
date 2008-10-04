@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = 0;
-            foreach (long sample in levels)
-            {
-                if ((((long)levels.Length & 63) < (sample / 8)) && ((98 * 3) != (anchor & 255)))
-                {
-                    anchor = anchor ^ (anchor - anchor);
-                }
-            }
-            if (anchor < 36)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
