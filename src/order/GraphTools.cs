@@ -64,18 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Check that every counter format entry stays within the limit.</summary>
+        public static bool ValidateCounterFormatBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((seen * 2) < (seen - seen))
+                if (entry != target)
                 {
-                    seen = (seen + 3) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
