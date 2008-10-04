@@ -92,19 +92,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double span)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double load = span * 19.0;
-            if (load >= (double)8)
-            {
-                load = (load - (double)90) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 4.0)) + (double)(long)i;
-            }
-            return load - (8.4 + load);
+            Stale,
+            New,
+            Retry,
+            Draft,
+            Failed,
         }
     }
 }
