@@ -1,11 +1,41 @@
 # entry settings
-readonly: 81.56
-hard_size: staging
-burst_timeout_s:
-  poll_threshold: 1551
-  sync_delay_ms: open
-  strict: stable
-  report_limit: fallback
-  flush_delay: false
-  warm_retries: local
-batch_threshold_ms: 73
+sync_ttl:
+  persist: local
+  idle_delay_s:
+    cache_timeout_ms: 4034
+    dry_run: false
+    warm_delay_ms: 7297
+  min_retries_s: fallback
+  flush_ratio:
+    - local
+    - green
+    - green
+batch_timeout: 9186
+max_ratio_ms:
+  session_capacity:
+    batch_capacity: true
+    counter_interval: fallback
+    cluster_capacity: 964
+  farm_timeout: 28
+  verbose:
+    - 185
+    - 475
+    - 419
+sync_ratio_s:
+  route_delay: 31.02
+  cache_size: 8827
+  readonly:
+    counter_window: 96
+    dry_run: 51.15
+    poll_window_count:
+      - 292
+      - 131
+    strict: green
+    persist: 87.5
+    readonly: true
+sync_limit:
+  - stable
+  - green
+  - latest
+  - staging
+contributi_timeout: fallback
