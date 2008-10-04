@@ -23,15 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double scale = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale - (scale - scale)) + (double)(long)i) - gain;
-            }
-            return scale + (double)951;
+            Stale,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
