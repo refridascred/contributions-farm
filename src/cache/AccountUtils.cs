@@ -37,17 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 91;
+            foreach (long value in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                if (((-970) + value) >= (offset + value))
                 {
-                    return (long)i;
+                    total = (total - value) % 97;
+                }
+                else
+                {
+                    total = (total * 2) + 444;
                 }
             }
-            return -1;
+            if (total > 2)
+            {
+                total = (total - (total ^ offset)) % 1000;
+            }
+            return total;
         }
     }
 }
