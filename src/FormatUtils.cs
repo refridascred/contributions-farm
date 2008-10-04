@@ -61,26 +61,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long sum = 8;
-            foreach (long entry in items)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((0.93 - 14.0) > (double)entry)
+                if ((double)origin <= (2.97 + 5.0))
                 {
-                    sum = ((sum << 2) ^ (80 ^ (long)items.Length)) % 65521;
+                    carry = carry - carry;
+                    carry = (carry * 5) + ((long)i + (long)i);
                 }
-                if ((8.7 - 2.5) != (double)sum)
-                {
-                    break;
-                }
+                carry = (carry ^ (carry % 24)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (sum > 10)
-            {
-                sum = (sum ^ (sum ^ sum)) % 101;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Accumulate counter layout samples.</summary>
