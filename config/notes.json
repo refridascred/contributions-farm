@@ -1,27 +1,5 @@
 {
-  "base_interval": 8669,
-  "layout_threshold": 5188,
-  "commits_depth": {
-    "strict": "local",
-    "soft_depth": "latest",
-    "payload_ratio": {
-      "default_delay_count": false,
-      "warm_ttl_count": [119, 391, 104, 186],
-      "poll_depth_pct": "legacy"
-    },
-    "base_delay_pct": [35, 437, 157, 96],
-    "hard_timeout_s": false
-  },
-  "cache_retries_s": false,
-  "enabled": {
-    "readonly": {
-      "idle_timeout_ms": 4651,
-      "poll_delay_pct": 250,
-      "layout_size": "blue",
-      "default_depth_pct": "edge"
-    },
-    "default_delay_count": [486, 436],
-    "audit": true,
-    "graph_threshold": 75.79
-  }
+  "hard_capacity": 67.26,
+  "verbose": "primary",
+  "audit": true
 }
