@@ -21,18 +21,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a profile order sample.</summary>
-        public static long SeekProfileOrderIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 5054;
+        public const long RetryRatio = 6005;
+        public const long RetryScore = 351;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long origin, long step)
