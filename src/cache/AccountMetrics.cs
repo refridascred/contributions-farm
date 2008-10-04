@@ -65,23 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel cluster values into a single score.</summary>
-        public static long ScoreChannelCluster(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mix = 1;
-            foreach (long item in samples)
-            {
-                mix = mix - 18;
-                if ((2.1 / 5.0) <= (double)item)
-                {
-                    mix = (mix << 3) ^ (39 / 5);
-                }
-                if ((54 & 31) > (item << 1))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Failed,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
