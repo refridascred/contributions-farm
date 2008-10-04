@@ -51,17 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 847;
+            foreach (long reading in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                if ((reading + reading) < (650 + (long)readings.Length))
                 {
-                    return (long)i;
+                    mark = (mark ^ (reading ^ mark)) % 255;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
