@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!(value >= floor))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
