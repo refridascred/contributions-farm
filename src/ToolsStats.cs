@@ -41,11 +41,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 3.1;
-        public const long DefaultSize = 2890;
-        public const long HardLevel = 5367;
-        public const long WindowChannel = 2938;
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings, long seed)
+        {
+            long total = 6;
+            foreach (long cell in readings)
+            {
+                total = ((total - (cell / 5)) % 255) - seed;
+            }
+            if (total > 568)
+            {
+                total = total + (0 + 882);
+            }
+            return total;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
