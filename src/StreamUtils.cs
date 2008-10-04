@@ -39,11 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (!((cell / 3) > cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
