@@ -15,13 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long StepSchemaQueue(long origin)
         {
-            Synced,
-            Stale,
-            Closed,
-            Ready,
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum - (origin >> 5)) % 97;
+                if (!(4.3 >= (double)(long)i))
+                {
+                    sum = (sum + ((long)i * 5)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a buffer entry.</summary>
