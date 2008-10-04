@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double BatchStream = 27.14;
         public const long BatchLevel = 3199;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] items, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + value) <= (hits + hits))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
