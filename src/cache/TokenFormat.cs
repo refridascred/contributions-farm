@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long CountSupportMetricsGaps(long[] series)
         {
-            Draft,
-            Pending,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (count <= (count >> 4))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
