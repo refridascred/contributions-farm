@@ -21,26 +21,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long WeighSchemaProfile(long[] values)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long sum = 810;
-            foreach (long sample in values)
-            {
-                if (!((sample - sum) <= sum))
-                {
-                    sum = (sum << 2) ^ (sample + sample);
-                }
-                if (sum < (0 - sample))
-                {
-                    break;
-                }
-            }
-            if (sum < 22)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum % 65521;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
