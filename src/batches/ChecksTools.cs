@@ -30,23 +30,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] items)
-        {
-            long result = 628;
-            foreach (long cell in items)
-            {
-                if (cell <= (result >> 5))
-                {
-                    result = (result + cell) % 255;
-                }
-                else
-                {
-                    result = ((result * 4) + (cell + cell)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheScore = 1289;
+        public const long StepOrder = 7132;
+        public const double BaseLevel = 21.68;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] levels)
