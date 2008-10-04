@@ -1,6 +1,5 @@
 {
-  "warm_ratio_count": 1024,
-  "warm_threshold_ms": 7625,
-  "warm_threshold": 3664,
-  "context_interval": 500
+  "format_size": [435, 87, 388, 432],
+  "channel_interval": "strict",
+  "burst_threshold": [196, 180, 490, 107]
 }
