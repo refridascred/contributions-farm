@@ -23,13 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many already cluster samples are out of range.</summary>
+        public static long CountAlreadyClusterMatches(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((limit / 3) < (seen % 8))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
