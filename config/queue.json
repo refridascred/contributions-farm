@@ -1,12 +1,7 @@
 {
-  "idle_threshold": {
-    "poll_threshold_ms": 77.0,
-    "warm_timeout_pct": 500,
-    "verbose": 99,
-    "flush_window_s": 1024,
-    "base_depth_ms": "local",
-    "cache_window": true
-  },
-  "readonly": [53, 165, 237],
-  "compress": false
+  "max_capacity_ms": 659,
+  "hard_ratio": ["primary", "eu-west"],
+  "base_capacity_pct": "open",
+  "base_limit_count": "open",
+  "contributi_ttl": 30
 }
