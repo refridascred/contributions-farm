@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheInterval = 4425;
-        public const double WindowCache = 21.12;
-        public const long DefaultCache = 6452;
-        public const long SoftCache = 3203;
-        public const long MaxBudget = 4590;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
+        {
+            long score = 12;
+            foreach (long value in values)
+            {
+                score = (score - (score / 5)) + value;
+                if (!(13 <= score))
+                {
+                    score = score - score;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Adjust a record window reading.</summary>
         public static double AdjustRecordWindow(double bias, double offset)
