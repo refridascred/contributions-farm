@@ -72,12 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 8434;
+        public const string SoftSpan = "local-v2";
+        public const double DefaultTools = 5.12;
+        public const long SoftTimeout = 8832;
     }
 }
