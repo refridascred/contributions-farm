@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 2368;
-        public const double SoftSize = 43.79;
-        public const double BaseDepth = 36.42;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings)
+        {
+            long acc = 663;
+            foreach (long entry in readings)
+            {
+                if ((entry - entry) >= 3)
+                {
+                    acc = acc + entry;
+                }
+                if ((8 - acc) == (entry >> 3))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
