@@ -27,12 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "staging-1";
-        public const long BurstFarm = 7155;
-        public const double MinFarm = 96.32;
-        public const long WindowFarm = 682;
-        public const long CacheWidth = 6143;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Pending,
+            Idle,
+            Locked,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long step)
