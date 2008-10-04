@@ -1,7 +1,6 @@
-id,count,label,score
-1,20.82,327,862
-2,7.06,latest,primary
-3,810,281,green
-4,38.44,740,183
-5,edge,84.75,10.17
-6,729,standard,63.93
+id,label,active
+1,open,905
+2,cached,38.02
+3,372,open
+4,630,cached
+5,strict,567
