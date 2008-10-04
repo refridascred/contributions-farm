@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = (carry ^ carry) % 1000;
+                if (carry > item)
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ (item + 4)) % 65521;
                 }
             }
-            return tally;
+            if (carry < 3)
+            {
+                carry = carry - (carry % 100);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
