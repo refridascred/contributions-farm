@@ -39,14 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] series, long origin)
         {
-            Dropped,
-            Queued,
-            Done,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry & 7) >= (4 + (long)series.Length))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
