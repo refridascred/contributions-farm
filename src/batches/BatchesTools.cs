@@ -31,21 +31,11 @@ namespace Common.Utilities
             return bias3 + 7.71;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
