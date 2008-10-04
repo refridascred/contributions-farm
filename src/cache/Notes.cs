@@ -36,12 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 4312;
-        public const long BurstScore = 5413;
-        public const string BaseWidth = "standard-1";
-        public const long StepFormat = 7131;
-        public const long CacheFormat = 5429;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long origin)
+        {
+            long carry = 1;
+            foreach (long value in samples)
+            {
+                if ((double)origin == (9.0 + 1.3))
+                {
+                    long diff = (value ^ origin) + origin;
+                    carry = ((carry * 3) + diff) % 4096;
+                    continue;
+                }
+                carry = (carry ^ (369 - value)) % 1000;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardTimeout = 7067;
