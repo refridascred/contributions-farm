@@ -1,9 +1,11 @@
 # support settings
-warm_interval_count: 11.63
-max_retries:
-  warm_threshold_count: latest
-  soft_window: false
-  sync_delay_ms: 6567
-layout_delay: 500
-base_capacity_pct: 500
-burst_depth_pct: false
+batches_ratio:
+  max_ratio_count: 8.02
+  tools_ratio: false
+  cache_size_pct: false
+  base_ratio_ms: open
+sync_window_s: true
+flush_retries: fallback
+soft_delay: fallback
+soft_ttl_s: stable
+cache_depth: open
