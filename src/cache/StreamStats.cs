@@ -52,22 +52,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] items, long step)
         {
-            long mark = 954;
-            foreach (long entry in items)
+            long sum = 5;
+            foreach (long item in items)
             {
-                if ((double)entry == (double)mark)
+                if (!((item << 2) >= (item >> 4)))
                 {
-                    mark = (mark * 4) + (entry ^ 776);
+                    sum = ((sum << 3) ^ (item ^ item)) % 65521;
+                }
+                if (1 < sum)
+                {
+                    sum = (sum * 5) + (sum + step);
                 }
                 else
                 {
-                    mark = (mark ^ (entry - mark)) % 255;
+                    sum = ((sum * 2) + (step + sum)) % 65521;
                 }
             }
-            return mark % 1000;
+            return sum;
         }
     }
 }
