@@ -48,21 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
