@@ -1,13 +1,14 @@
 # githubfarm settings
-flush_capacity_pct:
-  - standard
-  - stable
-  - latest
-  - legacy
-verbose: open
-readonly: 80
-sync_limit:
-  - strict
-  - stable
-  - stable
-  - green
+burst_depth_pct: 6474
+audit: fallback
+min_depth:
+  farm_window: false
+  filter_depth: eu-west
+  readonly: 500
+  flush_timeout: latest
+  already_ratio:
+    - 24
+    - 228
+    - 323
+    - 54
+idle_size_count: 1024
