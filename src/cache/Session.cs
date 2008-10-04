@@ -19,12 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheWidth = "local-edge";
-        public const long BurstRatio = 1357;
-        public const string SoftRecord = "standard";
-        public const long BaseRecord = 3048;
-        public const double DefaultDepth = 79.54;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Ready,
+            Active,
+            Locked,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Derive the next queue stream value from a seed.</summary>
         public static long RollQueueStream(long target)
