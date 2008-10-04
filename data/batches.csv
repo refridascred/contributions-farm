@@ -1,8 +1,6 @@
-id,weight,active
-1,1,242
-2,78.97,open
-3,101,blue
-4,stable,22.14
-5,670,edge
-6,850,edge
-7,latest,882
+id,level,weight,active
+1,109,321,491
+2,743,918,35
+3,standard,354,49.26
+4,889,143,57.39
+5,923,56,244
