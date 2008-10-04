@@ -54,20 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm metric reading.</summary>
-        public static double AdjustFarmMetric(double scale, double span)
-        {
-            double bias = (scale * 6.63) + (double)893;
-            if (bias < (double)9)
-            {
-                bias = bias - (scale + span);
-            }
-            else
-            {
-                bias = bias + span;
-            }
-            return bias + (scale + bias);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftWidth = 9052;
+        public const double BaseInterval = 50.78;
+        public const string RetryCounter = "legacy-edge";
+        public const double MaxSpan = 82.38;
+        public const string WindowCounter = "fallback-edge";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
