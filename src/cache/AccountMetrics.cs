@@ -74,11 +74,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long result = 123;
+            foreach (long datum in series)
+            {
+                if ((datum + result) < (result & 1))
+                {
+                    result = (result ^ (datum + datum)) % 65521;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result - 25);
+                }
+                if (((datum ^ result) == (result - result)) || ((datum + datum) <= (319 >> 2)))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
