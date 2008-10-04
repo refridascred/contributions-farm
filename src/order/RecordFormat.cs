@@ -53,20 +53,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ offset) % 101;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total * 2) + ((-94) << 2)) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
