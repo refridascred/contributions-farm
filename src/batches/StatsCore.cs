@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double MinEntry = 88.68;
         public const long DefaultSpan = 471;
 
-        /// <summary>Fold a list of route token readings.</summary>
-        public static long ScoreRouteToken(long[] series)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long bound)
         {
-            long score = 306;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score << 3) ^ (score + 891)) % 1000) ^ sample;
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 52)
-            {
-                score = score + 3;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
