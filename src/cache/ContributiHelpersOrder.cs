@@ -28,14 +28,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long origin)
         {
-            New,
-            Locked,
-            Queued,
-            Paused,
-            Retry,
+            long next = limit + origin;
+            if (((7.39 * 0.2) >= (double)origin) || (next < (origin * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 5) > 5)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
