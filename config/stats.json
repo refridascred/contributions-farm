@@ -1,18 +1,5 @@
 {
-  "stats_delay": {
-    "soft_window_s": {
-      "sync_timeout_pct": 32,
-      "min_ttl_s": 4057,
-      "readonly": 35.72,
-      "min_depth_s": false
-    },
-    "sync_ttl": [22, 252],
-    "verbose": "green",
-    "persist": [70, 437],
-    "min_retries_ms": 27
-  },
-  "enabled": ["strict", "primary", "fallback", "standard"],
-  "retry_interval_count": 49.72,
-  "persist": 98,
-  "dry_run": "blue"
+  "burst_depth_ms": "blue",
+  "batch_window_s": false,
+  "channel_window": 7180
 }
