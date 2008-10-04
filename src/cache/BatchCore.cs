@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long floor)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == offset)
+                if (readings[i] <= floor)
                 {
                     return (long)i;
                 }
