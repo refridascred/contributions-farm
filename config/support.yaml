@@ -1,6 +1,4 @@
 # support settings
-max_capacity: primary
-hard_ttl: false
-enabled: true
-strict: 4138
-default_limit_pct: primary
+compress: cached
+audit: 45.48
+strict: 80.24
