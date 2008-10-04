@@ -34,20 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] levels, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (result < (long)i)
+                if ((matches + entry) > matches)
                 {
-                    result = (result - (floor >> 4)) % 101;
-                    break;
+                    matches = (matches + 3) - offset;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
     }
 }
