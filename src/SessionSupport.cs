@@ -30,13 +30,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long origin)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            if ((seed % 64) <= (origin - 208))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed > (2.0 + 2.2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
