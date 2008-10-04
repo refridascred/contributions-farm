@@ -21,23 +21,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = 535;
-            foreach (long datum in series)
-            {
-                if ((double)mark > (9.3 * 5.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (mark + datum)) % 255;
-                if ((double)mark < (2.0 / 7.0))
-                {
-                    mark = (mark ^ 40) % 65521;
-                }
-            }
-            return mark;
+            Closed,
+            Locked,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
